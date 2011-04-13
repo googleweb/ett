@@ -1,0 +1,41 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="utf-8"%>
+<%@ taglib uri="/struts-tags" prefix="s" %>
+<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>欢迎使用自助车管所</title>
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" style="text-align: center;"
+	topmargin="0" marginwidth="0" marginheight="0">
+	
+		<div
+			style="height: 72px; vertical-align:middle;text-align:center;; line-height:72px; background-image: url('<s:url value="/images/hint2.jpg"/>'); background-repeat: no-repeat;">
+			 <img style="margin-top:10px;" src="<s:url value="/images/bustypehint.jpg"/>" width="800" border="0px" height="50" alt="提示语"/>
+			
+			</div>
+		<div
+			style="text-align: center; height: 502px; background-image: url('<s:url value="/images/bottom3.jpg"/>'); background-repeat: no-repeat;">
+			<br />
+			<br /> 
+			<input type="button" style="line-height:55px;background-position:center;width:341px;height:55px;background-image: url('<s:url value="/images/car.jpg"/>')" width="341" height="55"/>
+			
+			
+			<br />
+			<br /> <input type="button" style="line-height:55px;background-position:center;width:341px;height:55px;background-image: url('<s:url value="/images/person.jpg"/>')" width="341" height="55"/> <br />
+			<br /> <input type="button" style="line-height:55px;background-position:center;width:341px;height:55px;background-image: url('<s:url value="/images/preasign.jpg"/>')" width="341" height="55"/> <br />
+			<br /> <input type="button" style="line-height:55px;background-position:center;width:341px;height:55px;background-image: url('<s:url value="/images/vio.jpg"/>')" width="341" height="55"/>
+			<br />
+			<br /> <input type="button" style="line-height:55px;background-position:center;width:341px;height:55px;background-image: url('<s:url value="/images/fee.jpg"/>')" width="341" height="55"/>
+			<br />
+			<br />
+			<input onclick="javascript:document.location.href='<s:url value="/jsp/self/idCardReader.jsp"/>?returnurl=<s:url value="/self/print!func.action"/>';" type="button" style="line-height:55px;background-position:center;width:341px;height:55px;background-image: url('<s:url value="/images/print.jpg"/>')" width="341" height="55"/>
+		</div>
+		<script type="text/javascript">
+		//fullScreen();
+		</script>
+</body>
+
+</html>

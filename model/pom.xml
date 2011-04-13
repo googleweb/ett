@@ -11,5 +11,19 @@
   		<type>maven-plugin</type>
   		<scope>compile</scope>
   	</dependency>
+  	<dependency>
+  		<groupId>com.googlecode</groupId>
+  		<artifactId>jsonplugin</artifactId>
+  		<version>0.33</version>
+  		<type>jar</type>
+  		<scope>compile</scope>
+  	</dependency>
+  	<dependency>
+  		<groupId>javax.persistence</groupId>
+  		<artifactId>persistence-api</artifactId>
+  		<version>1.0</version>
+  		<type>jar</type>
+  		<scope>compile</scope>
+  	</dependency>
   </dependencies>
 </project>

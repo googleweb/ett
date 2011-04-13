@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- all-所有的action配置-->
+<beans default-autowire="byName" xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+				http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+				http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+		<!-- test comment -->	
+		<bean id="applicationContext" 
+    class="org.apache.axis2.extensions.spring.receivers.ApplicationContextHolder" />	
+	<bean id="springAxis2Service" class="com.ett.web.axis2.SpringAxis2Service" />
+</beans>
+

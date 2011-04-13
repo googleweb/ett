@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<serviceGroup>
+    <service name="SpringAxis2Service">
+        <description>Hello World Spring Service</description>
+            <!-- ServiceObjectSupplier为装载spring bean的类，必须有-->
+            <!--  org.apache.axis2.extensions.spring.receivers.SpringServletContextObjectSupplier -->
+        <parameter name="ServiceObjectSupplier">
+            org.apache.axis2.extensions.spring.receivers.SpringAppContextAwareObjectSupplier
+        </parameter>
+        <parameter name="SpringBeanName">springAxis2Service</parameter>     <!-- SpringBeanName不可变，userServer为spring中对应的bean-->
+        <operation name="hello">
+            <messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver" />
+        </operation>
+    </service>
+</serviceGroup>
