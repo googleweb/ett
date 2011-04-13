@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--t 主要进行hibernate相关的配置 -->
+<beans default-autowire="no"  xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+	<!--jdbc:oracle:thin:drv_cx/drv_cx@(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = 10.40.30.134)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = gdcjjz)))-->
+	<!-- 备用the dataSource for oracle-->	
+		<bean id="dataSourceDrv" class="org.springframework.jdbc.datasource.DriverManagerDataSource" destroy-method="close">
+			<property name="driverClassName" value="oracle.jdbc.OracleDriver"></property>
+			<property name="url" value="jdbc:oracle:thin:@192.168.1.10:1521:oradrvde"/>
+			<property name="username" value="oradrv"/>
+			<property name="password" value="stjj117"/>
+
+		</bean>
+	<!--jndi
+<bean id="dataSourceDrv" class="org.springframework.jndi.JndiObjectFactoryBean">
+  <property name="resourceRef">
+  <value>true</value>
+  </property>
+  <property name="jndiName">
+  <value>stjjsource</value>
+  </property>
+  </bean>  
+  -->
+<!--
+	<bean id="dataSourceDrv"
+		class="org.logicalcobwebs.proxool.ProxoolDataSource" destroy-method="org.logicalcobwebs.proxool.ProxoolFacade.shutdown()">
+		<property name="driver">
+			<value>oracle.jdbc.OracleDriver</value>
+		</property>
+		<property name="driverUrl">
+			<value>jdbc:oracle:thin:stcxyh/st34u32@(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = 127.0.0.1)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = oradrv)))</value>
+		</property>
+		<property name="user" value="stcxyh" />
+		<property name="password" value="st34u32" />
+		<property name="prototypeCount" value="0" />
+		<property name="maximumConnectionCount" value="5" />
+		<property name="minimumConnectionCount" value="1" />
+		<property name="simultaneousBuildThrottle" value="50" />
+		<property name="houseKeepingTestSql" value="select sysdate from dual" />
+	</bean>
+	-->
+	<!-- the dataSource for sqlserver		
+		<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+			<property name="driverClassName" value="com.microsoft.jdbc.sqlserver.SQLServerDriver"></property>
+			<property name="url" value="jdbc:microsoft:sqlserver://127.0.0.1:1433;DatabaseName=testdb"/>
+			<property name="username" value="sa"/>
+			<property name="password" value="sa"/>
+		</bean>-->	
+	<!-- the dataSource for oracle
+		<bean id="dataSourceDrv" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+			<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
+			<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:oradrv"/>
+			<property name="username" value="drv_admin"/>
+			<property name="password" value="123456"/>
+
+		</bean>
+	-->
+		 
+	<!-- the dataSource for mysql
+		<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+			<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+			<property name="url" value="jdbc:mysql://localhost:3306/driversmanager?useUnicode=true&amp;characterEncoding=UTF-8"/>
+			<property name="username" value="root"/>
+			<property name="password" value="123"/>
+
+		</bean>
+		-->
+	<!-- the dataSource for oracle
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
+		<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:lineup"/>
+		<property name="username" value="lineup"/>
+		<property name="password" value="lineup"/>	
+	</bean>
+	-->
+	
+	<!-- the dataSource for oracle
+		<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+			<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
+			<property name="url" value="jdbc:oracle:thin:@192.168.1.111:1521:drivers"/>
+			<property name="username" value="mydrivers"/>
+			<property name="password" value="123456"/>
+
+		</bean>-->
+	
+	
+	<bean id="sessionFactoryDrv" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSourceDrv"/>
+		<property name="annotatedPackages">
+			<list>
+				
+			</list>
+		</property>
+		<property name="configurationClass" value="org.hibernate.cfg.AnnotationConfiguration">
+		</property> 
+		<property name="mappingLocations">  
+			<list>
+			</list>  
+		</property> 
+		
+		<property name="annotatedClasses">
+			<list>
+
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.OracleDialect
+				</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.generate_statistics">true</prop>
+				<prop key="hibernate.max_fetch_depth">3</prop>
+				<prop key="hibernate.hibernate.use_outer_join">true</prop>
+				<prop key="hibernate.jdbc.batch_size">10</prop>
+				<prop key="hibernate.cache.use_query_cache">true</prop>
+				<prop key="hibernate.cache.use_second_level_cache">true</prop>
+				<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
+				<prop key="hibernate.hbm2ddl.auto">none</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="transactionManagerDrv" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactoryDrv"></property>  
+	</bean>
+	<tx:annotation-driven transaction-manager="transactionManagerDrv" proxy-target-class="true"/>
+	<!-- 
+			<bean id="openSessionInViewInterceptor"  
+			   class="org.springframework.orm.hibernate3.support.OpenSessionInViewInterceptor">  
+			   <property name="sessionFactory" ref="sessionFactory"/>  
+		   </bean>
+
+			-->
+   
+	<!-- 
+		   <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">   
+			   <property name="interceptors">   
+				   <list>   
+					   <ref bean="openSessionInViewInterceptor" />   
+				</list>   
+			  </property>   
+			  <property name="mappings">   
+				<props>   
+				 <prop key="main.do">mainFrameController</prop>   
+			   </props>   
+			 </property>   
+		  </bean>  
+		   -->
+   
+	<bean id="baseDaoDrv" class="com.ft.site.commons.dao.BaseDaoHibernateImpl" >
+		<property name="sessionFactory"><ref bean="sessionFactoryDrv" /></property>  
+	</bean>
+
+  <!-- 这里的方法签名可以精确到方法, 先懒惰一下全配置上
+	<bean id="hibernateDao" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyTargetClass">
+			<value>true</value>
+		</property> 
+		<property name="target" ref="baseDao"/>  
+		<property name="transactionAttributes">
+	   <props>
+	    
+	    <prop key="*">PROPAGATION_REQUIRED</prop>
+	   </props>
+	  </property>
+	</bean> -->
+
+</beans>

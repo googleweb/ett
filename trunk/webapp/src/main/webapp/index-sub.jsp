@@ -1,0 +1,32 @@
+<%@ page language="java" contentType="text/html; charset=GB18030"
+    pageEncoding="GB18030"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GB18030">
+<title>测试sitemesh</title>
+</head>
+<body>
+<div
+			style="height: 72px; vertical-align:middle;text-align:center;; line-height:72px; background-image: url('images/hint2.jpg'); background-repeat: no-repeat;">
+			 <img style="margin-top:10px;" src="images/bustypehint.jpg" width="800" border="0px" height="50" alt="提示语"/>
+			
+			</div>
+		<div
+			style="text-align: center; height: 502px; background-image: url('images/bottom3.jpg'); background-repeat: no-repeat;">
+			<br />
+			<br /> 
+			<input type="button" style="line-height:55px;background-position:center;width:341px;height:55px;background-image: url('images/car.jpg')" width="341" height="55"/>
+			
+			
+			<br />
+			<br /> <input type="button" style="line-height:55px;background-position:center;width:341px;height:55px;background-image: url('images/person.jpg')" width="341" height="55"/> <br />
+			<br /> <input type="button" style="line-height:55px;background-position:center;width:341px;height:55px;background-image: url('images/preasign.jpg')" width="341" height="55"/> <br />
+			<br /> <input type="button" style="line-height:55px;background-position:center;width:341px;height:55px;background-image: url('images/vio.jpg')" width="341" height="55"/>
+			<br />
+			<br /> <input type="button" style="line-height:55px;background-position:center;width:341px;height:55px;background-image: url('images/fee.jpg')" width="341" height="55"/>
+			<br />
+			<br /> <input type="button" style="line-height:55px;background-position:center;width:341px;height:55px;background-image: url('images/print.jpg')" width="341" height="55"/>
+		</div>
+</body>
+</html>
