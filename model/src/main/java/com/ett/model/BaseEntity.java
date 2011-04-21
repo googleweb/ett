@@ -74,8 +74,8 @@ public abstract class BaseEntity implements Serializable  {
 	public void setCreator(String creator) {
 		this.creator = creator;
 	}
-
-	@Column(nullable=true,updatable=false,insertable=true,name="t_createtime")
+//,columnDefinition=" date default sysdate"
+	@Column(nullable=true, updatable=false,insertable=true,name="t_createtime")
 	@Temporal(TemporalType.TIMESTAMP)
 	@JSON(format="yyyy-MM-dd HH:mm:ss")
 	public Date getCreateTime() {

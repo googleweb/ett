@@ -1,21 +1,51 @@
 /**
  * 
  */
-package com.ett.self;
+package com.ett.model;
 
 import java.util.Date;
 
 /**
  * @author austin
- * 自助设备的用户信息
+ * 车驾系统的用户信息
  */
-public class SelfDeviceUser {
+public class DrvUser {
 	
+	private String jxdm;
+	
+	private String jxmc;
+	
+	public String getJxdm() {
+		return jxdm;
+	}
+
+	public void setJxdm(String jxdm) {
+		this.jxdm = jxdm;
+	}
+
+	public String getJxmc() {
+		return jxmc;
+	}
+
+	public void setJxmc(String jxmc) {
+		this.jxmc = jxmc;
+	}
+
 	private String sfzmhm;
 	
 	private int xb;
 	private String xm;
 	
+	private String dabh;
+	
+	public String getDabh() {
+		return dabh;
+	}
+
+	public void setDabh(String dabh) {
+		this.dabh = dabh;
+	}
+
 	private Date csrq;
 	
 	public Date getCsrq() {
@@ -38,7 +68,7 @@ public class SelfDeviceUser {
 	
 	private String ywlx;
 	
-	private String lxh;
+	private String lsh;
 	
 	private int money;
 	
@@ -46,7 +76,53 @@ public class SelfDeviceUser {
 	
 	private String zkcx;
 	
-    public String getZkcx() {
+	private Date cclzrq;
+	
+	private Date fzrq;
+	
+	private Date qfrq;
+	
+	private Date syrq;
+	
+    public Date getQfrq() {
+		return qfrq;
+	}
+
+	public void setQfrq(Date qfrq) {
+		this.qfrq = qfrq;
+	}
+
+	public Date getSyrq() {
+		return syrq;
+	}
+
+	public void setSyrq(Date syrq) {
+		this.syrq = syrq;
+	}
+
+	/**
+     * @return 初次领证日期
+     */
+    public Date getCclzrq() {
+		return cclzrq;
+	}
+
+	public void setCclzrq(Date cclzrq) {
+		this.cclzrq = cclzrq;
+	}
+
+	/**
+	 * @return 发证日期
+	 */
+	public Date getFzrq() {
+		return fzrq;
+	}
+
+	public void setFzrq(Date fzrq) {
+		this.fzrq = fzrq;
+	}
+
+	public String getZkcx() {
 		return zkcx;
 	}
 
@@ -189,12 +265,14 @@ public class SelfDeviceUser {
 		this.ywlx = ywlx;
 	}
 
-	public String getLxh() {
-		return lxh;
+
+
+	public String getLsh() {
+		return lsh;
 	}
 
-	public void setLxh(String lxh) {
-		this.lxh = lxh;
+	public void setLsh(String lsh) {
+		this.lsh = lsh;
 	}
 
 	public int getMoney() {

@@ -1,13 +1,13 @@
 /**
  * 
  */
-package com.ett.self.print.model;
+package com.ett.self.model;
 
 import java.util.Date;
 
 /**
  * @author austin
- *
+ * 打印对象，供其他打印activex控件使用
  */
 public class PrintObject {
 	/*
@@ -26,6 +26,22 @@ public class PrintObject {
 	 
 	 * */
 	
+	private String lineUpId;
+	
+	public String getLineUpId() {
+		return lineUpId;
+	}
+	public void setLineUpId(String lineUpId) {
+		this.lineUpId = lineUpId;
+	}
+	private String glbmName;
+	
+	public String getGlbmName() {
+		return glbmName;
+	}
+	public void setGlbmName(String glbmName) {
+		this.glbmName = glbmName;
+	}
 	private String lsh;
 	
 	private String ywlx;
