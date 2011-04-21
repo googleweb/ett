@@ -17,7 +17,7 @@ import java.util.Date;
  */
 public class DateUtil {
 	
-	public static String[] dayOfWeekChinese = new String[] { "星期丄1�7", "星期亄1�7", "星期丄1�7", "星期囄1�7", "星期亄1�7", "星期兄1�7", "星期旄1�7"};
+	public static String[] dayOfWeekChinese = new String[] { "星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期天"};
 	
 	public static String getDayOfWeekChinese(int dayofweek)
 	{
@@ -64,14 +64,14 @@ public class DateUtil {
 	}
 	
 	/**
-	 * 返回周一到周七，分别丄1�7�1�7
+	 * 返回周一到周七，分别丄1�7�1�7
 	 * @param date 日期
 	 * @return 周几
 	 */
 	public static int getDayOfWeek(Date date)
 	{
 		Calendar   aCalendar=Calendar.getInstance();//里面可以直接插入date类型   
-        aCalendar.setTime(date);  //从星期天到星期六，分别是1刄1�7
+        aCalendar.setTime(date);  //从星期天到星期六，分别是1刄1�7
         int day=aCalendar.get(Calendar.DAY_OF_WEEK);
         if(day==1)
         {
