@@ -12,26 +12,26 @@
 	topmargin="0" marginwidth="0" marginheight="0">
 	
 		<div
-			style="height: 72px; vertical-align:middle;text-align:center;; line-height:72px; background-image: url('<s:url value="/images/hint2.jpg"/>'); background-repeat: no-repeat;">
-			 <img style="margin-top:10px;" src="<s:url value="/images/bustypehint.jpg"/>" width="800" border="0px" height="50" alt="提示语"/>
+			style="height: 72px; vertical-align:middle;text-align:center;; line-height:72px; background: url('<s:url value="/images/hint2.jpg"/>') no-repeat center">
+			 <img style="margin-top:10px;" src="<s:url value="/images/bustypehint.jpg"/> " width="800" border="0px" height="50" alt="提示语"/>
 			
 			</div>
 		<div
-			style="text-align: center; height: 502px; background-image: url('<s:url value="/images/bottom3.jpg"/>'); background-repeat: no-repeat;">
+			style="text-align: center; height: 502px; background: url('<s:url value="/images/bottom3.jpg"/>')  no-repeat center; ">
 			<br />
 			<br /> 
-			<input type="button" style="line-height:55px;background-position:center;width:341px;height:55px;background-image: url('<s:url value="/images/car.jpg"/>')" width="341" height="55"/>
+			<input onclick="javascript:document.location.href='<s:url value="/self/Driver/to/index.action"/>';" type="button" style="line-height:55px;background-position:center;width:341px;height:55px;background: url('<s:url value="/images/car.jpg"/>')  no-repeat center" width="341" height="55"/>
 			
 			
 			<br />
-			<br /> <input type="button" style="line-height:55px;background-position:center;width:341px;height:55px;background-image: url('<s:url value="/images/person.jpg"/>')" width="341" height="55"/> <br />
-			<br /> <input type="button" style="line-height:55px;background-position:center;width:341px;height:55px;background-image: url('<s:url value="/images/preasign.jpg"/>')" width="341" height="55"/> <br />
-			<br /> <input type="button" style="line-height:55px;background-position:center;width:341px;height:55px;background-image: url('<s:url value="/images/vio.jpg"/>')" width="341" height="55"/>
+			<br /> <input  onclick="javascript:document.location.href='<s:url value="/self/Vehicle/to/index.action"/>';" type="button" style="line-height:55px;background-position:center;width:341px;height:55px;background: url('<s:url value="/images/person.jpg"/>')  no-repeat center" width="341" height="55"/> <br />
+			<br /> <input  type="button" onclick="javascript:document.location.href='<s:url value="/self/preasign!func.action"/>';" style="line-height:55px;background-position:center;width:341px;height:55px;background: url('<s:url value="/images/preasign.jpg"/>')  no-repeat center" width="341" height="55"/> <br />
+			<br /> <input onclick="javascript:document.location.href='<s:url value="/jsp/self/idCardReader.jsp"/>?returnurl=<s:url value="/self/vio!vehicleSelectList.action"/>';" type="button" style="line-height:55px;background-position:center;width:341px;height:55px;background: url('<s:url value="/images/vio.jpg"/>')  no-repeat center" width="341" height="55"/>
 			<br />
-			<br /> <input type="button" style="line-height:55px;background-position:center;width:341px;height:55px;background-image: url('<s:url value="/images/fee.jpg"/>')" width="341" height="55"/>
+			<br /> <input onclick="javascript:document.location.href='<s:url value="/jsp/self/idCardReader.jsp"/>?returnurl=<s:url value="/self/fee!func.action"/>';" type="button" style="line-height:55px;background-position:center;width:341px;height:55px;background: url('<s:url value="/images/fee.jpg"/>')  no-repeat center" width="341" height="55"/>
 			<br />
 			<br />
-			<input onclick="javascript:document.location.href='<s:url value="/jsp/self/idCardReader.jsp"/>?returnurl=<s:url value="/self/print!func.action"/>';" type="button" style="line-height:55px;background-position:center;width:341px;height:55px;background-image: url('<s:url value="/images/print.jpg"/>')" width="341" height="55"/>
+			<input onclick="javascript:document.location.href='<s:url value="/jsp/self/idCardReader.jsp"/>?returnurl=<s:url value="/self/print!func.action"/>';" type="button" style="line-height:55px;background-position:center;width:341px;height:55px;background: url('<s:url value="/images/print.jpg"/>')  no-repeat center" width="341" height="55"/>
 		</div>
 		<script type="text/javascript">
 		//fullScreen();

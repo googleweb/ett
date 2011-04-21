@@ -1,0 +1,182 @@
+body {
+	font-size: 15pt;
+}
+div
+{
+
+}
+.selfhinttable
+{
+	vertical-align: top;
+	margin-top: 30px;
+
+}
+.selfhinttd
+{
+	vertical-align:top;
+}
+.hintcontent
+{
+	font-family:"微软雅黑";
+	font-size:13pt;
+	color:#9F1F28;
+	background-color:#def3ff;
+	line-height: 30px;
+	text-align: left;
+	margin: 5 5 5 5;
+	padding: 5 5 5 5;
+}
+.selfform
+{
+	background-color: red;
+}
+.selfhinttable tr
+{
+	background: url('../images/hinttablebg.jpg') repeat center;
+}
+.selfhinttable .hintmsg
+{
+	background-color:#def3ff;
+	font-family:"微软雅黑";
+	font-size:20pt;
+	font-weight:bolder;
+	color:#075587;
+	text-align:center;
+	width: 450px;
+}
+.selfmainheader
+{
+	position: relative; 
+	height: 194px; 
+	background: url('../images/header1.jpg')  no-repeat center; 
+	background-repeat: no-repeat;
+}
+.selfhinttable td
+{
+	background: url('../images/hinttablebg.jpg') repeat center;
+	
+}
+.selfhinttable .headerleft
+{
+	background: url('../images/hinttableheaderleft.jpg') no-repeat top left;
+	height:6px;
+	line-height:6px;
+	overflow:hidden;
+	background-color: red;
+}
+.selfhinttable .headerright
+{
+	background: url('../images/hinttableheaderright.jpg') no-repeat top right;
+	height:6px;
+	line-height:6px;
+	overflow:hidden;
+}
+
+.selfhinttable .bottomleft
+{
+	background: url('../images/hinttablebottomleft.jpg') no-repeat bottom left;
+	overflow:hidden;
+	background-color: red;
+	height:6px;
+	line-height:6px;
+}
+.selfhinttable .bottomright
+{
+	background: url('../images/hinttablebottonright.jpg') no-repeat bottom right;
+	overflow:hidden;
+	background-color: red;
+	height:6px;
+	line-height:6px;
+}
+.selfmain
+{
+	height:574px;
+	width:100%; 
+	vertical-align:middle;
+	text-align:center;
+	line-height:72px; 
+	background: url('../images/bottom3.jpg') repeat center;
+	margin-top: -20px;
+}
+.selfmaincontent
+{
+	height: 72px; 
+	vertical-align:middle;
+	text-align:center;; 
+	line-height:72px; 
+	background: url('../images/hint2.jpg')  no-repeat center; 
+	background-repeat: no-repeat;
+}
+
+.btnmain 
+{
+background-color:#def3ff;
+font-family:"微软雅黑";
+font-size:20pt;
+font-weight:bolder;
+color:#075587;
+text-align:center;
+width: 450px;
+}
+.btnmain
+{
+	margin: 5px;
+	line-height:66px;
+	height:66px;
+	vertical-align: middle;
+}
+ul
+{
+	list-style: none;
+	
+}
+li
+{
+	margin: 10px;
+	}
+
+.mainbg
+{
+   background:url("../images/mainbg.jpg") repeat center;	
+}
+
+.selftable {
+	background-color: #6386d6;
+	font-size: 13pt;
+	border-left:1px solid black;
+	border-top: 1px solid black;
+}
+.selftable td
+{
+	border-right:1px solid black;
+	border-bottom: 1px solid black;
+	overflow: hidden;
+	padding-left: 15px;
+}
+.selftable th
+{
+	border-right:1px solid black;
+	border-bottom: 1px solid black;
+	overflow: hidden;
+	text-align: center;
+	background-color: #c9ecf8;
+}
+.selftable tr
+{
+	background-color: #EFF3F7;
+	line-height: 66px;
+	font-size: 13pt;
+}
+.selftablecontentEven
+{
+	background-color: #red;
+}
+
+.selftableheader  td{
+	font-weight:bolder;
+	color: #000000;
+	font-family: "宋体";
+	background-color: #d0e3f8;
+	height:30px;
+	line-height:30px;
+}

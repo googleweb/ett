@@ -9,15 +9,15 @@
 </head>
 <body>
 	<div
-		style="height: 72px; vertical-align:middle;text-align:center;; line-height:72px; background-image: url('<s:url value="/images/hint2.jpg"/>'); background-repeat: no-repeat;">
+		class="selfmaincontent">
 		<img style="margin-top: 10px;"
 			src="<s:url value="/images/idcardhint.jpg"/>" width="800"
 			border="0px" height="50" alt="提示语" />
 
 	</div>
 	<div
-		style="text-align: center; height: 502px; background-image: url('<s:url value="/images/bottom3.jpg"/>'); background-repeat: no-repeat;">
-		<br /> <br /> <img src="<s:url value="/images/idcardposition.jpg"/>"
+		style="text-align: center; height: 502px; background: url('<s:url value="/images/bottom3.jpg"/>')  no-repeat center; background-repeat: no-repeat;">
+		<br /> <br /> <img width="500px" height="500px" src="<s:url value="/images/idcardposition.jpg"/>"
 			alt="身份证阅读器方位指示" />
 	</div>
 	<script type="text/javascript">

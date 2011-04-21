@@ -15,8 +15,8 @@
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
-			classpath*:com/**/applicationContext-*.xml,
-			/WEB-INF/classes/applicationContext-*.xml
+			classpath*:com/**/applicationContext*.xml,
+			/WEB-INF/classes/applicationContext*.xml
 		</param-value>
 	</context-param>
 	<!--t由Sprng载入的Log4j配置文件位置 -->
@@ -74,7 +74,7 @@
 		<param-name>suffixes</param-name> <param-value>.do;.jsp;.action;.html</param-value> 
 		</init-param> </filter> -->
 	<!-- 指定此项可使spring取回的DomainObject在JSP(View层)做完所有的事情后，才将Hibernate Session 
-		给Close -->
+		给Close
 	<filter>
 		<filter-name>lazyLoadingFilter</filter-name>
 		<filter-class>
@@ -84,7 +84,7 @@
 			<param-value>AUTO</param-value>
 		</init-param>
 	</filter>
-	 
+	  -->
 	<!---->
 	<filter>
 		<filter-name>struts-cleanup</filter-name>
@@ -139,12 +139,12 @@
 		</filter-mapping> -->
 
 
-	<!--hbm配置的过滤器 -->
+	<!--hbm配置的过滤器 
 	<filter-mapping>
 		<filter-name>lazyLoadingFilter</filter-name>
 		<url-pattern>*.action</url-pattern>
 	</filter-mapping>  
-	
+	-->
 	<!---->
 	<filter-mapping>
 		<filter-name>struts-cleanup</filter-name>

@@ -19,7 +19,7 @@
 		<pattern>/yuyue*.action</pattern>
 	</decorator>
 	<decorator name="self" page="self.jsp">
-		<pattern>/*.jsp</pattern>
+		<pattern>/jsp/self/*.jsp</pattern>
 		<pattern>/self/*.action</pattern>
 	</decorator>
 </decorators>
