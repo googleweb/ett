@@ -1,17 +1,18 @@
 /**
  * 
  */
-package com.ett.biz;
+package com.ett;
 
 import org.apache.log4j.Logger;
 
 import com.ett.dao.IBaseDao;
+import com.ett.dao.jdbc.AbstractJdbcTemplateDao;
 
 /**
  * @author austin
  * 基本的操作本数据库的对象
  */
-public abstract class AbstractBaseBiz {
+public abstract class AbstractBaseBiz{
 	/**
 	 * Logger for this class
 	 */
