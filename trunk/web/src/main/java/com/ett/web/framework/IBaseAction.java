@@ -156,6 +156,11 @@ public interface IBaseAction {
 	public String goSuccessPage(String successHint);
 	
 	
+	/**
+	 * @return 获取客户端的IP地址
+	 */
+	public String getRemoteAddr();
+	
 	
 	
 	}

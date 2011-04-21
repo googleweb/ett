@@ -23,7 +23,7 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import com.ett.model.BaseEntity;
 import com.ett.model.Person;
-import com.ett.self.SelfDeviceUser;
+import com.ett.model.DrvUser;
 import com.opensymphony.xwork2.ActionContext;
 /**
  * @author chen

@@ -11,13 +11,16 @@ import com.ett.dao.IBaseDao;
  */
 @SuppressWarnings("serial")
 public class BaseDaoAction extends AbstractStruts2BaseAction {
-	private IBaseDao baseDao;
-	public IBaseDao getBaseDao() {
-		return baseDao;
+	private IBaseDao baseDaoWithTrans;
+	
+	public IBaseDao getBaseDaoWithTrans() {
+		return baseDaoWithTrans;
 	}
-	public void setBaseDao(IBaseDao baseDao) {
-		this.baseDao = baseDao;
+
+	public void setBaseDaoWithTrans(IBaseDao baseDaoWithTrans) {
+		this.baseDaoWithTrans = baseDaoWithTrans;
 	}
+
 	@Override
 	public boolean checkUserRight(String rightId) {
 		// TODO Auto-generated method stub

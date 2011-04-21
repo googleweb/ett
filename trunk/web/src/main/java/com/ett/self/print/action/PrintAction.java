@@ -3,11 +3,11 @@
  */
 package com.ett.self.print.action;
 
+import java.util.Date;
 import java.util.List;
 
 import com.ett.self.BaseSelfAction;
 import com.ett.self.print.biz.IPrintBiz;
-import com.ett.self.print.model.PrintObject;
 
 /**
  * @author austin
@@ -16,7 +16,15 @@ import com.ett.self.print.model.PrintObject;
 public class PrintAction extends BaseSelfAction {
 	private IPrintBiz iPrintBiz;
 	
+	private Date testDate=new Date();
 	
+	
+	public Date getTestDate() {
+		return testDate;
+	}
+	public void setTestDate(Date testDate) {
+		this.testDate = testDate;
+	}
 	public IPrintBiz getiPrintBiz() {
 		return iPrintBiz;
 	}
@@ -25,9 +33,7 @@ public class PrintAction extends BaseSelfAction {
 	}
 	public String func()
 	{
-		
-		String idcard=this.getHtmlAttributeOrParamter("idcard");
-		this.setUser(iPrintBiz.getUser(idcard));
+		this.getUser();
 		return "funcselect";
 	}
 	
@@ -41,57 +47,54 @@ public class PrintAction extends BaseSelfAction {
 	}
 	public String person()
 	{
-		this.lists=iPrintBiz.searchPersonFlow(this.getUser().getSfzmhm());
+		this.lists=iPrintBiz.getPersonFlow(this.getUser().getSfzmhm());
 		return "personlist";
 	}
 	public String personPrint()
 	{
 		String lsh=this.getHtmlAttributeOrParamter("lsh");
-		this.printObject=iPrintBiz.searchPersonPrintObject(lsh);
+		this.printObject=iPrintBiz.getPersonPrintObject(lsh);
+		this.printObject.setGlbmName(this.getDevice().getGlbmName());
 		return "personprint";
 	}
 	public String car()
 	{
-		this.lists=iPrintBiz.searchCarFlow(this.getUser().getSfzmhm());
+		this.lists=iPrintBiz.getCarFlow(this.getUser().getSfzmhm());
 		return "carlist";
 	}
 	public String carPrint()
 	{
 		String lsh=this.getHtmlAttributeOrParamter("lsh");
-		this.printObject=iPrintBiz.searchCarPrintObject(lsh);
+		this.printObject=iPrintBiz.getCarPrintObject(lsh);
+		this.printObject.setGlbmName(this.getDevice().getGlbmName());
 		return "carprint";
 	}
 	public String vio()
 	{
-		this.lists=iPrintBiz.searchVioFlow(this.getUser().getSfzmhm());
+		this.lists=iPrintBiz.getVioFlow(this.getUser().getSfzmhm());
 		return "violist";
 	}
 	public String vioPrint()
 	{
 		String lsh=this.getHtmlAttributeOrParamter("lsh");
-		this.printObject=iPrintBiz.searchVioPrintObject(lsh);
+		this.printObject=iPrintBiz.getVioPrintObject(lsh);
+		this.printObject.setGlbmName(this.getDevice().getGlbmName());
 		return "vioprint";
 	}
 	public String hospital()
 	{
-		this.lists=iPrintBiz.searchHospitalFlow(this.getUser().getSfzmhm());
+		this.lists=iPrintBiz.getHospitalFlow(this.getUser().getSfzmhm());
 		return "hospitallist";
 	}
 	
 	public String hospitalPrint()
 	{
 		String lsh=this.getHtmlAttributeOrParamter("lsh");
-		this.printObject=iPrintBiz.searchHospitalPrintObject(lsh);
+		this.printObject=iPrintBiz.getHospitalPrintObject(lsh);
+		this.printObject.setGlbmName(this.getDevice().getGlbmName());
 		return "hospitalprint";
 	}
-	private PrintObject printObject;
-
-	public PrintObject getPrintObject() {
-		return printObject;
-	}
-	public void setPrintObject(PrintObject printObject) {
-		this.printObject = printObject;
-	}
+	
 	@Override
 	public boolean checkUserRight(String rightId) {
 		// TODO Auto-generated method stub
