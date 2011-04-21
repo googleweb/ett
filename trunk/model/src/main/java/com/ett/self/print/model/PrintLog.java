@@ -17,7 +17,7 @@ import com.ett.model.BaseEntity;
  */
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-@Table(name="table_print_log")
+@Table(name="table_self_print_log")
 public class PrintLog extends BaseEntity {
 	
 	private String idCard;
