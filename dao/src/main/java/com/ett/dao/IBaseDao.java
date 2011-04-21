@@ -79,5 +79,5 @@ public interface IBaseDao extends IDao {
 	void removeById(Class entityClass,Serializable id);
 	
 	void batchUpdate(final String sql);
-
+	
 }

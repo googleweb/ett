@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.ett.self.dao.mapper.DrvUserMapper">
+
+  <resultMap id="result"
+ type="com.ett.model.DrvUser">
+    <result property="xm" column="xm" jdbcType="VARCHAR" javaType="String" />
+    <result property="sfzmhm" column="sfzmhm"/>
+  </resultMap>
+  <select id="getDrvUser" parameterType="String" resultMap="result">
+  <![CDATA[
+  
+    select a.sfzmhm,a.xm from drv_admin.person a where a.sfzmhm = '#{idcard}'
+    ]]>
+    
+  </select>
+
+</mapper>

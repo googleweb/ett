@@ -11,6 +11,7 @@ import java.util.Date;
 import com.ett.dao.DaoTestCase;
 import com.ett.dao.IBaseDao;
 import com.ett.model.Person;
+import com.ett.self.model.SelfHardObject;
 import com.ett.self.print.model.PrintLog;
 
 /**
@@ -26,7 +27,7 @@ public class DependTest extends DaoTestCase {
 		
 	}
 	
-	public void testXmlEncode() throws UnsupportedEncodingException
+	public void etestXmlEncode() throws UnsupportedEncodingException
 	{
 		String result="：<?xml version=\"1.0\" encoding=\"GBK\"?><ROOT><TEMPBEAN><LSH>2101202120883</LSH><KSKM>3</KSKM><XXSJ>0</XXSJ><KSDD>4405001</KSDD><JBR>范文惜</JBR><DLR>4405X</DLR><YKRQ>2011-03-17</YKRQ><KSCC>44051</KSCC><KCHP>粤D41537</KCHP><PXSHRQ>2011-02-14</PXSHRQ><JLY></JLY><SN>33241887000354645126235194204787</SN></TEMPBEAN></ROOT>";
 		result=URLEncoder.encode(result, "utf-8");
@@ -49,6 +50,12 @@ public class DependTest extends DaoTestCase {
 		
 		
 	}
+	
+	public void testABC()
+	{
+		
+	}
+
 
 	public void mtestHasMatchUser(){
 		System.out.println("baseDao:"+baseDao);
@@ -85,6 +92,8 @@ public class DependTest extends DaoTestCase {
 		log.setYxlsh("1235435345345");
 		baseDao.save(log);
 		}
+	
+		SelfHardObject hard=new SelfHardObject();
 		this.setComplete();
 		} 
 	

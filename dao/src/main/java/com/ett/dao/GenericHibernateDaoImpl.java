@@ -102,7 +102,7 @@ public abstract class GenericHibernateDaoImpl<T> extends HibernateDaoSupport imp
 	/* (non-Javadoc)
 	 * @see com.ft.common.dao.IGenericDao#save(java.lang.Object)
 	 */
-	public void save(T entity) {
+	public void save(Object entity) {
 		this.getHibernateTemplate().saveOrUpdate(entity);
 		
 	}
