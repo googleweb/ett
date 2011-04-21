@@ -3,20 +3,25 @@
  */
 package com.ett.web.framework;
 
-import org.apache.log4j.Logger;
-
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
+import com.opensymphony.xwork2.ActionSupport;
+
 
 /**
  * @author austin
  *
  */
-public abstract class AbstractBaseAction implements IBaseAction {
+public abstract class AbstractBaseAction  implements IBaseAction {
+	public abstract String getRemoteAddr();
+
+
 	/**
 	 * Logger for this class
 	 */
@@ -117,6 +122,10 @@ public abstract class AbstractBaseAction implements IBaseAction {
 
 	public void setHttpSession(String key, Object value) {
 		this.getHttpSession().setAttribute(key, value);
+		
+	}
+	public void getHttpSession(String key) {
+		this.getHttpSession().getAttribute(key);
 		
 	}
 

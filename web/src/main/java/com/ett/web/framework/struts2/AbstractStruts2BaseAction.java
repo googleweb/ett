@@ -26,6 +26,12 @@ import com.opensymphony.xwork2.ActionSupport;
 public abstract class AbstractStruts2BaseAction extends AbstractBaseAction {
 
 	@Override
+	public String getRemoteAddr() {
+		
+		return this.getCurrentRequest().getRemoteAddr();
+	}
+
+	@Override
 	public HttpServletResponse getCurrentResponse() {
 		
 		return ServletActionContext.getResponse();

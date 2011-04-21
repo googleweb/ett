@@ -123,7 +123,7 @@ public  class EntityAction<T> extends BaseDaoAction implements IBaseEntityAction
 			*/
 		this.beforeAddEntity();
 		HttpUtil.initAdd(this.getCurrentRequest(),this.entity);
-		this.getBaseDao().save(entity);
+		this.getBaseDaoWithTrans().save(entity);
 		this.afterAddEntity();
 		this.entity=entity;
 		try
@@ -172,8 +172,8 @@ public  class EntityAction<T> extends BaseDaoAction implements IBaseEntityAction
 			Object obj=null;
 			for(String id :ids){
 				log.info("请求删除的id为："+id);
-				obj=this.getBaseDao().get(this.entityClass, Long.valueOf(id));
-				this.getBaseDao().remove(obj);
+				obj=this.getBaseDaoWithTrans().get(this.entityClass, Long.valueOf(id));
+				this.getBaseDaoWithTrans().remove(obj);
 				this.afterDeleteEntity(obj);
 			}
 			
@@ -207,7 +207,7 @@ public  class EntityAction<T> extends BaseDaoAction implements IBaseEntityAction
 			this.beforeEditEntity();
 			HttpUtil.initEdit(this.getCurrentRequest(),this.entity);
 			
-			this.getBaseDao().save(entity);
+			this.getBaseDaoWithTrans().save(entity);
 			this.entity=entity;
 		}
 		catch(Exception ex)
@@ -234,7 +234,7 @@ public  class EntityAction<T> extends BaseDaoAction implements IBaseEntityAction
 	{
 		String sql="FROM "+this.entityClass.getSimpleName()+this.getCondition();
 		log.info("查询语句："+sql);
-		this.rowCount=this.getBaseDao().executeCount(sql);
+		this.rowCount=this.getBaseDaoWithTrans().executeCount(sql);
 		log.info("查询统计结果："+rowCount);
 		
 		 int offset = 0;    
@@ -254,7 +254,7 @@ public  class EntityAction<T> extends BaseDaoAction implements IBaseEntityAction
 	    Page page=new Page(this.rowCount,maxPageItems,offset);
 		this.start=page.getStartIndex();
 		log.info("分页对象的起始索引："+start);
-	    this.lists=this.getBaseDao().getAll(sql+this.getOrders(), page);
+	    this.lists=this.getBaseDaoWithTrans().getAll(sql+this.getOrders(), page);
 	    log.info("获取的列表长度为："+lists.size());
 	}
 
@@ -453,7 +453,7 @@ public  class EntityAction<T> extends BaseDaoAction implements IBaseEntityAction
 	@Transactional
 	public String exportAll() throws Exception {
 		String sql="FROM "+this.entityClass.getSimpleName()+this.getCondition();
-		this.lists=this.getBaseDao().getAll(sql);
+		this.lists=this.getBaseDaoWithTrans().getAll(sql);
 	    log.info("获取的列表长度为："+lists.size());
 	    this.exportList();
 		return ExcelPage;
