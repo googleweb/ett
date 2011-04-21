@@ -25,14 +25,18 @@ function getParameter(paraStr, url) {
 function fullScreen() {
 
 	if (this.name != 'fullscreen') {
-		window.open(location.href, 'fullscreen', 'fullscreen,scrollbars');
+		var win=window.open(location.href,'fullscreen', 'fullscreen=yes;top=0,left=0,toolbar=no,menubar=no,status=no,scrollbars=yes,resizeable=yes');
+		win.resizeTo(window.screen.availWidth,window.screen.availHeight);
+		//win.parent=null;
 		parent.opener = null; //最关键的一句，注意最后的参数
+		//win.parent=null;
+		//win.opener=null;
 		window.close(parent);
 	}
 	//禁用鼠标右键
-	document.oncontextmenu = new Function('event.returnValue=false;');
+	//document.oncontextmenu = new Function('event.returnValue=false;');
 	//禁用拖动选取
-	document.onselectstart = new Function('event.returnValue=false;');
+	//document.onselectstart = new Function('event.returnValue=false;');
 }
 function goPre(param) {
 	var r = getParameter("returnurl", location.href);
@@ -66,3 +70,33 @@ function goFirst() {
 function goNext(url) {
 	document.location.href = url+">returnurl="+document.location.href;
 }
+
+function writeNowDate()
+{
+	var now= new Date();
+	var year=now.getYear();  
+	var month=now.getMonth()+1;  
+	var day=now.getDate(); 
+	document.write(year+"-"+month+"-"+day);
+	
+}
+
+//格式化日期的表示
+function   formatDate(date,str) 
+{ 
+	//alert("格式化时间"+date);
+	//alert("格式化字符串"+str);
+	str=str.replace("yyyy",date.getFullYear()); 
+	str=str.replace("MM",date.getMonth()); 
+	str=str.replace("dd",date.getDate()); 
+	return   str; 
+} 
+
+//增加天 
+function   addDays(date,value) 
+{ 
+date.setDate(date.getDate()+value); 
+} 
+
+
+

@@ -3,45 +3,22 @@
 	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
 	"http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
-	<package name="self" namespace="/self" extends="struts-default">
-		<default-action-ref name="page404"/>	
-		<global-results>
-			<result name="error">/jsp/common/error.jsp</result>
-		</global-results>
-		<global-exception-mappings>
-			<exception-mapping result="error" exception="java.io.IOException">
-			</exception-mapping>
-		</global-exception-mappings>
-		<action name="page404">
-			<result>/jsp/common/404.jsp</result>
-		</action>
-		<action  name="*"  class="{1}Action">  
-			<result name="print">/jsp/{1}-Print.jsp</result>
-			<result name="list">/jsp/{1}-List.jsp</result>
-			<result name="success">/jsp/{1}-Success.jsp</result>
-			<result name="edit">/jsp/{1}-Edit.jsp</result>
-			<result name="add">/jsp/{1}-Add.jsp</result>
-			<result name="excel">/jsp/{1}-Excel.jsp</result>
-			<result name="detail">/jsp/{1}-Detail.jsp</result>
-		</action>
-		<action  name="index"  class="indexAction">  
-			<result name="logout">/index.jsp</result>
-			<result name="success">/index.jsp</result>
-		</action>
+	<package name="printpackage" namespace="/self" extends="selfpackage">
+	
 		<action  name="print"  class="printAction">
-			<result name="funcselect">/jsp/self/print/funcSelect.jsp</result>
-			<result name="personlist">/jsp/self/print/personList.jsp</result>
+			<result name="funcselect">/jsp/self/printdirect/funcSelect.jsp</result>
+			<result name="personlist">/jsp/self/printdirect/personList.jsp</result>
 			
-			<result name="carlist">/jsp/self/print/carList.jsp</result>
+			<result name="carlist">/jsp/self/printdirect/carList.jsp</result>
 			
-			<result name="violist">/jsp/self/print/vioList.jsp</result>
+			<result name="violist">/jsp/self/printdirect/vioList.jsp</result>
 			
-			<result name="hospitallist">/jsp/self/print/hospitalList.jsp</result>
+			<result name="hospitallist">/jsp/self/printdirect/hospitalList.jsp</result>
 			
-			<result name="personprint">/jsp/self/print/personPrint.jsp</result>
-			<result name="carprint">/jsp/self/print/carPrint.jsp</result>
-			<result name="vioprint">/jsp/self/print/vioPrint.jsp</result>
-			<result name="hospitalprint">/jsp/self/print/hospitalPrint.jsp</result>
+			<result name="personprint">/jsp/self/printdirect/personPrint.jsp</result>
+			<result name="carprint">/jsp/self/printdirect/carPrint.jsp</result>
+			<result name="vioprint">/jsp/self/printdirect/vioPrint.jsp</result>
+			<result name="hospitalprint">/jsp/self/printdirect/hospitalPrint.jsp</result>
 		</action>
 	</package>
 </struts>

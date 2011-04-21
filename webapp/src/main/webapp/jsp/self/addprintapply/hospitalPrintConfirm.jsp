@@ -5,29 +5,29 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>机动车受理凭证打印</title>
+<title>驾驶证体检回执打印凭条确认</title>
 </head>
 <body>
 <div
-		style="height: 72px; vertical-align:middle;text-align:center;; line-height:72px; background-image: url('<s:url value="/images/hint2.jpg"/>'); background-repeat: no-repeat;">
+		style="height: 72px; vertical-align:middle;text-align:center;; line-height:72px; background: url('<s:url value="/images/hint2.jpg"/>')  no-repeat center; background-repeat: no-repeat;">
 		<img style="margin-top: 10px;"
 			src="<s:url value="/images/sureprinthint.jpg"/>" width="800"
 			border="0px" height="50" alt="提示语" />
 
 	</div>
 	<div
-		style="text-align: center; height: 502px; background-image: url('<s:url value="/images/bottom3.jpg"/>'); background-repeat: no-repeat;">
+		style="text-align: center; height: 502px; background: url('<s:url value="/images/bottom3.jpg"/>')  no-repeat center; background-repeat: no-repeat;">
 		<br /> <br /> 
 
 <table id="idprint"  cellpadding="0" cellspacing="0" style="text-align:left;width:480px" border="0">
 <tr>
-<td  style="text-align:center">XX交警支队车辆管理所</td>
+<td  style="text-align:center"><s:property value="printObject.glbmName"/></td>
 </tr>
 <tr>
 <td  style="text-align:center">机动车受理凭证</td>
 </tr>
 <tr>
-<td>流   水  号：*<s:property value="printObject.lsh"/>* </td>
+<td><br/>流   水  号：*<s:property value="printObject.lsh"/>* </td>
 </tr>
 <tr>
 <td>业务类型：<s:property value="printObject.ywlx"/> </td>
@@ -38,7 +38,7 @@
 <tr><td>号牌号码：<s:property value="printObject.hphm"/> </td>
 </tr>
 <tr>
-<td>受理日期：<s:property value="printObject.slrq"/> </td>
+<td>受理日期：<s:date name="printObject.slrq" format="yyyy-MM-dd hh:mm:ss"/> </td>
 </tr>
 <tr>
 <td>收费金额：</td>
@@ -59,7 +59,7 @@
 </table>
 <br/>
 <br/>
-<input type="button" style="line-height:55px;background-position:center;width:341px;height:55px;background-image: url('<s:url value="/images/sureprint.jpg"/>')" width="341" height="55"/>
+<input type="button" style="line-height:55px;background-position:center;width:341px;height:55px;background: url('<s:url value="/images/sureprint.jpg"/>')  no-repeat center" width="341" height="55"/>
 	</div>
 </body>
 </html>
