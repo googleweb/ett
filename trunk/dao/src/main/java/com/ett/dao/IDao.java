@@ -3,6 +3,8 @@
  */
 package com.ett.dao;
 
+import java.util.List;
+
 /**
  * @author chen
  * 数据库接口，供IGenericDao和IEntityDao使用
@@ -36,5 +38,14 @@ public interface IDao {
 	 * @return 返回的单值或者null
 	 */
 	Object executeObject(String sql,Object... paramValues);
+	
+	void save(Object entity);
+	
+	
+
+
+
+
+
 
 }

@@ -46,10 +46,7 @@ public interface IGenericDao<T> extends IDao {
 	 */
 	List<T> getAll(String sql,Page page,Object... paramValues);
 
-	/**
-	 * @param entity 保存丄1�7个实例对豄1�7
-	 */
-	void save(T entity);
+	
 
 	/**
 	 * @param entity 移除丄1�7个实例对豄1�7

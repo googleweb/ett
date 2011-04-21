@@ -1,6 +1,5 @@
 package com.ett.dao;
 
-import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.test.AbstractTransactionalDataSourceSpringContextTests;
 
 /**
@@ -11,6 +10,7 @@ import org.springframework.test.AbstractTransactionalDataSourceSpringContextTest
  * 在子类可重载此函数以减少载入的applicaitonContext.xml,加快测试速度.
  * 设置AUTOWIRE_BY_NAME ,因为Spring的测试基类默认为BY_TYPE,在有多个相同类型的Bean时冲突.
  * */
+@SuppressWarnings("deprecation")
 public abstract class DaoTestCase extends AbstractTransactionalDataSourceSpringContextTests {
 	/**
 	 * spring配置文件放置路径

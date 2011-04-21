@@ -24,7 +24,6 @@ import org.springframework.transaction.annotation.Transactional;
  */
 
 @SuppressWarnings("unchecked")
-@Transactional
 public class BaseDaoHibernateImpl extends HibernateDaoSupport implements IBaseDao  {
 	
 	
@@ -74,6 +73,7 @@ public class BaseDaoHibernateImpl extends HibernateDaoSupport implements IBaseDa
 	public List getAll(String sql, Page page) {
 		Session session = getHibernateTemplate().getSessionFactory()
 		.getCurrentSession();
+		//.openSession();
 		Query query = session.createQuery(sql);
 		query.setMaxResults(page.getPageSize());
 		query.setFirstResult(page.getStartIndex());
@@ -86,6 +86,7 @@ public class BaseDaoHibernateImpl extends HibernateDaoSupport implements IBaseDa
 	public List getAll(String sql, Page page, Object... paramValues) {
 		Session session = getHibernateTemplate().getSessionFactory()
 		.getCurrentSession();
+		//.openSession();
 		Query query = session.createQuery(sql);
 		if(paramValues!=null)
 		{
@@ -155,10 +156,14 @@ public class BaseDaoHibernateImpl extends HibernateDaoSupport implements IBaseDa
 	}
 
 	public List getAll(String sql) {
+		/*
 		Session session = getHibernateTemplate().getSessionFactory()
-		.getCurrentSession();
+		.openSession();
+		//.getCurrentSession();
 		Query query = session.createQuery(sql);
 		return query.list();
+		*/
+		return this.getHibernateTemplate().find(sql);
 	}
 
 	public SessionFactory getHibernateSessionFactory(){
@@ -191,5 +196,7 @@ public class BaseDaoHibernateImpl extends HibernateDaoSupport implements IBaseDa
 
 		
 	}
+
+	
 
 }
