@@ -7,10 +7,28 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 				http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
 				http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
-		<!-- test comment -->		
-	<bean id="iPrintBiz"  class="com.ett.self.print.biz.PrintBizImpl" />
-	<bean id="iAddPrintApplyBiz"  class="com.ett.self.print.biz.AddPrintApplyBizImpl" />
-	<bean id="addPrintApplyDao"  parent="baseDaoAbstract" class="com.ett.self.dao.impl.AddPrintApplyDaoImpl" />
-	<!-- <bean id="iAddPrintApplyBiz"  class="com.ett.self.print.biz.AddPrintApplyBizImpl" />
-	 -->
+		<!-- test comment -->	
+	
+		
+	<bean id="iDrvQueryHelper" class="com.ett.drv.biz.DrvQueryHelperImp">
+	 
+	</bean>
+	
+	<bean id="abstractBaseBiz"   abstract="true" >
+		<property name="baseDao"><ref bean="baseDao"/></property>
+	</bean>
+	<bean id="abstractBaseDrvBiz"  abstract="true" >
+		<property name="baseDao"><ref bean="baseDaoDrv"/></property>
+	</bean>
+	
+	<bean id="iIdGenerator" parent="jdbcTemplateDao" class="com.ett.self.dao.impl.EverydayIdGeneratorFlowImpl">
+	 
+	</bean>
+	
+	<bean id="iIdGeneratorBiz"   class="com.ett.self.biz.EverydayGeneratorBizImpl"  >
+		
+	</bean>
+	
+
+	
 </beans>
