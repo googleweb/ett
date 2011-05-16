@@ -18,7 +18,9 @@ import javax.persistence.TableGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import com.googlecode.jsonplugin.annotations.JSON;
+import org.apache.struts2.json.annotations.JSON;
+
+
 
 /**
  * @author austin

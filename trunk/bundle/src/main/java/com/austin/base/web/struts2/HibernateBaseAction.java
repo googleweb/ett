@@ -5,6 +5,8 @@ package com.austin.base.web.struts2;
 
 import java.util.List;
 
+import net.sf.json.JSONObject;
+
 import org.apache.log4j.Logger;
 
 import com.austin.base.dao.IBaseDao;
@@ -38,6 +40,8 @@ public class HibernateBaseAction extends AbstractStrut2BaseAction {
 		return false;
 	}
 	
+	
+
 	private String sort;//easyui排序参数
 	private String order;//easyui 排序 asc or desc
 
@@ -55,12 +59,22 @@ public class HibernateBaseAction extends AbstractStrut2BaseAction {
 	private List rows;//easyui 返回数据的lists
 	private String modelName;//实例名
 	private String condition;//前台easyui组合成的条件语句
+	
+	private String jsondata;//easyui页面获取的json参数提交到后台使用
 
 	
 	
 	
 
 
+
+	public String getJsondata() {
+		return jsondata;
+	}
+
+	public void setJsondata(String jsondata) {
+		this.jsondata = jsondata;
+	}
 
 	public List getRows() {
 		return rows;
@@ -105,12 +119,28 @@ public class HibernateBaseAction extends AbstractStrut2BaseAction {
 	    logger.info("获取的列表长度为："+rows.size());
 		return ListPage;
 	}
-	public String edit()
+	public String edit() throws ClassNotFoundException
 	{
+		JSONObject obj = JSONObject.fromObject(this.jsondata);
+		if(logger.isInfoEnabled())
+		logger.info("需要编辑对象的jsondata为："+jsondata);
+		//Class.forName(modelName);
+		Object model=JSONObject.toBean(obj,Class.forName(modelName));
+		this.baseBiz.saveOrUpdate(model);
+		
+		//this.entity = (T) JSONObject.toBean( obj, this.entityClass );
 		return AjaxResult;
 	}
-	public String add()
+	public String add() throws ClassNotFoundException
 	{
+		JSONObject obj = JSONObject.fromObject(this.jsondata);
+		if(logger.isInfoEnabled())
+		logger.info("需要添加对象的jsondata为："+jsondata);
+		//Class.forName(modelName);
+		Object model=JSONObject.toBean(obj,Class.forName(modelName));
+		this.baseBiz.saveOrUpdate(model);
+		
+		//this.entity = (T) JSONObject.toBean( obj, this.entityClass );
 		return AjaxResult;
 	}
 	public String delete()

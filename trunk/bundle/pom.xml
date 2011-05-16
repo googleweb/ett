@@ -135,13 +135,7 @@
   		<type>jar</type>
   		<scope>compile</scope>
   	</dependency>
-  	<dependency>
-  		<groupId>com.googlecode</groupId>
-  		<artifactId>jsonplugin</artifactId>
-  		<version>0.33</version>
-  		<type>jar</type>
-  		<scope>compile</scope>
-  	</dependency>
+  
   	<dependency>
   		<groupId>javax.servlet</groupId>
   		<artifactId>servlet-api</artifactId>
