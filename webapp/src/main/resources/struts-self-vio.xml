@@ -8,6 +8,7 @@
 		<action  name="vio"  class="vioAction">
 			<result name="vehicleselectlist">/jsp/self/vio/vehicleSelectList.jsp</result>
 			<result name="vehicleviolist">/jsp/self/vio/vehicleVioList.jsp</result>
+			<result name="vehicleviodetail">/jsp/self/vio/vehicleVioDetail.jsp</result>
 		</action>
 	</package>
 </struts>

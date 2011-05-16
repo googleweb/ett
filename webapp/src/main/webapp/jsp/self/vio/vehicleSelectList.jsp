@@ -12,23 +12,22 @@
 	topmargin="0" marginwidth="0" marginheight="0">
 	
 		<div
-			style="height: 72px; vertical-align:middle;text-align:center;; line-height:72px; background: url('<s:url value="/images/hint2.jpg"/>')  no-repeat center; background-repeat: no-repeat;">
-			 <img style="margin-top:10px;" src="<s:url value="/images/vehicleviodetailhint.jpg"/>" width="800" border="0px" height="50" alt="提示语"/>
-			
+			class="selfmaintophint"/>
+			请选择您要查看的车辆
 			</div>
 		<div
-			style="text-align: center; height: 502px; background: url('<s:url value="/images/bottom3.jpg"/>')  no-repeat center; background-repeat: no-repeat;">
+		class="selfmaincontent">
 			<br />
 			<br />
-<table width="900" border="0" class="selftable" cellPadding="1" cellSpacing="1" >  
-    <tr class="selftableheader">  
-     <TD align="center">序号</TD>  
-        <TD align="center">车辆品牌</TD>  
-        <TD align="center">机动车<br/>号牌号码</TD>  
-        <TD align="center">所有人</TD>  
-        <TD align="center">身份证明号码</TD>  
-        <TD align="center">车辆识别代号</TD>  
-        <TD align="center">操作</TD> 
+<table width="900" border="0" class="selftable" cellPadding="0" cellSpacing="0" >  
+    <tr class="selftableheader" style="text-align: center">  
+     <Th align="center" style="text-align: center">序号</Th>  
+        <Th align="center" style="text-align: center">车辆品牌</Th>  
+        <Th align="center" style="text-align: center">机动车<br/>号牌号码</Th>  
+        <Th align="center" style="text-align: center">所有人</Th>  
+        <Th align="center" style="text-align: center">身份证明号码</Th>  
+        <Th align="center" style="text-align: center">车辆识别代号</Th>  
+        <Th align="center" style="text-align: center">操作</Th> 
     </tr>  
     <s:iterator id="entity" value="lists" status="stuts">   
 <tr class="<s:if test="#stuts.even==true">selftablecontentEven</s:if>">   

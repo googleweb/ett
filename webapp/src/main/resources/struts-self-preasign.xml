@@ -13,6 +13,8 @@
 			<result name="preparepreasign">/jsp/self/preasign/preasign.jsp</result>
 			
 			<result name="preasignprint">/jsp/self/preasign/preasignPrint.jsp</result>
+			<result name="checksuccess">/jsp/self/preasign/checksuccess.jsp</result>
+			<result name="preasignsuccess">/jsp/self/preasign/preasignsuccess.jsp</result>
 		</action>
 	</package>
 </struts>

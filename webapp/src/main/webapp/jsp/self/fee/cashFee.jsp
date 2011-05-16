@@ -25,7 +25,7 @@
 			
 			<script type="text/javascript">
 			function confirmFee() {
-				$("#subform").attr("action",'<s:url value="/self/fee!cashFee.action"/>');
+				$("#subform").attr("action",'<s:url value="/self/fee!cashFeeHint.action"/>');
 				$("#subform").submit();
 				//document.location.href='<s:url value="/self/fee!cashFee.action"/>';
 				//var url= location.href.split("returnurl")[1];

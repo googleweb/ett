@@ -10,7 +10,7 @@
 			<result name="hospitallist">/jsp/self/addprintapply/hospitalList.jsp</result>
 			<result name="vioprintconfirm">/jsp/self/addprintapply/vioPrintConfirm.jsp</result>
 			<result name="hospitalprintconfirm">/jsp/self/addprintapply/hospitalPrintConfirm.jsp</result>
-			
+			<result name="hint">/jsp/self/addprintapply/printhint.jsp</result>
 		</action>
 	</package>
 </struts>

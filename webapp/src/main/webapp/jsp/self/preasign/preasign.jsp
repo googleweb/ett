@@ -8,6 +8,7 @@
 <title>科目一考试预约</title>
 </head>
 <body>
+<s:form name="subform" id="subform">
 <div
 		style="height: 72px; vertical-align:middle;text-align:center;; line-height:72px; background: url('<s:url value="/images/hint2.jpg"/>')  no-repeat center; background-repeat: no-repeat;">
 		<img style="margin-top: 10px;"
@@ -34,36 +35,7 @@ var tmp2;
 document.write("<input type='button' class='btnmain' style='flow:left;display:inline;width:150px;font-size:12pt;' value='<s:property value="text"/>' alt='<s:property value="value"/>' onclick='clickksdd(this);'/>");
 </s:iterator> 
 
-function createKsddBtn(ksddlist)
-{
-	
-	 
-	//alert("要创建的按钮数:"+mydays);
-	var tmp;
-	var value;
-	var date=new Date();
-	//alert("date"+date);
-	for(var i=0;i<mydays;i++)
-	{
-		//alert("开始循环 ");
-		//alert(date.getDate());
-		addDays(date,1);
-		//date.setDate(date.getDate()+1);
-		//alert("要创建的预约日期:"+date);
-		value=formatDate(date,"yyyy-MM-dd");
-		//alert("要创建的预约日期:"+value);
-		tmp=$("<input type='button' class='btnmain' style='width:150px;font-size:12pt;' value='"+value+"' onclick='clickdate(this);'/>");
-		$('#datebtns').append(tmp);
-	}
-}
 
-function clickksdd(obj)
-{
-	$('#ksdd').html($(obj).attr('value'));
-	$('#ksddCode').attr('value',$(obj).attr('alt'));
-}
-
-createKsddBtn(ksddlists);
 </script>
 
 </div>
@@ -150,9 +122,14 @@ createDynBtn(days);
 			alert("请选择考试日期！");
 			return ;
 	    }
-		document.location.href='<s:url value="/self/preasign!preasign.action"/>';
+		//document.location.href='<s:url value="/self/preasign!preasign.action"/>';
+		$("#subform").attr("action",'<s:url value="/self/preasign!preasign.action"/>');
+		//alert($("#subform").attr("action"));
+		$("#subform").submit();
+		
 		
 	}
 	</script>
+	</s:form>
 </body>
 </html>

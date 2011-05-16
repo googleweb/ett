@@ -11,17 +11,13 @@
 	topmargin="0" marginwidth="0" marginheight="0">
 	
 		<div
-			style="height: 72px; vertical-align:middle;text-align:center;; line-height:72px; background: url('<s:url value="/images/hint2.jpg"/>')  no-repeat center; background-repeat: no-repeat;">
-			 <img style="margin-top:10px;" src="<s:url value="/images/printviewhint.jpg"/>" width="800" border="0px" height="50" alt="提示语"/>
-			
+		 class="selfmaintophint"	/>
+			请选择您要补打的流水记录并点击查看
 			</div>
 		<div
-			style="text-align: center; height: 502px; background: url('<s:url value="/images/bottom3.jpg"/>')   center; ">
-			<br />
-			
-			
-			
-<table width="900" border="0" cellPadding="1"  cellSpacing="1" class="selftable">  
+			class="selfmaincontent">
+			<br />	
+<table width="900" cellPadding="0"  cellSpacing="0" class="selftable">  
       <tr class="selftableheader">  
      <TD align="center">序号</TD>  
         <TD align="center">流水号</TD>  
@@ -42,7 +38,7 @@
    
     <td ><s:date name="yyrq" format="yyyy-MM-dd"/></td>   
      <td ><s:date name="ksrq" format="yyyy-MM-dd"/></td>
-      <td >  <input type="button" style="width:200px" class="btnmain"  onclick="document.location.href='<s:url value="/self/addPrintApply!hospitalPrint.action?lsh=" /><s:property value="lsh"/>';" value="查看"/></td>  
+      <td >  <input type="button"  style="width:200px" class="btnmain"  onclick="document.location.href='<s:url value="/self/addPrintApply!hospitalPrintConfirm.action?lsh=" /><s:property value="lsh"/>';" value="查看"/></td>  
 </tr>   
 </s:iterator> 
     </table>  

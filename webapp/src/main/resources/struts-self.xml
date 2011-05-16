@@ -45,6 +45,35 @@
 			<result name="success">/jsp/self/test.jsp</result>
 			<interceptor-ref name="defaultStack"></interceptor-ref>
 		</action>
+		<!-- 身份证读取Action -->
+		<action name="idCardReader" class="idCardReaderAction">
+			<result name="func">/jsp/self/idCardReader-FuncSelect.jsp</result>
+			<result name="input">/jsp/self/idCardReader.jsp</result>
+			<result name="infocheck" type="redirect">/self/personInfoCheck!infoCheck.action</result>
+			<result name="success" type="redirect">${returnUrl}</result>
+		</action>
+		<!-- 捕获驾驶人照片 -->
+		<action name="captureImg" class="captureImgAction">
+			<interceptor-ref name ="fileUploadStack" /> 
+			<result name="input">/jsp/self/captureImg.jsp</result>
+			<result name="success" type="redirect">${returnUrl}</result>
+		</action>
+		<!-- 展示驾驶人图片以及相应的违法现场的图片 -->
+		<action name="imageShow" class="imageShowAction">
+			<result name="success" type="stream">
+				<param name="contentType">image/jpeg</param>
+				<param name="inputName">inputstream</param>
+			</result>
+		</action>
+		
+		<!-- 申请人资料审核界面 -->
+		<action name="personInfoCheck" class="personInfoCheckAction">
+			<result name="input">/jsp/self/personInfoCheck.jsp</result>
+			<result name="success" type="redirect">${returnUrl}</result>
+			
+		</action>
+		
+	
 		
 		
 		

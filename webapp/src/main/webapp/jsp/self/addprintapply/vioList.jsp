@@ -12,29 +12,23 @@
 	topmargin="0" marginwidth="0" marginheight="0">
 	
 		<div
-			style="height: 72px; vertical-align:middle;text-align:center;; line-height:72px; background: url('<s:url value="/images/hint2.jpg"/>')  no-repeat center; background-repeat: no-repeat;">
-			 <img style="margin-top:10px;" src="<s:url value="/images/printviewhint.jpg"/>" width="800" border="0px" height="50" alt="提示语"/>
-			
+			class="selfmaintophint"/>
+			请选择您要补打的流水记录并点击查看
 			</div>
-		<div
-			style="text-align: center; height: 502px; background: url('<s:url value="/images/bottom3.jpg"/>')   center; ">
-			<br />
-			
-			<br /><br/>
-			
-			
-<table width="900" border="0" cellPadding="1"  cellSpacing="1" class="selftable">  
+		<div class="selfmaincontent">
+			<br />	
+<table width="900" border="0" cellPadding="0"  cellSpacing="0" class="selftable">  
       <tr class="selftableheader">  
-     <TD align="center">序号</TD>  
-        <TD align="center">决定书编号</TD>  
-        <TD align="center">当事人</TD>  
-        <TD align="center">号牌号码</TD>  
-        <TD align="center">违法时间</TD>  
-        <TD align="center">违法地点</TD>  
-        <TD align="center">罚款金额</TD>  
-        <TD align="center">滞纳金</TD> 
-        <TD align="center">违法扣分值</TD> 
-         <TD align="center">操作</TD> 
+     <Th align="center">序号</Th>  
+        <Th align="center">决定书编号</th>  
+        <Th align="center">当事人</Th>  
+        <Th align="center">号牌号码</Th>  
+        <Th align="center">违法时间</Th>  
+        <Th align="center">违法地点</Th>  
+        <Th align="center">罚款金额</Th>  
+        <Th align="center">滞纳金</Th> 
+        <Th align="center">违法扣分值</Th> 
+         <Th align="center">操作</Th> 
     </tr>  
      <s:iterator id="entity" value="lists" status="stuts">   
 <tr class="<s:if test="#stuts.even==true">selftablecontentEven</s:if>">   
@@ -47,7 +41,7 @@
     <td ><s:property value="fee"/></td>   
      <td ><s:property value="zjcx"/></td> 
       <td ><s:property value="dabh"/></td> 
-       <td >  <input type="button" style="width:200px" class="btnmain"  onclick="document.location.href='<s:url value="/self/addPrintApply!vioPrint.action?lsh=" /><s:property value="lsh"/>';" value="查看"/></td>  
+       <td >  <input type="button" style="width:200px" class="btnmain"  onclick="document.location.href='<s:url value="/self/addPrintApply!vioPrintConfirm.action?lsh=" /><s:property value="lsh"/>';" value="查看"/></td>  
        
 </tr>   
 </s:iterator> 

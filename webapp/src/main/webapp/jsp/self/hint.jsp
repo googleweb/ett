@@ -12,8 +12,8 @@
 	topmargin="0" marginwidth="0" marginheight="0">
 	
 		<div
-			style="height: 72px; vertical-align:middle;text-align:center;; line-height:72px; background: url('<s:url value="/images/hint2.jpg"/>')  no-repeat center; background-repeat: no-repeat;">
-			 <img style="margin-top:10px;" src="<s:url value="/images/errorhint.jpg"/>" width="800" border="0px" height="50" alt="提示语"/>
+			class="selfmaintophint"/>
+			操作提示信息
 			
 			</div>
 		<div
