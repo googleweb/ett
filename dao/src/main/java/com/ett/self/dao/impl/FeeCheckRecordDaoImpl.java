@@ -26,6 +26,7 @@ public class FeeCheckRecordDaoImpl extends GenericJdbcTemplateImpl<FeeCheckRecor
             	demo.setXm(rs.getString("xm"));
             	demo.setYwlx(rs.getString("ywlx"));
             	demo.setYwyy(rs.getString("ywyy"));
+            	demo.setKssj(rs.getDate("kssj"));
             	demo.setJdsbh(rs.getString("jdsbh"));
                 return demo;   
             }   

@@ -10,7 +10,8 @@
 		<!-- test comment -->	
 	
 		
-	<bean id="iDrvQueryHelper" class="com.ett.drv.biz.DrvQueryHelperImp">
+	<bean id="iDrvQueryHelper" class="com.ett.drv.biz.DrvQueryHelperImp" scope="prototype">
+	
 	 
 	</bean>
 	

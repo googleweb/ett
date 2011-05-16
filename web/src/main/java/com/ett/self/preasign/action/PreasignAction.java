@@ -8,9 +8,9 @@ import java.util.List;
 import com.ett.common.exception.ObjectDontExistException;
 import com.ett.model.ComboxObject;
 import com.ett.self.BaseSelfAction;
+import com.ett.self.model.PrintObject;
 import com.ett.self.model.SelfDeviceObject;
 import com.ett.self.preasign.biz.IPreasignBiz;
-import com.ett.self.preasign.model.Km1CheckRecord;
 
 public class PreasignAction extends BaseSelfAction {
 	
@@ -37,10 +37,12 @@ public class PreasignAction extends BaseSelfAction {
 		{
 			return this.goSuccessPage("对不起，您已经签到过本考场的今天考试！");
 		}
-		this.printObject=iPreasignBiz.getPrintObject(this.getUser().getSfzmhm(),ksdd,new Date());
+		
+		PrintObject printObject=iPreasignBiz.getPrintObject(this.getUser().getSfzmhm(),ksdd,new Date());
+		this.setPrintObject(printObject);
 		if(printObject!=null)
 		{
-			this.printObject.setGlbmName(device.getGlbmName());
+			this.getPrintObject().setGlbmName(device.getGlbmName());
 			this.initHotPrinter();
 			
 			return "checkprint";
@@ -61,10 +63,11 @@ public class PreasignAction extends BaseSelfAction {
 	public String confirmCheck() throws ParseException
 	{
 		//this.printObject=iPreasignBiz.getPrintObject(this.getUser().getSfzmhm(),this.getDevice().getKsddCode(),new Date());
+		
 		this.iPreasignBiz.createKm1CheckRecord(this.getUser(), this.getDevice());
 		
-		
-		return this.goSuccessPage("签到完成，请取走您的凭条和相关证件！");
+		this.setHintMsg("签到完成，请取走您的凭条和相关证件！");
+		return "checksuccess";
 	}
 	
 	public String preasignPrint()
@@ -86,7 +89,15 @@ public class PreasignAction extends BaseSelfAction {
 	public String preasign() throws ParseException
 	{
 		this.iPreasignBiz.createPreasignKm1(this.getUser(), this.getDevice(), this.getYkrq(), this.getKsddCode());
-		return this.goSuccessPage("预约成功，请取走您的凭条和相关证件！");
+		PrintObject printObject=new PrintObject();
+		printObject.setKsrq(this.getYkrq());
+		printObject.setYyrq(new Date());
+		printObject.setLsh(this.getUser().getLsh());
+		printObject.setXm(this.getUser().getXm());
+		printObject.setSfzmhm(this.getUser().getSfzmhm());
+		this.setPrintObject(printObject);
+		this.setHintMsg("预约成功，请取走您的凭条和相关证件！");
+		return "preasignsuccess";
 	}
 	
 	private List ksddList;

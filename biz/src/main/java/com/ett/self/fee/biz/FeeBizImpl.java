@@ -13,6 +13,7 @@ import com.ett.drvinterface.IDrvFeeCheckInterface;
 import com.ett.drvinterface.entity.DrvCheckRequest;
 import com.ett.drvinterface.entity.VehCheckRequest;
 import com.ett.model.DrvUser;
+import com.ett.self.fee.model.FeeBusType;
 import com.ett.self.fee.model.FeeObject;
 import com.ett.self.model.SelfDeviceObject;
 
@@ -157,11 +158,11 @@ public  class FeeBizImpl extends AbstractBaseBiz implements IFeeBiz {
 	public List getVehicleFlowList(DrvUser user) {
 		//String sql="select * from drv_admin.veh_flow  t where exists(select 1 from drv_admin.vehicle m where m.hphm=t.hphm and  m.sfzmhm='"+sfzmhm+"')";
 		//return this.vehicleFlowDaoImpl.getAll(sql);
-		String sql="select c.ywyy,c.bz,d.dmmc1 ywlx,c.hphm,'' hpzl,'' jdsbh,c.lsh,c.sfzmhm,c.syr xm from (select b.syr,b.ywlx,b.ywyy,a.bz,a.hcxm," +
-				"a.hphm,a.hpzl,a.lsh,'"+user.getSfzmhm()+"' sfzmhm from drv_admin.veh_validate a left join drv_admin.veh_flow" +
+		String sql="select c.ywyy,c.bz,d.d.dmsm1 ywlx,c.hphm,'' hpzl,'' jdsbh,c.lsh,c.sfzmhm,c.syr xm,c.kssj kssj from (select b.syr,b.ywlx,b.ywyy,a.bz,a.hcxm," +
+				"a.hphm,a.hpzl,a.lsh,'"+user.getSfzmhm()+"' sfzmhm,b.sqrq kssj from drv_admin.veh_validate a left join drv_admin.veh_flow" +
 						" b on a.lsh=b.lsh  and b.bjrq is null where hcxm='1'  and" +
 						" exists(select 1 from drv_admin.vehicle e where e.hphm=b.hphm " +
-						"and e.sfzmhm='"+user.getSfzmhm()+"')) c left join drv_admin.drv_code d on c.ywlx=d.dmz and d.dmlb=8";
+						"and e.sfzmhm='"+user.getSfzmhm()+"')) c left join drv_admin.veh_code d on c.ywlx=d.dmz and d.dmlb=8";
 		logger.debug("查询机动车核实表语句："+sql);
 		return this.feeCheckRecordDaoImpl.getAll(sql);
 	}
@@ -187,9 +188,9 @@ public  class FeeBizImpl extends AbstractBaseBiz implements IFeeBiz {
 		return this.drvPersonFlowDaoImpl.getAll(sql);
 		*/
 		//String sql="select bz,hcxm,'' hphm,'' hpzl,lsh,'"+user.getSfzmhm()+"' sfzmhm from drv_admin.drv_check where hcxm='1' and lsh='"+user.getLsh()+"'";
-		String sql="select c.bz,c.hphm,c.hpzl,'' jdsbh,c.lsh,c.sfzmhm,c.xm,d.dmmc1 ywlx,c.ywyy from " +
+		String sql="select c.bz,c.hphm,c.hpzl,'' jdsbh,c.lsh,c.sfzmhm,c.xm,d.dmmc1 ywlx,c.ywyy,c.kssj from " +
 				"(select b.ywyy,b.ywlx,a.bz,a.hcxm,'' hphm,'' hpzl,a.lsh," +
-				"b.sfzmhm,b.xm from drv_admin.drv_check a left join" +
+				"b.sfzmhm,b.xm,b.kssj from drv_admin.drv_check a left join" +
 				" drv_admin.drv_flow b on a.lsh=b.lsh" +
 				" and b.sfzmhm='"+user.getSfzmhm()+"'" +
 				" and b.jssj is null  where hcxm='1')" +
@@ -198,6 +199,25 @@ public  class FeeBizImpl extends AbstractBaseBiz implements IFeeBiz {
 		List list=this.feeCheckRecordDaoImpl.getAll(sql);
 		logger.debug("返回的驾驶证核实记录的数据有多少："+list.size());
 		return list;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.ett.self.fee.biz.IFeeBiz#saveFee(com.ett.model.DrvUser, com.ett.self.model.SelfDeviceObject, com.ett.self.fee.model.FeeObject)
+	 */
+	public void saveFee(DrvUser user, SelfDeviceObject device, FeeObject fee) {
+		if(fee.getBusType()==FeeBusType.PersonBusFee)
+		{
+			this.saveFeePerson(user, device, fee);
+		}
+		else if(fee.getBusType()==FeeBusType.VehicleBusFee)
+		{
+			this.saveFeeVehicle(user, device, fee);
+		}
+		else if(fee.getBusType()==FeeBusType.VioBusFee)
+		{
+			this.saveFeeVio(user, device, fee);
+		}
+		
 	}
 	
 

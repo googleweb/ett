@@ -8,19 +8,28 @@ import javax.persistence.Table;
 
 import com.ett.model.BaseEntity;
 
+/**
+ * @author austin
+ * 缴费对象
+ */
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @Table(name="table_self_fee_log")
 public class FeeObject  extends BaseEntity {
 	
-	public static final String CashFee="现金缴费";
-	public static final String VisaFee="银联卡缴费";
-	public static final String GuiTaiFee="柜台缴费";
 	
-	public static final String PersonBusFee="驾驶人业务";
-	public static final String VehicleBusFee="机动车业务";
-	public static final String VioBusFee="违法业务";
 	
+	private String relationId;
+	
+	@Column
+	public String getRelationId() {
+		return relationId;
+	}
+
+	public void setRelationId(String relationId) {
+		this.relationId = relationId;
+	}
+
 	private String xm;
 	
 	private String sfzmhm;
@@ -29,7 +38,7 @@ public class FeeObject  extends BaseEntity {
 	
 	private String busType;
 	
-	private String feeType;
+	private String feeWayType;
 	
 	private String visaCard;
 	
@@ -97,16 +106,18 @@ public class FeeObject  extends BaseEntity {
 		this.busType = busType;
 	}
 
+	
+
 	/**
-	 * @return 缴费方式 1、银联卡 2、现金
+	 * @return 缴费方式，现金，银联，柜台
 	 */
 	@Column(length=30)
-	public String getFeeType() {
-		return feeType;
+	public String getFeeWayType() {
+		return feeWayType;
 	}
 
-	public void setFeeType(String feeType) {
-		this.feeType = feeType;
+	public void setFeeWayType(String feeWayType) {
+		this.feeWayType = feeWayType;
 	}
 
 	/**
@@ -131,6 +142,20 @@ public class FeeObject  extends BaseEntity {
 
 	public void setMoney(int money) {
 		this.money = money;
+	}
+	
+	private int postFee;
+
+	/**
+	 * @return 邮寄的金额费用
+	 */
+	@Column
+	public int getPostFee() {
+		return postFee;
+	}
+
+	public void setPostFee(int postFee) {
+		this.postFee = postFee;
 	}
 
 	private int money;

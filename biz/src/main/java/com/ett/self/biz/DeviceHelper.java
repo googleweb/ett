@@ -1,6 +1,6 @@
 package com.ett.self.biz;
 
-import org.springframework.jdbc.core.RowMapper;
+import java.util.List;
 
 import com.ett.AbstractBaseBiz;
 import com.ett.self.model.SelfDeviceObject;
@@ -15,7 +15,10 @@ public class DeviceHelper extends AbstractBaseBiz implements IDeviceHelper {
 	public SelfDeviceObject getDevice(String ip) {
 		
 		String hql=" from SelfDeviceObject where ip1='"+ip+"'";
-		return (SelfDeviceObject)this.getBaseDao().getAll(hql).get(0);
+		List lists=this.getBaseDao().getAll(hql);
+
+		return (SelfDeviceObject)lists.get(0);
+		
 		
 	}
 

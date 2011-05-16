@@ -129,7 +129,7 @@ public class PreasignBizImpl extends AbstractBaseDrvBiz  implements IPreasignBiz
 		logger.debug(" 查看是否已经签到过一次了！");
 		List list=this.getBaseDao().getAll(sql);
 		logger.debug("查看签到结果为："+list);
-		return list!=null&&list.size()==1;
+		return list!=null&&list.size()>1;
 	}
 
 	public void createKm1CheckRecord(DrvUser user,SelfDeviceObject device) {

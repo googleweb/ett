@@ -5,6 +5,7 @@ import com.ett.model.DrvUser;
 import com.ett.self.model.PrintObject;
 import com.ett.self.model.SelfDeviceObject;
 import com.ett.self.print.model.AddPrintApplyObject;
+import com.ett.self.print.model.PrintBusType;
 
 public class AddPrintApplyBizImpl  extends PrintBizImpl implements IAddPrintApplyBiz{
 	
@@ -29,9 +30,10 @@ public class AddPrintApplyBizImpl  extends PrintBizImpl implements IAddPrintAppl
 		 print.setSfzmhm(user.getSfzmhm());
 		 print.setDevice(device.getMachineName());
 		 print.setPrinted(false);
+		 print.setLsh(lsh);
 		 //print.setLineUpid(print.)
 		 print.setLineUpid(lineupid);
-		 print.setBusType(AddPrintApplyObject.Hospital_Print);
+		 print.setBusType(PrintBusType.Hospital_Print);
 		 this.addPrintApplyDao.save(print);
 		 return print;
 		 
@@ -47,8 +49,9 @@ public class AddPrintApplyBizImpl  extends PrintBizImpl implements IAddPrintAppl
 		print.setDevice(device.getMachineName());
 		print.setPrinted(false);
 		print.setLsh(jdsbh);
+		 //print.setLsh(lsh);
 		print.setLineUpid(lineupid);
-		print.setBusType(AddPrintApplyObject.Vio_Add_Print);
+		print.setBusType(PrintBusType.Vio_Add_Print);
 		this.addPrintApplyDao.save(print);
 		return print;
 		

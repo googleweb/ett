@@ -3,6 +3,7 @@ package com.ett.self.vio.biz;
 import java.util.List;
 
 import com.ett.self.model.VehicleObject;
+import com.ett.self.model.VioFlowObject;
 
 public interface IVioBiz {
 	
@@ -37,6 +38,12 @@ public interface IVioBiz {
 	 * @param jdsbh 处理所有jdsbh的违法记录(包含缴费)
 	 */
 	public void saveProcessVioDetail(String[] jdsbh);
+	
+	/**
+	 * @param jdsbh 决定书编号
+	 * @return 获取一条详细的违法记录
+	 */
+	public VioFlowObject getVehicleVioDetail(String jdsbh);
 	
 	
 

@@ -53,8 +53,8 @@ public class PrintAction extends BaseSelfAction {
 	public String personPrint()
 	{
 		String lsh=this.getHtmlAttributeOrParamter("lsh");
-		this.printObject=iPrintBiz.getPersonPrintObject(lsh);
-		this.printObject.setGlbmName(this.getDevice().getGlbmName());
+		this.setPrintObject(iPrintBiz.getPersonPrintObject(lsh));
+		this.getPrintObject().setGlbmName(this.getDevice().getGlbmName());
 		return "personprint";
 	}
 	public String car()
@@ -65,8 +65,8 @@ public class PrintAction extends BaseSelfAction {
 	public String carPrint()
 	{
 		String lsh=this.getHtmlAttributeOrParamter("lsh");
-		this.printObject=iPrintBiz.getCarPrintObject(lsh);
-		this.printObject.setGlbmName(this.getDevice().getGlbmName());
+		this.setPrintObject(iPrintBiz.getCarPrintObject(lsh));
+		this.getPrintObject().setGlbmName(this.getDevice().getGlbmName());
 		return "carprint";
 	}
 	public String vio()
@@ -77,8 +77,8 @@ public class PrintAction extends BaseSelfAction {
 	public String vioPrint()
 	{
 		String lsh=this.getHtmlAttributeOrParamter("lsh");
-		this.printObject=iPrintBiz.getVioPrintObject(lsh);
-		this.printObject.setGlbmName(this.getDevice().getGlbmName());
+		this.setPrintObject(iPrintBiz.getVioPrintObject(lsh));
+		this.getPrintObject().setGlbmName(this.getDevice().getGlbmName());
 		return "vioprint";
 	}
 	public String hospital()
@@ -90,8 +90,8 @@ public class PrintAction extends BaseSelfAction {
 	public String hospitalPrint()
 	{
 		String lsh=this.getHtmlAttributeOrParamter("lsh");
-		this.printObject=iPrintBiz.getHospitalPrintObject(lsh);
-		this.printObject.setGlbmName(this.getDevice().getGlbmName());
+		this.setPrintObject(iPrintBiz.getHospitalPrintObject(lsh));
+		this.getPrintObject().setGlbmName(this.getDevice().getGlbmName());
 		return "hospitalprint";
 	}
 	

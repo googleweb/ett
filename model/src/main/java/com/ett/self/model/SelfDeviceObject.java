@@ -282,7 +282,7 @@ public class SelfDeviceObject extends BaseEntity {
 	/**
 	 * @return MAC2地址
 	 */
-	@Column(name="c_mc2",columnDefinition=" varchar2(20)")
+	@Column(name="c_mac2",columnDefinition=" varchar2(20)")
 	public String getMac2() {
 		return mac2;
 	}
@@ -442,7 +442,21 @@ private String feeInterfaceUrl;
 	private String vioInterfaceUrl;
 	private int vioInterfaceTimeout;
 	
+	private String deviceType;
 	
+	
+
+	/**
+	 * @return 设备型号
+	 */
+	@Column
+	public String getDeviceType() {
+		return deviceType;
+	}
+
+	public void setDeviceType(String deviceType) {
+		this.deviceType = deviceType;
+	}
 
 	@Override
 	public String toXml() {

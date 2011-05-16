@@ -2,11 +2,10 @@ package com.ett.self.vio.biz;
 
 import java.util.List;
 
-import org.springframework.jdbc.core.RowMapper;
-
 import com.ett.AbstractBaseBiz;
 import com.ett.dao.IBaseDao;
 import com.ett.self.model.VehicleObject;
+import com.ett.self.model.VioFlowObject;
 
 public class VioBizImpl extends AbstractBaseBiz implements IVioBiz {
 	
@@ -66,6 +65,11 @@ public class VioBizImpl extends AbstractBaseBiz implements IVioBiz {
 	public VehicleObject getVehicle(String xh) {
 		String sql="select * from drv_admin.vehicle where xh='"+xh+"'";
 		return (VehicleObject)this.vehicleDaoImpl.executeObject(sql);
+	}
+
+	public VioFlowObject getVehicleVioDetail(String jdsbh) {
+		String sql="select * from drv_admin.vio_violation where jdsbh='"+jdsbh+"'";
+		return (VioFlowObject)this.vioFlowDaoImpl.getAll(sql).get(0);
 	}
 
 }

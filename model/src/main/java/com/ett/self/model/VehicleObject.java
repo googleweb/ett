@@ -7,7 +7,7 @@ import java.util.Date;
 
 /**
  * @author austin
- * 车辆对象
+ * 车辆对象 从车驾库中查询出来的列表
  */
 public class VehicleObject {
 	
