@@ -1,5 +1,7 @@
 package com.ett.self.model;
 
+import java.util.Date;
+
 public class FeeCheckRecordObject {
 	
 	private String lsh;
@@ -21,6 +23,16 @@ public class FeeCheckRecordObject {
 	private String ywyy;
 	
 	private String jdsbh;
+	
+	private Date kssj;
+
+	public Date getKssj() {
+		return kssj;
+	}
+
+	public void setKssj(Date kssj) {
+		this.kssj = kssj;
+	}
 
 	public String getXm() {
 		return xm;

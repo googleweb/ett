@@ -102,7 +102,7 @@ public class DrvQueryHelperImp implements IDrvQueryHelper {
 		
 		private final String getExamCard="select b.dabh,b.zkzmbh,b.zkcx,b.yxqs,b.yxqz,b.jxmc \"jxdm\",b.cclzrq,b.fzrq"
 			+" from drv_admin.drv_examCard b where b.sfzmhm=''{0}''";
-		private final String getLicense="select b.lsh,b.qfrq,b.syrq,b.yxqs,b.yxqz,b.cclzrq,b.jxmc \"jxdm\",b.dabh "
+		private final String getLicense="select b.zjcx zkcx,b.lsh,b.qfrq,b.syrq,b.yxqs,b.yxqz,b.cclzrq,b.jxmc \"jxdm\",b.dabh "
 			+" from drv_admin.drivingLicense b where b.sfzmhm=''{0}''";
 
 	public DrvUser getDrvUser(String idcard,String glbm) {
@@ -175,7 +175,7 @@ public class DrvQueryHelperImp implements IDrvQueryHelper {
 		Transaction tx = session.beginTransaction();
 
 		String queryStr=MessageFormat.format(getExamCard,tmpuser.getSfzmhm());
-		logger.debug("查询语句为："+queryStr.toString());
+		logger.debug("查询准考证明语句为："+queryStr.toString());
 		SQLQuery query = session.createSQLQuery(queryStr.toString());
 		query.addScalar("dabh", new org.hibernate.type.StringType());
 		query.addScalar("zkzmbh", new org.hibernate.type.StringType());
@@ -244,9 +244,9 @@ public class DrvQueryHelperImp implements IDrvQueryHelper {
 		Transaction tx = session.beginTransaction();
 
 		String queryStr=MessageFormat.format(getLicense,tmpuser.getSfzmhm());
-		logger.debug("查询语句为："+queryStr.toString());
+		logger.debug("查询getUserWithLicense语句为："+queryStr.toString());
 		SQLQuery query = session.createSQLQuery(queryStr.toString());
-		
+		query.addScalar("zkcx", new org.hibernate.type.StringType());
 		query.addScalar("dabh", new org.hibernate.type.StringType());
 		query.addScalar("yxqz", new org.hibernate.type.TimestampType());
 		query.addScalar("yxqs", new org.hibernate.type.TimestampType());
@@ -264,7 +264,7 @@ public class DrvQueryHelperImp implements IDrvQueryHelper {
 			
 			if(logger.isInfoEnabled())
 			{
-				logger.info("统计语句返回的列表长度为：==》"+lists.size());
+				logger.info("getUserWithLicense返回的列表长度为：==》"+lists.size());
 			}
 			if(lists.size()==0)
 			{
@@ -296,6 +296,7 @@ public class DrvQueryHelperImp implements IDrvQueryHelper {
 		tmpuser.setQfrq(tmp.getQfrq());
 		tmpuser.setSyrq(tmp.getSyrq());
 		tmpuser.setJxdm(tmp.getJxdm());
+		tmpuser.setZkcx(tmp.getZkcx());
 		return tmpuser;
 	}
 

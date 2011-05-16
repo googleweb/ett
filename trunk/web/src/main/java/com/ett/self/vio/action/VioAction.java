@@ -8,6 +8,7 @@ import java.util.List;
 import com.ett.common.exception.ObjectDontExistException;
 import com.ett.self.BaseSelfAction;
 import com.ett.self.model.VehicleObject;
+import com.ett.self.model.VioFlowObject;
 import com.ett.self.vio.biz.IVioBiz;
 
 /**
@@ -63,7 +64,28 @@ public class VioAction extends BaseSelfAction {
 		String xh=this.getHtmlAttributeOrParamter("xh");
 		this.vehicle=iVioBiz.getVehicle(xh);
 		this.lists=iVioBiz.getVioUnProcessDetail(vehicle.getHphm());
+		if(this.lists==null||this.lists.size()==0)
+		{
+			return this.goSuccessPage("您号牌号码为"+this.vehicle.getHphm()+"当前没有未处理的违法记录！");
+		}
 		return "vehicleviolist";
+	}
+	
+	private VioFlowObject vioFlowObject;
+	
+	public VioFlowObject getVioFlowObject() {
+		return vioFlowObject;
+	}
+
+	public void setVioFlowObject(VioFlowObject vioFlowObject) {
+		this.vioFlowObject = vioFlowObject;
+	}
+
+	public String vehicleVioDetail()
+	{
+		String jdsbh=this.getHtmlAttributeOrParamter("jdsbh");
+		this.vioFlowObject=iVioBiz.getVehicleVioDetail(jdsbh);
+		return "vehicleviodetail";
 	}
 
 	public String vehicleSelectList()

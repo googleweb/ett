@@ -16,6 +16,20 @@
 	   
 	</bean>
 	
+	<bean id="idCardReaderAction"  class="com.ett.self.IdCardReaderAction"  scope="prototype">
+	   
+	</bean>
+	<bean id="captureImgAction"  class="com.ett.self.CaptureImgAction"  scope="prototype">
+	   
+	</bean>
+	<bean id="imageShowAction"  class="com.ett.self.ImageShowAction"  scope="prototype">
+	   
+	</bean>
+	<bean id="personInfoCheckAction"  class="com.ett.self.PersonInfoCheckAction"  scope="prototype">
+	   
+	</bean>
+	
+	
 	
 </beans>
 

@@ -44,5 +44,12 @@ public interface IFeeBiz {
 	 * @return 驾驶人业务未缴费列表
 	 */
 	public List getPersonFlowList(DrvUser user);
+	
+	/**
+	 * @param user 那个用户
+	 * @param device 在哪台设备上
+	 * @param fee 缴纳的费用对象
+	 */
+	public void saveFee(DrvUser user,SelfDeviceObject device,FeeObject fee);
 
 }
