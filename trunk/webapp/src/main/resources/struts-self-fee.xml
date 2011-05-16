@@ -6,20 +6,27 @@
 	<package name="feepackage" namespace="/self" extends="selfpackage">
 	
 		<action  name="fee"  class="feeAction">
+			<result name="feeprinthint">/jsp/self/fee/feeSuccess.jsp</result>
 			<result name="funcselect">/jsp/self/fee/funcSelect.jsp</result>
 			<result name="personlist">/jsp/self/fee/personList.jsp</result>
 			
 			<result name="vehiclelist">/jsp/self/fee/vehicleList.jsp</result>
+			
 			
 			<result name="violist">/jsp/self/fee/vioList.jsp</result>
 			
 			<result name="feetypeselect">/jsp/self/fee/feeTypeSelect.jsp</result>
 			
 			<result name="success">/jsp/self/fee/feeSuccess.jsp</result>
-			
+
+			<result name="returnurl" type="redirect">${returnUrl}</result>
+
 			<result name="visa">/jsp/self/fee/visaFee.jsp</result>
 			
 			<result name="cash">/jsp/self/fee/cashFee.jsp</result>
+			<result name="visafeehint">/jsp/self/fee/visaFeeHint.jsp</result>
+			
+			<result name="cashfeehint">/jsp/self/fee/cashFeeHint.jsp</result>
 		</action>
 	</package>
 </struts>

@@ -9,43 +9,35 @@
 </head>
 <body>
 <div
-		style="height: 72px; vertical-align:middle;text-align:center;; line-height:72px; background: url('<s:url value="/images/hint2.jpg"/>')  no-repeat center; background-repeat: no-repeat;">
-		<img style="margin-top: 10px;"
-			src="<s:url value="/images/sureprinthint.jpg"/>" width="800"
-			border="0px" height="50" alt="提示语" />
-
+		class="selfmaintophint" />
+请确认您的补打申请资料
 	</div>
-	<div
-		style="text-align: center; height: 502px; background: url('<s:url value="/images/bottom3.jpg"/>')  no-repeat center; background-repeat: no-repeat;">
-		<br /> <br /> 
+	<div class="selfmaincontent">
+		<br /> 
 
-<table id="idprint"  cellpadding="0" cellspacing="0" style="text-align:left;width:480px" border="0">
+<table id="idprint"  class="selftable" cellpadding="0" cellspacing="0" style="text-align:left;width:480px" border="0">
 <tr>
-<td  style="text-align:center"><s:property value="printObject.glbmName"/></td>
+<th  style="text-align:center" colspan="2"><s:property value="device.glbmName"/></th>
 </tr>
 <tr>
-<td  style="text-align:center">公安交通管理简易程序处罚回执</td>
+<th  style="text-align:center" colspan="2">公安交通管理简易程序处罚回执</th>
 </tr>
 
 <tr>
-<td><br/>被处罚人：<s:property value="printObject.xm"/> </td>
+<th >被处罚人：</th><td><s:property value="printObject.xm"/> </td>
 </tr>
 <tr>
-<td>机动车驾驶证档案编号：<s:property value="printObject.dabh"/> </td>
+<th >机动车驾驶证档案编号：</th><td><s:property value="printObject.dabh"/> </td>
 </tr>
-<tr><td>机动车驾驶证号/居民身份证号码:</td></tr>
-<tr><td><s:property value="printObject.sfzmhm"/></td></tr>
+<tr><th colspan="2">机动车驾驶证号/居民身份证号码:</th></tr>
+<tr><td colspan="2"><s:property value="printObject.sfzmhm"/></td></tr>
 <tr>
-<td>准驾车型：<s:property value="printObject.zjcx"/> </td>
+<th>准驾车型：</th><td><s:property value="printObject.zjcx"/> </td>
 </tr>
-<tr><td>车辆牌号：<s:property value="printObject.hphm"/> </td>
-</tr>
-<tr>
-<td>决定书编号：<s:property value="printObject.jdsbh"/> </td>
+<tr><th>车辆牌号：</th><td><s:property value="printObject.hphm"/> </td>
 </tr>
 <tr>
-<td>请到1号窗口打印简易程序处罚决定书：</td>
-
+<th>决定书编号：</th><td><s:property value="printObject.jdsbh"/> </td>
 </tr>
 <tr>
 <td style="text-align:right"><s:date name="testDate" nice="false" format="yyyy年MM月dd日 "/></td>
@@ -53,8 +45,7 @@
 
 </table>
 <br/>
-<br/>
-<input type="button" class="btnmain" value="确认申请资料" width="341" height="55"/>
+<input type="button" class="btnmain" onclick="javascript:document.location.href='<s:url value="/self/addPrintApply!vioPrint.action"/>?lsh=<s:property value="printObject.lsh"/>';" value="确         认" width="341" height="55"/>
 	</div>
 </body>
 </html>

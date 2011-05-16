@@ -9,8 +9,11 @@
 	<constant name="struts.devMode" value="false" />
 	<constant name="struts.ui.theme" value="simple" />
 	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<constant name="struts.multipart.saveDir" value="/upload-temp" />
+	<constant name="struts.custom.i18n.resources" value="system-config"/>
 	<constant name="struts.enable.SlashesInActionNames" value="true" />
 	<include file="com/ett/struts2/config/struts-*.xml"></include>
+	<include file="com/smartken/drv/web/action/*/struts-*.xml"></include>
 	<include file="struts-*.xml"></include>
 	<package name="base-package" extends="struts-default" abstract="true">
    		<default-interceptor-ref name="paramsPrepareParamsStack"></default-interceptor-ref>

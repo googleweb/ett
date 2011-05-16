@@ -11,12 +11,10 @@
 <body bgcolor="#FFFFFF" leftmargin="0" style="text-align: center;"
 	topmargin="0" marginwidth="0" marginheight="0">
 	<s:form name="subform" id="subform">
-		<div  class="selfmaincontent">
-			 <img style="margin-top:10px;" src="<s:url value="/images/beginflowfeehint.jpg"/>" width="800" border="0px" height="50" alt="提示语"/>
-			
-			</div>
-		<div
-			style="text-align: center; height: 502px; background: url('<s:url value="/images/bottom3.jpg"/>')  no-repeat center; background-repeat: no-repeat;">
+		<div  class="selfmaintophint">
+		请确认机动车业务缴费信息
+		</div>
+		<div class="selfmaincontent">
 			<br />
 			<input type="hidden" id="money" name="money" value="0"/>
 			<input type="hidden" id="lsh" name="lsh" value="0"/>
@@ -26,7 +24,7 @@
 				//alert("准备开始缴费！");
 				try
                 {
-				var href='<s:url value="/self/fee!feeTypeSelect.action"/>';
+				var href='<s:url value="/self/fee!feeTypeSelect.action?allowguitai=false"/>'+"&returnurl="+'<s:url value="fee!vehicleFee.action"/>';
 				//var returnurl='<s:url value="/self/fee!feePerson.action"/>';
 				//var lsh='<s:property value="user.lsh"/>';
 				/*
@@ -72,37 +70,54 @@
 				
 			}
 			</script>
-			<input type="button" style="width:300px" class="btnmain" onclick="beginFee();" value="进行处理"/>
-			<br />您目前机动车业务还有如下缴费的记录:<br/>
 			
 			
-<table width="900" border="0" cellPadding="1"  cellSpacing="1" class="selftable">  
-      <tr class="selftableheader">  
-     <TD align="center">序号</TD>  
-        <TD align="center">流水号</TD> 
-        <TD align="center">身份证明号码</TD>  
-         <TD align="center">姓名</TD>  
-          <TD align="center">业务类型</TD>  
-          <TD align="center">业务原因</TD> 
-        <TD align="center">号牌号码</TD>  
-        <TD align="center">金额</TD>  
-    </tr>  
-     <s:iterator id="entity" value="lists" status="stuts">   
-<tr class="<s:if test="#stuts.even==true">selftablecontentEven</s:if>">   
-    <td >${stuts.count }</td>   
-       <td><a name="lshall"><s:property value="lsh"/></a></td> 
-        <td><s:property value="sfzmhm"/></td>   
-           <td><s:property value="xm"/></td>   
-    <td><s:property value="ywlx"/></td>   
-     <td><s:property value="ywyy"/></td>   
-    <td ><s:property value="hphm"/>
-    </td>   
-   
-
-    <td><a class="moneyall"  name="moneyall"><s:property value="bz"/></a>
-
-</tr>   
+			
+			
+<table width="600" border="0" cellPadding="0"  cellSpacing="0" class="selftable">
+<tr><th colspan="4" style="text-align: center">机动车业务缴费信息</th></tr>  
+     <s:iterator id="entity" value="lists" status="stuts">
+     <tr>
+     <Th>流水号:</Th> 
+     <td><a name="lshall"><s:property value="lsh"/></a>
+     <th>身份证明号码:</th>
+     <td><s:property value="sfzmhm"/>&nbsp;</td>
+     </td>
+     </tr>
+      <tr>
+     <Th>姓名:</Th> 
+     <td><s:property value="xm"/>&nbsp;</a>
+     <th>业务类型:</th>
+     <td><s:property value="ywlx"/>&nbsp;</td>
+     </td>
+     </tr>
+       <tr>
+     <Th>业务原因:</Th> 
+     <td><s:property value="ywyy"/>&nbsp;</a>
+     <th>号牌号码</th>
+     <td><s:property value="hphm"/>&nbsp;</td>
+     </td>
+     </tr>
+      <tr>
+     <Th>业务开始时间:</Th> 
+     <td  colspan="3">
+     
+     <s:date name="kssj" format="yyyy-MM-dd HH:mm:ss" />
+     </td>
+     
+     </tr>
+      <tr>
+     <Th>金额:</Th> 
+     <td class="moneyhint" colspan="3">
+     
+     <a class="moneyall"  name="moneyall"><s:property value="bz"/></a>
+     </a>
+    
+     </td>
+     
+     </tr> 
 </s:iterator> 
+<tr> <td colspan="4"><input type="button" style="width:300px" class="btnmain" onclick="beginFee();" value="确认"/></td></tr>
     </table>  
 			
 		</div>

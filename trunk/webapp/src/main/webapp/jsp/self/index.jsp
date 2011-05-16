@@ -11,19 +11,26 @@
 <body bgcolor="blue" leftmargin="0" style="text-align: center;"
 	topmargin="0" marginwidth="0" marginheight="0">
 	<s:form cssClass="selfform">
+	<!-- 国际化，系统全局配置文件用
+	<s:text name="Post.Fee"/>
+	<s:text name="Cash.Fee.Hint"/>
+	 -->
 		<div class="selfmain">
 			<table border="0" style="width: 100%; height: 574px" cellpadding="0"
 				cellspacing="0">
 				<tr>
-					<td class="selfhinttd">
-						<table class="selfhinttable" width="200px" border="0"
+					<td class="selfhinttd" style="vertical-align: top;margin-left: 15px;padding-left: 15px;text-indent: 5px;">
+						<table class="selfhinttable" width="250px" border="0"
 							cellpadding="0" cellspacing="0">
 							<tr>
 								<td class="headerleft">&nbsp;</td>
 								<td class="headerright">&nbsp;</td>
 							</tr>
 							<tr>
-								<td class="hintmsg" colspan="2">提示用语</td>
+								<td class="hintmsg" colspan="2">欢迎使用
+								<br/>
+								车管自助终端
+								</td>
 							</tr>
 							<tr>
 								<td  class="hintcontent" colspan="2"><div>1、自助终端办理业务需携带您的二代身份证</div>
@@ -36,6 +43,7 @@
 						</table></td>
 					<td>
 						<div style="text-align: center; height: 502px; line-height: 80px;">
+						<br/>
 							<ul>
 								<li><input class="btnmain" value="机动车业务"
 									onclick="javascript:document.location.href='<s:url value="/self/Vehicle/to/index.action"/>';"
@@ -44,16 +52,26 @@
 									onclick="javascript:document.location.href='<s:url value="/self/Driver/to/index.action"/>';"
 									type="button" /></li>
 								<li><input class="btnmain" value="违法系统业务" type="button"
-									onclick="javascript:document.location.href='<s:url value="/jsp/self/idCardReader.jsp"/>?returnurl=<s:url value="/self/vio!vehicleSelectList.action"/>';" />
+									onclick="javascript:document.location.href='<s:url value="/self/idCardReader.action"/>?returnurl=<s:url value="vio!vehicleSelectList.action"/>';" />
 								</li>
+								
+							</ul>
+						</div>
+					</td>
+					<td>
+				
+					<div style="text-align: center; height: 502px; line-height: 80px;">
+						<br/>
+							<ul>
+							
 								<li><input class="btnmain" value="科目一预约签到" type="button"
 									onclick="javascript:document.location.href='<s:url value="/self/preasign!func.action"/>';" />
 								</li>
 								<li><input class="btnmain" value="业务缴费"
-									onclick="javascript:document.location.href='<s:url value="/jsp/self/idCardReader.jsp"/>?returnurl=<s:url value="/self/fee!func.action"/>';"
+									onclick="javascript:document.location.href='<s:url value="/self/idCardReader.action"/>?capture=false&agent=false&returnurl=<s:url value="fee!func.action"/>';"
 									type="button" /></li>
 								<li><input class="btnmain" value="回执补打申请"
-									onclick="javascript:document.location.href='<s:url value="/jsp/self/idCardReader.jsp"/>?returnurl=<s:url value="/self/addPrintApply!func.action"/>';"
+									onclick="javascript:document.location.href='<s:url value="/self/idCardReader!func.action"/>?capture=true&returnurl=<s:url value="addPrintApply!func.action"/>';"
 									type="button" /></li>
 							</ul>
 						</div>
@@ -61,10 +79,9 @@
 				</tr>
 			</table>
 		</div>
-		<script type="text/javascript">
-		//fullScreen();
-		</script>
+		
 	</s:form>
 </body>
+
 
 </html>

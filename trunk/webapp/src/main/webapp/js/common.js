@@ -1,3 +1,16 @@
+var Whole_IdCardReader_Enable=false;
+var Whole_IdCardReader_Interval=500;
+
+var Whole_Hot_Printer_Enable=false;
+var Whole_Hot_Printer_Interval=500;
+var Whole_Needle_Printer_Enable=false;
+var Whole_Needle_Printer_Interval=500;
+var Whole_Photo_Enable=true;
+var Whole_Photo_Printer_Interval=500;
+var Whole_Cash_Enable=false;
+var Whole_Cash_Interval=500;
+
+
 function getParameter(paraStr, url) {
 	var result = "";
 	//获取URL中全部参数列表数据   
@@ -64,7 +77,7 @@ function nextStep(param) {
 }
 
 function goFirst() {
-	document.location.href = "/webapp/index!logout.action";
+	document.location.href = "/webapp/self/index!logout.action";
 }
 
 function goNext(url) {

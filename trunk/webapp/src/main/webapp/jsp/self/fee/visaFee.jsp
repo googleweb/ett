@@ -26,7 +26,7 @@
 			
 			<script type="text/javascript">
 			function confirmFee() {
-				$("#subform").attr("action",'<s:url value="/self/fee!visaFee.action"/>');
+				$("#subform").attr("action",'<s:url value="/self/fee!visaFeeHint.action"/>');
 				$("#subform").submit();
 				
 				//document.location.href='<s:url value="/self/fee!visaFee.action"/>';

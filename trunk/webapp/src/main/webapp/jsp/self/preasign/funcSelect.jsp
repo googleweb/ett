@@ -9,16 +9,16 @@
 </head>
 <body>
 <div
-			style="height: 72px; vertical-align:middle;text-align:center;; line-height:72px; background: url('<s:url value="/images/hint2.jpg"/>')  no-repeat center; background-repeat: no-repeat;">
-			 <img style="margin-top:10px;" src="<s:url value="/images/bustypehint.jpg"/>" width="800" border="0px" height="50" alt="提示语"/>
+		 class="selfmaintophint"/>
+		 请选择您要办理的业务类型
 			
 			</div>
 		<div
-			style="text-align: center; height: 502px; background: url('<s:url value="/images/bottom3.jpg"/>')  no-repeat center; background-repeat: no-repeat;">
+			class="selfmaincontent">
 			<br />
 			<br /> 
-			<input  class="btnmain"  onclick="javascript:document.location.href='<s:url value="/jsp/self/idCardReader.jsp"/>?returnurl=<s:url value="/self/preasign!check.action"/>';" value="科目一自助签到" type="button" /> <br />
-			<br /> <input  class="btnmain"  onclick="javascript:document.location.href='<s:url value="/jsp/self/idCardReader.jsp"/>?returnurl=<s:url value="/self/preasign!preparePreasign.action"/>';" value="科目一预约" type="button" />
+			<input  class="btnmain"  onclick="javascript:document.location.href='<s:url value="/self/idCardReader.action"/>?agent=false&returnurl=<s:url value="preasign!check.action"/>';" value="科目一自助签到" type="button" /> <br />
+			<br /> <input  class="btnmain"  onclick="javascript:document.location.href='<s:url value="/self/idCardReader.action"/>?agent=false&returnurl=<s:url value="preasign!preparePreasign.action"/>';" value="科目一预约" type="button" />
 			
 		</div>
 </body>
