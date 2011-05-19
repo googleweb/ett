@@ -13,7 +13,7 @@
 	<constant name="struts.custom.i18n.resources" value="system-config"/>
 	<constant name="struts.enable.SlashesInActionNames" value="true" />
 	<include file="com/ett/struts2/config/struts-*.xml"></include>
-	<include file="com/smartken/drv/web/action/*/struts-*.xml"></include>
+	<include file="com/ett/drv/web/action/*/struts-*.xml"></include>
 	<include file="struts-*.xml"></include>
 	<package name="base-package" extends="struts-default" abstract="true">
    		<default-interceptor-ref name="paramsPrepareParamsStack"></default-interceptor-ref>
