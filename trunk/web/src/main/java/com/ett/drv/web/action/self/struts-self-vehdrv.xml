@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+
+<package name="selfvehdrvpackage"  extends="base-package" namespace="/self" >
+
+   <action name="*/*/*" 
+     class="com.ett.drv.web.action.self.{1}Action" method="{2}_{3}"
+     >
+      <result name="input">/jsp/self/{1}/{3}.jsp</result>
+       <result name="jsp">/jsp/self/{1}/{3}.jsp</result>
+       
+       <result name="index">/jsp/self/{1}/index.jsp</result>
+       <result name="transact">/jsp/self/{1}/transact.jsp</result>
+       <result name="transactDrv">/jsp/self/Driver/transact.jsp</result>
+       <result name="transactVeh">/jsp/self/Vehicle/transact.jsp</result>
+       <result name="collect_image">/jsp/self/Identity/collect_image.jsp</result>
+       <result name="exchange_vehicle_license">/jsp/self/{1}/exchange_vehicle_license.jsp</result>
+       <result name="exchange_plate">/jsp/self/{1}/exchange_plate.jsp</result>
+       <result name="exchange_qualified">/jsp/self/{1}/exchange_qualified.jsp</result>
+       
+       <result name="exchange_driver_license">/jsp/self/Driver/exchange_driver_license.jsp</result>
+       <result name="lost_driver_license">/jsp/self/Driver/lost_driver_license.jsp</result>
+       <result name="destroy_driver_license">/jsp/self/Driver/destroy_driver_license.jsp</result>
+       
+       <result name="identity_agent">/jsp/self/Identity/identity_agent.jsp</result>
+       <result name="identity_driver">/jsp/self/Identity/identity_driver.jsp</result>
+       <result name="list_cars">/jsp/self/Vehicle/list_cars.jsp</result>
+  
+       <result name="contact">/jsp/self/Identity/contact.jsp</result>
+       
+       <result name="payment">/jsp/self/Payment/index.jsp</result>
+       <result name="identity">/jsp/self/Identity/index.jsp</result>
+       
+       <result name="payment_cash">/jsp/self/{1}/payment_cash.jsp</result>
+       <result name="payment_pos">/jsp/self/{1}/payment_pos.jsp</result>
+       <result name="payment_success">/jsp/self/{1}/payment_success.jsp</result> 
+       <result name="select_receive">/jsp/self/Payment/select_receive.jsp</result>
+       <result name="print_receipt">/jsp/self/Payment/print_receipt.jsp</result>
+       <result name="error">/jsp/common/error.jsp</result>
+   </action>
+
+ 
+</package>
+
+
+
+
+</struts>
