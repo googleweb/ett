@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ett.drv.mapper.admin.IDictTypeMapper">
+
+<cache flushInterval="30000" readOnly="true"></cache>
+
+
+<sql id="table">TABLE_DICTTYPE</sql>
+
+<sql id="pk">ID</sql>
+
+<sql id="colums">
+ID,C_TYPENAME,C_DESCRIPTION 
+</sql>
+
+<sql id="insertCols">
+#{id,jdbcType=INTEGER,javaType=Integer},
+#{typename,jdbcType=VARCHAR,javaType=String},
+#{description,jdbcType=VARCHAR,javaType=String} 
+</sql>
+
+<sql id="updateCols">
+ <if test="pk neq null">ID=#{pk},</if>
+C_TYPENAME=#{model.typename,jdbcType=VARCHAR,javaType=String},
+C_DESCRIPTION=#{model.description,jdbcType=VARCHAR,javaType=String}
+</sql>
+
+<sql id="orderby">order by ID</sql>
+
+<sql id="joinColums"></sql>
+
+<sql id="join"></sql><!-- 别名m已被主表使用  -->
+
+<resultMap type="com.ett.drv.mapper.sys.IDictTypeMapper" id="resultMap">
+ <id column="ID"  property="id" jdbcType="INTEGER" javaType="Integer"/>
+<result column="C_TYPENAME"  property="typename" jdbcType="VARCHAR" javaType="String"/>
+<result column="C_DESCRIPTION"  property="description" jdbcType="VARCHAR" javaType="String"/>
+ </resultMap>
+
+
+<select id="select" resultType="ArrayList" resultMap="resultMap">
+	 select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> 
+<trim prefix="where" prefixOverrides="and">
+<if test="model.id neq null">and m.ID=#{model.id,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.typename neq null">and m.C_TYPENAME=#{model.typename,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.description neq null">and m.C_DESCRIPTION=#{model.description,jdbcType=VARCHAR javaType=String } </if> 
+</trim>
+</select>
+<select id="selectEqPk" parameterType="String"  resultMap="resultMap">
+	 select <include refid="colums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> = #{id,jdbcType=INTEGER,javaType=Integer}
+</select>
+
+<select id="count" resultType="int">
+	 select count(*) from <include refid="table"/>
+</select>
+
+<select id="selectInPk" resultType="ArrayList" resultMap="resultMap" >
+	 select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> in
+<foreach item="pk" collection="list" open="(" separator="," close=")"> #{pk} </foreach> 
+<include refid="orderby"/>
+</select>
+
+<select id="selectNotInPk" resultType="ArrayList" resultMap="resultMap" >
+	 select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> not in
+<foreach item="pk" collection="list" open="(" separator="," close=")"> #{pk} </foreach> 
+<include refid="orderby"/>
+</select>
+
+<select  id="selectAll"  resultType="ArrayList"  resultMap="resultMap">
+	 select m.* <include refid="joinColums"/> from  <include refid="table" /> m <include refid="join"/> 
+ <include refid="orderby"/>
+</select>
+
+<insert id="insertOne" >
+	 insert into <include refid="table"/> ( <include refid="colums"/> ) values ( <include refid="insertCols"/>) 
+</insert>
+
+<update id="updateOne" flushCache="true" >
+	 update <include refid="table"/> set <include refid="updateCols"/> where <include refid="pk" />=#{model.id,jdbcType=INTEGER,javaType=Integer}
+</update>
+
+<delete id="deleteInPk" flushCache="true">
+	 delete from <include refid="table"/> where <include refid="pk" /> in
+<foreach item="pk" collection="list" open="(" separator="," close=")">#{pk}</foreach>
+</delete>
+
+<delete id="deleteNotInPk" flushCache="true">
+	 delete from <include refid="table"/> where <include refid="pk" /> not in
+<foreach item="pk" collection="list" open="(" separator="," close=")">#{pk}</foreach>
+</delete>
+
+
+
+</mapper>

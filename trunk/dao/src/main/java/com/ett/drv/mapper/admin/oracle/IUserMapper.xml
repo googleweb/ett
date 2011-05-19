@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ett.drv.mapper.admin.IUserMapper">
+
+<cache flushInterval="30000" readOnly="true"></cache>
+
+
+<sql id="table">TABLE_USERS</sql>
+
+<sql id="pk">ID</sql>
+
+<sql id="colums">
+ID,C_LOGIN_NAME,C_FULL_NAME,C_PWD,I_ROLEID,I_DEPID,C_IDCARD,C_WORKID,C_BEGINIP,C_ENDIP,C_STATE 
+</sql>
+
+<sql id="insertCols">
+#{id,jdbcType=INTEGER,javaType=Integer},
+#{loginName,jdbcType=VARCHAR,javaType=String},
+#{fullName,jdbcType=VARCHAR,javaType=String},
+#{pwd,jdbcType=VARCHAR,javaType=String},
+#{roleid,jdbcType=INTEGER,javaType=Integer},
+#{depid,jdbcType=INTEGER,javaType=Integer},
+#{idcard,jdbcType=VARCHAR,javaType=String},
+#{workid,jdbcType=VARCHAR,javaType=String},
+#{beginip,jdbcType=VARCHAR,javaType=String},
+#{endip,jdbcType=VARCHAR,javaType=String},
+#{state,jdbcType=VARCHAR,javaType=String} 
+</sql>
+
+<sql id="updateCols">
+ <if test="pk neq null">ID=#{pk},</if>
+C_LOGIN_NAME=#{model.loginName,jdbcType=VARCHAR,javaType=String},
+C_FULL_NAME=#{model.fullName,jdbcType=VARCHAR,javaType=String},
+C_PWD=#{model.pwd,jdbcType=VARCHAR,javaType=String},
+I_ROLEID=#{model.roleid,jdbcType=INTEGER,javaType=Integer},
+I_DEPID=#{model.depid,jdbcType=INTEGER,javaType=Integer},
+C_IDCARD=#{model.idcard,jdbcType=VARCHAR,javaType=String},
+C_WORKID=#{model.workid,jdbcType=VARCHAR,javaType=String},
+C_BEGINIP=#{model.beginip,jdbcType=VARCHAR,javaType=String},
+C_ENDIP=#{model.endip,jdbcType=VARCHAR,javaType=String},
+C_STATE=#{model.state,jdbcType=VARCHAR,javaType=String}
+</sql>
+
+<sql id="orderby">order by ID</sql>
+
+<sql id="joinColums"></sql>
+
+<sql id="join"></sql><!-- 别名m已被主表使用  -->
+
+<resultMap type="com.ett.drv.model.admin.UserModel" id="resultMap">
+ <id column="ID"  property="id" jdbcType="INTEGER" javaType="Integer"/>
+<result column="C_LOGIN_NAME"  property="loginName" jdbcType="VARCHAR" javaType="String"/>
+<result column="C_FULL_NAME"  property="fullName" jdbcType="VARCHAR" javaType="String"/>
+<result column="C_PWD"  property="pwd" jdbcType="VARCHAR" javaType="String"/>
+<result column="I_ROLEID"  property="roleid" jdbcType="INTEGER" javaType="Integer"/>
+<result column="I_DEPID"  property="depid" jdbcType="INTEGER" javaType="Integer"/>
+<result column="C_IDCARD"  property="idcard" jdbcType="VARCHAR" javaType="String"/>
+<result column="C_WORKID"  property="workid" jdbcType="VARCHAR" javaType="String"/>
+<result column="C_BEGINIP"  property="beginip" jdbcType="VARCHAR" javaType="String"/>
+<result column="C_ENDIP"  property="endip" jdbcType="VARCHAR" javaType="String"/>
+<result column="C_STATE"  property="state" jdbcType="VARCHAR" javaType="String"/>
+ </resultMap>
+
+
+<select id="select" resultType="ArrayList" resultMap="resultMap">
+	 select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> 
+<trim prefix="where" prefixOverrides="and">
+<if test="model.id neq null">and m.ID=#{model.id,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.loginName neq null">and m.C_LOGIN_NAME=#{model.loginName,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.fullName neq null">and m.C_FULL_NAME=#{model.fullName,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.pwd neq null">and m.C_PWD=#{model.pwd,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.roleid neq null">and m.I_ROLEID=#{model.roleid,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.depid neq null">and m.I_DEPID=#{model.depid,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.idcard neq null">and m.C_IDCARD=#{model.idcard,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.workid neq null">and m.C_WORKID=#{model.workid,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.beginip neq null">and m.C_BEGINIP=#{model.beginip,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.endip neq null">and m.C_ENDIP=#{model.endip,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.state neq null">and m.C_STATE=#{model.state,jdbcType=VARCHAR javaType=String } </if> 
+</trim>
+</select>
+<select id="selectEqPk" parameterType="String"  resultMap="resultMap">
+	 select <include refid="colums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> = #{id,jdbcType=INTEGER,javaType=Integer}
+</select>
+
+<select id="count" resultType="int">
+	 select count(*) from <include refid="table"/>
+</select>
+
+<select id="selectInPk" resultType="ArrayList" resultMap="resultMap" >
+	 select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> in
+<foreach item="pk" collection="list" open="(" separator="," close=")"> #{pk} </foreach> 
+<include refid="orderby"/>
+</select>
+
+<select id="selectNotInPk" resultType="ArrayList" resultMap="resultMap" >
+	 select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> not in
+<foreach item="pk" collection="list" open="(" separator="," close=")"> #{pk} </foreach> 
+<include refid="orderby"/>
+</select>
+
+<select  id="selectAll"  resultType="ArrayList"  resultMap="resultMap">
+	 select m.* <include refid="joinColums"/> from  <include refid="table" /> m <include refid="join"/> 
+ <include refid="orderby"/>
+</select>
+
+<insert id="insertOne" >
+	 insert into <include refid="table"/> ( <include refid="colums"/> ) values ( <include refid="insertCols"/>) 
+</insert>
+
+<update id="updateOne" flushCache="true" >
+	 update <include refid="table"/> set <include refid="updateCols"/> where <include refid="pk" />=#{model.id,jdbcType=INTEGER,javaType=Integer}
+</update>
+
+<delete id="deleteInPk" flushCache="true">
+	 delete from <include refid="table"/> where <include refid="pk" /> in
+<foreach item="pk" collection="list" open="(" separator="," close=")">#{pk}</foreach>
+</delete>
+
+<delete id="deleteNotInPk" flushCache="true">
+	 delete from <include refid="table"/> where <include refid="pk" /> not in
+<foreach item="pk" collection="list" open="(" separator="," close=")">#{pk}</foreach>
+</delete>
+
+
+
+</mapper>

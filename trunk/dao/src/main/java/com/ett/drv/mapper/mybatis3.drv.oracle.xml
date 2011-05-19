@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+<typeAliases>
+  <typeAlias type="java.sql.Timestamp" alias="Timestamp"/>
+</typeAliases>
+
+<plugins>
+	<plugin interceptor="com.smartken.kia.core.plugin.mybatis.OffsetLimitInterceptor">
+		<property name="dialectClass" value="com.smartken.kia.core.jdbc.dialect.OracleDialect"/>
+	</plugin>
+</plugins>
+
+<!--  
+<environments default="development">
+<environment id="development">
+<transactionManager type="JDBC"/>
+<dataSource type="POOLED">
+<property name="driver" value="${driver}"/>
+<property name="url" value="${url}"/>
+<property name="username" value="${username}"/>
+<property name="password" value="${password}"/>
+</dataSource>
+</environment>
+</environments>
+ -->
+<mappers>
+<mapper resource="com/ett/drv/mapper/booked/oracle/IWeekRecordMapper.xml"/>
+<mapper resource="com/ett/drv/mapper/booked/oracle/ILimitMapper.xml"/>
+<mapper resource="com/ett/drv/mapper/booked/oracle/IOrderInfoMapper.xml"/>
+<mapper resource="com/ett/drv/mapper/admin/oracle/IDictMapper.xml"/>
+<mapper resource="com/ett/drv/mapper/admin/oracle/IDepartmentMapper.xml"/>
+<mapper resource="com/ett/drv/mapper/admin/oracle/IMenuMapper.xml"/>
+<mapper resource="com/ett/drv/mapper/admin/oracle/IUserMapper.xml"/>
+
+<mapper resource="com/ett/drv/mapper/self/oracle/IDeviceMapper.xml"/>
+<mapper resource="com/ett/drv/mapper/self/oracle/ITerminalMapper.xml"/>
+<mapper resource="com/ett/drv/mapper/self/oracle/ITransactDriverMapper.xml"/>
+<mapper resource="com/ett/drv/mapper/self/oracle/ITransactVehicleMapper.xml"/>
+<mapper resource="com/ett/drv/mapper/self/oracle/ITransactResourceMapper.xml"/>
+<mapper resource="com/ett/drv/mapper/self/oracle/IDrivingLicenseMapper.xml"/>
+<mapper resource="com/ett/drv/mapper/self/oracle/IVehicleMapper.xml"/>
+<mapper resource="com/ett/drv/mapper/self/oracle/IVehFlowMapper.xml"/>
+<mapper resource="com/ett/drv/mapper/self/oracle/IDrvFlowMapper.xml"/>
+<mapper resource="com/ett/drv/mapper/self/oracle/IKm1CheckRecordMapper.xml"/>
+<mapper resource="com/ett/drv/mapper/self/oracle/IKm1PreasignRecordMapper.xml"/>
+<mapper resource="com/ett/drv/mapper/self/oracle/IFeeLogMapper.xml"/>
+
+<mapper resource="com/ett/drv/mapper/self/oracle/IDeviceMapper.xml"/>
+<mapper resource="com/ett/drv/mapper/self/oracle/IDeviceSnMapper.xml"/>
+<mapper resource="com/ett/drv/mapper/self/oracle/IHardwareMapper.xml"/>
+
+</mappers>
+
+</configuration>
