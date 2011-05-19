@@ -25,13 +25,7 @@
   		<type>jar</type>
   		<scope>test</scope>
   	</dependency>
-  	<dependency>
-  		<groupId>org.apache.log4j</groupId>
-  		<artifactId>org.apache.log4j</artifactId>
-  		<version>1.2.13.v200706111418</version>
-  		<type>jar</type>
-  		<scope>compile</scope>
-  	</dependency>
+
   	<dependency>
   		<groupId>org.apache.maven.plugins</groupId>
   		<artifactId>maven-surefire-plugin</artifactId>
@@ -103,13 +97,6 @@
   		<scope>compile</scope>
   	</dependency>
   	<dependency>
-  		<groupId>org.hibernate</groupId>
-  		<artifactId>hibernate</artifactId>
-  		<version>3.2.6.ga</version>
-  		<type>jar</type>
-  		<scope>compile</scope>
-  	</dependency>
-  	<dependency>
   		<groupId>org.springframework</groupId>
   		<artifactId>spring-test</artifactId>
   		<version>3.0.5.RELEASE</version>
@@ -150,9 +137,9 @@
   		<scope>compile</scope>
   	</dependency>
   	<dependency>
-  		<groupId>com.ett</groupId>
-  		<artifactId>dao</artifactId>
-  		<version>0.0.1-SNAPSHOT</version>
+  		<groupId>log4j</groupId>
+  		<artifactId>log4j</artifactId>
+  		<version>1.2.15</version>
   		<type>jar</type>
   		<scope>compile</scope>
   	</dependency>
