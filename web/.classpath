@@ -16,5 +16,6 @@
 	</classpathentry>
 	<classpathentry combineaccessrules="false" kind="src" path="/biz"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/drvinterface"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/kia-core"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

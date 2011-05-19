@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="selfvehdrvpackage" location="54,270" size="420,4130">
+    <action name="*/*/*" location="205,3515" size="150,545">
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="{3}.jsp" />
+      </result>
+      <result name="jsp">
+        <resourceEdge source="jsp" routing="0" target="{3}.jsp" />
+      </result>
+      <result name="index">
+        <resourceEdge source="index" routing="0" target="index.jsp" />
+      </result>
+      <result name="transact">
+        <resourceEdge source="transact" routing="0" target="transact.jsp" />
+      </result>
+      <result name="transactDrv">
+        <resourceEdge source="transactDrv" routing="0" target="transact.jsp" />
+      </result>
+      <result name="transactVeh">
+        <resourceEdge source="transactVeh" routing="0" target="transact.jsp" />
+      </result>
+      <result name="collect_image">
+        <resourceEdge source="collect_image" routing="0" target="collect_image.jsp" />
+      </result>
+      <result name="exchange_vehicle_license">
+        <resourceEdge source="exchange_vehicle_license" routing="0" target="exchange_vehicle_license.jsp" />
+      </result>
+      <result name="exchange_plate">
+        <resourceEdge source="exchange_plate" routing="0" target="exchange_plate.jsp" />
+      </result>
+      <result name="exchange_qualified">
+        <resourceEdge source="exchange_qualified" routing="0" target="exchange_qualified.jsp" />
+      </result>
+      <result name="exchange_driver_license">
+        <resourceEdge source="exchange_driver_license" routing="0" target="exchange_driver_license.jsp" />
+      </result>
+      <result name="lost_driver_license">
+        <resourceEdge source="lost_driver_license" routing="0" target="lost_driver_license.jsp" />
+      </result>
+      <result name="destroy_driver_license">
+        <resourceEdge source="destroy_driver_license" routing="0" target="destroy_driver_license.jsp" />
+      </result>
+      <result name="identity_agent">
+        <resourceEdge source="identity_agent" routing="0" target="identity_agent.jsp" />
+      </result>
+      <result name="identity_driver">
+        <resourceEdge source="identity_driver" routing="0" target="identity_driver.jsp" />
+      </result>
+      <result name="list_cars">
+        <resourceEdge source="list_cars" routing="0" target="list_cars.jsp" />
+      </result>
+      <result name="contact">
+        <resourceEdge source="contact" routing="0" target="contact.jsp" />
+      </result>
+      <result name="payment">
+        <resourceEdge source="payment" routing="0" target="index.jsp" />
+      </result>
+      <result name="identity">
+        <resourceEdge source="identity" routing="0" target="index.jsp" />
+      </result>
+      <result name="payment_cash">
+        <resourceEdge source="payment_cash" routing="0" target="payment_cash.jsp" />
+      </result>
+      <result name="payment_pos">
+        <resourceEdge source="payment_pos" routing="0" target="payment_pos.jsp" />
+      </result>
+      <result name="payment_success">
+        <resourceEdge source="payment_success" routing="0" target="payment_success.jsp" />
+      </result>
+      <result name="select_receive">
+        <resourceEdge source="select_receive" routing="0" target="select_receive.jsp" />
+      </result>
+      <result name="print_receipt">
+        <resourceEdge source="print_receipt" routing="0" target="print_receipt.jsp" />
+      </result>
+      <result name="error">
+        <resourceEdge source="error" routing="0" target="error.jsp" />
+      </result>
+    </action>
+  </package>
+  <webResource name="{3}.jsp" path="/jsp/self/{1}/{3}.jsp" location="10,10" size="150,55" />
+  <webResource name="index.jsp" path="/jsp/self/{1}/index.jsp" location="249,115" size="150,55" />
+  <webResource name="transact.jsp" path="/jsp/self/{1}/transact.jsp" location="520,255" size="150,55" />
+  <webResource name="transact.jsp" path="/jsp/self/Driver/transact.jsp" location="756,360" size="150,55" />
+  <webResource name="transact.jsp" path="/jsp/self/Vehicle/transact.jsp" location="543,535" size="150,55" />
+  <webResource name="collect_image.jsp" path="/jsp/self/Identity/collect_image.jsp" location="525,710" size="150,55" />
+  <webResource name="exchange_vehicle_license.jsp" path="/jsp/self/{1}/exchange_vehicle_license.jsp" location="542,885" size="150,55" />
+  <webResource name="exchange_plate.jsp" path="/jsp/self/{1}/exchange_plate.jsp" location="537,1060" size="150,55" />
+  <webResource name="exchange_qualified.jsp" path="/jsp/self/{1}/exchange_qualified.jsp" location="525,1235" size="150,55" />
+  <webResource name="exchange_driver_license.jsp" path="/jsp/self/Driver/exchange_driver_license.jsp" location="536,1410" size="150,55" />
+  <webResource name="lost_driver_license.jsp" path="/jsp/self/Driver/lost_driver_license.jsp" location="513,1585" size="150,55" />
+  <webResource name="destroy_driver_license.jsp" path="/jsp/self/Driver/destroy_driver_license.jsp" location="539,1760" size="150,55" />
+  <webResource name="identity_agent.jsp" path="/jsp/self/Identity/identity_agent.jsp" location="522,1935" size="150,55" />
+  <webResource name="identity_driver.jsp" path="/jsp/self/Identity/identity_driver.jsp" location="519,2110" size="150,55" />
+  <webResource name="list_cars.jsp" path="/jsp/self/Vehicle/list_cars.jsp" location="540,2285" size="150,55" />
+  <webResource name="contact.jsp" path="/jsp/self/Identity/contact.jsp" location="543,2460" size="150,55" />
+  <webResource name="index.jsp" path="/jsp/self/Payment/index.jsp" location="517,2635" size="150,55" />
+  <webResource name="index.jsp" path="/jsp/self/Identity/index.jsp" location="514,2810" size="150,55" />
+  <webResource name="payment_cash.jsp" path="/jsp/self/{1}/payment_cash.jsp" location="543,2985" size="150,55" />
+  <webResource name="payment_pos.jsp" path="/jsp/self/{1}/payment_pos.jsp" location="511,3160" size="150,55" />
+  <webResource name="payment_success.jsp" path="/jsp/self/{1}/payment_success.jsp" location="534,3335" size="150,55" />
+  <webResource name="select_receive.jsp" path="/jsp/self/Payment/select_receive.jsp" location="525,3510" size="150,55" />
+  <webResource name="print_receipt.jsp" path="/jsp/self/Payment/print_receipt.jsp" location="528,3685" size="150,55" />
+  <webResource name="error.jsp" path="/jsp/common/error.jsp" location="535,4000" size="150,55" />
+</Struts2Diagram>
+
