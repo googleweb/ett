@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ett.drv.mapper.self.IDrvFlowMapper">
+
+<cache flushInterval="30000" readOnly="true"></cache>
+
+
+<sql id="table">DRV_ADMIN.DRV_FLOW</sql>
+
+<sql id="pk">ID</sql>
+
+<sql id="colums">
+LSH,SFZMHM,DABH,XM,YWLX,YWYY,KSSJ,JSSJ,YWGW,KSKM,XYGW,
+GLBM,FFBZ,RKBZ,HDBZ,XGZL,ZJCX 
+</sql>
+
+<sql id="insertCols">
+#{lsh,jdbcType=VARCHAR,javaType=String},
+#{sfzmhm,jdbcType=VARCHAR,javaType=String},
+#{dabh,jdbcType=VARCHAR,javaType=String},
+#{xm,jdbcType=VARCHAR,javaType=String},
+#{ywlx,jdbcType=VARCHAR,javaType=String},
+#{ywyy,jdbcType=VARCHAR,javaType=String},
+#{kssj,jdbcType=DATE,javaType=Date},
+#{jssj,jdbcType=VARCHAR,javaType=String},
+#{ywgw,jdbcType=VARCHAR,javaType=String},
+#{kskm,jdbcType=VARCHAR,javaType=String},
+#{xygw,jdbcType=VARCHAR,javaType=String},
+#{glbm,jdbcType=VARCHAR,javaType=String},
+#{ffbz,jdbcType=VARCHAR,javaType=String},
+#{rkbz,jdbcType=VARCHAR,javaType=String},
+#{hdbz,jdbcType=VARCHAR,javaType=String},
+#{xgzl,jdbcType=VARCHAR,javaType=String},
+#{zjcx,jdbcType=VARCHAR,javaType=String} 
+</sql>
+
+<sql id="updateCols">
+ LSH=#{model.lsh,jdbcType=VARCHAR,javaType=String},
+SFZMHM=#{model.sfzmhm,jdbcType=VARCHAR,javaType=String},
+DABH=#{model.dabh,jdbcType=VARCHAR,javaType=String},
+XM=#{model.xm,jdbcType=VARCHAR,javaType=String},
+YWLX=#{model.ywlx,jdbcType=VARCHAR,javaType=String},
+YWYY=#{model.ywyy,jdbcType=VARCHAR,javaType=String},
+KSSJ=#{model.kssj,jdbcType=DATE,javaType=Date},
+JSSJ=#{model.jssj,jdbcType=VARCHAR,javaType=String},
+YWGW=#{model.ywgw,jdbcType=VARCHAR,javaType=String},
+KSKM=#{model.kskm,jdbcType=VARCHAR,javaType=String},
+XYGW=#{model.xygw,jdbcType=VARCHAR,javaType=String},
+GLBM=#{model.glbm,jdbcType=VARCHAR,javaType=String},
+FFBZ=#{model.ffbz,jdbcType=VARCHAR,javaType=String},
+RKBZ=#{model.rkbz,jdbcType=VARCHAR,javaType=String},
+HDBZ=#{model.hdbz,jdbcType=VARCHAR,javaType=String},
+XGZL=#{model.xgzl,jdbcType=VARCHAR,javaType=String},
+ZJCX=#{model.zjcx,jdbcType=VARCHAR,javaType=String}
+</sql>
+
+<sql id="orderby">order by ID</sql>
+
+<sql id="joinColums"></sql>
+
+<sql id="join"></sql><!-- 别名m已被主表使用  -->
+
+<resultMap type="com.ett.drv.model.self.DrvFlowModel" id="resultMap">
+ <result column="LSH"  property="lsh" jdbcType="VARCHAR" javaType="String"/>
+<result column="SFZMHM"  property="sfzmhm" jdbcType="VARCHAR" javaType="String"/>
+<result column="DABH"  property="dabh" jdbcType="VARCHAR" javaType="String"/>
+<result column="XM"  property="xm" jdbcType="VARCHAR" javaType="String"/>
+<result column="YWLX"  property="ywlx" jdbcType="VARCHAR" javaType="String"/>
+<result column="YWYY"  property="ywyy" jdbcType="VARCHAR" javaType="String"/>
+<result column="KSSJ"  property="kssj" jdbcType="DATE" javaType="Date"/>
+<result column="JSSJ"  property="jssj" jdbcType="VARCHAR" javaType="String"/>
+<result column="YWGW"  property="ywgw" jdbcType="VARCHAR" javaType="String"/>
+<result column="KSKM"  property="kskm" jdbcType="VARCHAR" javaType="String"/>
+<result column="XYGW"  property="xygw" jdbcType="VARCHAR" javaType="String"/>
+<result column="GLBM"  property="glbm" jdbcType="VARCHAR" javaType="String"/>
+<result column="FFBZ"  property="ffbz" jdbcType="VARCHAR" javaType="String"/>
+<result column="RKBZ"  property="rkbz" jdbcType="VARCHAR" javaType="String"/>
+<result column="HDBZ"  property="hdbz" jdbcType="VARCHAR" javaType="String"/>
+<result column="XGZL"  property="xgzl" jdbcType="VARCHAR" javaType="String"/>
+<result column="ZJCX"  property="zjcx" jdbcType="VARCHAR" javaType="String"/>
+ </resultMap>
+
+
+<select id="select" resultType="ArrayList" resultMap="resultMap">
+	 select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> 
+<trim prefix="where" prefixOverrides="and">
+<if test="model.lsh neq null">and m.LSH=#{model.lsh,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.sfzmhm neq null">and m.SFZMHM=#{model.sfzmhm,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.dabh neq null">and m.DABH=#{model.dabh,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.xm neq null">and m.XM=#{model.xm,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.ywlx neq null">and m.YWLX=#{model.ywlx,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.ywyy neq null">and m.YWYY=#{model.ywyy,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.kssj neq null">and m.KSSJ=#{model.kssj,jdbcType=DATE javaType=Date } </if> 
+<if test="model.jssj neq null">and m.JSSJ=#{model.jssj,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.ywgw neq null">and m.YWGW=#{model.ywgw,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.kskm neq null">and m.KSKM=#{model.kskm,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.xygw neq null">and m.XYGW=#{model.xygw,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.glbm neq null">and m.GLBM=#{model.glbm,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.ffbz neq null">and m.FFBZ=#{model.ffbz,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.rkbz neq null">and m.RKBZ=#{model.rkbz,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.hdbz neq null">and m.HDBZ=#{model.hdbz,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.xgzl neq null">and m.XGZL=#{model.xgzl,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.zjcx neq null">and m.ZJCX=#{model.zjcx,jdbcType=VARCHAR javaType=String } </if> 
+</trim>
+</select>
+<select id="selectEqPk" parameterType="String"  resultMap="resultMap">
+	 select <include refid="colums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> = #{,jdbcType=VARCHAR,javaType=String}
+</select>
+
+<select id="count" resultType="int">
+	 select count(*) from <include refid="table"/>
+</select>
+
+<select id="selectInPk" resultType="ArrayList" resultMap="resultMap" >
+	 select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> in
+<foreach item="pk" collection="list" open="(" separator="," close=")"> #{pk} </foreach> 
+<include refid="orderby"/>
+</select>
+
+<select id="selectNotInPk" resultType="ArrayList" resultMap="resultMap" >
+	 select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> not in
+<foreach item="pk" collection="list" open="(" separator="," close=")"> #{pk} </foreach> 
+<include refid="orderby"/>
+</select>
+
+<select  id="selectAll"  resultType="ArrayList"  resultMap="resultMap">
+	 select m.* <include refid="joinColums"/> from  <include refid="table" /> m <include refid="join"/> 
+ <include refid="orderby"/>
+</select>
+
+<insert id="insertOne" >
+	 insert into <include refid="table"/> ( <include refid="colums"/> ) values ( <include refid="insertCols"/>) 
+</insert>
+
+<update id="updateOne" flushCache="true" >
+	 update <include refid="table"/> set <include refid="updateCols"/> where <include refid="pk" />=#{model.,jdbcType=VARCHAR,javaType=String}
+</update>
+
+<delete id="deleteInPk" flushCache="true">
+	 delete from <include refid="table"/> where <include refid="pk" /> in
+<foreach item="pk" collection="list" open="(" separator="," close=")">#{pk}</foreach>
+</delete>
+
+<delete id="deleteNotInPk" flushCache="true">
+	 delete from <include refid="table"/> where <include refid="pk" /> not in
+<foreach item="pk" collection="list" open="(" separator="," close=")">#{pk}</foreach>
+</delete>
+
+
+
+</mapper>
