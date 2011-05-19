@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="preasignpackage" namespace="/self" extends="selfpackage">
+		<action  name="preasign"  class="preasignAction">
+			<result name="funcselect">/jsp/self/preasign/funcSelect.jsp</result>
+			<result name="checkprint">/jsp/self/preasign/checkPrint.jsp</result>
+			
+			<result name="nopreasign">/jsp/self/preasign/noPreasign.jsp</result>
+			
+			<result name="preparepreasign">/jsp/self/preasign/preasign.jsp</result>
+			
+			<result name="preasignprint">/jsp/self/preasign/preasignPrint.jsp</result>
+			<result name="checksuccess">/jsp/self/preasign/checksuccess.jsp</result>
+			<result name="preasignsuccess">/jsp/self/preasign/preasignsuccess.jsp</result>
+		</action>
+	</package>
+</struts>

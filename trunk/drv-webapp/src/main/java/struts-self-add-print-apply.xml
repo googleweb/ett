@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="addprintapplypackage" namespace="/self" extends="selfpackage">
+		<action  name="addPrintApply"  class="addPrintApplyAction">
+			<result name="funcselect">/jsp/self/addprintapply/funcSelect.jsp</result>
+			<result name="violist">/jsp/self/addprintapply/vioList.jsp</result>
+			<result name="hospitallist">/jsp/self/addprintapply/hospitalList.jsp</result>
+			<result name="vioprintconfirm">/jsp/self/addprintapply/vioPrintConfirm.jsp</result>
+			<result name="hospitalprintconfirm">/jsp/self/addprintapply/hospitalPrintConfirm.jsp</result>
+			<result name="hint">/jsp/self/addprintapply/printhint.jsp</result>
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="drv-webapp"
+  id="myeclipse.1298115295750"
+  context-root="/drv-webapp"
+  j2ee-spec="5.0"
+  archive="drv-webapp.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

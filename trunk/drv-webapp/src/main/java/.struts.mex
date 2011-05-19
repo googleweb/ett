@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="base-package" location="10,1025" size="170,70" />
+  <package name="root" location="25,290" size="1085,280">
+    <action name="page404" location="65,127" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="404.jsp" />
+      </result>
+    </action>
+    <action name="*" location="415,64" size="150,167">
+      <result name="print">
+        <resourceEdge source="print" routing="0" target="{1}-Print.jsp" />
+      </result>
+      <result name="list">
+        <resourceEdge source="list" routing="0" target="{1}-List.jsp" />
+      </result>
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="{1}-Success.jsp" />
+      </result>
+      <result name="edit">
+        <resourceEdge source="edit" routing="0" target="{1}-Edit.jsp" />
+      </result>
+      <result name="add">
+        <resourceEdge source="add" routing="0" target="{1}-Add.jsp" />
+      </result>
+      <result name="excel">
+        <resourceEdge source="excel" routing="0" target="{1}-Excel.jsp" />
+      </result>
+      <result name="detail">
+        <resourceEdge source="detail" routing="0" target="{1}-Detail.jsp" />
+      </result>
+    </action>
+  </package>
+  <package name="json" location="1390,10" size="280,910">
+    <action name="page404" location="65,57" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="404.jsp" />
+      </result>
+    </action>
+    <action name="*" location="65,694" size="150,167">
+      <result name="list" />
+      <result name="edit" />
+      <result name="add" />
+      <result name="detail" />
+      <result name="print">
+        <resourceEdge source="print" routing="0" target="closeself.html" />
+      </result>
+      <result name="excel" />
+      <result name="success" />
+    </action>
+  </package>
+  <webResource name="404.jsp" path="/jsp/common/404.jsp" location="92,30" size="150,55" />
+  <webResource name="{1}-Print.jsp" path="/jsp/{1}-Print.jsp" location="235,625" size="150,55" />
+  <webResource name="{1}-List.jsp" path="/jsp/{1}-List.jsp" location="448,135" size="150,55" />
+  <webResource name="{1}-Success.jsp" path="/jsp/{1}-Success.jsp" location="1174,380" size="150,55" />
+  <webResource name="{1}-Edit.jsp" path="/jsp/{1}-Edit.jsp" location="1008,625" size="150,55" />
+  <webResource name="{1}-Add.jsp" path="/jsp/{1}-Add.jsp" location="836,625" size="150,55" />
+  <webResource name="{1}-Excel.jsp" path="/jsp/{1}-Excel.jsp" location="655,625" size="150,55" />
+  <webResource name="{1}-Detail.jsp" path="/jsp/{1}-Detail.jsp" location="442,625" size="150,55" />
+  <webResource name="closeself.html" path="/closeself.html" location="69,730" size="150,55" />
+  <include file="com/ett/struts2/config/struts-*.xml" location="260,1010" size="150,30" />
+  <include file="struts-*.xml" location="580,1010" size="150,30" />
+</Struts2Diagram>
+

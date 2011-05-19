@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="selfpackage" namespace="/self" extends="struts-default">
+		<default-action-ref name="page404"/>	
+		<global-results>
+			<result name="hint">/jsp/self/hint.jsp</result>
+			<result name="error">/jsp/self/error.jsp</result>
+			<result name="networkerror">/jsp/self/error.jsp</result>
+			<result name="objectnotexist">/jsp/self/error.jsp</result>
+			<result name="businessexception">/jsp/self/error.jsp</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping result="error" exception="java.io.IOException">
+			</exception-mapping>
+			<exception-mapping result="businessexception" exception="com.ett.common.exception.BusinessException">
+			</exception-mapping>
+			<exception-mapping result="networkerror" exception="com.ett.common.exception.NetworkException">
+			</exception-mapping>
+			<exception-mapping result="objectnotexist" exception="com.ett.common.exception.ObjectDontExistException">
+			</exception-mapping>
+		</global-exception-mappings>
+		<action name="page404">
+			<result>/jsp/common/404.jsp</result>
+		</action>
+		<action  name="*"  class="{1}Action">  
+			<result name="print">/jsp/{1}-Print.jsp</result>
+			<result name="list">/jsp/{1}-List.jsp</result>
+			<result name="success">/jsp/{1}-Success.jsp</result>
+			<result name="edit">/jsp/{1}-Edit.jsp</result>
+			<result name="add">/jsp/{1}-Add.jsp</result>
+			<result name="excel">/jsp/{1}-Excel.jsp</result>
+			<result name="detail">/jsp/{1}-Detail.jsp</result>
+		</action>
+		<action  name="index"  class="indexAction">  
+			
+			<result name="logout">/jsp/self/index.jsp</result>
+			<result name="success">/jsp/self/index.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		
+		<action  name="test"  class="testStruts2Action">  
+			<result name="success">/jsp/self/test.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		<!-- 身份证读取Action -->
+		<action name="idCardReader" class="idCardReaderAction">
+			<result name="func">/jsp/self/idCardReader-FuncSelect.jsp</result>
+			<result name="input">/jsp/self/idCardReader.jsp</result>
+			<result name="infocheck" type="redirect">/self/personInfoCheck!infoCheck.action</result>
+			<result name="success" type="redirect">${returnUrl}</result>
+		</action>
+		<!-- 捕获驾驶人照片 -->
+		<action name="captureImg" class="captureImgAction">
+			<interceptor-ref name ="fileUploadStack" /> 
+			<result name="input">/jsp/self/captureImg.jsp</result>
+			<result name="success" type="redirect">${returnUrl}</result>
+		</action>
+		<!-- 展示驾驶人图片以及相应的违法现场的图片 -->
+		<action name="imageShow" class="imageShowAction">
+			<result name="success" type="stream">
+				<param name="contentType">image/jpeg</param>
+				<param name="inputName">inputstream</param>
+			</result>
+		</action>
+		
+		<!-- 申请人资料审核界面 -->
+		<action name="personInfoCheck" class="personInfoCheckAction">
+			<result name="input">/jsp/self/personInfoCheck.jsp</result>
+			<result name="success" type="redirect">${returnUrl}</result>
+			
+		</action>
+		
+	
+		
+		
+		
+		
+	</package>
+</struts>

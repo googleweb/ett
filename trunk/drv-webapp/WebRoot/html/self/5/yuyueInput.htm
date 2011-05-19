@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>驾驶人预约考试界面</title>
+  <link type="text/css" rel="Stylesheet" href="../css/main.css" />
+   <script type="text/javascript" src="../js/setday.js"></script>
+</head>
+<body style="text-align:center;width:100%;height:100%">
+<div style="text-align:center;width:1024px;height:100%">
+<div style="text-align:center;width:100%; height:150px;background-image:url('../img/header.jpg'); background-repeat:no-repeat; background-attachment:fixed">
+
+</div>
+<div>
+<div class="hint" style="width:800px">请点击开始预约按钮进行预约信息确认!（提示语+语音）</div>
+<br />
+<div class="func">
+<div style="width:650px; ">
+
+<input type="button" value="开始预约" onclick="document.location.href='yuyueConfirm.htm'" />
+&nbsp;<input type="button" value="返回首页" onclick="document.location.href='../index.htm'" />
+</div>
+<br />
+<div style="text-align:left">
+驾驶人：贾明<br />
+身份证：3501218198202020202<br />
+
+准考证号：350123132131312
+<br />
+考车号牌：<select>
+<option value="粤D001">粤D001</option>
+<option value="粤D002">粤D002</option>
+
+</select><br />
+
+
+考试场次：<select>
+
+<option value="大学路考场1">大学路考场1</option>
+<option value="大学路考场2">大学路考场2</option>
+</select>
+<br />
+预约日期： <input  onclick="setday(this)"  id="txtDate" /><br />
+</select><br />
+
+</div>
+
+</div>
+</div>
+</div>
+</body>
+</html>
