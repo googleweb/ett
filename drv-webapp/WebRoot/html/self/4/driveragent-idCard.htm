@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>身份证读取页</title>
+    <link type="text/css" rel="Stylesheet" href="../css/main.css" />
+</head>
+<body >
+<div class="innderDiv">
+<div class="headerDiv">
+</div>
+<div>
+<div class="hint">车主 请把二代证身份证放在二代证读卡器上读取！（提示语+语音）</div>
+<br />
+<table width="1024" cellspacing="0" cellpadding="0">
+<tr>
+<td>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</td>
+<td><input type="text" readonly class="showinput" id="txtname" value="贾明"/></td>
+<td>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别</td>
+<td><input type="text" id="txtsex" readonly class="showinput" value="男"/></td>
+<td>民&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;族</td>
+<td><input type="text" id="txtnation"  readonly class="showinput" value="汉族"/></td>
+<td rowspan="4"><img src="img/no_photo.jpg" id="txtphoto" width="133px" height="160px"/></td>
+</tr>
+<tr>
+<td>出&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;生</td>
+<td><input type="text" id="txtbirth" readonly class="showinput" value="2011-05-01"/></td>
+<td>住&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址</td>
+<td colspan="3"><input type="text" style="width:300px" id="txtaddress" readonly class="showinput" value="广州白云区翰云路471号A904" /></td>
+
+</tr>
+<tr>
+<td>身份证号码</td>
+<td><input type="text" id="txtidcard" readonly class="showinput" value="3501218198202020202"/></td>
+<td>签发机关</td>
+<td colspan="3"><input type="text"  style="width:300px" id="txtfzjg"  readonly class="showinput"  value="广州市公安局白云分局"/></td>
+
+</tr>
+
+<tr>
+<td>有 效期 起</td>
+<td><input type="text" id="txtstartdate" readonly class="showinput" value="2001-05-01"/></td>
+<td>有效期止</td>
+<td colspan="3"><input type="text" id="txtenddate"   readonly class="showinput"  value="2012-07-01"/></td>
+
+</tr>
+
+</table>
+<br />
+<br />
+<a href="agent-idCard.htm">下一步</a>
+<a href="driver-idCard.htm">返回</a>
+<br />
+<br />
+本页面的使用需要sdtapi.dll，WltRS.dll放置在System目录下，termb.lic放置到c:根目录下
+需要ETTSelfIDCardActiveX.ocx插件
+<br />
+使用本页面的时候附上returnurl的参数。返回的时候会附上身份证号码和姓名 IdCard/Name
+,读到二代证信息后自动跳到下一个界面
+
+</div>
+</div>
+</body>
+<script type="text/javascript">
+function getParameter(paraStr, url)   
+{   
+    var result = "";   
+    //获取URL中全部参数列表数据   
+    var str = "&" + url.split("?")[1];   
+    var paraName = paraStr + "=";   
+    //判断要获取的参数是否存在   
+    if(str.indexOf("&"+paraName)!=-1)   
+    {   
+        //如果要获取的参数到结尾是否还包含“&”   
+        if(str.substring(str.indexOf(paraName),str.length).indexOf("&")!=-1)   
+        {   
+            //得到要获取的参数到结尾的字符串   
+            var TmpStr=str.substring(str.indexOf(paraName),str.length);   
+            //截取从参数开始到最近的“&”出现位置间的字符   
+            result=TmpStr.substr(TmpStr.indexOf(paraName),TmpStr.indexOf("&")-TmpStr.indexOf(paraName));     
+        }   
+        else   
+        {     
+            result=str.substring(str.indexOf(paraName),str.length);     
+        }   
+    }     
+    else   
+    {     
+        result="无此参数";     
+    }     
+    return (result.replace("&",""));     
+}  
+
+function nextStep()
+{
+var r = getParameter("returnurl",location.href);   
+  
+//测试输出，结果是：site=popasp  
+//alert(r);   
+//根据得到的结果可以使用   
+var url = r.split("=")[1]; //获取参数名  
+    document.location.href=url+"?idcard="+document.all.txtidcard.value+"&name="+document.all.txtname.value;
+}
+//setTimeout("nextStep()",3000);
+
+</script>
+
+
+</html>

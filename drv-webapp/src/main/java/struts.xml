@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.objectFactory" value="spring"/>
+	<!--struts.objectFactory=com.opensymphony.xwork2.ObjectFactory to struts.properties -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.ui.theme" value="simple" />
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<constant name="struts.multipart.saveDir" value="/upload-temp" />
+	<constant name="struts.custom.i18n.resources" value="system-config"/>
+	<constant name="struts.enable.SlashesInActionNames" value="true" />
+	<include file="com/ett/struts2/config/struts-*.xml"></include>
+	<include file="com/ett/drv/web/action/*/struts-*.xml"></include>
+	<include file="struts-*.xml"></include>
+	<package name="base-package" extends="struts-default" abstract="true">
+   		<default-interceptor-ref name="paramsPrepareParamsStack"></default-interceptor-ref>
+   		<global-results>
+       <result name="none" type="httpheader">
+        <param name="status">200</param>
+       </result>
+       <result name="json" type="httpheader">
+         <param name="status">200</param>
+       </result>
+       <result name="text" type="plainText">
+        <param name="charSet">UTF-8</param>
+       </result>
+       <result name="error">/jsp/error.jsp</result>
+   </global-results>
+</package>
+	<package name="root" namespace="/root" extends="struts-default">
+		<default-action-ref name="page404"/>	
+		<global-results>
+			<result name="error">/jsp/common/error.jsp</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping result="error" exception="java.io.IOException">
+			</exception-mapping>
+		</global-exception-mappings>
+		<action name="page404">
+			<result>/jsp/common/404.jsp</result>
+		</action>
+		<action  name="*"  class="{1}Action">  
+			<result name="print">/jsp/{1}-Print.jsp</result>
+			<result name="list">/jsp/{1}-List.jsp</result>
+			<result name="success">/jsp/{1}-Success.jsp</result>
+			<result name="edit">/jsp/{1}-Edit.jsp</result>
+			<result name="add">/jsp/{1}-Add.jsp</result>
+			<result name="excel">/jsp/{1}-Excel.jsp</result>
+			<result name="detail">/jsp/{1}-Detail.jsp</result>
+		</action>
+	</package>
+	<package name="json" namespace="/json" extends="json-default">
+		<default-action-ref name="page404"/>	
+		<global-results>
+			<result name="error">/jsp/common/error.jsp</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping result="error" exception="com.ht.exception.NoRightException">
+			</exception-mapping>
+			<exception-mapping result="error" exception="java.io.IOException">
+			</exception-mapping>
+		</global-exception-mappings>
+		<action name="page404">
+			<result>/jsp/common/404.jsp</result>
+		</action>
+		<action  name="*"  class="{1}Action">  
+			<result name="list" type="json">
+				<param name="includeProperties">           
+           			lists.*,pageSize,start,rowCount,failerrors,success         
+				</param>
+				<param name="ignoreHierarchy">false</param>
+				<!--<param name="contentType">text/plain charset=utf-8</param>-->
+				<param name="noCache">true</param>
+				<param name="excludeNullProperties">true</param>
+			</result>
+			<result name="edit" type="json">
+				<param name="includeProperties">           
+           			entity,failerrors,success  
+				</param>
+				<param name="ignoreHierarchy">false</param>
+				<!--<param name="contentType">text/plain charset=utf-8</param>-->
+				<param name="noCache">true</param>
+				<param name="excludeNullProperties">true</param>
+			</result> 
+			<result name="add" type="json">
+				<param name="includeProperties">           
+           			    failerrors,success,id 
+				</param>
+				<param name="ignoreHierarchy">false</param>
+				<!--<param name="contentType">text/plain charset=utf-8</param>-->
+				<param name="noCache">true</param>
+				<param name="excludeNullProperties">true</param>	
+			</result>
+			<result name="detail" type="json">
+				<param name="includeProperties">           
+           			    failerrors,success,id 
+				</param>
+				<param name="ignoreHierarchy">false</param>
+				<!--<param name="contentType">text/plain charset=utf-8</param>-->
+				<param name="noCache">true</param>
+				<param name="excludeNullProperties">true</param>	
+			</result>
+			<result name="print">
+				/closeself.html
+			</result>
+			<result name="excel" type="stream">  
+				<param name="contentType">application/vnd.ms-excel</param>  
+				<!-- 指定提供InputStream的filed name -->  
+				<param name="contentDisposition">filename="${chineseExcel}.xls"</param>
+				<param name="inputName">excelStream</param>  
+				<param name="bufferSize">1024</param>  
+			</result>
+			<result name="success" type="json">
+				<param name="includeProperties">           
+           			lists.*,pageSize,start,rowCount,failerrors,success         
+				</param>
+				<param name="ignoreHierarchy">false</param>
+				<!--<param name="contentType">text/plain charset=utf-8</param>-->
+				<param name="noCache">true</param>
+				<param name="excludeNullProperties">true</param>
+			</result>
+		</action> 
+	</package>
+</struts>

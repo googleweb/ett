@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans default-autowire="byName" xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+
+<import resource="applicationContext.xml"/>
+
+<bean id="actionBookedBiz" parent="baseBookedBiz"></bean>
+<bean id="actionAdminBiz" parent="baseAdminBiz"></bean>
+<bean id="actionSelfBiz" parent="baseSelfBiz" ></bean>
+
+<bean id="baseAction"  abstract="true"
+   class="com.ett.drv.web.action.BaseAction"  
+>
+   <property name="adminBiz" ref="actionAdminBiz"></property>
+   <property name="selfBiz" ref="actionSelfBiz"></property>
+   <property name="bookedBiz" ref="actionBookedBiz"></property>
+</bean>
+
+<bean class="com.ett.drv.web.action.booked.WeekPbAction"  parent="baseAction"
+ id="com.ett.drv.web.action.booked.WeekPbAction"
+>
+</bean>
+
+<bean class="com.ett.drv.web.action.admin.MenuAction" parent="baseAction"
+ id="com.ett.drv.web.action.admin.MenuAction"
+>
+</bean>
+
+<bean class="com.ett.drv.web.action.admin.UserAction" parent="baseAction"
+ id="com.ett.drv.web.action.admin.UserAction"
+>
+</bean>
+
+<bean class="com.ett.drv.web.action.self.SysAction"
+  id="com.ett.drv.web.action.self.SysAction"
+>
+  <property name="selfBiz" ref="actionSelfBiz"></property>
+</bean>
+
+
+
+
+<bean class="com.ett.drv.web.action.self.PaymentAction"
+  id="com.ett.drv.web.action.self.PaymentAction"
+>
+  <property name="selfBiz" ref="actionSelfBiz"></property>
+</bean>
+
+
+<bean class="com.ett.drv.web.action.self.IdentityAction"
+  id="com.ett.drv.web.action.self.IdentityAction"
+>
+  <property name="selfBiz" ref="actionSelfBiz"></property>
+</bean>
+
+
+<bean class="com.ett.drv.web.action.self.VehicleAction" 
+  id="com.ett.drv.web.action.self.VehicleAction"
+>
+</bean>
+
+
+<bean class="com.ett.drv.web.action.admin.SelfTransactDrvAction"   parent="baseAction"
+  id="com.ett.drv.web.action.admin.SelfTransactDrvAction"
+>
+</bean>
+
+
+<bean class="com.ett.drv.web.action.admin.SelfTransactVehAction"   parent="baseAction"
+  id="com.ett.drv.web.action.admin.SelfTransactVehAction"
+>
+</bean>
+
+<bean class="com.ett.drv.web.action.admin.SelfTransactKm1Action"   parent="baseAction"
+  id="com.ett.drv.web.action.admin.SelfTransactKm1Action"
+>
+</bean>
+
+<bean class="com.ett.drv.web.action.admin.SelfTransactFeeAction"   parent="baseAction"
+  id="com.ett.drv.web.action.admin.SelfTransactFeeAction"
+>
+</bean>
+
+<bean class="com.ett.drv.web.action.admin.SelfDeviceAction"   parent="baseAction"
+  id="com.ett.drv.web.action.admin.SelfDeviceAction"
+>
+</bean>
+
+
+<bean id="com.ett.drv.web.action.common.DatagridAction"  parent="baseAction"
+ class="com.ett.drv.web.action.common.DatagridAction"
+>
+</bean>
+
+
+
+</beans>
