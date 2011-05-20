@@ -1,5 +1,8 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
+<%@page import="com.smartken.kia.core.util.EasyUiUtil"%>
+<%@page import="com.smartken.kia.core.model.impl.*"%>
+<%@page import="com.ett.model.*" %>
 
 <%
 String path = request.getContextPath();
@@ -26,117 +29,89 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</jsp:include>
    <jsp:include page="/css/index.jsp"></jsp:include>
    <jsp:include page="/js/index.jsp"></jsp:include>
-   	<script>
-	  $(document).ready(function(){
-	       var innerHeight=$("#menuDiv").outerHeight(false);
-	       var innerWidth=$("#menuDiv").width();
-	       var menuDG="menuDG";
-	       var menuEditDlg="menuEditDlg";
-	       var menuAddDlg="menuAddDlg";
-	       
-	        $("#"+menuDG).datagrid({
-				url: 'sys/menu/listDataGrid.action?format=json',
-				title: '菜单管理列表',
-				fitColumns: true,
-				singleSelect:false,
-				height:innerHeight,
-				width:innerWidth,
-				pagination:true,
-				idField:"id",
-				columns:[[
-				    {field:'id',title:'菜单ID',checkbox:true},
-				    {field:'name',title:'菜单',width:10},
-					//{field:"parentId",title:'父菜单',width:10},
-					{field:'url',title:'页面路径',width:30},
-					{field:'parma',title:'请求参数',width:30},
-					{field:'descp',title:'功能描述',width:30}
-					
-				]], //columns
-				toolbar:[{
-					text:'新增菜单',
-					iconCls:'icon-add',
-					handler:function(){
-					          
-					 	     $("#"+menuAddDlg).dialog({
-					           title:'新增菜单',
-					           width:500,
-					           height:400,
-					           modal:true,
-					           onBeforeOpen:function(){
-					            $(this).html(fnHtmlInnerFrame("sys/menu/add-jsp.action"));
-					           },
-					           onClose:function(){
-					             
-					             $("#"+menuDG).datagrid("reload");
-					             $(this).html("");
-					           }// onClose(function(){
-				             });  //$('#editWindow').dialog({
-				            
-					}  //handler:function(){
-				},'-',{
-					text:'delete',
-					iconCls:'icon-remove',
-					handler:function(){
-					        var lStrIds="";
-					        var lStrName="";
-						    var rows = $("#"+menuDG).datagrid('getSelections');
-						    $.each(rows,function(index,item){
-						       lStrIds+=","+item.id;
-						       lStrName+=" "+item.name;
-						    });  //rows.each(function(index,item){
-						    $.messager.confirm("删除菜单",lStrName,function(ok){
-						                      if(ok){
-						                         $.get("sys/menu/remove.action"
-						                         ,{menuids:lStrIds}
-						                         ,function(data){
-						                         $.messager.alert("操作成功",data);
-						                         $(menuDG).datagrid('reload');}
-						                         );  
-						                      } //if(ok){
-						                     });    // $.messager.confirm("操作提示","是否删除以下菜单?"+lStrName,function(ok){
-
-                                
-                            } //handler:function(){
-					}
-			
-				],//toolbar
-				onDblClickRow:function(index,data){			  
-				   //$(menuEditDlg+" > .innerFrame:first").attr("src","sys/Menu-edit.action?menuid="+data.id);
-				  // document.frames("menuEditFrame").src="sys/Menu-edit.action?menuid="+data.id;
-				   $("#"+menuEditDlg).dialog({
-					  title:'修改菜单-'+data.name,
-					  width:500,
-					  height:400,
-					  modal:true,
-				      onClose:function(){
-				        $(this).html("");
-					    $("#"+menuDG).datagrid("reload");
-					  }// onClose(function(){
-					  ,onBeforeOpen:function(){
-					      $(this).html(fnHtmlInnerFrame("sys/menu/edit-jsp.action?menuid="+data.id));
-					      //$(this).html(fnLoadInnerFrame("sys/Menu-edit.action?menuid="+data.id));
-					      //$("#menuEditFrame").attr("src","sys/Menu-edit.action?menuid="+data.id);
-					  }
-				   });  //$('#editWindow').dialog({
-				   
-				}  //onDblClickRow:function(index,data){
-				
-			});  //$('#menuDG').datagrid({
-	  });  //ready
-
-	
-		
-		
-
-	</script>
+   
   </head>
-  
-  <body> 
 
-	<div class="innerDiv" id="menuDiv">
-	<table id="menuDG"></table>
-	  <div id="menuEditDlg"></div>
-      <div id="menuAddDlg"></div>
-    </div>
+   <script type="text/javascript">
+    function operaFormatter(value,rowData,rowIndex){
+    	var aEidt="<a title='编辑' href='javascript:void(0)' class='kia-icon edit' onclick='clickEditHandler("+rowData["id"]+");'></a>";
+        return aEidt;
+    }
+    
+	function clickAddHandler(){ 
+  var href="http://localhost:8080/webapp//admin/SelfDevice/edit/device.action";$("#divEdit").dialog({title:"新增硬件",
+height:400,
+width:600,
+onClose:function(){ $('#tableDG').datagrid('reload'); },
+modal:true,
+onBeforeOpen:function(){$(this).kiaIframe(href);}} 
+);    //   end:$("#divEdit").dialog
+  }
+
+	function clickEditHandler(id){ 
+  var href="http://localhost:8080/webapp//admin/SelfDevice/edit/device.action?id="+id;$("#divEdit").dialog({title:"修改硬件",
+height:400,
+width:600,
+onClose:function(){ $('#tableDG').datagrid('reload'); },
+modal:true,
+onBeforeOpen:function(){$(this).kiaIframe(href);}} 
+);    //   end:$("#divEdit").dialog
+  }
+
+	function clickRemoveHandler(){ 
+  $.messager.confirm('操作提示','确认删除硬件设备?',function(yes){
+var selectsRows=$("#tableDG").datagrid("getSelections");var ids="";
+$.each(selectsRows,function(index,row){
+ids+=','+row['id'];  });
+var action="http://localhost:8080/webapp//admin/SelfDevice/do/removeDevice.action";$.post(action,{ids:ids},function(str){
+var json=Kia.util.strToJson(str);Kia.util.handleJsonResult(json);
+$("#tableDG").datagrid("reload");});
+});  //$.messager
+  }
+ 
+       $(document).ready(function(){ 
+
+
+       
+	$("#test").datagrid({fit:true,
+toolbar:[ 
+{text:"新增硬件",
+iconCls:"icon-add",
+handler:clickAddHandler}
+, 
+{text:"删除硬件",
+iconCls:"icon-remove",
+handler:clickRemoveHandler}
+] 
+,
+columns:[ 
+	[ 
+	{field:"id",checkbox:true}
+	,
+	{field:"loginName",title:"用户名",width:150},
+	{field:"beginip",title:"开始IP",width:150},
+	{field:"workid",title:"工作号",width:150},
+	{field:"roleid",title:"角色号",width:150},
+	{field:"state",title:"状态",width:150},
+	{field:"idcard",title:"卡号",width:150},
+	{field:"depid",title:"部门编号",width:150},
+	{field:"fullName",title:"全名",width:150},
+	{field:"endip",title:"结束IP",width:150}
+	
+	
+	]
+] 
+,
+pagination:true,
+url:"http://localhost:8080/webapp//admin/User/datagrid/users.action"} 
+);    //   end:$("#tableDG").datagrid
+
+       }); //$(document).ready
+    </script>
+  <body>
+    <div class="innerDiv">
+	<table id="test"></table>
+	</div>
+	<div id="divEditUser"></div>
   </body>
 </html>
