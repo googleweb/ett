@@ -154,6 +154,36 @@ kiaLoadFields:function(){
 		     increment:10
             ,precision:0
 	 });
- }
+ },
+ 
+  kiaEidtForm:function(opts){
+	 var innerDiv=$("<div></div>");
+	 innerDiv.css("width","100px").css("height","100px");
+	 var editForm=$("<form method='post'></form>");
+	 var urlSave=opts["urlSave"]||"";
+	 var urlRemove=opts["urlRemove"]||"";
+	 var cols=opts["cols"]||[];
+	 var data=opts["data"]||{};
+	 var intCols=opts["intCols"]||1;
+	 $.each(cols,function(index,col){
+		 var inputName=col["field"];
+		 var inputType=col["type"]||"text";
+		 var inputReadonly=col["readonly"]||false;
+		 var inputValue=data[inputName];
+		 var editor=col["editor"];
+		 var lable=col["title"];
+		 var inputObj=$("<input />");
+		 var spanLable=$("<span /></span>");
+		 spanLable.html(lable+":");
+		 inputObject
+		 .attr("readonly",inputReadonly)
+		 .attr("type",inputType)
+		 .attr("name",inputName)
+		 .val(inputValue);
+		 editForm.append(spanLable).append(inputObject);
+	 });
+	 innerDiv.append(editForm);
+	 $(this).append(innderDiv);
+  }
  
  }); //jQuery.fn.entends({
