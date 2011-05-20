@@ -68,8 +68,8 @@
    
 <bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">
        <property name="dataSource" ref="dataSource"></property>
-       <property name="configLocation" value="classpath:com/ett/drv/mapper/mybatis3.drv.oracle.xml"></property>
-       
+       <property name="configLocation" value="classpath:com/ett/drv/mapper/mybatis3.drv.${dbtype}.xml"></property>
+
 </bean>
 
 
@@ -91,16 +91,12 @@
 			<tx:method name="remove*" propagation="REQUIRED"/>			
 		</tx:attributes>
 	</tx:advice>
-
 	<aop:config>
 		<aop:pointcut expression="execution(* com.ett.drv.biz.impl.*.*(..))" id="drvMehtod"/>
-		<aop:advisor advice-ref="txAdvice" pointcut-ref="drvMehtod" />
-		
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="drvMehtod" />		
 	</aop:config>
-
-
-
- <bean id="baseMapper" class="org.mybatis.spring.mapper.MapperFactoryBean" abstract="true" >
+	
+	<bean id="baseMapper" class="org.mybatis.spring.mapper.MapperFactoryBean" abstract="true" >
      <property name="sqlSessionFactory" ref="sqlSessionFactory" />
    </bean>
  
