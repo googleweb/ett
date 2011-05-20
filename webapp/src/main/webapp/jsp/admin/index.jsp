@@ -20,7 +20,7 @@ String adminMenuPath=basePath+"admin/Menu";
     	   $("#mainTabs").tabs('add',{
 			   title:"信息中心",
 			   closable:false,
-			   content:"<iframe src='infocenter.jsp' scrolling='no' frameborder='0'></iframe>"
+			   content:"<iframe src='<%=basePath%>jsp/admin/infoCenter.jsp' scrolling='no' frameborder='0'></iframe>"
 		    });
     	 
     		$('#MenuTreeNode').tree({
@@ -57,7 +57,7 @@ String adminMenuPath=basePath+"admin/Menu";
 		<div>item2</div>
 	</div>
 		<div region="north"  split="false" style="height:100%;padding:10px;overflow: hidden;">
-            <iframe src="layout/header.jsp" scrolling="no" frameborder="0"></iframe>
+            <iframe src="<%=basePath %>layout/header.jsp" scrolling="no" frameborder="0"></iframe>
 		</div>
 		<!--  
 		<div region="south"  split="false" style="height:100px;padding:10px;background:#efefef;">

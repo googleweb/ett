@@ -4,7 +4,7 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 String selfPaymentPath=basePath+"self/Payment";
 
-String href=basePath+"self/fee!feeTypeSelect.action?money=35&returnurl="+selfPaymentPath+"do/payment_success.action";
+String href=basePath+"self/fee!feeTypeSelect.action?money=35&returnurl="+selfPaymentPath+"/do/payment_success.action";
 
 response.sendRedirect(href);
 %>
