@@ -78,7 +78,7 @@ C_STATE=#{model.state,jdbcType=VARCHAR,javaType=String}
 <if test="model.state neq null">and m.C_STATE=#{model.state,jdbcType=VARCHAR javaType=String } </if> 
 </trim>
 </select>
-<select id="selectEqPk" parameterType="String"  resultMap="resultMap">
+<select id="selectEqPk" parameterType="Integer"  resultMap="resultMap">
 	 select <include refid="colums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> = #{id,jdbcType=INTEGER,javaType=Integer}
 </select>
 
