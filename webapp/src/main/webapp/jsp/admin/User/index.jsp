@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@page import="com.ett.drv.model.admin.UserModel"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@page import="com.smartken.kia.core.util.EasyUiUtil"%>
 <%@page import="com.smartken.kia.core.model.impl.*"%>
@@ -37,19 +38,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	var aEidt="<a title='编辑' href='javascript:void(0)' class='kia-icon edit' onclick='clickEditHandler("+rowData["id"]+");'></a>";
         return aEidt;
     }
-    
-	function clickAddHandler(){ 
-  var href="http://localhost:8080/webapp//admin/SelfDevice/edit/device.action";$("#divEdit").dialog({title:"新增硬件",
-height:400,
-width:600,
-onClose:function(){ $('#tableDG').datagrid('reload'); },
-modal:true,
-onBeforeOpen:function(){$(this).kiaIframe(href);}} 
-);    //   end:$("#divEdit").dialog
-  }
+function clickAddHandler(){ 
+  		var href='<%=basePath%>'+"admin/User/to/editUser.action";
+  		$("#divEditUser").dialog({
+  		title:"新增硬件",
+		height:400,
+		width:600,
+		onClose:function(){ $('#test').datagrid('reload'); },
+	    modal:true,
+		onBeforeOpen:function(){$(this).kiaIframe(href);}} 
+		);    //   end:$("#divEdit").dialog
+ }
+
+function dblClickRowHandler(rowIndex,rowData){ 
+	    var id=rowData["id"];
+	    var fullname=rowData["<%=UserModel.F.fullName%>"];
+  		var href='<%=basePath%>'+"admin/User/to/editUser.action?id="+id;
+  		$("#divEditUser").dialog({
+  		title:"修改用户:"+fullname,
+		height:400,
+		width:600,
+		onClose:function(){ $('#test').datagrid('reload'); },
+	    modal:true,
+		onBeforeOpen:function(){$(this).kiaIframe(href);}} 
+		);    //   end:$("#divEdit").dialog
+ }
 
 	function clickEditHandler(id){ 
-  var href="http://localhost:8080/webapp//admin/SelfDevice/edit/device.action?id="+id;$("#divEdit").dialog({title:"修改硬件",
+  var href='<%=basePath%>'+"admin/SelfDevice/edit/device.action?id="+id;$("#divEdit").dialog({title:"修改硬件",
 height:400,
 width:600,
 onClose:function(){ $('#tableDG').datagrid('reload'); },
@@ -57,22 +73,27 @@ modal:true,
 onBeforeOpen:function(){$(this).kiaIframe(href);}} 
 );    //   end:$("#divEdit").dialog
   }
-
-	function clickRemoveHandler(){ 
-  $.messager.confirm('操作提示','确认删除硬件设备?',function(yes){
-var selectsRows=$("#tableDG").datagrid("getSelections");var ids="";
-$.each(selectsRows,function(index,row){
-ids+=','+row['id'];  });
-var action="http://localhost:8080/webapp//admin/SelfDevice/do/removeDevice.action";$.post(action,{ids:ids},function(str){
-var json=Kia.util.strToJson(str);Kia.util.handleJsonResult(json);
-$("#tableDG").datagrid("reload");});
-});  //$.messager
-  }
- 
+function clickRemoveHandler(){ 
+ 		 $.messager.confirm('操作提示','确认删除用户?',function(yes){
+ 			 		
+					var selectsRows=$("#test").datagrid("getSelections");
+					var ids="";
+					$.each(selectsRows,function(index,row){
+							ids+=','+row['id'];  
+							});
+					var action="'<%=basePath%>admin/User/do/deleteUser.action";
+					$.post(action,{ids:ids},
+							function(str){
+									var json=Kia.util.strToJson(str);
+									Kia.util.handleJsonResult(json);
+									$("test").datagrid("reload");
+					});
+		});  //$.messager
+}
        $(document).ready(function(){ 
 
 
-       
+     
 	$("#test").datagrid({fit:true,
 toolbar:[ 
 {text:"新增硬件",
@@ -103,7 +124,9 @@ columns:[
 ] 
 ,
 pagination:true,
-url:"http://localhost:8080/webapp//admin/User/datagrid/users.action"} 
+onDblClickRow:dblClickRowHandler
+,
+url:'<%=basePath%>'+"admin/User/datagrid/users.action"} 
 );    //   end:$("#tableDG").datagrid
 
        }); //$(document).ready
@@ -113,5 +136,6 @@ url:"http://localhost:8080/webapp//admin/User/datagrid/users.action"}
 	<table id="test"></table>
 	</div>
 	<div id="divEditUser"></div>
+	
   </body>
 </html>

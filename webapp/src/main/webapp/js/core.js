@@ -27,10 +27,10 @@ Date.prototype.format = function(format) //author: meizz
 
 
 // 声明一个全局对象Namespace，用来注册命名空间
-Namespace = new Object();
+Class = new Object();
 
 // 全局对象仅仅存在register函数，参数为名称空间全路径，如"Grandsoft.GEA"
-Namespace.register = function(fullNS)
+Class.forName = function(fullNS)
 {
     // 将命名空间切成N部分, 比如Grandsoft、GEA等
     var nsArray = fullNS.split('.');
@@ -47,7 +47,7 @@ Namespace.register = function(fullNS)
     if (sEval != "") eval(sEval);
 }
 
-Namespace.register("Kia.util");
+Class.forName("Kia.util");
 
 Kia.util={
    isDateFormat:function (pattern,val){
