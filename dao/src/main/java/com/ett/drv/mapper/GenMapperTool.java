@@ -83,7 +83,7 @@ public class GenMapperTool {
 //		mappers.put(Table.TABLE_WEEK_RECORD,mf.createMapperTemplate(Table.TABLE_WEEK_RECORD.name().toUpperCase(), "id".toUpperCase(),IWeekRecordMapper.class, BookedWeekRecordModel.class ));
 //		mappers.put(Table.TABLE_YUYUE_DAY_LIMIT,mf.createMapperTemplate(Table.TABLE_YUYUE_DAY_LIMIT.name().toUpperCase(), "id".toUpperCase(),IMenuMapper.class, MenuModel.class ));
 //		mappers.put(Table.TABLE_YUYUE_INFO,mf.createMapperTemplate(Table.TABLE_YUYUE_INFO.name().toUpperCase(), "id".toUpperCase(),IOrderInfoMapper.class, BookedOrderInfoModel .class ));
-//		mappers.put(Table.TABLE_YUYUE_LIMIT,mf.createMapperTemplate(Table.TABLE_YUYUE_LIMIT.name().toUpperCase(), "id".toUpperCase(),ILimitMapper.class, BookedLimitModel.class ));
+		mappers.put(Table.TABLE_YUYUE_LIMIT,mf.createMapperTemplate(Table.TABLE_YUYUE_LIMIT.name().toUpperCase(), "id".toUpperCase(),ILimitMapper.class, BookedLimitModel.class ));
 //		mappers.put(Table.SELF_SYS_DEVICE,mf.createMapperTemplate(Table.SELF_SYS_DEVICE.name().toUpperCase(), "id".toUpperCase(),IDeviceMapper.class, DeviceModel.class ));
 //		mappers.put(Table.SELF_SYS_TERMINAL,mf.createMapperTemplate(Table.SELF_SYS_TERMINAL.name().toUpperCase(), "id".toUpperCase(),ITerminalMapper.class, TerminalModel.class ));
 //		mappers.put(Table.PIC,mf.createMapperTemplate(Table.PIC.name().toUpperCase(), "id".toUpperCase(),IPicMapper.class, PicModel.class ));
@@ -129,9 +129,9 @@ public class GenMapperTool {
 	
 	public static void main(String[] args){
 		Map<Enum<Table>, MapperTemplate> mappers=getMappers(getConnection(), OracleMapperTemplate.class);
-		String srcPath="D:/tempProject/smartken-drv/drv-dao/src/main/java/";
-		MapperTemplate mapper=mappers.get(Table.TABLE_SELF_HARD);
-		System.out.println(mapper.generalMapplerXML(srcPath));
+		String srcPath="D:/tempProject/ett/dao/src/main/java/";
+		MapperTemplate mapper=mappers.get(Table.TABLE_YUYUE_LIMIT);
+		System.out.println(mapper.generalMapplerXML(srcPath,"oracle"));
 		
 		
 		//D:\tempProject\smartken-drv\drv-dao\src\main\java\com\smartken\drv\mapper\admin

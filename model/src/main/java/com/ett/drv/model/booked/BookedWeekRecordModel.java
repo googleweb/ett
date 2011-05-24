@@ -215,12 +215,12 @@ public class BookedWeekRecordModel extends BaseModel{
 		{
 			String tempKey=itKey.next();
 			BookedLimitModel tempLimit=mapLimt.get(tempKey);
-			int dow=tempLimit.getDayofweek();
-			int km=tempLimit.getKm();
+			int dow=tempLimit.getIdayofweek();
+			int km=tempLimit.getIkm();
 			String assignName=MessageFormat.format("week{0}Km{1}Assgined", dow,km);
 			try {
 				int assgin= Integer.parseInt(this.eval(assignName).toString()); 
-				assgin+=tempLimit.getTotal();
+				assgin+=tempLimit.getItotal();
 				this.eval(assignName, assgin);
 			} catch (Exception e) {System.err.println(e.getMessage());}		
 			

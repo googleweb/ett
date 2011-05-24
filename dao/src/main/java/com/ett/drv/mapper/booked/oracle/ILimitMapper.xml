@@ -1,4 +1,36 @@
 <?xml version="1.0" encoding="UTF-8" ?>
+<!--
+	Create Date:2011-05-23 04:33:34
+	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
+	Model:com.ett.drv.model.booked.BookedLimitModel 
+
+
+ public static enum F { 
+  id,iweekNum,ccarType,idayofweek,ikm,cschoolCode,cschoolName,dateKsrq,cksccCode,ckscc,cksddCode,
+cksdd,itotal,iusedNum,icheckedNum,itptotal,itpusedNum,itpcheckedNum,coperator  
+ } 
+
+private Integer id;         //ID  NUMBER 38
+private Integer iweekNum;         //I_WEEK_NUM  NUMBER 38
+private String ccarType;         //C_CAR_TYPE  VARCHAR2 30
+private Integer idayofweek;         //I_DAYOFWEEK  NUMBER 38
+private Integer ikm;         //I_KM  NUMBER 38
+private String cschoolCode;         //C_SCHOOL_CODE  VARCHAR2 20
+private String cschoolName;         //C_SCHOOL_NAME  VARCHAR2 200
+private String dateKsrq;         //DATE_KSRQ  VARCHAR2 10
+private String cksccCode;         //C_KSCC_CODE  VARCHAR2 20
+private String ckscc;         //C_KSCC  VARCHAR2 200
+private String cksddCode;         //C_KSDD_CODE  VARCHAR2 20
+private String cksdd;         //C_KSDD  VARCHAR2 200
+private Integer itotal;         //I_TOTAL  NUMBER 38
+private Integer iusedNum;         //I_USED_NUM  NUMBER 38
+private Integer icheckedNum;         //I_CHECKED_NUM  NUMBER 38
+private Integer itptotal;         //I_TPTOTAL  NUMBER 38
+private Integer itpusedNum;         //I_TPUSED_NUM  NUMBER 38
+private Integer itpcheckedNum;         //I_TPCHECKED_NUM  NUMBER 38
+private String coperator;         //C_OPERATOR  VARCHAR2 30
+ -->
+
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ett.drv.mapper.booked.ILimitMapper">
 
@@ -16,49 +48,51 @@ C_KSDD,I_TOTAL,I_USED_NUM,I_CHECKED_NUM,I_TPTOTAL,I_TPUSED_NUM,I_TPCHECKED_NUM,C
 
 <sql id="insertCols">
 #{id,jdbcType=INTEGER,javaType=Integer},
-#{weekNum,jdbcType=INTEGER,javaType=Integer},
-#{carType,jdbcType=VARCHAR,javaType=String},
-#{dayofweek,jdbcType=INTEGER,javaType=Integer},
-#{km,jdbcType=INTEGER,javaType=Integer},
-#{schoolCode,jdbcType=VARCHAR,javaType=String},
-#{schoolName,jdbcType=VARCHAR,javaType=String},
+#{iweekNum,jdbcType=INTEGER,javaType=Integer},
+#{ccarType,jdbcType=VARCHAR,javaType=String},
+#{idayofweek,jdbcType=INTEGER,javaType=Integer},
+#{ikm,jdbcType=INTEGER,javaType=Integer},
+#{cschoolCode,jdbcType=VARCHAR,javaType=String},
+#{cschoolName,jdbcType=VARCHAR,javaType=String},
 #{dateKsrq,jdbcType=VARCHAR,javaType=String},
-#{ksccCode,jdbcType=VARCHAR,javaType=String},
-#{kscc,jdbcType=VARCHAR,javaType=String},
-#{ksddCode,jdbcType=VARCHAR,javaType=String},
-#{ksdd,jdbcType=VARCHAR,javaType=String},
-#{total,jdbcType=INTEGER,javaType=Integer},
-#{usedNum,jdbcType=INTEGER,javaType=Integer},
-#{checkedNum,jdbcType=INTEGER,javaType=Integer},
-#{tptotal,jdbcType=INTEGER,javaType=Integer},
-#{tpusedNum,jdbcType=INTEGER,javaType=Integer},
-#{tpcheckedNum,jdbcType=INTEGER,javaType=Integer},
-#{operator,jdbcType=VARCHAR,javaType=String} 
+#{cksccCode,jdbcType=VARCHAR,javaType=String},
+#{ckscc,jdbcType=VARCHAR,javaType=String},
+#{cksddCode,jdbcType=VARCHAR,javaType=String},
+#{cksdd,jdbcType=VARCHAR,javaType=String},
+#{itotal,jdbcType=INTEGER,javaType=Integer},
+#{iusedNum,jdbcType=INTEGER,javaType=Integer},
+#{icheckedNum,jdbcType=INTEGER,javaType=Integer},
+#{itptotal,jdbcType=INTEGER,javaType=Integer},
+#{itpusedNum,jdbcType=INTEGER,javaType=Integer},
+#{itpcheckedNum,jdbcType=INTEGER,javaType=Integer},
+#{coperator,jdbcType=VARCHAR,javaType=String},
+
 </sql>
 
 <sql id="updateCols">
- <if test="pk neq null">ID=#{pk},</if>
-I_WEEK_NUM=#{model.weekNum,jdbcType=INTEGER,javaType=Integer},
-C_CAR_TYPE=#{model.carType,jdbcType=VARCHAR,javaType=String},
-I_DAYOFWEEK=#{model.dayofweek,jdbcType=INTEGER,javaType=Integer},
-I_KM=#{model.km,jdbcType=INTEGER,javaType=Integer},
-C_SCHOOL_CODE=#{model.schoolCode,jdbcType=VARCHAR,javaType=String},
-C_SCHOOL_NAME=#{model.schoolName,jdbcType=VARCHAR,javaType=String},
+<if test="pk neq null">ID=#{pk}</if>,
+I_WEEK_NUM=#{model.iweekNum,jdbcType=INTEGER,javaType=Integer},
+C_CAR_TYPE=#{model.ccarType,jdbcType=VARCHAR,javaType=String},
+I_DAYOFWEEK=#{model.idayofweek,jdbcType=INTEGER,javaType=Integer},
+I_KM=#{model.ikm,jdbcType=INTEGER,javaType=Integer},
+C_SCHOOL_CODE=#{model.cschoolCode,jdbcType=VARCHAR,javaType=String},
+C_SCHOOL_NAME=#{model.cschoolName,jdbcType=VARCHAR,javaType=String},
 DATE_KSRQ=#{model.dateKsrq,jdbcType=VARCHAR,javaType=String},
-C_KSCC_CODE=#{model.ksccCode,jdbcType=VARCHAR,javaType=String},
-C_KSCC=#{model.kscc,jdbcType=VARCHAR,javaType=String},
-C_KSDD_CODE=#{model.ksddCode,jdbcType=VARCHAR,javaType=String},
-C_KSDD=#{model.ksdd,jdbcType=VARCHAR,javaType=String},
-I_TOTAL=#{model.total,jdbcType=INTEGER,javaType=Integer},
-I_USED_NUM=#{model.usedNum,jdbcType=INTEGER,javaType=Integer},
-I_CHECKED_NUM=#{model.checkedNum,jdbcType=INTEGER,javaType=Integer},
-I_TPTOTAL=#{model.tptotal,jdbcType=INTEGER,javaType=Integer},
-I_TPUSED_NUM=#{model.tpusedNum,jdbcType=INTEGER,javaType=Integer},
-I_TPCHECKED_NUM=#{model.tpcheckedNum,jdbcType=INTEGER,javaType=Integer},
-C_OPERATOR=#{model.operator,jdbcType=VARCHAR,javaType=String}
+C_KSCC_CODE=#{model.cksccCode,jdbcType=VARCHAR,javaType=String},
+C_KSCC=#{model.ckscc,jdbcType=VARCHAR,javaType=String},
+C_KSDD_CODE=#{model.cksddCode,jdbcType=VARCHAR,javaType=String},
+C_KSDD=#{model.cksdd,jdbcType=VARCHAR,javaType=String},
+I_TOTAL=#{model.itotal,jdbcType=INTEGER,javaType=Integer},
+I_USED_NUM=#{model.iusedNum,jdbcType=INTEGER,javaType=Integer},
+I_CHECKED_NUM=#{model.icheckedNum,jdbcType=INTEGER,javaType=Integer},
+I_TPTOTAL=#{model.itptotal,jdbcType=INTEGER,javaType=Integer},
+I_TPUSED_NUM=#{model.itpusedNum,jdbcType=INTEGER,javaType=Integer},
+I_TPCHECKED_NUM=#{model.itpcheckedNum,jdbcType=INTEGER,javaType=Integer},
+C_OPERATOR=#{model.coperator,jdbcType=VARCHAR,javaType=String},
+
 </sql>
 
-<sql id="orderby">order by ID</sql>
+<sql id="orderby">order by ID desc </sql>
 
 <sql id="joinColums"></sql>
 
@@ -66,94 +100,175 @@ C_OPERATOR=#{model.operator,jdbcType=VARCHAR,javaType=String}
 
 <resultMap type="com.ett.drv.model.booked.BookedLimitModel" id="resultMap">
  <id column="ID"  property="id" jdbcType="INTEGER" javaType="Integer"/>
-<result column="I_WEEK_NUM"  property="weekNum" jdbcType="INTEGER" javaType="Integer"/>
-<result column="C_CAR_TYPE"  property="carType" jdbcType="VARCHAR" javaType="String"/>
-<result column="I_DAYOFWEEK"  property="dayofweek" jdbcType="INTEGER" javaType="Integer"/>
-<result column="I_KM"  property="km" jdbcType="INTEGER" javaType="Integer"/>
-<result column="C_SCHOOL_CODE"  property="schoolCode" jdbcType="VARCHAR" javaType="String"/>
-<result column="C_SCHOOL_NAME"  property="schoolName" jdbcType="VARCHAR" javaType="String"/>
+<result column="I_WEEK_NUM"  property="iweekNum" jdbcType="INTEGER" javaType="Integer"/>
+<result column="C_CAR_TYPE"  property="ccarType" jdbcType="VARCHAR" javaType="String"/>
+<result column="I_DAYOFWEEK"  property="idayofweek" jdbcType="INTEGER" javaType="Integer"/>
+<result column="I_KM"  property="ikm" jdbcType="INTEGER" javaType="Integer"/>
+<result column="C_SCHOOL_CODE"  property="cschoolCode" jdbcType="VARCHAR" javaType="String"/>
+<result column="C_SCHOOL_NAME"  property="cschoolName" jdbcType="VARCHAR" javaType="String"/>
 <result column="DATE_KSRQ"  property="dateKsrq" jdbcType="VARCHAR" javaType="String"/>
-<result column="C_KSCC_CODE"  property="ksccCode" jdbcType="VARCHAR" javaType="String"/>
-<result column="C_KSCC"  property="kscc" jdbcType="VARCHAR" javaType="String"/>
-<result column="C_KSDD_CODE"  property="ksddCode" jdbcType="VARCHAR" javaType="String"/>
-<result column="C_KSDD"  property="ksdd" jdbcType="VARCHAR" javaType="String"/>
-<result column="I_TOTAL"  property="total" jdbcType="INTEGER" javaType="Integer"/>
-<result column="I_USED_NUM"  property="usedNum" jdbcType="INTEGER" javaType="Integer"/>
-<result column="I_CHECKED_NUM"  property="checkedNum" jdbcType="INTEGER" javaType="Integer"/>
-<result column="I_TPTOTAL"  property="tptotal" jdbcType="INTEGER" javaType="Integer"/>
-<result column="I_TPUSED_NUM"  property="tpusedNum" jdbcType="INTEGER" javaType="Integer"/>
-<result column="I_TPCHECKED_NUM"  property="tpcheckedNum" jdbcType="INTEGER" javaType="Integer"/>
-<result column="C_OPERATOR"  property="operator" jdbcType="VARCHAR" javaType="String"/>
+<result column="C_KSCC_CODE"  property="cksccCode" jdbcType="VARCHAR" javaType="String"/>
+<result column="C_KSCC"  property="ckscc" jdbcType="VARCHAR" javaType="String"/>
+<result column="C_KSDD_CODE"  property="cksddCode" jdbcType="VARCHAR" javaType="String"/>
+<result column="C_KSDD"  property="cksdd" jdbcType="VARCHAR" javaType="String"/>
+<result column="I_TOTAL"  property="itotal" jdbcType="INTEGER" javaType="Integer"/>
+<result column="I_USED_NUM"  property="iusedNum" jdbcType="INTEGER" javaType="Integer"/>
+<result column="I_CHECKED_NUM"  property="icheckedNum" jdbcType="INTEGER" javaType="Integer"/>
+<result column="I_TPTOTAL"  property="itptotal" jdbcType="INTEGER" javaType="Integer"/>
+<result column="I_TPUSED_NUM"  property="itpusedNum" jdbcType="INTEGER" javaType="Integer"/>
+<result column="I_TPCHECKED_NUM"  property="itpcheckedNum" jdbcType="INTEGER" javaType="Integer"/>
+<result column="C_OPERATOR"  property="coperator" jdbcType="VARCHAR" javaType="String"/>
+
  </resultMap>
 
 
+<sql id="selectCondition">
+<if test="model.id neq null">and m.ID = #{model.id,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.iweekNum neq null">and m.I_WEEK_NUM = #{model.iweekNum,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.ccarType neq null">and m.C_CAR_TYPE = #{model.ccarType,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.idayofweek neq null">and m.I_DAYOFWEEK = #{model.idayofweek,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.ikm neq null">and m.I_KM = #{model.ikm,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.cschoolCode neq null">and m.C_SCHOOL_CODE = #{model.cschoolCode,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.cschoolName neq null">and m.C_SCHOOL_NAME = #{model.cschoolName,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.dateKsrq neq null">and m.DATE_KSRQ = #{model.dateKsrq,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.cksccCode neq null">and m.C_KSCC_CODE = #{model.cksccCode,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.ckscc neq null">and m.C_KSCC = #{model.ckscc,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.cksddCode neq null">and m.C_KSDD_CODE = #{model.cksddCode,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.cksdd neq null">and m.C_KSDD = #{model.cksdd,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.itotal neq null">and m.I_TOTAL = #{model.itotal,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.iusedNum neq null">and m.I_USED_NUM = #{model.iusedNum,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.icheckedNum neq null">and m.I_CHECKED_NUM = #{model.icheckedNum,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.itptotal neq null">and m.I_TPTOTAL = #{model.itptotal,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.itpusedNum neq null">and m.I_TPUSED_NUM = #{model.itpusedNum,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.itpcheckedNum neq null">and m.I_TPCHECKED_NUM = #{model.itpcheckedNum,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.coperator neq null">and m.C_OPERATOR = #{model.coperator,jdbcType=VARCHAR javaType=String } </if> 
+
+</sql>
+
+
 <select id="select" resultType="ArrayList" resultMap="resultMap">
-	 select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> 
-<trim prefix="where" prefixOverrides="and">
-<if test="model.id neq null">and m.ID=#{model.id,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.weekNum neq null">and m.I_WEEK_NUM=#{model.weekNum,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.carType neq null">and m.C_CAR_TYPE=#{model.carType,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.dayofweek neq null">and m.I_DAYOFWEEK=#{model.dayofweek,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.km neq null">and m.I_KM=#{model.km,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.schoolCode neq null">and m.C_SCHOOL_CODE=#{model.schoolCode,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.schoolName neq null">and m.C_SCHOOL_NAME=#{model.schoolName,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.dateKsrq neq null">and m.DATE_KSRQ=#{model.dateKsrq,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.ksccCode neq null">and m.C_KSCC_CODE=#{model.ksccCode,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.kscc neq null">and m.C_KSCC=#{model.kscc,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.ksddCode neq null">and m.C_KSDD_CODE=#{model.ksddCode,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.ksdd neq null">and m.C_KSDD=#{model.ksdd,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.total neq null">and m.I_TOTAL=#{model.total,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.usedNum neq null">and m.I_USED_NUM=#{model.usedNum,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.checkedNum neq null">and m.I_CHECKED_NUM=#{model.checkedNum,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.tptotal neq null">and m.I_TPTOTAL=#{model.tptotal,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.tpusedNum neq null">and m.I_TPUSED_NUM=#{model.tpusedNum,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.tpcheckedNum neq null">and m.I_TPCHECKED_NUM=#{model.tpcheckedNum,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.operator neq null">and m.C_OPERATOR=#{model.operator,jdbcType=VARCHAR javaType=String } </if> 
-</trim>
-</select>
-<select id="selectEqPk" parameterType="String"  resultMap="resultMap">
-	 select <include refid="colums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> = #{id,jdbcType=INTEGER,javaType=Integer}
+	select m.* from <include refid="table" /> m  
+		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+			<include refid="selectCondition"/>
+		</trim>
+	<include refid="orderby"/>
 </select>
 
-<select id="count" resultType="int">
-	 select count(*) from <include refid="table"/>
+<select id="selectUnion" resultType="ArrayList" resultMap="resultMap">
+    select m.* from <include refid="table" /> m  where 1=2
+		<foreach collection="list" item="model" index="i">
+			<if test="model neq null">
+				union select m_#{i}.* from <include refid="table" /> m_#{i}
+					<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+						<include refid="selectCondition"/>
+					</trim>
+			</if>
+		</foreach>
+	<include refid="orderby"/>
+</select>
+
+<select id="selectEqPk" parameterType="String"  resultMap="resultMap">
+	select m.* from <include refid="table" /> m  where m.<include refid="pk" /> = #{id,jdbcType=INTEGER,javaType=Integer}
 </select>
 
 <select id="selectInPk" resultType="ArrayList" resultMap="resultMap" >
-	 select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> in
-<foreach item="pk" collection="list" open="(" separator="," close=")"> #{pk} </foreach> 
-<include refid="orderby"/>
+	select m.* from <include refid="table" /> m  where m.<include refid="pk" /> in
+		<foreach item="pk" collection="list" open="(" separator="," close=")"> #{pk} </foreach>
+	<include refid="orderby"/>
 </select>
 
 <select id="selectNotInPk" resultType="ArrayList" resultMap="resultMap" >
-	 select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> not in
-<foreach item="pk" collection="list" open="(" separator="," close=")"> #{pk} </foreach> 
-<include refid="orderby"/>
+	select m.* from <include refid="table" /> m  where m.<include refid="pk" /> not in
+		<foreach item="pk" collection="list" open="(" separator="," close=")"> #{pk} </foreach>
+	<include refid="orderby"/>
 </select>
 
 <select  id="selectAll"  resultType="ArrayList"  resultMap="resultMap">
-	 select m.* <include refid="joinColums"/> from  <include refid="table" /> m <include refid="join"/> 
- <include refid="orderby"/>
+	select m.* from  <include refid="table" /> m
+	<include refid="orderby"/>
 </select>
 
-<insert id="insertOne" >
-	 insert into <include refid="table"/> ( <include refid="colums"/> ) values ( <include refid="insertCols"/>) 
+<select id="count" resultType="int">
+	select count(*) from <include refid="table"/>
+</select>
+
+<insert id="insertOne" flushCache="true" >
+	insert into <include refid="table"/> ( <include refid="colums"/> ) values  
+	(
+		<trim  prefixOverrides="," suffixOverrides=",">
+			<include refid="insertCols"/>
+		</trim>
+	)
 </insert>
 
 <update id="updateOne" flushCache="true" >
-	 update <include refid="table"/> set <include refid="updateCols"/> where <include refid="pk" />=#{model.id,jdbcType=INTEGER,javaType=Integer}
-</update>
+	update <include refid="table"/> set 
+		<trim  prefixOverrides="," suffixOverrides=",">
+			<include refid="updateCols"/>
+		</trim>
+	where <include refid="pk" />=#{model.id,jdbcType=INTEGER,javaType=Integer}</update>
+
+<delete id="deleteEqPk" flushCache="true">
+	delete from <include refid="table"/> where <include refid="pk" /> =#{id,jdbcType=INTEGER,javaType=Integer}
+</delete>
 
 <delete id="deleteInPk" flushCache="true">
-	 delete from <include refid="table"/> where <include refid="pk" /> in
-<foreach item="pk" collection="list" open="(" separator="," close=")">#{pk}</foreach>
+	delete from <include refid="table"/> where <include refid="pk" /> in
+		<foreach item="pk" collection="list" open="(" separator="," close=")">#{pk}</foreach>
 </delete>
 
 <delete id="deleteNotInPk" flushCache="true">
-	 delete from <include refid="table"/> where <include refid="pk" /> not in
-<foreach item="pk" collection="list" open="(" separator="," close=")">#{pk}</foreach>
+	delete from <include refid="table"/> where <include refid="pk" /> not in
+		<foreach item="pk" collection="list" open="(" separator="," close=")">#{pk}</foreach>
 </delete>
 
 
+
+<resultMap type="com.ett.drv.model.booked.BookedLimitModel" id="viewMap" extends="resultMap" ></resultMap>
+
+
+<sql id="selectViewCondition">
+	 <include refid="selectCondition"/>  
+</sql><select id="selectView" resultType="ArrayList" resultMap="viewMap">
+	select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> 
+		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+			<include refid="selectViewCondition"/>
+		</trim>	<include refid="orderby"/>
+</select>
+
+<select id="selectViewUnion" resultType="ArrayList" resultMap="viewMap">
+	<trim  prefixOverrides="union" suffixOverrides="union">
+		<foreach collection="list" item="model">
+			<if test="model neq null">
+				union select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> 
+					<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+						<include refid="selectViewCondition"/>
+					</trim>
+			</if>
+		</foreach>
+	</trim>
+	<include refid="orderby"/>
+</select>
+
+<select id="selectViewEqPk" parameterType="String"  resultMap="viewMap">
+	select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> = #{id,jdbcType=INTEGER,javaType=Integer}
+</select>
+
+<select id="selectViewInPk" resultType="ArrayList" resultMap="viewMap" >
+	select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> in
+	<foreach item="pk" collection="list" open="(" separator="," close=")"> #{pk} </foreach>
+	<include refid="orderby"/>
+</select>
+
+<select id="selectViewNotInPk" resultType="ArrayList" resultMap="viewMap" >
+	select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> not in
+	<foreach item="pk" collection="list" open="(" separator="," close=")"> #{pk} </foreach>
+	<include refid="orderby"/>
+</select>
+
+<select  id="selectViewAll"  resultType="ArrayList"  resultMap="viewMap">
+	select m.* <include refid="joinColums"/> from  <include refid="table" /> m <include refid="join"/>
+	<include refid="orderby"/>
+</select>
 
 </mapper>
