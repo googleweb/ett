@@ -39,7 +39,7 @@ function operaFormatter(value,rowData,rowIndex){
 function clickAddHandler(){ 
   		var href='<%=basePath%>'+"admin/User/to/editUser.action";
   		$("#divEditUser").dialog({
-  			title:"新增硬件",
+  			title:"新增用户",
 			height:400,
 			width:600,
 			onClose:function(){ $('#test').datagrid('reload'); },
@@ -67,23 +67,23 @@ function clickRemoveHandler(){
 					$.each(selectsRows,function(index,row){
 							ids+=','+row['id'];  
 							});
-					var action="'<%=basePath%>admin/User/do/deleteUser.action";
+					var action="<%=basePath%>"+"admin/User/do/deleteUser.action";
 					$.post(action,{ids:ids},
 							function(str){
 									var json=Kia.util.strToJson(str);
 									Kia.util.handleJsonResult(json);
-									$("test").datagrid("reload");
+									$("#test").datagrid("reload");
 					});
 		});  //$.messager
 }
 $(document).ready(function(){   
 	$("#test").datagrid({fit:true,
 	toolbar:[ 
-			{text:"新增硬件",
+			{text:"新增用户",
 			iconCls:"icon-add",
 			handler:clickAddHandler}
 	, 
-			{text:"删除硬件",
+			{text:"删除用户",
 			iconCls:"icon-remove",
 			handler:clickRemoveHandler}
 	] 
