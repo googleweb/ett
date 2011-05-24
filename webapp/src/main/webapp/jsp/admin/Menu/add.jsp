@@ -59,30 +59,30 @@ String adminMenuPath=basePath+"admin/Menu";
 	   <table  class="editTable" cellpadding="1" cellspacing="0">
        <tr>
          <td class="tdLabel" style="width:20%">菜单ID</td>
-         <td><input name="id"   class="tdInput easyui-validatebox" required="true" size="30" /></td>
+         <td><input name="Id"   class="tdInput easyui-validatebox" required="true" size="30" /></td>
        </tr>
        <tr>
          <td class="tdLabel">菜单名</td>
-         <td><input name="name" class="tdInput easyui-validatebox" required="true" size="30"/></td>
+         <td><input name="Name" class="tdInput easyui-validatebox" required="true" size="30"/></td>
        </tr>
               <tr>
          <td class="tdLabel">页面路径</td>
-         <td><input name="url"  class="tdInput easyui-validatebox" size="30"/></td>
+         <td><input name="Url"  class="tdInput easyui-validatebox" size="30"/></td>
        </tr>
        <tr>
          <td class="tdLabel">请求参数</td>
-         <td><input name="parma"  class="tdInput easyui-validatebox" size="30"/></td>
+         <td><input name="Parma"  class="tdInput easyui-validatebox" size="30"/></td>
        </tr>
        <tr>
          <td class="tdLabel">父菜单</td>
          <td><input name="parentId" value="root"  
-              textField="name" idField="id" class="easyui-combotree"
+              textField="Name" idField="Id" class="easyui-combotree"
               url="<%=adminMenuPath %>/list/ComboTree.action?format=json"  required="true"
                panelWidth="200"  /></td>
        </tr>
        <tr>
          <td class="tdLabel">功能描述</td>
-         <td><textarea name="descp"  class="tdInput easyui-validatebox" 
+         <td><textarea name="Descp"  class="tdInput easyui-validatebox" 
              rows="5" cols="40" ></textarea>  
          </td>
               

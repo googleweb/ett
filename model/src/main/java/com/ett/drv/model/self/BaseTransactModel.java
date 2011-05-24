@@ -9,11 +9,7 @@ import com.smartken.kia.core.util.DateTimeUtil;
 
 public abstract class BaseTransactModel extends BaseModel {
 
-	@Override
-	public Object generalPK() throws NullPointerException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 	 public static enum EApplicat{
 		 driver,agent
@@ -28,53 +24,24 @@ public abstract class BaseTransactModel extends BaseModel {
 	 }
 	 
 
-	  public static class Applicat{
+	  public static class Applicats{
 		  public static String DRIVER="驾驶人";
 		  public static String AGENT="申请人";
 	  }
 	  
-	  public static class Payment{
+	  public static class Payments{
 		  public static String CASH="现金";
 		  public static String POS="银联pos";
 	  }
 	  
-	  public static class Receive{
+	  public static class Receives{
 		  public static String POST="快递";
 		  public static String PULL="自取";
 		  public static String PULL_OR_POST="自取或邮寄";
 	  }
 	
 	
-	public static enum F{
-		transact,applicat,driverIdNo,agentIdNo,driverIdName,agentIdName,createDate,verifyDate,verifyInd,tel,verifyerFk,
-		remark,payment,receive,flowNo,phone,reason,payInd,printInd,plateNo,driverIdFrontImg,
-		driverIdBackImg,agentIdFrontImg,agentIdBackImg,captureImg,seqno,item,costPost,costTransact,passInd
-	}
 
-	protected String transact;         //TRANSACT  VARCHAR2 50
-	protected String applicat;         //APPLICAT  VARCHAR2 100
-	protected String driverIdNo;         //DRIVER_ID_NO  VARCHAR2 20
-	protected String agentIdNo;         //AGENT_ID_NO  VARCHAR2 20
-	protected String driverIdName;         //DRIVER_ID_NAME  VARCHAR2 20
-	protected String agentIdName;         //AGENT_ID_NAME  VARCHAR2 20
-	protected Date createDate;         //CREATE_DATE  DATE 0
-	protected Date verifyDate;         //VERIFY_DATE  DATE 0
-	protected String verifyInd;         //VERIFY_IND  CHAR 1
-	protected String tel;         //TEL  VARCHAR2 30
-	protected String verifyerFk;         //VERIFYER_FK  VARCHAR2 30
-	protected String remark;         //REMARK  VARCHAR2 300
-	protected String payment;         //PAYMENT  VARCHAR2 10
-	protected String receive;         //RECEIVE  VARCHAR2 20
-	protected String flowNo;         //FLOW_NO  VARCHAR2 100
-	protected String phone;         //PHONE  VARCHAR2 30
-	protected String reason;         //REASON  VARCHAR2 50
-	protected String payInd;         //PAY_IND  CHAR 1
-	protected String printInd;         //PRINT_IND  CHAR 1
-	protected Integer seqno;         //SEQNO  NUMBER 38
-	protected String item;         //ITEM  VARCHAR2 50
-	protected Double costPost;         //COST_POST  NUMBER 126
-	protected Double costTransact;         //COST_TRANSACT  NUMBER 126
-	protected String passInd;         //PASS_IND  CHAR 1
 	
 	
 	public static String generalFlowNo(int code,Date createDate,String seqNo){
@@ -91,225 +58,435 @@ public abstract class BaseTransactModel extends BaseModel {
 	
 
 
-	public String getTransact() {
-		return transact;
-	}
 
-	public void setTransact(String transact) {
-		this.transact = transact;
-	}
-
-	public String getApplicat() {
-		return applicat;
-	}
 
 	public void setApplicat(String applicat) {
 		if(BaseTransactModel.EApplicat.agent.name().equalsIgnoreCase(applicat))
 		{
-		   this.applicat=BaseTransactModel.Applicat.AGENT;
+		   this.Applicat=BaseTransactModel.Applicats.AGENT;
 		}else  if(BaseTransactModel.EApplicat.driver.name().equalsIgnoreCase(applicat))
 		{
-			   this.applicat=BaseTransactModel.Applicat.DRIVER;
+			   this.Applicat=BaseTransactModel.Applicats.DRIVER;
 			} 
 		else {
-		this.applicat = applicat;
+		this.Applicat = applicat;
 		}
 	}
 
-	public String getDriverIdNo() {
-		return driverIdNo;
-	}
-
-	public void setDriverIdNo(String driverIdNo) {
-		this.driverIdNo = driverIdNo;
-	}
-
-	public String getAgentIdNo() {
-		return agentIdNo;
-	}
-
-	public void setAgentIdNo(String agentIdNo) {
-		this.agentIdNo = agentIdNo;
-	}
-
-	public String getDriverIdName() {
-		return driverIdName;
-	}
-
-	public void setDriverIdName(String driverIdName) {
-		this.driverIdName = driverIdName;
-	}
-
-	public String getAgentIdName() {
-		return agentIdName;
-	}
-
-	public void setAgentIdName(String agentIdName) {
-		this.agentIdName = agentIdName;
-	}
-
-	public Date getCreateDate() {
-		return createDate;
-	}
-
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
-	}
-
-	public Date getVerifyDate() {
-		return verifyDate;
-	}
-
-	public void setVerifyDate(Date verifyDate) {
-		this.verifyDate = verifyDate;
-	}
-
-	public String getVerifyInd() {
-		return verifyInd;
-	}
-
-	public void setVerifyInd(String verifyInd) {
-		this.verifyInd = verifyInd;
-	}
-
-	public String getTel() {
-		return tel;
-	}
-
-	public void setTel(String tel) {
-		this.tel = tel;
-	}
-
-	public String getVerifyerFk() {
-		return verifyerFk;
-	}
-
-	public void setVerifyerFk(String verifyerFk) {
-		this.verifyerFk = verifyerFk;
-	}
-
-	public String getRemark() {
-		return remark;
-	}
-
-	public void setRemark(String remark) {
-		this.remark = remark;
-	}
-
-	public String getPayment() {
-		return payment;
-	}
+	
 
 	public void setPayment(String payment) {
 		if(BaseTransactModel.EPayment.pos.name().equalsIgnoreCase(payment)){
-			this.payment=BaseTransactModel.Payment.POS;
+			this.Payment=BaseTransactModel.Payments.POS;
 		} else 	if(BaseTransactModel.EPayment.cash.name().equalsIgnoreCase(payment)){
-			this.payment=BaseTransactModel.Payment.CASH;
+			this.Payment=BaseTransactModel.Payments.CASH;
 		}else {
-		this.payment = payment;
+		this.Payment = payment;
 		}
 	}
 
-	public String getReceive() {
-		return receive;
-	}
+
 
 	public void setReceive(String receive) {
 		if(BaseTransactModel.EReceive.post.name().equalsIgnoreCase(receive)){
-			this.receive=BaseTransactModel.Receive.POST;
+			this.Receive=BaseTransactModel.Receives.POST;
 		}else if(BaseTransactModel.EReceive.pull.name().equalsIgnoreCase(receive)){
-			this.receive=BaseTransactModel.Receive.PULL;
+			this.Receive=BaseTransactModel.Receives.PULL;
 		}else if(BaseTransactModel.EReceive.pullOrPost.name().equalsIgnoreCase(receive)){
-			this.receive=BaseTransactModel.Receive.PULL_OR_POST;
+			this.Receive=BaseTransactModel.Receives.PULL_OR_POST;
 		}else {
-		this.receive = receive;
+		this.Receive = receive;
 		}
 	}
 
-	public String getFlowNo() {
-		return flowNo;
-	}
-
-	public void setFlowNo(String flowNo) {
-		this.flowNo = flowNo;
-	}
-
-	public String getPhone() {
-		return phone;
-	}
-
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-
-	public String getReason() {
-		return reason;
-	}
-
-	public void setReason(String reason) {
-		this.reason = reason;
-	}
-
-	public String getPayInd() {
-		return payInd;
-	}
-
-	public void setPayInd(String payInd) {
-		this.payInd = payInd;
-	}
-
-	public String getPrintInd() {
-		return printInd;
-	}
-
-	public void setPrintInd(String printInd) {
-		this.printInd = printInd;
-	}
-
-
-	
-
-	public Integer getSeqno() {
-		return seqno;
-	}
-
-	public void setSeqno(Integer seqno) {
-		this.seqno = seqno;
-	}
-
-	public String getItem() {
-		return item;
-	}
-
-	public void setItem(String item) {
-		this.item = item;
-	}
-
-	public Double getCostPost() {
-		return costPost;
-	}
-
-	public void setCostPost(Double costPost) {
-		this.costPost = costPost;
-	}
-
-	public Double getCostTransact() {
-		return costTransact;
-	}
-
-	public void setCostTransact(Double costTransact) {
-		this.costTransact = costTransact;
-	}
-
-	public String getPassInd() {
-		return passInd;
-	}
-
-	public void setPassInd(String passInd) {
-		this.passInd = passInd;
-	}
 	
 	
+	 public static enum F { 
+		  Transact,Applicat,DriverIdNo,AgentIdNo,DriverIdName,AgentIdName,CreateDate,VerifyDate,VerifyInd,Tel,VerifyerFk,
+		Remark,Payment,Receive,FlowNo,Phone,Reason,PayInd,PrintInd,Item,
+		CostPost,CostTransact,PassInd,Seqno  
+		 } 
+
+		protected String Transact;         //TRANSACT  VARCHAR2 50
+		protected String Applicat;         //APPLICAT  VARCHAR2 100
+		protected String DriverIdNo;         //DRIVER_ID_NO  VARCHAR2 20
+		protected String AgentIdNo;         //AGENT_ID_NO  VARCHAR2 20
+		protected String DriverIdName;         //DRIVER_ID_NAME  VARCHAR2 20
+		protected String AgentIdName;         //AGENT_ID_NAME  VARCHAR2 20
+		protected Date CreateDate;         //CREATE_DATE  DATE 0
+		protected Date VerifyDate;         //VERIFY_DATE  DATE 0
+		protected String VerifyInd;         //VERIFY_IND  CHAR 1
+		protected String Tel;         //TEL  VARCHAR2 30
+		protected String VerifyerFk;         //VERIFYER_FK  VARCHAR2 30
+		protected String Remark;         //REMARK  VARCHAR2 300
+		protected String Payment;         //PAYMENT  VARCHAR2 10
+		protected String Receive;         //RECEIVE  VARCHAR2 20
+		protected String FlowNo;         //FLOW_NO  VARCHAR2 100
+		protected String Phone;         //PHONE  VARCHAR2 30
+		protected String Reason;         //REASON  VARCHAR2 50
+		protected String PayInd;         //PAY_IND  CHAR 1
+		protected String PrintInd;         //PRINT_IND  CHAR 1
+		//protected String LicenseNo;         //LICENSE_NO  VARCHAR2 100
+		protected String Item;         //ITEM  VARCHAR2 50
+		protected Double CostPost;         //COST_POST  NUMBER 126
+		protected Double CostTransact;         //COST_TRANSACT  NUMBER 126
+		protected String PassInd;         //PASS_IND  CHAR 1
+		protected Integer Seqno;         //SEQNO  NUMBER 38
+		public String getTransact() {
+			return Transact;
+		}
+
+
+
+
+
+		public void setTransact(String transact) {
+			Transact = transact;
+		}
+
+
+
+
+
+		public String getDriverIdNo() {
+			return DriverIdNo;
+		}
+
+
+
+
+
+		public void setDriverIdNo(String driverIdNo) {
+			DriverIdNo = driverIdNo;
+		}
+
+
+
+
+
+		public String getAgentIdNo() {
+			return AgentIdNo;
+		}
+
+
+
+
+
+		public void setAgentIdNo(String agentIdNo) {
+			AgentIdNo = agentIdNo;
+		}
+
+
+
+
+
+		public String getDriverIdName() {
+			return DriverIdName;
+		}
+
+
+
+
+
+		public void setDriverIdName(String driverIdName) {
+			DriverIdName = driverIdName;
+		}
+
+
+
+
+
+		public String getAgentIdName() {
+			return AgentIdName;
+		}
+
+
+
+
+
+		public void setAgentIdName(String agentIdName) {
+			AgentIdName = agentIdName;
+		}
+
+
+
+
+
+		public Date getCreateDate() {
+			return CreateDate;
+		}
+
+
+
+
+
+		public void setCreateDate(Date createDate) {
+			CreateDate = createDate;
+		}
+
+
+
+
+
+		public Date getVerifyDate() {
+			return VerifyDate;
+		}
+
+
+
+
+
+		public void setVerifyDate(Date verifyDate) {
+			VerifyDate = verifyDate;
+		}
+
+
+
+
+
+		public String getVerifyInd() {
+			return VerifyInd;
+		}
+
+
+
+
+
+		public void setVerifyInd(String verifyInd) {
+			VerifyInd = verifyInd;
+		}
+
+
+
+
+
+		public String getTel() {
+			return Tel;
+		}
+
+
+
+
+
+		public void setTel(String tel) {
+			Tel = tel;
+		}
+
+
+
+
+
+		public String getVerifyerFk() {
+			return VerifyerFk;
+		}
+
+
+
+
+
+		public void setVerifyerFk(String verifyerFk) {
+			VerifyerFk = verifyerFk;
+		}
+
+
+
+
+
+		public String getRemark() {
+			return Remark;
+		}
+
+
+
+
+
+		public void setRemark(String remark) {
+			Remark = remark;
+		}
+
+
+
+
+
+		public String getFlowNo() {
+			return FlowNo;
+		}
+
+
+
+
+
+		public void setFlowNo(String flowNo) {
+			FlowNo = flowNo;
+		}
+
+
+
+
+
+		public String getPhone() {
+			return Phone;
+		}
+
+
+
+
+
+		public void setPhone(String phone) {
+			Phone = phone;
+		}
+
+
+
+
+
+		public String getReason() {
+			return Reason;
+		}
+
+
+
+
+
+		public void setReason(String reason) {
+			Reason = reason;
+		}
+
+
+
+
+
+		public String getPayInd() {
+			return PayInd;
+		}
+
+
+
+
+
+		public void setPayInd(String payInd) {
+			PayInd = payInd;
+		}
+
+
+
+
+
+		public String getPrintInd() {
+			return PrintInd;
+		}
+
+
+
+
+
+		public void setPrintInd(String printInd) {
+			PrintInd = printInd;
+		}
+
+
+
+
+
+		public String getItem() {
+			return Item;
+		}
+
+
+
+
+
+		public void setItem(String item) {
+			Item = item;
+		}
+
+
+
+
+
+		public Double getCostPost() {
+			return CostPost;
+		}
+
+
+
+
+
+		public void setCostPost(Double costPost) {
+			CostPost = costPost;
+		}
+
+
+
+
+
+		public Double getCostTransact() {
+			return CostTransact;
+		}
+
+
+
+
+
+		public void setCostTransact(Double costTransact) {
+			CostTransact = costTransact;
+		}
+
+
+
+
+
+		public String getPassInd() {
+			return PassInd;
+		}
+
+
+
+
+
+		public void setPassInd(String passInd) {
+			PassInd = passInd;
+		}
+
+
+
+
+
+		public Integer getSeqno() {
+			return Seqno;
+		}
+
+
+
+
+
+		public void setSeqno(Integer seqno) {
+			Seqno = seqno;
+		}
+
+
+
+
+
+		public String getApplicat() {
+			return Applicat;
+		}
+
+
+
+
+
+		public String getPayment() {
+			return Payment;
+		}
+
+
+
+
+
+		public String getReceive() {
+			return Receive;
+		}
 	
 
 	

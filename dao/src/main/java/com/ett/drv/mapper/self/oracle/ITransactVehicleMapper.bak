@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 
+ class:com.ett.drv.model.self.TransactVehicleModel 
+ private String transact;         //TRANSACT  VARCHAR2 50
+private String applicat;         //APPLICAT  VARCHAR2 100
+private String driverIdNo;         //DRIVER_ID_NO  VARCHAR2 20
+private String agentIdNo;         //AGENT_ID_NO  VARCHAR2 20
+private String driverIdName;         //DRIVER_ID_NAME  VARCHAR2 20
+private String agentIdName;         //AGENT_ID_NAME  VARCHAR2 20
+private Date createDate;         //CREATE_DATE  DATE 0
+private Date verifyDate;         //VERIFY_DATE  DATE 0
+private String verifyInd;         //VERIFY_IND  CHAR 1
+private String tel;         //TEL  VARCHAR2 30
+private String verifyerFk;         //VERIFYER_FK  VARCHAR2 30
+private String remark;         //REMARK  VARCHAR2 300
+private String payment;         //PAYMENT  VARCHAR2 10
+private String receive;         //RECEIVE  VARCHAR2 20
+private String flowNo;         //FLOW_NO  VARCHAR2 100
+private String phone;         //PHONE  VARCHAR2 30
+private String reason;         //REASON  VARCHAR2 50
+private String payInd;         //PAY_IND  CHAR 1
+private String printInd;         //PRINT_IND  CHAR 1
+private String plateNo;         //PLATE_NO  VARCHAR2 30
+private Integer seqno;         //SEQNO  NUMBER 38
+private String item;         //ITEM  VARCHAR2 50
+private Double costPost;         //COST_POST  NUMBER 126
+private Double costTransact;         //COST_TRANSACT  NUMBER 126
+private String plateClass;         //PLATE_CLASS  VARCHAR2 100
+private String passInd;         //PASS_IND  CHAR 1
+ 
+--> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ett.drv.mapper.self.ITransactVehicleMapper">
+
+<cache flushInterval="30000" readOnly="true"></cache>
+
+
+<sql id="table">SELF_TRANSACT_VEHICLE</sql>
+
+<sql id="pk">FLOW_NO</sql>
+
+<sql id="colums">
+TRANSACT,APPLICAT,DRIVER_ID_NO,AGENT_ID_NO,DRIVER_ID_NAME,AGENT_ID_NAME,CREATE_DATE,VERIFY_DATE,VERIFY_IND,TEL,VERIFYER_FK,
+REMARK,PAYMENT,RECEIVE,FLOW_NO,PHONE,REASON,PAY_IND,PRINT_IND,PLATE_NO,SEQNO,
+ITEM,COST_POST,COST_TRANSACT,PLATE_CLASS,PASS_IND 
+</sql>
+
+<sql id="insertCols">
+#{transact,jdbcType=VARCHAR,javaType=String},
+#{applicat,jdbcType=VARCHAR,javaType=String},
+#{driverIdNo,jdbcType=VARCHAR,javaType=String},
+#{agentIdNo,jdbcType=VARCHAR,javaType=String},
+#{driverIdName,jdbcType=VARCHAR,javaType=String},
+#{agentIdName,jdbcType=VARCHAR,javaType=String},
+#{createDate,jdbcType=DATE,javaType=Date},
+#{verifyDate,jdbcType=DATE,javaType=Date},
+#{verifyInd,jdbcType=VARCHAR,javaType=String},
+#{tel,jdbcType=VARCHAR,javaType=String},
+#{verifyerFk,jdbcType=VARCHAR,javaType=String},
+#{remark,jdbcType=VARCHAR,javaType=String},
+#{payment,jdbcType=VARCHAR,javaType=String},
+#{receive,jdbcType=VARCHAR,javaType=String},
+#{flowNo,jdbcType=VARCHAR,javaType=String},
+#{phone,jdbcType=VARCHAR,javaType=String},
+#{reason,jdbcType=VARCHAR,javaType=String},
+#{payInd,jdbcType=VARCHAR,javaType=String},
+#{printInd,jdbcType=VARCHAR,javaType=String},
+#{plateNo,jdbcType=VARCHAR,javaType=String},
+#{seqno,jdbcType=INTEGER,javaType=Integer},
+#{item,jdbcType=VARCHAR,javaType=String},
+#{costPost,jdbcType=FLOAT,javaType=Double},
+#{costTransact,jdbcType=FLOAT,javaType=Double},
+#{plateClass,jdbcType=VARCHAR,javaType=String},
+#{passInd,jdbcType=VARCHAR,javaType=String} 
+</sql>
+
+<sql id="updateCols">
+ TRANSACT=#{model.transact,jdbcType=VARCHAR,javaType=String},
+APPLICAT=#{model.applicat,jdbcType=VARCHAR,javaType=String},
+DRIVER_ID_NO=#{model.driverIdNo,jdbcType=VARCHAR,javaType=String},
+AGENT_ID_NO=#{model.agentIdNo,jdbcType=VARCHAR,javaType=String},
+DRIVER_ID_NAME=#{model.driverIdName,jdbcType=VARCHAR,javaType=String},
+AGENT_ID_NAME=#{model.agentIdName,jdbcType=VARCHAR,javaType=String},
+CREATE_DATE=#{model.createDate,jdbcType=DATE,javaType=Date},
+VERIFY_DATE=#{model.verifyDate,jdbcType=DATE,javaType=Date},
+VERIFY_IND=#{model.verifyInd,jdbcType=VARCHAR,javaType=String},
+TEL=#{model.tel,jdbcType=VARCHAR,javaType=String},
+VERIFYER_FK=#{model.verifyerFk,jdbcType=VARCHAR,javaType=String},
+REMARK=#{model.remark,jdbcType=VARCHAR,javaType=String},
+PAYMENT=#{model.payment,jdbcType=VARCHAR,javaType=String},
+RECEIVE=#{model.receive,jdbcType=VARCHAR,javaType=String},
+<if test="pk neq null">FLOW_NO=#{pk},</if>
+PHONE=#{model.phone,jdbcType=VARCHAR,javaType=String},
+REASON=#{model.reason,jdbcType=VARCHAR,javaType=String},
+PAY_IND=#{model.payInd,jdbcType=VARCHAR,javaType=String},
+PRINT_IND=#{model.printInd,jdbcType=VARCHAR,javaType=String},
+PLATE_NO=#{model.plateNo,jdbcType=VARCHAR,javaType=String},
+SEQNO=#{model.seqno,jdbcType=INTEGER,javaType=Integer},
+ITEM=#{model.item,jdbcType=VARCHAR,javaType=String},
+COST_POST=#{model.costPost,jdbcType=FLOAT,javaType=Double},
+COST_TRANSACT=#{model.costTransact,jdbcType=FLOAT,javaType=Double},
+PLATE_CLASS=#{model.plateClass,jdbcType=VARCHAR,javaType=String},
+PASS_IND=#{model.passInd,jdbcType=VARCHAR,javaType=String}
+</sql>
+
+<sql id="orderby">order by FLOW_NO</sql>
+
+<sql id="joinColums"></sql>
+
+<sql id="join"></sql><!-- 别名m已被主表使用  -->
+
+<resultMap type="com.ett.drv.model.self.TransactVehicleModel" id="resultMap">
+ <id column="FLOW_NO"  property="flowNo" jdbcType="VARCHAR" javaType="String"/>
+<result column="TRANSACT"  property="transact" jdbcType="VARCHAR" javaType="String"/>
+<result column="APPLICAT"  property="applicat" jdbcType="VARCHAR" javaType="String"/>
+<result column="DRIVER_ID_NO"  property="driverIdNo" jdbcType="VARCHAR" javaType="String"/>
+<result column="AGENT_ID_NO"  property="agentIdNo" jdbcType="VARCHAR" javaType="String"/>
+<result column="DRIVER_ID_NAME"  property="driverIdName" jdbcType="VARCHAR" javaType="String"/>
+<result column="AGENT_ID_NAME"  property="agentIdName" jdbcType="VARCHAR" javaType="String"/>
+<result column="CREATE_DATE"  property="createDate" jdbcType="DATE" javaType="Date"/>
+<result column="VERIFY_DATE"  property="verifyDate" jdbcType="DATE" javaType="Date"/>
+<result column="VERIFY_IND"  property="verifyInd" jdbcType="VARCHAR" javaType="String"/>
+<result column="TEL"  property="tel" jdbcType="VARCHAR" javaType="String"/>
+<result column="VERIFYER_FK"  property="verifyerFk" jdbcType="VARCHAR" javaType="String"/>
+<result column="REMARK"  property="remark" jdbcType="VARCHAR" javaType="String"/>
+<result column="PAYMENT"  property="payment" jdbcType="VARCHAR" javaType="String"/>
+<result column="RECEIVE"  property="receive" jdbcType="VARCHAR" javaType="String"/>
+<result column="PHONE"  property="phone" jdbcType="VARCHAR" javaType="String"/>
+<result column="REASON"  property="reason" jdbcType="VARCHAR" javaType="String"/>
+<result column="PAY_IND"  property="payInd" jdbcType="VARCHAR" javaType="String"/>
+<result column="PRINT_IND"  property="printInd" jdbcType="VARCHAR" javaType="String"/>
+<result column="PLATE_NO"  property="plateNo" jdbcType="VARCHAR" javaType="String"/>
+<result column="SEQNO"  property="seqno" jdbcType="INTEGER" javaType="Integer"/>
+<result column="ITEM"  property="item" jdbcType="VARCHAR" javaType="String"/>
+<result column="COST_POST"  property="costPost" jdbcType="FLOAT" javaType="Double"/>
+<result column="COST_TRANSACT"  property="costTransact" jdbcType="FLOAT" javaType="Double"/>
+<result column="PLATE_CLASS"  property="plateClass" jdbcType="VARCHAR" javaType="String"/>
+<result column="PASS_IND"  property="passInd" jdbcType="VARCHAR" javaType="String"/>
+ </resultMap>
+
+
+<select id="select" resultType="ArrayList" resultMap="resultMap">
+	 select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> 
+<trim prefix="where" prefixOverrides="and">
+<if test="model.transact neq null">and m.TRANSACT=#{model.transact,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.applicat neq null">and m.APPLICAT=#{model.applicat,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.driverIdNo neq null">and m.DRIVER_ID_NO=#{model.driverIdNo,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.agentIdNo neq null">and m.AGENT_ID_NO=#{model.agentIdNo,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.driverIdName neq null">and m.DRIVER_ID_NAME=#{model.driverIdName,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.agentIdName neq null">and m.AGENT_ID_NAME=#{model.agentIdName,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.createDate neq null">and to_char(m.CREATE_DATE,'YYYY-MM-DD')= to_char(#{model.createDate,jdbcType=DATE javaType=Date },'YYYY-MM-DD') </if> 
+<if test="model.verifyDate neq null">and to_char(m.VERIFY_DATE,'YYYY-MM-DD')= to_char(#{model.verifyDate,jdbcType=DATE javaType=Date },'YYYY-MM-DD') </if> 
+<if test="model.verifyInd neq null">and m.VERIFY_IND=#{model.verifyInd,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.tel neq null">and m.TEL=#{model.tel,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.verifyerFk neq null">and m.VERIFYER_FK=#{model.verifyerFk,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.remark neq null">and m.REMARK=#{model.remark,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.payment neq null">and m.PAYMENT=#{model.payment,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.receive neq null">and m.RECEIVE=#{model.receive,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.flowNo neq null">and m.FLOW_NO=#{model.flowNo,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.phone neq null">and m.PHONE=#{model.phone,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.reason neq null">and m.REASON=#{model.reason,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.payInd neq null">and m.PAY_IND=#{model.payInd,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.printInd neq null">and m.PRINT_IND=#{model.printInd,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.plateNo neq null">and m.PLATE_NO=#{model.plateNo,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.seqno neq null">and m.SEQNO=#{model.seqno,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.item neq null">and m.ITEM=#{model.item,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.costPost neq null">and m.COST_POST=#{model.costPost,jdbcType=FLOAT javaType=Double } </if> 
+<if test="model.costTransact neq null">and m.COST_TRANSACT=#{model.costTransact,jdbcType=FLOAT javaType=Double } </if> 
+<if test="model.plateClass neq null">and m.PLATE_CLASS=#{model.plateClass,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.passInd neq null">and m.PASS_IND=#{model.passInd,jdbcType=VARCHAR javaType=String } </if> 
+</trim>
+</select>
+<select id="selectEqPk" parameterType="String"  resultMap="resultMap">
+	 select <include refid="colums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> = #{flowNo,jdbcType=VARCHAR,javaType=String}
+</select>
+
+<select id="count" resultType="int">
+	 select count(*) from <include refid="table"/>
+</select>
+
+<select id="selectInPk" resultType="ArrayList" resultMap="resultMap" >
+	 select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> in
+<foreach item="pk" collection="list" open="(" separator="," close=")"> #{pk} </foreach> 
+<include refid="orderby"/>
+</select>
+
+<select id="selectNotInPk" resultType="ArrayList" resultMap="resultMap" >
+	 select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> not in
+<foreach item="pk" collection="list" open="(" separator="," close=")"> #{pk} </foreach> 
+<include refid="orderby"/>
+</select>
+
+<select  id="selectAll"  resultType="ArrayList"  resultMap="resultMap">
+	 select m.* <include refid="joinColums"/> from  <include refid="table" /> m <include refid="join"/> 
+ <include refid="orderby"/>
+</select>
+
+<insert id="insertOne" >
+	 insert into <include refid="table"/> ( <include refid="colums"/> ) values ( <include refid="insertCols"/>) 
+</insert>
+
+<update id="updateOne" flushCache="true" >
+	 update <include refid="table"/> set <include refid="updateCols"/> where <include refid="pk" />=#{model.flowNo,jdbcType=VARCHAR,javaType=String}
+</update>
+
+<delete id="deleteInPk" flushCache="true">
+	 delete from <include refid="table"/> where <include refid="pk" /> in
+<foreach item="pk" collection="list" open="(" separator="," close=")">#{pk}</foreach>
+</delete>
+
+<delete id="deleteNotInPk" flushCache="true">
+	 delete from <include refid="table"/> where <include refid="pk" /> not in
+<foreach item="pk" collection="list" open="(" separator="," close=")">#{pk}</foreach>
+</delete>
+
+
+
+</mapper>

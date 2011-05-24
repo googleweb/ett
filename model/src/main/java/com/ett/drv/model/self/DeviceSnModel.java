@@ -8,129 +8,124 @@ public class DeviceSnModel extends BaseModel {
 
 
 	 public static enum F { 
-		  id,createip,createtime,creator,isdeleted,description,keywords,modifier,modifyip,modifytime,deviceIp,
-		jkname,jkid,jkxlh,sn,xtlb  
+		  Id,CCreateip,TCreatetime,CCreator,IIsdeleted,CDescription,CKeywords,CModifier,CModifyip,TModifytime,CDeviceIp,
+		CJkname,CJkid,CJkxlh,CSn,CXtlb  
 		 } 
-	 
-	 
 
-		@Override
-	public Enum[] enumFields() {
-		// TODO Auto-generated method stub
-		return DeviceModel.F.values();
-	}
-		private Integer id;         //ID  NUMBER 19
-		private String createip;         //C_CREATEIP  VARCHAR2 1,020
-		private Timestamp createtime;         //T_CREATETIME  TIMESTAMP 0
-		private String creator;         //C_CREATOR  VARCHAR2 120
-		private Integer isdeleted;         //I_ISDELETED  NUMBER 1
-		private String description;         //C_DESCRIPTION  VARCHAR2 1,020
-		private String keywords;         //C_KEYWORDS  VARCHAR2 1,020
-		private String modifier;         //C_MODIFIER  VARCHAR2 1,020
-		private String modifyip;         //C_MODIFYIP  VARCHAR2 1,020
-		private Timestamp modifytime;         //T_MODIFYTIME  TIMESTAMP 0
-		private String deviceIp;         //C_DEVICE_IP  VARCHAR2 64
-		private String jkname;         //C_JKNAME  VARCHAR2 64
-		private String jkid;         //C_JKID  VARCHAR2 64
-		private String jkxlh;         //C_JKXLH  VARCHAR2 64
-		private String sn;         //C_SN  VARCHAR2 64
-		private String xtlb;         //C_XTLB  VARCHAR2 64
-		public Integer getId() {
-			return id;
+		private Double Id;         //ID  NUMBER 19
+		private String CCreateip;         //C_CREATEIP  VARCHAR2 1,020
+		private Timestamp TCreatetime;         //T_CREATETIME  TIMESTAMP 0
+		private String CCreator;         //C_CREATOR  VARCHAR2 120
+		private Double IIsdeleted;         //I_ISDELETED  NUMBER 1
+		private String CDescription;         //C_DESCRIPTION  VARCHAR2 1,020
+		private String CKeywords;         //C_KEYWORDS  VARCHAR2 1,020
+		private String CModifier;         //C_MODIFIER  VARCHAR2 1,020
+		private String CModifyip;         //C_MODIFYIP  VARCHAR2 1,020
+		private Timestamp TModifytime;         //T_MODIFYTIME  TIMESTAMP 0
+		private String CDeviceIp;         //C_DEVICE_IP  VARCHAR2 64
+		private String CJkname;         //C_JKNAME  VARCHAR2 64
+		private String CJkid;         //C_JKID  VARCHAR2 64
+		private String CJkxlh;         //C_JKXLH  VARCHAR2 64
+		private String CSn;         //C_SN  VARCHAR2 64
+		private String CXtlb;         //C_XTLB  VARCHAR2 64
+		public Double getId() {
+			return Id;
 		}
-		public void setId(Integer id) {
-			this.id = id;
+		public void setId(Double id) {
+			Id = id;
 		}
-		public String getCreateip() {
-			return createip;
+		public String getCCreateip() {
+			return CCreateip;
 		}
-		public void setCreateip(String createip) {
-			this.createip = createip;
+		public void setCCreateip(String cCreateip) {
+			CCreateip = cCreateip;
 		}
-		public Timestamp getCreatetime() {
-			return createtime;
+		public Timestamp getTCreatetime() {
+			return TCreatetime;
 		}
-		public void setCreatetime(Timestamp createtime) {
-			this.createtime = createtime;
+		public void setTCreatetime(Timestamp tCreatetime) {
+			TCreatetime = tCreatetime;
 		}
-		public String getCreator() {
-			return creator;
+		public String getCCreator() {
+			return CCreator;
 		}
-		public void setCreator(String creator) {
-			this.creator = creator;
+		public void setCCreator(String cCreator) {
+			CCreator = cCreator;
 		}
-		public Integer getIsdeleted() {
-			return isdeleted;
+		public Double getIIsdeleted() {
+			return IIsdeleted;
 		}
-		public void setIsdeleted(Integer isdeleted) {
-			this.isdeleted = isdeleted;
+		public void setIIsdeleted(Double iIsdeleted) {
+			IIsdeleted = iIsdeleted;
 		}
-		public String getDescription() {
-			return description;
+		public String getCDescription() {
+			return CDescription;
 		}
-		public void setDescription(String description) {
-			this.description = description;
+		public void setCDescription(String cDescription) {
+			CDescription = cDescription;
 		}
-		public String getKeywords() {
-			return keywords;
+		public String getCKeywords() {
+			return CKeywords;
 		}
-		public void setKeywords(String keywords) {
-			this.keywords = keywords;
+		public void setCKeywords(String cKeywords) {
+			CKeywords = cKeywords;
 		}
-		public String getModifier() {
-			return modifier;
+		public String getCModifier() {
+			return CModifier;
 		}
-		public void setModifier(String modifier) {
-			this.modifier = modifier;
+		public void setCModifier(String cModifier) {
+			CModifier = cModifier;
 		}
-		public String getModifyip() {
-			return modifyip;
+		public String getCModifyip() {
+			return CModifyip;
 		}
-		public void setModifyip(String modifyip) {
-			this.modifyip = modifyip;
+		public void setCModifyip(String cModifyip) {
+			CModifyip = cModifyip;
 		}
-		public Timestamp getModifytime() {
-			return modifytime;
+		public Timestamp getTModifytime() {
+			return TModifytime;
 		}
-		public void setModifytime(Timestamp modifytime) {
-			this.modifytime = modifytime;
+		public void setTModifytime(Timestamp tModifytime) {
+			TModifytime = tModifytime;
 		}
-		public String getDeviceIp() {
-			return deviceIp;
+		public String getCDeviceIp() {
+			return CDeviceIp;
 		}
-		public void setDeviceIp(String deviceIp) {
-			this.deviceIp = deviceIp;
+		public void setCDeviceIp(String cDeviceIp) {
+			CDeviceIp = cDeviceIp;
 		}
-		public String getJkname() {
-			return jkname;
+		public String getCJkname() {
+			return CJkname;
 		}
-		public void setJkname(String jkname) {
-			this.jkname = jkname;
+		public void setCJkname(String cJkname) {
+			CJkname = cJkname;
 		}
-		public String getJkid() {
-			return jkid;
+		public String getCJkid() {
+			return CJkid;
 		}
-		public void setJkid(String jkid) {
-			this.jkid = jkid;
+		public void setCJkid(String cJkid) {
+			CJkid = cJkid;
 		}
-		public String getJkxlh() {
-			return jkxlh;
+		public String getCJkxlh() {
+			return CJkxlh;
 		}
-		public void setJkxlh(String jkxlh) {
-			this.jkxlh = jkxlh;
+		public void setCJkxlh(String cJkxlh) {
+			CJkxlh = cJkxlh;
 		}
-		public String getSn() {
-			return sn;
+		public String getCSn() {
+			return CSn;
 		}
-		public void setSn(String sn) {
-			this.sn = sn;
+		public void setCSn(String cSn) {
+			CSn = cSn;
 		}
-		public String getXtlb() {
-			return xtlb;
+		public String getCXtlb() {
+			return CXtlb;
 		}
-		public void setXtlb(String xtlb) {
-			this.xtlb = xtlb;
+		public void setCXtlb(String cXtlb) {
+			CXtlb = cXtlb;
 		}
-	
+		
+		
+		
 	
 }

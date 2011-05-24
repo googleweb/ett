@@ -60,8 +60,8 @@ public class AdminBiz extends BaseDrvBiz implements IAdminBiz {
 	public ArrayList<DictModel> listKscc(String code) throws Exception {
 		// TODO Auto-generated method stub
 		DictModel lDict=new DictModel();
-		lDict.setTypename(TYPE_NAME_KSCC);
-		lDict.setDictValue(code);
+		lDict.setCTypename(TYPE_NAME_KSCC);
+		//lDict.setC(code);
 		ArrayList<DictModel> lListKscc=dictMapper.select(lDict);
 		return lListKscc;
 	}
@@ -70,8 +70,8 @@ public class AdminBiz extends BaseDrvBiz implements IAdminBiz {
 	public ArrayList<DictModel> listKsdd(String code) throws Exception {
 		// TODO Auto-generated method stub
 		DictModel lDict=new DictModel();
-		lDict.setTypename(TYPE_NAME_KSDD);
-		lDict.setDictValue(code);
+		lDict.setCTypename(TYPE_NAME_KSDD);
+		//lDict.setCTypename(code);
 		ArrayList<DictModel> lListKsdd=dictMapper.select(lDict);
 		return lListKsdd;
 	}
@@ -80,8 +80,8 @@ public class AdminBiz extends BaseDrvBiz implements IAdminBiz {
 	public ArrayList<DepartmentModel> listSchool(String code) throws Exception {
 		// TODO Auto-generated method stub
 	    DepartmentModel lDep=new DepartmentModel();
-        lDep.setDeptype(DEP_TYPE_SCHOOL);
-        lDep.setDepcode(code);
+        lDep.setCDeptype(DEP_TYPE_SCHOOL);
+        lDep.setCDepcode(code);
         ArrayList<DepartmentModel> lListSchool=departmentMapper.select(lDep);
         return lListSchool;
 	}
@@ -90,29 +90,29 @@ public class AdminBiz extends BaseDrvBiz implements IAdminBiz {
 	public BookedLimitModel fillObject(BookedLimitModel pLimit)
 			throws Exception {
 		// TODO Auto-generated method stub
-		if(StringUtil.isNotBlank(pLimit.getCksccCode()))
+		if(StringUtil.isNotBlank(pLimit.getCKsccCode()))
 		{
 		   DictModel dict=new DictModel();
-		   dict.setTypename(TYPE_NAME_KSCC);
-		   dict.setDictValue(pLimit.getCksccCode());
+		   dict.setCTypename(TYPE_NAME_KSCC);
+		   dict.setCTypename(pLimit.getCKsccCode());
 		   DictModel dictKscc=dictMapper.select(dict).get(0);
-		   pLimit.setCkscc(dictKscc.getDictText());
+		   pLimit.setCKscc(dictKscc.getCDictText());
 		}
-		if(StringUtil.isNotBlank(pLimit.getCksddCode()))
+		if(StringUtil.isNotBlank(pLimit.getCKsddCode()))
 		{
 		   DictModel dict=new DictModel();
-		   dict.setTypename(TYPE_NAME_KSDD);
-		   dict.setDictValue(pLimit.getCksddCode());
+		   dict.setCTypename(TYPE_NAME_KSDD);
+		   dict.setCTypename(pLimit.getCKsddCode());
 		   DictModel dictKsdd=dictMapper.select(dict).get(0);
-		   pLimit.setCksdd(dictKsdd.getDictText());
+		   pLimit.setCKsdd(dictKsdd.getCDictText());
 		}
-		if(StringUtil.isNotBlank(pLimit.getCschoolCode()))
+		if(StringUtil.isNotBlank(pLimit.getCSchoolCode()))
 		{
 		   DepartmentModel dep=new DepartmentModel();
-		   dep.setDeptype(DEP_TYPE_SCHOOL);
-		   dep.setDepcode(pLimit.getCschoolCode());
+		   dep.setCDeptype(DEP_TYPE_SCHOOL);
+		   dep.setCDepcode(pLimit.getCSchoolCode());
 		   DepartmentModel depSchool=departmentMapper.select(dep).get(0);
-		   pLimit.setCschoolName(depSchool.getDepnickname());
+		   pLimit.setCSchoolName(depSchool.getCDepnickname());
 		}
 		return pLimit;
 	}
@@ -123,8 +123,8 @@ public class AdminBiz extends BaseDrvBiz implements IAdminBiz {
 		// TODO Auto-generated method stub
 		UserModel userModel=null;
 		UserModel query=new UserModel();
-		query.setLoginName(loginName);
-		query.setPwd(pwd);
+		query.setCLoginName(loginName);
+		query.setCPwd(pwd);
 		try {
 			ArrayList<UserModel> listUser=this.userMapper.select(query);
 			userModel=listUser.get(0);

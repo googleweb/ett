@@ -39,22 +39,22 @@ String weekPbActionPath=basePath+"booked/WeekPb";
 
         
         JsMapModel rowKsddname=new JsMapModel();
-        rowKsddname.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,Km1CheckRecordModel.F.ksddname,true);
+        rowKsddname.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,Km1CheckRecordModel.F.CKsddname,true);
         rowKsddname.put(EasyUiModel.DataGrid.ColumnProperties.WIDTH,150);
         rowKsddname.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"考试地点",true);
         
         JsMapModel rowSfzmhm=new JsMapModel();
-        rowSfzmhm.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,Km1CheckRecordModel.F.sfzmhm,true);
+        rowSfzmhm.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,Km1CheckRecordModel.F.Sfzmhm,true);
         rowSfzmhm.put(EasyUiModel.DataGrid.ColumnProperties.WIDTH,150);
         rowSfzmhm.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"身份证号码",true);
         
         JsMapModel rowXm=new JsMapModel();
-        rowXm.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,Km1CheckRecordModel.F.xm,true);
+        rowXm.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,Km1CheckRecordModel.F.Xm,true);
         rowXm.put(EasyUiModel.DataGrid.ColumnProperties.WIDTH,150);
         rowXm.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"姓名",true);
         
         JsMapModel rowCreatetime=new JsMapModel();
-        rowCreatetime.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,Km1CheckRecordModel.F.createtime,true);
+        rowCreatetime.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,Km1CheckRecordModel.F.TCreatetime,true);
         rowCreatetime.put(EasyUiModel.DataGrid.ColumnProperties.WIDTH,150);
         rowCreatetime.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"预约时间",true);
         rowCreatetime.put(EasyUiModel.DataGrid.ColumnProperties.FORMATTER,"dateboxFormatter");
@@ -73,7 +73,7 @@ String weekPbActionPath=basePath+"booked/WeekPb";
         dataGrid.appendAttrs(EasyUiModel.DataGrid.Properties.FIT,true);
         dataGrid.appendAttrs(EasyUiModel.DataGrid.Properties.URL,km1ActionPath+"/datagrid/checkRecord.action",true);
         dataGrid.appendAttrs(EasyUiModel.DataGrid.Properties.COLUMNS,cols);
-        dataGrid.appendAttrs(EasyUiModel.DataGrid.Properties.ID_FIELD,"id",true);
+        dataGrid.appendAttrs(EasyUiModel.DataGrid.Properties.ID_FIELD,"Id",true);
         dataGrid.appendAttrs(EasyUiModel.DataGrid.Properties.PAGINATION,true);
         dataGrid.appendAttrs(EasyUiModel.DataGrid.Properties.SINGLE_SELECT,true);
         
@@ -112,10 +112,10 @@ String weekPbActionPath=basePath+"booked/WeekPb";
     
          <table class="editTable" cellspacing="0">
             <tr>
-              <td style="width: 350px;">身份证号码:<input name="sfzmhm"/></td>
-              <td style="width: 300px;">姓名:<input name="xm"/></td>
+              <td style="width: 350px;">身份证号码:<input name="Sfzmhm"/></td>
+              <td style="width: 300px;">姓名:<input name="Xm"/></td>
               <td style="width: 300px;">考场:
-                   <input name="<%=Km1CheckRecordModel.F.ksdd %>" 
+                   <input name="<%=Km1CheckRecordModel.F.Ksdd %>" 
                      class="<%=EasyUiModel.ComboBox.CLASS %>"
                      <%=EasyUiModel.ComboBox.Properties.URL(weekPbActionPath+"/select/ksdd.action") %>
                       <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD("dictText") %>
@@ -123,7 +123,7 @@ String weekPbActionPath=basePath+"booked/WeekPb";
   	                  <%=EasyUiModel.ComboBox.Properties.EDITABLE(false) %>
                    />
               </td> 
-              <td style="width: 300px;">预约时间:<input name="createtime" class="<%=EasyUiModel.DateBox.CLASS %>" /></td>
+              <td style="width: 300px;">预约时间:<input name="TCreatetime" class="<%=EasyUiModel.DateBox.CLASS %>" /></td>
               <td style="width: 200px;">
                  <a class="<%=EasyUiModel.LinkButton.CLASS %>"  id="<%=aSearch %>"
                     <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_SEARCH) %>

@@ -53,31 +53,31 @@ String adminMenuPath=basePath+"admin/Menu";
 	   <table  class="editTable" cellpadding="1" cellspacing="0">
        <tr>
          <td class="tdLabel" style="width:20%">菜单ID</td>
-         <td><input name="id" value="${id}"  class="tdInput easyui-validatebox" size="30" readonly="readonly"/></td>
+         <td><input name="Id" value="${Id}"  class="tdInput easyui-validatebox" size="30" readonly="readonly"/></td>
        </tr>
        <tr>
          <td class="tdLabel">菜单名</td>
-         <td><input name="name" value="${name}" class="tdInput easyui-validatebox" required="true" size="30"/></td>
+         <td><input name="Name" value="${Name}" class="tdInput easyui-validatebox" required="true" size="30"/></td>
        </tr>
               <tr>
          <td class="tdLabel">页面路径</td>
-         <td><input name="url" value="${url}" class="tdInput easyui-validatebox" size="30"/></td>
+         <td><input name="Url" value="${Url}" class="tdInput easyui-validatebox" size="30"/></td>
        </tr>
        <tr>
          <td class="tdLabel">请求参数</td>
-         <td><input name="parma" value="${parma}" class="tdInput easyui-validatebox" size="30"/></td>
+         <td><input name="Parma" value="${Parma}" class="tdInput easyui-validatebox" size="30"/></td>
        </tr>
        <tr>
          <td class="tdLabel">父菜单</td>
-         <td><input name="parentId" value="${parentId}"  
-              textField="name" idField="id" class="easyui-combotree"
+         <td><input name="ParentId" value="${ParentId}"  
+              textField="Name" idField="Id" class="easyui-combotree"
               url="<%=adminMenuPath %>/list/ComboTree.action?format=json"  required="true"
                panelWidth="200"  /></td>
        </tr>
        <tr>
          <td class="tdLabel">功能描述</td>
-         <td><textarea name="descp"  class="tdInput easyui-validatebox" 
-             rows="5" cols="40" >${descp}</textarea>  
+         <td><textarea name="Descp"  class="tdInput easyui-validatebox" 
+             rows="5" cols="40" >${Descp}</textarea>  
          </td>
               
        </tr>

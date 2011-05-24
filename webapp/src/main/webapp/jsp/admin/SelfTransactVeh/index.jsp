@@ -42,39 +42,39 @@ String adminSelfTransactVeh=basePath+"admin/SelfTransactVeh";
     JsListModel c1=new JsListModel();
     
     JsMapModel rowId=new JsMapModel();
-    rowId.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,BaseTransactModel.F.flowNo,true);
+    rowId.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,BaseTransactModel.F.FlowNo,true);
     rowId.put(EasyUiModel.DataGrid.ColumnProperties.CHECKBOX,true);
     rowId.put(EasyUiModel.DataGrid.ColumnProperties.WIDTH,30);
     
     JsMapModel rowFlowNo=new JsMapModel();
     rowFlowNo.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"流水号",true);
-    rowFlowNo.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,BaseTransactModel.F.flowNo,true);
+    rowFlowNo.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,BaseTransactModel.F.FlowNo,true);
     rowFlowNo.put(EasyUiModel.DataGrid.ColumnProperties.WIDTH,150);
     
     JsMapModel rowCreateDate=new JsMapModel();
     rowCreateDate.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"申请日期",true);
-    rowCreateDate.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,BaseTransactModel.F.createDate,true);
+    rowCreateDate.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,BaseTransactModel.F.CreateDate,true);
     rowCreateDate.put(EasyUiModel.DataGrid.ColumnProperties.WIDTH,150);
     rowCreateDate.put(EasyUiModel.DataGrid.ColumnProperties.FORMATTER,"dateboxFormatter");
     
     JsMapModel rowPlateNo=new JsMapModel();
     rowPlateNo.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"号牌号码",true);
-    rowPlateNo.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,TransactVehicleModel.F.plateNo,true);
+    rowPlateNo.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,TransactVehicleModel.F.PlateNo,true);
     rowPlateNo.put(EasyUiModel.DataGrid.ColumnProperties.WIDTH,200);
     
     JsMapModel rowTransact=new JsMapModel();
     rowTransact.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"业务类型",true);
-    rowTransact.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,BaseTransactModel.F.transact,true);
+    rowTransact.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,BaseTransactModel.F.Transact,true);
     rowTransact.put(EasyUiModel.DataGrid.ColumnProperties.WIDTH,150);
     
     JsMapModel rowApplicat=new JsMapModel();
     rowApplicat.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"申请方式",true);
-    rowApplicat.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,BaseTransactModel.F.applicat,true);
+    rowApplicat.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,BaseTransactModel.F.Applicat,true);
     rowApplicat.put(EasyUiModel.DataGrid.ColumnProperties.WIDTH,150);
     
     JsMapModel rowSeqNo=new JsMapModel();
     rowSeqNo.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"排队号",true);
-    rowSeqNo.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,BaseTransactModel.F.seqno,true);
+    rowSeqNo.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,BaseTransactModel.F.Seqno,true);
     rowSeqNo.put(EasyUiModel.DataGrid.ColumnProperties.WIDTH,80);
     
     JsMapModel rowOpera=new JsMapModel();

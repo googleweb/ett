@@ -4,434 +4,183 @@ import com.smartken.kia.core.model.impl.BaseModel;
 
 public class BookedOrderInfoModel extends BaseModel {
 
-	public static enum F{
-		id,hmhp,ksccCode,kscc,ksddCode,ksdd,km,dateKsrq,datePxshrq,paibanid,jbr,
-		dlrCode,dlr,jlyIdcard,jlyXm,kssj,lsh,checkOperator,checkDate,checked,xm,
-		idcard,checkResult,zjcx
-	}
 	
-	private Integer id;         //ID  NUMBER 38
-	private String hmhp;         //C_HMHP  VARCHAR2 30
-	private String ksccCode;         //C_KSCC_CODE  VARCHAR2 30
-	private String kscc;         //C_KSCC  VARCHAR2 200
-	private String ksddCode;         //C_KSDD_CODE  VARCHAR2 30
-	private String ksdd;         //C_KSDD  VARCHAR2 200
-	private Integer km;         //I_KM  NUMBER 38
-	private String dateKsrq;         //DATE_KSRQ  VARCHAR2 30
-	private String datePxshrq;         //DATE_PXSHRQ  VARCHAR2 30
-	private Integer paibanid;         //I_PAIBANID  NUMBER 38
-	private String jbr;         //C_JBR  VARCHAR2 30
-	private String dlrCode;         //C_DLR_CODE  VARCHAR2 30
-	private String dlr;         //C_DLR  VARCHAR2 200
-	private String jlyIdcard;         //C_JLY_IDCARD  VARCHAR2 30
-	private String jlyXm;         //C_JLY_XM  VARCHAR2 30
-	private String kssj;         //C_KSSJ  VARCHAR2 20
-	private String lsh;         //C_LSH  VARCHAR2 20
-	private String checkOperator;         //C_CHECK_OPERATOR  VARCHAR2 30
-	private String checkDate;         //C_CHECK_DATE  VARCHAR2 30
-	private Integer checked;         //I_CHECKED  NUMBER 38
-	private String xm;         //C_XM  VARCHAR2 30
-	private String idcard;         //C_IDCARD  VARCHAR2 30
-	private String checkResult;         //C_CHECK_RESULT  VARCHAR2 1,000
-	private String zjcx;         //C_ZJCX  VARCHAR2 30
+	 public static enum F { 
+		  Id,CHmhp,CKsccCode,CKscc,CKsddCode,CKsdd,IKm,DateKsrq,DatePxshrq,IPaibanid,CJbr,
+		CDlrCode,CDlr,CJlyIdcard,CJlyXm,CKssj,CLsh,CCheckOperator,CCheckDate,IChecked,CXm,
+		CIdcard,CCheckResult,CZjcx  
+		 } 
+
+		private Integer Id;         //ID  NUMBER 38
+		private String CHmhp;         //C_HMHP  VARCHAR2 30
+		private String CKsccCode;         //C_KSCC_CODE  VARCHAR2 30
+		private String CKscc;         //C_KSCC  VARCHAR2 200
+		private String CKsddCode;         //C_KSDD_CODE  VARCHAR2 30
+		private String CKsdd;         //C_KSDD  VARCHAR2 200
+		private Integer IKm;         //I_KM  NUMBER 38
+		private String DateKsrq;         //DATE_KSRQ  VARCHAR2 30
+		private String DatePxshrq;         //DATE_PXSHRQ  VARCHAR2 30
+		private Integer IPaibanid;         //I_PAIBANID  NUMBER 38
+		private String CJbr;         //C_JBR  VARCHAR2 30
+		private String CDlrCode;         //C_DLR_CODE  VARCHAR2 30
+		private String CDlr;         //C_DLR  VARCHAR2 200
+		private String CJlyIdcard;         //C_JLY_IDCARD  VARCHAR2 30
+		private String CJlyXm;         //C_JLY_XM  VARCHAR2 30
+		private String CKssj;         //C_KSSJ  VARCHAR2 20
+		private String CLsh;         //C_LSH  VARCHAR2 20
+		private String CCheckOperator;         //C_CHECK_OPERATOR  VARCHAR2 30
+		private String CCheckDate;         //C_CHECK_DATE  VARCHAR2 30
+		private Integer IChecked;         //I_CHECKED  NUMBER 38
+		private String CXm;         //C_XM  VARCHAR2 30
+		private String CIdcard;         //C_IDCARD  VARCHAR2 30
+		private String CCheckResult;         //C_CHECK_RESULT  VARCHAR2 1,000
+		private String CZjcx;         //C_ZJCX  VARCHAR2 30
+		public Integer getId() {
+			return Id;
+		}
+		public void setId(Integer id) {
+			Id = id;
+		}
+		public String getCHmhp() {
+			return CHmhp;
+		}
+		public void setCHmhp(String cHmhp) {
+			CHmhp = cHmhp;
+		}
+		public String getCKsccCode() {
+			return CKsccCode;
+		}
+		public void setCKsccCode(String cKsccCode) {
+			CKsccCode = cKsccCode;
+		}
+		public String getCKscc() {
+			return CKscc;
+		}
+		public void setCKscc(String cKscc) {
+			CKscc = cKscc;
+		}
+		public String getCKsddCode() {
+			return CKsddCode;
+		}
+		public void setCKsddCode(String cKsddCode) {
+			CKsddCode = cKsddCode;
+		}
+		public String getCKsdd() {
+			return CKsdd;
+		}
+		public void setCKsdd(String cKsdd) {
+			CKsdd = cKsdd;
+		}
+		public Integer getIKm() {
+			return IKm;
+		}
+		public void setIKm(Integer iKm) {
+			IKm = iKm;
+		}
+		public String getDateKsrq() {
+			return DateKsrq;
+		}
+		public void setDateKsrq(String dateKsrq) {
+			DateKsrq = dateKsrq;
+		}
+		public String getDatePxshrq() {
+			return DatePxshrq;
+		}
+		public void setDatePxshrq(String datePxshrq) {
+			DatePxshrq = datePxshrq;
+		}
+		public Integer getIPaibanid() {
+			return IPaibanid;
+		}
+		public void setIPaibanid(Integer iPaibanid) {
+			IPaibanid = iPaibanid;
+		}
+		public String getCJbr() {
+			return CJbr;
+		}
+		public void setCJbr(String cJbr) {
+			CJbr = cJbr;
+		}
+		public String getCDlrCode() {
+			return CDlrCode;
+		}
+		public void setCDlrCode(String cDlrCode) {
+			CDlrCode = cDlrCode;
+		}
+		public String getCDlr() {
+			return CDlr;
+		}
+		public void setCDlr(String cDlr) {
+			CDlr = cDlr;
+		}
+		public String getCJlyIdcard() {
+			return CJlyIdcard;
+		}
+		public void setCJlyIdcard(String cJlyIdcard) {
+			CJlyIdcard = cJlyIdcard;
+		}
+		public String getCJlyXm() {
+			return CJlyXm;
+		}
+		public void setCJlyXm(String cJlyXm) {
+			CJlyXm = cJlyXm;
+		}
+		public String getCKssj() {
+			return CKssj;
+		}
+		public void setCKssj(String cKssj) {
+			CKssj = cKssj;
+		}
+		public String getCLsh() {
+			return CLsh;
+		}
+		public void setCLsh(String cLsh) {
+			CLsh = cLsh;
+		}
+		public String getCCheckOperator() {
+			return CCheckOperator;
+		}
+		public void setCCheckOperator(String cCheckOperator) {
+			CCheckOperator = cCheckOperator;
+		}
+		public String getCCheckDate() {
+			return CCheckDate;
+		}
+		public void setCCheckDate(String cCheckDate) {
+			CCheckDate = cCheckDate;
+		}
+		public Integer getIChecked() {
+			return IChecked;
+		}
+		public void setIChecked(Integer iChecked) {
+			IChecked = iChecked;
+		}
+		public String getCXm() {
+			return CXm;
+		}
+		public void setCXm(String cXm) {
+			CXm = cXm;
+		}
+		public String getCIdcard() {
+			return CIdcard;
+		}
+		public void setCIdcard(String cIdcard) {
+			CIdcard = cIdcard;
+		}
+		public String getCCheckResult() {
+			return CCheckResult;
+		}
+		public void setCCheckResult(String cCheckResult) {
+			CCheckResult = cCheckResult;
+		}
+		public String getCZjcx() {
+			return CZjcx;
+		}
+		public void setCZjcx(String cZjcx) {
+			CZjcx = cZjcx;
+		}
 	
-	
-	
-	
-	
-	@Override
-	public Object generalPK() throws NullPointerException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-
-
-
-	public Integer getId() {
-		return id;
-	}
-
-
-
-
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-
-
-
-
-	public String getHmhp() {
-		return hmhp;
-	}
-
-
-
-
-
-	public void setHmhp(String hmhp) {
-		this.hmhp = hmhp;
-	}
-
-
-
-
-
-	public String getKsccCode() {
-		return ksccCode;
-	}
-
-
-
-
-
-	public void setKsccCode(String ksccCode) {
-		this.ksccCode = ksccCode;
-	}
-
-
-
-
-
-	public String getKscc() {
-		return kscc;
-	}
-
-
-
-
-
-	public void setKscc(String kscc) {
-		this.kscc = kscc;
-	}
-
-
-
-
-
-	public String getKsddCode() {
-		return ksddCode;
-	}
-
-
-
-
-
-	public void setKsddCode(String ksddCode) {
-		this.ksddCode = ksddCode;
-	}
-
-
-
-
-
-	public String getKsdd() {
-		return ksdd;
-	}
-
-
-
-
-
-	public void setKsdd(String ksdd) {
-		this.ksdd = ksdd;
-	}
-
-
-
-
-
-	public Integer getKm() {
-		return km;
-	}
-
-
-
-
-
-	public void setKm(Integer km) {
-		this.km = km;
-	}
-
-
-
-
-
-	public String getDateKsrq() {
-		return dateKsrq;
-	}
-
-
-
-
-
-	public void setDateKsrq(String dateKsrq) {
-		this.dateKsrq = dateKsrq;
-	}
-
-
-
-
-
-	public String getDatePxshrq() {
-		return datePxshrq;
-	}
-
-
-
-
-
-	public void setDatePxshrq(String datePxshrq) {
-		this.datePxshrq = datePxshrq;
-	}
-
-
-
-
-
-	public Integer getPaibanid() {
-		return paibanid;
-	}
-
-
-
-
-
-	public void setPaibanid(Integer paibanid) {
-		this.paibanid = paibanid;
-	}
-
-
-
-
-
-	public String getJbr() {
-		return jbr;
-	}
-
-
-
-
-
-	public void setJbr(String jbr) {
-		this.jbr = jbr;
-	}
-
-
-
-
-
-	public String getDlrCode() {
-		return dlrCode;
-	}
-
-
-
-
-
-	public void setDlrCode(String dlrCode) {
-		this.dlrCode = dlrCode;
-	}
-
-
-
-
-
-	public String getDlr() {
-		return dlr;
-	}
-
-
-
-
-
-	public void setDlr(String dlr) {
-		this.dlr = dlr;
-	}
-
-
-
-
-
-	public String getJlyIdcard() {
-		return jlyIdcard;
-	}
-
-
-
-
-
-	public void setJlyIdcard(String jlyIdcard) {
-		this.jlyIdcard = jlyIdcard;
-	}
-
-
-
-
-
-	public String getJlyXm() {
-		return jlyXm;
-	}
-
-
-
-
-
-	public void setJlyXm(String jlyXm) {
-		this.jlyXm = jlyXm;
-	}
-
-
-
-
-
-	public String getKssj() {
-		return kssj;
-	}
-
-
-
-
-
-	public void setKssj(String kssj) {
-		this.kssj = kssj;
-	}
-
-
-
-
-
-	public String getLsh() {
-		return lsh;
-	}
-
-
-
-
-
-	public void setLsh(String lsh) {
-		this.lsh = lsh;
-	}
-
-
-
-
-
-	public String getCheckOperator() {
-		return checkOperator;
-	}
-
-
-
-
-
-	public void setCheckOperator(String checkOperator) {
-		this.checkOperator = checkOperator;
-	}
-
-
-
-
-
-	public String getCheckDate() {
-		return checkDate;
-	}
-
-
-
-
-
-	public void setCheckDate(String checkDate) {
-		this.checkDate = checkDate;
-	}
-
-
-
-
-
-	public Integer getChecked() {
-		return checked;
-	}
-
-
-
-
-
-	public void setChecked(Integer checked) {
-		this.checked = checked;
-	}
-
-
-
-
-
-	public String getXm() {
-		return xm;
-	}
-
-
-
-
-
-	public void setXm(String xm) {
-		this.xm = xm;
-	}
-
-
-
-
-
-	public String getIdcard() {
-		return idcard;
-	}
-
-
-
-
-
-	public void setIdcard(String idcard) {
-		this.idcard = idcard;
-	}
-
-
-
-
-
-	public String getCheckResult() {
-		return checkResult;
-	}
-
-
-
-
-
-	public void setCheckResult(String checkResult) {
-		this.checkResult = checkResult;
-	}
-
-
-
-
-
-	public String getZjcx() {
-		return zjcx;
-	}
-
-
-
-
-
-	public void setZjcx(String zjcx) {
-		this.zjcx = zjcx;
-	}
-	
-	
-	
-	
-	
+		
+		
 	
 }

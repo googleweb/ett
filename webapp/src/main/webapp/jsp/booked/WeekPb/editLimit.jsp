@@ -1,6 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@page import="com.smartken.kia.core.model.impl.*"%>
 <%@page import="com.smartken.kia.core.util.StringUtil"%>
+<%@page import="com.ett.drv.model.booked.BookedLimitModel"%>
 
 <%
 String path = request.getContextPath();
@@ -103,25 +104,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	            <tr>
   	              <td>考试场次</td>
   	              <td>
-  	                ${tempLimit.kscc} 
+  	                ${tempLimit.CKscc} 
   	              </td>
   	            </tr>
   	            <tr>
   	              <td>考试地点</td>
   	              <td>
-  	                 ${tempLimit.ksdd}
+  	                 ${tempLimit.CKsdd}
   	              </td>
   	            </tr>
   	            <tr>
   	              <td>驾校</td>
   	              <td>
-  	                 ${tempLimit.schoolName}
+  	                 ${tempLimit.CSchoolName}
   	              </td>
   	            </tr>
   	            <tr>
   	              <td>分配人数</td>
   	              <td><input 
-  	                      name="tempLimit.total" id="<%=formEditLimit+"-"+txtTotal %>" value="${tempLimit.total}" 
+  	                      name="tempLimit.<%=BookedLimitModel.F.ITotal %>" id="<%=formEditLimit+"-"+txtTotal %>" value="${tempLimit.ITotal}" 
   	                      class="<%=EasyUiModel.NumberSpinner.CLASS %>"
   	                      <%=EasyUiModel.Spinner.Properties.INCREMENT(10) %>
   	                      <%=EasyUiModel.Spinner.Properties.MIN(1) %>

@@ -1,28 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!-- 
- class:com.ett.drv.model.self.HardwareModel 
- 
+<!--
+	Create Date:2011-05-24 02:10:51
+	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
+	Model:com.ett.drv.model.self.HardwareModel 
+
+
  public static enum F { 
-  id,createip,createtime,creator,isdeleted,description,keywords,modifier,modifyip,modifytime,baud,
-brand,catalog,com,deviceId,stopbits  
+  Id,CCreateip,TCreatetime,CCreator,IIsdeleted,CDescription,CKeywords,CModifier,CModifyip,TModifytime,IBaud,
+CBrand,CCatalog,ICom,IDeviceId,IStopbits  
  } 
 
-private Integer id;         //ID  NUMBER 19
-private String createip;         //C_CREATEIP  VARCHAR2 1,020
-private Timestamp createtime;         //T_CREATETIME  TIMESTAMP 0
-private String creator;         //C_CREATOR  VARCHAR2 120
-private Integer isdeleted;         //I_ISDELETED  NUMBER 1
-private String description;         //C_DESCRIPTION  VARCHAR2 1,020
-private String keywords;         //C_KEYWORDS  VARCHAR2 1,020
-private String modifier;         //C_MODIFIER  VARCHAR2 1,020
-private String modifyip;         //C_MODIFYIP  VARCHAR2 1,020
-private Timestamp modifytime;         //T_MODIFYTIME  TIMESTAMP 0
-private Integer baud;         //I_BAUD  NUMBER 10
-private String brand;         //C_BRAND  VARCHAR2 64
-private String catalog;         //C_CATALOG  VARCHAR2 64
-private Integer com;         //I_COM  NUMBER 10
-private Integer deviceId;         //I_DEVICE_ID  NUMBER 19
-private Integer stopbits;         //I_STOPBITS  NUMBER 10
+private Double Id;         //ID  NUMBER 19
+private String CCreateip;         //C_CREATEIP  VARCHAR2 1,020
+private Timestamp TCreatetime;         //T_CREATETIME  TIMESTAMP 0
+private String CCreator;         //C_CREATOR  VARCHAR2 120
+private Double IIsdeleted;         //I_ISDELETED  NUMBER 1
+private String CDescription;         //C_DESCRIPTION  VARCHAR2 1,020
+private String CKeywords;         //C_KEYWORDS  VARCHAR2 1,020
+private String CModifier;         //C_MODIFIER  VARCHAR2 1,020
+private String CModifyip;         //C_MODIFYIP  VARCHAR2 1,020
+private Timestamp TModifytime;         //T_MODIFYTIME  TIMESTAMP 0
+private Double IBaud;         //I_BAUD  NUMBER 10
+private String CBrand;         //C_BRAND  VARCHAR2 64
+private String CCatalog;         //C_CATALOG  VARCHAR2 64
+private Double ICom;         //I_COM  NUMBER 10
+private Double IDeviceId;         //I_DEVICE_ID  NUMBER 19
+private Double IStopbits;         //I_STOPBITS  NUMBER 10
  -->
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
@@ -41,195 +44,219 @@ C_BRAND,C_CATALOG,I_COM,I_DEVICE_ID,I_STOPBITS
 </sql>
 
 <sql id="insertCols">
-SEQ_SELF_HARDWARE.nextval,
-#{createip,jdbcType=VARCHAR,javaType=String},
-#{createtime,jdbcType=TIMESTAMP,javaType=Timestamp},
-#{creator,jdbcType=VARCHAR,javaType=String},
-#{isdeleted,jdbcType=INTEGER,javaType=Integer},
-#{description,jdbcType=VARCHAR,javaType=String},
-#{keywords,jdbcType=VARCHAR,javaType=String},
-#{modifier,jdbcType=VARCHAR,javaType=String},
-#{modifyip,jdbcType=VARCHAR,javaType=String},
-#{modifytime,jdbcType=TIMESTAMP,javaType=Timestamp},
-#{baud,jdbcType=INTEGER,javaType=Integer},
-#{brand,jdbcType=VARCHAR,javaType=String},
-#{catalog,jdbcType=VARCHAR,javaType=String},
-#{com,jdbcType=INTEGER,javaType=Integer},
-#{deviceId,jdbcType=INTEGER,javaType=Integer},
-#{stopbits,jdbcType=INTEGER,javaType=Integer} 
+seq_self_hardware.nextval,
+#{CCreateip,jdbcType=VARCHAR,javaType=String},
+#{TCreatetime,jdbcType=TIMESTAMP,javaType=Timestamp},
+#{CCreator,jdbcType=VARCHAR,javaType=String},
+#{IIsdeleted,jdbcType=FLOAT,javaType=Double},
+#{CDescription,jdbcType=VARCHAR,javaType=String},
+#{CKeywords,jdbcType=VARCHAR,javaType=String},
+#{CModifier,jdbcType=VARCHAR,javaType=String},
+#{CModifyip,jdbcType=VARCHAR,javaType=String},
+#{TModifytime,jdbcType=TIMESTAMP,javaType=Timestamp},
+#{IBaud,jdbcType=FLOAT,javaType=Double},
+#{CBrand,jdbcType=VARCHAR,javaType=String},
+#{CCatalog,jdbcType=VARCHAR,javaType=String},
+#{ICom,jdbcType=FLOAT,javaType=Double},
+#{IDeviceId,jdbcType=FLOAT,javaType=Double},
+#{IStopbits,jdbcType=FLOAT,javaType=Double},
+
 </sql>
 
 <sql id="updateCols">
- <if test="pk neq null">ID=#{pk},</if>
-C_CREATEIP=#{model.createip,jdbcType=VARCHAR,javaType=String},
-T_CREATETIME=#{model.createtime,jdbcType=TIMESTAMP,javaType=Timestamp},
-C_CREATOR=#{model.creator,jdbcType=VARCHAR,javaType=String},
-I_ISDELETED=#{model.isdeleted,jdbcType=INTEGER,javaType=Integer},
-C_DESCRIPTION=#{model.description,jdbcType=VARCHAR,javaType=String},
-C_KEYWORDS=#{model.keywords,jdbcType=VARCHAR,javaType=String},
-C_MODIFIER=#{model.modifier,jdbcType=VARCHAR,javaType=String},
-C_MODIFYIP=#{model.modifyip,jdbcType=VARCHAR,javaType=String},
-T_MODIFYTIME=#{model.modifytime,jdbcType=TIMESTAMP,javaType=Timestamp},
-I_BAUD=#{model.baud,jdbcType=INTEGER,javaType=Integer},
-C_BRAND=#{model.brand,jdbcType=VARCHAR,javaType=String},
-C_CATALOG=#{model.catalog,jdbcType=VARCHAR,javaType=String},
-I_COM=#{model.com,jdbcType=INTEGER,javaType=Integer},
-I_DEVICE_ID=#{model.deviceId,jdbcType=INTEGER,javaType=Integer},
-I_STOPBITS=#{model.stopbits,jdbcType=INTEGER,javaType=Integer}
+<if test="pk neq null">ID=#{pk}</if>,
+C_CREATEIP=#{model.CCreateip,jdbcType=VARCHAR,javaType=String},
+T_CREATETIME=#{model.TCreatetime,jdbcType=TIMESTAMP,javaType=Timestamp},
+C_CREATOR=#{model.CCreator,jdbcType=VARCHAR,javaType=String},
+I_ISDELETED=#{model.IIsdeleted,jdbcType=FLOAT,javaType=Double},
+C_DESCRIPTION=#{model.CDescription,jdbcType=VARCHAR,javaType=String},
+C_KEYWORDS=#{model.CKeywords,jdbcType=VARCHAR,javaType=String},
+C_MODIFIER=#{model.CModifier,jdbcType=VARCHAR,javaType=String},
+C_MODIFYIP=#{model.CModifyip,jdbcType=VARCHAR,javaType=String},
+T_MODIFYTIME=#{model.TModifytime,jdbcType=TIMESTAMP,javaType=Timestamp},
+I_BAUD=#{model.IBaud,jdbcType=FLOAT,javaType=Double},
+C_BRAND=#{model.CBrand,jdbcType=VARCHAR,javaType=String},
+C_CATALOG=#{model.CCatalog,jdbcType=VARCHAR,javaType=String},
+I_COM=#{model.ICom,jdbcType=FLOAT,javaType=Double},
+I_DEVICE_ID=#{model.IDeviceId,jdbcType=FLOAT,javaType=Double},
+I_STOPBITS=#{model.IStopbits,jdbcType=FLOAT,javaType=Double},
+
 </sql>
 
-<sql id="orderby">order by ID desc </sql>
+<sql id="orderby">order by m.ID desc </sql>
 
 <sql id="joinColums"></sql>
 
 <sql id="join"></sql><!-- 别名m已被主表使用  -->
 
 <resultMap type="com.ett.drv.model.self.HardwareModel" id="resultMap">
- <id column="ID"  property="id" jdbcType="INTEGER" javaType="Integer"/>
-<result column="C_CREATEIP"  property="createip" jdbcType="VARCHAR" javaType="String"/>
-<result column="T_CREATETIME"  property="createtime" jdbcType="TIMESTAMP" javaType="Timestamp"/>
-<result column="C_CREATOR"  property="creator" jdbcType="VARCHAR" javaType="String"/>
-<result column="I_ISDELETED"  property="isdeleted" jdbcType="INTEGER" javaType="Integer"/>
-<result column="C_DESCRIPTION"  property="description" jdbcType="VARCHAR" javaType="String"/>
-<result column="C_KEYWORDS"  property="keywords" jdbcType="VARCHAR" javaType="String"/>
-<result column="C_MODIFIER"  property="modifier" jdbcType="VARCHAR" javaType="String"/>
-<result column="C_MODIFYIP"  property="modifyip" jdbcType="VARCHAR" javaType="String"/>
-<result column="T_MODIFYTIME"  property="modifytime" jdbcType="TIMESTAMP" javaType="Timestamp"/>
-<result column="I_BAUD"  property="baud" jdbcType="INTEGER" javaType="Integer"/>
-<result column="C_BRAND"  property="brand" jdbcType="VARCHAR" javaType="String"/>
-<result column="C_CATALOG"  property="catalog" jdbcType="VARCHAR" javaType="String"/>
-<result column="I_COM"  property="com" jdbcType="INTEGER" javaType="Integer"/>
-<result column="I_DEVICE_ID"  property="deviceId" jdbcType="INTEGER" javaType="Integer"/>
-<result column="I_STOPBITS"  property="stopbits" jdbcType="INTEGER" javaType="Integer"/>
+ <id column="ID"  property="Id" jdbcType="FLOAT" javaType="Double"/>
+<result column="C_CREATEIP"  property="CCreateip" jdbcType="VARCHAR" javaType="String"/>
+<result column="T_CREATETIME"  property="TCreatetime" jdbcType="TIMESTAMP" javaType="Timestamp"/>
+<result column="C_CREATOR"  property="CCreator" jdbcType="VARCHAR" javaType="String"/>
+<result column="I_ISDELETED"  property="IIsdeleted" jdbcType="FLOAT" javaType="Double"/>
+<result column="C_DESCRIPTION"  property="CDescription" jdbcType="VARCHAR" javaType="String"/>
+<result column="C_KEYWORDS"  property="CKeywords" jdbcType="VARCHAR" javaType="String"/>
+<result column="C_MODIFIER"  property="CModifier" jdbcType="VARCHAR" javaType="String"/>
+<result column="C_MODIFYIP"  property="CModifyip" jdbcType="VARCHAR" javaType="String"/>
+<result column="T_MODIFYTIME"  property="TModifytime" jdbcType="TIMESTAMP" javaType="Timestamp"/>
+<result column="I_BAUD"  property="IBaud" jdbcType="FLOAT" javaType="Double"/>
+<result column="C_BRAND"  property="CBrand" jdbcType="VARCHAR" javaType="String"/>
+<result column="C_CATALOG"  property="CCatalog" jdbcType="VARCHAR" javaType="String"/>
+<result column="I_COM"  property="ICom" jdbcType="FLOAT" javaType="Double"/>
+<result column="I_DEVICE_ID"  property="IDeviceId" jdbcType="FLOAT" javaType="Double"/>
+<result column="I_STOPBITS"  property="IStopbits" jdbcType="FLOAT" javaType="Double"/>
+
  </resultMap>
+
+
+<sql id="selectCondition">
+<if test="model.Id neq null">and m.ID = #{model.Id,jdbcType=FLOAT javaType=Double } </if> 
+<if test="model.CCreateip neq null">and m.C_CREATEIP = #{model.CCreateip,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.TCreatetime neq null">and to_char(m.T_CREATETIME,'YYYY-MM-DD') = to_char(#{model.TCreatetime,jdbcType=TIMESTAMP javaType=Timestamp },'YYYY-MM-DD') </if> 
+<if test="model.CCreator neq null">and m.C_CREATOR = #{model.CCreator,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.IIsdeleted neq null">and m.I_ISDELETED = #{model.IIsdeleted,jdbcType=FLOAT javaType=Double } </if> 
+<if test="model.CDescription neq null">and m.C_DESCRIPTION = #{model.CDescription,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CKeywords neq null">and m.C_KEYWORDS = #{model.CKeywords,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CModifier neq null">and m.C_MODIFIER = #{model.CModifier,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CModifyip neq null">and m.C_MODIFYIP = #{model.CModifyip,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.TModifytime neq null">and to_char(m.T_MODIFYTIME,'YYYY-MM-DD') = to_char(#{model.TModifytime,jdbcType=TIMESTAMP javaType=Timestamp },'YYYY-MM-DD') </if> 
+<if test="model.IBaud neq null">and m.I_BAUD = #{model.IBaud,jdbcType=FLOAT javaType=Double } </if> 
+<if test="model.CBrand neq null">and m.C_BRAND = #{model.CBrand,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CCatalog neq null">and m.C_CATALOG = #{model.CCatalog,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.ICom neq null">and m.I_COM = #{model.ICom,jdbcType=FLOAT javaType=Double } </if> 
+<if test="model.IDeviceId neq null">and m.I_DEVICE_ID = #{model.IDeviceId,jdbcType=FLOAT javaType=Double } </if> 
+<if test="model.IStopbits neq null">and m.I_STOPBITS = #{model.IStopbits,jdbcType=FLOAT javaType=Double } </if> 
+
+</sql>
 
 
 <select id="select" resultType="ArrayList" resultMap="resultMap">
-	 select m.* from <include refid="table" /> m 
-<trim prefix="where" prefixOverrides="and">
-<if test="model.id neq null">and m.ID=#{model.id,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.createip neq null">and m.C_CREATEIP=#{model.createip,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.createtime neq null">and to_char(m.T_CREATETIME,'YYYY-MM-DD')= to_char(#{model.createtime,jdbcType=TIMESTAMP javaType=Timestamp },'YYYY-MM-DD') </if> 
-<if test="model.creator neq null">and m.C_CREATOR=#{model.creator,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.isdeleted neq null">and m.I_ISDELETED=#{model.isdeleted,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.description neq null">and m.C_DESCRIPTION=#{model.description,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.keywords neq null">and m.C_KEYWORDS=#{model.keywords,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.modifier neq null">and m.C_MODIFIER=#{model.modifier,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.modifyip neq null">and m.C_MODIFYIP=#{model.modifyip,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.modifytime neq null">and to_char(m.T_MODIFYTIME,'YYYY-MM-DD')= to_char(#{model.modifytime,jdbcType=TIMESTAMP javaType=Timestamp },'YYYY-MM-DD') </if> 
-<if test="model.baud neq null">and m.I_BAUD=#{model.baud,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.brand neq null">and m.C_BRAND=#{model.brand,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.catalog neq null">and m.C_CATALOG=#{model.catalog,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.com neq null">and m.I_COM=#{model.com,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.deviceId neq null">and m.I_DEVICE_ID=#{model.deviceId,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.stopbits neq null">and m.I_STOPBITS=#{model.stopbits,jdbcType=INTEGER javaType=Integer } </if> 
-</trim>
+	select m.* from <include refid="table" /> m   
+		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+			<include refid="selectCondition"/>
+		</trim>
+	<include refid="orderby"/>
 </select>
-<select id="selectEqPk" parameterType="String"  resultMap="resultMap">
-	 select m.* from <include refid="table" /> m  where m.<include refid="pk" /> = #{id,jdbcType=INTEGER,javaType=Integer}
+
+<select id="selectUnion" resultType="ArrayList" resultMap="resultMap">
+  select m.* from (
+	<trim  prefixOverrides="union" suffixOverrides="union">
+		<foreach collection="list" item="model">
+			<if test="model neq null">
+				union select m.* from <include refid="table" /> m 
+					<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+						<include refid="selectCondition"/>
+					</trim>
+			</if>
+		</foreach>
+	</trim>
+   ) m <include refid="orderby"/>
+</select>
+
+<select id="selectEqPk"  resultMap="resultMap">
+	select m.* from <include refid="table" /> m  where m.<include refid="pk" /> = #{Id,jdbcType=FLOAT,javaType=Double}
 </select>
 
 <select id="selectInPk" resultType="ArrayList" resultMap="resultMap" >
-	 select m.* from <include refid="table" /> m  where m.<include refid="pk" /> in
-<foreach item="pk" collection="list" open="(" separator="," close=")"> #{pk} </foreach> 
-<include refid="orderby"/>
+	select m.* from <include refid="table" /> m  where m.<include refid="pk" /> in
+		<foreach item="pk" collection="list" open="(" separator="," close=")"> #{pk} </foreach>
+	<include refid="orderby"/>
 </select>
 
 <select id="selectNotInPk" resultType="ArrayList" resultMap="resultMap" >
-	 select m.* from <include refid="table" /> m  where m.<include refid="pk" /> not in
-<foreach item="pk" collection="list" open="(" separator="," close=")"> #{pk} </foreach> 
-<include refid="orderby"/>
+	select m.* from <include refid="table" /> m  where m.<include refid="pk" /> not in
+		<foreach item="pk" collection="list" open="(" separator="," close=")"> #{pk} </foreach>
+	<include refid="orderby"/>
 </select>
 
 <select  id="selectAll"  resultType="ArrayList"  resultMap="resultMap">
-	 select m.* from  <include refid="table" /> m  
- <include refid="orderby"/>
+	select m.* from  <include refid="table" /> m
+	<include refid="orderby"/>
 </select>
 
 <select id="count" resultType="int">
-	 select count(*) from <include refid="table"/>
+	select count(*) from <include refid="table"/>
 </select>
 
-<insert id="insertOne" >
-	 insert into <include refid="table"/> ( <include refid="colums"/> ) values ( <include refid="insertCols"/>) 
+<insert id="insertOne" flushCache="true" >
+	insert into <include refid="table"/> ( <include refid="colums"/> ) values  
+	(
+		<trim  prefixOverrides="," suffixOverrides=",">
+			<include refid="insertCols"/>
+		</trim>
+	)
 </insert>
 
 <update id="updateOne" flushCache="true" >
-	 update <include refid="table"/> set <include refid="updateCols"/> where <include refid="pk" />=#{model.id,jdbcType=INTEGER,javaType=Integer}
-</update>
+	update <include refid="table"/> set 
+		<trim  prefixOverrides="," suffixOverrides=",">
+			<include refid="updateCols"/>
+		</trim>
+	where <include refid="pk" />=#{model.Id,jdbcType=FLOAT,javaType=Double}</update>
+
+<delete id="deleteEqPk" flushCache="true">
+	delete from <include refid="table"/> where <include refid="pk" /> =#{Id,jdbcType=FLOAT,javaType=Double}
+</delete>
 
 <delete id="deleteInPk" flushCache="true">
-	 delete from <include refid="table"/> where <include refid="pk" /> in
-<foreach item="pk" collection="list" open="(" separator="," close=")">#{pk}</foreach>
+	delete from <include refid="table"/> where <include refid="pk" /> in
+		<foreach item="pk" collection="list" open="(" separator="," close=")">#{pk}</foreach>
 </delete>
 
 <delete id="deleteNotInPk" flushCache="true">
-	 delete from <include refid="table"/> where <include refid="pk" /> not in
-<foreach item="pk" collection="list" open="(" separator="," close=")">#{pk}</foreach>
+	delete from <include refid="table"/> where <include refid="pk" /> not in
+		<foreach item="pk" collection="list" open="(" separator="," close=")">#{pk}</foreach>
 </delete>
 
 
 
-<resultMap type="com.ett.drv.model.self.HardwareModel" id="viewMap">
- <id column="ID"  property="id" jdbcType="INTEGER" javaType="Integer"/>
-<result column="C_CREATEIP"  property="createip" jdbcType="VARCHAR" javaType="String"/>
-<result column="T_CREATETIME"  property="createtime" jdbcType="TIMESTAMP" javaType="Timestamp"/>
-<result column="C_CREATOR"  property="creator" jdbcType="VARCHAR" javaType="String"/>
-<result column="I_ISDELETED"  property="isdeleted" jdbcType="INTEGER" javaType="Integer"/>
-<result column="C_DESCRIPTION"  property="description" jdbcType="VARCHAR" javaType="String"/>
-<result column="C_KEYWORDS"  property="keywords" jdbcType="VARCHAR" javaType="String"/>
-<result column="C_MODIFIER"  property="modifier" jdbcType="VARCHAR" javaType="String"/>
-<result column="C_MODIFYIP"  property="modifyip" jdbcType="VARCHAR" javaType="String"/>
-<result column="T_MODIFYTIME"  property="modifytime" jdbcType="TIMESTAMP" javaType="Timestamp"/>
-<result column="I_BAUD"  property="baud" jdbcType="INTEGER" javaType="Integer"/>
-<result column="C_BRAND"  property="brand" jdbcType="VARCHAR" javaType="String"/>
-<result column="C_CATALOG"  property="catalog" jdbcType="VARCHAR" javaType="String"/>
-<result column="I_COM"  property="com" jdbcType="INTEGER" javaType="Integer"/>
-<result column="I_DEVICE_ID"  property="deviceId" jdbcType="INTEGER" javaType="Integer"/>
-<result column="I_STOPBITS"  property="stopbits" jdbcType="INTEGER" javaType="Integer"/>
- </resultMap>
+<resultMap type="com.ett.drv.model.self.HardwareModel" id="viewMap" extends="resultMap" ></resultMap>
 
 
-<select id="selectView" resultType="ArrayList" resultMap="viewMap">
-	 select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> 
-<trim prefix="where" prefixOverrides="and">
-<if test="model.id neq null">and m.ID=#{model.id,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.createip neq null">and m.C_CREATEIP=#{model.createip,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.createtime neq null">and to_char(m.T_CREATETIME,'YYYY-MM-DD')= to_char(#{model.createtime,jdbcType=TIMESTAMP javaType=Timestamp },'YYYY-MM-DD') </if> 
-<if test="model.creator neq null">and m.C_CREATOR=#{model.creator,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.isdeleted neq null">and m.I_ISDELETED=#{model.isdeleted,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.description neq null">and m.C_DESCRIPTION=#{model.description,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.keywords neq null">and m.C_KEYWORDS=#{model.keywords,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.modifier neq null">and m.C_MODIFIER=#{model.modifier,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.modifyip neq null">and m.C_MODIFYIP=#{model.modifyip,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.modifytime neq null">and to_char(m.T_MODIFYTIME,'YYYY-MM-DD')= to_char(#{model.modifytime,jdbcType=TIMESTAMP javaType=Timestamp },'YYYY-MM-DD') </if> 
-<if test="model.baud neq null">and m.I_BAUD=#{model.baud,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.brand neq null">and m.C_BRAND=#{model.brand,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.catalog neq null">and m.C_CATALOG=#{model.catalog,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.com neq null">and m.I_COM=#{model.com,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.deviceId neq null">and m.I_DEVICE_ID=#{model.deviceId,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.stopbits neq null">and m.I_STOPBITS=#{model.stopbits,jdbcType=INTEGER javaType=Integer } </if> 
-</trim>
+<sql id="selectViewCondition">
+	 <include refid="selectCondition"/>  
+</sql><select id="selectView" resultType="ArrayList" resultMap="viewMap">
+	select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> 
+		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+			<include refid="selectViewCondition"/>
+		</trim>	<include refid="orderby"/>
 </select>
-<select id="selectViewEqPk" parameterType="String"  resultMap="viewMap">
-	 select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> = #{id,jdbcType=INTEGER,javaType=Integer}
+
+<select id="selectViewUnion" resultType="ArrayList" resultMap="viewMap">
+  select m.* from (
+	<trim  prefixOverrides="union" suffixOverrides="union">
+		<foreach collection="list" item="model">
+			<if test="model neq null">
+				union select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> 
+					<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+						<include refid="selectViewCondition"/>
+					</trim>
+			</if>
+		</foreach>
+	</trim>
+  ) m <include refid="orderby"/>
+</select>
+
+<select id="selectViewEqPk"  resultMap="viewMap">
+	select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> = #{Id,jdbcType=FLOAT,javaType=Double}
 </select>
 
 <select id="selectViewInPk" resultType="ArrayList" resultMap="viewMap" >
-	 select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> in
-<foreach item="pk" collection="list" open="(" separator="," close=")"> #{pk} </foreach> 
-<include refid="orderby"/>
+	select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> in
+	<foreach item="pk" collection="list" open="(" separator="," close=")"> #{pk} </foreach>
+	<include refid="orderby"/>
 </select>
 
 <select id="selectViewNotInPk" resultType="ArrayList" resultMap="viewMap" >
-	 select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> not in
-<foreach item="pk" collection="list" open="(" separator="," close=")"> #{pk} </foreach> 
-<include refid="orderby"/>
+	select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> not in
+	<foreach item="pk" collection="list" open="(" separator="," close=")"> #{pk} </foreach>
+	<include refid="orderby"/>
 </select>
 
 <select  id="selectViewAll"  resultType="ArrayList"  resultMap="viewMap">
-	 select m.* <include refid="joinColums"/> from  <include refid="table" /> m <include refid="join"/> 
- <include refid="orderby"/>
+	select m.* <include refid="joinColums"/> from  <include refid="table" /> m <include refid="join"/>
+	<include refid="orderby"/>
 </select>
 
 </mapper>

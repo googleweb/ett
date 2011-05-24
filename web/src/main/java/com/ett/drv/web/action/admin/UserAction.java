@@ -23,8 +23,8 @@ public class UserAction extends BaseAction implements ModelDriven<UserModel> {
 		// TODO Auto-generated method stub
 	}	
 	public String do_login(){
-		String loginName=this.getParameter(UserModel.F.loginName);
-		String pwd=this.getParameter(UserModel.F.pwd);
+		String loginName=this.getParameter(UserModel.F.CLoginName);
+		String pwd=this.getParameter(UserModel.F.CPwd);
 		_userModel=adminBiz.login(loginName, pwd);
 		if(_userModel!=null){
 		   this.setSessionAttribute(AuthFilter.AUTH_USER, _userModel);

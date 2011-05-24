@@ -6,131 +6,134 @@ import com.smartken.kia.core.model.impl.BaseModel;
 
 public class HardwareModel extends BaseModel {
 
-	 public static enum F { 
-		  id,createip,createtime,creator,isdeleted,description,keywords,modifier,modifyip,modifytime,baud,
-		brand,catalog,com,deviceId,stopbits  
-		 } 
-	 
-	 
 
+	 
 		@Override
 	public Enum[] enumFields() {
 		// TODO Auto-generated method stub
 		return HardwareModel.F.values();
 	}
-		private Integer id;         //ID  NUMBER 19
-		private String createip;         //C_CREATEIP  VARCHAR2 1,020
-		private Timestamp createtime;         //T_CREATETIME  TIMESTAMP 0
-		private String creator;         //C_CREATOR  VARCHAR2 120
-		private Integer isdeleted;         //I_ISDELETED  NUMBER 1
-		private String description;         //C_DESCRIPTION  VARCHAR2 1,020
-		private String keywords;         //C_KEYWORDS  VARCHAR2 1,020
-		private String modifier;         //C_MODIFIER  VARCHAR2 1,020
-		private String modifyip;         //C_MODIFYIP  VARCHAR2 1,020
-		private Timestamp modifytime;         //T_MODIFYTIME  TIMESTAMP 0
-		private Integer baud;         //I_BAUD  NUMBER 10
-		private String brand;         //C_BRAND  VARCHAR2 64
-		private String catalog;         //C_CATALOG  VARCHAR2 64
-		private Integer com;         //I_COM  NUMBER 10
-		private Integer deviceId;         //I_DEVICE_ID  NUMBER 19
-		private Integer stopbits;         //I_STOPBITS  NUMBER 10
-		public Integer getId() {
-			return id;
-		}
-		public void setId(Integer id) {
-			this.id = id;
-		}
-		public String getCreateip() {
-			return createip;
-		}
-		public void setCreateip(String createip) {
-			this.createip = createip;
-		}
-		public Timestamp getCreatetime() {
-			return createtime;
-		}
-		public void setCreatetime(Timestamp createtime) {
-			this.createtime = createtime;
-		}
-		public String getCreator() {
-			return creator;
-		}
-		public void setCreator(String creator) {
-			this.creator = creator;
-		}
-		public Integer getIsdeleted() {
-			return isdeleted;
-		}
-		public void setIsdeleted(Integer isdeleted) {
-			this.isdeleted = isdeleted;
-		}
-		public String getDescription() {
-			return description;
-		}
-		public void setDescription(String description) {
-			this.description = description;
-		}
-		public String getKeywords() {
-			return keywords;
-		}
-		public void setKeywords(String keywords) {
-			this.keywords = keywords;
-		}
-		public String getModifier() {
-			return modifier;
-		}
-		public void setModifier(String modifier) {
-			this.modifier = modifier;
-		}
-		public String getModifyip() {
-			return modifyip;
-		}
-		public void setModifyip(String modifyip) {
-			this.modifyip = modifyip;
-		}
-		public Timestamp getModifytime() {
-			return modifytime;
-		}
-		public void setModifytime(Timestamp modifytime) {
-			this.modifytime = modifytime;
-		}
-		public Integer getBaud() {
-			return baud;
-		}
-		public void setBaud(Integer baud) {
-			this.baud = baud;
-		}
-		public String getBrand() {
-			return brand;
-		}
-		public void setBrand(String brand) {
-			this.brand = brand;
-		}
-		public String getCatalog() {
-			return catalog;
-		}
-		public void setCatalog(String catalog) {
-			this.catalog = catalog;
-		}
-		public Integer getCom() {
-			return com;
-		}
-		public void setCom(Integer com) {
-			this.com = com;
-		}
-		public Integer getDeviceId() {
-			return deviceId;
-		}
-		public void setDeviceId(Integer deviceId) {
-			this.deviceId = deviceId;
-		}
-		public Integer getStopbits() {
-			return stopbits;
-		}
-		public void setStopbits(Integer stopbits) {
-			this.stopbits = stopbits;
-		}
+
 		
-		
+		 public static enum F { 
+			  Id,CCreateip,TCreatetime,CCreator,IIsdeleted,CDescription,CKeywords,CModifier,CModifyip,TModifytime,IBaud,
+			CBrand,CCatalog,ICom,IDeviceId,IStopbits  
+			 } 
+
+			private Double Id;         //ID  NUMBER 19
+			private String CCreateip;         //C_CREATEIP  VARCHAR2 1,020
+			private Timestamp TCreatetime;         //T_CREATETIME  TIMESTAMP 0
+			private String CCreator;         //C_CREATOR  VARCHAR2 120
+			private Double IIsdeleted;         //I_ISDELETED  NUMBER 1
+			private String CDescription;         //C_DESCRIPTION  VARCHAR2 1,020
+			private String CKeywords;         //C_KEYWORDS  VARCHAR2 1,020
+			private String CModifier;         //C_MODIFIER  VARCHAR2 1,020
+			private String CModifyip;         //C_MODIFYIP  VARCHAR2 1,020
+			private Timestamp TModifytime;         //T_MODIFYTIME  TIMESTAMP 0
+			private Double IBaud;         //I_BAUD  NUMBER 10
+			private String CBrand;         //C_BRAND  VARCHAR2 64
+			private String CCatalog;         //C_CATALOG  VARCHAR2 64
+			private Double ICom;         //I_COM  NUMBER 10
+			private Double IDeviceId;         //I_DEVICE_ID  NUMBER 19
+			private Double IStopbits;         //I_STOPBITS  NUMBER 10
+			public Double getId() {
+				return Id;
+			}
+			public void setId(Double id) {
+				Id = id;
+			}
+			public String getCCreateip() {
+				return CCreateip;
+			}
+			public void setCCreateip(String cCreateip) {
+				CCreateip = cCreateip;
+			}
+			public Timestamp getTCreatetime() {
+				return TCreatetime;
+			}
+			public void setTCreatetime(Timestamp tCreatetime) {
+				TCreatetime = tCreatetime;
+			}
+			public String getCCreator() {
+				return CCreator;
+			}
+			public void setCCreator(String cCreator) {
+				CCreator = cCreator;
+			}
+			public Double getIIsdeleted() {
+				return IIsdeleted;
+			}
+			public void setIIsdeleted(Double iIsdeleted) {
+				IIsdeleted = iIsdeleted;
+			}
+			public String getCDescription() {
+				return CDescription;
+			}
+			public void setCDescription(String cDescription) {
+				CDescription = cDescription;
+			}
+			public String getCKeywords() {
+				return CKeywords;
+			}
+			public void setCKeywords(String cKeywords) {
+				CKeywords = cKeywords;
+			}
+			public String getCModifier() {
+				return CModifier;
+			}
+			public void setCModifier(String cModifier) {
+				CModifier = cModifier;
+			}
+			public String getCModifyip() {
+				return CModifyip;
+			}
+			public void setCModifyip(String cModifyip) {
+				CModifyip = cModifyip;
+			}
+			public Timestamp getTModifytime() {
+				return TModifytime;
+			}
+			public void setTModifytime(Timestamp tModifytime) {
+				TModifytime = tModifytime;
+			}
+			public Double getIBaud() {
+				return IBaud;
+			}
+			public void setIBaud(Double iBaud) {
+				IBaud = iBaud;
+			}
+			public String getCBrand() {
+				return CBrand;
+			}
+			public void setCBrand(String cBrand) {
+				CBrand = cBrand;
+			}
+			public String getCCatalog() {
+				return CCatalog;
+			}
+			public void setCCatalog(String cCatalog) {
+				CCatalog = cCatalog;
+			}
+			public Double getICom() {
+				return ICom;
+			}
+			public void setICom(Double iCom) {
+				ICom = iCom;
+			}
+			public Double getIDeviceId() {
+				return IDeviceId;
+			}
+			public void setIDeviceId(Double iDeviceId) {
+				IDeviceId = iDeviceId;
+			}
+			public Double getIStopbits() {
+				return IStopbits;
+			}
+			public void setIStopbits(Double iStopbits) {
+				IStopbits = iStopbits;
+			}
+			
+			
+			
 		
 }

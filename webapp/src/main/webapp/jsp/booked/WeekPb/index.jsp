@@ -34,36 +34,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	       var innerWidth=$("#innerDiv").width();
 	       <% 
 	    String tableWeekPb="tableWeekPb";
-        EasyUiModel weekPbDG=new EasyUiModel(StringUtil.quota("#"+tableWeekPb),EasyUiModel.DataGrid.NAME);
+        EasyUiModel weekPbDG=new EasyUiModel(JQueryModel.id(tableWeekPb),EasyUiModel.DataGrid.NAME);
         weekPbDG.appendAttrs(DataGrid.Properties.TITLE,StringUtil.quota("周排班列表"))
-        .appendAttrs(DataGrid.Properties.URL,"booked/WeekPb/list/DataGrid.action?format=json",true)
+        .appendAttrs(DataGrid.Properties.URL,"booked/WeekPb/dataGrid/weekRecords.action?format=json",true)
         .appendAttrs(EasyUiModel.DataGrid.Properties.FIT_COLUMNS,true)
         .appendAttrs(EasyUiModel.DataGrid.Properties.WIDTH,"innerWidth")
         .appendAttrs(EasyUiModel.DataGrid.Properties.HEIGHT,"innerHeight")
         .appendAttrs(EasyUiModel.DataGrid.Properties.PAGINATION,true)
-        .appendAttrs(EasyUiModel.DataGrid.Properties.ID_FIELD,"id",true)
-        .appendAttrs(EasyUiModel.DataGrid.Events.ON_DBL_CLICK_ROW,new JsFunctionModel(new String[]{"index,data"}).appendContext("document.location.href=\"booked/WeekPb/to/assign.action?weekNum=\"+data.weekNum;"));
+        .appendAttrs(EasyUiModel.DataGrid.Properties.ID_FIELD,"Id",true)
+        .appendAttrs(EasyUiModel.DataGrid.Events.ON_DBL_CLICK_ROW,new JsFunctionModel(new String[]{"index,data"}).appendContext("document.location.href=\"booked/WeekPb/to/assign.action?weekNum=\"+data['IWeekNum'];"));
         List weekPbColumns=new JsListModel();
         List weekPbR1=new JsListModel();
         JsMapModel<String,Object> weekPbR1C1=new JsMapModel<String,Object>();
         weekPbR1C1.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"编号",true);
-        weekPbR1C1.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,BookedWeekRecordModel.F.id,true);
+        weekPbR1C1.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,BookedWeekRecordModel.F.Id,true);
         weekPbR1C1.put(EasyUiModel.DataGrid.ColumnProperties.CHECKBOX,true);
         JsMapModel<String,Object> weekPbR1C2=new JsMapModel<String,Object>();
         weekPbR1C2.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"第几周",true);
-        weekPbR1C2.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,BookedWeekRecordModel.F.weekNum,true);
+        weekPbR1C2.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,BookedWeekRecordModel.F.IWeekNum,true);
         weekPbR1C2.put(EasyUiModel.DataGrid.ColumnProperties.WIDTH,10);
         JsMapModel<String,Object> weekPbR1C3=new JsMapModel<String,Object>();
         weekPbR1C3.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"时间范围",true);
-        weekPbR1C3.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,BookedWeekRecordModel.F.weekRange,true);
+        weekPbR1C3.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,BookedWeekRecordModel.F.CWeekRange,true);
         weekPbR1C3.put(EasyUiModel.DataGrid.ColumnProperties.WIDTH,10);
         JsMapModel<String,Object> weekPbR1C4=new JsMapModel<String,Object>();
         weekPbR1C4.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"提交人/审核人",true);
-        weekPbR1C4.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,BookedWeekRecordModel.F.checkOperator,true);
+        weekPbR1C4.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,BookedWeekRecordModel.F.CCheckOperator,true);
         weekPbR1C4.put(EasyUiModel.DataGrid.ColumnProperties.WIDTH,30);
         JsMapModel<String,Object> weekPbR1C5=new JsMapModel<String,Object>();
         weekPbR1C5.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"审核结果",true);
-        weekPbR1C5.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,BookedWeekRecordModel.F.checked,true);
+        weekPbR1C5.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,BookedWeekRecordModel.F.IChecked,true);
         weekPbR1C5.put(EasyUiModel.DataGrid.ColumnProperties.WIDTH,30);              
                  
         weekPbR1.add(weekPbR1C1);

@@ -67,31 +67,31 @@ String adminDeviceActionPath=basePath+"admin/SelfDevice";
            <tr>
              <th>硬件类型</th>
              <td style="width: 35%">
-               <input name="hardware.<%=HardwareModel.F.catalog %>" value="${hardware.catalog}" />
+               <input name="hardware.<%=HardwareModel.F.CCatalog %>" value="${hardware.CCatalog}" />
              </td>
              <th>硬件品牌</th>
              <td style="width: 35%">
-               <input name="hardware.<%=HardwareModel.F.brand %>" value="${hardware.brand}" />
+               <input name="hardware.<%=HardwareModel.F.CBrand %>" value="${hardware.CBrand}" />
              </td>
            </tr>
            <tr>
             <th>比特率</th>
              <td style="width: 35%">
-               <input name="hardware.<%=HardwareModel.F.baud %>" value="${hardware.baud}" />
+               <input name="hardware.<%=HardwareModel.F.IBaud %>" value="${hardware.IBaud}" />
              </td>
             <th>端口号</th>
              <td style="width: 35%">
-               <input name="hardware.<%=HardwareModel.F.com %>" value="${hardware.com}" />
+               <input name="hardware.<%=HardwareModel.F.ICom %>" value="${hardware.ICom}" />
              </td>
            </tr>
            <tr>
             <th>关联ID</th>
              <td style="width: 35%">
-               <input name="hardware.<%=HardwareModel.F.deviceId %>" value="${hardware.deviceId}" />
+               <input name="hardware.<%=HardwareModel.F.IDeviceId %>" value="${hardware.IDeviceId}" />
              </td>
             <th>停止位</th>
              <td style="width: 35%">
-               <input name="hardware.<%=HardwareModel.F.stopbits %>" value="${hardware.stopbits}" />
+               <input name="hardware.<%=HardwareModel.F.IStopbits %>" value="${hardware.IStopbits}" />
              </td>
            </tr>
            <tr>

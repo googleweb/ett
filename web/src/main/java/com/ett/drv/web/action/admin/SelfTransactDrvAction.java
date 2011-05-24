@@ -46,7 +46,7 @@ public class SelfTransactDrvAction extends BaseAction implements ModelDriven<Tra
 	public TransactDriverModel getModel() {
 		// TODO Auto-generated method stub
 	    if(this.isGet()){
-	    	String flowNo=this.getParameter(BaseTransactModel.F.flowNo);
+	    	String flowNo=this.getParameter(BaseTransactModel.F.FlowNo);
 	    	if(StringUtil.isBlank(flowNo))return null;
 	    	this.selfBiz.loadCrudMapper(TransactDriverModel.class);
 	        //TransactVehicleModel query=new TransactVehicleModel();

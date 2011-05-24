@@ -6,316 +6,309 @@ import com.smartken.kia.core.model.impl.BaseModel;
 
 public class DeviceModel extends BaseModel {
 
-	public static enum F { 
-		  id,createip,createtime,creator,isdeleted,description,keywords,modifier,modifyip,modifytime,catalog,
-		drvInterfaceTimeout,drvInterfaceUrl,fzjg,glbmCode,glbmName,ip1,ip2,ksddCode,ksddName,mac1,
-		mac2,machineName,placeAddress,boolIspreasignall,vehInterfaceTimeout,vehInterfaceUrl,vioInterfaceTimeout,vioInterfaceUrl,ylwgTimeout,ylwgUrl,
-		allowPreasignDays,boolIsFeeATime,boolIsFeeByVisacard,boolIsPostFeeAll,boolIsPrintCompany,defaultKsccCode,defaultKsccName,feeInterfaceTimeout,feeInterfaceUrl,devicetype,
-		mc2  
+	
+	 public static enum F { 
+		  Id,CCreateip,TCreatetime,CCreator,IIsdeleted,CDescription,CKeywords,CModifier,CModifyip,TModifytime,CCatalog,
+		IDrvInterfaceTimeout,CDrvInterfaceUrl,CFzjg,CGlbmCode,CGlbmName,CIp1,CIp2,CKsddCode,CKsddName,CMac1,
+		CMac2,CMachineName,CPlaceAddress,BoolIspreasignall,IVehInterfaceTimeout,CVehInterfaceUrl,IVioInterfaceTimeout,CVioInterfaceUrl,IYlwgTimeout,CYlwgUrl,
+		IAllowPreasignDays,BoolIsFeeATime,BoolIsFeeByVisacard,BoolIsPostFeeAll,BoolIsPrintCompany,CDefaultKsccCode,CDefaultKsccName,IFeeInterfaceTimeout,CFeeInterfaceUrl,Devicetype,
+		CMc2  
 		 } 
-	
-	
 
-		@Override
-	public Enum[] enumFields() {
-		// TODO Auto-generated method stub
-		return DeviceModel.F.values();
-	}
-		private Integer id;         //ID  NUMBER 19
-		private String createip;         //C_CREATEIP  VARCHAR2 1,020
-		private Timestamp createtime;         //T_CREATETIME  TIMESTAMP 0
-		private String creator;         //C_CREATOR  VARCHAR2 120
-		private Integer isdeleted;         //I_ISDELETED  NUMBER 1
-		private String description;         //C_DESCRIPTION  VARCHAR2 1,020
-		private String keywords;         //C_KEYWORDS  VARCHAR2 1,020
-		private String modifier;         //C_MODIFIER  VARCHAR2 1,020
-		private String modifyip;         //C_MODIFYIP  VARCHAR2 1,020
-		private Timestamp modifytime;         //T_MODIFYTIME  TIMESTAMP 0
-		private String catalog;         //C_CATALOG  VARCHAR2 64
-		private Integer drvInterfaceTimeout;         //I_DRV_INTERFACE_TIMEOUT  NUMBER 10
-		private String drvInterfaceUrl;         //C_DRV_INTERFACE_URL  VARCHAR2 200
-		private String fzjg;         //C_FZJG  VARCHAR2 20
-		private String glbmCode;         //C_GLBM_CODE  VARCHAR2 20
-		private String glbmName;         //C_GLBM_NAME  VARCHAR2 64
-		private String ip1;         //C_IP1  VARCHAR2 20
-		private String ip2;         //C_IP2  VARCHAR2 20
-		private String ksddCode;         //C_KSDD_CODE  VARCHAR2 20
-		private String ksddName;         //C_KSDD_NAME  VARCHAR2 64
-		private String mac1;         //C_MAC1  VARCHAR2 20
-		private String mac2;         //C_MAC2  VARCHAR2 20
-		private String machineName;         //C_MACHINE_NAME  VARCHAR2 50
-		private String placeAddress;         //C_PLACE_ADDRESS  VARCHAR2 200
-		private Integer boolIspreasignall;         //BOOL_ISPREASIGNALL  NUMBER 1
-		private Integer vehInterfaceTimeout;         //I_VEH_INTERFACE_TIMEOUT  NUMBER 10
-		private String vehInterfaceUrl;         //C_VEH_INTERFACE_URL  VARCHAR2 200
-		private Integer vioInterfaceTimeout;         //I_VIO_INTERFACE_TIMEOUT  NUMBER 10
-		private String vioInterfaceUrl;         //C_VIO_INTERFACE_URL  VARCHAR2 200
-		private Integer ylwgTimeout;         //I_YLWG_TIMEOUT  NUMBER 10
-		private String ylwgUrl;         //C_YLWG_URL  VARCHAR2 200
-		private Integer allowPreasignDays;         //I_ALLOW_PREASIGN_DAYS  NUMBER 10
-		private Integer boolIsFeeATime;         //BOOL_IS_FEE_A_TIME  NUMBER 1
-		private Integer boolIsFeeByVisacard;         //BOOL_IS_FEE_BY_VISACARD  NUMBER 1
-		private Integer boolIsPostFeeAll;         //BOOL_IS_POST_FEE_ALL  NUMBER 1
-		private Integer boolIsPrintCompany;         //BOOL_IS_PRINT_COMPANY  NUMBER 1
-		private String defaultKsccCode;         //C_DEFAULT_KSCC_CODE  VARCHAR2 20
-		private String defaultKsccName;         //C_DEFAULT_KSCC_NAME  VARCHAR2 64
-		private Integer feeInterfaceTimeout;         //I_FEE_INTERFACE_TIMEOUT  NUMBER 10
-		private String feeInterfaceUrl;         //C_FEE_INTERFACE_URL  VARCHAR2 200
-		private String devicetype;         //DEVICETYPE  VARCHAR2 1,020
-		private String mc2;         //C_MC2  VARCHAR2 20
-		public Integer getId() {
-			return id;
-		}
-		public void setId(Integer id) {
-			this.id = id;
-		}
-		public String getCreateip() {
-			return createip;
-		}
-		public void setCreateip(String createip) {
-			this.createip = createip;
-		}
-		public Timestamp getCreatetime() {
-			return createtime;
-		}
-		public void setCreatetime(Timestamp createtime) {
-			this.createtime = createtime;
-		}
-		public String getCreator() {
-			return creator;
-		}
-		public void setCreator(String creator) {
-			this.creator = creator;
-		}
-		public Integer getIsdeleted() {
-			return isdeleted;
-		}
-		public void setIsdeleted(Integer isdeleted) {
-			this.isdeleted = isdeleted;
-		}
-		public String getDescription() {
-			return description;
-		}
-		public void setDescription(String description) {
-			this.description = description;
-		}
-		public String getKeywords() {
-			return keywords;
-		}
-		public void setKeywords(String keywords) {
-			this.keywords = keywords;
+		private Double Id;         //ID  NUMBER 19
+		private String CCreateip;         //C_CREATEIP  VARCHAR2 1,020
+		private Timestamp TCreatetime;         //T_CREATETIME  TIMESTAMP 0
+		private String CCreator;         //C_CREATOR  VARCHAR2 120
+		private Double IIsdeleted;         //I_ISDELETED  NUMBER 1
+		private String CDescription;         //C_DESCRIPTION  VARCHAR2 1,020
+		private String CKeywords;         //C_KEYWORDS  VARCHAR2 1,020
+		private String CModifier;         //C_MODIFIER  VARCHAR2 1,020
+		private String CModifyip;         //C_MODIFYIP  VARCHAR2 1,020
+		private Timestamp TModifytime;         //T_MODIFYTIME  TIMESTAMP 0
+		private String CCatalog;         //C_CATALOG  VARCHAR2 64
+		private Double IDrvInterfaceTimeout;         //I_DRV_INTERFACE_TIMEOUT  NUMBER 10
+		private String CDrvInterfaceUrl;         //C_DRV_INTERFACE_URL  VARCHAR2 200
+		private String CFzjg;         //C_FZJG  VARCHAR2 20
+		private String CGlbmCode;         //C_GLBM_CODE  VARCHAR2 20
+		private String CGlbmName;         //C_GLBM_NAME  VARCHAR2 64
+		private String CIp1;         //C_IP1  VARCHAR2 20
+		private String CIp2;         //C_IP2  VARCHAR2 20
+		private String CKsddCode;         //C_KSDD_CODE  VARCHAR2 20
+		private String CKsddName;         //C_KSDD_NAME  VARCHAR2 64
+		private String CMac1;         //C_MAC1  VARCHAR2 20
+		private String CMac2;         //C_MAC2  VARCHAR2 20
+		private String CMachineName;         //C_MACHINE_NAME  VARCHAR2 50
+		private String CPlaceAddress;         //C_PLACE_ADDRESS  VARCHAR2 200
+		private Double BoolIspreasignall;         //BOOL_ISPREASIGNALL  NUMBER 1
+		private Double IVehInterfaceTimeout;         //I_VEH_INTERFACE_TIMEOUT  NUMBER 10
+		private String CVehInterfaceUrl;         //C_VEH_INTERFACE_URL  VARCHAR2 200
+		private Double IVioInterfaceTimeout;         //I_VIO_INTERFACE_TIMEOUT  NUMBER 10
+		private String CVioInterfaceUrl;         //C_VIO_INTERFACE_URL  VARCHAR2 200
+		private Double IYlwgTimeout;         //I_YLWG_TIMEOUT  NUMBER 10
+		private String CYlwgUrl;         //C_YLWG_URL  VARCHAR2 200
+		private Double IAllowPreasignDays;         //I_ALLOW_PREASIGN_DAYS  NUMBER 10
+		private Double BoolIsFeeATime;         //BOOL_IS_FEE_A_TIME  NUMBER 1
+		private Double BoolIsFeeByVisacard;         //BOOL_IS_FEE_BY_VISACARD  NUMBER 1
+		private Double BoolIsPostFeeAll;         //BOOL_IS_POST_FEE_ALL  NUMBER 1
+		private Double BoolIsPrintCompany;         //BOOL_IS_PRINT_COMPANY  NUMBER 1
+		private String CDefaultKsccCode;         //C_DEFAULT_KSCC_CODE  VARCHAR2 20
+		private String CDefaultKsccName;         //C_DEFAULT_KSCC_NAME  VARCHAR2 64
+		private Double IFeeInterfaceTimeout;         //I_FEE_INTERFACE_TIMEOUT  NUMBER 10
+		private String CFeeInterfaceUrl;         //C_FEE_INTERFACE_URL  VARCHAR2 200
+		private String Devicetype;         //DEVICETYPE  VARCHAR2 1,020
+		private String CMc2;         //C_MC2  VARCHAR2 20
+		public Double getId() {
+			return Id;
+		}
+		public void setId(Double id) {
+			Id = id;
+		}
+		public String getCCreateip() {
+			return CCreateip;
+		}
+		public void setCCreateip(String cCreateip) {
+			CCreateip = cCreateip;
+		}
+		public Timestamp getTCreatetime() {
+			return TCreatetime;
+		}
+		public void setTCreatetime(Timestamp tCreatetime) {
+			TCreatetime = tCreatetime;
+		}
+		public String getCCreator() {
+			return CCreator;
+		}
+		public void setCCreator(String cCreator) {
+			CCreator = cCreator;
+		}
+		public Double getIIsdeleted() {
+			return IIsdeleted;
 		}
-		public String getModifier() {
-			return modifier;
+		public void setIIsdeleted(Double iIsdeleted) {
+			IIsdeleted = iIsdeleted;
 		}
-		public void setModifier(String modifier) {
-			this.modifier = modifier;
+		public String getCDescription() {
+			return CDescription;
 		}
-		public String getModifyip() {
-			return modifyip;
+		public void setCDescription(String cDescription) {
+			CDescription = cDescription;
 		}
-		public void setModifyip(String modifyip) {
-			this.modifyip = modifyip;
+		public String getCKeywords() {
+			return CKeywords;
 		}
-		public Timestamp getModifytime() {
-			return modifytime;
+		public void setCKeywords(String cKeywords) {
+			CKeywords = cKeywords;
 		}
-		public void setModifytime(Timestamp modifytime) {
-			this.modifytime = modifytime;
+		public String getCModifier() {
+			return CModifier;
 		}
-		public String getCatalog() {
-			return catalog;
+		public void setCModifier(String cModifier) {
+			CModifier = cModifier;
 		}
-		public void setCatalog(String catalog) {
-			this.catalog = catalog;
+		public String getCModifyip() {
+			return CModifyip;
 		}
-		public Integer getDrvInterfaceTimeout() {
-			return drvInterfaceTimeout;
+		public void setCModifyip(String cModifyip) {
+			CModifyip = cModifyip;
 		}
-		public void setDrvInterfaceTimeout(Integer drvInterfaceTimeout) {
-			this.drvInterfaceTimeout = drvInterfaceTimeout;
+		public Timestamp getTModifytime() {
+			return TModifytime;
 		}
-		public String getDrvInterfaceUrl() {
-			return drvInterfaceUrl;
+		public void setTModifytime(Timestamp tModifytime) {
+			TModifytime = tModifytime;
 		}
-		public void setDrvInterfaceUrl(String drvInterfaceUrl) {
-			this.drvInterfaceUrl = drvInterfaceUrl;
+		public String getCCatalog() {
+			return CCatalog;
 		}
-		public String getFzjg() {
-			return fzjg;
+		public void setCCatalog(String cCatalog) {
+			CCatalog = cCatalog;
 		}
-		public void setFzjg(String fzjg) {
-			this.fzjg = fzjg;
+		public Double getIDrvInterfaceTimeout() {
+			return IDrvInterfaceTimeout;
 		}
-		public String getGlbmCode() {
-			return glbmCode;
+		public void setIDrvInterfaceTimeout(Double iDrvInterfaceTimeout) {
+			IDrvInterfaceTimeout = iDrvInterfaceTimeout;
 		}
-		public void setGlbmCode(String glbmCode) {
-			this.glbmCode = glbmCode;
+		public String getCDrvInterfaceUrl() {
+			return CDrvInterfaceUrl;
 		}
-		public String getGlbmName() {
-			return glbmName;
+		public void setCDrvInterfaceUrl(String cDrvInterfaceUrl) {
+			CDrvInterfaceUrl = cDrvInterfaceUrl;
 		}
-		public void setGlbmName(String glbmName) {
-			this.glbmName = glbmName;
+		public String getCFzjg() {
+			return CFzjg;
 		}
-		public String getIp1() {
-			return ip1;
+		public void setCFzjg(String cFzjg) {
+			CFzjg = cFzjg;
 		}
-		public void setIp1(String ip1) {
-			this.ip1 = ip1;
+		public String getCGlbmCode() {
+			return CGlbmCode;
 		}
-		public String getIp2() {
-			return ip2;
+		public void setCGlbmCode(String cGlbmCode) {
+			CGlbmCode = cGlbmCode;
 		}
-		public void setIp2(String ip2) {
-			this.ip2 = ip2;
+		public String getCGlbmName() {
+			return CGlbmName;
 		}
-		public String getKsddCode() {
-			return ksddCode;
+		public void setCGlbmName(String cGlbmName) {
+			CGlbmName = cGlbmName;
 		}
-		public void setKsddCode(String ksddCode) {
-			this.ksddCode = ksddCode;
+		public String getCIp1() {
+			return CIp1;
 		}
-		public String getKsddName() {
-			return ksddName;
+		public void setCIp1(String cIp1) {
+			CIp1 = cIp1;
 		}
-		public void setKsddName(String ksddName) {
-			this.ksddName = ksddName;
+		public String getCIp2() {
+			return CIp2;
 		}
-		public String getMac1() {
-			return mac1;
+		public void setCIp2(String cIp2) {
+			CIp2 = cIp2;
 		}
-		public void setMac1(String mac1) {
-			this.mac1 = mac1;
+		public String getCKsddCode() {
+			return CKsddCode;
 		}
-		public String getMac2() {
-			return mac2;
+		public void setCKsddCode(String cKsddCode) {
+			CKsddCode = cKsddCode;
 		}
-		public void setMac2(String mac2) {
-			this.mac2 = mac2;
+		public String getCKsddName() {
+			return CKsddName;
 		}
-		public String getMachineName() {
-			return machineName;
+		public void setCKsddName(String cKsddName) {
+			CKsddName = cKsddName;
 		}
-		public void setMachineName(String machineName) {
-			this.machineName = machineName;
+		public String getCMac1() {
+			return CMac1;
 		}
-		public String getPlaceAddress() {
-			return placeAddress;
+		public void setCMac1(String cMac1) {
+			CMac1 = cMac1;
 		}
-		public void setPlaceAddress(String placeAddress) {
-			this.placeAddress = placeAddress;
+		public String getCMac2() {
+			return CMac2;
 		}
-		public Integer getBoolIspreasignall() {
-			return boolIspreasignall;
+		public void setCMac2(String cMac2) {
+			CMac2 = cMac2;
 		}
-		public void setBoolIspreasignall(Integer boolIspreasignall) {
-			this.boolIspreasignall = boolIspreasignall;
+		public String getCMachineName() {
+			return CMachineName;
 		}
-		public Integer getVehInterfaceTimeout() {
-			return vehInterfaceTimeout;
+		public void setCMachineName(String cMachineName) {
+			CMachineName = cMachineName;
 		}
-		public void setVehInterfaceTimeout(Integer vehInterfaceTimeout) {
-			this.vehInterfaceTimeout = vehInterfaceTimeout;
+		public String getCPlaceAddress() {
+			return CPlaceAddress;
 		}
-		public String getVehInterfaceUrl() {
-			return vehInterfaceUrl;
+		public void setCPlaceAddress(String cPlaceAddress) {
+			CPlaceAddress = cPlaceAddress;
 		}
-		public void setVehInterfaceUrl(String vehInterfaceUrl) {
-			this.vehInterfaceUrl = vehInterfaceUrl;
+		public Double getBoolIspreasignall() {
+			return BoolIspreasignall;
 		}
-		public Integer getVioInterfaceTimeout() {
-			return vioInterfaceTimeout;
+		public void setBoolIspreasignall(Double boolIspreasignall) {
+			BoolIspreasignall = boolIspreasignall;
 		}
-		public void setVioInterfaceTimeout(Integer vioInterfaceTimeout) {
-			this.vioInterfaceTimeout = vioInterfaceTimeout;
+		public Double getIVehInterfaceTimeout() {
+			return IVehInterfaceTimeout;
 		}
-		public String getVioInterfaceUrl() {
-			return vioInterfaceUrl;
+		public void setIVehInterfaceTimeout(Double iVehInterfaceTimeout) {
+			IVehInterfaceTimeout = iVehInterfaceTimeout;
 		}
-		public void setVioInterfaceUrl(String vioInterfaceUrl) {
-			this.vioInterfaceUrl = vioInterfaceUrl;
+		public String getCVehInterfaceUrl() {
+			return CVehInterfaceUrl;
 		}
-		public Integer getYlwgTimeout() {
-			return ylwgTimeout;
+		public void setCVehInterfaceUrl(String cVehInterfaceUrl) {
+			CVehInterfaceUrl = cVehInterfaceUrl;
 		}
-		public void setYlwgTimeout(Integer ylwgTimeout) {
-			this.ylwgTimeout = ylwgTimeout;
+		public Double getIVioInterfaceTimeout() {
+			return IVioInterfaceTimeout;
 		}
-		public String getYlwgUrl() {
-			return ylwgUrl;
+		public void setIVioInterfaceTimeout(Double iVioInterfaceTimeout) {
+			IVioInterfaceTimeout = iVioInterfaceTimeout;
 		}
-		public void setYlwgUrl(String ylwgUrl) {
-			this.ylwgUrl = ylwgUrl;
+		public String getCVioInterfaceUrl() {
+			return CVioInterfaceUrl;
 		}
-		public Integer getAllowPreasignDays() {
-			return allowPreasignDays;
+		public void setCVioInterfaceUrl(String cVioInterfaceUrl) {
+			CVioInterfaceUrl = cVioInterfaceUrl;
 		}
-		public void setAllowPreasignDays(Integer allowPreasignDays) {
-			this.allowPreasignDays = allowPreasignDays;
+		public Double getIYlwgTimeout() {
+			return IYlwgTimeout;
 		}
-		public Integer getBoolIsFeeATime() {
-			return boolIsFeeATime;
+		public void setIYlwgTimeout(Double iYlwgTimeout) {
+			IYlwgTimeout = iYlwgTimeout;
 		}
-		public void setBoolIsFeeATime(Integer boolIsFeeATime) {
-			this.boolIsFeeATime = boolIsFeeATime;
+		public String getCYlwgUrl() {
+			return CYlwgUrl;
 		}
-		public Integer getBoolIsFeeByVisacard() {
-			return boolIsFeeByVisacard;
+		public void setCYlwgUrl(String cYlwgUrl) {
+			CYlwgUrl = cYlwgUrl;
 		}
-		public void setBoolIsFeeByVisacard(Integer boolIsFeeByVisacard) {
-			this.boolIsFeeByVisacard = boolIsFeeByVisacard;
+		public Double getIAllowPreasignDays() {
+			return IAllowPreasignDays;
 		}
-		public Integer getBoolIsPostFeeAll() {
-			return boolIsPostFeeAll;
+		public void setIAllowPreasignDays(Double iAllowPreasignDays) {
+			IAllowPreasignDays = iAllowPreasignDays;
 		}
-		public void setBoolIsPostFeeAll(Integer boolIsPostFeeAll) {
-			this.boolIsPostFeeAll = boolIsPostFeeAll;
+		public Double getBoolIsFeeATime() {
+			return BoolIsFeeATime;
 		}
-		public Integer getBoolIsPrintCompany() {
-			return boolIsPrintCompany;
+		public void setBoolIsFeeATime(Double boolIsFeeATime) {
+			BoolIsFeeATime = boolIsFeeATime;
 		}
-		public void setBoolIsPrintCompany(Integer boolIsPrintCompany) {
-			this.boolIsPrintCompany = boolIsPrintCompany;
+		public Double getBoolIsFeeByVisacard() {
+			return BoolIsFeeByVisacard;
 		}
-		public String getDefaultKsccCode() {
-			return defaultKsccCode;
+		public void setBoolIsFeeByVisacard(Double boolIsFeeByVisacard) {
+			BoolIsFeeByVisacard = boolIsFeeByVisacard;
 		}
-		public void setDefaultKsccCode(String defaultKsccCode) {
-			this.defaultKsccCode = defaultKsccCode;
+		public Double getBoolIsPostFeeAll() {
+			return BoolIsPostFeeAll;
 		}
-		public String getDefaultKsccName() {
-			return defaultKsccName;
+		public void setBoolIsPostFeeAll(Double boolIsPostFeeAll) {
+			BoolIsPostFeeAll = boolIsPostFeeAll;
 		}
-		public void setDefaultKsccName(String defaultKsccName) {
-			this.defaultKsccName = defaultKsccName;
+		public Double getBoolIsPrintCompany() {
+			return BoolIsPrintCompany;
 		}
-		public Integer getFeeInterfaceTimeout() {
-			return feeInterfaceTimeout;
+		public void setBoolIsPrintCompany(Double boolIsPrintCompany) {
+			BoolIsPrintCompany = boolIsPrintCompany;
 		}
-		public void setFeeInterfaceTimeout(Integer feeInterfaceTimeout) {
-			this.feeInterfaceTimeout = feeInterfaceTimeout;
+		public String getCDefaultKsccCode() {
+			return CDefaultKsccCode;
 		}
-		public String getFeeInterfaceUrl() {
-			return feeInterfaceUrl;
+		public void setCDefaultKsccCode(String cDefaultKsccCode) {
+			CDefaultKsccCode = cDefaultKsccCode;
 		}
-		public void setFeeInterfaceUrl(String feeInterfaceUrl) {
-			this.feeInterfaceUrl = feeInterfaceUrl;
+		public String getCDefaultKsccName() {
+			return CDefaultKsccName;
+		}
+		public void setCDefaultKsccName(String cDefaultKsccName) {
+			CDefaultKsccName = cDefaultKsccName;
+		}
+		public Double getIFeeInterfaceTimeout() {
+			return IFeeInterfaceTimeout;
+		}
+		public void setIFeeInterfaceTimeout(Double iFeeInterfaceTimeout) {
+			IFeeInterfaceTimeout = iFeeInterfaceTimeout;
+		}
+		public String getCFeeInterfaceUrl() {
+			return CFeeInterfaceUrl;
+		}
+		public void setCFeeInterfaceUrl(String cFeeInterfaceUrl) {
+			CFeeInterfaceUrl = cFeeInterfaceUrl;
 		}
 		public String getDevicetype() {
-			return devicetype;
+			return Devicetype;
 		}
 		public void setDevicetype(String devicetype) {
-			this.devicetype = devicetype;
+			Devicetype = devicetype;
 		}
-		public String getMc2() {
-			return mc2;
+		public String getCMc2() {
+			return CMc2;
 		}
-		public void setMc2(String mc2) {
-			this.mc2 = mc2;
+		public void setCMc2(String cMc2) {
+			CMc2 = cMc2;
 		}
-	
 	
 	
 	

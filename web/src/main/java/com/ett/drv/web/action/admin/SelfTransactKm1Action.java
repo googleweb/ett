@@ -59,19 +59,19 @@ public class SelfTransactKm1Action extends BaseAction {
 		if(StringUtil.isNotBlank(xm)){
 			query.setXm(xm);
 		}
-		String sfzmhm=this.getParameter(Km1CheckRecordModel.F.sfzmhm);
+		String sfzmhm=this.getParameter(Km1CheckRecordModel.F.Sfzmhm);
 		if(StringUtil.isNotBlank(sfzmhm)){
 			query.setSfzmhm(sfzmhm.length()==0?null:sfzmhm);
 		}
-		String ksdd=this.getParameter(Km1CheckRecordModel.F.ksdd);
+		String ksdd=this.getParameter(Km1CheckRecordModel.F.Ksdd);
 		if(StringUtil.isNotBlank(ksdd)){
 			query.setKsdd(ksdd.length()==0?null:ksdd);
 		}
-		String strCreateTime=this.getParameter(Km1CheckRecordModel.F.createtime);
+		String strCreateTime=this.getParameter(Km1CheckRecordModel.F.TCreatetime);
 		if(StringUtil.isNotBlank(strCreateTime))
 		{
 			Date createTime= DateTimeUtil.parse(strCreateTime.trim());
-			query.setCreatetime(createTime);
+			query.setTCreatetime(createTime);
 		}
 
 		ArrayList listPreasignRecord=this.selfBiz.getModel(query);
@@ -86,25 +86,25 @@ public class SelfTransactKm1Action extends BaseAction {
 		if(StringUtil.isNotBlank(xm)){
 			query.setXm(xm);
 		}
-		String sfzmhm=this.getParameter(Km1PreasignRecordModel.F.sfzmhm);
+		String sfzmhm=this.getParameter(Km1PreasignRecordModel.F.Sfzmhm);
 		if(StringUtil.isNotBlank(sfzmhm)){
 			query.setSfzmhm(sfzmhm.length()==0?null:sfzmhm);
 		}
-		String ksddcode=this.getParameter(Km1PreasignRecordModel.F.ksddcode);
+		String ksddcode=this.getParameter(Km1PreasignRecordModel.F.Ksddcode);
 		if(StringUtil.isNotBlank(ksddcode)){
 			query.setKsddcode(ksddcode.length()==0?null:ksddcode);
 		}
 		
-		String kscccode=this.getParameter(Km1PreasignRecordModel.F.kscccode);
+		String kscccode=this.getParameter(Km1PreasignRecordModel.F.Kscccode);
 		if(StringUtil.isNotBlank(kscccode)){
 			query.setKsddcode(kscccode.length()==0?null:kscccode);
 		}
 		
-		String strCreateTime=this.getParameter(Km1PreasignRecordModel.F.createtime);
+		String strCreateTime=this.getParameter(Km1PreasignRecordModel.F.TCreatetime);
 		if(StringUtil.isNotBlank(strCreateTime))
 		{
 			Date createTime= DateTimeUtil.parse(strCreateTime.trim());
-			query.setCreatetime(createTime);
+			query.setTCreatetime(createTime);
 		}
 
 		ArrayList listPreasignRecord=this.selfBiz.getModel(query);

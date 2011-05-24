@@ -42,8 +42,8 @@ public class SelfTransactFeeAction extends BaseAction implements ModelDriven<Fee
 			createDate= DateTimeUtil.parse(strCreateTime.trim());
 
 		}
-		_feeLogModel.setCreatetime(createDate);
-		query.setCreatetime(createDate);
+		_feeLogModel.setTCreatetime(createDate);
+		query.setTCreatetime(createDate);
 		this.selfBiz.loadCrudMapper(FeeLogModel.class);
 		ArrayList listPreasignRecord=this.selfBiz.getModel(query);
 		//JSONArray jarrPreasignRecord=ObjectUtil.toJsonArray(listPreasignRecord);
@@ -85,11 +85,11 @@ public class SelfTransactFeeAction extends BaseAction implements ModelDriven<Fee
 		if(StringUtil.isNotBlank(xm)){
 			query.setXm(xm);
 		}
-		String sfzmhm=this.getParameter(FeeLogModel.F.sfzmhm);
+		String sfzmhm=this.getParameter(FeeLogModel.F.Sfzmhm);
 		if(StringUtil.isNotBlank(sfzmhm)){
 			query.setSfzmhm(sfzmhm.length()==0?null:sfzmhm);
 		}
-		String feewaytype=this.getParameter(FeeLogModel.F.feewaytype);
+		String feewaytype=this.getParameter(FeeLogModel.F.Feewaytype);
 		if(StringUtil.isNotBlank(feewaytype)){
 			query.setFeewaytype(feewaytype.length()==0?null:feewaytype);
 		}
@@ -99,11 +99,11 @@ public class SelfTransactFeeAction extends BaseAction implements ModelDriven<Fee
 //			query.setKsddcode(kscccode.length()==0?null:kscccode);
 //		}
 		
-		String strCreateTime=this.getParameter(FeeLogModel.F.createtime);
+		String strCreateTime=this.getParameter(FeeLogModel.F.TCreatetime);
 		if(StringUtil.isNotBlank(strCreateTime))
 		{
 			Date createTime= DateTimeUtil.parse(strCreateTime.trim());
-			query.setCreatetime(createTime);
+			query.setTCreatetime(createTime);
 		}
         this.selfBiz.loadCrudMapper(FeeLogModel.class);
 		ArrayList listPreasignRecord=this.selfBiz.getModel(query);

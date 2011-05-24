@@ -7,296 +7,336 @@ import com.smartken.kia.core.model.impl.BaseModel;
 
 public class BookedLimitModel extends BaseModel{
 
+	 
 	 public static enum F { 
-		  id,iweekNum,ccarType,idayofweek,ikm,cschoolCode,cschoolName,dateKsrq,cksccCode,ckscc,cksddCode,
-		cksdd,itotal,iusedNum,icheckedNum,itptotal,itpusedNum,itpcheckedNum,coperator  
+		  Id,IWeekNum,CCarType,IDayofweek,IKm,CSchoolCode,CSchoolName,DateKsrq,CKsccCode,CKscc,CKsddCode,
+		CKsdd,ITotal,IUsedNum,ICheckedNum,ITptotal,ITpusedNum,ITpcheckedNum,COperator  
 		 } 
 
-		private Integer id;         //ID  NUMBER 38
-		private Integer iweekNum;         //I_WEEK_NUM  NUMBER 38
-		private String ccarType;         //C_CAR_TYPE  VARCHAR2 30
-		private Integer idayofweek;         //I_DAYOFWEEK  NUMBER 38
-		private Integer ikm;         //I_KM  NUMBER 38
-		private String cschoolCode;         //C_SCHOOL_CODE  VARCHAR2 20
-		private String cschoolName;         //C_SCHOOL_NAME  VARCHAR2 200
-		private String dateKsrq;         //DATE_KSRQ  VARCHAR2 10
-		private String cksccCode;         //C_KSCC_CODE  VARCHAR2 20
-		private String ckscc;         //C_KSCC  VARCHAR2 200
-		private String cksddCode;         //C_KSDD_CODE  VARCHAR2 20
-		private String cksdd;         //C_KSDD  VARCHAR2 200
-		private Integer itotal;         //I_TOTAL  NUMBER 38
-		private Integer iusedNum;         //I_USED_NUM  NUMBER 38
-		private Integer icheckedNum;         //I_CHECKED_NUM  NUMBER 38
-		private Integer itptotal;         //I_TPTOTAL  NUMBER 38
-		private Integer itpusedNum;         //I_TPUSED_NUM  NUMBER 38
-		private Integer itpcheckedNum;         //I_TPCHECKED_NUM  NUMBER 38
-		private String coperator;         //C_OPERATOR  VARCHAR2 30
+		private Integer Id;         //ID  NUMBER 38
+		private Integer IWeekNum;         //I_WEEK_NUM  NUMBER 38
+		private String CCarType;         //C_CAR_TYPE  VARCHAR2 30
+		private Integer IDayofweek;         //I_DAYOFWEEK  NUMBER 38
+		private Integer IKm;         //I_KM  NUMBER 38
+		private String CSchoolCode;         //C_SCHOOL_CODE  VARCHAR2 20
+		private String CSchoolName;         //C_SCHOOL_NAME  VARCHAR2 200
+		private String DateKsrq;         //DATE_KSRQ  VARCHAR2 10
+		private String CKsccCode;         //C_KSCC_CODE  VARCHAR2 20
+		private String CKscc;         //C_KSCC  VARCHAR2 200
+		private String CKsddCode;         //C_KSDD_CODE  VARCHAR2 20
+		private String CKsdd;         //C_KSDD  VARCHAR2 200
+		private Integer ITotal;         //I_TOTAL  NUMBER 38
+		private Integer IUsedNum;         //I_USED_NUM  NUMBER 38
+		private Integer ICheckedNum;         //I_CHECKED_NUM  NUMBER 38
+		private Integer ITptotal;         //I_TPTOTAL  NUMBER 38
+		private Integer ITpusedNum;         //I_TPUSED_NUM  NUMBER 38
+		private Integer ITpcheckedNum;         //I_TPCHECKED_NUM  NUMBER 38
+		private String COperator;         //C_OPERATOR  VARCHAR2 30
 
 	
 		
 		
+
 	public Integer getId() {
-			return id;
+			return Id;
 		}
+
 
 
 
 
 		public void setId(Integer id) {
-			this.id = id;
+			Id = id;
 		}
 
 
 
 
-		public Integer getIweekNum() {
-			return iweekNum;
+
+		public Integer getIWeekNum() {
+			return IWeekNum;
 		}
 
 
 
 
-		public void setIweekNum(Integer iweekNum) {
-			this.iweekNum = iweekNum;
+
+		public void setIWeekNum(Integer iWeekNum) {
+			IWeekNum = iWeekNum;
 		}
 
 
 
 
-		public String getCcarType() {
-			return ccarType;
+
+		public String getCCarType() {
+			return CCarType;
 		}
 
 
 
 
-		public void setCcarType(String ccarType) {
-			this.ccarType = ccarType;
+
+		public void setCCarType(String cCarType) {
+			CCarType = cCarType;
 		}
 
 
 
 
-		public Integer getIdayofweek() {
-			return idayofweek;
+
+		public Integer getIDayofweek() {
+			return IDayofweek;
 		}
 
 
 
 
-		public void setIdayofweek(Integer idayofweek) {
-			this.idayofweek = idayofweek;
+
+		public void setIDayofweek(Integer iDayofweek) {
+			IDayofweek = iDayofweek;
 		}
 
 
 
 
-		public Integer getIkm() {
-			return ikm;
+
+		public Integer getIKm() {
+			return IKm;
 		}
 
 
 
 
-		public void setIkm(Integer ikm) {
-			this.ikm = ikm;
+
+		public void setIKm(Integer iKm) {
+			IKm = iKm;
 		}
 
 
 
 
-		public String getCschoolCode() {
-			return cschoolCode;
+
+		public String getCSchoolCode() {
+			return CSchoolCode;
 		}
 
 
 
 
-		public void setCschoolCode(String cschoolCode) {
-			this.cschoolCode = cschoolCode;
+
+		public void setCSchoolCode(String cSchoolCode) {
+			CSchoolCode = cSchoolCode;
 		}
 
 
 
 
-		public String getCschoolName() {
-			return cschoolName;
+
+		public String getCSchoolName() {
+			return CSchoolName;
 		}
 
 
 
 
-		public void setCschoolName(String cschoolName) {
-			this.cschoolName = cschoolName;
+
+		public void setCSchoolName(String cSchoolName) {
+			CSchoolName = cSchoolName;
 		}
+
 
 
 
 
 		public String getDateKsrq() {
-			return dateKsrq;
+			return DateKsrq;
 		}
+
 
 
 
 
 		public void setDateKsrq(String dateKsrq) {
-			this.dateKsrq = dateKsrq;
+			DateKsrq = dateKsrq;
 		}
 
 
 
 
-		public String getCksccCode() {
-			return cksccCode;
+
+		public String getCKsccCode() {
+			return CKsccCode;
 		}
 
 
 
 
-		public void setCksccCode(String cksccCode) {
-			this.cksccCode = cksccCode;
+
+		public void setCKsccCode(String cKsccCode) {
+			CKsccCode = cKsccCode;
 		}
 
 
 
 
-		public String getCkscc() {
-			return ckscc;
+
+		public String getCKscc() {
+			return CKscc;
 		}
 
 
 
 
-		public void setCkscc(String ckscc) {
-			this.ckscc = ckscc;
+
+		public void setCKscc(String cKscc) {
+			CKscc = cKscc;
 		}
 
 
 
 
-		public String getCksddCode() {
-			return cksddCode;
+
+		public String getCKsddCode() {
+			return CKsddCode;
 		}
 
 
 
 
-		public void setCksddCode(String cksddCode) {
-			this.cksddCode = cksddCode;
+
+		public void setCKsddCode(String cKsddCode) {
+			CKsddCode = cKsddCode;
 		}
 
 
 
 
-		public String getCksdd() {
-			return cksdd;
+
+		public String getCKsdd() {
+			return CKsdd;
 		}
 
 
 
 
-		public void setCksdd(String cksdd) {
-			this.cksdd = cksdd;
+
+		public void setCKsdd(String cKsdd) {
+			CKsdd = cKsdd;
 		}
 
 
 
 
-		public Integer getItotal() {
-			return itotal;
+
+		public Integer getITotal() {
+			return ITotal;
 		}
 
 
 
 
-		public void setItotal(Integer itotal) {
-			this.itotal = itotal;
+
+		public void setITotal(Integer iTotal) {
+			ITotal = iTotal;
 		}
 
 
 
 
-		public Integer getIusedNum() {
-			return iusedNum;
+
+		public Integer getIUsedNum() {
+			return IUsedNum;
 		}
 
 
 
 
-		public void setIusedNum(Integer iusedNum) {
-			this.iusedNum = iusedNum;
+
+		public void setIUsedNum(Integer iUsedNum) {
+			IUsedNum = iUsedNum;
 		}
 
 
 
 
-		public Integer getIcheckedNum() {
-			return icheckedNum;
+
+		public Integer getICheckedNum() {
+			return ICheckedNum;
 		}
 
 
 
 
-		public void setIcheckedNum(Integer icheckedNum) {
-			this.icheckedNum = icheckedNum;
+
+		public void setICheckedNum(Integer iCheckedNum) {
+			ICheckedNum = iCheckedNum;
 		}
 
 
 
 
-		public Integer getItptotal() {
-			return itptotal;
+
+		public Integer getITptotal() {
+			return ITptotal;
 		}
 
 
 
 
-		public void setItptotal(Integer itptotal) {
-			this.itptotal = itptotal;
+
+		public void setITptotal(Integer iTptotal) {
+			ITptotal = iTptotal;
 		}
 
 
 
 
-		public Integer getItpusedNum() {
-			return itpusedNum;
+
+		public Integer getITpusedNum() {
+			return ITpusedNum;
 		}
 
 
 
 
-		public void setItpusedNum(Integer itpusedNum) {
-			this.itpusedNum = itpusedNum;
+
+		public void setITpusedNum(Integer iTpusedNum) {
+			ITpusedNum = iTpusedNum;
 		}
 
 
 
 
-		public Integer getItpcheckedNum() {
-			return itpcheckedNum;
+
+		public Integer getITpcheckedNum() {
+			return ITpcheckedNum;
 		}
 
 
 
 
-		public void setItpcheckedNum(Integer itpcheckedNum) {
-			this.itpcheckedNum = itpcheckedNum;
+
+		public void setITpcheckedNum(Integer iTpcheckedNum) {
+			ITpcheckedNum = iTpcheckedNum;
 		}
 
 
 
 
-		public String getCoperator() {
-			return coperator;
+
+		public String getCOperator() {
+			return COperator;
 		}
 
 
 
 
-		public void setCoperator(String coperator) {
-			this.coperator = coperator;
+
+		public void setCOperator(String cOperator) {
+			COperator = cOperator;
 		}
+
 
 
 
@@ -305,12 +345,12 @@ public class BookedLimitModel extends BaseModel{
 	public Object generalPK() throws NullPointerException {
 		// TODO Auto-generated method stub
         String key=MessageFormat.format("{0}_{1}_{2}_{3}_{4}_{5}",
-        		this.iweekNum,  //0
-        		this.idayofweek,  //1
-        		this.ikm,   //2
-        		this.cksccCode,  //3
-        		this.cksddCode,  //4
-        		this.cschoolCode  //5
+        		this.IWeekNum,  //0
+        		this.IDayofweek,  //1
+        		this.IKm,   //2
+        		this.CKsccCode,  //3
+        		this.CKsddCode,  //4
+        		this.CSchoolCode  //5
         );
         //this.setPk(key);
 		return key;

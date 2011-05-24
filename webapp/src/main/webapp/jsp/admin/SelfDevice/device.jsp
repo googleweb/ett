@@ -81,21 +81,21 @@ String adminDeviceActionPath=basePath+"/admin/SelfDevice";
     
        JsListModel row1=new JsListModel();
        
-       JsMapModel colId=EasyUiUtil.createCheckBoxColumn(DeviceModel.F.id);
+       JsMapModel colId=EasyUiUtil.createCheckBoxColumn(DeviceModel.F.Id);
        
-       JsMapModel colCatalog=EasyUiUtil.createTextColumn(DeviceModel.F.catalog);
+       JsMapModel colCatalog=EasyUiUtil.createTextColumn(DeviceModel.F.CCatalog);
        colCatalog.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"设备类型",true);
        
-       JsMapModel colDevicetype=EasyUiUtil.createTextColumn(DeviceModel.F.devicetype);
+       JsMapModel colDevicetype=EasyUiUtil.createTextColumn(DeviceModel.F.Devicetype);
        colDevicetype.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"设备种类",true);
        
-       JsMapModel colMachineName=EasyUiUtil.createTextColumn(DeviceModel.F.machineName);
+       JsMapModel colMachineName=EasyUiUtil.createTextColumn(DeviceModel.F.CMachineName);
        colMachineName.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"机器名",true);
        
-       JsMapModel colPlaceAddress=EasyUiUtil.createTextColumn(DeviceModel.F.placeAddress);
+       JsMapModel colPlaceAddress=EasyUiUtil.createTextColumn(DeviceModel.F.CPlaceAddress);
        colPlaceAddress.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"终端地址",true);
        
-       JsMapModel colYlwgUrl=EasyUiUtil.createTextColumn(DeviceModel.F.ylwgUrl);
+       JsMapModel colYlwgUrl=EasyUiUtil.createTextColumn(DeviceModel.F.CYlwgUrl);
        colYlwgUrl.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"网关地址",true);
        
      

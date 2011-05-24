@@ -42,14 +42,14 @@ public class PaymentAction extends BaseSelfAction implements ModelDriven<BaseTra
 	
 	//记录支付方式为现金支付，直接跳转到现金支付页面
     public String to_payment_cash(){
-    	_trModel.setPayment(BaseTransactModel.Payment.CASH);
+    	_trModel.setPayment(BaseTransactModel.Payments.CASH);
     	this.setHttpSession(ESessionKey.transact.name(), _trModel);
     	return ResultEnum.jsp.name();
     }
 	
     //记录支付方式为银行pos支付，直接跳转到银行pos支付页面
     public String to_payment_pos(){
-    	_trModel.setPayment(BaseTransactModel.Payment.POS);
+    	_trModel.setPayment(BaseTransactModel.Payments.POS);
     	this.setHttpSession(ESessionKey.transact.name(), _trModel);
     	return ResultEnum.jsp.name();
     }

@@ -54,7 +54,7 @@ public class BookedBiz extends BaseDrvBiz implements IBookedBiz {
 		
 		//int lIntWeek=DateTimeUtil.getWeekOfYear(pDate);
 		BookedWeekRecordModel lWeekReurn=new BookedWeekRecordModel();
-		lWeekReurn.setWeekNum(weekNum);
+		lWeekReurn.setIWeekNum(weekNum);
 		try {
 		ArrayList<BookedWeekRecordModel> lListWeek= weekRecordMapper.select(lWeekReurn);
 		lWeekReurn=lListWeek.get(0);
@@ -69,7 +69,7 @@ public class BookedBiz extends BaseDrvBiz implements IBookedBiz {
 	public Map<String,BookedLimitModel> getLimits(int weekNum) throws Exception{
 		Map<String, BookedLimitModel> lMapReturn=new HashMap<String, BookedLimitModel>();
 		BookedLimitModel lLimit=new BookedLimitModel();
-		lLimit.setIweekNum(weekNum);
+		lLimit.setIWeekNum(weekNum);
         ArrayList<BookedLimitModel> lListLimit=limitMapper.select(lLimit);
 		for (BookedLimitModel bookedLimitModel : lListLimit) {
 			   lMapReturn.put((String) bookedLimitModel.generalPK(), bookedLimitModel);	

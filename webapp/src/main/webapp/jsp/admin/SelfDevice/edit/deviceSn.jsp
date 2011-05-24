@@ -67,31 +67,31 @@ String adminDeviceActionPath=basePath+"admin/SelfDevice";
            <tr>
              <th>接口ID</th>
              <td style="width: 35%">
-               <input name="deviceSn.<%=DeviceSnModel.F.jkid %>" value="${deviceSn.jkid}" />
+               <input name="deviceSn.<%=DeviceSnModel.F.CJkid %>" value="${deviceSn.CJkid}" />
              </td>
              <th>接口序列号</th>
              <td style="width: 35%">
-               <input name="deviceSn.<%=DeviceSnModel.F.jkxlh %>" value="${deviceSn.jkxlh}" />
+               <input name="deviceSn.<%=DeviceSnModel.F.CJkxlh %>" value="${deviceSn.CJkxlh}" />
              </td>
            </tr>
            <tr>
             <th>接口名</th>
              <td style="width: 35%">
-               <input name="deviceSn.<%=DeviceSnModel.F.jkname %>" value="${deviceSn.jkname}" />
+               <input name="deviceSn.<%=DeviceSnModel.F.CJkname %>" value="${deviceSn.CJkname}" />
              </td>
             <th>设备IP</th>
              <td style="width: 35%">
-               <input name="deviceSn.<%=DeviceSnModel.F.deviceIp %>" value="${deviceSn.deviceIp}" />
+               <input name="deviceSn.<%=DeviceSnModel.F.CDeviceIp %>" value="${deviceSn.CDeviceIp}" />
              </td>
            </tr>
            <tr>
             <th>SN</th>
              <td style="width: 35%">
-               <input name="deviceSn.<%=DeviceSnModel.F.sn %>" value="${deviceSn.sn}" />
+               <input name="deviceSn.<%=DeviceSnModel.F.CSn %>" value="${deviceSn.CSn}" />
              </td>
             <th>关键字</th>
              <td style="width: 35%">
-               <input name="deviceSn.<%=DeviceSnModel.F.keywords %>" value="${deviceSn.keywords}" />
+               <input name="deviceSn.<%=DeviceSnModel.F.CKeywords %>" value="${deviceSn.CKeywords}" />
              </td>
            </tr>
            <tr>

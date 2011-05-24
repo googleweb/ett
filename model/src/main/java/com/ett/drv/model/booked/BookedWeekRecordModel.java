@@ -18,62 +18,62 @@ public class BookedWeekRecordModel extends BaseModel{
 	public static int CHECKED_VAILDATE=1;
 	
 	
-	public static enum F{
-		id,weekNum,week1Km1Num,week1Km1Fp,week1Km2Num,week1Km2Fp,week1Km3Num,week1Km3Fp,week2Km1Num,week2Km1Fp,week2Km2Num,
-		week2Km2Fp,week2Km3Num,week2Km3Fp,week3Km1Num,week3Km1Fp,week3Km2Num,week3Km2Fp,week3Km3Num,week3Km3Fp,week4Km1Num,
-		week4Km1Fp,week4Km2Num,week4Km2Fp,week4Km3Num,week4Km3Fp,week5Km1Num,week5Km1Fp,week5Km2Num,week5Km2Fp,week5Km3Num,
-		week5Km3Fp,week6Km1Num,week6Km1Fp,week6Km2Num,week6Km2Fp,week6Km3Num,week6Km3Fp,week7Km1Num,week7Km1Fp,week7Km2Num,
-		week7Km2Fp,week7Km3Num,week7Km3Fp,checkOperator,checkDate,checked,weekRange
-	}
-	
-	private Integer id;         //ID  NUMBER 38
-	private Integer weekNum;         //I_WEEK_NUM  NUMBER 38
-	private Integer week1Km1Num;         //I_WEEK1_KM1_NUM  NUMBER 38
-	private String week1Km1Fp;         //I_WEEK1_KM1_FP  VARCHAR2 600
-	private Integer week1Km2Num;         //I_WEEK1_KM2_NUM  NUMBER 38
-	private String week1Km2Fp;         //I_WEEK1_KM2_FP  VARCHAR2 600
-	private Integer week1Km3Num;         //I_WEEK1_KM3_NUM  NUMBER 38
-	private String week1Km3Fp;         //I_WEEK1_KM3_FP  VARCHAR2 600
-	private Integer week2Km1Num;         //I_WEEK2_KM1_NUM  NUMBER 38
-	private String week2Km1Fp;         //I_WEEK2_KM1_FP  VARCHAR2 600
-	private Integer week2Km2Num;         //I_WEEK2_KM2_NUM  NUMBER 38
-	private String week2Km2Fp;         //I_WEEK2_KM2_FP  VARCHAR2 600
-	private Integer week2Km3Num;         //I_WEEK2_KM3_NUM  NUMBER 38
-	private String week2Km3Fp;         //I_WEEK2_KM3_FP  VARCHAR2 600
-	private Integer week3Km1Num;         //I_WEEK3_KM1_NUM  NUMBER 38
-	private String week3Km1Fp;         //I_WEEK3_KM1_FP  VARCHAR2 600
-	private Integer week3Km2Num;         //I_WEEK3_KM2_NUM  NUMBER 38
-	private String week3Km2Fp;         //I_WEEK3_KM2_FP  VARCHAR2 600
-	private Integer week3Km3Num;         //I_WEEK3_KM3_NUM  NUMBER 38
-	private String week3Km3Fp;         //I_WEEK3_KM3_FP  VARCHAR2 600
-	private Integer week4Km1Num;         //I_WEEK4_KM1_NUM  NUMBER 38
-	private String week4Km1Fp;         //I_WEEK4_KM1_FP  VARCHAR2 600
-	private Integer week4Km2Num;         //I_WEEK4_KM2_NUM  NUMBER 38
-	private String week4Km2Fp;         //I_WEEK4_KM2_FP  VARCHAR2 600
-	private Integer week4Km3Num;         //I_WEEK4_KM3_NUM  NUMBER 38
-	private String week4Km3Fp;         //I_WEEK4_KM3_FP  VARCHAR2 600
-	private Integer week5Km1Num;         //I_WEEK5_KM1_NUM  NUMBER 38
-	private String week5Km1Fp;         //I_WEEK5_KM1_FP  VARCHAR2 600
-	private Integer week5Km2Num;         //I_WEEK5_KM2_NUM  NUMBER 38
-	private String week5Km2Fp;         //I_WEEK5_KM2_FP  VARCHAR2 600
-	private Integer week5Km3Num;         //I_WEEK5_KM3_NUM  NUMBER 38
-	private String week5Km3Fp;         //I_WEEK5_KM3_FP  VARCHAR2 600
-	private Integer week6Km1Num;         //I_WEEK6_KM1_NUM  NUMBER 38
-	private String week6Km1Fp;         //I_WEEK6_KM1_FP  VARCHAR2 600
-	private Integer week6Km2Num;         //I_WEEK6_KM2_NUM  NUMBER 38
-	private String week6Km2Fp;         //I_WEEK6_KM2_FP  VARCHAR2 600
-	private Integer week6Km3Num;         //I_WEEK6_KM3_NUM  NUMBER 38
-	private String week6Km3Fp;         //I_WEEK6_KM3_FP  VARCHAR2 600
-	private Integer week7Km1Num;         //I_WEEK7_KM1_NUM  NUMBER 38
-	private String week7Km1Fp;         //I_WEEK7_KM1_FP  VARCHAR2 600
-	private Integer week7Km2Num;         //I_WEEK7_KM2_NUM  NUMBER 38
-	private String week7Km2Fp;         //I_WEEK7_KM2_FP  VARCHAR2 600
-	private Integer week7Km3Num;         //I_WEEK7_KM3_NUM  NUMBER 38
-	private String week7Km3Fp;         //I_WEEK7_KM3_FP  VARCHAR2 600
-	private String checkOperator;         //C_CHECK_OPERATOR  VARCHAR2 60
-	private String checkDate;         //C_CHECK_DATE  VARCHAR2 30
-	private Integer checked;         //I_CHECKED  NUMBER 38
-	private String weekRange;         //C_WEEK_RANGE  VARCHAR2 60
+	 public static enum F { 
+		  Id,IWeekNum,IWeek1Km1Num,IWeek1Km1Fp,IWeek1Km2Num,IWeek1Km2Fp,IWeek1Km3Num,IWeek1Km3Fp,IWeek2Km1Num,IWeek2Km1Fp,IWeek2Km2Num,
+		IWeek2Km2Fp,IWeek2Km3Num,IWeek2Km3Fp,IWeek3Km1Num,IWeek3Km1Fp,IWeek3Km2Num,IWeek3Km2Fp,IWeek3Km3Num,IWeek3Km3Fp,IWeek4Km1Num,
+		IWeek4Km1Fp,IWeek4Km2Num,IWeek4Km2Fp,IWeek4Km3Num,IWeek4Km3Fp,IWeek5Km1Num,IWeek5Km1Fp,IWeek5Km2Num,IWeek5Km2Fp,IWeek5Km3Num,
+		IWeek5Km3Fp,IWeek6Km1Num,IWeek6Km1Fp,IWeek6Km2Num,IWeek6Km2Fp,IWeek6Km3Num,IWeek6Km3Fp,IWeek7Km1Num,IWeek7Km1Fp,IWeek7Km2Num,
+		IWeek7Km2Fp,IWeek7Km3Num,IWeek7Km3Fp,CCheckOperator,CCheckDate,IChecked,CWeekRange  
+		 } 
+
+		private Integer Id;         //ID  NUMBER 38
+		private Integer IWeekNum;         //I_WEEK_NUM  NUMBER 38
+		private Integer IWeek1Km1Num;         //I_WEEK1_KM1_NUM  NUMBER 38
+		private String IWeek1Km1Fp;         //I_WEEK1_KM1_FP  VARCHAR2 600
+		private Integer IWeek1Km2Num;         //I_WEEK1_KM2_NUM  NUMBER 38
+		private String IWeek1Km2Fp;         //I_WEEK1_KM2_FP  VARCHAR2 600
+		private Integer IWeek1Km3Num;         //I_WEEK1_KM3_NUM  NUMBER 38
+		private String IWeek1Km3Fp;         //I_WEEK1_KM3_FP  VARCHAR2 600
+		private Integer IWeek2Km1Num;         //I_WEEK2_KM1_NUM  NUMBER 38
+		private String IWeek2Km1Fp;         //I_WEEK2_KM1_FP  VARCHAR2 600
+		private Integer IWeek2Km2Num;         //I_WEEK2_KM2_NUM  NUMBER 38
+		private String IWeek2Km2Fp;         //I_WEEK2_KM2_FP  VARCHAR2 600
+		private Integer IWeek2Km3Num;         //I_WEEK2_KM3_NUM  NUMBER 38
+		private String IWeek2Km3Fp;         //I_WEEK2_KM3_FP  VARCHAR2 600
+		private Integer IWeek3Km1Num;         //I_WEEK3_KM1_NUM  NUMBER 38
+		private String IWeek3Km1Fp;         //I_WEEK3_KM1_FP  VARCHAR2 600
+		private Integer IWeek3Km2Num;         //I_WEEK3_KM2_NUM  NUMBER 38
+		private String IWeek3Km2Fp;         //I_WEEK3_KM2_FP  VARCHAR2 600
+		private Integer IWeek3Km3Num;         //I_WEEK3_KM3_NUM  NUMBER 38
+		private String IWeek3Km3Fp;         //I_WEEK3_KM3_FP  VARCHAR2 600
+		private Integer IWeek4Km1Num;         //I_WEEK4_KM1_NUM  NUMBER 38
+		private String IWeek4Km1Fp;         //I_WEEK4_KM1_FP  VARCHAR2 600
+		private Integer IWeek4Km2Num;         //I_WEEK4_KM2_NUM  NUMBER 38
+		private String IWeek4Km2Fp;         //I_WEEK4_KM2_FP  VARCHAR2 600
+		private Integer IWeek4Km3Num;         //I_WEEK4_KM3_NUM  NUMBER 38
+		private String IWeek4Km3Fp;         //I_WEEK4_KM3_FP  VARCHAR2 600
+		private Integer IWeek5Km1Num;         //I_WEEK5_KM1_NUM  NUMBER 38
+		private String IWeek5Km1Fp;         //I_WEEK5_KM1_FP  VARCHAR2 600
+		private Integer IWeek5Km2Num;         //I_WEEK5_KM2_NUM  NUMBER 38
+		private String IWeek5Km2Fp;         //I_WEEK5_KM2_FP  VARCHAR2 600
+		private Integer IWeek5Km3Num;         //I_WEEK5_KM3_NUM  NUMBER 38
+		private String IWeek5Km3Fp;         //I_WEEK5_KM3_FP  VARCHAR2 600
+		private Integer IWeek6Km1Num;         //I_WEEK6_KM1_NUM  NUMBER 38
+		private String IWeek6Km1Fp;         //I_WEEK6_KM1_FP  VARCHAR2 600
+		private Integer IWeek6Km2Num;         //I_WEEK6_KM2_NUM  NUMBER 38
+		private String IWeek6Km2Fp;         //I_WEEK6_KM2_FP  VARCHAR2 600
+		private Integer IWeek6Km3Num;         //I_WEEK6_KM3_NUM  NUMBER 38
+		private String IWeek6Km3Fp;         //I_WEEK6_KM3_FP  VARCHAR2 600
+		private Integer IWeek7Km1Num;         //I_WEEK7_KM1_NUM  NUMBER 38
+		private String IWeek7Km1Fp;         //I_WEEK7_KM1_FP  VARCHAR2 600
+		private Integer IWeek7Km2Num;         //I_WEEK7_KM2_NUM  NUMBER 38
+		private String IWeek7Km2Fp;         //I_WEEK7_KM2_FP  VARCHAR2 600
+		private Integer IWeek7Km3Num;         //I_WEEK7_KM3_NUM  NUMBER 38
+		private String IWeek7Km3Fp;         //I_WEEK7_KM3_FP  VARCHAR2 600
+		private String CCheckOperator;         //C_CHECK_OPERATOR  VARCHAR2 60
+		private String CCheckDate;         //C_CHECK_DATE  VARCHAR2 30
+		private Integer IChecked;         //I_CHECKED  NUMBER 38
+		private String CWeekRange;         //C_WEEK_RANGE  VARCHAR2 60
 	
 	
 	private Integer year;
@@ -118,8 +118,8 @@ public class BookedWeekRecordModel extends BaseModel{
 	
 	private void loadWeekDays()
 	{
-		if(this.weekNum==null||this.year==null)return;
-		ArrayList<Date> lWeekDays= DateTimeUtil.getWeekDays(this.year, this.weekNum);
+		if(this.IWeekNum==null||this.year==null)return;
+		ArrayList<Date> lWeekDays= DateTimeUtil.getWeekDays(this.year, this.IWeekNum);
 		this.monday=lWeekDays.get(DateTimeUtil.MONDAY);
 		this.tuesday=lWeekDays.get(DateTimeUtil.TUESDAY);
 		this.wednesday=lWeekDays.get(DateTimeUtil.WEDNESDAY);
@@ -215,12 +215,12 @@ public class BookedWeekRecordModel extends BaseModel{
 		{
 			String tempKey=itKey.next();
 			BookedLimitModel tempLimit=mapLimt.get(tempKey);
-			int dow=tempLimit.getIdayofweek();
-			int km=tempLimit.getIkm();
-			String assignName=MessageFormat.format("week{0}Km{1}Assgined", dow,km);
+			int dow=tempLimit.getIDayofweek();
+			int km=tempLimit.getIKm();
+			String assignName=MessageFormat.format("IWeek{0}Km{1}Assgined", dow,km);
 			try {
 				int assgin= Integer.parseInt(this.eval(assignName).toString()); 
-				assgin+=tempLimit.getItotal();
+				assgin+=tempLimit.getITotal();
 				this.eval(assignName, assgin);
 			} catch (Exception e) {System.err.println(e.getMessage());}		
 			
@@ -232,20 +232,7 @@ public class BookedWeekRecordModel extends BaseModel{
 		return limits;
 	}
 
-	
-	
-
-
-	public Integer getId() {
-		return id;
-	}
-
-
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
+		
 
 
 	public void setLimits(Map<String, BookedLimitModel> limits) {
@@ -253,571 +240,21 @@ public class BookedWeekRecordModel extends BaseModel{
 	}
 
 
-	public Integer getWeekNum() {
-		return weekNum;
-	}
+	
 
 
-
-	public void setWeekNum(Integer weekNum) {
-		this.weekNum = weekNum;
-		this.loadWeekDays();
-	}
-
-
-
-	public Integer getWeek1Km1Num() {
-		return week1Km1Num;
-	}
-
-
-
-	public void setWeek1Km1Num(Integer week1Km1Num) {
-		this.week1Km1Num = week1Km1Num;
-	}
-
-
-
-	public String getWeek1Km1Fp() {
-		return week1Km1Fp;
-	}
-
-
-
-	public void setWeek1Km1Fp(String week1Km1Fp) {
-		this.week1Km1Fp = week1Km1Fp;
-	}
-
-
-
-	public Integer getWeek1Km2Num() {
-		return week1Km2Num;
-	}
-
-
-
-	public void setWeek1Km2Num(Integer week1Km2Num) {
-		this.week1Km2Num = week1Km2Num;
-	}
-
-
-
-	public String getWeek1Km2Fp() {
-		return week1Km2Fp;
-	}
-
-
-
-	public void setWeek1Km2Fp(String week1Km2Fp) {
-		this.week1Km2Fp = week1Km2Fp;
-	}
-
-
-
-	public Integer getWeek1Km3Num() {
-		return week1Km3Num;
-	}
-
-
-
-	public void setWeek1Km3Num(Integer week1Km3Num) {
-		this.week1Km3Num = week1Km3Num;
-	}
-
-
-
-	public String getWeek1Km3Fp() {
-		return week1Km3Fp;
-	}
-
-
-
-	public void setWeek1Km3Fp(String week1Km3Fp) {
-		this.week1Km3Fp = week1Km3Fp;
-	}
-
-
-
-	public Integer getWeek2Km1Num() {
-		return week2Km1Num;
-	}
-
-
-
-	public void setWeek2Km1Num(Integer week2Km1Num) {
-		this.week2Km1Num = week2Km1Num;
-	}
-
-
-
-	public String getWeek2Km1Fp() {
-		return week2Km1Fp;
-	}
-
-
-
-	public void setWeek2Km1Fp(String week2Km1Fp) {
-		this.week2Km1Fp = week2Km1Fp;
-	}
-
-
-
-	public Integer getWeek2Km2Num() {
-		return week2Km2Num;
-	}
-
-
-
-	public void setWeek2Km2Num(Integer week2Km2Num) {
-		this.week2Km2Num = week2Km2Num;
-	}
-
-
-
-	public String getWeek2Km2Fp() {
-		return week2Km2Fp;
-	}
-
-
-
-	public void setWeek2Km2Fp(String week2Km2Fp) {
-		this.week2Km2Fp = week2Km2Fp;
-	}
-
-
-
-	public Integer getWeek2Km3Num() {
-		return week2Km3Num;
-	}
-
-
-
-	public void setWeek2Km3Num(Integer week2Km3Num) {
-		this.week2Km3Num = week2Km3Num;
-	}
-
-
-
-	public String getWeek2Km3Fp() {
-		return week2Km3Fp;
-	}
-
-
-
-	public void setWeek2Km3Fp(String week2Km3Fp) {
-		this.week2Km3Fp = week2Km3Fp;
-	}
-
-
-
-	public Integer getWeek3Km1Num() {
-		return week3Km1Num;
-	}
-
-
-
-	public void setWeek3Km1Num(Integer week3Km1Num) {
-		this.week3Km1Num = week3Km1Num;
-	}
-
-
-
-	public String getWeek3Km1Fp() {
-		return week3Km1Fp;
-	}
-
-
-
-	public void setWeek3Km1Fp(String week3Km1Fp) {
-		this.week3Km1Fp = week3Km1Fp;
-	}
-
-
-
-	public Integer getWeek3Km2Num() {
-		return week3Km2Num;
-	}
-
-
-
-	public void setWeek3Km2Num(Integer week3Km2Num) {
-		this.week3Km2Num = week3Km2Num;
-	}
-
-
-
-	public String getWeek3Km2Fp() {
-		return week3Km2Fp;
-	}
-
-
-
-	public void setWeek3Km2Fp(String week3Km2Fp) {
-		this.week3Km2Fp = week3Km2Fp;
-	}
-
-
-
-	public Integer getWeek3Km3Num() {
-		return week3Km3Num;
-	}
-
-
-
-	public void setWeek3Km3Num(Integer week3Km3Num) {
-		this.week3Km3Num = week3Km3Num;
-	}
-
-
-
-	public String getWeek3Km3Fp() {
-		return week3Km3Fp;
-	}
-
-
-
-	public void setWeek3Km3Fp(String week3Km3Fp) {
-		this.week3Km3Fp = week3Km3Fp;
-	}
-
-
-
-	public Integer getWeek4Km1Num() {
-		return week4Km1Num;
-	}
-
-
-
-	public void setWeek4Km1Num(Integer week4Km1Num) {
-		this.week4Km1Num = week4Km1Num;
-	}
-
-
-
-	public String getWeek4Km1Fp() {
-		return week4Km1Fp;
-	}
-
-
-
-	public void setWeek4Km1Fp(String week4Km1Fp) {
-		this.week4Km1Fp = week4Km1Fp;
-	}
-
-
-
-	public Integer getWeek4Km2Num() {
-		return week4Km2Num;
-	}
-
-
-
-	public void setWeek4Km2Num(Integer week4Km2Num) {
-		this.week4Km2Num = week4Km2Num;
-	}
-
-
-
-	public String getWeek4Km2Fp() {
-		return week4Km2Fp;
-	}
-
-
-
-	public void setWeek4Km2Fp(String week4Km2Fp) {
-		this.week4Km2Fp = week4Km2Fp;
-	}
-
-
-
-	public Integer getWeek4Km3Num() {
-		return week4Km3Num;
-	}
-
-
-
-	public void setWeek4Km3Num(Integer week4Km3Num) {
-		this.week4Km3Num = week4Km3Num;
-	}
-
-
-
-	public String getWeek4Km3Fp() {
-		return week4Km3Fp;
-	}
-
-
-
-	public void setWeek4Km3Fp(String week4Km3Fp) {
-		this.week4Km3Fp = week4Km3Fp;
-	}
-
-
-
-	public Integer getWeek5Km1Num() {
-		return week5Km1Num;
-	}
-
-
-
-	public void setWeek5Km1Num(Integer week5Km1Num) {
-		this.week5Km1Num = week5Km1Num;
-	}
-
-
-
-	public String getWeek5Km1Fp() {
-		return week5Km1Fp;
-	}
-
-
-
-	public void setWeek5Km1Fp(String week5Km1Fp) {
-		this.week5Km1Fp = week5Km1Fp;
-	}
-
-
-
-	public Integer getWeek5Km2Num() {
-		return week5Km2Num;
-	}
-
-
-
-	public void setWeek5Km2Num(Integer week5Km2Num) {
-		this.week5Km2Num = week5Km2Num;
-	}
-
-
-
-	public String getWeek5Km2Fp() {
-		return week5Km2Fp;
-	}
-
-
-
-	public void setWeek5Km2Fp(String week5Km2Fp) {
-		this.week5Km2Fp = week5Km2Fp;
-	}
-
-
-
-	public Integer getWeek5Km3Num() {
-		return week5Km3Num;
-	}
-
-
-
-	public void setWeek5Km3Num(Integer week5Km3Num) {
-		this.week5Km3Num = week5Km3Num;
-	}
-
-
-
-	public String getWeek5Km3Fp() {
-		return week5Km3Fp;
-	}
-
-
-
-	public void setWeek5Km3Fp(String week5Km3Fp) {
-		this.week5Km3Fp = week5Km3Fp;
-	}
-
-
-
-	public Integer getWeek6Km1Num() {
-		return week6Km1Num;
-	}
-
-
-
-	public void setWeek6Km1Num(Integer week6Km1Num) {
-		this.week6Km1Num = week6Km1Num;
-	}
-
-
-
-	public String getWeek6Km1Fp() {
-		return week6Km1Fp;
-	}
-
-
-
-	public void setWeek6Km1Fp(String week6Km1Fp) {
-		this.week6Km1Fp = week6Km1Fp;
-	}
-
-
-
-	public Integer getWeek6Km2Num() {
-		return week6Km2Num;
-	}
-
-
-
-	public void setWeek6Km2Num(Integer week6Km2Num) {
-		this.week6Km2Num = week6Km2Num;
-	}
-
-
-
-	public String getWeek6Km2Fp() {
-		return week6Km2Fp;
-	}
-
-
-
-	public void setWeek6Km2Fp(String week6Km2Fp) {
-		this.week6Km2Fp = week6Km2Fp;
-	}
-
-
-
-	public Integer getWeek6Km3Num() {
-		return week6Km3Num;
-	}
-
-
-
-	public void setWeek6Km3Num(Integer week6Km3Num) {
-		this.week6Km3Num = week6Km3Num;
-	}
-
-
-
-	public String getWeek6Km3Fp() {
-		return week6Km3Fp;
-	}
-
-
-
-	public void setWeek6Km3Fp(String week6Km3Fp) {
-		this.week6Km3Fp = week6Km3Fp;
-	}
-
-
-
-	public Integer getWeek7Km1Num() {
-		return week7Km1Num;
-	}
-
-
-
-	public void setWeek7Km1Num(Integer week7Km1Num) {
-		this.week7Km1Num = week7Km1Num;
-	}
-
-
-
-	public String getWeek7Km1Fp() {
-		return week7Km1Fp;
-	}
-
-
-
-	public void setWeek7Km1Fp(String week7Km1Fp) {
-		this.week7Km1Fp = week7Km1Fp;
-	}
-
-
-
-	public Integer getWeek7Km2Num() {
-		return week7Km2Num;
-	}
-
-
-
-	public void setWeek7Km2Num(Integer week7Km2Num) {
-		this.week7Km2Num = week7Km2Num;
-	}
-
-
-
-	public String getWeek7Km2Fp() {
-		return week7Km2Fp;
-	}
-
-
-
-	public void setWeek7Km2Fp(String week7Km2Fp) {
-		this.week7Km2Fp = week7Km2Fp;
-	}
-
-
-
-	public Integer getWeek7Km3Num() {
-		return week7Km3Num;
-	}
-
-
-
-	public void setWeek7Km3Num(Integer week7Km3Num) {
-		this.week7Km3Num = week7Km3Num;
-	}
-
-
-
-	public String getWeek7Km3Fp() {
-		return week7Km3Fp;
-	}
-
-
-
-	public void setWeek7Km3Fp(String week7Km3Fp) {
-		this.week7Km3Fp = week7Km3Fp;
-	}
-
-
-
-	public String getCheckOperator() {
-		return checkOperator;
-	}
-
-
-
-	public void setCheckOperator(String checkOperator) {
-		this.checkOperator = checkOperator;
-	}
-
-
-
-	public String getCheckDate() {
-		return checkDate;
-	}
-
-
-
-	public void setCheckDate(String checkDate) {
-		this.checkDate = checkDate;
-	}
-
-
-
-	public Integer getChecked() {
-		return checked;
-	}
-
-
-
-	public void setChecked(Integer checked) {
-		this.checked = checked;
-	}
-
-
-
-	public String getWeekRange() {
-		return weekRange;
+	public String getCweekRange() {
+		return CWeekRange;
 	}
 
 
 
 	
 	public void setWeekRange(String weekRange) {
-		this.weekRange = weekRange;
+		this.CWeekRange = weekRange;
 		String lStrYear="";
 		try{
-		lStrYear=this.weekRange.substring(0,4);
+		lStrYear=this.CWeekRange.substring(0,4);
 		this.year=Integer.parseInt(lStrYear);
 		}catch(Exception ex)
 		{
@@ -1083,10 +520,597 @@ public class BookedWeekRecordModel extends BaseModel{
 	}
 
 
-   
+
+	public Integer getId() {
+		return Id;
+	}
+
+
+
+	public void setId(Integer id) {
+		Id = id;
+	}
+
+
+
+	public Integer getIWeekNum() {
+		return IWeekNum;
+	}
+
+
+
+	public void setIWeekNum(Integer iWeekNum) {
+		IWeekNum = iWeekNum;
+	}
+
+
+
+	public Integer getIWeek1Km1Num() {
+		return IWeek1Km1Num;
+	}
+
+
+
+	public void setIWeek1Km1Num(Integer iWeek1Km1Num) {
+		IWeek1Km1Num = iWeek1Km1Num;
+	}
+
+
+
+	public String getIWeek1Km1Fp() {
+		return IWeek1Km1Fp;
+	}
+
+
+
+	public void setIWeek1Km1Fp(String iWeek1Km1Fp) {
+		IWeek1Km1Fp = iWeek1Km1Fp;
+	}
+
+
+
+	public Integer getIWeek1Km2Num() {
+		return IWeek1Km2Num;
+	}
+
+
+
+	public void setIWeek1Km2Num(Integer iWeek1Km2Num) {
+		IWeek1Km2Num = iWeek1Km2Num;
+	}
+
+
+
+	public String getIWeek1Km2Fp() {
+		return IWeek1Km2Fp;
+	}
+
+
+
+	public void setIWeek1Km2Fp(String iWeek1Km2Fp) {
+		IWeek1Km2Fp = iWeek1Km2Fp;
+	}
+
+
+
+	public Integer getIWeek1Km3Num() {
+		return IWeek1Km3Num;
+	}
+
+
+
+	public void setIWeek1Km3Num(Integer iWeek1Km3Num) {
+		IWeek1Km3Num = iWeek1Km3Num;
+	}
+
+
+
+	public String getIWeek1Km3Fp() {
+		return IWeek1Km3Fp;
+	}
+
+
+
+	public void setIWeek1Km3Fp(String iWeek1Km3Fp) {
+		IWeek1Km3Fp = iWeek1Km3Fp;
+	}
+
+
+
+	public Integer getIWeek2Km1Num() {
+		return IWeek2Km1Num;
+	}
+
+
+
+	public void setIWeek2Km1Num(Integer iWeek2Km1Num) {
+		IWeek2Km1Num = iWeek2Km1Num;
+	}
+
+
+
+	public String getIWeek2Km1Fp() {
+		return IWeek2Km1Fp;
+	}
+
+
+
+	public void setIWeek2Km1Fp(String iWeek2Km1Fp) {
+		IWeek2Km1Fp = iWeek2Km1Fp;
+	}
+
+
+
+	public Integer getIWeek2Km2Num() {
+		return IWeek2Km2Num;
+	}
+
+
+
+	public void setIWeek2Km2Num(Integer iWeek2Km2Num) {
+		IWeek2Km2Num = iWeek2Km2Num;
+	}
+
+
+
+	public String getIWeek2Km2Fp() {
+		return IWeek2Km2Fp;
+	}
+
+
+
+	public void setIWeek2Km2Fp(String iWeek2Km2Fp) {
+		IWeek2Km2Fp = iWeek2Km2Fp;
+	}
+
+
+
+	public Integer getIWeek2Km3Num() {
+		return IWeek2Km3Num;
+	}
+
+
+
+	public void setIWeek2Km3Num(Integer iWeek2Km3Num) {
+		IWeek2Km3Num = iWeek2Km3Num;
+	}
+
+
+
+	public String getIWeek2Km3Fp() {
+		return IWeek2Km3Fp;
+	}
+
+
+
+	public void setIWeek2Km3Fp(String iWeek2Km3Fp) {
+		IWeek2Km3Fp = iWeek2Km3Fp;
+	}
+
+
+
+	public Integer getIWeek3Km1Num() {
+		return IWeek3Km1Num;
+	}
+
+
+
+	public void setIWeek3Km1Num(Integer iWeek3Km1Num) {
+		IWeek3Km1Num = iWeek3Km1Num;
+	}
+
+
+
+	public String getIWeek3Km1Fp() {
+		return IWeek3Km1Fp;
+	}
+
+
+
+	public void setIWeek3Km1Fp(String iWeek3Km1Fp) {
+		IWeek3Km1Fp = iWeek3Km1Fp;
+	}
+
+
+
+	public Integer getIWeek3Km2Num() {
+		return IWeek3Km2Num;
+	}
+
+
+
+	public void setIWeek3Km2Num(Integer iWeek3Km2Num) {
+		IWeek3Km2Num = iWeek3Km2Num;
+	}
+
+
+
+	public String getIWeek3Km2Fp() {
+		return IWeek3Km2Fp;
+	}
+
+
+
+	public void setIWeek3Km2Fp(String iWeek3Km2Fp) {
+		IWeek3Km2Fp = iWeek3Km2Fp;
+	}
+
+
+
+	public Integer getIWeek3Km3Num() {
+		return IWeek3Km3Num;
+	}
+
+
+
+	public void setIWeek3Km3Num(Integer iWeek3Km3Num) {
+		IWeek3Km3Num = iWeek3Km3Num;
+	}
+
+
+
+	public String getIWeek3Km3Fp() {
+		return IWeek3Km3Fp;
+	}
+
+
+
+	public void setIWeek3Km3Fp(String iWeek3Km3Fp) {
+		IWeek3Km3Fp = iWeek3Km3Fp;
+	}
+
+
+
+	public Integer getIWeek4Km1Num() {
+		return IWeek4Km1Num;
+	}
+
+
+
+	public void setIWeek4Km1Num(Integer iWeek4Km1Num) {
+		IWeek4Km1Num = iWeek4Km1Num;
+	}
+
+
+
+	public String getIWeek4Km1Fp() {
+		return IWeek4Km1Fp;
+	}
+
+
+
+	public void setIWeek4Km1Fp(String iWeek4Km1Fp) {
+		IWeek4Km1Fp = iWeek4Km1Fp;
+	}
+
+
+
+	public Integer getIWeek4Km2Num() {
+		return IWeek4Km2Num;
+	}
+
+
+
+	public void setIWeek4Km2Num(Integer iWeek4Km2Num) {
+		IWeek4Km2Num = iWeek4Km2Num;
+	}
+
+
+
+	public String getIWeek4Km2Fp() {
+		return IWeek4Km2Fp;
+	}
+
+
+
+	public void setIWeek4Km2Fp(String iWeek4Km2Fp) {
+		IWeek4Km2Fp = iWeek4Km2Fp;
+	}
+
+
+
+	public Integer getIWeek4Km3Num() {
+		return IWeek4Km3Num;
+	}
+
+
+
+	public void setIWeek4Km3Num(Integer iWeek4Km3Num) {
+		IWeek4Km3Num = iWeek4Km3Num;
+	}
+
+
+
+	public String getIWeek4Km3Fp() {
+		return IWeek4Km3Fp;
+	}
+
+
+
+	public void setIWeek4Km3Fp(String iWeek4Km3Fp) {
+		IWeek4Km3Fp = iWeek4Km3Fp;
+	}
+
+
+
+	public Integer getIWeek5Km1Num() {
+		return IWeek5Km1Num;
+	}
+
+
+
+	public void setIWeek5Km1Num(Integer iWeek5Km1Num) {
+		IWeek5Km1Num = iWeek5Km1Num;
+	}
+
+
+
+	public String getIWeek5Km1Fp() {
+		return IWeek5Km1Fp;
+	}
+
+
+
+	public void setIWeek5Km1Fp(String iWeek5Km1Fp) {
+		IWeek5Km1Fp = iWeek5Km1Fp;
+	}
+
+
+
+	public Integer getIWeek5Km2Num() {
+		return IWeek5Km2Num;
+	}
+
+
+
+	public void setIWeek5Km2Num(Integer iWeek5Km2Num) {
+		IWeek5Km2Num = iWeek5Km2Num;
+	}
+
+
+
+	public String getIWeek5Km2Fp() {
+		return IWeek5Km2Fp;
+	}
+
+
+
+	public void setIWeek5Km2Fp(String iWeek5Km2Fp) {
+		IWeek5Km2Fp = iWeek5Km2Fp;
+	}
+
+
+
+	public Integer getIWeek5Km3Num() {
+		return IWeek5Km3Num;
+	}
+
+
+
+	public void setIWeek5Km3Num(Integer iWeek5Km3Num) {
+		IWeek5Km3Num = iWeek5Km3Num;
+	}
+
+
+
+	public String getIWeek5Km3Fp() {
+		return IWeek5Km3Fp;
+	}
+
+
+
+	public void setIWeek5Km3Fp(String iWeek5Km3Fp) {
+		IWeek5Km3Fp = iWeek5Km3Fp;
+	}
+
+
+
+	public Integer getIWeek6Km1Num() {
+		return IWeek6Km1Num;
+	}
+
+
+
+	public void setIWeek6Km1Num(Integer iWeek6Km1Num) {
+		IWeek6Km1Num = iWeek6Km1Num;
+	}
+
+
+
+	public String getIWeek6Km1Fp() {
+		return IWeek6Km1Fp;
+	}
+
+
+
+	public void setIWeek6Km1Fp(String iWeek6Km1Fp) {
+		IWeek6Km1Fp = iWeek6Km1Fp;
+	}
+
+
+
+	public Integer getIWeek6Km2Num() {
+		return IWeek6Km2Num;
+	}
+
+
+
+	public void setIWeek6Km2Num(Integer iWeek6Km2Num) {
+		IWeek6Km2Num = iWeek6Km2Num;
+	}
+
+
+
+	public String getIWeek6Km2Fp() {
+		return IWeek6Km2Fp;
+	}
+
+
+
+	public void setIWeek6Km2Fp(String iWeek6Km2Fp) {
+		IWeek6Km2Fp = iWeek6Km2Fp;
+	}
+
+
+
+	public Integer getIWeek6Km3Num() {
+		return IWeek6Km3Num;
+	}
+
+
+
+	public void setIWeek6Km3Num(Integer iWeek6Km3Num) {
+		IWeek6Km3Num = iWeek6Km3Num;
+	}
+
+
+
+	public String getIWeek6Km3Fp() {
+		return IWeek6Km3Fp;
+	}
+
+
+
+	public void setIWeek6Km3Fp(String iWeek6Km3Fp) {
+		IWeek6Km3Fp = iWeek6Km3Fp;
+	}
+
+
+
+	public Integer getIWeek7Km1Num() {
+		return IWeek7Km1Num;
+	}
+
+
+
+	public void setIWeek7Km1Num(Integer iWeek7Km1Num) {
+		IWeek7Km1Num = iWeek7Km1Num;
+	}
+
+
+
+	public String getIWeek7Km1Fp() {
+		return IWeek7Km1Fp;
+	}
+
+
+
+	public void setIWeek7Km1Fp(String iWeek7Km1Fp) {
+		IWeek7Km1Fp = iWeek7Km1Fp;
+	}
+
+
+
+	public Integer getIWeek7Km2Num() {
+		return IWeek7Km2Num;
+	}
+
+
+
+	public void setIWeek7Km2Num(Integer iWeek7Km2Num) {
+		IWeek7Km2Num = iWeek7Km2Num;
+	}
+
+
+
+	public String getIWeek7Km2Fp() {
+		return IWeek7Km2Fp;
+	}
+
+
+
+	public void setIWeek7Km2Fp(String iWeek7Km2Fp) {
+		IWeek7Km2Fp = iWeek7Km2Fp;
+	}
+
+
+
+	public Integer getIWeek7Km3Num() {
+		return IWeek7Km3Num;
+	}
+
+
+
+	public void setIWeek7Km3Num(Integer iWeek7Km3Num) {
+		IWeek7Km3Num = iWeek7Km3Num;
+	}
+
+
+
+	public String getIWeek7Km3Fp() {
+		return IWeek7Km3Fp;
+	}
+
+
+
+	public void setIWeek7Km3Fp(String iWeek7Km3Fp) {
+		IWeek7Km3Fp = iWeek7Km3Fp;
+	}
+
+
+
+	public String getCCheckOperator() {
+		return CCheckOperator;
+	}
+
+
+
+	public void setCCheckOperator(String cCheckOperator) {
+		CCheckOperator = cCheckOperator;
+	}
+
+
+
+	public String getCCheckDate() {
+		return CCheckDate;
+	}
+
+
+
+	public void setCCheckDate(String cCheckDate) {
+		CCheckDate = cCheckDate;
+	}
+
+
+
+	public Integer getIChecked() {
+		return IChecked;
+	}
+
+
+
+	public void setIChecked(Integer iChecked) {
+		IChecked = iChecked;
+	}
+
+
+
+	public String getCWeekRange() {
+		return CWeekRange;
+	}
+
+
+
+	public void setCWeekRange(String cWeekRange) {
+		CWeekRange = cWeekRange;
+	}
+
+
+
+	public void setFriday(Date friday) {
+		this.friday = friday;
+	}
+
+
 
 	
-
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

@@ -44,14 +44,14 @@ String adminMenuPath=basePath+"admin/Menu";
 				width:innerWidth,
 				pagination:true,
 				rownumbers:true,
-				idField:"id",
+				idField:"Id",
 				columns:[[
-				    {field:'id',title:'菜单ID',checkbox:true},
-				    {field:'name',title:'菜单',width:10},
+				    {field:'Id',title:'菜单ID',checkbox:true},
+				    {field:'Name',title:'菜单',width:10},
 					//{field:"parentId",title:'父菜单',width:10},
-					{field:'url',title:'页面路径',width:30},
-					{field:'parma',title:'请求参数',width:30},
-					{field:'descp',title:'功能描述',width:30}
+					{field:'Url',title:'页面路径',width:30},
+					{field:'Parma',title:'请求参数',width:30},
+					{field:'Descp',title:'功能描述',width:30}
 					
 				]], //columns
 				toolbar:[{
@@ -83,8 +83,8 @@ String adminMenuPath=basePath+"admin/Menu";
 					        var lStrName="";
 						    var rows = $("#"+menuDG).datagrid('getSelections');
 						    $.each(rows,function(index,item){
-						       lStrIds+=","+item.id;
-						       lStrName+=" "+item.name;
+						       lStrIds+=","+item['Id'];
+						       lStrName+=" "+item["Name"];
 						    });  //rows.each(function(index,item){
 						    $.messager.confirm("删除菜单",lStrName,function(ok){
 						                      if(ok){
@@ -114,7 +114,7 @@ String adminMenuPath=basePath+"admin/Menu";
 					    $("#"+menuDG).datagrid("reload");
 					  }// onClose(function(){
 					  ,onBeforeOpen:function(){
-					      $(this).kiaIframe("<%=adminMenuPath%>/to/edit.action?menuid="+data.id);
+					      $(this).kiaIframe("<%=adminMenuPath%>/to/edit.action?menuid="+data['Id']);
 					  }
 				   });  //$('#editWindow').dialog({
 				   

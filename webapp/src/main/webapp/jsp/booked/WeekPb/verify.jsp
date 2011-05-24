@@ -1,6 +1,7 @@
 <%@ page language="java" import="java.util.*,com.smartken.kia.core.model.impl.*" pageEncoding="UTF-8"%>
 <%@page import="com.smartken.kia.core.util.StringUtil"%>
 <%@page import="com.smartken.kia.core.model.impl.EasyUiModel.DataGrid"%>
+<%@page import="com.ett.drv.model.booked.BookedWeekRecordModel"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -47,23 +48,23 @@ String bookedWeekPbPath=basePath+"booked/WeekPb";
         List weekPbR1=new JsListModel();
         JsMapModel<String,Object> weekPbR1C1=new JsMapModel<String,Object>();
         weekPbR1C1.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"编号",true);
-        weekPbR1C1.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,"id",true);
+        weekPbR1C1.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,BookedWeekRecordModel.F.Id,true);
         weekPbR1C1.put(EasyUiModel.DataGrid.ColumnProperties.CHECKBOX,true);
         JsMapModel<String,Object> weekPbR1C2=new JsMapModel<String,Object>();
         weekPbR1C2.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"第几周",true);
-        weekPbR1C2.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,"weekNum",true);
+        weekPbR1C2.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,BookedWeekRecordModel.F.IWeekNum,true);
         weekPbR1C2.put(EasyUiModel.DataGrid.ColumnProperties.WIDTH,10);
         JsMapModel<String,Object> weekPbR1C3=new JsMapModel<String,Object>();
         weekPbR1C3.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"时间范围",true);
-        weekPbR1C3.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,"weekRange",true);
+        weekPbR1C3.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,BookedWeekRecordModel.F.CWeekRange,true);
         weekPbR1C3.put(EasyUiModel.DataGrid.ColumnProperties.WIDTH,10);
         JsMapModel<String,Object> weekPbR1C4=new JsMapModel<String,Object>();
         weekPbR1C4.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"提交人/审核人",true);
-        weekPbR1C4.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,"checkOperator",true);
+        weekPbR1C4.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,BookedWeekRecordModel.F.CCheckOperator,true);
         weekPbR1C4.put(EasyUiModel.DataGrid.ColumnProperties.WIDTH,30);
         JsMapModel<String,Object> weekPbR1C5=new JsMapModel<String,Object>();
         weekPbR1C5.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"审核结果",true);
-        weekPbR1C5.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,"checked",true);
+        weekPbR1C5.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,BookedWeekRecordModel.F.IChecked,true);
         weekPbR1C5.put(EasyUiModel.DataGrid.ColumnProperties.WIDTH,30);              
                  
         weekPbR1.add(weekPbR1C1);
@@ -85,7 +86,7 @@ String bookedWeekPbPath=basePath+"booked/WeekPb";
                         		    ,EasyUiModel.DataGrid.NAME
                         		    ,EasyUiModel.DataGrid.Methods.GET_SELECTIONS
                         		    )
-                           .appendContext("$.each(rows,function(index,row){ ids +=','+row.id;});")
+                           .appendContext("$.each(rows,function(index,row){ ids +=','+row['Id'];});")
                            .appendContext("$.getJSON(\"{0}\",'{'ids:ids'}',function(jsonRe)'{'",bookedWeekPbPath+"/do/verifyWeekPb.action")
                            .appendContext(new EasyUiMessager().setTitle("jsonRe['title']").setMsg("jsonRe['msg']").alert())
                            .appendContext("});")
