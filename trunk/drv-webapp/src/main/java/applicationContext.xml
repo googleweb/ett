@@ -73,7 +73,7 @@
 </bean>
 
 
- 
+
 
 
  
@@ -98,10 +98,8 @@
 	
 	<bean id="baseMapper" class="org.mybatis.spring.mapper.MapperFactoryBean" abstract="true" >
      <property name="sqlSessionFactory" ref="sqlSessionFactory" />
-   </bean>
- 
+  </bean>
 
-   
 
 <bean id="weekReocrdMapper" parent="baseMapper">
     <property name="mapperInterface" value="com.ett.drv.mapper.booked.IWeekRecordMapper"></property>
