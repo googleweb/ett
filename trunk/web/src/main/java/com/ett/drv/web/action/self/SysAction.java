@@ -45,7 +45,7 @@ public class SysAction extends BaseAction {
 	
 	public void list_device() throws Exception{
 	    selfBiz.loadCrudMapper(DeviceModel.class);
-	    ArrayList list=selfBiz.getModel(null);
+	    ArrayList list=selfBiz.getModel();
 	    JSONArray jarr=ObjectUtil.toJsonArray(list);
 	    JSONObject dg=EasyUiUtil.toJsonDataGrid(jarr);
 	    this.writePlainText(dg.toString());
@@ -53,7 +53,7 @@ public class SysAction extends BaseAction {
 	
 	public void list_terminal() throws Exception{
 	    selfBiz.loadCrudMapper(TerminalModel.class);
-	    ArrayList list=selfBiz.getModel(null);
+	    ArrayList list=selfBiz.getModel();
 	    JSONArray jarr=ObjectUtil.toJsonArray(list);
 	    JSONObject dg=EasyUiUtil.toJsonDataGrid(jarr);
 	    this.writePlainText(dg.toString());

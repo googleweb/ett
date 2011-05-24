@@ -69,7 +69,7 @@ public class BookedBiz extends BaseDrvBiz implements IBookedBiz {
 	public Map<String,BookedLimitModel> getLimits(int weekNum) throws Exception{
 		Map<String, BookedLimitModel> lMapReturn=new HashMap<String, BookedLimitModel>();
 		BookedLimitModel lLimit=new BookedLimitModel();
-		lLimit.setWeekNum(weekNum);
+		lLimit.setIweekNum(weekNum);
         ArrayList<BookedLimitModel> lListLimit=limitMapper.select(lLimit);
 		for (BookedLimitModel bookedLimitModel : lListLimit) {
 			   lMapReturn.put((String) bookedLimitModel.generalPK(), bookedLimitModel);	

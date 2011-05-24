@@ -15,7 +15,7 @@ import com.ett.drv.model.admin.DictModel;
 import com.ett.drv.model.admin.MenuModel;
 import com.ett.drv.model.admin.UserModel;
 import com.ett.drv.model.booked.BookedLimitModel;
-import com.smartken.kia.core.enums.QueryEnum;
+
 
 
 public class AdminBiz extends BaseDrvBiz implements IAdminBiz {
@@ -90,29 +90,29 @@ public class AdminBiz extends BaseDrvBiz implements IAdminBiz {
 	public BookedLimitModel fillObject(BookedLimitModel pLimit)
 			throws Exception {
 		// TODO Auto-generated method stub
-		if(StringUtil.isNotBlank(pLimit.getKsccCode()))
+		if(StringUtil.isNotBlank(pLimit.getCksccCode()))
 		{
 		   DictModel dict=new DictModel();
 		   dict.setTypename(TYPE_NAME_KSCC);
-		   dict.setDictValue(pLimit.getKsccCode());
+		   dict.setDictValue(pLimit.getCksccCode());
 		   DictModel dictKscc=dictMapper.select(dict).get(0);
-		   pLimit.setKscc(dictKscc.getDictText());
+		   pLimit.setCkscc(dictKscc.getDictText());
 		}
-		if(StringUtil.isNotBlank(pLimit.getKsddCode()))
+		if(StringUtil.isNotBlank(pLimit.getCksddCode()))
 		{
 		   DictModel dict=new DictModel();
 		   dict.setTypename(TYPE_NAME_KSDD);
-		   dict.setDictValue(pLimit.getKsddCode());
+		   dict.setDictValue(pLimit.getCksddCode());
 		   DictModel dictKsdd=dictMapper.select(dict).get(0);
-		   pLimit.setKsdd(dictKsdd.getDictText());
+		   pLimit.setCksdd(dictKsdd.getDictText());
 		}
-		if(StringUtil.isNotBlank(pLimit.getSchoolCode()))
+		if(StringUtil.isNotBlank(pLimit.getCschoolCode()))
 		{
 		   DepartmentModel dep=new DepartmentModel();
 		   dep.setDeptype(DEP_TYPE_SCHOOL);
-		   dep.setDepcode(pLimit.getSchoolCode());
+		   dep.setDepcode(pLimit.getCschoolCode());
 		   DepartmentModel depSchool=departmentMapper.select(dep).get(0);
-		   pLimit.setSchoolName(depSchool.getDepnickname());
+		   pLimit.setCschoolName(depSchool.getDepnickname());
 		}
 		return pLimit;
 	}
