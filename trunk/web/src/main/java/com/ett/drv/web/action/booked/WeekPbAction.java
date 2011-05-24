@@ -84,7 +84,7 @@ public class WeekPbAction extends BaseAction implements ModelDriven<BookedWeekRe
 				int weekNum=ObjectUtil.formatInt(req.getParameter("weekNum"));
 				this.bookedWeekRecordModel=bookedBiz.getWeekRecord(weekNum);
 			    if(this.bookedWeekRecordModel!=null){
-			    	this.bookedWeekRecordModel.setLimits(bookedBiz.getLimits(this.bookedWeekRecordModel.getWeekNum()));
+			    	this.bookedWeekRecordModel.setLimits(bookedBiz.getLimits(this.bookedWeekRecordModel.getIWeekNum()));
 			    }
 			}
 		}else if(req.getMethod().equalsIgnoreCase(METHOD_POST))
@@ -106,7 +106,7 @@ public class WeekPbAction extends BaseAction implements ModelDriven<BookedWeekRe
 	}
 
 	
-	public void list_DataGrid() throws Exception{
+	public void datagrid_weekRecords() throws Exception{
 		bookedBiz.loadCrudMapper(BookedWeekRecordModel.class);
 		ArrayList lListWeekRecords=bookedBiz.getModel();
 		JSONArray lListJson=ObjectUtil.toJsonArray(lListWeekRecords);
@@ -125,7 +125,7 @@ public class WeekPbAction extends BaseAction implements ModelDriven<BookedWeekRe
 	}
 
 	
-	public void select_school() throws Exception
+	public void combobox_school() throws Exception
 	{
 //        DepartmentModel lDep=new DepartmentModel();
 //        lDep.setDeptype("驾校");
@@ -135,7 +135,7 @@ public class WeekPbAction extends BaseAction implements ModelDriven<BookedWeekRe
 		this.writePlainText(lJsonSchools.toString());
 	}
 	
-	public  void select_kscc() throws Exception
+	public  void combobox_kscc() throws Exception
 	{
 		//DictModel lDict=new DictModel();
 		//lDict.setTypeName("考试场次");
@@ -145,7 +145,7 @@ public class WeekPbAction extends BaseAction implements ModelDriven<BookedWeekRe
 		this.writePlainText(lJsonKscc.toString());
 	}
 	
-	public void select_ksdd() throws Exception
+	public void combobox_ksdd() throws Exception
 	{
 //		DictModel lDict=new DictModel();
 //		lDict.setTypeName("考试地点");
@@ -169,9 +169,9 @@ public class WeekPbAction extends BaseAction implements ModelDriven<BookedWeekRe
 	{
 		HttpServletRequest req=this.getRequest();
 		tempLimit=new BookedLimitModel();
-		tempLimit.setIdayofweek(ObjectUtil.formatInt(req.getParameter("dw"),1));
-		tempLimit.setIkm(ObjectUtil.formatInt(req.getParameter("km"),1));
-		tempLimit.setIweekNum(bookedWeekRecordModel.getWeekNum());
+		tempLimit.setIDayofweek(ObjectUtil.formatInt(req.getParameter("dw"),1));
+		tempLimit.setIKm(ObjectUtil.formatInt(req.getParameter("km"),1));
+		tempLimit.setIWeekNum(bookedWeekRecordModel.getIWeekNum());
 		this.bookedWeekRecordModel.calLimitAssgined();
 		return ResultEnum.jsp.toString();
 	}
@@ -182,7 +182,7 @@ public class WeekPbAction extends BaseAction implements ModelDriven<BookedWeekRe
     	//editLimit.setKsccCode(tempLimit.getKsccCode());
     	//editLimit.setKsddCode(tempLimit.getKsddCode());
     	//editLimit.setSchoolCode(tempLimit.getSchoolCode());
-    	editLimit.setItotal(tempLimit.getItotal());
+    	editLimit.setITotal(tempLimit.getITotal());
     	//editLimit=iDrvadminBiz.fillObject(editLimit);
     	this.bookedWeekRecordModel.getLimits().put(this.limitKey, editLimit);
     	ResultModel result=new ResultModel();
@@ -231,7 +231,7 @@ public class WeekPbAction extends BaseAction implements ModelDriven<BookedWeekRe
 		{
 			String key=it.next();
 			BookedLimitModel tempLimit=this.bookedWeekRecordModel.getLimits().get(key);
-			if(tempLimit.getIkm()==km && tempLimit.getIdayofweek() ==dw)
+			if(tempLimit.getIKm()==km && tempLimit.getIDayofweek() ==dw)
 			{
 				this.bookedWeekRecordModel.getLimits().remove(key);
 			}
@@ -259,7 +259,7 @@ public class WeekPbAction extends BaseAction implements ModelDriven<BookedWeekRe
 		ArrayList<BookedWeekRecordModel> listWeekRecords=bookedBiz.getModelInPk(listIds);
 		int verifyCount=0;
         for (BookedWeekRecordModel weekRecord : listWeekRecords) {
-			weekRecord.setChecked(BookedWeekRecordModel.CHECKED_VAILDATE);
+			weekRecord.setIChecked(BookedWeekRecordModel.CHECKED_VAILDATE);
 			verifyCount+=bookedBiz.modifyModel(weekRecord);
 		}
         ResultModel re=new ResultModel();

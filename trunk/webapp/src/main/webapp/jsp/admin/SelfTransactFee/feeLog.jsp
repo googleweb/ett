@@ -41,39 +41,39 @@ String feeActionPath=basePath+"admin/SelfTransactFee";
         
         
         JsMapModel rowFeewaytype=new JsMapModel();
-        rowFeewaytype.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,FeeLogModel.F.feewaytype,true);
+        rowFeewaytype.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,FeeLogModel.F.Feewaytype,true);
         rowFeewaytype.put(EasyUiModel.DataGrid.ColumnProperties.WIDTH,150);
         rowFeewaytype.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"缴费方式",true);
         
         JsMapModel rowMoney=new JsMapModel();
-        rowMoney.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,FeeLogModel.F.money,true);
+        rowMoney.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,FeeLogModel.F.Money,true);
         rowMoney.put(EasyUiModel.DataGrid.ColumnProperties.WIDTH,150);
         rowMoney.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"业务费用",true);
         
         JsMapModel rowCreatetime=new JsMapModel();
-        rowCreatetime.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,FeeLogModel.F.createtime,true);
+        rowCreatetime.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,FeeLogModel.F.TCreatetime,true);
         rowCreatetime.put(EasyUiModel.DataGrid.ColumnProperties.WIDTH,150);
         rowCreatetime.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"缴费日期",true);
         rowCreatetime.put(EasyUiModel.DataGrid.ColumnProperties.FORMATTER,"dateboxFormatter");
         
         JsMapModel rowBustype=new JsMapModel();
-        rowBustype.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,FeeLogModel.F.bustype,true);
+        rowBustype.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,FeeLogModel.F.Bustype,true);
         rowBustype.put(EasyUiModel.DataGrid.ColumnProperties.WIDTH,150);
         rowBustype.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"业务类型",true);
         
         JsMapModel rowDetail=new JsMapModel();
-        rowDetail.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,FeeLogModel.F.detail,true);
+        rowDetail.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,FeeLogModel.F.Detail,true);
         rowDetail.put(EasyUiModel.DataGrid.ColumnProperties.WIDTH,150);
         rowDetail.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"明细",true);
         
         
         JsMapModel rowSfzmhm=new JsMapModel();
-        rowSfzmhm.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,FeeLogModel.F.sfzmhm,true);
+        rowSfzmhm.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,FeeLogModel.F.Sfzmhm,true);
         rowSfzmhm.put(EasyUiModel.DataGrid.ColumnProperties.WIDTH,150);
         rowSfzmhm.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"身份证号码",true);
         
         JsMapModel rowXm=new JsMapModel();
-        rowXm.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,FeeLogModel.F.xm,true);
+        rowXm.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,FeeLogModel.F.Xm,true);
         rowXm.put(EasyUiModel.DataGrid.ColumnProperties.WIDTH,150);
         rowXm.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"姓名",true);
         
@@ -95,7 +95,7 @@ String feeActionPath=basePath+"admin/SelfTransactFee";
         dataGrid.appendAttrs(EasyUiModel.DataGrid.Properties.FIT,true);
         dataGrid.appendAttrs(EasyUiModel.DataGrid.Properties.URL,feeActionPath+"/datagrid/feeLog.action",true);
         dataGrid.appendAttrs(EasyUiModel.DataGrid.Properties.COLUMNS,cols);
-        dataGrid.appendAttrs(EasyUiModel.DataGrid.Properties.ID_FIELD,"id",true);
+        dataGrid.appendAttrs(EasyUiModel.DataGrid.Properties.ID_FIELD,"Id",true);
         dataGrid.appendAttrs(EasyUiModel.DataGrid.Properties.PAGINATION,true);
         dataGrid.appendAttrs(EasyUiModel.DataGrid.Properties.SINGLE_SELECT,true);
         
@@ -137,16 +137,16 @@ String feeActionPath=basePath+"admin/SelfTransactFee";
     
          <table class="editTable">
             <tr>
-              <td style="width: 350px;">身份证号码:<input name="sfzmhm"/></td>
-              <td style="width: 300px;">姓名:<input name="xm"/></td>
+              <td style="width: 350px;">身份证号码:<input name="Sfzmhm"/></td>
+              <td style="width: 300px;">姓名:<input name="Xm"/></td>
               <td style="width: 300px;">缴费方式:
-                 <select name="<%=FeeLogModel.F.feewaytype %>" class="<%=EasyUiModel.ComboBox.CLASS %>">
+                 <select name="<%=FeeLogModel.F.Feewaytype %>" class="<%=EasyUiModel.ComboBox.CLASS %>">
                    <option value="" selected="selected"></option>
                    <option value="现金缴费">现金缴费</option>
                    <option value="银行pos缴费">银行pos缴费</option>
                  </select>
               </td>
-              <td style="width: 300px;">缴费时间:<input name="createtime" class="<%=EasyUiModel.DateBox.CLASS %>" /></td>
+              <td style="width: 300px;">缴费时间:<input name="TCreatetime" class="<%=EasyUiModel.DateBox.CLASS %>" /></td>
               <td>
                  <a class="<%=EasyUiModel.LinkButton.CLASS %>"  id="<%=aSearch %>"
                     <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_SEARCH) %>

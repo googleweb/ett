@@ -49,10 +49,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            String aSaveWeek="aSaveWeek";
            String txtLimitNum="txtLimitNum";
 
-           EasyUiModel searchDateBox=new EasyUiModel(StringUtil.quota("#"+txtSearchDate),EasyUiModel.DateBox.NAME);
+           EasyUiModel searchDateBox=new EasyUiModel(JQueryModel.id(txtSearchDate),EasyUiModel.DateBox.NAME);
            searchDateBox.appendAttrs(EasyUiModel.DateBox.Properties.FORMATTER,"function(date){return date.getFullYear()+\"-\"+(date.getMonth()+1)+\"-\"+date.getDate();}");
            
-           EasyUiModel numspiLimitNum=new EasyUiModel(StringUtil.quota("."+txtLimitNum),EasyUiModel.NumberSpinner.NAME);
+           EasyUiModel numspiLimitNum=new EasyUiModel(JQueryModel.cls(txtLimitNum),EasyUiModel.NumberSpinner.NAME);
            numspiLimitNum
            .appendAttrs(EasyUiModel.Spinner.Properties.MIN,-1)
            .appendAttrs(EasyUiModel.Spinner.Properties.INCREMENT,10)
@@ -102,11 +102,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            JQueryModel btnEditFpNum=new JQueryModel(StringUtil.formatId(true,"#",null,aEditFpNum));
 
            
-           JQueryModel btnRemoveLimits=new JQueryModel(StringUtil.quota("."+aRemoveLimits),JQueryModel.Events.CLICK);
+           JQueryModel btnRemoveLimits=new JQueryModel(JQueryModel.cls(aRemoveLimits),JQueryModel.Events.CLICK);
            btnRemoveLimits.appendParma(handlerRemoveLimitsClick);
            
           
-           JQueryModel btnEditLimit=new JQueryModel(StringUtil.quota("."+aEditLimit),JQueryModel.Events.CLICK);
+           JQueryModel btnEditLimit=new JQueryModel(JQueryModel.cls(aEditLimit),JQueryModel.Events.CLICK);
            btnEditLimit.appendParma(
                new JsFunctionModel(null)
                .appendContext("var limitId=$(this).attr('id');")
@@ -115,7 +115,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                //.appendContext("var total=limitId.split(',')[1];")
                .appendContext("var ldate=limitId.split(',')[1];")
                .appendContext(
-                 new EasyUiModel(StringUtil.quota("#"+divEditLimit),EasyUiModel.Dialog.NAME)
+                 new EasyUiModel(JQueryModel.id(divEditLimit),EasyUiModel.Dialog.NAME)
                    .appendAttrs(EasyUiModel.Dialog.Properties.WIDTH,400)
                    .appendAttrs(EasyUiModel.Dialog.Properties.HEIGHT,300)
                    .appendAttrs(EasyUiModel.Dialog.Properties.MODAL,true)
@@ -128,7 +128,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                )
            );
            
-           JQueryModel btnRemoveLimit=new JQueryModel(StringUtil.quota("."+aRemoveLimit),JQueryModel.Events.CLICK);
+           JQueryModel btnRemoveLimit=new JQueryModel(JQueryModel.cls(aRemoveLimit),JQueryModel.Events.CLICK);
            btnRemoveLimit.appendParma(
                    new JsFunctionModel(null)
                    .appendContext("var limitId=$(this).attr('id');")
@@ -143,10 +143,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            );
            
            
-           EasyUiModel btnBack=new EasyUiModel(StringUtil.quota("#"+aBack),EasyUiModel.LinkButton.NAME );
+           EasyUiModel btnBack=new EasyUiModel(JQueryModel.id(aBack),EasyUiModel.LinkButton.NAME );
            btnBack.appendAttrs(EasyUiModel.LinkButton.Properties.ICON_CLS,EasyUiModel.ICON_BACK,true);
  
-           EasyUiModel btnSaveWeek=new EasyUiModel(StringUtil.quota("#"+aSaveWeek),EasyUiModel.LinkButton.NAME );
+           EasyUiModel btnSaveWeek=new EasyUiModel(JQueryModel.id(aSaveWeek),EasyUiModel.LinkButton.NAME );
            btnSaveWeek.appendAttrs(EasyUiModel.LinkButton.Properties.ICON_CLS,EasyUiModel.ICON_SAVE,true);
         
  
@@ -220,19 +220,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	           <td>科目<s:property value="#km.key"/></td>
                <td>&nbsp;
                <form action="<%=basePath %>booked/WeekPb/reload/assign.action" method="post">
-               <input name="<s:property value="%{'week'+#dw.value+'Km'+#km.value+'Num'}" />" 
-                      value="<s:property value="#request['week'+#dw.value+'Km'+#km.value+'Num']" />" class="<%=txtLimitNum %>" />
+               <input name="<s:property value="%{'iweek'+#dw.value+'Km'+#km.value+'Num'}" />" 
+                      value="<s:property value="#request['iweek'+#dw.value+'Km'+#km.value+'Num']" />" class="<%=txtLimitNum %>" />
                   &nbsp;<button type="submit">修改</button>
                </form>
                </td>  
                <td>&nbsp;
-                  <s:if test="#request['week'+#dw.value+'Km'+#km.value+'Num'] gte #request['week'+#dw.value+'Km'+#km.value+'Assgined'] ">
-                     <s:property value="#request['week'+#dw.value+'Km'+#km.value+'Assgined']" />/
-                     <s:property value="%{#request['week'+#dw.value+'Km'+#km.value+'Num'] - #request['week'+#dw.value+'Km'+#km.value+'Assgined']}" />
+                  <s:if test="#request['iweek'+#dw.value+'Km'+#km.value+'Num'] gte #request['iweek'+#dw.value+'Km'+#km.value+'Assgined'] ">
+                     <s:property value="#request['iweek'+#dw.value+'Km'+#km.value+'Assgined']" />/
+                     <s:property value="%{#request['iweek'+#dw.value+'Km'+#km.value+'Num'] - #request['iweek'+#dw.value+'Km'+#km.value+'Assgined']}" />
                   </s:if>
                   <s:else>
                      <span style="color:red;">
-                     <s:property value="#request['week'+#dw.value+'Km'+#km.value+'Assgined']" /><br/>
+                     <s:property value="#request['iweek'+#dw.value+'Km'+#km.value+'Assgined']" /><br/>
                      分配数已超过总数
                      </span>
                   </s:else>

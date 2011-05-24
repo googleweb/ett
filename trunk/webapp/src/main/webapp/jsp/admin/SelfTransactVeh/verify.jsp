@@ -88,7 +88,7 @@ String excelTemplatePath=basePath+"js/print/机动车牌证申请表.xls";
   </script>
 
 
-   <%  boolean isAgent=BaseTransactModel.Applicat.AGENT.equalsIgnoreCase((String)request.getAttribute("applicat")); %>
+   <%  boolean isAgent=BaseTransactModel.Applicats.AGENT.equalsIgnoreCase((String)request.getAttribute("applicat")); %>
 
   </head>
   

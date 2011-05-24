@@ -42,39 +42,39 @@ String feeActionPath=basePath+"admin/SelfTransactFee";
         
         
         JsMapModel rowFeewaytype=new JsMapModel();
-        rowFeewaytype.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,FeeLogModel.F.feewaytype,true);
+        rowFeewaytype.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,FeeLogModel.F.Feewaytype,true);
         rowFeewaytype.put(EasyUiModel.DataGrid.ColumnProperties.WIDTH,150);
         rowFeewaytype.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"缴费方式",true);
         
         JsMapModel rowMoney=new JsMapModel();
-        rowMoney.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,FeeLogModel.F.money,true);
+        rowMoney.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,FeeLogModel.F.Money,true);
         rowMoney.put(EasyUiModel.DataGrid.ColumnProperties.WIDTH,150);
         rowMoney.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"业务费用",true);
         
         JsMapModel rowCreatetime=new JsMapModel();
-        rowCreatetime.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,FeeLogModel.F.createtime,true);
+        rowCreatetime.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,FeeLogModel.F.TCreatetime,true);
         rowCreatetime.put(EasyUiModel.DataGrid.ColumnProperties.WIDTH,150);
         rowCreatetime.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"缴费日期",true);
         //rowCreatetime.put(EasyUiModel.DataGrid.ColumnProperties.FORMATTER,"dateboxFormatter");
         
         JsMapModel rowBustype=new JsMapModel();
-        rowBustype.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,FeeLogModel.F.bustype,true);
+        rowBustype.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,FeeLogModel.F.Bustype,true);
         rowBustype.put(EasyUiModel.DataGrid.ColumnProperties.WIDTH,150);
         rowBustype.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"业务类型",true);
         
         JsMapModel rowDetail=new JsMapModel();
-        rowDetail.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,FeeLogModel.F.detail,true);
+        rowDetail.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,FeeLogModel.F.Detail,true);
         rowDetail.put(EasyUiModel.DataGrid.ColumnProperties.WIDTH,150);
         rowDetail.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"明细",true);
         
         
         JsMapModel rowSfzmhm=new JsMapModel();
-        rowSfzmhm.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,FeeLogModel.F.sfzmhm,true);
+        rowSfzmhm.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,FeeLogModel.F.Sfzmhm,true);
         rowSfzmhm.put(EasyUiModel.DataGrid.ColumnProperties.WIDTH,150);
         rowSfzmhm.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"身份证号码",true);
         
         JsMapModel rowXm=new JsMapModel();
-        rowXm.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,FeeLogModel.F.xm,true);
+        rowXm.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,FeeLogModel.F.Xm,true);
         rowXm.put(EasyUiModel.DataGrid.ColumnProperties.WIDTH,150);
         rowXm.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"姓名",true);
         

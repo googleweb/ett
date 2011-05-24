@@ -6,88 +6,81 @@ import com.smartken.kia.core.model.impl.BaseModel;
 
 public class MenuModel extends BaseModel {
 
-	@Override
-	public Object generalPK() throws NullPointerException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	 public static enum F { 
+		  Id,Name,Descp,Url,Parma,ParentId,Ordernum,Icon,Token,Folder  
+		 } 
 
-	public static enum F{
-		id,name,descp,url,parma,parentId,ordernum,icon,token,folder
-	}
+		private String Id;         //ID  VARCHAR2 100
+		private String Name;         //NAME  VARCHAR2 100
+		private String Descp;         //DESCP  VARCHAR2 400
+		private String Url;         //URL  VARCHAR2 400
+		private String Parma;         //PARMA  VARCHAR2 400
+		private String ParentId;         //PARENT_ID  VARCHAR2 20
+		private Integer Ordernum;         //ORDERNUM  NUMBER 38
+		private String Icon;         //ICON  VARCHAR2 50
+		private String Token;         //TOKEN  CHAR 3
+		private String Folder;         //FOLDER  CHAR 1
+		public String getId() {
+			return Id;
+		}
+		public void setId(String id) {
+			Id = id;
+		}
+		public String getName() {
+			return Name;
+		}
+		public void setName(String name) {
+			Name = name;
+		}
+		public String getDescp() {
+			return Descp;
+		}
+		public void setDescp(String descp) {
+			Descp = descp;
+		}
+		public String getUrl() {
+			return Url;
+		}
+		public void setUrl(String url) {
+			Url = url;
+		}
+		public String getParma() {
+			return Parma;
+		}
+		public void setParma(String parma) {
+			Parma = parma;
+		}
+		public String getParentId() {
+			return ParentId;
+		}
+		public void setParentId(String parentId) {
+			ParentId = parentId;
+		}
+		public Integer getOrdernum() {
+			return Ordernum;
+		}
+		public void setOrdernum(Integer ordernum) {
+			Ordernum = ordernum;
+		}
+		public String getIcon() {
+			return Icon;
+		}
+		public void setIcon(String icon) {
+			Icon = icon;
+		}
+		public String getToken() {
+			return Token;
+		}
+		public void setToken(String token) {
+			Token = token;
+		}
+		public String getFolder() {
+			return Folder;
+		}
+		public void setFolder(String folder) {
+			Folder = folder;
+		}
 
-	private String id;         //ID  VARCHAR2 100
-	private String name;         //NAME  VARCHAR2 100
-	private String descp;         //DESCP  VARCHAR2 400
-	private String url;         //URL  VARCHAR2 400
-	private String parma;         //PARMA  VARCHAR2 400
-	private String parentId;         //PARENT_ID  VARCHAR2 20
-	private Integer ordernum;         //ORDERNUM  NUMBER 38
-	private String icon;         //ICON  VARCHAR2 50
-	private String token;         //TOKEN  CHAR 3
-	private String folder;         //FOLDER  CHAR 1
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getDescp() {
-		return descp;
-	}
-	public void setDescp(String descp) {
-		this.descp = descp;
-	}
-	public String getUrl() {
-		return url;
-	}
-	public void setUrl(String url) {
-		this.url = url;
-	}
-	public String getParma() {
-		return parma;
-	}
-	public void setParma(String parma) {
-		this.parma = parma;
-	}
-	public String getParentId() {
-		return parentId;
-	}
-	public void setParentId(String parentId) {
-		this.parentId = parentId;
-	}
-	public Integer getOrdernum() {
-		return ordernum;
-	}
-	public void setOrdernum(Integer ordernum) {
-		this.ordernum = ordernum;
-	}
-	public String getIcon() {
-		return icon;
-	}
-	public void setIcon(String icon) {
-		this.icon = icon;
-	}
-	public String getToken() {
-		return token;
-	}
-	public void setToken(String token) {
-		this.token = token;
-	}
-	public String getFolder() {
-		return folder;
-	}
-	public void setFolder(String folder) {
-		this.folder = folder;
-	}
-	
-	
 	
 	
 }

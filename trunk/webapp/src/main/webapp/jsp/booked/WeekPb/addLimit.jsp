@@ -1,6 +1,9 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@page import="com.smartken.kia.core.model.impl.*"%>
 <%@page import="com.smartken.kia.core.util.StringUtil"%>
+<%@page import="com.ett.drv.model.booked.BookedLimitModel"%>
+<%@page import="com.ett.drv.model.admin.DictModel"%>
+<%@page import="com.ett.drv.model.admin.DepartmentModel"%>
 
 <%
 String path = request.getContextPath();
@@ -103,12 +106,12 @@ String bookedWeekPbPath=basePath+"booked/WeekPb";
   	            <tr>
   	              <td>考试场次</td>
   	              <td>
-  	                 <input name="tempLimit.ksccCode"   width="180" 
+  	                 <input name="tempLimit.<%=BookedLimitModel.F.CKsccCode %>"   width="180" 
   	                 id="<%=StringUtil.formatId(null,"-",formEditLimit,selectKscc) %>"  
   	                 class="<%=EasyUiModel.ComboBox.CLASS %>"
-  	                 <%=EasyUiModel.ComboBox.Properties.URL(bookedWeekPbPath+"/select/kscc.action") %>
-  	                 <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD("dictText") %>
-  	                  <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD("dictValue") %>
+  	                 <%=EasyUiModel.ComboBox.Properties.URL(bookedWeekPbPath+"/combobox/kscc.action") %>
+  	                 <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
+  	                  <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %>
   	                  <%=EasyUiModel.ComboBox.Properties.REQUIRED(true) %>
   	                  <%=EasyUiModel.ComboBox.Properties.EDITABLE(false) %>
   	                  />
@@ -117,12 +120,12 @@ String bookedWeekPbPath=basePath+"booked/WeekPb";
   	            <tr>
   	              <td>考试地点</td>
   	              <td>
-  	                 <input name="tempLimit.ksddCode"   width="180" 
+  	                 <input name="tempLimit.<%=BookedLimitModel.F.CKsddCode %>"   width="180" 
   	                 id="<%=StringUtil.formatId(null,"-",formEditLimit,selectKsdd) %>" 
   	                 class="<%=EasyUiModel.ComboBox.CLASS %>"
-   	                 <%=EasyUiModel.ComboBox.Properties.URL(bookedWeekPbPath+"/select/ksdd.action") %>
-  	                 <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD("dictText") %>
-  	                  <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD("dictValue") %>
+   	                 <%=EasyUiModel.ComboBox.Properties.URL(bookedWeekPbPath+"/combobox/ksdd.action") %>
+  	                 <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
+  	                  <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %>
   	                  <%=EasyUiModel.ComboBox.Properties.REQUIRED(true) %>
   	                  <%=EasyUiModel.ComboBox.Properties.EDITABLE(false) %>
   	                 />
@@ -131,12 +134,12 @@ String bookedWeekPbPath=basePath+"booked/WeekPb";
   	            <tr>
   	              <td>驾校</td>
   	              <td>
-  	                 <input name="tempLimit.schoolCode"  width="180" 
+  	                 <input name="tempLimit.<%=BookedLimitModel.F.CSchoolCode %>"  width="180" 
   	                 id="<%=StringUtil.formatId(null,"-",formEditLimit,selectSchool) %>"
   	                  class="<%=EasyUiModel.ComboBox.CLASS %>"
-  	                 <%=EasyUiModel.ComboBox.Properties.URL(bookedWeekPbPath+"/select/school.action") %>
-  	                 <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD("depnickname") %>
-  	                  <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD("depcode") %>
+  	                 <%=EasyUiModel.ComboBox.Properties.URL(bookedWeekPbPath+"/combobox/school.action") %>
+  	                 <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DepartmentModel.F.CDepnickname.name()) %>
+  	                  <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DepartmentModel.F.CDepcode.name()) %>
   	                  <%=EasyUiModel.ComboBox.Properties.REQUIRED(true) %>
   	                  <%=EasyUiModel.ComboBox.Properties.EDITABLE(false) %>
   	                   />
@@ -145,7 +148,7 @@ String bookedWeekPbPath=basePath+"booked/WeekPb";
   	            <tr>
   	              <td>分配人数</td>
   	              <td><input 
-  	                      name="tempLimit.total" id="<%=formEditLimit+"-"+txtTotal %>" value="1" 
+  	                      name="tempLimit.<%=BookedLimitModel.F.ITotal %>" id="<%=formEditLimit+"-"+txtTotal %>" value="1" 
   	                      class="<%=EasyUiModel.NumberSpinner.CLASS %>"
   	                      <%=EasyUiModel.Spinner.Properties.INCREMENT(10) %>
   	                      <%=EasyUiModel.Spinner.Properties.MIN(1) %>

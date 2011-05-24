@@ -101,81 +101,81 @@ String excelTemplatePath=basePath+"js/print/驾驶证申请表-初学.xlt";
         
          <tr>
             <th style="width:15%">&nbsp;流水号</th>
-            <td style="width:25%">&nbsp;${flowNo }</td>
+            <td style="width:25%">&nbsp;${FlowNo }</td>
             <th style="width:15%">&nbsp;排队号</th>
-            <td style="width:25%">&nbsp;${seqno}</td>
+            <td style="width:25%">&nbsp;${Seqno}</td>
           </tr>
         
           <tr>
             <th >&nbsp;档案编号</th>
             <td >&nbsp;${licenseNo }</td>
             <th >&nbsp;号牌号码</th>
-            <td >&nbsp;${plateNo}</td>
+            <td >&nbsp;${PlateNo}</td>
           </tr>
           
           <tr>
             <th>业务类型</th>
             <td>&nbsp;${transact}</td>
             <th>办理方式</th>
-            <td>&nbsp;${applicat }</td>
+            <td>&nbsp;${Applicat }</td>
           </tr>
           
          <tr>
             <th>申请日期</th>
             <td>&nbsp;<s:date name="createDate" format="yyyy-MM-dd" /></td>
             <th>已打印凭条</th>
-            <td>&nbsp;${printInd }</td>
+            <td>&nbsp;${PrintInd }</td>
           </tr>
           
           <tr>
             <th>申请事项</th>
-            <td>&nbsp;${item}</td>
+            <td>&nbsp;${Item}</td>
             <th>申请原因及明细</th>
-            <td>&nbsp;${reason }</td>
+            <td>&nbsp;${Reason }</td>
           </tr>
           
 
           
           <tr>
             <th>付款方式</th>
-            <td>&nbsp;${payment}</td>
+            <td>&nbsp;${Payment}</td>
             <th>领取方式</th>
-            <td>&nbsp;${receive }</td>
+            <td>&nbsp;${Receive }</td>
           </tr>
           
           <tr>
             <th>业务费用</th>
-            <td>&nbsp;${costTransact}</td>
+            <td>&nbsp;${CostTransact}</td>
             <th>快递费用</th>
-            <td>&nbsp;${costPost }</td>
+            <td>&nbsp;${CostPost }</td>
           </tr>
 
          <tr>
             <th>总费用</th>
-            <td>&nbsp;${costTransact+costPost}</td>
+            <td>&nbsp;${CostTransact+costPost}</td>
             <th>已付款</th>
-            <td>&nbsp;${payInd }</td>
+            <td>&nbsp;${PayInd }</td>
           </tr>
           
           <tr>
             <th>驾驶人身份证号码</th>
-            <td>&nbsp;${driverIdNo}</td>
+            <td>&nbsp;${CriverIdNo}</td>
             <th>驾驶人姓名</th>
-            <td>&nbsp;${driverIdName }</td>
+            <td>&nbsp;${DriverIdName }</td>
           </tr>
           
           <% if(isAgent){ %>
           <tr>
             <th>代理人身份证号码</th>
-            <td>&nbsp;${agentIdNo}</td>
+            <td>&nbsp;${AgentIdNo}</td>
             <th>代理人姓名</th>
-            <td>&nbsp;${agentIdName }</td>
+            <td>&nbsp;${AgentIdName }</td>
           </tr>
           <%} %>
           
           <tr>
             <th>联系电话</th>
-            <td colspan="3">&nbsp;${phone }</td>
+            <td colspan="3">&nbsp;${Phone }</td>
           </tr>
           
           
@@ -219,7 +219,7 @@ String excelTemplatePath=basePath+"js/print/驾驶证申请表-初学.xlt";
           <tr>
             <th colspan="4">
                     
-                <input type="hidden" name="flowNo" value="${flowNo}" />
+                <input type="hidden" name="flowNo" value="${FlowNo}" />
                 <input type="hidden" name="passInd" id="<%=inputPassInd %>" value="N"/>
                 <a class="<%=EasyUiModel.LinkButton.CLASS %>"   <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_PRINT) %>
                 onclick="<%=clickPrint.getFunName() %>()">打印</a>

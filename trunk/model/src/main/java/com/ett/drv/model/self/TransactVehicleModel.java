@@ -5,25 +5,25 @@ public class TransactVehicleModel extends BaseTransactModel {
 	public static int CODE=2;
 	
 	public static enum F{
-		plateNo,plateClass
+		PlateNo,PlateClass
 	}
 	
-	private String plateNo;         //PLATE_NO  VARCHAR2 30
-	private String plateClass;         //PLATE_CLASS  VARCHAR2 100
+	private String PlateNo;         //PLATE_NO  VARCHAR2 30
+	private String PlateClass;         //PLATE_CLASS  VARCHAR2 100
 	
 	
 	public static enum ETransact {
 		exchange_vehicle_license,exchange_plate,exchange_qualified		
 	}
 	
-	public static class Transact{
+	public static class Transacts{
 		  public static String EXCHANGE_VEHICLE_LICENSE="补换行驶证";
 		  public static String EXCHANGE_PLATE="补换号牌";
 		  public static String EXCHANGE_QUALIFIED="补换合格标志";
 	  }
 	  
 	
-	public static class Item{
+	public static class Items{
 		public static String REPLACE="补领";
 		public static String RENEWAL="换领";
 		public static String APPLY="申领";
@@ -46,22 +46,22 @@ public class TransactVehicleModel extends BaseTransactModel {
 
 
 	public String getPlateNo() {
-		return plateNo;
+		return PlateNo;
 	}
 
 
 	public void setPlateNo(String plateNo) {
-		this.plateNo = plateNo;
+		this.PlateNo = plateNo;
 	}
 
 
 	public String getPlateClass() {
-		return plateClass;
+		return PlateClass;
 	}
 
 
 	public void setPlateClass(String plateClass) {
-		this.plateClass = plateClass;
+		this.PlateClass = plateClass;
 	}
 
 	
@@ -70,13 +70,13 @@ public class TransactVehicleModel extends BaseTransactModel {
 	public void setTransact(String transact) {
 		// TODO Auto-generated method stub
 		if(ETransact.exchange_plate.name().equalsIgnoreCase(transact)){
-			this.transact=TransactVehicleModel.Transact.EXCHANGE_PLATE;
+			this.Transact=TransactVehicleModel.Transacts.EXCHANGE_PLATE;
 		}else if(ETransact.exchange_qualified.name().equalsIgnoreCase(transact)){
-			this.transact=TransactVehicleModel.Transact.EXCHANGE_QUALIFIED;
+			this.Transact=TransactVehicleModel.Transacts.EXCHANGE_QUALIFIED;
 		}else if(ETransact.exchange_vehicle_license.name().equalsIgnoreCase(transact)){
-			this.transact=TransactVehicleModel.Transact.EXCHANGE_VEHICLE_LICENSE;
+			this.Transact=TransactVehicleModel.Transacts.EXCHANGE_VEHICLE_LICENSE;
 		}else {
-			this.transact=transact;
+			this.Transact=transact;
 		}
 	}
 	

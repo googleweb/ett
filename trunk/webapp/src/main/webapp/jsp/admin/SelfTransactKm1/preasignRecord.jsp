@@ -38,29 +38,29 @@ String weekPbActionPath=basePath+"booked/WeekPb";
         JsListModel c1=new JsListModel();
         
         JsMapModel rowKsccname=new JsMapModel();
-        rowKsccname.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,Km1PreasignRecordModel.F.ksccname,true);
+        rowKsccname.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,Km1PreasignRecordModel.F.Ksccname,true);
         rowKsccname.put(EasyUiModel.DataGrid.ColumnProperties.WIDTH,150);
         rowKsccname.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"考试场次",true);
         
         JsMapModel rowKsddname=new JsMapModel();
-        rowKsddname.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,Km1PreasignRecordModel.F.ksddname,true);
+        rowKsddname.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,Km1PreasignRecordModel.F.Ksddname,true);
         rowKsddname.put(EasyUiModel.DataGrid.ColumnProperties.WIDTH,150);
         rowKsddname.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"考试地点",true);
         
         JsMapModel rowSfzmhm=new JsMapModel();
-        rowSfzmhm.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,Km1PreasignRecordModel.F.sfzmhm,true);
+        rowSfzmhm.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,Km1PreasignRecordModel.F.Sfzmhm,true);
         rowSfzmhm.put(EasyUiModel.DataGrid.ColumnProperties.WIDTH,150);
         rowSfzmhm.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"身份证号码",true);
         
         JsMapModel rowXm=new JsMapModel();
-        rowXm.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,Km1PreasignRecordModel.F.xm,true);
+        rowXm.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,Km1PreasignRecordModel.F.Xm,true);
         rowXm.put(EasyUiModel.DataGrid.ColumnProperties.WIDTH,150);
         rowXm.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"姓名",true);
         
-        JsMapModel rowCreatetime=EasyUiUtil.createDateTimeColumn(Km1PreasignRecordModel.F.createtime.name(),true);
+        JsMapModel rowCreatetime=EasyUiUtil.createDateTimeColumn(Km1PreasignRecordModel.F.TCreatetime.name(),true);
         rowCreatetime.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"预约时间",true);
         
-        JsMapModel rowKsrq=EasyUiUtil.createDateTimeColumn(Km1PreasignRecordModel.F.ksrq.name(),true);
+        JsMapModel rowKsrq=EasyUiUtil.createDateTimeColumn(Km1PreasignRecordModel.F.Ksrq.name(),true);
         rowKsrq.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"考试时间",true);
         
         
@@ -77,7 +77,7 @@ String weekPbActionPath=basePath+"booked/WeekPb";
         dataGrid.appendAttrs(EasyUiModel.DataGrid.Properties.FIT,true);
         dataGrid.appendAttrs(EasyUiModel.DataGrid.Properties.URL,km1ActionPath+"/datagrid/preasignRecord.action",true);
         dataGrid.appendAttrs(EasyUiModel.DataGrid.Properties.COLUMNS,cols);
-        dataGrid.appendAttrs(EasyUiModel.DataGrid.Properties.ID_FIELD,"id",true);
+        dataGrid.appendAttrs(EasyUiModel.DataGrid.Properties.ID_FIELD,"Id",true);
         dataGrid.appendAttrs(EasyUiModel.DataGrid.Properties.PAGINATION,true);
         dataGrid.appendAttrs(EasyUiModel.DataGrid.Properties.SINGLE_SELECT,true);
         
@@ -120,7 +120,7 @@ String weekPbActionPath=basePath+"booked/WeekPb";
               <td >身份证号码:<input name="sfzmhm"/></td>
               <td >姓名:<input name="xm"/></td>
               <td >考试场次:
-                   <input name="<%=Km1PreasignRecordModel.F.kscccode %>" 
+                   <input name="<%=Km1PreasignRecordModel.F.Kscccode %>" 
                      class="<%=EasyUiModel.ComboBox.CLASS %>"
                      <%=EasyUiModel.ComboBox.Properties.URL(weekPbActionPath+"/select/kscc.action") %>
                       <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD("dictText") %>
@@ -129,7 +129,7 @@ String weekPbActionPath=basePath+"booked/WeekPb";
                    />
               </td>
              <td >考试地点:
-                   <input name="<%=Km1PreasignRecordModel.F.ksddcode %>" 
+                   <input name="<%=Km1PreasignRecordModel.F.Ksddcode %>" 
                      class="<%=EasyUiModel.ComboBox.CLASS %>"
                      <%=EasyUiModel.ComboBox.Properties.URL(weekPbActionPath+"/select/ksdd.action") %>
                       <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD("dictText") %>

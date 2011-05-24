@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ett.drv.mapper.booked.IWeekRecordMapper">
+
+<cache flushInterval="30000" readOnly="true"></cache>
+
+
+<sql id="table">TABLE_WEEK_RECORD</sql>
+
+<sql id="pk">ID</sql>
+
+<sql id="colums">
+ID,I_WEEK_NUM,I_WEEK1_KM1_NUM,I_WEEK1_KM1_FP,I_WEEK1_KM2_NUM,I_WEEK1_KM2_FP,I_WEEK1_KM3_NUM,I_WEEK1_KM3_FP,I_WEEK2_KM1_NUM,I_WEEK2_KM1_FP,I_WEEK2_KM2_NUM,
+I_WEEK2_KM2_FP,I_WEEK2_KM3_NUM,I_WEEK2_KM3_FP,I_WEEK3_KM1_NUM,I_WEEK3_KM1_FP,I_WEEK3_KM2_NUM,I_WEEK3_KM2_FP,I_WEEK3_KM3_NUM,I_WEEK3_KM3_FP,I_WEEK4_KM1_NUM,
+I_WEEK4_KM1_FP,I_WEEK4_KM2_NUM,I_WEEK4_KM2_FP,I_WEEK4_KM3_NUM,I_WEEK4_KM3_FP,I_WEEK5_KM1_NUM,I_WEEK5_KM1_FP,I_WEEK5_KM2_NUM,I_WEEK5_KM2_FP,I_WEEK5_KM3_NUM,
+I_WEEK5_KM3_FP,I_WEEK6_KM1_NUM,I_WEEK6_KM1_FP,I_WEEK6_KM2_NUM,I_WEEK6_KM2_FP,I_WEEK6_KM3_NUM,I_WEEK6_KM3_FP,I_WEEK7_KM1_NUM,I_WEEK7_KM1_FP,I_WEEK7_KM2_NUM,
+I_WEEK7_KM2_FP,I_WEEK7_KM3_NUM,I_WEEK7_KM3_FP,C_CHECK_OPERATOR,C_CHECK_DATE,I_CHECKED,C_WEEK_RANGE 
+</sql>
+
+<sql id="insertCols">
+#{id,jdbcType=INTEGER,javaType=Integer},
+#{weekNum,jdbcType=INTEGER,javaType=Integer},
+#{week1Km1Num,jdbcType=INTEGER,javaType=Integer},
+#{week1Km1Fp,jdbcType=VARCHAR,javaType=String},
+#{week1Km2Num,jdbcType=INTEGER,javaType=Integer},
+#{week1Km2Fp,jdbcType=VARCHAR,javaType=String},
+#{week1Km3Num,jdbcType=INTEGER,javaType=Integer},
+#{week1Km3Fp,jdbcType=VARCHAR,javaType=String},
+#{week2Km1Num,jdbcType=INTEGER,javaType=Integer},
+#{week2Km1Fp,jdbcType=VARCHAR,javaType=String},
+#{week2Km2Num,jdbcType=INTEGER,javaType=Integer},
+#{week2Km2Fp,jdbcType=VARCHAR,javaType=String},
+#{week2Km3Num,jdbcType=INTEGER,javaType=Integer},
+#{week2Km3Fp,jdbcType=VARCHAR,javaType=String},
+#{week3Km1Num,jdbcType=INTEGER,javaType=Integer},
+#{week3Km1Fp,jdbcType=VARCHAR,javaType=String},
+#{week3Km2Num,jdbcType=INTEGER,javaType=Integer},
+#{week3Km2Fp,jdbcType=VARCHAR,javaType=String},
+#{week3Km3Num,jdbcType=INTEGER,javaType=Integer},
+#{week3Km3Fp,jdbcType=VARCHAR,javaType=String},
+#{week4Km1Num,jdbcType=INTEGER,javaType=Integer},
+#{week4Km1Fp,jdbcType=VARCHAR,javaType=String},
+#{week4Km2Num,jdbcType=INTEGER,javaType=Integer},
+#{week4Km2Fp,jdbcType=VARCHAR,javaType=String},
+#{week4Km3Num,jdbcType=INTEGER,javaType=Integer},
+#{week4Km3Fp,jdbcType=VARCHAR,javaType=String},
+#{week5Km1Num,jdbcType=INTEGER,javaType=Integer},
+#{week5Km1Fp,jdbcType=VARCHAR,javaType=String},
+#{week5Km2Num,jdbcType=INTEGER,javaType=Integer},
+#{week5Km2Fp,jdbcType=VARCHAR,javaType=String},
+#{week5Km3Num,jdbcType=INTEGER,javaType=Integer},
+#{week5Km3Fp,jdbcType=VARCHAR,javaType=String},
+#{week6Km1Num,jdbcType=INTEGER,javaType=Integer},
+#{week6Km1Fp,jdbcType=VARCHAR,javaType=String},
+#{week6Km2Num,jdbcType=INTEGER,javaType=Integer},
+#{week6Km2Fp,jdbcType=VARCHAR,javaType=String},
+#{week6Km3Num,jdbcType=INTEGER,javaType=Integer},
+#{week6Km3Fp,jdbcType=VARCHAR,javaType=String},
+#{week7Km1Num,jdbcType=INTEGER,javaType=Integer},
+#{week7Km1Fp,jdbcType=VARCHAR,javaType=String},
+#{week7Km2Num,jdbcType=INTEGER,javaType=Integer},
+#{week7Km2Fp,jdbcType=VARCHAR,javaType=String},
+#{week7Km3Num,jdbcType=INTEGER,javaType=Integer},
+#{week7Km3Fp,jdbcType=VARCHAR,javaType=String},
+#{checkOperator,jdbcType=VARCHAR,javaType=String},
+#{checkDate,jdbcType=VARCHAR,javaType=String},
+#{checked,jdbcType=INTEGER,javaType=Integer},
+#{weekRange,jdbcType=VARCHAR,javaType=String} 
+</sql>
+
+<sql id="updateCols">
+ <if test="pk neq null">ID=#{pk},</if>
+I_WEEK_NUM=#{model.weekNum,jdbcType=INTEGER,javaType=Integer},
+I_WEEK1_KM1_NUM=#{model.week1Km1Num,jdbcType=INTEGER,javaType=Integer},
+I_WEEK1_KM1_FP=#{model.week1Km1Fp,jdbcType=VARCHAR,javaType=String},
+I_WEEK1_KM2_NUM=#{model.week1Km2Num,jdbcType=INTEGER,javaType=Integer},
+I_WEEK1_KM2_FP=#{model.week1Km2Fp,jdbcType=VARCHAR,javaType=String},
+I_WEEK1_KM3_NUM=#{model.week1Km3Num,jdbcType=INTEGER,javaType=Integer},
+I_WEEK1_KM3_FP=#{model.week1Km3Fp,jdbcType=VARCHAR,javaType=String},
+I_WEEK2_KM1_NUM=#{model.week2Km1Num,jdbcType=INTEGER,javaType=Integer},
+I_WEEK2_KM1_FP=#{model.week2Km1Fp,jdbcType=VARCHAR,javaType=String},
+I_WEEK2_KM2_NUM=#{model.week2Km2Num,jdbcType=INTEGER,javaType=Integer},
+I_WEEK2_KM2_FP=#{model.week2Km2Fp,jdbcType=VARCHAR,javaType=String},
+I_WEEK2_KM3_NUM=#{model.week2Km3Num,jdbcType=INTEGER,javaType=Integer},
+I_WEEK2_KM3_FP=#{model.week2Km3Fp,jdbcType=VARCHAR,javaType=String},
+I_WEEK3_KM1_NUM=#{model.week3Km1Num,jdbcType=INTEGER,javaType=Integer},
+I_WEEK3_KM1_FP=#{model.week3Km1Fp,jdbcType=VARCHAR,javaType=String},
+I_WEEK3_KM2_NUM=#{model.week3Km2Num,jdbcType=INTEGER,javaType=Integer},
+I_WEEK3_KM2_FP=#{model.week3Km2Fp,jdbcType=VARCHAR,javaType=String},
+I_WEEK3_KM3_NUM=#{model.week3Km3Num,jdbcType=INTEGER,javaType=Integer},
+I_WEEK3_KM3_FP=#{model.week3Km3Fp,jdbcType=VARCHAR,javaType=String},
+I_WEEK4_KM1_NUM=#{model.week4Km1Num,jdbcType=INTEGER,javaType=Integer},
+I_WEEK4_KM1_FP=#{model.week4Km1Fp,jdbcType=VARCHAR,javaType=String},
+I_WEEK4_KM2_NUM=#{model.week4Km2Num,jdbcType=INTEGER,javaType=Integer},
+I_WEEK4_KM2_FP=#{model.week4Km2Fp,jdbcType=VARCHAR,javaType=String},
+I_WEEK4_KM3_NUM=#{model.week4Km3Num,jdbcType=INTEGER,javaType=Integer},
+I_WEEK4_KM3_FP=#{model.week4Km3Fp,jdbcType=VARCHAR,javaType=String},
+I_WEEK5_KM1_NUM=#{model.week5Km1Num,jdbcType=INTEGER,javaType=Integer},
+I_WEEK5_KM1_FP=#{model.week5Km1Fp,jdbcType=VARCHAR,javaType=String},
+I_WEEK5_KM2_NUM=#{model.week5Km2Num,jdbcType=INTEGER,javaType=Integer},
+I_WEEK5_KM2_FP=#{model.week5Km2Fp,jdbcType=VARCHAR,javaType=String},
+I_WEEK5_KM3_NUM=#{model.week5Km3Num,jdbcType=INTEGER,javaType=Integer},
+I_WEEK5_KM3_FP=#{model.week5Km3Fp,jdbcType=VARCHAR,javaType=String},
+I_WEEK6_KM1_NUM=#{model.week6Km1Num,jdbcType=INTEGER,javaType=Integer},
+I_WEEK6_KM1_FP=#{model.week6Km1Fp,jdbcType=VARCHAR,javaType=String},
+I_WEEK6_KM2_NUM=#{model.week6Km2Num,jdbcType=INTEGER,javaType=Integer},
+I_WEEK6_KM2_FP=#{model.week6Km2Fp,jdbcType=VARCHAR,javaType=String},
+I_WEEK6_KM3_NUM=#{model.week6Km3Num,jdbcType=INTEGER,javaType=Integer},
+I_WEEK6_KM3_FP=#{model.week6Km3Fp,jdbcType=VARCHAR,javaType=String},
+I_WEEK7_KM1_NUM=#{model.week7Km1Num,jdbcType=INTEGER,javaType=Integer},
+I_WEEK7_KM1_FP=#{model.week7Km1Fp,jdbcType=VARCHAR,javaType=String},
+I_WEEK7_KM2_NUM=#{model.week7Km2Num,jdbcType=INTEGER,javaType=Integer},
+I_WEEK7_KM2_FP=#{model.week7Km2Fp,jdbcType=VARCHAR,javaType=String},
+I_WEEK7_KM3_NUM=#{model.week7Km3Num,jdbcType=INTEGER,javaType=Integer},
+I_WEEK7_KM3_FP=#{model.week7Km3Fp,jdbcType=VARCHAR,javaType=String},
+C_CHECK_OPERATOR=#{model.checkOperator,jdbcType=VARCHAR,javaType=String},
+C_CHECK_DATE=#{model.checkDate,jdbcType=VARCHAR,javaType=String},
+I_CHECKED=#{model.checked,jdbcType=INTEGER,javaType=Integer},
+C_WEEK_RANGE=#{model.weekRange,jdbcType=VARCHAR,javaType=String}
+</sql>
+
+<sql id="orderby">order by ID</sql>
+
+<sql id="joinColums"></sql>
+
+<sql id="join"></sql><!-- 别名m已被主表使用  -->
+
+<resultMap type="com.ett.drv.model.booked.BookedWeekRecordModel" id="resultMap">
+ <id column="ID"  property="id" jdbcType="INTEGER" javaType="Integer"/>
+<result column="I_WEEK_NUM"  property="weekNum" jdbcType="INTEGER" javaType="Integer"/>
+<result column="I_WEEK1_KM1_NUM"  property="week1Km1Num" jdbcType="INTEGER" javaType="Integer"/>
+<result column="I_WEEK1_KM1_FP"  property="week1Km1Fp" jdbcType="VARCHAR" javaType="String"/>
+<result column="I_WEEK1_KM2_NUM"  property="week1Km2Num" jdbcType="INTEGER" javaType="Integer"/>
+<result column="I_WEEK1_KM2_FP"  property="week1Km2Fp" jdbcType="VARCHAR" javaType="String"/>
+<result column="I_WEEK1_KM3_NUM"  property="week1Km3Num" jdbcType="INTEGER" javaType="Integer"/>
+<result column="I_WEEK1_KM3_FP"  property="week1Km3Fp" jdbcType="VARCHAR" javaType="String"/>
+<result column="I_WEEK2_KM1_NUM"  property="week2Km1Num" jdbcType="INTEGER" javaType="Integer"/>
+<result column="I_WEEK2_KM1_FP"  property="week2Km1Fp" jdbcType="VARCHAR" javaType="String"/>
+<result column="I_WEEK2_KM2_NUM"  property="week2Km2Num" jdbcType="INTEGER" javaType="Integer"/>
+<result column="I_WEEK2_KM2_FP"  property="week2Km2Fp" jdbcType="VARCHAR" javaType="String"/>
+<result column="I_WEEK2_KM3_NUM"  property="week2Km3Num" jdbcType="INTEGER" javaType="Integer"/>
+<result column="I_WEEK2_KM3_FP"  property="week2Km3Fp" jdbcType="VARCHAR" javaType="String"/>
+<result column="I_WEEK3_KM1_NUM"  property="week3Km1Num" jdbcType="INTEGER" javaType="Integer"/>
+<result column="I_WEEK3_KM1_FP"  property="week3Km1Fp" jdbcType="VARCHAR" javaType="String"/>
+<result column="I_WEEK3_KM2_NUM"  property="week3Km2Num" jdbcType="INTEGER" javaType="Integer"/>
+<result column="I_WEEK3_KM2_FP"  property="week3Km2Fp" jdbcType="VARCHAR" javaType="String"/>
+<result column="I_WEEK3_KM3_NUM"  property="week3Km3Num" jdbcType="INTEGER" javaType="Integer"/>
+<result column="I_WEEK3_KM3_FP"  property="week3Km3Fp" jdbcType="VARCHAR" javaType="String"/>
+<result column="I_WEEK4_KM1_NUM"  property="week4Km1Num" jdbcType="INTEGER" javaType="Integer"/>
+<result column="I_WEEK4_KM1_FP"  property="week4Km1Fp" jdbcType="VARCHAR" javaType="String"/>
+<result column="I_WEEK4_KM2_NUM"  property="week4Km2Num" jdbcType="INTEGER" javaType="Integer"/>
+<result column="I_WEEK4_KM2_FP"  property="week4Km2Fp" jdbcType="VARCHAR" javaType="String"/>
+<result column="I_WEEK4_KM3_NUM"  property="week4Km3Num" jdbcType="INTEGER" javaType="Integer"/>
+<result column="I_WEEK4_KM3_FP"  property="week4Km3Fp" jdbcType="VARCHAR" javaType="String"/>
+<result column="I_WEEK5_KM1_NUM"  property="week5Km1Num" jdbcType="INTEGER" javaType="Integer"/>
+<result column="I_WEEK5_KM1_FP"  property="week5Km1Fp" jdbcType="VARCHAR" javaType="String"/>
+<result column="I_WEEK5_KM2_NUM"  property="week5Km2Num" jdbcType="INTEGER" javaType="Integer"/>
+<result column="I_WEEK5_KM2_FP"  property="week5Km2Fp" jdbcType="VARCHAR" javaType="String"/>
+<result column="I_WEEK5_KM3_NUM"  property="week5Km3Num" jdbcType="INTEGER" javaType="Integer"/>
+<result column="I_WEEK5_KM3_FP"  property="week5Km3Fp" jdbcType="VARCHAR" javaType="String"/>
+<result column="I_WEEK6_KM1_NUM"  property="week6Km1Num" jdbcType="INTEGER" javaType="Integer"/>
+<result column="I_WEEK6_KM1_FP"  property="week6Km1Fp" jdbcType="VARCHAR" javaType="String"/>
+<result column="I_WEEK6_KM2_NUM"  property="week6Km2Num" jdbcType="INTEGER" javaType="Integer"/>
+<result column="I_WEEK6_KM2_FP"  property="week6Km2Fp" jdbcType="VARCHAR" javaType="String"/>
+<result column="I_WEEK6_KM3_NUM"  property="week6Km3Num" jdbcType="INTEGER" javaType="Integer"/>
+<result column="I_WEEK6_KM3_FP"  property="week6Km3Fp" jdbcType="VARCHAR" javaType="String"/>
+<result column="I_WEEK7_KM1_NUM"  property="week7Km1Num" jdbcType="INTEGER" javaType="Integer"/>
+<result column="I_WEEK7_KM1_FP"  property="week7Km1Fp" jdbcType="VARCHAR" javaType="String"/>
+<result column="I_WEEK7_KM2_NUM"  property="week7Km2Num" jdbcType="INTEGER" javaType="Integer"/>
+<result column="I_WEEK7_KM2_FP"  property="week7Km2Fp" jdbcType="VARCHAR" javaType="String"/>
+<result column="I_WEEK7_KM3_NUM"  property="week7Km3Num" jdbcType="INTEGER" javaType="Integer"/>
+<result column="I_WEEK7_KM3_FP"  property="week7Km3Fp" jdbcType="VARCHAR" javaType="String"/>
+<result column="C_CHECK_OPERATOR"  property="checkOperator" jdbcType="VARCHAR" javaType="String"/>
+<result column="C_CHECK_DATE"  property="checkDate" jdbcType="VARCHAR" javaType="String"/>
+<result column="I_CHECKED"  property="checked" jdbcType="INTEGER" javaType="Integer"/>
+<result column="C_WEEK_RANGE"  property="weekRange" jdbcType="VARCHAR" javaType="String"/>
+ </resultMap>
+
+
+<select id="select" resultType="ArrayList" resultMap="resultMap">
+	 select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> 
+<trim prefix="where" prefixOverrides="and">
+<if test="model.id neq null">and m.ID=#{model.id,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.weekNum neq null">and m.I_WEEK_NUM=#{model.weekNum,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.week1Km1Num neq null">and m.I_WEEK1_KM1_NUM=#{model.week1Km1Num,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.week1Km1Fp neq null">and m.I_WEEK1_KM1_FP=#{model.week1Km1Fp,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.week1Km2Num neq null">and m.I_WEEK1_KM2_NUM=#{model.week1Km2Num,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.week1Km2Fp neq null">and m.I_WEEK1_KM2_FP=#{model.week1Km2Fp,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.week1Km3Num neq null">and m.I_WEEK1_KM3_NUM=#{model.week1Km3Num,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.week1Km3Fp neq null">and m.I_WEEK1_KM3_FP=#{model.week1Km3Fp,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.week2Km1Num neq null">and m.I_WEEK2_KM1_NUM=#{model.week2Km1Num,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.week2Km1Fp neq null">and m.I_WEEK2_KM1_FP=#{model.week2Km1Fp,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.week2Km2Num neq null">and m.I_WEEK2_KM2_NUM=#{model.week2Km2Num,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.week2Km2Fp neq null">and m.I_WEEK2_KM2_FP=#{model.week2Km2Fp,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.week2Km3Num neq null">and m.I_WEEK2_KM3_NUM=#{model.week2Km3Num,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.week2Km3Fp neq null">and m.I_WEEK2_KM3_FP=#{model.week2Km3Fp,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.week3Km1Num neq null">and m.I_WEEK3_KM1_NUM=#{model.week3Km1Num,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.week3Km1Fp neq null">and m.I_WEEK3_KM1_FP=#{model.week3Km1Fp,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.week3Km2Num neq null">and m.I_WEEK3_KM2_NUM=#{model.week3Km2Num,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.week3Km2Fp neq null">and m.I_WEEK3_KM2_FP=#{model.week3Km2Fp,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.week3Km3Num neq null">and m.I_WEEK3_KM3_NUM=#{model.week3Km3Num,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.week3Km3Fp neq null">and m.I_WEEK3_KM3_FP=#{model.week3Km3Fp,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.week4Km1Num neq null">and m.I_WEEK4_KM1_NUM=#{model.week4Km1Num,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.week4Km1Fp neq null">and m.I_WEEK4_KM1_FP=#{model.week4Km1Fp,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.week4Km2Num neq null">and m.I_WEEK4_KM2_NUM=#{model.week4Km2Num,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.week4Km2Fp neq null">and m.I_WEEK4_KM2_FP=#{model.week4Km2Fp,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.week4Km3Num neq null">and m.I_WEEK4_KM3_NUM=#{model.week4Km3Num,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.week4Km3Fp neq null">and m.I_WEEK4_KM3_FP=#{model.week4Km3Fp,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.week5Km1Num neq null">and m.I_WEEK5_KM1_NUM=#{model.week5Km1Num,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.week5Km1Fp neq null">and m.I_WEEK5_KM1_FP=#{model.week5Km1Fp,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.week5Km2Num neq null">and m.I_WEEK5_KM2_NUM=#{model.week5Km2Num,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.week5Km2Fp neq null">and m.I_WEEK5_KM2_FP=#{model.week5Km2Fp,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.week5Km3Num neq null">and m.I_WEEK5_KM3_NUM=#{model.week5Km3Num,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.week5Km3Fp neq null">and m.I_WEEK5_KM3_FP=#{model.week5Km3Fp,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.week6Km1Num neq null">and m.I_WEEK6_KM1_NUM=#{model.week6Km1Num,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.week6Km1Fp neq null">and m.I_WEEK6_KM1_FP=#{model.week6Km1Fp,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.week6Km2Num neq null">and m.I_WEEK6_KM2_NUM=#{model.week6Km2Num,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.week6Km2Fp neq null">and m.I_WEEK6_KM2_FP=#{model.week6Km2Fp,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.week6Km3Num neq null">and m.I_WEEK6_KM3_NUM=#{model.week6Km3Num,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.week6Km3Fp neq null">and m.I_WEEK6_KM3_FP=#{model.week6Km3Fp,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.week7Km1Num neq null">and m.I_WEEK7_KM1_NUM=#{model.week7Km1Num,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.week7Km1Fp neq null">and m.I_WEEK7_KM1_FP=#{model.week7Km1Fp,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.week7Km2Num neq null">and m.I_WEEK7_KM2_NUM=#{model.week7Km2Num,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.week7Km2Fp neq null">and m.I_WEEK7_KM2_FP=#{model.week7Km2Fp,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.week7Km3Num neq null">and m.I_WEEK7_KM3_NUM=#{model.week7Km3Num,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.week7Km3Fp neq null">and m.I_WEEK7_KM3_FP=#{model.week7Km3Fp,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.checkOperator neq null">and m.C_CHECK_OPERATOR=#{model.checkOperator,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.checkDate neq null">and m.C_CHECK_DATE=#{model.checkDate,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.checked neq null">and m.I_CHECKED=#{model.checked,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.weekRange neq null">and m.C_WEEK_RANGE=#{model.weekRange,jdbcType=VARCHAR javaType=String } </if> 
+</trim>
+</select>
+<select id="selectEqPk" parameterType="String"  resultMap="resultMap">
+	 select <include refid="colums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> = #{id,jdbcType=INTEGER,javaType=Integer}
+</select>
+
+<select id="count" resultType="int">
+	 select count(*) from <include refid="table"/>
+</select>
+
+<select id="selectInPk" resultType="ArrayList" resultMap="resultMap" >
+	 select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> in
+<foreach item="pk" collection="list" open="(" separator="," close=")"> #{pk} </foreach> 
+<include refid="orderby"/>
+</select>
+
+<select id="selectNotInPk" resultType="ArrayList" resultMap="resultMap" >
+	 select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> not in
+<foreach item="pk" collection="list" open="(" separator="," close=")"> #{pk} </foreach> 
+<include refid="orderby"/>
+</select>
+
+<select  id="selectAll"  resultType="ArrayList"  resultMap="resultMap">
+	 select m.* <include refid="joinColums"/> from  <include refid="table" /> m <include refid="join"/> 
+ <include refid="orderby"/>
+</select>
+
+<insert id="insertOne" >
+	 insert into <include refid="table"/> ( <include refid="colums"/> ) values ( <include refid="insertCols"/>) 
+</insert>
+
+<update id="updateOne" flushCache="true" >
+	 update <include refid="table"/> set <include refid="updateCols"/> where <include refid="pk" />=#{model.id,jdbcType=INTEGER,javaType=Integer}
+</update>
+
+<delete id="deleteInPk" flushCache="true">
+	 delete from <include refid="table"/> where <include refid="pk" /> in
+<foreach item="pk" collection="list" open="(" separator="," close=")">#{pk}</foreach>
+</delete>
+
+<delete id="deleteNotInPk" flushCache="true">
+	 delete from <include refid="table"/> where <include refid="pk" /> not in
+<foreach item="pk" collection="list" open="(" separator="," close=")">#{pk}</foreach>
+</delete>
+
+
+
+</mapper>

@@ -74,9 +74,9 @@ public class IdentityAction extends BaseSelfAction implements ModelDriven<BaseTr
 		if(agentUser!=null){
 		  _trModel.setAgentIdNo(agentUser.getSfzmhm());
 		  _trModel.setAgentIdName(agentUser.getXm());
-		  _trModel.setApplicat(BaseTransactModel.Applicat.AGENT);
+		  _trModel.setApplicat(BaseTransactModel.Applicats.AGENT);
 		}else{
-		  _trModel.setApplicat(BaseTransactModel.Applicat.DRIVER);
+		  _trModel.setApplicat(BaseTransactModel.Applicats.DRIVER);
 		}
 		 this.getHttpSession().setAttribute(ESessionKey.transact.name(),_trModel);
 		String sfzmhm=_trModel.getDriverIdNo();
@@ -223,7 +223,7 @@ public class IdentityAction extends BaseSelfAction implements ModelDriven<BaseTr
 	**/
 	public String do_contact(){
     	String flowNo="";
-    	_trModel.setReceive(BaseTransactModel.Receive.PULL_OR_POST);
+    	_trModel.setReceive(BaseTransactModel.Receives.PULL_OR_POST);
     	_trModel.setSeqno(this.getiIdGeneratorBiz().createNewId());
     	_trModel.setCostPost(Double.valueOf(0));
     	_trModel.setCostTransact(Double.valueOf(35));

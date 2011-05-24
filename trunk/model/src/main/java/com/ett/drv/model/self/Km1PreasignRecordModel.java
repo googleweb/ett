@@ -7,151 +7,151 @@ import com.smartken.kia.core.model.impl.BaseModel;
 
 public class Km1PreasignRecordModel extends BaseModel {
 
-	public static enum F{
-		id,createip,createtime,creator,isdeleted,description,keywords,modifier,modifyip,modifytime,jxdm,
-		jxmc,kscccode,ksccname,ksddcode,ksddname,ksrq,lsh,sfzmhm,xm
-	}
+	 public static enum F { 
+		  Id,CCreateip,TCreatetime,CCreator,IIsdeleted,CDescription,CKeywords,CModifier,CModifyip,TModifytime,Jxdm,
+		Jxmc,Kscccode,Ksccname,Ksddcode,Ksddname,Ksrq,Lsh,Sfzmhm,Xm  
+		 } 
 
-	private Integer id;         //ID  NUMBER 19
-	private String createip;         //C_CREATEIP  VARCHAR2 1,020
-	private Date createtime;         //T_CREATETIME  DATE 0
-	private String creator;         //C_CREATOR  VARCHAR2 120
-	private Integer isdeleted;         //I_ISDELETED  NUMBER 1
-	private String description;         //C_DESCRIPTION  VARCHAR2 1,020
-	private String keywords;         //C_KEYWORDS  VARCHAR2 1,020
-	private String modifier;         //C_MODIFIER  VARCHAR2 1,020
-	private String modifyip;         //C_MODIFYIP  VARCHAR2 1,020
-	private Date modifytime;         //T_MODIFYTIME  DATE 0
-	private String jxdm;         //JXDM  VARCHAR2 1,020
-	private String jxmc;         //JXMC  VARCHAR2 1,020
-	private String kscccode;         //KSCCCODE  VARCHAR2 1,020
-	private String ksccname;         //KSCCNAME  VARCHAR2 1,020
-	private String ksddcode;         //KSDDCODE  VARCHAR2 1,020
-	private String ksddname;         //KSDDNAME  VARCHAR2 1,020
-	private Timestamp ksrq;         //KSRQ  TIMESTAMP 0
-	private String lsh;         //LSH  VARCHAR2 1,020
-	private String sfzmhm;         //SFZMHM  VARCHAR2 1,020
-	private String xm;         //XM  VARCHAR2 1,020
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	public String getCreateip() {
-		return createip;
-	}
-	public void setCreateip(String createip) {
-		this.createip = createip;
-	}
-	public Date getCreatetime() {
-		return createtime;
-	}
-	public void setCreatetime(Date createtime) {
-		this.createtime = createtime;
-	}
-	public String getCreator() {
-		return creator;
-	}
-	public void setCreator(String creator) {
-		this.creator = creator;
-	}
-	public Integer getIsdeleted() {
-		return isdeleted;
-	}
-	public void setIsdeleted(Integer isdeleted) {
-		this.isdeleted = isdeleted;
-	}
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	public String getKeywords() {
-		return keywords;
-	}
-	public void setKeywords(String keywords) {
-		this.keywords = keywords;
-	}
-	public String getModifier() {
-		return modifier;
-	}
-	public void setModifier(String modifier) {
-		this.modifier = modifier;
-	}
-	public String getModifyip() {
-		return modifyip;
-	}
-	public void setModifyip(String modifyip) {
-		this.modifyip = modifyip;
-	}
-	public Date getModifytime() {
-		return modifytime;
-	}
-	public void setModifytime(Date modifytime) {
-		this.modifytime = modifytime;
-	}
-	public String getJxdm() {
-		return jxdm;
-	}
-	public void setJxdm(String jxdm) {
-		this.jxdm = jxdm;
-	}
-	public String getJxmc() {
-		return jxmc;
-	}
-	public void setJxmc(String jxmc) {
-		this.jxmc = jxmc;
-	}
-	public String getKscccode() {
-		return kscccode;
-	}
-	public void setKscccode(String kscccode) {
-		this.kscccode = kscccode;
-	}
-	public String getKsccname() {
-		return ksccname;
-	}
-	public void setKsccname(String ksccname) {
-		this.ksccname = ksccname;
-	}
-	public String getKsddcode() {
-		return ksddcode;
-	}
-	public void setKsddcode(String ksddcode) {
-		this.ksddcode = ksddcode;
-	}
-	public String getKsddname() {
-		return ksddname;
-	}
-	public void setKsddname(String ksddname) {
-		this.ksddname = ksddname;
-	}
-	public Timestamp getKsrq() {
-		return ksrq;
-	}
-	public void setKsrq(Timestamp ksrq) {
-		this.ksrq = ksrq;
-	}
-	public String getLsh() {
-		return lsh;
-	}
-	public void setLsh(String lsh) {
-		this.lsh = lsh;
-	}
-	public String getSfzmhm() {
-		return sfzmhm;
-	}
-	public void setSfzmhm(String sfzmhm) {
-		this.sfzmhm = sfzmhm;
-	}
-	public String getXm() {
-		return xm;
-	}
-	public void setXm(String xm) {
-		this.xm = xm;
-	}
+		private Double Id;         //ID  NUMBER 19
+		private String CCreateip;         //C_CREATEIP  VARCHAR2 1,020
+		private Date TCreatetime;         //T_CREATETIME  DATE 0
+		private String CCreator;         //C_CREATOR  VARCHAR2 120
+		private Double IIsdeleted;         //I_ISDELETED  NUMBER 1
+		private String CDescription;         //C_DESCRIPTION  VARCHAR2 1,020
+		private String CKeywords;         //C_KEYWORDS  VARCHAR2 1,020
+		private String CModifier;         //C_MODIFIER  VARCHAR2 1,020
+		private String CModifyip;         //C_MODIFYIP  VARCHAR2 1,020
+		private Date TModifytime;         //T_MODIFYTIME  DATE 0
+		private String Jxdm;         //JXDM  VARCHAR2 1,020
+		private String Jxmc;         //JXMC  VARCHAR2 1,020
+		private String Kscccode;         //KSCCCODE  VARCHAR2 1,020
+		private String Ksccname;         //KSCCNAME  VARCHAR2 1,020
+		private String Ksddcode;         //KSDDCODE  VARCHAR2 1,020
+		private String Ksddname;         //KSDDNAME  VARCHAR2 1,020
+		private Timestamp Ksrq;         //KSRQ  TIMESTAMP 0
+		private String Lsh;         //LSH  VARCHAR2 1,020
+		private String Sfzmhm;         //SFZMHM  VARCHAR2 1,020
+		private String Xm;         //XM  VARCHAR2 1,020
+		public Double getId() {
+			return Id;
+		}
+		public void setId(Double id) {
+			Id = id;
+		}
+		public String getCCreateip() {
+			return CCreateip;
+		}
+		public void setCCreateip(String cCreateip) {
+			CCreateip = cCreateip;
+		}
+		public Date getTCreatetime() {
+			return TCreatetime;
+		}
+		public void setTCreatetime(Date tCreatetime) {
+			TCreatetime = tCreatetime;
+		}
+		public String getCCreator() {
+			return CCreator;
+		}
+		public void setCCreator(String cCreator) {
+			CCreator = cCreator;
+		}
+		public Double getIIsdeleted() {
+			return IIsdeleted;
+		}
+		public void setIIsdeleted(Double iIsdeleted) {
+			IIsdeleted = iIsdeleted;
+		}
+		public String getCDescription() {
+			return CDescription;
+		}
+		public void setCDescription(String cDescription) {
+			CDescription = cDescription;
+		}
+		public String getCKeywords() {
+			return CKeywords;
+		}
+		public void setCKeywords(String cKeywords) {
+			CKeywords = cKeywords;
+		}
+		public String getCModifier() {
+			return CModifier;
+		}
+		public void setCModifier(String cModifier) {
+			CModifier = cModifier;
+		}
+		public String getCModifyip() {
+			return CModifyip;
+		}
+		public void setCModifyip(String cModifyip) {
+			CModifyip = cModifyip;
+		}
+		public Date getTModifytime() {
+			return TModifytime;
+		}
+		public void setTModifytime(Date tModifytime) {
+			TModifytime = tModifytime;
+		}
+		public String getJxdm() {
+			return Jxdm;
+		}
+		public void setJxdm(String jxdm) {
+			Jxdm = jxdm;
+		}
+		public String getJxmc() {
+			return Jxmc;
+		}
+		public void setJxmc(String jxmc) {
+			Jxmc = jxmc;
+		}
+		public String getKscccode() {
+			return Kscccode;
+		}
+		public void setKscccode(String kscccode) {
+			Kscccode = kscccode;
+		}
+		public String getKsccname() {
+			return Ksccname;
+		}
+		public void setKsccname(String ksccname) {
+			Ksccname = ksccname;
+		}
+		public String getKsddcode() {
+			return Ksddcode;
+		}
+		public void setKsddcode(String ksddcode) {
+			Ksddcode = ksddcode;
+		}
+		public String getKsddname() {
+			return Ksddname;
+		}
+		public void setKsddname(String ksddname) {
+			Ksddname = ksddname;
+		}
+		public Timestamp getKsrq() {
+			return Ksrq;
+		}
+		public void setKsrq(Timestamp ksrq) {
+			Ksrq = ksrq;
+		}
+		public String getLsh() {
+			return Lsh;
+		}
+		public void setLsh(String lsh) {
+			Lsh = lsh;
+		}
+		public String getSfzmhm() {
+			return Sfzmhm;
+		}
+		public void setSfzmhm(String sfzmhm) {
+			Sfzmhm = sfzmhm;
+		}
+		public String getXm() {
+			return Xm;
+		}
+		public void setXm(String xm) {
+			Xm = xm;
+		}
 	
 	
 	

@@ -41,7 +41,7 @@ public class DriverAction extends BaseSelfAction implements ModelDriven<BaseTran
 	public String do_identity(){
 
 		String applicat=_trModel.getApplicat();
-		if(BaseTransactModel.Applicat.AGENT.equalsIgnoreCase(applicat)){
+		if(BaseTransactModel.Applicats.AGENT.equalsIgnoreCase(applicat)){
 			return EJsp.identity_agent.name();
 		}else {
 			return EJsp.collect_image.name();

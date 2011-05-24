@@ -69,7 +69,7 @@ String adminDeviceActionPath=basePath+"/admin/SelfDevice";
     .appendContext("var selectsRows={0}.datagrid(\"getSelections\");",JQueryModel.id(tableDG))
     .appendContext("var ids=\"\";")
     .appendContext("$.each(selectsRows,function(index,row){")
-    .appendContext("ids+=','+row['id'];  });")
+    .appendContext("ids+=','+row['Id'];  });")
     .appendContext("var action=\"{0}\";",adminDeviceActionPath+"/do/removeDeviceSn.action")
     .appendContext("$.post(action,{ids:ids},function(str){")
     .appendContext("var json=Kia.util.strToJson(str);Kia.util.handleJsonResult(json);")
@@ -82,24 +82,24 @@ String adminDeviceActionPath=basePath+"/admin/SelfDevice";
     
     JsListModel row1=new JsListModel();
     
-    JsMapModel colId=EasyUiUtil.createCheckBoxColumn(DeviceSnModel.F.id);
+    JsMapModel colId=EasyUiUtil.createCheckBoxColumn(DeviceSnModel.F.Id);
     
-    JsMapModel colJkname=EasyUiUtil.createTextColumn(DeviceSnModel.F.jkname);
+    JsMapModel colJkname=EasyUiUtil.createTextColumn(DeviceSnModel.F.CJkname);
     colJkname.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"接口名",true);
 
-    JsMapModel colJkxlh=EasyUiUtil.createTextColumn(DeviceSnModel.F.jkxlh);
+    JsMapModel colJkxlh=EasyUiUtil.createTextColumn(DeviceSnModel.F.CJkxlh);
     colJkxlh.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"接口序列号",true);
 
-    JsMapModel colJkid=EasyUiUtil.createTextColumn(DeviceSnModel.F.jkid);
+    JsMapModel colJkid=EasyUiUtil.createTextColumn(DeviceSnModel.F.CJkid);
     colJkid.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"接口ID",true);
 
-    JsMapModel colDeviceIp=EasyUiUtil.createTextColumn(DeviceSnModel.F.deviceIp);
+    JsMapModel colDeviceIp=EasyUiUtil.createTextColumn(DeviceSnModel.F.CDeviceIp);
     colDeviceIp.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"设备IP",true);
 
-    JsMapModel colSn=EasyUiUtil.createTextColumn(DeviceSnModel.F.sn);
+    JsMapModel colSn=EasyUiUtil.createTextColumn(DeviceSnModel.F.CSn);
     colSn.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"sn",true);
 
-    JsMapModel colKeywords=EasyUiUtil.createTextColumn(DeviceSnModel.F.keywords);
+    JsMapModel colKeywords=EasyUiUtil.createTextColumn(DeviceSnModel.F.CKeywords);
     colKeywords.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"keywords",true);
     
     JsMapModel colOpera=EasyUiUtil.createTextColumn("xxx",true);

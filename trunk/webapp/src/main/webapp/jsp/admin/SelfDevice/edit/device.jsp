@@ -67,41 +67,41 @@ String adminDeviceActionPath=basePath+"admin/SelfDevice";
            <tr>
              <th>设备类型</th>
              <td style="width: 35%">
-               <input name="device.<%=DeviceModel.F.catalog %>" value="${device.catalog}" />
+               <input name="device.<%=DeviceModel.F.CCatalog %>" value="${device.CCatalog}" />
              </td>
              <th>设备种类</th>
              <td style="width: 35%">
-               <input name="device.<%=DeviceModel.F.devicetype %>" value="${device.devicetype}" />
+               <input name="device.<%=DeviceModel.F.Devicetype %>" value="${device.Devicetype}" />
              </td>
            </tr>
            <tr>
             <th>机器名</th>
              <td style="width: 35%">
-               <input name="device.<%=DeviceModel.F.machineName %>" value="${device.machineName}" />
+               <input name="device.<%=DeviceModel.F.CMachineName %>" value="${device.CMachineName}" />
              </td>
             <th>终端地址</th>
              <td style="width: 35%">
-               <input name="device.<%=DeviceModel.F.placeAddress %>" value="${device.placeAddress}" />
+               <input name="device.<%=DeviceModel.F.CPlaceAddress %>" value="${device.CPlaceAddress}" />
              </td>
            </tr>
            <tr>
             <th>MAC地址1</th>
              <td style="width: 35%">
-               <input name="device.<%=DeviceModel.F.mac1%>" value="${device.mac1}" />
+               <input name="device.<%=DeviceModel.F.CMac1%>" value="${device.CMac1}" />
              </td>
             <th>MAC地址2</th>
              <td style="width: 35%">
-               <input name="device.<%=DeviceModel.F.mac2 %>" value="${device.mac2}" />
+               <input name="device.<%=DeviceModel.F.CMac2 %>" value="${device.CMac2}" />
              </td>
            </tr>
            <tr>
             <th>IP地址1</th>
              <td style="width: 35%">
-               <input name="device.<%=DeviceModel.F.ip1%>" value="${device.ip1}" />
+               <input name="device.<%=DeviceModel.F.CIp1%>" value="${device.CIp1}" />
              </td>
             <th>IP地址2</th>
              <td style="width: 35%">
-               <input name="device.<%=DeviceModel.F.ip2 %>" value="${device.ip2}" />
+               <input name="device.<%=DeviceModel.F.CIp2 %>" value="${device.CIp2}" />
              </td>
            </tr>
            

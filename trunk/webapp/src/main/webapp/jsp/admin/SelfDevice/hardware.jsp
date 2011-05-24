@@ -69,7 +69,7 @@ String adminDeviceActionPath=basePath+"admin/SelfDevice";
     .appendContext("var selectsRows={0}.datagrid(\"getSelections\");",JQueryModel.id(tableDG))
     .appendContext("var ids=\"\";")
     .appendContext("$.each(selectsRows,function(index,row){")
-    .appendContext("ids+=','+row['id'];  });")
+    .appendContext("ids+=','+row['Id'];  });")
     .appendContext("var action=\"{0}\";",adminDeviceActionPath+"/do/removeHardware.action")
     .appendContext("$.post(action,{ids:ids},function(str){")
     .appendContext("var json=Kia.util.strToJson(str);Kia.util.handleJsonResult(json);")
@@ -83,24 +83,24 @@ String adminDeviceActionPath=basePath+"admin/SelfDevice";
     
     JsListModel row1=new JsListModel();
     
-    JsMapModel colId=EasyUiUtil.createCheckBoxColumn("id",true);
+    JsMapModel colId=EasyUiUtil.createCheckBoxColumn("Id",true);
 
-    JsMapModel colBaud=EasyUiUtil.createIntColumn(HardwareModel.F.baud);
+    JsMapModel colBaud=EasyUiUtil.createIntColumn(HardwareModel.F.IBaud);
     colBaud.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"波特率",true);
     
-    JsMapModel colBrand=EasyUiUtil.createTextColumn(HardwareModel.F.brand);
+    JsMapModel colBrand=EasyUiUtil.createTextColumn(HardwareModel.F.CBrand);
     colBrand.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"硬件品牌",true);
     
-    JsMapModel colCatalog=EasyUiUtil.createTextColumn(HardwareModel.F.catalog);
+    JsMapModel colCatalog=EasyUiUtil.createTextColumn(HardwareModel.F.CCatalog);
     colCatalog.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"硬件类型",true);
     
-    JsMapModel colCom=EasyUiUtil.createIntColumn(HardwareModel.F.com);
+    JsMapModel colCom=EasyUiUtil.createIntColumn(HardwareModel.F.ICom);
     colCom.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"硬件端口",true);
     
-    JsMapModel colDeviceId=EasyUiUtil.createTextColumn(HardwareModel.F.deviceId);
+    JsMapModel colDeviceId=EasyUiUtil.createTextColumn(HardwareModel.F.IDeviceId);
     colDeviceId.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"关联设备ID",true);
     
-    JsMapModel colStopbits=EasyUiUtil.createIntColumn(HardwareModel.F.stopbits);
+    JsMapModel colStopbits=EasyUiUtil.createIntColumn(HardwareModel.F.IStopbits);
     colStopbits.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"停止位",true);
     
     JsMapModel colOpera=EasyUiUtil.createTextColumn("xxx",true);

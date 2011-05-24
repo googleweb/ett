@@ -6,167 +6,166 @@ import com.smartken.kia.core.model.impl.BaseModel;
 
 public class FeeLogModel extends BaseModel {
 
-	public static enum F{
-		id,createip,createtime,creator,isdeleted,description,keywords,modifier,modifyip,modifytime,bustype,
-		detail,feetype,money,sfzmhm,visacard,xm,feelsh,postfee,feewaytype,relationid
-	}
+	 public static enum F { 
+		  Id,CCreateip,TCreatetime,CCreator,IIsdeleted,CDescription,CKeywords,CModifier,CModifyip,TModifytime,Bustype,
+		Detail,Feetype,Money,Sfzmhm,Visacard,Xm,Feelsh,Postfee,Feewaytype,Relationid,
+		ISyn  
+		 } 
 
-	private Integer id;         //ID  NUMBER 19
-	private String createip;         //C_CREATEIP  VARCHAR2 1,020
-	private Date createtime;         //T_CREATETIME  DATE 0
-	private String creator;         //C_CREATOR  VARCHAR2 120
-	private Integer isdeleted;         //I_ISDELETED  NUMBER 1
-	private String description;         //C_DESCRIPTION  VARCHAR2 1,020
-	private String keywords;         //C_KEYWORDS  VARCHAR2 1,020
-	private String modifier;         //C_MODIFIER  VARCHAR2 1,020
-	private String modifyip;         //C_MODIFYIP  VARCHAR2 1,020
-	private Date modifytime;         //T_MODIFYTIME  DATE 0
-	private String bustype;         //BUSTYPE  VARCHAR2 120
-	private String detail;         //DETAIL  VARCHAR2 800
-	private String feetype;         //FEETYPE  VARCHAR2 120
-	private Integer money;         //MONEY  NUMBER 10
-	private String sfzmhm;         //SFZMHM  VARCHAR2 72
-	private String visacard;         //VISACARD  VARCHAR2 120
-	private String xm;         //XM  VARCHAR2 120
-	private String feelsh;         //FEELSH  VARCHAR2 1,056
-	private Integer postfee;         //POSTFEE  NUMBER 10
-	private String feewaytype;         //FEEWAYTYPE  VARCHAR2 120
-	private String relationid;         //RELATIONID  VARCHAR2 1,020
-	private Integer syn;         //I_SYN  NUMBER 1
-	
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	public String getCreateip() {
-		return createip;
-	}
-	public void setCreateip(String createip) {
-		this.createip = createip;
-	}
-	public Date getCreatetime() {
-		return createtime;
-	}
-	public void setCreatetime(Date createtime) {
-		this.createtime = createtime;
-	}
-	public String getCreator() {
-		return creator;
-	}
-	public void setCreator(String creator) {
-		this.creator = creator;
-	}
-	public Integer getIsdeleted() {
-		return isdeleted;
-	}
-	public void setIsdeleted(Integer isdeleted) {
-		this.isdeleted = isdeleted;
-	}
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	public String getKeywords() {
-		return keywords;
-	}
-	public void setKeywords(String keywords) {
-		this.keywords = keywords;
-	}
-	public String getModifier() {
-		return modifier;
-	}
-	public void setModifier(String modifier) {
-		this.modifier = modifier;
-	}
-	public String getModifyip() {
-		return modifyip;
-	}
-	public void setModifyip(String modifyip) {
-		this.modifyip = modifyip;
-	}
-	public Date getModifytime() {
-		return modifytime;
-	}
-	public void setModifytime(Date modifytime) {
-		this.modifytime = modifytime;
-	}
-	public String getBustype() {
-		return bustype;
-	}
-	public void setBustype(String bustype) {
-		this.bustype = bustype;
-	}
-	public String getDetail() {
-		return detail;
-	}
-	public void setDetail(String detail) {
-		this.detail = detail;
-	}
-	public String getFeetype() {
-		return feetype;
-	}
-	public void setFeetype(String feetype) {
-		this.feetype = feetype;
-	}
-	public Integer getMoney() {
-		return money;
-	}
-	public void setMoney(Integer money) {
-		this.money = money;
-	}
-	public String getSfzmhm() {
-		return sfzmhm;
-	}
-	public void setSfzmhm(String sfzmhm) {
-		this.sfzmhm = sfzmhm;
-	}
-	public String getVisacard() {
-		return visacard;
-	}
-	public void setVisacard(String visacard) {
-		this.visacard = visacard;
-	}
-	public String getXm() {
-		return xm;
-	}
-	public void setXm(String xm) {
-		this.xm = xm;
-	}
-	public String getFeelsh() {
-		return feelsh;
-	}
-	public void setFeelsh(String feelsh) {
-		this.feelsh = feelsh;
-	}
-	public Integer getPostfee() {
-		return postfee;
-	}
-	public void setPostfee(Integer postfee) {
-		this.postfee = postfee;
-	}
-	public String getFeewaytype() {
-		return feewaytype;
-	}
-	public void setFeewaytype(String feewaytype) {
-		this.feewaytype = feewaytype;
-	}
-	public String getRelationid() {
-		return relationid;
-	}
-	public void setRelationid(String relationid) {
-		this.relationid = relationid;
-	}
-	public Integer getSyn() {
-		return syn;
-	}
-	public void setSyn(Integer syn) {
-		this.syn = syn;
-	}
-	
+		private Double Id;         //ID  NUMBER 19
+		private String CCreateip;         //C_CREATEIP  VARCHAR2 1,020
+		private Date TCreatetime;         //T_CREATETIME  DATE 0
+		private String CCreator;         //C_CREATOR  VARCHAR2 120
+		private Double IIsdeleted;         //I_ISDELETED  NUMBER 1
+		private String CDescription;         //C_DESCRIPTION  VARCHAR2 1,020
+		private String CKeywords;         //C_KEYWORDS  VARCHAR2 1,020
+		private String CModifier;         //C_MODIFIER  VARCHAR2 1,020
+		private String CModifyip;         //C_MODIFYIP  VARCHAR2 1,020
+		private Date TModifytime;         //T_MODIFYTIME  DATE 0
+		private String Bustype;         //BUSTYPE  VARCHAR2 120
+		private String Detail;         //DETAIL  VARCHAR2 800
+		private String Feetype;         //FEETYPE  VARCHAR2 120
+		private Double Money;         //MONEY  NUMBER 10
+		private String Sfzmhm;         //SFZMHM  VARCHAR2 72
+		private String Visacard;         //VISACARD  VARCHAR2 120
+		private String Xm;         //XM  VARCHAR2 120
+		private String Feelsh;         //FEELSH  VARCHAR2 1,056
+		private Double Postfee;         //POSTFEE  NUMBER 10
+		private String Feewaytype;         //FEEWAYTYPE  VARCHAR2 120
+		private String Relationid;         //RELATIONID  VARCHAR2 1,020
+		private Double ISyn;         //I_SYN  NUMBER 1
+		public Double getId() {
+			return Id;
+		}
+		public void setId(Double id) {
+			Id = id;
+		}
+		public String getCCreateip() {
+			return CCreateip;
+		}
+		public void setCCreateip(String cCreateip) {
+			CCreateip = cCreateip;
+		}
+		public Date getTCreatetime() {
+			return TCreatetime;
+		}
+		public void setTCreatetime(Date tCreatetime) {
+			TCreatetime = tCreatetime;
+		}
+		public String getCCreator() {
+			return CCreator;
+		}
+		public void setCCreator(String cCreator) {
+			CCreator = cCreator;
+		}
+		public Double getIIsdeleted() {
+			return IIsdeleted;
+		}
+		public void setIIsdeleted(Double iIsdeleted) {
+			IIsdeleted = iIsdeleted;
+		}
+		public String getCDescription() {
+			return CDescription;
+		}
+		public void setCDescription(String cDescription) {
+			CDescription = cDescription;
+		}
+		public String getCKeywords() {
+			return CKeywords;
+		}
+		public void setCKeywords(String cKeywords) {
+			CKeywords = cKeywords;
+		}
+		public String getCModifier() {
+			return CModifier;
+		}
+		public void setCModifier(String cModifier) {
+			CModifier = cModifier;
+		}
+		public String getCModifyip() {
+			return CModifyip;
+		}
+		public void setCModifyip(String cModifyip) {
+			CModifyip = cModifyip;
+		}
+		public Date getTModifytime() {
+			return TModifytime;
+		}
+		public void setTModifytime(Date tModifytime) {
+			TModifytime = tModifytime;
+		}
+		public String getBustype() {
+			return Bustype;
+		}
+		public void setBustype(String bustype) {
+			Bustype = bustype;
+		}
+		public String getDetail() {
+			return Detail;
+		}
+		public void setDetail(String detail) {
+			Detail = detail;
+		}
+		public String getFeetype() {
+			return Feetype;
+		}
+		public void setFeetype(String feetype) {
+			Feetype = feetype;
+		}
+		public Double getMoney() {
+			return Money;
+		}
+		public void setMoney(Double money) {
+			Money = money;
+		}
+		public String getSfzmhm() {
+			return Sfzmhm;
+		}
+		public void setSfzmhm(String sfzmhm) {
+			Sfzmhm = sfzmhm;
+		}
+		public String getVisacard() {
+			return Visacard;
+		}
+		public void setVisacard(String visacard) {
+			Visacard = visacard;
+		}
+		public String getXm() {
+			return Xm;
+		}
+		public void setXm(String xm) {
+			Xm = xm;
+		}
+		public String getFeelsh() {
+			return Feelsh;
+		}
+		public void setFeelsh(String feelsh) {
+			Feelsh = feelsh;
+		}
+		public Double getPostfee() {
+			return Postfee;
+		}
+		public void setPostfee(Double postfee) {
+			Postfee = postfee;
+		}
+		public String getFeewaytype() {
+			return Feewaytype;
+		}
+		public void setFeewaytype(String feewaytype) {
+			Feewaytype = feewaytype;
+		}
+		public String getRelationid() {
+			return Relationid;
+		}
+		public void setRelationid(String relationid) {
+			Relationid = relationid;
+		}
+		public Double getISyn() {
+			return ISyn;
+		}
+		public void setISyn(Double iSyn) {
+			ISyn = iSyn;
+		}
 	
 	
 	

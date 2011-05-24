@@ -35,7 +35,7 @@ public class AuthFilter implements Filter {
          UserModel userModel=(UserModel) req.getSession(true).getAttribute(AUTH_USER);
          if(loginName!=null&&pwd!=null)
          {}
-         else  if(userModel.getLoginName()==null||userModel.getPwd()==null){       	 
+         else  if(userModel.getCLoginName()==null||userModel.getCPwd()==null){       	 
              rep.sendRedirect(basePath+"login.jsp");
          }
 		 }catch(NullPointerException ex){

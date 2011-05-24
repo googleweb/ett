@@ -132,7 +132,7 @@ public class SelfDeviceAction extends BaseAction {
 			}else {
 				pattern="硬件设备:{0}保存成功";
 			}
-			resultModel.setMsg(pattern, hardware.getCatalog());
+			resultModel.setMsg(pattern, hardware.getCCatalog());
 			
 		}else {
 			resultModel.setAction(ResultModel.ACTION_ALERT);
@@ -158,7 +158,7 @@ public class SelfDeviceAction extends BaseAction {
 			}else {
 				pattern="自助设备:{0}保存成功";
 			}
-			resultModel.setMsg(pattern, device.getCatalog());
+			resultModel.setMsg(pattern, device.getCCatalog());
 			
 		}else {
 			resultModel.setAction(ResultModel.ACTION_ALERT);
@@ -185,7 +185,7 @@ public class SelfDeviceAction extends BaseAction {
 			}else {
 				pattern="自助设备接口:{0}保存成功";
 			}
-			resultModel.setMsg(pattern, deviceSn.getSn());
+			resultModel.setMsg(pattern, deviceSn.getCSn());
 			
 		}else {
 			resultModel.setAction(ResultModel.ACTION_ALERT);
