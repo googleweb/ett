@@ -23,8 +23,8 @@ public class UserAction extends BaseAction implements ModelDriven<UserModel> {
 		// TODO Auto-generated method stub
 	}	
 	public String do_login(){
-		String loginName=this.getParameter(UserModel.F.CLoginName);
-		String pwd=this.getParameter(UserModel.F.CPwd);
+		String loginName=this.getParameter(UserModel.F.loginName);
+		String pwd=this.getParameter(UserModel.F.pwd);
 		_userModel=adminBiz.login(loginName, pwd);
 		if(_userModel!=null){
 		   this.setSessionAttribute(AuthFilter.AUTH_USER, _userModel);
@@ -58,6 +58,31 @@ public class UserAction extends BaseAction implements ModelDriven<UserModel> {
 	public String to_editUser(){
 	    return "jsp";
 	}	
+	public void  do_editUser(){
+		int re=0;
+		if(this.isPost()){
+			this.adminBiz.loadCrudMapper(UserModel.class);
+			re+=this.adminBiz.modifyOrAddModel(_userModel);
+		}
+		ResultModel resultModel=new ResultModel();
+		if(re==1){
+			resultModel.setTitle("操作成功");
+			String pattern="";
+			if(_userModel.getId()==null){
+				pattern="用户管理:{0}保存成功,再添加一个用户？";
+				resultModel.setAction(ResultModel.ACTION_CONFIRM);
+				//hardware=new HardwareModel();
+			}else {
+				pattern="用户管理:{0}保存成功";
+			}
+			resultModel.setMsg(pattern,re);;
+			
+		}else {
+			resultModel.setAction(ResultModel.ACTION_ALERT);
+			resultModel.setTitle("操作失败");
+		}
+		this.writePlainText(resultModel.toJson().toString());
+	}
     @SuppressWarnings("unchecked")
 	public void do_deleteUser(){
     	//根据id删除User，，并输出json格式的保存结果
