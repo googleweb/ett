@@ -174,11 +174,11 @@ public class SelfBiz extends BaseDrvBiz implements ISelfBiz{
 		FeeLogModel query=new FeeLogModel();
         if(createDate==null) return 0;
         int synCount=0;
-		query.setCreatetime(createDate);
+		query.setTCreatetime(createDate);
 		try {
 			ArrayList<FeeLogModel> listPreasignRecord=this.feeLogMapper.select(query);
 			for (FeeLogModel feeLogModel : listPreasignRecord) {
-				feeLogModel.setSyn(1);
+				feeLogModel.setISyn(Double.valueOf(1));
 				synCount+= this.feeLogMapper.updateOne(feeLogModel);
 			}
 		} catch (Exception e) {
