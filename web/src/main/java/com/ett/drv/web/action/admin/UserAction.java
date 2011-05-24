@@ -18,14 +18,10 @@ import com.smartken.kia.core.util.StringUtil;
 public class UserAction extends BaseAction implements ModelDriven<UserModel> {
 
 	private UserModel _userModel;
-	
 	@Override
 	public void clear() {
 		// TODO Auto-generated method stub
-
-	}
-
-	
+	}	
 	public String do_login(){
 		String loginName=this.getParameter(UserModel.F.loginName);
 		String pwd=this.getParameter(UserModel.F.pwd);
@@ -51,26 +47,19 @@ public class UserAction extends BaseAction implements ModelDriven<UserModel> {
 		}
 		return _userModel;
 	}
-	
+	@SuppressWarnings("unchecked")
 	public void datagrid_users(){
 		//查处所以User，输出json格式的datagrid    User/datagrid/users.action
 		this.adminBiz.loadCrudMapper(UserModel.class);
 		ArrayList list=this.adminBiz.getModel(this.getPager());
 		JSONObject jsonDG=EasyUiUtil.toJsonDataGrid(list,this.adminBiz.count());
-		this.writePlainText(jsonDG.toString());
-		
-	}
-	
+		this.writePlainText(jsonDG.toString());		
+	}	
 	public String to_editUser(){
-		//根据id查出一个User，跳到用户编辑页面
 	    return "jsp";
-	}
-	
-	public void do_editUser(){
-		
-	}
-	
-    public void do_deleteUser(){
+	}	
+    @SuppressWarnings("unchecked")
+	public void do_deleteUser(){
     	//根据id删除User，，并输出json格式的保存结果
     	ArrayList lListIds=new ArrayList();
 		String ids=this.getParameter("ids");
@@ -92,7 +81,6 @@ public class UserAction extends BaseAction implements ModelDriven<UserModel> {
 			resultModel.setTitle("操作失败");
 			resultModel.setMsg("没有用户被删除");
 		}
-		this.writePlainText(resultModel.toJson().toString());
-    	
+		this.writePlainText(resultModel.toJson().toString());   	
     }
 }

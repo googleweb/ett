@@ -17,16 +17,8 @@
 	<include file="struts-*.xml"></include>
 	<package name="base-package" extends="struts-default" abstract="true">
    		<default-interceptor-ref name="paramsPrepareParamsStack"></default-interceptor-ref>
-   		<global-results>
-       <result name="none" type="httpheader">
-        <param name="status">200</param>
-       </result>
-       <result name="json" type="httpheader">
-         <param name="status">200</param>
-       </result>
-       <result name="text" type="plainText">
-        <param name="charSet">UTF-8</param>
-       </result>
+   	    <global-results>
+
        <result name="error">/jsp/error.jsp</result>
    </global-results>
 </package>

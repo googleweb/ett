@@ -17,7 +17,7 @@ import com.smartken.kia.core.util.DateTimeUtil;
 import com.smartken.kia.core.util.EasyUiUtil;
 import com.smartken.kia.core.util.ObjectUtil;
 import com.smartken.kia.core.util.StringUtil;
-import com.smartken.kia.core.enums.QueryEnum;
+
 import com.smartken.kia.core.enums.ResultEnum;
 import com.ett.drv.web.action.BaseAction;
 import com.ett.drv.biz.IBookedBiz;
@@ -108,7 +108,7 @@ public class WeekPbAction extends BaseAction implements ModelDriven<BookedWeekRe
 	
 	public void list_DataGrid() throws Exception{
 		bookedBiz.loadCrudMapper(BookedWeekRecordModel.class);
-		ArrayList lListWeekRecords=bookedBiz.getModel(null);
+		ArrayList lListWeekRecords=bookedBiz.getModel();
 		JSONArray lListJson=ObjectUtil.toJsonArray(lListWeekRecords);
 		writeHTML(EasyUiUtil.toJsonDataGrid(lListJson,bookedBiz.count()).toString());
 
@@ -169,9 +169,9 @@ public class WeekPbAction extends BaseAction implements ModelDriven<BookedWeekRe
 	{
 		HttpServletRequest req=this.getRequest();
 		tempLimit=new BookedLimitModel();
-		tempLimit.setDayofweek(ObjectUtil.formatInt(req.getParameter("dw"),1));
-		tempLimit.setKm(ObjectUtil.formatInt(req.getParameter("km"),1));
-		tempLimit.setWeekNum(bookedWeekRecordModel.getWeekNum());
+		tempLimit.setIdayofweek(ObjectUtil.formatInt(req.getParameter("dw"),1));
+		tempLimit.setIkm(ObjectUtil.formatInt(req.getParameter("km"),1));
+		tempLimit.setIweekNum(bookedWeekRecordModel.getWeekNum());
 		this.bookedWeekRecordModel.calLimitAssgined();
 		return ResultEnum.jsp.toString();
 	}
@@ -182,7 +182,7 @@ public class WeekPbAction extends BaseAction implements ModelDriven<BookedWeekRe
     	//editLimit.setKsccCode(tempLimit.getKsccCode());
     	//editLimit.setKsddCode(tempLimit.getKsddCode());
     	//editLimit.setSchoolCode(tempLimit.getSchoolCode());
-    	editLimit.setTotal(tempLimit.getTotal());
+    	editLimit.setItotal(tempLimit.getItotal());
     	//editLimit=iDrvadminBiz.fillObject(editLimit);
     	this.bookedWeekRecordModel.getLimits().put(this.limitKey, editLimit);
     	ResultModel result=new ResultModel();
@@ -231,7 +231,7 @@ public class WeekPbAction extends BaseAction implements ModelDriven<BookedWeekRe
 		{
 			String key=it.next();
 			BookedLimitModel tempLimit=this.bookedWeekRecordModel.getLimits().get(key);
-			if(tempLimit.getKm()==km && tempLimit.getDayofweek() ==dw)
+			if(tempLimit.getIkm()==km && tempLimit.getIdayofweek() ==dw)
 			{
 				this.bookedWeekRecordModel.getLimits().remove(key);
 			}

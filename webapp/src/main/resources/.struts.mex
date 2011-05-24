@@ -59,7 +59,6 @@
   <webResource name="{1}-Detail.jsp" path="/jsp/{1}-Detail.jsp" location="442,625" size="150,55" />
   <webResource name="closeself.html" path="/closeself.html" location="69,730" size="150,55" />
   <include file="com/ett/struts2/config/struts-*.xml" location="610,1010" size="150,30" />
-  <include file="com/smartken/drv/web/action/*/struts-*.xml" location="239,1010" size="150,30" />
   <include file="struts-*.xml" location="930,1010" size="150,30" />
 </Struts2Diagram>
 

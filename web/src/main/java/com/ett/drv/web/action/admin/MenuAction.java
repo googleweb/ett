@@ -18,7 +18,6 @@ import com.smartken.kia.core.util.EasyUiUtil;
 import com.smartken.kia.core.util.ObjectUtil;
 import com.smartken.kia.core.util.StringUtil;
 import com.smartken.kia.core.enums.DataFormatEnum;
-import com.smartken.kia.core.enums.QueryEnum;
 import com.smartken.kia.core.enums.ResultEnum;
 import com.smartken.kia.core.pager.PageArrayList;
 import com.smartken.kia.core.pager.PageBounds;
