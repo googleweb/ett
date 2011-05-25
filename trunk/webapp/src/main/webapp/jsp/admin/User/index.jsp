@@ -49,7 +49,7 @@ function clickAddHandler(){
  }
 function dblClickRowHandler(rowIndex,rowData){ 
 	    var id=rowData["id"];
-	    var fullname=rowData["<%=UserModel.F.fullName%>"];
+	    var fullname=rowData["<%=UserModel.F.CFullName%>"];
   		var href='<%=basePath%>'+"admin/User/to/editUser.action?id="+id;
   		$("#divEditUser").dialog({
   			title:"修改用户:"+fullname,
@@ -90,16 +90,16 @@ $(document).ready(function(){
     ,
 	columns:[ 
 	[ 
-	{field:"id",checkbox:true},
-	{field:"loginName",title:"用户名",width:150},
-	{field:"beginip",title:"开始IP",width:150},
-	{field:"workid",title:"工作号",width:150},
-	{field:"roleid",title:"角色号",width:150},
-	{field:"state",title:"状态",width:150},
-	{field:"idcard",title:"卡号",width:150},
-	{field:"depid",title:"部门编号",width:150},
-	{field:"fullName",title:"全名",width:150},
-	{field:"endip",title:"结束IP",width:150}	
+	{field:"Id",checkbox:true},
+	{field:"<%=UserModel.F.CLoginName%>",title:"用户名",width:150},
+	{field:"<%=UserModel.F.CBeginip%>",title:"开始IP",width:150},
+	{field:"<%=UserModel.F.CWorkid%>",title:"工作号",width:150},
+	{field:"<%=UserModel.F.IRoleid%>",title:"角色号",width:150},
+	{field:"<%=UserModel.F.CState%>",title:"状态",width:150},
+	{field:"<%=UserModel.F.CIdcard%>",title:"卡号",width:150},
+	{field:"<%=UserModel.F.IDepid%>",title:"部门编号",width:150},
+	{field:"<%=UserModel.F.CFullName%>",title:"全名",width:150},
+	{field:"<%=UserModel.F.CEndip%>",title:"结束IP",width:150}	
 	]
 	] 
 	,
