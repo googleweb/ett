@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2011-05-25 10:26:46
+	Create Date:2011-05-25 04:53:47
 	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
 	Model:com.ett.drv.model.admin.UserModel 
 
 
  public static enum F { 
-  Id,CLoginName,CFullName,CPwd,IRoleid,IDepid,CIdcard,CWorkid,CBeginip,CEndip,CState  
+  Id,CLoginName,CFullName,CPwd,IRoleid,IDepid,CIdcard,CWorkid,CBeginip,CEndip,CState,
+CKm  
  } 
 
 private Integer Id;         //ID  NUMBER 38
@@ -20,6 +21,7 @@ private String CWorkid;         //C_WORKID  VARCHAR2 20
 private String CBeginip;         //C_BEGINIP  VARCHAR2 30
 private String CEndip;         //C_ENDIP  VARCHAR2 30
 private String CState;         //C_STATE  VARCHAR2 8
+private String CKm;         //C_KM  VARCHAR2 10
  -->
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
@@ -33,11 +35,12 @@ private String CState;         //C_STATE  VARCHAR2 8
 <sql id="pk">ID</sql>
 
 <sql id="colums">
-ID,C_LOGIN_NAME,C_FULL_NAME,C_PWD,I_ROLEID,I_DEPID,C_IDCARD,C_WORKID,C_BEGINIP,C_ENDIP,C_STATE 
+ID,C_LOGIN_NAME,C_FULL_NAME,C_PWD,I_ROLEID,I_DEPID,C_IDCARD,C_WORKID,C_BEGINIP,C_ENDIP,C_STATE,
+C_KM 
 </sql>
 
 <sql id="insertCols">
-#{Id,jdbcType=INTEGER,javaType=Integer},
+seq_user.nextval,
 #{CLoginName,jdbcType=VARCHAR,javaType=String},
 #{CFullName,jdbcType=VARCHAR,javaType=String},
 #{CPwd,jdbcType=VARCHAR,javaType=String},
@@ -48,21 +51,23 @@ ID,C_LOGIN_NAME,C_FULL_NAME,C_PWD,I_ROLEID,I_DEPID,C_IDCARD,C_WORKID,C_BEGINIP,C
 #{CBeginip,jdbcType=VARCHAR,javaType=String},
 #{CEndip,jdbcType=VARCHAR,javaType=String},
 #{CState,jdbcType=VARCHAR,javaType=String},
+#{CKm,jdbcType=VARCHAR,javaType=String},
 
 </sql>
 
 <sql id="updateCols">
 <if test="pk neq null">ID=#{pk}</if>,
-C_LOGIN_NAME=#{model.CLoginName,jdbcType=VARCHAR,javaType=String},
-C_FULL_NAME=#{model.CFullName,jdbcType=VARCHAR,javaType=String},
-C_PWD=#{model.CPwd,jdbcType=VARCHAR,javaType=String},
-I_ROLEID=#{model.IRoleid,jdbcType=INTEGER,javaType=Integer},
-I_DEPID=#{model.IDepid,jdbcType=INTEGER,javaType=Integer},
-C_IDCARD=#{model.CIdcard,jdbcType=VARCHAR,javaType=String},
-C_WORKID=#{model.CWorkid,jdbcType=VARCHAR,javaType=String},
-C_BEGINIP=#{model.CBeginip,jdbcType=VARCHAR,javaType=String},
-C_ENDIP=#{model.CEndip,jdbcType=VARCHAR,javaType=String},
-C_STATE=#{model.CState,jdbcType=VARCHAR,javaType=String},
+C_LOGIN_NAME=#{CLoginName,jdbcType=VARCHAR,javaType=String},
+C_FULL_NAME=#{CFullName,jdbcType=VARCHAR,javaType=String},
+C_PWD=#{CPwd,jdbcType=VARCHAR,javaType=String},
+I_ROLEID=#{IRoleid,jdbcType=INTEGER,javaType=Integer},
+I_DEPID=#{IDepid,jdbcType=INTEGER,javaType=Integer},
+C_IDCARD=#{CIdcard,jdbcType=VARCHAR,javaType=String},
+C_WORKID=#{CWorkid,jdbcType=VARCHAR,javaType=String},
+C_BEGINIP=#{CBeginip,jdbcType=VARCHAR,javaType=String},
+C_ENDIP=#{CEndip,jdbcType=VARCHAR,javaType=String},
+C_STATE=#{CState,jdbcType=VARCHAR,javaType=String},
+C_KM=#{CKm,jdbcType=VARCHAR,javaType=String},
 
 </sql>
 
@@ -84,6 +89,7 @@ C_STATE=#{model.CState,jdbcType=VARCHAR,javaType=String},
 <result column="C_BEGINIP"  property="CBeginip" jdbcType="VARCHAR" javaType="String"/>
 <result column="C_ENDIP"  property="CEndip" jdbcType="VARCHAR" javaType="String"/>
 <result column="C_STATE"  property="CState" jdbcType="VARCHAR" javaType="String"/>
+<result column="C_KM"  property="CKm" jdbcType="VARCHAR" javaType="String"/>
 
  </resultMap>
 
@@ -100,6 +106,7 @@ C_STATE=#{model.CState,jdbcType=VARCHAR,javaType=String},
 <if test="model.CBeginip neq null">and m.C_BEGINIP like #{model.CBeginip,jdbcType=VARCHAR javaType=String } </if> 
 <if test="model.CEndip neq null">and m.C_ENDIP like #{model.CEndip,jdbcType=VARCHAR javaType=String } </if> 
 <if test="model.CState neq null">and m.C_STATE like #{model.CState,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CKm neq null">and m.C_KM like #{model.CKm,jdbcType=VARCHAR javaType=String } </if> 
 
 </sql>
 

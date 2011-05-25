@@ -1,1 +1,215 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+	Create Date:2011-05-25 05:18:51
+	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
+	Model:com.ett.drv.model.dict.DrvCodeModel 
+
+
+ public static enum F { 
+  Dmlb,Dmz,Dmmc1,Dmmc2,Dmmc3,Dmmc4,Zt  
+ } 
+
+private Integer Dmlb;         //DMLB  NUMBER 3
+private String Dmz;         //DMZ  VARCHAR2 30
+private String Dmmc1;         //DMMC1  VARCHAR2 500
+private String Dmmc2;         //DMMC2  VARCHAR2 128
+private String Dmmc3;         //DMMC3  VARCHAR2 128
+private String Dmmc4;         //DMMC4  VARCHAR2 128
+private String Zt;         //ZT  CHAR 1
+ -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ett.drv.mapper.dict.IDrvCodeMapper">
+
+<cache flushInterval="30000" readOnly="true"></cache>
+
+
+<sql id="table">DRV_CODE</sql>
+
+<sql id="pk">DMZ</sql>
+
+<sql id="colums">
+DMLB,DMZ,DMMC1,DMMC2,DMMC3,DMMC4,ZT 
+</sql>
+
+<sql id="insertCols">
+#{Dmlb,jdbcType=INTEGER,javaType=Integer},
+#{Dmz,jdbcType=VARCHAR,javaType=String},
+#{Dmmc1,jdbcType=VARCHAR,javaType=String},
+#{Dmmc2,jdbcType=VARCHAR,javaType=String},
+#{Dmmc3,jdbcType=VARCHAR,javaType=String},
+#{Dmmc4,jdbcType=VARCHAR,javaType=String},
+#{Zt,jdbcType=CHAR,javaType=String},
+
+</sql>
+
+<sql id="updateCols">
+DMLB=#{Dmlb,jdbcType=INTEGER,javaType=Integer},
+<if test="pk neq null">DMZ=#{pk}</if>,
+DMMC1=#{Dmmc1,jdbcType=VARCHAR,javaType=String},
+DMMC2=#{Dmmc2,jdbcType=VARCHAR,javaType=String},
+DMMC3=#{Dmmc3,jdbcType=VARCHAR,javaType=String},
+DMMC4=#{Dmmc4,jdbcType=VARCHAR,javaType=String},
+ZT=#{Zt,jdbcType=CHAR,javaType=String},
+
+</sql>
+
+<sql id="orderby">order by m.DMZ desc </sql>
+
+<sql id="joinColums"></sql>
+
+<sql id="join"></sql><!-- 别名m已被主表使用  -->
+
+<resultMap type="com.ett.drv.model.dict.DrvCodeModel" id="resultMap">
+ <id column="DMZ"  property="Dmz" jdbcType="VARCHAR" javaType="String"/>
+<result column="DMLB"  property="Dmlb" jdbcType="INTEGER" javaType="Integer"/>
+<result column="DMMC1"  property="Dmmc1" jdbcType="VARCHAR" javaType="String"/>
+<result column="DMMC2"  property="Dmmc2" jdbcType="VARCHAR" javaType="String"/>
+<result column="DMMC3"  property="Dmmc3" jdbcType="VARCHAR" javaType="String"/>
+<result column="DMMC4"  property="Dmmc4" jdbcType="VARCHAR" javaType="String"/>
+<result column="ZT"  property="Zt" jdbcType="CHAR" javaType="String"/>
+
+ </resultMap>
+
+
+<sql id="selectCondition">
+<if test="model.Dmlb neq null">and m.DMLB = #{model.Dmlb,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.Dmz neq null">and m.DMZ like #{model.Dmz,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Dmmc1 neq null">and m.DMMC1 like #{model.Dmmc1,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Dmmc2 neq null">and m.DMMC2 like #{model.Dmmc2,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Dmmc3 neq null">and m.DMMC3 like #{model.Dmmc3,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Dmmc4 neq null">and m.DMMC4 like #{model.Dmmc4,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Zt neq null">and m.ZT like #{model.Zt,jdbcType=CHAR javaType=String } </if> 
+
+</sql>
+
+
+<select id="select" resultType="ArrayList" resultMap="resultMap">
+	select m.* from <include refid="table" /> m   
+		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+			<include refid="selectCondition"/>
+		</trim>
+	<include refid="orderby"/>
+</select>
+
+<select id="selectUnion" resultType="ArrayList" resultMap="resultMap">
+  select m.* from (
+	<trim  prefixOverrides="union" suffixOverrides="union">
+		<foreach collection="list" item="model">
+			<if test="model neq null">
+				union select m.* from <include refid="table" /> m 
+					<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+						<include refid="selectCondition"/>
+					</trim>
+			</if>
+		</foreach>
+	</trim>
+   ) m <include refid="orderby"/>
+</select>
+
+<select id="selectEqPk"  resultMap="resultMap">
+	select m.* from <include refid="table" /> m  where m.<include refid="pk" /> = #{Dmz,jdbcType=VARCHAR,javaType=String}
+</select>
+
+<select id="selectInPk" resultType="ArrayList" resultMap="resultMap" >
+	select m.* from <include refid="table" /> m  where m.<include refid="pk" /> in
+		<foreach item="pk" collection="list" open="(" separator="," close=")"> #{pk} </foreach>
+	<include refid="orderby"/>
+</select>
+
+<select id="selectNotInPk" resultType="ArrayList" resultMap="resultMap" >
+	select m.* from <include refid="table" /> m  where m.<include refid="pk" /> not in
+		<foreach item="pk" collection="list" open="(" separator="," close=")"> #{pk} </foreach>
+	<include refid="orderby"/>
+</select>
+
+<select  id="selectAll"  resultType="ArrayList"  resultMap="resultMap">
+	select m.* from  <include refid="table" /> m
+	<include refid="orderby"/>
+</select>
+
+<select id="count" resultType="int">
+	select count(*) from <include refid="table"/>
+</select>
+
+<insert id="insertOne" flushCache="true" >
+	insert into <include refid="table"/> ( <include refid="colums"/> ) values  
+	(
+		<trim  prefixOverrides="," suffixOverrides=",">
+			<include refid="insertCols"/>
+		</trim>
+	)
+</insert>
+
+<update id="updateOne" flushCache="true" >
+	update <include refid="table"/> set 
+		<trim  prefixOverrides="," suffixOverrides=",">
+			<include refid="updateCols"/>
+		</trim>
+	where <include refid="pk" />=#{model.Dmz,jdbcType=VARCHAR,javaType=String}</update>
+
+<delete id="deleteEqPk" flushCache="true">
+	delete from <include refid="table"/> where <include refid="pk" /> =#{Dmz,jdbcType=VARCHAR,javaType=String}
+</delete>
+
+<delete id="deleteInPk" flushCache="true">
+	delete from <include refid="table"/> where <include refid="pk" /> in
+		<foreach item="pk" collection="list" open="(" separator="," close=")">#{pk}</foreach>
+</delete>
+
+<delete id="deleteNotInPk" flushCache="true">
+	delete from <include refid="table"/> where <include refid="pk" /> not in
+		<foreach item="pk" collection="list" open="(" separator="," close=")">#{pk}</foreach>
+</delete>
+
+
+
+<resultMap type="com.ett.drv.model.dict.DrvCodeModel" id="viewMap" extends="resultMap" ></resultMap>
+
+
+<sql id="selectViewCondition">
+	 <include refid="selectCondition"/>  
+</sql><select id="selectView" resultType="ArrayList" resultMap="viewMap">
+	select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> 
+		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+			<include refid="selectViewCondition"/>
+		</trim>	<include refid="orderby"/>
+</select>
+
+<select id="selectViewUnion" resultType="ArrayList" resultMap="viewMap">
+  select m.* from (
+	<trim  prefixOverrides="union" suffixOverrides="union">
+		<foreach collection="list" item="model">
+			<if test="model neq null">
+				union select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> 
+					<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+						<include refid="selectViewCondition"/>
+					</trim>
+			</if>
+		</foreach>
+	</trim>
+  ) m <include refid="orderby"/>
+</select>
+
+<select id="selectViewEqPk"  resultMap="viewMap">
+	select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> = #{Dmz,jdbcType=VARCHAR,javaType=String}
+</select>
+
+<select id="selectViewInPk" resultType="ArrayList" resultMap="viewMap" >
+	select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> in
+	<foreach item="pk" collection="list" open="(" separator="," close=")"> #{pk} </foreach>
+	<include refid="orderby"/>
+</select>
+
+<select id="selectViewNotInPk" resultType="ArrayList" resultMap="viewMap" >
+	select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> not in
+	<foreach item="pk" collection="list" open="(" separator="," close=")"> #{pk} </foreach>
+	<include refid="orderby"/>
+</select>
+
+<select  id="selectViewAll"  resultType="ArrayList"  resultMap="viewMap">
+	select m.* <include refid="joinColums"/> from  <include refid="table" /> m <include refid="join"/>
+	<include refid="orderby"/>
+</select>
+
+</mapper>

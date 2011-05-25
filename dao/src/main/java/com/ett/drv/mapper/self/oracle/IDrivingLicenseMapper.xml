@@ -1,67 +1,80 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!-- 
- class:com.ett.drv.model.self.DrivingLicenseModel 
- private String xh;         //XH  CHAR 15
-private String dabh;         //DABH  CHAR 12
-private String sfzmmc;         //SFZMMC  CHAR 1
-private String sfzmhm;         //SFZMHM  VARCHAR2 18
-private String hmcd;         //HMCD  CHAR 1
-private String xm;         //XM  VARCHAR2 30
-private String xb;         //XB  CHAR 5
-private Date csrq;         //CSRQ  DATE 0
-private String gj;         //GJ  CHAR 3
-private String djzsxzqh;         //DJZSXZQH  VARCHAR2 10
-private String djzsxxdz;         //DJZSXXDZ  VARCHAR2 128
-private String lxzsxzqh;         //LXZSXZQH  VARCHAR2 10
-private String lxzsxxdz;         //LXZSXXDZ  VARCHAR2 128
-private String lxzsyzbm;         //LXZSYZBM  VARCHAR2 6
-private String lxdh;         //LXDH  VARCHAR2 20
-private String sjhm;         //SJHM  VARCHAR2 20
-private String dzyx;         //DZYX  VARCHAR2 30
-private String zzzm;         //ZZZM  VARCHAR2 18
-private String zzfzjg;         //ZZFZJG  VARCHAR2 30
-private Date zzfzrq;         //ZZFZRQ  DATE 0
-private String sfbd;         //SFBD  CHAR 1
-private String zjcx;         //ZJCX  VARCHAR2 15
-private String yzjcx;         //YZJCX  VARCHAR2 30
-private Date qfrq;         //QFRQ  DATE 0
-private Date syrq;         //SYRQ  DATE 0
-private Date cclzrq;         //CCLZRQ  DATE 0
-private String ccfzjg;         //CCFZJG  VARCHAR2 10
-private String jzqx;         //JZQX  CHAR 1
-private Date yxqs;         //YXQS  DATE 0
-private Date yxqz;         //YXQZ  DATE 0
-private Integer ljjf;         //LJJF  NUMBER 3
-private Date cfrq;         //CFRQ  DATE 0
-private Date xxtzrq;         //XXTZRQ  DATE 0
-private Integer bzcs;         //BZCS  NUMBER 2
-private String zt;         //ZT  VARCHAR2 6
-private String ly;         //LY  CHAR 2
-private String jxmc;         //JXMC  VARCHAR2 64
-private String jly;         //JLY  VARCHAR2 30
-private String xzqh;         //XZQH  VARCHAR2 10
-private String xzqj;         //XZQJ  VARCHAR2 10
-private Date fzrq;         //FZRQ  DATE 0
-private String jbr;         //JBR  VARCHAR2 30
-private String glbm;         //GLBM  VARCHAR2 12
-private String fzjg;         //FZJG  VARCHAR2 10
-private Date gxsj;         //GXSJ  DATE 0
-private String lsh;         //LSH  CHAR 11
-private String xgzl;         //XGZL  VARCHAR2 15
-private String bz;         //BZ  VARCHAR2 256
-private String jyw;         //JYW  VARCHAR2 256
-private String ydabh;         //YDABH  CHAR 12
-private String sqdm;         //SQDM  VARCHAR2 12
-private String zxbh;         //ZXBH  CHAR 13
- 
---> 
+<!--
+	Create Date:2011-05-25 05:18:51
+	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
+	Model:com.ett.drv.model.self.DrivingLicenseModel 
+
+
+ public static enum F { 
+  Xh,Dabh,Sfzmmc,Sfzmhm,Hmcd,Xm,Xb,Csrq,Gj,Djzsxzqh,Djzsxxdz,
+Lxzsxzqh,Lxzsxxdz,Lxzsyzbm,Lxdh,Sjhm,Dzyx,Zzzm,Zzfzjg,Zzfzrq,Sfbd,
+Zjcx,Yzjcx,Qfrq,Syrq,Cclzrq,Ccfzjg,Jzqx,Yxqs,Yxqz,Ljjf,
+Cfrq,Xxtzrq,Bzcs,Zt,Ly,Jxmc,Jly,Xzqh,Xzqj,Fzrq,
+Jbr,Glbm,Fzjg,Gxsj,Lsh,Xgzl,Bz,Jyw,Ydabh,Sqdm,
+Zxbh  
+ } 
+
+private String Xh;         //XH  CHAR 15
+private String Dabh;         //DABH  CHAR 12
+private String Sfzmmc;         //SFZMMC  CHAR 1
+private String Sfzmhm;         //SFZMHM  VARCHAR2 18
+private String Hmcd;         //HMCD  CHAR 1
+private String Xm;         //XM  VARCHAR2 30
+private String Xb;         //XB  CHAR 5
+private Date Csrq;         //CSRQ  DATE 0
+private String Gj;         //GJ  CHAR 10
+private String Djzsxzqh;         //DJZSXZQH  VARCHAR2 10
+private String Djzsxxdz;         //DJZSXXDZ  VARCHAR2 128
+private String Lxzsxzqh;         //LXZSXZQH  VARCHAR2 10
+private String Lxzsxxdz;         //LXZSXXDZ  VARCHAR2 128
+private String Lxzsyzbm;         //LXZSYZBM  VARCHAR2 6
+private String Lxdh;         //LXDH  VARCHAR2 20
+private String Sjhm;         //SJHM  VARCHAR2 20
+private String Dzyx;         //DZYX  VARCHAR2 30
+private String Zzzm;         //ZZZM  VARCHAR2 18
+private String Zzfzjg;         //ZZFZJG  VARCHAR2 30
+private Date Zzfzrq;         //ZZFZRQ  DATE 0
+private String Sfbd;         //SFBD  CHAR 1
+private String Zjcx;         //ZJCX  VARCHAR2 15
+private String Yzjcx;         //YZJCX  VARCHAR2 30
+private Date Qfrq;         //QFRQ  DATE 0
+private Date Syrq;         //SYRQ  DATE 0
+private Date Cclzrq;         //CCLZRQ  DATE 0
+private String Ccfzjg;         //CCFZJG  VARCHAR2 10
+private String Jzqx;         //JZQX  CHAR 1
+private Date Yxqs;         //YXQS  DATE 0
+private Date Yxqz;         //YXQZ  DATE 0
+private Integer Ljjf;         //LJJF  NUMBER 3
+private Date Cfrq;         //CFRQ  DATE 0
+private Date Xxtzrq;         //XXTZRQ  DATE 0
+private Integer Bzcs;         //BZCS  NUMBER 2
+private String Zt;         //ZT  VARCHAR2 6
+private String Ly;         //LY  CHAR 2
+private String Jxmc;         //JXMC  VARCHAR2 64
+private String Jly;         //JLY  VARCHAR2 30
+private String Xzqh;         //XZQH  VARCHAR2 10
+private String Xzqj;         //XZQJ  VARCHAR2 10
+private Date Fzrq;         //FZRQ  DATE 0
+private String Jbr;         //JBR  VARCHAR2 30
+private String Glbm;         //GLBM  VARCHAR2 12
+private String Fzjg;         //FZJG  VARCHAR2 10
+private Date Gxsj;         //GXSJ  DATE 0
+private String Lsh;         //LSH  CHAR 11
+private String Xgzl;         //XGZL  VARCHAR2 15
+private String Bz;         //BZ  VARCHAR2 256
+private String Jyw;         //JYW  VARCHAR2 256
+private String Ydabh;         //YDABH  CHAR 12
+private String Sqdm;         //SQDM  VARCHAR2 12
+private String Zxbh;         //ZXBH  CHAR 13
+ -->
+
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ett.drv.mapper.self.IDrivingLicenseMapper">
 
 <cache flushInterval="30000" readOnly="true"></cache>
 
 
-<sql id="table">drv_admin.DRIVINGLICENSE</sql>
+<sql id="table">DRIVINGLICENSE</sql>
 
 <sql id="pk">DABH</sql>
 
@@ -75,277 +88,363 @@ ZXBH
 </sql>
 
 <sql id="insertCols">
-#{xh,jdbcType=VARCHAR,javaType=String},
-#{dabh,jdbcType=VARCHAR,javaType=String},
-#{sfzmmc,jdbcType=VARCHAR,javaType=String},
-#{sfzmhm,jdbcType=VARCHAR,javaType=String},
-#{hmcd,jdbcType=VARCHAR,javaType=String},
-#{xm,jdbcType=VARCHAR,javaType=String},
-#{xb,jdbcType=VARCHAR,javaType=String},
-#{csrq,jdbcType=DATE,javaType=Date},
-#{gj,jdbcType=VARCHAR,javaType=String},
-#{djzsxzqh,jdbcType=VARCHAR,javaType=String},
-#{djzsxxdz,jdbcType=VARCHAR,javaType=String},
-#{lxzsxzqh,jdbcType=VARCHAR,javaType=String},
-#{lxzsxxdz,jdbcType=VARCHAR,javaType=String},
-#{lxzsyzbm,jdbcType=VARCHAR,javaType=String},
-#{lxdh,jdbcType=VARCHAR,javaType=String},
-#{sjhm,jdbcType=VARCHAR,javaType=String},
-#{dzyx,jdbcType=VARCHAR,javaType=String},
-#{zzzm,jdbcType=VARCHAR,javaType=String},
-#{zzfzjg,jdbcType=VARCHAR,javaType=String},
-#{zzfzrq,jdbcType=DATE,javaType=Date},
-#{sfbd,jdbcType=VARCHAR,javaType=String},
-#{zjcx,jdbcType=VARCHAR,javaType=String},
-#{yzjcx,jdbcType=VARCHAR,javaType=String},
-#{qfrq,jdbcType=DATE,javaType=Date},
-#{syrq,jdbcType=DATE,javaType=Date},
-#{cclzrq,jdbcType=DATE,javaType=Date},
-#{ccfzjg,jdbcType=VARCHAR,javaType=String},
-#{jzqx,jdbcType=VARCHAR,javaType=String},
-#{yxqs,jdbcType=DATE,javaType=Date},
-#{yxqz,jdbcType=DATE,javaType=Date},
-#{ljjf,jdbcType=INTEGER,javaType=Integer},
-#{cfrq,jdbcType=DATE,javaType=Date},
-#{xxtzrq,jdbcType=DATE,javaType=Date},
-#{bzcs,jdbcType=INTEGER,javaType=Integer},
-#{zt,jdbcType=VARCHAR,javaType=String},
-#{ly,jdbcType=VARCHAR,javaType=String},
-#{jxmc,jdbcType=VARCHAR,javaType=String},
-#{jly,jdbcType=VARCHAR,javaType=String},
-#{xzqh,jdbcType=VARCHAR,javaType=String},
-#{xzqj,jdbcType=VARCHAR,javaType=String},
-#{fzrq,jdbcType=DATE,javaType=Date},
-#{jbr,jdbcType=VARCHAR,javaType=String},
-#{glbm,jdbcType=VARCHAR,javaType=String},
-#{fzjg,jdbcType=VARCHAR,javaType=String},
-#{gxsj,jdbcType=DATE,javaType=Date},
-#{lsh,jdbcType=VARCHAR,javaType=String},
-#{xgzl,jdbcType=VARCHAR,javaType=String},
-#{bz,jdbcType=VARCHAR,javaType=String},
-#{jyw,jdbcType=VARCHAR,javaType=String},
-#{ydabh,jdbcType=VARCHAR,javaType=String},
-#{sqdm,jdbcType=VARCHAR,javaType=String},
-#{zxbh,jdbcType=VARCHAR,javaType=String} 
+#{Xh,jdbcType=CHAR,javaType=String},
+#{Dabh,jdbcType=CHAR,javaType=String},
+#{Sfzmmc,jdbcType=CHAR,javaType=String},
+#{Sfzmhm,jdbcType=VARCHAR,javaType=String},
+#{Hmcd,jdbcType=CHAR,javaType=String},
+#{Xm,jdbcType=VARCHAR,javaType=String},
+#{Xb,jdbcType=CHAR,javaType=String},
+#{Csrq,jdbcType=DATE,javaType=Date},
+#{Gj,jdbcType=CHAR,javaType=String},
+#{Djzsxzqh,jdbcType=VARCHAR,javaType=String},
+#{Djzsxxdz,jdbcType=VARCHAR,javaType=String},
+#{Lxzsxzqh,jdbcType=VARCHAR,javaType=String},
+#{Lxzsxxdz,jdbcType=VARCHAR,javaType=String},
+#{Lxzsyzbm,jdbcType=VARCHAR,javaType=String},
+#{Lxdh,jdbcType=VARCHAR,javaType=String},
+#{Sjhm,jdbcType=VARCHAR,javaType=String},
+#{Dzyx,jdbcType=VARCHAR,javaType=String},
+#{Zzzm,jdbcType=VARCHAR,javaType=String},
+#{Zzfzjg,jdbcType=VARCHAR,javaType=String},
+#{Zzfzrq,jdbcType=DATE,javaType=Date},
+#{Sfbd,jdbcType=CHAR,javaType=String},
+#{Zjcx,jdbcType=VARCHAR,javaType=String},
+#{Yzjcx,jdbcType=VARCHAR,javaType=String},
+#{Qfrq,jdbcType=DATE,javaType=Date},
+#{Syrq,jdbcType=DATE,javaType=Date},
+#{Cclzrq,jdbcType=DATE,javaType=Date},
+#{Ccfzjg,jdbcType=VARCHAR,javaType=String},
+#{Jzqx,jdbcType=CHAR,javaType=String},
+#{Yxqs,jdbcType=DATE,javaType=Date},
+#{Yxqz,jdbcType=DATE,javaType=Date},
+#{Ljjf,jdbcType=INTEGER,javaType=Integer},
+#{Cfrq,jdbcType=DATE,javaType=Date},
+#{Xxtzrq,jdbcType=DATE,javaType=Date},
+#{Bzcs,jdbcType=INTEGER,javaType=Integer},
+#{Zt,jdbcType=VARCHAR,javaType=String},
+#{Ly,jdbcType=CHAR,javaType=String},
+#{Jxmc,jdbcType=VARCHAR,javaType=String},
+#{Jly,jdbcType=VARCHAR,javaType=String},
+#{Xzqh,jdbcType=VARCHAR,javaType=String},
+#{Xzqj,jdbcType=VARCHAR,javaType=String},
+#{Fzrq,jdbcType=DATE,javaType=Date},
+#{Jbr,jdbcType=VARCHAR,javaType=String},
+#{Glbm,jdbcType=VARCHAR,javaType=String},
+#{Fzjg,jdbcType=VARCHAR,javaType=String},
+#{Gxsj,jdbcType=DATE,javaType=Date},
+#{Lsh,jdbcType=CHAR,javaType=String},
+#{Xgzl,jdbcType=VARCHAR,javaType=String},
+#{Bz,jdbcType=VARCHAR,javaType=String},
+#{Jyw,jdbcType=VARCHAR,javaType=String},
+#{Ydabh,jdbcType=CHAR,javaType=String},
+#{Sqdm,jdbcType=VARCHAR,javaType=String},
+#{Zxbh,jdbcType=CHAR,javaType=String},
+
 </sql>
 
 <sql id="updateCols">
- XH=#{model.xh,jdbcType=VARCHAR,javaType=String},
-<if test="pk neq null">DABH=#{pk},</if>
-SFZMMC=#{model.sfzmmc,jdbcType=VARCHAR,javaType=String},
-SFZMHM=#{model.sfzmhm,jdbcType=VARCHAR,javaType=String},
-HMCD=#{model.hmcd,jdbcType=VARCHAR,javaType=String},
-XM=#{model.xm,jdbcType=VARCHAR,javaType=String},
-XB=#{model.xb,jdbcType=VARCHAR,javaType=String},
-CSRQ=#{model.csrq,jdbcType=DATE,javaType=Date},
-GJ=#{model.gj,jdbcType=VARCHAR,javaType=String},
-DJZSXZQH=#{model.djzsxzqh,jdbcType=VARCHAR,javaType=String},
-DJZSXXDZ=#{model.djzsxxdz,jdbcType=VARCHAR,javaType=String},
-LXZSXZQH=#{model.lxzsxzqh,jdbcType=VARCHAR,javaType=String},
-LXZSXXDZ=#{model.lxzsxxdz,jdbcType=VARCHAR,javaType=String},
-LXZSYZBM=#{model.lxzsyzbm,jdbcType=VARCHAR,javaType=String},
-LXDH=#{model.lxdh,jdbcType=VARCHAR,javaType=String},
-SJHM=#{model.sjhm,jdbcType=VARCHAR,javaType=String},
-DZYX=#{model.dzyx,jdbcType=VARCHAR,javaType=String},
-ZZZM=#{model.zzzm,jdbcType=VARCHAR,javaType=String},
-ZZFZJG=#{model.zzfzjg,jdbcType=VARCHAR,javaType=String},
-ZZFZRQ=#{model.zzfzrq,jdbcType=DATE,javaType=Date},
-SFBD=#{model.sfbd,jdbcType=VARCHAR,javaType=String},
-ZJCX=#{model.zjcx,jdbcType=VARCHAR,javaType=String},
-YZJCX=#{model.yzjcx,jdbcType=VARCHAR,javaType=String},
-QFRQ=#{model.qfrq,jdbcType=DATE,javaType=Date},
-SYRQ=#{model.syrq,jdbcType=DATE,javaType=Date},
-CCLZRQ=#{model.cclzrq,jdbcType=DATE,javaType=Date},
-CCFZJG=#{model.ccfzjg,jdbcType=VARCHAR,javaType=String},
-JZQX=#{model.jzqx,jdbcType=VARCHAR,javaType=String},
-YXQS=#{model.yxqs,jdbcType=DATE,javaType=Date},
-YXQZ=#{model.yxqz,jdbcType=DATE,javaType=Date},
-LJJF=#{model.ljjf,jdbcType=INTEGER,javaType=Integer},
-CFRQ=#{model.cfrq,jdbcType=DATE,javaType=Date},
-XXTZRQ=#{model.xxtzrq,jdbcType=DATE,javaType=Date},
-BZCS=#{model.bzcs,jdbcType=INTEGER,javaType=Integer},
-ZT=#{model.zt,jdbcType=VARCHAR,javaType=String},
-LY=#{model.ly,jdbcType=VARCHAR,javaType=String},
-JXMC=#{model.jxmc,jdbcType=VARCHAR,javaType=String},
-JLY=#{model.jly,jdbcType=VARCHAR,javaType=String},
-XZQH=#{model.xzqh,jdbcType=VARCHAR,javaType=String},
-XZQJ=#{model.xzqj,jdbcType=VARCHAR,javaType=String},
-FZRQ=#{model.fzrq,jdbcType=DATE,javaType=Date},
-JBR=#{model.jbr,jdbcType=VARCHAR,javaType=String},
-GLBM=#{model.glbm,jdbcType=VARCHAR,javaType=String},
-FZJG=#{model.fzjg,jdbcType=VARCHAR,javaType=String},
-GXSJ=#{model.gxsj,jdbcType=DATE,javaType=Date},
-LSH=#{model.lsh,jdbcType=VARCHAR,javaType=String},
-XGZL=#{model.xgzl,jdbcType=VARCHAR,javaType=String},
-BZ=#{model.bz,jdbcType=VARCHAR,javaType=String},
-JYW=#{model.jyw,jdbcType=VARCHAR,javaType=String},
-YDABH=#{model.ydabh,jdbcType=VARCHAR,javaType=String},
-SQDM=#{model.sqdm,jdbcType=VARCHAR,javaType=String},
-ZXBH=#{model.zxbh,jdbcType=VARCHAR,javaType=String}
+XH=#{Xh,jdbcType=CHAR,javaType=String},
+<if test="pk neq null">DABH=#{pk}</if>,
+SFZMMC=#{Sfzmmc,jdbcType=CHAR,javaType=String},
+SFZMHM=#{Sfzmhm,jdbcType=VARCHAR,javaType=String},
+HMCD=#{Hmcd,jdbcType=CHAR,javaType=String},
+XM=#{Xm,jdbcType=VARCHAR,javaType=String},
+XB=#{Xb,jdbcType=CHAR,javaType=String},
+CSRQ=#{Csrq,jdbcType=DATE,javaType=Date},
+GJ=#{Gj,jdbcType=CHAR,javaType=String},
+DJZSXZQH=#{Djzsxzqh,jdbcType=VARCHAR,javaType=String},
+DJZSXXDZ=#{Djzsxxdz,jdbcType=VARCHAR,javaType=String},
+LXZSXZQH=#{Lxzsxzqh,jdbcType=VARCHAR,javaType=String},
+LXZSXXDZ=#{Lxzsxxdz,jdbcType=VARCHAR,javaType=String},
+LXZSYZBM=#{Lxzsyzbm,jdbcType=VARCHAR,javaType=String},
+LXDH=#{Lxdh,jdbcType=VARCHAR,javaType=String},
+SJHM=#{Sjhm,jdbcType=VARCHAR,javaType=String},
+DZYX=#{Dzyx,jdbcType=VARCHAR,javaType=String},
+ZZZM=#{Zzzm,jdbcType=VARCHAR,javaType=String},
+ZZFZJG=#{Zzfzjg,jdbcType=VARCHAR,javaType=String},
+ZZFZRQ=#{Zzfzrq,jdbcType=DATE,javaType=Date},
+SFBD=#{Sfbd,jdbcType=CHAR,javaType=String},
+ZJCX=#{Zjcx,jdbcType=VARCHAR,javaType=String},
+YZJCX=#{Yzjcx,jdbcType=VARCHAR,javaType=String},
+QFRQ=#{Qfrq,jdbcType=DATE,javaType=Date},
+SYRQ=#{Syrq,jdbcType=DATE,javaType=Date},
+CCLZRQ=#{Cclzrq,jdbcType=DATE,javaType=Date},
+CCFZJG=#{Ccfzjg,jdbcType=VARCHAR,javaType=String},
+JZQX=#{Jzqx,jdbcType=CHAR,javaType=String},
+YXQS=#{Yxqs,jdbcType=DATE,javaType=Date},
+YXQZ=#{Yxqz,jdbcType=DATE,javaType=Date},
+LJJF=#{Ljjf,jdbcType=INTEGER,javaType=Integer},
+CFRQ=#{Cfrq,jdbcType=DATE,javaType=Date},
+XXTZRQ=#{Xxtzrq,jdbcType=DATE,javaType=Date},
+BZCS=#{Bzcs,jdbcType=INTEGER,javaType=Integer},
+ZT=#{Zt,jdbcType=VARCHAR,javaType=String},
+LY=#{Ly,jdbcType=CHAR,javaType=String},
+JXMC=#{Jxmc,jdbcType=VARCHAR,javaType=String},
+JLY=#{Jly,jdbcType=VARCHAR,javaType=String},
+XZQH=#{Xzqh,jdbcType=VARCHAR,javaType=String},
+XZQJ=#{Xzqj,jdbcType=VARCHAR,javaType=String},
+FZRQ=#{Fzrq,jdbcType=DATE,javaType=Date},
+JBR=#{Jbr,jdbcType=VARCHAR,javaType=String},
+GLBM=#{Glbm,jdbcType=VARCHAR,javaType=String},
+FZJG=#{Fzjg,jdbcType=VARCHAR,javaType=String},
+GXSJ=#{Gxsj,jdbcType=DATE,javaType=Date},
+LSH=#{Lsh,jdbcType=CHAR,javaType=String},
+XGZL=#{Xgzl,jdbcType=VARCHAR,javaType=String},
+BZ=#{Bz,jdbcType=VARCHAR,javaType=String},
+JYW=#{Jyw,jdbcType=VARCHAR,javaType=String},
+YDABH=#{Ydabh,jdbcType=CHAR,javaType=String},
+SQDM=#{Sqdm,jdbcType=VARCHAR,javaType=String},
+ZXBH=#{Zxbh,jdbcType=CHAR,javaType=String},
+
 </sql>
 
-<sql id="orderby">order by DABH</sql>
+<sql id="orderby">order by m.DABH desc </sql>
 
 <sql id="joinColums"></sql>
 
 <sql id="join"></sql><!-- 别名m已被主表使用  -->
 
 <resultMap type="com.ett.drv.model.self.DrivingLicenseModel" id="resultMap">
- <id column="DABH"  property="dabh" jdbcType="VARCHAR" javaType="String"/>
-<result column="XH"  property="xh" jdbcType="VARCHAR" javaType="String"/>
-<result column="SFZMMC"  property="sfzmmc" jdbcType="VARCHAR" javaType="String"/>
-<result column="SFZMHM"  property="sfzmhm" jdbcType="VARCHAR" javaType="String"/>
-<result column="HMCD"  property="hmcd" jdbcType="VARCHAR" javaType="String"/>
-<result column="XM"  property="xm" jdbcType="VARCHAR" javaType="String"/>
-<result column="XB"  property="xb" jdbcType="VARCHAR" javaType="String"/>
-<result column="CSRQ"  property="csrq" jdbcType="DATE" javaType="Date"/>
-<result column="GJ"  property="gj" jdbcType="VARCHAR" javaType="String"/>
-<result column="DJZSXZQH"  property="djzsxzqh" jdbcType="VARCHAR" javaType="String"/>
-<result column="DJZSXXDZ"  property="djzsxxdz" jdbcType="VARCHAR" javaType="String"/>
-<result column="LXZSXZQH"  property="lxzsxzqh" jdbcType="VARCHAR" javaType="String"/>
-<result column="LXZSXXDZ"  property="lxzsxxdz" jdbcType="VARCHAR" javaType="String"/>
-<result column="LXZSYZBM"  property="lxzsyzbm" jdbcType="VARCHAR" javaType="String"/>
-<result column="LXDH"  property="lxdh" jdbcType="VARCHAR" javaType="String"/>
-<result column="SJHM"  property="sjhm" jdbcType="VARCHAR" javaType="String"/>
-<result column="DZYX"  property="dzyx" jdbcType="VARCHAR" javaType="String"/>
-<result column="ZZZM"  property="zzzm" jdbcType="VARCHAR" javaType="String"/>
-<result column="ZZFZJG"  property="zzfzjg" jdbcType="VARCHAR" javaType="String"/>
-<result column="ZZFZRQ"  property="zzfzrq" jdbcType="DATE" javaType="Date"/>
-<result column="SFBD"  property="sfbd" jdbcType="VARCHAR" javaType="String"/>
-<result column="ZJCX"  property="zjcx" jdbcType="VARCHAR" javaType="String"/>
-<result column="YZJCX"  property="yzjcx" jdbcType="VARCHAR" javaType="String"/>
-<result column="QFRQ"  property="qfrq" jdbcType="DATE" javaType="Date"/>
-<result column="SYRQ"  property="syrq" jdbcType="DATE" javaType="Date"/>
-<result column="CCLZRQ"  property="cclzrq" jdbcType="DATE" javaType="Date"/>
-<result column="CCFZJG"  property="ccfzjg" jdbcType="VARCHAR" javaType="String"/>
-<result column="JZQX"  property="jzqx" jdbcType="VARCHAR" javaType="String"/>
-<result column="YXQS"  property="yxqs" jdbcType="DATE" javaType="Date"/>
-<result column="YXQZ"  property="yxqz" jdbcType="DATE" javaType="Date"/>
-<result column="LJJF"  property="ljjf" jdbcType="INTEGER" javaType="Integer"/>
-<result column="CFRQ"  property="cfrq" jdbcType="DATE" javaType="Date"/>
-<result column="XXTZRQ"  property="xxtzrq" jdbcType="DATE" javaType="Date"/>
-<result column="BZCS"  property="bzcs" jdbcType="INTEGER" javaType="Integer"/>
-<result column="ZT"  property="zt" jdbcType="VARCHAR" javaType="String"/>
-<result column="LY"  property="ly" jdbcType="VARCHAR" javaType="String"/>
-<result column="JXMC"  property="jxmc" jdbcType="VARCHAR" javaType="String"/>
-<result column="JLY"  property="jly" jdbcType="VARCHAR" javaType="String"/>
-<result column="XZQH"  property="xzqh" jdbcType="VARCHAR" javaType="String"/>
-<result column="XZQJ"  property="xzqj" jdbcType="VARCHAR" javaType="String"/>
-<result column="FZRQ"  property="fzrq" jdbcType="DATE" javaType="Date"/>
-<result column="JBR"  property="jbr" jdbcType="VARCHAR" javaType="String"/>
-<result column="GLBM"  property="glbm" jdbcType="VARCHAR" javaType="String"/>
-<result column="FZJG"  property="fzjg" jdbcType="VARCHAR" javaType="String"/>
-<result column="GXSJ"  property="gxsj" jdbcType="DATE" javaType="Date"/>
-<result column="LSH"  property="lsh" jdbcType="VARCHAR" javaType="String"/>
-<result column="XGZL"  property="xgzl" jdbcType="VARCHAR" javaType="String"/>
-<result column="BZ"  property="bz" jdbcType="VARCHAR" javaType="String"/>
-<result column="JYW"  property="jyw" jdbcType="VARCHAR" javaType="String"/>
-<result column="YDABH"  property="ydabh" jdbcType="VARCHAR" javaType="String"/>
-<result column="SQDM"  property="sqdm" jdbcType="VARCHAR" javaType="String"/>
-<result column="ZXBH"  property="zxbh" jdbcType="VARCHAR" javaType="String"/>
+ <id column="DABH"  property="Dabh" jdbcType="CHAR" javaType="String"/>
+<result column="XH"  property="Xh" jdbcType="CHAR" javaType="String"/>
+<result column="SFZMMC"  property="Sfzmmc" jdbcType="CHAR" javaType="String"/>
+<result column="SFZMHM"  property="Sfzmhm" jdbcType="VARCHAR" javaType="String"/>
+<result column="HMCD"  property="Hmcd" jdbcType="CHAR" javaType="String"/>
+<result column="XM"  property="Xm" jdbcType="VARCHAR" javaType="String"/>
+<result column="XB"  property="Xb" jdbcType="CHAR" javaType="String"/>
+<result column="CSRQ"  property="Csrq" jdbcType="DATE" javaType="Date"/>
+<result column="GJ"  property="Gj" jdbcType="CHAR" javaType="String"/>
+<result column="DJZSXZQH"  property="Djzsxzqh" jdbcType="VARCHAR" javaType="String"/>
+<result column="DJZSXXDZ"  property="Djzsxxdz" jdbcType="VARCHAR" javaType="String"/>
+<result column="LXZSXZQH"  property="Lxzsxzqh" jdbcType="VARCHAR" javaType="String"/>
+<result column="LXZSXXDZ"  property="Lxzsxxdz" jdbcType="VARCHAR" javaType="String"/>
+<result column="LXZSYZBM"  property="Lxzsyzbm" jdbcType="VARCHAR" javaType="String"/>
+<result column="LXDH"  property="Lxdh" jdbcType="VARCHAR" javaType="String"/>
+<result column="SJHM"  property="Sjhm" jdbcType="VARCHAR" javaType="String"/>
+<result column="DZYX"  property="Dzyx" jdbcType="VARCHAR" javaType="String"/>
+<result column="ZZZM"  property="Zzzm" jdbcType="VARCHAR" javaType="String"/>
+<result column="ZZFZJG"  property="Zzfzjg" jdbcType="VARCHAR" javaType="String"/>
+<result column="ZZFZRQ"  property="Zzfzrq" jdbcType="DATE" javaType="Date"/>
+<result column="SFBD"  property="Sfbd" jdbcType="CHAR" javaType="String"/>
+<result column="ZJCX"  property="Zjcx" jdbcType="VARCHAR" javaType="String"/>
+<result column="YZJCX"  property="Yzjcx" jdbcType="VARCHAR" javaType="String"/>
+<result column="QFRQ"  property="Qfrq" jdbcType="DATE" javaType="Date"/>
+<result column="SYRQ"  property="Syrq" jdbcType="DATE" javaType="Date"/>
+<result column="CCLZRQ"  property="Cclzrq" jdbcType="DATE" javaType="Date"/>
+<result column="CCFZJG"  property="Ccfzjg" jdbcType="VARCHAR" javaType="String"/>
+<result column="JZQX"  property="Jzqx" jdbcType="CHAR" javaType="String"/>
+<result column="YXQS"  property="Yxqs" jdbcType="DATE" javaType="Date"/>
+<result column="YXQZ"  property="Yxqz" jdbcType="DATE" javaType="Date"/>
+<result column="LJJF"  property="Ljjf" jdbcType="INTEGER" javaType="Integer"/>
+<result column="CFRQ"  property="Cfrq" jdbcType="DATE" javaType="Date"/>
+<result column="XXTZRQ"  property="Xxtzrq" jdbcType="DATE" javaType="Date"/>
+<result column="BZCS"  property="Bzcs" jdbcType="INTEGER" javaType="Integer"/>
+<result column="ZT"  property="Zt" jdbcType="VARCHAR" javaType="String"/>
+<result column="LY"  property="Ly" jdbcType="CHAR" javaType="String"/>
+<result column="JXMC"  property="Jxmc" jdbcType="VARCHAR" javaType="String"/>
+<result column="JLY"  property="Jly" jdbcType="VARCHAR" javaType="String"/>
+<result column="XZQH"  property="Xzqh" jdbcType="VARCHAR" javaType="String"/>
+<result column="XZQJ"  property="Xzqj" jdbcType="VARCHAR" javaType="String"/>
+<result column="FZRQ"  property="Fzrq" jdbcType="DATE" javaType="Date"/>
+<result column="JBR"  property="Jbr" jdbcType="VARCHAR" javaType="String"/>
+<result column="GLBM"  property="Glbm" jdbcType="VARCHAR" javaType="String"/>
+<result column="FZJG"  property="Fzjg" jdbcType="VARCHAR" javaType="String"/>
+<result column="GXSJ"  property="Gxsj" jdbcType="DATE" javaType="Date"/>
+<result column="LSH"  property="Lsh" jdbcType="CHAR" javaType="String"/>
+<result column="XGZL"  property="Xgzl" jdbcType="VARCHAR" javaType="String"/>
+<result column="BZ"  property="Bz" jdbcType="VARCHAR" javaType="String"/>
+<result column="JYW"  property="Jyw" jdbcType="VARCHAR" javaType="String"/>
+<result column="YDABH"  property="Ydabh" jdbcType="CHAR" javaType="String"/>
+<result column="SQDM"  property="Sqdm" jdbcType="VARCHAR" javaType="String"/>
+<result column="ZXBH"  property="Zxbh" jdbcType="CHAR" javaType="String"/>
+
  </resultMap>
 
 
+<sql id="selectCondition">
+<if test="model.Xh neq null">and m.XH like #{model.Xh,jdbcType=CHAR javaType=String } </if> 
+<if test="model.Dabh neq null">and m.DABH like #{model.Dabh,jdbcType=CHAR javaType=String } </if> 
+<if test="model.Sfzmmc neq null">and m.SFZMMC like #{model.Sfzmmc,jdbcType=CHAR javaType=String } </if> 
+<if test="model.Sfzmhm neq null">and m.SFZMHM like #{model.Sfzmhm,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Hmcd neq null">and m.HMCD like #{model.Hmcd,jdbcType=CHAR javaType=String } </if> 
+<if test="model.Xm neq null">and m.XM like #{model.Xm,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Xb neq null">and m.XB like #{model.Xb,jdbcType=CHAR javaType=String } </if> 
+<if test="model.Csrq neq null">and to_char(m.CSRQ,'YYYY-MM-DD') = to_char(#{model.Csrq,jdbcType=DATE javaType=Date },'YYYY-MM-DD') </if> 
+<if test="model.Gj neq null">and m.GJ like #{model.Gj,jdbcType=CHAR javaType=String } </if> 
+<if test="model.Djzsxzqh neq null">and m.DJZSXZQH like #{model.Djzsxzqh,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Djzsxxdz neq null">and m.DJZSXXDZ like #{model.Djzsxxdz,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Lxzsxzqh neq null">and m.LXZSXZQH like #{model.Lxzsxzqh,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Lxzsxxdz neq null">and m.LXZSXXDZ like #{model.Lxzsxxdz,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Lxzsyzbm neq null">and m.LXZSYZBM like #{model.Lxzsyzbm,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Lxdh neq null">and m.LXDH like #{model.Lxdh,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Sjhm neq null">and m.SJHM like #{model.Sjhm,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Dzyx neq null">and m.DZYX like #{model.Dzyx,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Zzzm neq null">and m.ZZZM like #{model.Zzzm,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Zzfzjg neq null">and m.ZZFZJG like #{model.Zzfzjg,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Zzfzrq neq null">and to_char(m.ZZFZRQ,'YYYY-MM-DD') = to_char(#{model.Zzfzrq,jdbcType=DATE javaType=Date },'YYYY-MM-DD') </if> 
+<if test="model.Sfbd neq null">and m.SFBD like #{model.Sfbd,jdbcType=CHAR javaType=String } </if> 
+<if test="model.Zjcx neq null">and m.ZJCX like #{model.Zjcx,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Yzjcx neq null">and m.YZJCX like #{model.Yzjcx,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Qfrq neq null">and to_char(m.QFRQ,'YYYY-MM-DD') = to_char(#{model.Qfrq,jdbcType=DATE javaType=Date },'YYYY-MM-DD') </if> 
+<if test="model.Syrq neq null">and to_char(m.SYRQ,'YYYY-MM-DD') = to_char(#{model.Syrq,jdbcType=DATE javaType=Date },'YYYY-MM-DD') </if> 
+<if test="model.Cclzrq neq null">and to_char(m.CCLZRQ,'YYYY-MM-DD') = to_char(#{model.Cclzrq,jdbcType=DATE javaType=Date },'YYYY-MM-DD') </if> 
+<if test="model.Ccfzjg neq null">and m.CCFZJG like #{model.Ccfzjg,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Jzqx neq null">and m.JZQX like #{model.Jzqx,jdbcType=CHAR javaType=String } </if> 
+<if test="model.Yxqs neq null">and to_char(m.YXQS,'YYYY-MM-DD') = to_char(#{model.Yxqs,jdbcType=DATE javaType=Date },'YYYY-MM-DD') </if> 
+<if test="model.Yxqz neq null">and to_char(m.YXQZ,'YYYY-MM-DD') = to_char(#{model.Yxqz,jdbcType=DATE javaType=Date },'YYYY-MM-DD') </if> 
+<if test="model.Ljjf neq null">and m.LJJF = #{model.Ljjf,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.Cfrq neq null">and to_char(m.CFRQ,'YYYY-MM-DD') = to_char(#{model.Cfrq,jdbcType=DATE javaType=Date },'YYYY-MM-DD') </if> 
+<if test="model.Xxtzrq neq null">and to_char(m.XXTZRQ,'YYYY-MM-DD') = to_char(#{model.Xxtzrq,jdbcType=DATE javaType=Date },'YYYY-MM-DD') </if> 
+<if test="model.Bzcs neq null">and m.BZCS = #{model.Bzcs,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.Zt neq null">and m.ZT like #{model.Zt,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Ly neq null">and m.LY like #{model.Ly,jdbcType=CHAR javaType=String } </if> 
+<if test="model.Jxmc neq null">and m.JXMC like #{model.Jxmc,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Jly neq null">and m.JLY like #{model.Jly,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Xzqh neq null">and m.XZQH like #{model.Xzqh,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Xzqj neq null">and m.XZQJ like #{model.Xzqj,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Fzrq neq null">and to_char(m.FZRQ,'YYYY-MM-DD') = to_char(#{model.Fzrq,jdbcType=DATE javaType=Date },'YYYY-MM-DD') </if> 
+<if test="model.Jbr neq null">and m.JBR like #{model.Jbr,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Glbm neq null">and m.GLBM like #{model.Glbm,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Fzjg neq null">and m.FZJG like #{model.Fzjg,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Gxsj neq null">and to_char(m.GXSJ,'YYYY-MM-DD') = to_char(#{model.Gxsj,jdbcType=DATE javaType=Date },'YYYY-MM-DD') </if> 
+<if test="model.Lsh neq null">and m.LSH like #{model.Lsh,jdbcType=CHAR javaType=String } </if> 
+<if test="model.Xgzl neq null">and m.XGZL like #{model.Xgzl,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Bz neq null">and m.BZ like #{model.Bz,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Jyw neq null">and m.JYW like #{model.Jyw,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Ydabh neq null">and m.YDABH like #{model.Ydabh,jdbcType=CHAR javaType=String } </if> 
+<if test="model.Sqdm neq null">and m.SQDM like #{model.Sqdm,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Zxbh neq null">and m.ZXBH like #{model.Zxbh,jdbcType=CHAR javaType=String } </if> 
+
+</sql>
+
+
 <select id="select" resultType="ArrayList" resultMap="resultMap">
-	 select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> 
-<trim prefix="where" prefixOverrides="and">
-<if test="model.xh neq null">and m.XH=#{model.xh,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.dabh neq null">and m.DABH=#{model.dabh,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.sfzmmc neq null">and m.SFZMMC=#{model.sfzmmc,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.sfzmhm neq null">and m.SFZMHM=#{model.sfzmhm,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.hmcd neq null">and m.HMCD=#{model.hmcd,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.xm neq null">and m.XM=#{model.xm,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.xb neq null">and m.XB=#{model.xb,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.csrq neq null">and to_char(m.CSRQ,'YYYY-MM-DD')= to_char(#{model.csrq,jdbcType=DATE javaType=Date },'YYYY-MM-DD') </if> 
-<if test="model.gj neq null">and m.GJ=#{model.gj,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.djzsxzqh neq null">and m.DJZSXZQH=#{model.djzsxzqh,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.djzsxxdz neq null">and m.DJZSXXDZ=#{model.djzsxxdz,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.lxzsxzqh neq null">and m.LXZSXZQH=#{model.lxzsxzqh,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.lxzsxxdz neq null">and m.LXZSXXDZ=#{model.lxzsxxdz,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.lxzsyzbm neq null">and m.LXZSYZBM=#{model.lxzsyzbm,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.lxdh neq null">and m.LXDH=#{model.lxdh,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.sjhm neq null">and m.SJHM=#{model.sjhm,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.dzyx neq null">and m.DZYX=#{model.dzyx,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.zzzm neq null">and m.ZZZM=#{model.zzzm,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.zzfzjg neq null">and m.ZZFZJG=#{model.zzfzjg,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.zzfzrq neq null">and to_char(m.ZZFZRQ,'YYYY-MM-DD')= to_char(#{model.zzfzrq,jdbcType=DATE javaType=Date },'YYYY-MM-DD') </if> 
-<if test="model.sfbd neq null">and m.SFBD=#{model.sfbd,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.zjcx neq null">and m.ZJCX=#{model.zjcx,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.yzjcx neq null">and m.YZJCX=#{model.yzjcx,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.qfrq neq null">and to_char(m.QFRQ,'YYYY-MM-DD')= to_char(#{model.qfrq,jdbcType=DATE javaType=Date },'YYYY-MM-DD') </if> 
-<if test="model.syrq neq null">and to_char(m.SYRQ,'YYYY-MM-DD')= to_char(#{model.syrq,jdbcType=DATE javaType=Date },'YYYY-MM-DD') </if> 
-<if test="model.cclzrq neq null">and to_char(m.CCLZRQ,'YYYY-MM-DD')= to_char(#{model.cclzrq,jdbcType=DATE javaType=Date },'YYYY-MM-DD') </if> 
-<if test="model.ccfzjg neq null">and m.CCFZJG=#{model.ccfzjg,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.jzqx neq null">and m.JZQX=#{model.jzqx,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.yxqs neq null">and to_char(m.YXQS,'YYYY-MM-DD')= to_char(#{model.yxqs,jdbcType=DATE javaType=Date },'YYYY-MM-DD') </if> 
-<if test="model.yxqz neq null">and to_char(m.YXQZ,'YYYY-MM-DD')= to_char(#{model.yxqz,jdbcType=DATE javaType=Date },'YYYY-MM-DD') </if> 
-<if test="model.ljjf neq null">and m.LJJF=#{model.ljjf,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.cfrq neq null">and to_char(m.CFRQ,'YYYY-MM-DD')= to_char(#{model.cfrq,jdbcType=DATE javaType=Date },'YYYY-MM-DD') </if> 
-<if test="model.xxtzrq neq null">and to_char(m.XXTZRQ,'YYYY-MM-DD')= to_char(#{model.xxtzrq,jdbcType=DATE javaType=Date },'YYYY-MM-DD') </if> 
-<if test="model.bzcs neq null">and m.BZCS=#{model.bzcs,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.zt neq null">and m.ZT=#{model.zt,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.ly neq null">and m.LY=#{model.ly,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.jxmc neq null">and m.JXMC=#{model.jxmc,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.jly neq null">and m.JLY=#{model.jly,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.xzqh neq null">and m.XZQH=#{model.xzqh,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.xzqj neq null">and m.XZQJ=#{model.xzqj,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.fzrq neq null">and to_char(m.FZRQ,'YYYY-MM-DD')= to_char(#{model.fzrq,jdbcType=DATE javaType=Date },'YYYY-MM-DD') </if> 
-<if test="model.jbr neq null">and m.JBR=#{model.jbr,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.glbm neq null">and m.GLBM=#{model.glbm,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.fzjg neq null">and m.FZJG=#{model.fzjg,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.gxsj neq null">and to_char(m.GXSJ,'YYYY-MM-DD')= to_char(#{model.gxsj,jdbcType=DATE javaType=Date },'YYYY-MM-DD') </if> 
-<if test="model.lsh neq null">and m.LSH=#{model.lsh,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.xgzl neq null">and m.XGZL=#{model.xgzl,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.bz neq null">and m.BZ=#{model.bz,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.jyw neq null">and m.JYW=#{model.jyw,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.ydabh neq null">and m.YDABH=#{model.ydabh,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.sqdm neq null">and m.SQDM=#{model.sqdm,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.zxbh neq null">and m.ZXBH=#{model.zxbh,jdbcType=VARCHAR javaType=String } </if> 
-</trim>
-</select>
-<select id="selectEqPk" parameterType="String"  resultMap="resultMap">
-	 select <include refid="colums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> = #{dabh,jdbcType=VARCHAR,javaType=String}
+	select m.* from <include refid="table" /> m   
+		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+			<include refid="selectCondition"/>
+		</trim>
+	<include refid="orderby"/>
 </select>
 
-<select id="count" resultType="int">
-	 select count(*) from <include refid="table"/>
+<select id="selectUnion" resultType="ArrayList" resultMap="resultMap">
+  select m.* from (
+	<trim  prefixOverrides="union" suffixOverrides="union">
+		<foreach collection="list" item="model">
+			<if test="model neq null">
+				union select m.* from <include refid="table" /> m 
+					<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+						<include refid="selectCondition"/>
+					</trim>
+			</if>
+		</foreach>
+	</trim>
+   ) m <include refid="orderby"/>
+</select>
+
+<select id="selectEqPk"  resultMap="resultMap">
+	select m.* from <include refid="table" /> m  where m.<include refid="pk" /> = #{Dabh,jdbcType=CHAR,javaType=String}
 </select>
 
 <select id="selectInPk" resultType="ArrayList" resultMap="resultMap" >
-	 select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> in
-<foreach item="pk" collection="list" open="(" separator="," close=")"> #{pk} </foreach> 
-<include refid="orderby"/>
+	select m.* from <include refid="table" /> m  where m.<include refid="pk" /> in
+		<foreach item="pk" collection="list" open="(" separator="," close=")"> #{pk} </foreach>
+	<include refid="orderby"/>
 </select>
 
 <select id="selectNotInPk" resultType="ArrayList" resultMap="resultMap" >
-	 select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> not in
-<foreach item="pk" collection="list" open="(" separator="," close=")"> #{pk} </foreach> 
-<include refid="orderby"/>
+	select m.* from <include refid="table" /> m  where m.<include refid="pk" /> not in
+		<foreach item="pk" collection="list" open="(" separator="," close=")"> #{pk} </foreach>
+	<include refid="orderby"/>
 </select>
 
 <select  id="selectAll"  resultType="ArrayList"  resultMap="resultMap">
-	 select m.* <include refid="joinColums"/> from  <include refid="table" /> m <include refid="join"/> 
- <include refid="orderby"/>
+	select m.* from  <include refid="table" /> m
+	<include refid="orderby"/>
 </select>
 
-<insert id="insertOne" >
-	 insert into <include refid="table"/> ( <include refid="colums"/> ) values ( <include refid="insertCols"/>) 
+<select id="count" resultType="int">
+	select count(*) from <include refid="table"/>
+</select>
+
+<insert id="insertOne" flushCache="true" >
+	insert into <include refid="table"/> ( <include refid="colums"/> ) values  
+	(
+		<trim  prefixOverrides="," suffixOverrides=",">
+			<include refid="insertCols"/>
+		</trim>
+	)
 </insert>
 
 <update id="updateOne" flushCache="true" >
-	 update <include refid="table"/> set <include refid="updateCols"/> where <include refid="pk" />=#{model.dabh,jdbcType=VARCHAR,javaType=String}
-</update>
+	update <include refid="table"/> set 
+		<trim  prefixOverrides="," suffixOverrides=",">
+			<include refid="updateCols"/>
+		</trim>
+	where <include refid="pk" />=#{model.Dabh,jdbcType=CHAR,javaType=String}</update>
+
+<delete id="deleteEqPk" flushCache="true">
+	delete from <include refid="table"/> where <include refid="pk" /> =#{Dabh,jdbcType=CHAR,javaType=String}
+</delete>
 
 <delete id="deleteInPk" flushCache="true">
-	 delete from <include refid="table"/> where <include refid="pk" /> in
-<foreach item="pk" collection="list" open="(" separator="," close=")">#{pk}</foreach>
+	delete from <include refid="table"/> where <include refid="pk" /> in
+		<foreach item="pk" collection="list" open="(" separator="," close=")">#{pk}</foreach>
 </delete>
 
 <delete id="deleteNotInPk" flushCache="true">
-	 delete from <include refid="table"/> where <include refid="pk" /> not in
-<foreach item="pk" collection="list" open="(" separator="," close=")">#{pk}</foreach>
+	delete from <include refid="table"/> where <include refid="pk" /> not in
+		<foreach item="pk" collection="list" open="(" separator="," close=")">#{pk}</foreach>
 </delete>
 
 
+
+<resultMap type="com.ett.drv.model.self.DrivingLicenseModel" id="viewMap" extends="resultMap" ></resultMap>
+
+
+<sql id="selectViewCondition">
+	 <include refid="selectCondition"/>  
+</sql><select id="selectView" resultType="ArrayList" resultMap="viewMap">
+	select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> 
+		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+			<include refid="selectViewCondition"/>
+		</trim>	<include refid="orderby"/>
+</select>
+
+<select id="selectViewUnion" resultType="ArrayList" resultMap="viewMap">
+  select m.* from (
+	<trim  prefixOverrides="union" suffixOverrides="union">
+		<foreach collection="list" item="model">
+			<if test="model neq null">
+				union select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> 
+					<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+						<include refid="selectViewCondition"/>
+					</trim>
+			</if>
+		</foreach>
+	</trim>
+  ) m <include refid="orderby"/>
+</select>
+
+<select id="selectViewEqPk"  resultMap="viewMap">
+	select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> = #{Dabh,jdbcType=CHAR,javaType=String}
+</select>
+
+<select id="selectViewInPk" resultType="ArrayList" resultMap="viewMap" >
+	select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> in
+	<foreach item="pk" collection="list" open="(" separator="," close=")"> #{pk} </foreach>
+	<include refid="orderby"/>
+</select>
+
+<select id="selectViewNotInPk" resultType="ArrayList" resultMap="viewMap" >
+	select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> not in
+	<foreach item="pk" collection="list" open="(" separator="," close=")"> #{pk} </foreach>
+	<include refid="orderby"/>
+</select>
+
+<select  id="selectViewAll"  resultType="ArrayList"  resultMap="viewMap">
+	select m.* <include refid="joinColums"/> from  <include refid="table" /> m <include refid="join"/>
+	<include refid="orderby"/>
+</select>
 
 </mapper>

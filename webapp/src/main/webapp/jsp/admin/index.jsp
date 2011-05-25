@@ -56,7 +56,7 @@ String adminMenuPath=basePath+"admin/Menu";
 		<div>item1</div>
 		<div>item2</div>
 	</div>
-		<div region="north"  split="false" style="height:100%;padding:10px;overflow: hidden;">
+		<div region="north"  split="false" style="height:100%;overflow: hidden;">
             <iframe src="<%=basePath %>layout/header.jsp" scrolling="no" frameborder="0"></iframe>
 		</div>
 		<!--  

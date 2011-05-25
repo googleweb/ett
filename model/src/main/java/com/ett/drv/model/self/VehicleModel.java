@@ -6,724 +6,718 @@ import com.smartken.kia.core.model.impl.BaseModel;
 
 public class VehicleModel extends BaseModel {
 
-	@Override
-	public Object generalPK() throws NullPointerException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	public static enum F{
-		xh,hpzl,hphm,clpp1,clxh,clpp2,gcjk,zzg,zzcmc,clsbdh,fdjh,
-		cllx,csys,syxz,sfzmhm,sfzmmc,syr,zsxzqh,zsxxdz,yzbm1,lxdh,
-		zzz,zzxzqh,zzxxdz,yzbm2,syq,ccdjrq,djrq,yxqz,qzbfqz,fzjg,
-		glbm,fprq,fzrq,fdjrq,fhgzrq,bxzzrq,bpcs,bzcs,bdjcs,djzsbh,
-		zdjzshs,dabh,xzqh,zt,zdyzt,dybj,jbr,clly,lsh,fdjxh,
-		rlzl,pl,gl,zxxs,cwkc,cwkk,cwkg,hxnbcd,hxnbkd,hxnbgd,
-		gbthps,zs,zj,qlj,hlj,ltgg,lts,zzl,zbzl,hdzzl,
-		hdzk,zqyzl,qpzk,hpzk,hbdbqk,ccrq,hdfs,llpz1,pzbh1,llpz2,
-		pzbh2,xsdw,xsjg,xsrq,jkpz,jkpzhm,hgzbh,nszm,nszmbh,gxrq,
-		xgzl,qmbh,hmbh,bz,jyw,yxh
-	}
 
+	 public static enum F { 
+		  Xh,Hpzl,Hphm,Clpp1,Clxh,Clpp2,Gcjk,Zzg,Zzcmc,Clsbdh,Fdjh,
+		Cllx,Csys,Syxz,Sfzmhm,Sfzmmc,Syr,Zsxzqh,Zsxxdz,Yzbm1,Lxdh,
+		Zzz,Zzxzqh,Zzxxdz,Yzbm2,Syq,Ccdjrq,Djrq,Yxqz,Qzbfqz,Fzjg,
+		Glbm,Fprq,Fzrq,Fdjrq,Fhgzrq,Bxzzrq,Bpcs,Bzcs,Bdjcs,Djzsbh,
+		Zdjzshs,Dabh,Xzqh,Zt,Zdyzt,Dybj,Jbr,Clly,Lsh,Fdjxh,
+		Rlzl,Pl,Gl,Zxxs,Cwkc,Cwkk,Cwkg,Hxnbcd,Hxnbkd,Hxnbgd,
+		Gbthps,Zs,Zj,Qlj,Hlj,Ltgg,Lts,Zzl,Zbzl,Hdzzl,
+		Hdzk,Zqyzl,Qpzk,Hpzk,Hbdbqk,Ccrq,Hdfs,Llpz1,Pzbh1,Llpz2,
+		Pzbh2,Xsdw,Xsjg,Xsrq,Jkpz,Jkpzhm,Hgzbh,Nszm,Nszmbh,Gxrq,
+		Xgzl,Qmbh,Hmbh,Bz,Jyw,Yxh  
+		 } 
 
-	private String xh;         //XH  CHAR 14
-	private String hpzl;         //HPZL  CHAR 2
-	private String hphm;         //HPHM  VARCHAR2 15
-	private String clpp1;         //CLPP1  VARCHAR2 32
-	private String clxh;         //CLXH  VARCHAR2 32
-	private String clpp2;         //CLPP2  VARCHAR2 32
-	private String gcjk;         //GCJK  CHAR 1
-	private String zzg;         //ZZG  CHAR 3
-	private String zzcmc;         //ZZCMC  VARCHAR2 84
-	private String clsbdh;         //CLSBDH  VARCHAR2 25
-	private String fdjh;         //FDJH  VARCHAR2 30
-	private String cllx;         //CLLX  CHAR 3
-	private String csys;         //CSYS  VARCHAR2 5
-	private String syxz;         //SYXZ  CHAR 1
-	private String sfzmhm;         //SFZMHM  VARCHAR2 18
-	private String sfzmmc;         //SFZMMC  CHAR 1
-	private String syr;         //SYR  VARCHAR2 128
-	private String zsxzqh;         //ZSXZQH  VARCHAR2 10
-	private String zsxxdz;         //ZSXXDZ  VARCHAR2 128
-	private String yzbm1;         //YZBM1  CHAR 6
-	private String lxdh;         //LXDH  VARCHAR2 20
-	private String zzz;         //ZZZ  VARCHAR2 18
-	private String zzxzqh;         //ZZXZQH  VARCHAR2 10
-	private String zzxxdz;         //ZZXXDZ  VARCHAR2 128
-	private String yzbm2;         //YZBM2  CHAR 6
-	private String syq;         //SYQ  CHAR 1
-	private Date ccdjrq;         //CCDJRQ  DATE 0
-	private Date djrq;         //DJRQ  DATE 0
-	private Date yxqz;         //YXQZ  DATE 0
-	private Date qzbfqz;         //QZBFQZ  DATE 0
-	private String fzjg;         //FZJG  VARCHAR2 10
-	private String glbm;         //GLBM  VARCHAR2 10
-	private Date fprq;         //FPRQ  DATE 0
-	private Date fzrq;         //FZRQ  DATE 0
-	private Date fdjrq;         //FDJRQ  DATE 0
-	private Date fhgzrq;         //FHGZRQ  DATE 0
-	private Date bxzzrq;         //BXZZRQ  DATE 0
-	private Integer bpcs;         //BPCS  NUMBER 2
-	private Integer bzcs;         //BZCS  NUMBER 2
-	private Integer bdjcs;         //BDJCS  NUMBER 2
-	private String djzsbh;         //DJZSBH  VARCHAR2 15
-	private Integer zdjzshs;         //ZDJZSHS  NUMBER 2
-	private String dabh;         //DABH  VARCHAR2 12
-	private String xzqh;         //XZQH  VARCHAR2 10
-	private String zt;         //ZT  VARCHAR2 6
-	private String zdyzt;         //ZDYZT  VARCHAR2 10
-	private String dybj;         //DYBJ  CHAR 1
-	private String jbr;         //JBR  VARCHAR2 30
-	private String clly;         //CLLY  CHAR 1
-	private String lsh;         //LSH  CHAR 11
-	private String fdjxh;         //FDJXH  VARCHAR2 20
-	private String rlzl;         //RLZL  VARCHAR2 3
-	private Integer pl;         //PL  NUMBER 4
-	private Integer gl;         //GL  NUMBER 5
-	private String zxxs;         //ZXXS  CHAR 1
-	private Integer cwkc;         //CWKC  NUMBER 5
-	private Integer cwkk;         //CWKK  NUMBER 4
-	private Integer cwkg;         //CWKG  NUMBER 4
-	private Integer hxnbcd;         //HXNBCD  NUMBER 5
-	private Integer hxnbkd;         //HXNBKD  NUMBER 4
-	private Integer hxnbgd;         //HXNBGD  NUMBER 4
-	private Integer gbthps;         //GBTHPS  NUMBER 3
-	private Integer zs;         //ZS  NUMBER 1
-	private Integer zj;         //ZJ  NUMBER 5
-	private Integer qlj;         //QLJ  NUMBER 4
-	private Integer hlj;         //HLJ  NUMBER 4
-	private String ltgg;         //LTGG  VARCHAR2 20
-	private Integer lts;         //LTS  NUMBER 2
-	private Integer zzl;         //ZZL  NUMBER 8
-	private Integer zbzl;         //ZBZL  NUMBER 8
-	private Integer hdzzl;         //HDZZL  NUMBER 8
-	private Integer hdzk;         //HDZK  NUMBER 3
-	private Integer zqyzl;         //ZQYZL  NUMBER 8
-	private Integer qpzk;         //QPZK  NUMBER 1
-	private Integer hpzk;         //HPZK  NUMBER 1
-	private String hbdbqk;         //HBDBQK  VARCHAR2 60
-	private Date ccrq;         //CCRQ  DATE 0
-	private String hdfs;         //HDFS  CHAR 1
-	private String llpz1;         //LLPZ1  CHAR 1
-	private String pzbh1;         //PZBH1  VARCHAR2 20
-	private String llpz2;         //LLPZ2  CHAR 1
-	private String pzbh2;         //PZBH2  VARCHAR2 20
-	private String xsdw;         //XSDW  VARCHAR2 64
-	private Integer xsjg;         //XSJG  NUMBER 8
-	private Date xsrq;         //XSRQ  DATE 0
-	private String jkpz;         //JKPZ  CHAR 1
-	private String jkpzhm;         //JKPZHM  VARCHAR2 20
-	private String hgzbh;         //HGZBH  VARCHAR2 20
-	private String nszm;         //NSZM  CHAR 1
-	private String nszmbh;         //NSZMBH  VARCHAR2 20
-	private Date gxrq;         //GXRQ  DATE 0
-	private String xgzl;         //XGZL  VARCHAR2 20
-	private String qmbh;         //QMBH  VARCHAR2 15
-	private String hmbh;         //HMBH  VARCHAR2 15
-	private String bz;         //BZ  VARCHAR2 128
-	private String jyw;         //JYW  VARCHAR2 32
-	private String yxh;         //YXH  VARCHAR2 14
-	
-	private String ztName;
-	private String hpzlName;
-	
-	
-	public String getXh() {
-		return xh;
-	}
-	public void setXh(String xh) {
-		this.xh = xh;
-	}
-	public String getHpzl() {
-		return hpzl;
-	}
-	public void setHpzl(String hpzl) {
-		this.hpzl = hpzl;
-	}
-	public String getHphm() {
-		return hphm;
-	}
-	public void setHphm(String hphm) {
-		this.hphm = hphm;
-	}
-	public String getClpp1() {
-		return clpp1;
-	}
-	public void setClpp1(String clpp1) {
-		this.clpp1 = clpp1;
-	}
-	public String getClxh() {
-		return clxh;
-	}
-	public void setClxh(String clxh) {
-		this.clxh = clxh;
-	}
-	public String getClpp2() {
-		return clpp2;
-	}
-	public void setClpp2(String clpp2) {
-		this.clpp2 = clpp2;
-	}
-	public String getGcjk() {
-		return gcjk;
-	}
-	public void setGcjk(String gcjk) {
-		this.gcjk = gcjk;
-	}
-	public String getZzg() {
-		return zzg;
-	}
-	public void setZzg(String zzg) {
-		this.zzg = zzg;
-	}
-	public String getZzcmc() {
-		return zzcmc;
-	}
-	public void setZzcmc(String zzcmc) {
-		this.zzcmc = zzcmc;
-	}
-	public String getClsbdh() {
-		return clsbdh;
-	}
-	public void setClsbdh(String clsbdh) {
-		this.clsbdh = clsbdh;
-	}
-	public String getFdjh() {
-		return fdjh;
-	}
-	public void setFdjh(String fdjh) {
-		this.fdjh = fdjh;
-	}
-	public String getCllx() {
-		return cllx;
-	}
-	public void setCllx(String cllx) {
-		this.cllx = cllx;
-	}
-	public String getCsys() {
-		return csys;
-	}
-	public void setCsys(String csys) {
-		this.csys = csys;
-	}
-	public String getSyxz() {
-		return syxz;
-	}
-	public void setSyxz(String syxz) {
-		this.syxz = syxz;
-	}
-	public String getSfzmhm() {
-		return sfzmhm;
-	}
-	public void setSfzmhm(String sfzmhm) {
-		this.sfzmhm = sfzmhm;
-	}
-	public String getSfzmmc() {
-		return sfzmmc;
-	}
-	public void setSfzmmc(String sfzmmc) {
-		this.sfzmmc = sfzmmc;
-	}
-	public String getSyr() {
-		return syr;
-	}
-	public void setSyr(String syr) {
-		this.syr = syr;
-	}
-	public String getZsxzqh() {
-		return zsxzqh;
-	}
-	public void setZsxzqh(String zsxzqh) {
-		this.zsxzqh = zsxzqh;
-	}
-	public String getZsxxdz() {
-		return zsxxdz;
-	}
-	public void setZsxxdz(String zsxxdz) {
-		this.zsxxdz = zsxxdz;
-	}
-	public String getYzbm1() {
-		return yzbm1;
-	}
-	public void setYzbm1(String yzbm1) {
-		this.yzbm1 = yzbm1;
-	}
-	public String getLxdh() {
-		return lxdh;
-	}
-	public void setLxdh(String lxdh) {
-		this.lxdh = lxdh;
-	}
-	public String getZzz() {
-		return zzz;
-	}
-	public void setZzz(String zzz) {
-		this.zzz = zzz;
-	}
-	public String getZzxzqh() {
-		return zzxzqh;
-	}
-	public void setZzxzqh(String zzxzqh) {
-		this.zzxzqh = zzxzqh;
-	}
-	public String getZzxxdz() {
-		return zzxxdz;
-	}
-	public void setZzxxdz(String zzxxdz) {
-		this.zzxxdz = zzxxdz;
-	}
-	public String getYzbm2() {
-		return yzbm2;
-	}
-	public void setYzbm2(String yzbm2) {
-		this.yzbm2 = yzbm2;
-	}
-	public String getSyq() {
-		return syq;
-	}
-	public void setSyq(String syq) {
-		this.syq = syq;
-	}
-	public Date getCcdjrq() {
-		return ccdjrq;
-	}
-	public void setCcdjrq(Date ccdjrq) {
-		this.ccdjrq = ccdjrq;
-	}
-	public Date getDjrq() {
-		return djrq;
-	}
-	public void setDjrq(Date djrq) {
-		this.djrq = djrq;
-	}
-	public Date getYxqz() {
-		return yxqz;
-	}
-	public void setYxqz(Date yxqz) {
-		this.yxqz = yxqz;
-	}
-	public Date getQzbfqz() {
-		return qzbfqz;
-	}
-	public void setQzbfqz(Date qzbfqz) {
-		this.qzbfqz = qzbfqz;
-	}
-	public String getFzjg() {
-		return fzjg;
-	}
-	public void setFzjg(String fzjg) {
-		this.fzjg = fzjg;
-	}
-	public String getGlbm() {
-		return glbm;
-	}
-	public void setGlbm(String glbm) {
-		this.glbm = glbm;
-	}
-	public Date getFprq() {
-		return fprq;
-	}
-	public void setFprq(Date fprq) {
-		this.fprq = fprq;
-	}
-	public Date getFzrq() {
-		return fzrq;
-	}
-	public void setFzrq(Date fzrq) {
-		this.fzrq = fzrq;
-	}
-	public Date getFdjrq() {
-		return fdjrq;
-	}
-	public void setFdjrq(Date fdjrq) {
-		this.fdjrq = fdjrq;
-	}
-	public Date getFhgzrq() {
-		return fhgzrq;
-	}
-	public void setFhgzrq(Date fhgzrq) {
-		this.fhgzrq = fhgzrq;
-	}
-	public Date getBxzzrq() {
-		return bxzzrq;
-	}
-	public void setBxzzrq(Date bxzzrq) {
-		this.bxzzrq = bxzzrq;
-	}
-	public Integer getBpcs() {
-		return bpcs;
-	}
-	public void setBpcs(Integer bpcs) {
-		this.bpcs = bpcs;
-	}
-	public Integer getBzcs() {
-		return bzcs;
-	}
-	public void setBzcs(Integer bzcs) {
-		this.bzcs = bzcs;
-	}
-	public Integer getBdjcs() {
-		return bdjcs;
-	}
-	public void setBdjcs(Integer bdjcs) {
-		this.bdjcs = bdjcs;
-	}
-	public String getDjzsbh() {
-		return djzsbh;
-	}
-	public void setDjzsbh(String djzsbh) {
-		this.djzsbh = djzsbh;
-	}
-	public Integer getZdjzshs() {
-		return zdjzshs;
-	}
-	public void setZdjzshs(Integer zdjzshs) {
-		this.zdjzshs = zdjzshs;
-	}
-	public String getDabh() {
-		return dabh;
-	}
-	public void setDabh(String dabh) {
-		this.dabh = dabh;
-	}
-	public String getXzqh() {
-		return xzqh;
-	}
-	public void setXzqh(String xzqh) {
-		this.xzqh = xzqh;
-	}
-	public String getZt() {
-		return zt;
-	}
-	public void setZt(String zt) {
-		this.zt = zt;
-	}
-	public String getZdyzt() {
-		return zdyzt;
-	}
-	public void setZdyzt(String zdyzt) {
-		this.zdyzt = zdyzt;
-	}
-	public String getDybj() {
-		return dybj;
-	}
-	public void setDybj(String dybj) {
-		this.dybj = dybj;
-	}
-	public String getJbr() {
-		return jbr;
-	}
-	public void setJbr(String jbr) {
-		this.jbr = jbr;
-	}
-	public String getClly() {
-		return clly;
-	}
-	public void setClly(String clly) {
-		this.clly = clly;
-	}
-	public String getLsh() {
-		return lsh;
-	}
-	public void setLsh(String lsh) {
-		this.lsh = lsh;
-	}
-	public String getFdjxh() {
-		return fdjxh;
-	}
-	public void setFdjxh(String fdjxh) {
-		this.fdjxh = fdjxh;
-	}
-	public String getRlzl() {
-		return rlzl;
-	}
-	public void setRlzl(String rlzl) {
-		this.rlzl = rlzl;
-	}
-	public Integer getPl() {
-		return pl;
-	}
-	public void setPl(Integer pl) {
-		this.pl = pl;
-	}
-	public Integer getGl() {
-		return gl;
-	}
-	public void setGl(Integer gl) {
-		this.gl = gl;
-	}
-	public String getZxxs() {
-		return zxxs;
-	}
-	public void setZxxs(String zxxs) {
-		this.zxxs = zxxs;
-	}
-	public Integer getCwkc() {
-		return cwkc;
-	}
-	public void setCwkc(Integer cwkc) {
-		this.cwkc = cwkc;
-	}
-	public Integer getCwkk() {
-		return cwkk;
-	}
-	public void setCwkk(Integer cwkk) {
-		this.cwkk = cwkk;
-	}
-	public Integer getCwkg() {
-		return cwkg;
-	}
-	public void setCwkg(Integer cwkg) {
-		this.cwkg = cwkg;
-	}
-	public Integer getHxnbcd() {
-		return hxnbcd;
-	}
-	public void setHxnbcd(Integer hxnbcd) {
-		this.hxnbcd = hxnbcd;
-	}
-	public Integer getHxnbkd() {
-		return hxnbkd;
-	}
-	public void setHxnbkd(Integer hxnbkd) {
-		this.hxnbkd = hxnbkd;
-	}
-	public Integer getHxnbgd() {
-		return hxnbgd;
-	}
-	public void setHxnbgd(Integer hxnbgd) {
-		this.hxnbgd = hxnbgd;
-	}
-	public Integer getGbthps() {
-		return gbthps;
-	}
-	public void setGbthps(Integer gbthps) {
-		this.gbthps = gbthps;
-	}
-	public Integer getZs() {
-		return zs;
-	}
-	public void setZs(Integer zs) {
-		this.zs = zs;
-	}
-	public Integer getZj() {
-		return zj;
-	}
-	public void setZj(Integer zj) {
-		this.zj = zj;
-	}
-	public Integer getQlj() {
-		return qlj;
-	}
-	public void setQlj(Integer qlj) {
-		this.qlj = qlj;
-	}
-	public Integer getHlj() {
-		return hlj;
-	}
-	public void setHlj(Integer hlj) {
-		this.hlj = hlj;
-	}
-	public String getLtgg() {
-		return ltgg;
-	}
-	public void setLtgg(String ltgg) {
-		this.ltgg = ltgg;
-	}
-	public Integer getLts() {
-		return lts;
-	}
-	public void setLts(Integer lts) {
-		this.lts = lts;
-	}
-	public Integer getZzl() {
-		return zzl;
-	}
-	public void setZzl(Integer zzl) {
-		this.zzl = zzl;
-	}
-	public Integer getZbzl() {
-		return zbzl;
-	}
-	public void setZbzl(Integer zbzl) {
-		this.zbzl = zbzl;
-	}
-	public Integer getHdzzl() {
-		return hdzzl;
-	}
-	public void setHdzzl(Integer hdzzl) {
-		this.hdzzl = hdzzl;
-	}
-	public Integer getHdzk() {
-		return hdzk;
-	}
-	public void setHdzk(Integer hdzk) {
-		this.hdzk = hdzk;
-	}
-	public Integer getZqyzl() {
-		return zqyzl;
-	}
-	public void setZqyzl(Integer zqyzl) {
-		this.zqyzl = zqyzl;
-	}
-	public Integer getQpzk() {
-		return qpzk;
-	}
-	public void setQpzk(Integer qpzk) {
-		this.qpzk = qpzk;
-	}
-	public Integer getHpzk() {
-		return hpzk;
-	}
-	public void setHpzk(Integer hpzk) {
-		this.hpzk = hpzk;
-	}
-	public String getHbdbqk() {
-		return hbdbqk;
-	}
-	public void setHbdbqk(String hbdbqk) {
-		this.hbdbqk = hbdbqk;
-	}
-	public Date getCcrq() {
-		return ccrq;
-	}
-	public void setCcrq(Date ccrq) {
-		this.ccrq = ccrq;
-	}
-	public String getHdfs() {
-		return hdfs;
-	}
-	public void setHdfs(String hdfs) {
-		this.hdfs = hdfs;
-	}
-	public String getLlpz1() {
-		return llpz1;
-	}
-	public void setLlpz1(String llpz1) {
-		this.llpz1 = llpz1;
-	}
-	public String getPzbh1() {
-		return pzbh1;
-	}
-	public void setPzbh1(String pzbh1) {
-		this.pzbh1 = pzbh1;
-	}
-	public String getLlpz2() {
-		return llpz2;
-	}
-	public void setLlpz2(String llpz2) {
-		this.llpz2 = llpz2;
-	}
-	public String getPzbh2() {
-		return pzbh2;
-	}
-	public void setPzbh2(String pzbh2) {
-		this.pzbh2 = pzbh2;
-	}
-	public String getXsdw() {
-		return xsdw;
-	}
-	public void setXsdw(String xsdw) {
-		this.xsdw = xsdw;
-	}
-	public Integer getXsjg() {
-		return xsjg;
-	}
-	public void setXsjg(Integer xsjg) {
-		this.xsjg = xsjg;
-	}
-	public Date getXsrq() {
-		return xsrq;
-	}
-	public void setXsrq(Date xsrq) {
-		this.xsrq = xsrq;
-	}
-	public String getJkpz() {
-		return jkpz;
-	}
-	public void setJkpz(String jkpz) {
-		this.jkpz = jkpz;
-	}
-	public String getJkpzhm() {
-		return jkpzhm;
-	}
-	public void setJkpzhm(String jkpzhm) {
-		this.jkpzhm = jkpzhm;
-	}
-	public String getHgzbh() {
-		return hgzbh;
-	}
-	public void setHgzbh(String hgzbh) {
-		this.hgzbh = hgzbh;
-	}
-	public String getNszm() {
-		return nszm;
-	}
-	public void setNszm(String nszm) {
-		this.nszm = nszm;
-	}
-	public String getNszmbh() {
-		return nszmbh;
-	}
-	public void setNszmbh(String nszmbh) {
-		this.nszmbh = nszmbh;
-	}
-	public Date getGxrq() {
-		return gxrq;
-	}
-	public void setGxrq(Date gxrq) {
-		this.gxrq = gxrq;
-	}
-	public String getXgzl() {
-		return xgzl;
-	}
-	public void setXgzl(String xgzl) {
-		this.xgzl = xgzl;
-	}
-	public String getQmbh() {
-		return qmbh;
-	}
-	public void setQmbh(String qmbh) {
-		this.qmbh = qmbh;
-	}
-	public String getHmbh() {
-		return hmbh;
-	}
-	public void setHmbh(String hmbh) {
-		this.hmbh = hmbh;
-	}
-	public String getBz() {
-		return bz;
-	}
-	public void setBz(String bz) {
-		this.bz = bz;
-	}
-	public String getJyw() {
-		return jyw;
-	}
-	public void setJyw(String jyw) {
-		this.jyw = jyw;
-	}
-	public String getYxh() {
-		return yxh;
-	}
-	public void setYxh(String yxh) {
-		this.yxh = yxh;
-	}
-	public String getZtName() {
-		return ztName;
-	}
-	public void setZtName(String ztName) {
-		this.ztName = ztName;
-	}
-	public String getHpzlName() {
-		return hpzlName;
-	}
-	public void setHpzlName(String hpzlName) {
-		this.hpzlName = hpzlName;
-	}
-	
-	
-	
+		private String Xh;         //XH  CHAR 14
+		private String Hpzl;         //HPZL  VARCHAR2 10
+		private String Hphm;         //HPHM  VARCHAR2 15
+		private String Clpp1;         //CLPP1  VARCHAR2 32
+		private String Clxh;         //CLXH  VARCHAR2 32
+		private String Clpp2;         //CLPP2  VARCHAR2 32
+		private String Gcjk;         //GCJK  CHAR 1
+		private String Zzg;         //ZZG  CHAR 3
+		private String Zzcmc;         //ZZCMC  VARCHAR2 84
+		private String Clsbdh;         //CLSBDH  VARCHAR2 25
+		private String Fdjh;         //FDJH  VARCHAR2 30
+		private String Cllx;         //CLLX  CHAR 3
+		private String Csys;         //CSYS  VARCHAR2 5
+		private String Syxz;         //SYXZ  CHAR 1
+		private String Sfzmhm;         //SFZMHM  VARCHAR2 18
+		private String Sfzmmc;         //SFZMMC  CHAR 1
+		private String Syr;         //SYR  VARCHAR2 128
+		private String Zsxzqh;         //ZSXZQH  VARCHAR2 10
+		private String Zsxxdz;         //ZSXXDZ  VARCHAR2 128
+		private String Yzbm1;         //YZBM1  CHAR 6
+		private String Lxdh;         //LXDH  VARCHAR2 20
+		private String Zzz;         //ZZZ  VARCHAR2 18
+		private String Zzxzqh;         //ZZXZQH  VARCHAR2 10
+		private String Zzxxdz;         //ZZXXDZ  VARCHAR2 128
+		private String Yzbm2;         //YZBM2  CHAR 6
+		private String Syq;         //SYQ  CHAR 1
+		private Date Ccdjrq;         //CCDJRQ  DATE 0
+		private Date Djrq;         //DJRQ  DATE 0
+		private Date Yxqz;         //YXQZ  DATE 0
+		private Date Qzbfqz;         //QZBFQZ  DATE 0
+		private String Fzjg;         //FZJG  VARCHAR2 10
+		private String Glbm;         //GLBM  VARCHAR2 10
+		private Date Fprq;         //FPRQ  DATE 0
+		private Date Fzrq;         //FZRQ  DATE 0
+		private Date Fdjrq;         //FDJRQ  DATE 0
+		private Date Fhgzrq;         //FHGZRQ  DATE 0
+		private Date Bxzzrq;         //BXZZRQ  DATE 0
+		private Integer Bpcs;         //BPCS  NUMBER 2
+		private Integer Bzcs;         //BZCS  NUMBER 2
+		private Integer Bdjcs;         //BDJCS  NUMBER 2
+		private String Djzsbh;         //DJZSBH  VARCHAR2 15
+		private Integer Zdjzshs;         //ZDJZSHS  NUMBER 2
+		private String Dabh;         //DABH  VARCHAR2 12
+		private String Xzqh;         //XZQH  VARCHAR2 10
+		private String Zt;         //ZT  VARCHAR2 6
+		private String Zdyzt;         //ZDYZT  VARCHAR2 10
+		private String Dybj;         //DYBJ  CHAR 1
+		private String Jbr;         //JBR  VARCHAR2 30
+		private String Clly;         //CLLY  CHAR 1
+		private String Lsh;         //LSH  CHAR 11
+		private String Fdjxh;         //FDJXH  VARCHAR2 20
+		private String Rlzl;         //RLZL  VARCHAR2 3
+		private Integer Pl;         //PL  NUMBER 4
+		private Integer Gl;         //GL  NUMBER 5
+		private String Zxxs;         //ZXXS  CHAR 1
+		private Integer Cwkc;         //CWKC  NUMBER 5
+		private Integer Cwkk;         //CWKK  NUMBER 4
+		private Integer Cwkg;         //CWKG  NUMBER 4
+		private Integer Hxnbcd;         //HXNBCD  NUMBER 5
+		private Integer Hxnbkd;         //HXNBKD  NUMBER 4
+		private Integer Hxnbgd;         //HXNBGD  NUMBER 4
+		private Integer Gbthps;         //GBTHPS  NUMBER 3
+		private Integer Zs;         //ZS  NUMBER 1
+		private Integer Zj;         //ZJ  NUMBER 5
+		private Integer Qlj;         //QLJ  NUMBER 4
+		private Integer Hlj;         //HLJ  NUMBER 4
+		private String Ltgg;         //LTGG  VARCHAR2 20
+		private Integer Lts;         //LTS  NUMBER 2
+		private Integer Zzl;         //ZZL  NUMBER 8
+		private Integer Zbzl;         //ZBZL  NUMBER 8
+		private Integer Hdzzl;         //HDZZL  NUMBER 8
+		private Integer Hdzk;         //HDZK  NUMBER 3
+		private Integer Zqyzl;         //ZQYZL  NUMBER 8
+		private Integer Qpzk;         //QPZK  NUMBER 1
+		private Integer Hpzk;         //HPZK  NUMBER 1
+		private String Hbdbqk;         //HBDBQK  VARCHAR2 60
+		private Date Ccrq;         //CCRQ  DATE 0
+		private String Hdfs;         //HDFS  CHAR 1
+		private String Llpz1;         //LLPZ1  CHAR 1
+		private String Pzbh1;         //PZBH1  VARCHAR2 20
+		private String Llpz2;         //LLPZ2  CHAR 1
+		private String Pzbh2;         //PZBH2  VARCHAR2 20
+		private String Xsdw;         //XSDW  VARCHAR2 64
+		private Integer Xsjg;         //XSJG  NUMBER 8
+		private Date Xsrq;         //XSRQ  DATE 0
+		private String Jkpz;         //JKPZ  CHAR 1
+		private String Jkpzhm;         //JKPZHM  VARCHAR2 20
+		private String Hgzbh;         //HGZBH  VARCHAR2 20
+		private String Nszm;         //NSZM  CHAR 1
+		private String Nszmbh;         //NSZMBH  VARCHAR2 20
+		private Date Gxrq;         //GXRQ  DATE 0
+		private String Xgzl;         //XGZL  VARCHAR2 20
+		private String Qmbh;         //QMBH  VARCHAR2 15
+		private String Hmbh;         //HMBH  VARCHAR2 15
+		private String Bz;         //BZ  VARCHAR2 128
+		private String Jyw;         //JYW  VARCHAR2 32
+		private String Yxh;         //YXH  VARCHAR2 14
+		
+		private String ztName;
+		private String hpzlName;
+
+		
+		
+		public String getXh() {
+			return Xh;
+		}
+		public void setXh(String xh) {
+			Xh = xh;
+		}
+		public String getHpzl() {
+			return Hpzl;
+		}
+		public void setHpzl(String hpzl) {
+			Hpzl = hpzl;
+		}
+		public String getHphm() {
+			return Hphm;
+		}
+		public void setHphm(String hphm) {
+			Hphm = hphm;
+		}
+		public String getClpp1() {
+			return Clpp1;
+		}
+		public void setClpp1(String clpp1) {
+			Clpp1 = clpp1;
+		}
+		public String getClxh() {
+			return Clxh;
+		}
+		public void setClxh(String clxh) {
+			Clxh = clxh;
+		}
+		public String getClpp2() {
+			return Clpp2;
+		}
+		public void setClpp2(String clpp2) {
+			Clpp2 = clpp2;
+		}
+		public String getGcjk() {
+			return Gcjk;
+		}
+		public void setGcjk(String gcjk) {
+			Gcjk = gcjk;
+		}
+		public String getZzg() {
+			return Zzg;
+		}
+		public void setZzg(String zzg) {
+			Zzg = zzg;
+		}
+		public String getZzcmc() {
+			return Zzcmc;
+		}
+		public void setZzcmc(String zzcmc) {
+			Zzcmc = zzcmc;
+		}
+		public String getClsbdh() {
+			return Clsbdh;
+		}
+		public void setClsbdh(String clsbdh) {
+			Clsbdh = clsbdh;
+		}
+		public String getFdjh() {
+			return Fdjh;
+		}
+		public void setFdjh(String fdjh) {
+			Fdjh = fdjh;
+		}
+		public String getCllx() {
+			return Cllx;
+		}
+		public void setCllx(String cllx) {
+			Cllx = cllx;
+		}
+		public String getCsys() {
+			return Csys;
+		}
+		public void setCsys(String csys) {
+			Csys = csys;
+		}
+		public String getSyxz() {
+			return Syxz;
+		}
+		public void setSyxz(String syxz) {
+			Syxz = syxz;
+		}
+		public String getSfzmhm() {
+			return Sfzmhm;
+		}
+		public void setSfzmhm(String sfzmhm) {
+			Sfzmhm = sfzmhm;
+		}
+		public String getSfzmmc() {
+			return Sfzmmc;
+		}
+		public void setSfzmmc(String sfzmmc) {
+			Sfzmmc = sfzmmc;
+		}
+		public String getSyr() {
+			return Syr;
+		}
+		public void setSyr(String syr) {
+			Syr = syr;
+		}
+		public String getZsxzqh() {
+			return Zsxzqh;
+		}
+		public void setZsxzqh(String zsxzqh) {
+			Zsxzqh = zsxzqh;
+		}
+		public String getZsxxdz() {
+			return Zsxxdz;
+		}
+		public void setZsxxdz(String zsxxdz) {
+			Zsxxdz = zsxxdz;
+		}
+		public String getYzbm1() {
+			return Yzbm1;
+		}
+		public void setYzbm1(String yzbm1) {
+			Yzbm1 = yzbm1;
+		}
+		public String getLxdh() {
+			return Lxdh;
+		}
+		public void setLxdh(String lxdh) {
+			Lxdh = lxdh;
+		}
+		public String getZzz() {
+			return Zzz;
+		}
+		public void setZzz(String zzz) {
+			Zzz = zzz;
+		}
+		public String getZzxzqh() {
+			return Zzxzqh;
+		}
+		public void setZzxzqh(String zzxzqh) {
+			Zzxzqh = zzxzqh;
+		}
+		public String getZzxxdz() {
+			return Zzxxdz;
+		}
+		public void setZzxxdz(String zzxxdz) {
+			Zzxxdz = zzxxdz;
+		}
+		public String getYzbm2() {
+			return Yzbm2;
+		}
+		public void setYzbm2(String yzbm2) {
+			Yzbm2 = yzbm2;
+		}
+		public String getSyq() {
+			return Syq;
+		}
+		public void setSyq(String syq) {
+			Syq = syq;
+		}
+		public Date getCcdjrq() {
+			return Ccdjrq;
+		}
+		public void setCcdjrq(Date ccdjrq) {
+			Ccdjrq = ccdjrq;
+		}
+		public Date getDjrq() {
+			return Djrq;
+		}
+		public void setDjrq(Date djrq) {
+			Djrq = djrq;
+		}
+		public Date getYxqz() {
+			return Yxqz;
+		}
+		public void setYxqz(Date yxqz) {
+			Yxqz = yxqz;
+		}
+		public Date getQzbfqz() {
+			return Qzbfqz;
+		}
+		public void setQzbfqz(Date qzbfqz) {
+			Qzbfqz = qzbfqz;
+		}
+		public String getFzjg() {
+			return Fzjg;
+		}
+		public void setFzjg(String fzjg) {
+			Fzjg = fzjg;
+		}
+		public String getGlbm() {
+			return Glbm;
+		}
+		public void setGlbm(String glbm) {
+			Glbm = glbm;
+		}
+		public Date getFprq() {
+			return Fprq;
+		}
+		public void setFprq(Date fprq) {
+			Fprq = fprq;
+		}
+		public Date getFzrq() {
+			return Fzrq;
+		}
+		public void setFzrq(Date fzrq) {
+			Fzrq = fzrq;
+		}
+		public Date getFdjrq() {
+			return Fdjrq;
+		}
+		public void setFdjrq(Date fdjrq) {
+			Fdjrq = fdjrq;
+		}
+		public Date getFhgzrq() {
+			return Fhgzrq;
+		}
+		public void setFhgzrq(Date fhgzrq) {
+			Fhgzrq = fhgzrq;
+		}
+		public Date getBxzzrq() {
+			return Bxzzrq;
+		}
+		public void setBxzzrq(Date bxzzrq) {
+			Bxzzrq = bxzzrq;
+		}
+		public Integer getBpcs() {
+			return Bpcs;
+		}
+		public void setBpcs(Integer bpcs) {
+			Bpcs = bpcs;
+		}
+		public Integer getBzcs() {
+			return Bzcs;
+		}
+		public void setBzcs(Integer bzcs) {
+			Bzcs = bzcs;
+		}
+		public Integer getBdjcs() {
+			return Bdjcs;
+		}
+		public void setBdjcs(Integer bdjcs) {
+			Bdjcs = bdjcs;
+		}
+		public String getDjzsbh() {
+			return Djzsbh;
+		}
+		public void setDjzsbh(String djzsbh) {
+			Djzsbh = djzsbh;
+		}
+		public Integer getZdjzshs() {
+			return Zdjzshs;
+		}
+		public void setZdjzshs(Integer zdjzshs) {
+			Zdjzshs = zdjzshs;
+		}
+		public String getDabh() {
+			return Dabh;
+		}
+		public void setDabh(String dabh) {
+			Dabh = dabh;
+		}
+		public String getXzqh() {
+			return Xzqh;
+		}
+		public void setXzqh(String xzqh) {
+			Xzqh = xzqh;
+		}
+		public String getZt() {
+			return Zt;
+		}
+		public void setZt(String zt) {
+			Zt = zt;
+		}
+		public String getZdyzt() {
+			return Zdyzt;
+		}
+		public void setZdyzt(String zdyzt) {
+			Zdyzt = zdyzt;
+		}
+		public String getDybj() {
+			return Dybj;
+		}
+		public void setDybj(String dybj) {
+			Dybj = dybj;
+		}
+		public String getJbr() {
+			return Jbr;
+		}
+		public void setJbr(String jbr) {
+			Jbr = jbr;
+		}
+		public String getClly() {
+			return Clly;
+		}
+		public void setClly(String clly) {
+			Clly = clly;
+		}
+		public String getLsh() {
+			return Lsh;
+		}
+		public void setLsh(String lsh) {
+			Lsh = lsh;
+		}
+		public String getFdjxh() {
+			return Fdjxh;
+		}
+		public void setFdjxh(String fdjxh) {
+			Fdjxh = fdjxh;
+		}
+		public String getRlzl() {
+			return Rlzl;
+		}
+		public void setRlzl(String rlzl) {
+			Rlzl = rlzl;
+		}
+		public Integer getPl() {
+			return Pl;
+		}
+		public void setPl(Integer pl) {
+			Pl = pl;
+		}
+		public Integer getGl() {
+			return Gl;
+		}
+		public void setGl(Integer gl) {
+			Gl = gl;
+		}
+		public String getZxxs() {
+			return Zxxs;
+		}
+		public void setZxxs(String zxxs) {
+			Zxxs = zxxs;
+		}
+		public Integer getCwkc() {
+			return Cwkc;
+		}
+		public void setCwkc(Integer cwkc) {
+			Cwkc = cwkc;
+		}
+		public Integer getCwkk() {
+			return Cwkk;
+		}
+		public void setCwkk(Integer cwkk) {
+			Cwkk = cwkk;
+		}
+		public Integer getCwkg() {
+			return Cwkg;
+		}
+		public void setCwkg(Integer cwkg) {
+			Cwkg = cwkg;
+		}
+		public Integer getHxnbcd() {
+			return Hxnbcd;
+		}
+		public void setHxnbcd(Integer hxnbcd) {
+			Hxnbcd = hxnbcd;
+		}
+		public Integer getHxnbkd() {
+			return Hxnbkd;
+		}
+		public void setHxnbkd(Integer hxnbkd) {
+			Hxnbkd = hxnbkd;
+		}
+		public Integer getHxnbgd() {
+			return Hxnbgd;
+		}
+		public void setHxnbgd(Integer hxnbgd) {
+			Hxnbgd = hxnbgd;
+		}
+		public Integer getGbthps() {
+			return Gbthps;
+		}
+		public void setGbthps(Integer gbthps) {
+			Gbthps = gbthps;
+		}
+		public Integer getZs() {
+			return Zs;
+		}
+		public void setZs(Integer zs) {
+			Zs = zs;
+		}
+		public Integer getZj() {
+			return Zj;
+		}
+		public void setZj(Integer zj) {
+			Zj = zj;
+		}
+		public Integer getQlj() {
+			return Qlj;
+		}
+		public void setQlj(Integer qlj) {
+			Qlj = qlj;
+		}
+		public Integer getHlj() {
+			return Hlj;
+		}
+		public void setHlj(Integer hlj) {
+			Hlj = hlj;
+		}
+		public String getLtgg() {
+			return Ltgg;
+		}
+		public void setLtgg(String ltgg) {
+			Ltgg = ltgg;
+		}
+		public Integer getLts() {
+			return Lts;
+		}
+		public void setLts(Integer lts) {
+			Lts = lts;
+		}
+		public Integer getZzl() {
+			return Zzl;
+		}
+		public void setZzl(Integer zzl) {
+			Zzl = zzl;
+		}
+		public Integer getZbzl() {
+			return Zbzl;
+		}
+		public void setZbzl(Integer zbzl) {
+			Zbzl = zbzl;
+		}
+		public Integer getHdzzl() {
+			return Hdzzl;
+		}
+		public void setHdzzl(Integer hdzzl) {
+			Hdzzl = hdzzl;
+		}
+		public Integer getHdzk() {
+			return Hdzk;
+		}
+		public void setHdzk(Integer hdzk) {
+			Hdzk = hdzk;
+		}
+		public Integer getZqyzl() {
+			return Zqyzl;
+		}
+		public void setZqyzl(Integer zqyzl) {
+			Zqyzl = zqyzl;
+		}
+		public Integer getQpzk() {
+			return Qpzk;
+		}
+		public void setQpzk(Integer qpzk) {
+			Qpzk = qpzk;
+		}
+		public Integer getHpzk() {
+			return Hpzk;
+		}
+		public void setHpzk(Integer hpzk) {
+			Hpzk = hpzk;
+		}
+		public String getHbdbqk() {
+			return Hbdbqk;
+		}
+		public void setHbdbqk(String hbdbqk) {
+			Hbdbqk = hbdbqk;
+		}
+		public Date getCcrq() {
+			return Ccrq;
+		}
+		public void setCcrq(Date ccrq) {
+			Ccrq = ccrq;
+		}
+		public String getHdfs() {
+			return Hdfs;
+		}
+		public void setHdfs(String hdfs) {
+			Hdfs = hdfs;
+		}
+		public String getLlpz1() {
+			return Llpz1;
+		}
+		public void setLlpz1(String llpz1) {
+			Llpz1 = llpz1;
+		}
+		public String getPzbh1() {
+			return Pzbh1;
+		}
+		public void setPzbh1(String pzbh1) {
+			Pzbh1 = pzbh1;
+		}
+		public String getLlpz2() {
+			return Llpz2;
+		}
+		public void setLlpz2(String llpz2) {
+			Llpz2 = llpz2;
+		}
+		public String getPzbh2() {
+			return Pzbh2;
+		}
+		public void setPzbh2(String pzbh2) {
+			Pzbh2 = pzbh2;
+		}
+		public String getXsdw() {
+			return Xsdw;
+		}
+		public void setXsdw(String xsdw) {
+			Xsdw = xsdw;
+		}
+		public Integer getXsjg() {
+			return Xsjg;
+		}
+		public void setXsjg(Integer xsjg) {
+			Xsjg = xsjg;
+		}
+		public Date getXsrq() {
+			return Xsrq;
+		}
+		public void setXsrq(Date xsrq) {
+			Xsrq = xsrq;
+		}
+		public String getJkpz() {
+			return Jkpz;
+		}
+		public void setJkpz(String jkpz) {
+			Jkpz = jkpz;
+		}
+		public String getJkpzhm() {
+			return Jkpzhm;
+		}
+		public void setJkpzhm(String jkpzhm) {
+			Jkpzhm = jkpzhm;
+		}
+		public String getHgzbh() {
+			return Hgzbh;
+		}
+		public void setHgzbh(String hgzbh) {
+			Hgzbh = hgzbh;
+		}
+		public String getNszm() {
+			return Nszm;
+		}
+		public void setNszm(String nszm) {
+			Nszm = nszm;
+		}
+		public String getNszmbh() {
+			return Nszmbh;
+		}
+		public void setNszmbh(String nszmbh) {
+			Nszmbh = nszmbh;
+		}
+		public Date getGxrq() {
+			return Gxrq;
+		}
+		public void setGxrq(Date gxrq) {
+			Gxrq = gxrq;
+		}
+		public String getXgzl() {
+			return Xgzl;
+		}
+		public void setXgzl(String xgzl) {
+			Xgzl = xgzl;
+		}
+		public String getQmbh() {
+			return Qmbh;
+		}
+		public void setQmbh(String qmbh) {
+			Qmbh = qmbh;
+		}
+		public String getHmbh() {
+			return Hmbh;
+		}
+		public void setHmbh(String hmbh) {
+			Hmbh = hmbh;
+		}
+		public String getBz() {
+			return Bz;
+		}
+		public void setBz(String bz) {
+			Bz = bz;
+		}
+		public String getJyw() {
+			return Jyw;
+		}
+		public void setJyw(String jyw) {
+			Jyw = jyw;
+		}
+		public String getYxh() {
+			return Yxh;
+		}
+		public void setYxh(String yxh) {
+			Yxh = yxh;
+		}
+		public String getZtName() {
+			return ztName;
+		}
+		public void setZtName(String ztName) {
+			this.ztName = ztName;
+		}
+		public String getHpzlName() {
+			return hpzlName;
+		}
+		public void setHpzlName(String hpzlName) {
+			this.hpzlName = hpzlName;
+		}
+		
+		
 	
 }

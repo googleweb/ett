@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2011-05-25 10:26:46
+	Create Date:2011-05-25 04:53:47
 	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
 	Model:com.ett.drv.model.admin.DictTypeModel 
 
@@ -29,7 +29,7 @@ ID,C_TYPENAME,C_DESCRIPTION
 </sql>
 
 <sql id="insertCols">
-#{Id,jdbcType=INTEGER,javaType=Integer},
+seq_dicttype.nextval,
 #{CTypename,jdbcType=VARCHAR,javaType=String},
 #{CDescription,jdbcType=VARCHAR,javaType=String},
 
@@ -37,8 +37,8 @@ ID,C_TYPENAME,C_DESCRIPTION
 
 <sql id="updateCols">
 <if test="pk neq null">ID=#{pk}</if>,
-C_TYPENAME=#{model.CTypename,jdbcType=VARCHAR,javaType=String},
-C_DESCRIPTION=#{model.CDescription,jdbcType=VARCHAR,javaType=String},
+C_TYPENAME=#{CTypename,jdbcType=VARCHAR,javaType=String},
+C_DESCRIPTION=#{CDescription,jdbcType=VARCHAR,javaType=String},
 
 </sql>
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2011-05-25 10:26:46
+	Create Date:2011-05-25 04:53:47
 	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
 	Model:com.ett.drv.model.self.HardwareModel 
 
@@ -44,7 +44,7 @@ C_BRAND,C_CATALOG,I_COM,I_DEVICE_ID,I_STOPBITS
 </sql>
 
 <sql id="insertCols">
-#{Id,jdbcType=INTEGER,javaType=Integer},
+seq_self_hardware.nextval,
 #{CCreateip,jdbcType=VARCHAR,javaType=String},
 #{TCreatetime,jdbcType=TIMESTAMP,javaType=Timestamp},
 #{CCreator,jdbcType=VARCHAR,javaType=String},
@@ -65,21 +65,21 @@ C_BRAND,C_CATALOG,I_COM,I_DEVICE_ID,I_STOPBITS
 
 <sql id="updateCols">
 <if test="pk neq null">ID=#{pk}</if>,
-C_CREATEIP=#{model.CCreateip,jdbcType=VARCHAR,javaType=String},
-T_CREATETIME=#{model.TCreatetime,jdbcType=TIMESTAMP,javaType=Timestamp},
-C_CREATOR=#{model.CCreator,jdbcType=VARCHAR,javaType=String},
-I_ISDELETED=#{model.IIsdeleted,jdbcType=INTEGER,javaType=Integer},
-C_DESCRIPTION=#{model.CDescription,jdbcType=VARCHAR,javaType=String},
-C_KEYWORDS=#{model.CKeywords,jdbcType=VARCHAR,javaType=String},
-C_MODIFIER=#{model.CModifier,jdbcType=VARCHAR,javaType=String},
-C_MODIFYIP=#{model.CModifyip,jdbcType=VARCHAR,javaType=String},
-T_MODIFYTIME=#{model.TModifytime,jdbcType=TIMESTAMP,javaType=Timestamp},
-I_BAUD=#{model.IBaud,jdbcType=INTEGER,javaType=Integer},
-C_BRAND=#{model.CBrand,jdbcType=VARCHAR,javaType=String},
-C_CATALOG=#{model.CCatalog,jdbcType=VARCHAR,javaType=String},
-I_COM=#{model.ICom,jdbcType=INTEGER,javaType=Integer},
-I_DEVICE_ID=#{model.IDeviceId,jdbcType=INTEGER,javaType=Integer},
-I_STOPBITS=#{model.IStopbits,jdbcType=INTEGER,javaType=Integer},
+C_CREATEIP=#{CCreateip,jdbcType=VARCHAR,javaType=String},
+T_CREATETIME=#{TCreatetime,jdbcType=TIMESTAMP,javaType=Timestamp},
+C_CREATOR=#{CCreator,jdbcType=VARCHAR,javaType=String},
+I_ISDELETED=#{IIsdeleted,jdbcType=INTEGER,javaType=Integer},
+C_DESCRIPTION=#{CDescription,jdbcType=VARCHAR,javaType=String},
+C_KEYWORDS=#{CKeywords,jdbcType=VARCHAR,javaType=String},
+C_MODIFIER=#{CModifier,jdbcType=VARCHAR,javaType=String},
+C_MODIFYIP=#{CModifyip,jdbcType=VARCHAR,javaType=String},
+T_MODIFYTIME=#{TModifytime,jdbcType=TIMESTAMP,javaType=Timestamp},
+I_BAUD=#{IBaud,jdbcType=INTEGER,javaType=Integer},
+C_BRAND=#{CBrand,jdbcType=VARCHAR,javaType=String},
+C_CATALOG=#{CCatalog,jdbcType=VARCHAR,javaType=String},
+I_COM=#{ICom,jdbcType=INTEGER,javaType=Integer},
+I_DEVICE_ID=#{IDeviceId,jdbcType=INTEGER,javaType=Integer},
+I_STOPBITS=#{IStopbits,jdbcType=INTEGER,javaType=Integer},
 
 </sql>
 

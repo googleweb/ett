@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2011-05-25 10:26:46
+	Create Date:2011-05-25 04:53:47
 	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
 	Model:com.ett.drv.model.booked.BookedLimitModel 
 
@@ -47,7 +47,7 @@ C_KSDD,I_TOTAL,I_USED_NUM,I_CHECKED_NUM,I_TPTOTAL,I_TPUSED_NUM,I_TPCHECKED_NUM,C
 </sql>
 
 <sql id="insertCols">
-#{Id,jdbcType=INTEGER,javaType=Integer},
+seq_yuyue_limit.nextval,
 #{IWeekNum,jdbcType=INTEGER,javaType=Integer},
 #{CCarType,jdbcType=VARCHAR,javaType=String},
 #{IDayofweek,jdbcType=INTEGER,javaType=Integer},
@@ -71,24 +71,24 @@ C_KSDD,I_TOTAL,I_USED_NUM,I_CHECKED_NUM,I_TPTOTAL,I_TPUSED_NUM,I_TPCHECKED_NUM,C
 
 <sql id="updateCols">
 <if test="pk neq null">ID=#{pk}</if>,
-I_WEEK_NUM=#{model.IWeekNum,jdbcType=INTEGER,javaType=Integer},
-C_CAR_TYPE=#{model.CCarType,jdbcType=VARCHAR,javaType=String},
-I_DAYOFWEEK=#{model.IDayofweek,jdbcType=INTEGER,javaType=Integer},
-I_KM=#{model.IKm,jdbcType=INTEGER,javaType=Integer},
-C_SCHOOL_CODE=#{model.CSchoolCode,jdbcType=VARCHAR,javaType=String},
-C_SCHOOL_NAME=#{model.CSchoolName,jdbcType=VARCHAR,javaType=String},
-DATE_KSRQ=#{model.DateKsrq,jdbcType=VARCHAR,javaType=String},
-C_KSCC_CODE=#{model.CKsccCode,jdbcType=VARCHAR,javaType=String},
-C_KSCC=#{model.CKscc,jdbcType=VARCHAR,javaType=String},
-C_KSDD_CODE=#{model.CKsddCode,jdbcType=VARCHAR,javaType=String},
-C_KSDD=#{model.CKsdd,jdbcType=VARCHAR,javaType=String},
-I_TOTAL=#{model.ITotal,jdbcType=INTEGER,javaType=Integer},
-I_USED_NUM=#{model.IUsedNum,jdbcType=INTEGER,javaType=Integer},
-I_CHECKED_NUM=#{model.ICheckedNum,jdbcType=INTEGER,javaType=Integer},
-I_TPTOTAL=#{model.ITptotal,jdbcType=INTEGER,javaType=Integer},
-I_TPUSED_NUM=#{model.ITpusedNum,jdbcType=INTEGER,javaType=Integer},
-I_TPCHECKED_NUM=#{model.ITpcheckedNum,jdbcType=INTEGER,javaType=Integer},
-C_OPERATOR=#{model.COperator,jdbcType=VARCHAR,javaType=String},
+I_WEEK_NUM=#{IWeekNum,jdbcType=INTEGER,javaType=Integer},
+C_CAR_TYPE=#{CCarType,jdbcType=VARCHAR,javaType=String},
+I_DAYOFWEEK=#{IDayofweek,jdbcType=INTEGER,javaType=Integer},
+I_KM=#{IKm,jdbcType=INTEGER,javaType=Integer},
+C_SCHOOL_CODE=#{CSchoolCode,jdbcType=VARCHAR,javaType=String},
+C_SCHOOL_NAME=#{CSchoolName,jdbcType=VARCHAR,javaType=String},
+DATE_KSRQ=#{DateKsrq,jdbcType=VARCHAR,javaType=String},
+C_KSCC_CODE=#{CKsccCode,jdbcType=VARCHAR,javaType=String},
+C_KSCC=#{CKscc,jdbcType=VARCHAR,javaType=String},
+C_KSDD_CODE=#{CKsddCode,jdbcType=VARCHAR,javaType=String},
+C_KSDD=#{CKsdd,jdbcType=VARCHAR,javaType=String},
+I_TOTAL=#{ITotal,jdbcType=INTEGER,javaType=Integer},
+I_USED_NUM=#{IUsedNum,jdbcType=INTEGER,javaType=Integer},
+I_CHECKED_NUM=#{ICheckedNum,jdbcType=INTEGER,javaType=Integer},
+I_TPTOTAL=#{ITptotal,jdbcType=INTEGER,javaType=Integer},
+I_TPUSED_NUM=#{ITpusedNum,jdbcType=INTEGER,javaType=Integer},
+I_TPCHECKED_NUM=#{ITpcheckedNum,jdbcType=INTEGER,javaType=Integer},
+C_OPERATOR=#{COperator,jdbcType=VARCHAR,javaType=String},
 
 </sql>
 

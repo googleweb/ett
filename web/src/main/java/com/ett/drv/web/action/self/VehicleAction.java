@@ -66,7 +66,7 @@ public class VehicleAction extends BaseSelfAction implements ModelDriven<BaseTra
 
 		String transact=_trModel.getTransact();
 		//VehicleModel vehmModel=null;
-		String xh=this.getParamter(VehicleModel.F.xh.name());
+		String xh=this.getParamter(VehicleModel.F.Xh.name());
 		ArrayList<VehicleModel> listCars= (ArrayList<VehicleModel>) this.getHttpSession().getAttribute(ESessionKey.driverCars.name());
 		for(Iterator<VehicleModel> it=listCars.iterator();it.hasNext();){
 			VehicleModel tmpVheModel=it.next();

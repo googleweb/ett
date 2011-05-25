@@ -75,7 +75,7 @@ String selfVehiclePath=basePath+"self/Vehicle";
 
         <th style="width: 15%">机动车状态</th>
 
-        <td ><%=vehModel.getZtName() %></td>
+        <td ><%=vehModel.getZtName()  %></td>
 
       </tr>
 

@@ -10,6 +10,8 @@ import javax.crypto.spec.IvParameterSpec;
 
 import com.ett.drv.mapper.admin.*;
 import com.ett.drv.mapper.booked.*;
+import com.ett.drv.mapper.dict.IDrvCodeMapper;
+import com.ett.drv.mapper.dict.IVehCodeMapper;
 import com.ett.drv.mapper.self.IDeviceMapper;
 import com.ett.drv.mapper.self.IDeviceSnMapper;
 import com.ett.drv.mapper.self.IDrivingLicenseMapper;
@@ -28,6 +30,8 @@ import com.ett.drv.mapper.self.IVehFlowMapper;
 import com.ett.drv.mapper.self.IVehicleMapper;
 import com.ett.drv.model.admin.*;
 import com.ett.drv.model.booked.*;
+import com.ett.drv.model.dict.DrvCodeModel;
+import com.ett.drv.model.dict.VehCodeModel;
 import com.ett.drv.model.self.DeviceModel;
 import com.ett.drv.model.self.DeviceSnModel;
 import com.ett.drv.model.self.DrivingLicenseModel;
@@ -64,50 +68,55 @@ public class GenMapperTool {
 	    ,TABLE_SELF_DEVICE,TABLE_SELF_DEVICE_SN,TABLE_SELF_HARD
 	}
 	
+	public static enum Seqs{
+		seq_bus_all_info,seq_buslog,seq_car_owner_change_info,seq_department,seq_dict,seq_dicttype,seq_extra_assign,seq_fp_approve,seq_role,seq_school_car_info
+		,seq_self_device,seq_self_devicesn,seq_self_hardware,seq_self_transact_driver,seq_self_transact_vehicle,seq_student,seq_table_person_change_info
+		,seq_user,seq_week_record,seq_yuyue_day_limit,seq_yuyue_info,seq_yuyue_limit
+	}
+	
+	public static String NEXTVAL=".nextval";
+	
 	public static Map<Table,MapperTemplate> getMappers(Connection con,Class<? extends MapperTemplate> cls){
 		MapperFactory mf=new MapperFactory(con,cls);
 		Map<Table,MapperTemplate> mappers=new HashMap<Table, MapperTemplate>();
 		try{
-//		mappers.put(Table.DRV_ADMIN_MENU,mf.createMapperTemplate(Table.DRV_ADMIN_MENU.name().toUpperCase(), "id".toUpperCase(),IMenuMapper.class, MenuModel.class ));
-//		mappers.put(Table.TABLE_BUS_ALL_INFO,mf.createMapperTemplate(Table.TABLE_BUS_ALL_INFO.name().toUpperCase(), "id".toUpperCase(),IBusAllInfoMapper.class, BusAllInfoModel.class ));
-//		mappers.put(Table.TABLE_BUSLOGS,mf.createMapperTemplate(Table.TABLE_BUSLOGS.name().toUpperCase(), "id".toUpperCase(),IBusLogMapper.class, BusLogModel.class ));
-//		mappers.put(Table.TABLE_CAR_OWNER_CHANGE_INFO,mf.createMapperTemplate(Table.TABLE_CAR_OWNER_CHANGE_INFO.name().toUpperCase(), "id".toUpperCase(),ICarOwnerChangeMapper.class, CarOwnerChangeModel.class ));
-//		mappers.put(Table.TABLE_DEPARTMENTS,mf.createMapperTemplate(Table.TABLE_DEPARTMENTS.name().toUpperCase(), "id".toUpperCase(),IDepartmentMapper.class, DepartmentModel.class ));
-//		mappers.put(Table.TABLE_DICTS,mf.createMapperTemplate(Table.TABLE_DICTS.name().toUpperCase(), "id".toUpperCase(),IDictMapper.class,DictModel.class ));
-//		mappers.put(Table.TABLE_DICTTYPE,mf.createMapperTemplate(Table.TABLE_DICTTYPE.name().toUpperCase(), "id".toUpperCase(),IDictTypeMapper.class, DictTypeModel.class ));
-//		mappers.put(Table.TABLE_EXTRA_ASSIGN,mf.createMapperTemplate(Table.TABLE_EXTRA_ASSIGN.name().toUpperCase(), "id".toUpperCase(),IExtraAssignMapper.class, ExtraAssignModel.class ));
-//		mappers.put(Table.TABLE_PERSON_CHANGE_INFO,mf.createMapperTemplate(Table.TABLE_PERSON_CHANGE_INFO.name().toUpperCase(), "id".toUpperCase(),IPersonChangeMapper.class, PersonChangeModel.class ));
-//		mappers.put(Table.TABLE_ROLES,mf.createMapperTemplate(Table.TABLE_ROLES.name().toUpperCase(), "id".toUpperCase(),IRoleMapper.class, RoleModel.class ));
-//		mappers.put(Table.TABLE_SCHOOL_CAR_INFO,mf.createMapperTemplate(Table.TABLE_SCHOOL_CAR_INFO.name().toUpperCase(), "id".toUpperCase(),ISchoolCarMapper.class, SchoolCarModel.class ));
-//		mappers.put(Table.TABLE_USERS,mf.createMapperTemplate(Table.TABLE_USERS.name().toUpperCase(), "id".toUpperCase(),IUserMapper.class, UserModel.class ));
-//		mappers.put(Table.TABLE_WEEK_RECORD,mf.createMapperTemplate(Table.TABLE_WEEK_RECORD.name().toUpperCase(), "id".toUpperCase(),IWeekRecordMapper.class, BookedWeekRecordModel.class ));
-//		mappers.put(Table.TABLE_YUYUE_DAY_LIMIT,mf.createMapperTemplate(Table.TABLE_YUYUE_DAY_LIMIT.name().toUpperCase(), "id".toUpperCase(),IBookedDayLimitMapper.class, BookedDayLimitModel.class ));
-//		mappers.put(Table.TABLE_YUYUE_INFO,mf.createMapperTemplate(Table.TABLE_YUYUE_INFO.name().toUpperCase(), "id".toUpperCase(),IOrderInfoMapper.class, BookedOrderInfoModel .class ));
-//		mappers.put(Table.TABLE_YUYUE_LIMIT,mf.createMapperTemplate(Table.TABLE_YUYUE_LIMIT.name().toUpperCase(), "id".toUpperCase(),ILimitMapper.class, BookedLimitModel.class ));
-//		mappers.put(Table.SELF_SYS_DEVICE,mf.createMapperTemplate(Table.SELF_SYS_DEVICE.name().toUpperCase(), "id".toUpperCase(),IDeviceMapper.class, DeviceModel.class ));
-//		mappers.put(Table.SELF_SYS_TERMINAL,mf.createMapperTemplate(Table.SELF_SYS_TERMINAL.name().toUpperCase(), "id".toUpperCase(),ITerminalMapper.class, TerminalModel.class ));
-//		mappers.put(Table.PIC,mf.createMapperTemplate(Table.PIC.name().toUpperCase(), "id".toUpperCase(),IPicMapper.class, PicModel.class ));
-//		mappers.put(Table.SELF_TRANSACT_DRIVER,mf.createMapperTemplate(Table.SELF_TRANSACT_DRIVER.name().toUpperCase(), "flow_no".toUpperCase(),ITransactDriverMapper.class, TransactDriverModel.class ));
-//		mappers.put(Table.SELF_TRANSACT_VEHICLE,mf.createMapperTemplate(Table.SELF_TRANSACT_VEHICLE.name().toUpperCase(), "flow_no".toUpperCase(),ITransactVehicleMapper.class, TransactVehicleModel.class ));
-		mappers.put(Table.SELF_TRANSACT_RESOURCE,mf.createMapperTemplate(Table.SELF_TRANSACT_RESOURCE.name().toUpperCase(), "flow_no".toUpperCase(),ITransactResourceMapper.class, TransactResourceModel.class ,"seq.nextval"));
-//
-//		mappers.put(Table.PERSON,mf.createMapperTemplate(Table.PERSON.name().toUpperCase(), "id".toUpperCase(),IPersonMapper.class, PersonModel.class ));
-//		mappers.put(Table.DRV_FLOW,mf.createMapperTemplate(Table.DRV_FLOW.name().toUpperCase(), "id".toUpperCase(),IDrvFlowMapper.class, DrvFlowModel.class ));
-//		mappers.put(Table.DRIVINGLICENSE,mf.createMapperTemplate(Table.DRIVINGLICENSE.name().toUpperCase(), "dabh".toUpperCase(),IDrivingLicenseMapper.class, DrivingLicenseModel.class ));
-//
-//		mappers.put(Table.VEHICLE,mf.createMapperTemplate(Table.VEHICLE.name().toUpperCase(), "xh".toUpperCase(),IVehicleMapper.class, VehicleModel.class ));
-//		
-//		mappers.put(Table.VEH_FLOW,mf.createMapperTemplate(Table.VEH_FLOW.name().toUpperCase(), "lsh".toUpperCase(),IVehFlowMapper.class, VehFlowModel.class ));
-//		mappers.put(Table.VEH_CODE,mf.createMapperTemplate(Table.VEH_CODE.name().toUpperCase(), "lsh".toUpperCase(),IVehFlowMapper.class, VehFlowModel.class ));
-//		mappers.put(Table.DRV_CODE,mf.createMapperTemplate(Table.DRV_CODE.name().toUpperCase(), "lsh".toUpperCase(),IVehFlowMapper.class, VehFlowModel.class ));
-//		    
-//		mappers.put(Table.TABLE_SELF_KM1_CHECK_RECORD,mf.createMapperTemplate(Table.TABLE_SELF_KM1_CHECK_RECORD.name().toUpperCase(), "id".toUpperCase(),IKm1CheckRecordMapper.class, Km1CheckRecordModel.class ));
-//		mappers.put(Table.TABLE_SELF_KM1_PREASIGN_RECORD,mf.createMapperTemplate(Table.TABLE_SELF_KM1_PREASIGN_RECORD.name().toUpperCase(), "id".toUpperCase(),IKm1PreasignRecordMapper.class, Km1PreasignRecordModel.class ));
-//		mappers.put(Table.TABLE_SELF_FEE_LOG,mf.createMapperTemplate(Table.TABLE_SELF_FEE_LOG.name().toUpperCase(), "id".toUpperCase(),IFeeLogMapper.class, FeeLogModel.class ));
-//
-//		mappers.put(Table.TABLE_SELF_DEVICE,mf.createMapperTemplate(Table.TABLE_SELF_DEVICE.name().toUpperCase(), "id".toUpperCase(),IDeviceMapper.class, DeviceModel.class ));
-//		mappers.put(Table.TABLE_SELF_DEVICE_SN,mf.createMapperTemplate(Table.TABLE_SELF_DEVICE_SN.name().toUpperCase(), "id".toUpperCase(),IDeviceSnMapper.class, DeviceSnModel.class ));
-//		mappers.put(Table.TABLE_SELF_HARD,mf.createMapperTemplate(Table.TABLE_SELF_HARD.name().toUpperCase(), "id".toUpperCase(),IHardwareMapper.class, HardwareModel.class ));
+		mappers.put(Table.DRV_ADMIN_MENU,mf.createMapperTemplate(Table.DRV_ADMIN_MENU.name().toUpperCase(), "id".toUpperCase(),IMenuMapper.class, MenuModel.class ));
+		mappers.put(Table.TABLE_BUS_ALL_INFO,mf.createMapperTemplate(Table.TABLE_BUS_ALL_INFO.name().toUpperCase(), "id".toUpperCase(),IBusAllInfoMapper.class, BusAllInfoModel.class,Seqs.seq_bus_all_info+NEXTVAL ));
+		mappers.put(Table.TABLE_BUSLOGS,mf.createMapperTemplate(Table.TABLE_BUSLOGS.name().toUpperCase(), "id".toUpperCase(),IBusLogMapper.class, BusLogModel.class,Seqs.seq_buslog+NEXTVAL ));
+		mappers.put(Table.TABLE_CAR_OWNER_CHANGE_INFO,mf.createMapperTemplate(Table.TABLE_CAR_OWNER_CHANGE_INFO.name().toUpperCase(), "id".toUpperCase(),ICarOwnerChangeMapper.class, CarOwnerChangeModel.class,Seqs.seq_car_owner_change_info+NEXTVAL ));
+		mappers.put(Table.TABLE_DEPARTMENTS,mf.createMapperTemplate(Table.TABLE_DEPARTMENTS.name().toUpperCase(), "id".toUpperCase(),IDepartmentMapper.class, DepartmentModel.class,Seqs.seq_department+NEXTVAL ));
+		mappers.put(Table.TABLE_DICTS,mf.createMapperTemplate(Table.TABLE_DICTS.name().toUpperCase(), "id".toUpperCase(),IDictMapper.class,DictModel.class,Seqs.seq_dict+NEXTVAL ));
+		mappers.put(Table.TABLE_DICTTYPE,mf.createMapperTemplate(Table.TABLE_DICTTYPE.name().toUpperCase(), "id".toUpperCase(),IDictTypeMapper.class, DictTypeModel.class,Seqs.seq_dicttype+NEXTVAL ));
+		mappers.put(Table.TABLE_EXTRA_ASSIGN,mf.createMapperTemplate(Table.TABLE_EXTRA_ASSIGN.name().toUpperCase(), "id".toUpperCase(),IExtraAssignMapper.class, ExtraAssignModel.class,Seqs.seq_extra_assign+NEXTVAL ));
+		mappers.put(Table.TABLE_PERSON_CHANGE_INFO,mf.createMapperTemplate(Table.TABLE_PERSON_CHANGE_INFO.name().toUpperCase(), "id".toUpperCase(),IPersonChangeMapper.class, PersonChangeModel.class ));
+		mappers.put(Table.TABLE_ROLES,mf.createMapperTemplate(Table.TABLE_ROLES.name().toUpperCase(), "id".toUpperCase(),IRoleMapper.class, RoleModel.class,Seqs.seq_role+NEXTVAL ));
+		mappers.put(Table.TABLE_SCHOOL_CAR_INFO,mf.createMapperTemplate(Table.TABLE_SCHOOL_CAR_INFO.name().toUpperCase(), "id".toUpperCase(),ISchoolCarMapper.class, SchoolCarModel.class,Seqs.seq_school_car_info+NEXTVAL ));
+		mappers.put(Table.TABLE_USERS,mf.createMapperTemplate(Table.TABLE_USERS.name().toUpperCase(), "id".toUpperCase(),IUserMapper.class, UserModel.class,Seqs.seq_user+NEXTVAL ));
+		mappers.put(Table.TABLE_WEEK_RECORD,mf.createMapperTemplate(Table.TABLE_WEEK_RECORD.name().toUpperCase(), "id".toUpperCase(),IWeekRecordMapper.class, BookedWeekRecordModel.class,Seqs.seq_week_record+NEXTVAL ));
+		mappers.put(Table.TABLE_YUYUE_DAY_LIMIT,mf.createMapperTemplate(Table.TABLE_YUYUE_DAY_LIMIT.name().toUpperCase(), "id".toUpperCase(),IBookedDayLimitMapper.class, BookedDayLimitModel.class,Seqs.seq_yuyue_day_limit+NEXTVAL ));
+		mappers.put(Table.TABLE_YUYUE_INFO,mf.createMapperTemplate(Table.TABLE_YUYUE_INFO.name().toUpperCase(), "id".toUpperCase(),IOrderInfoMapper.class, BookedOrderInfoModel .class,Seqs.seq_yuyue_info+NEXTVAL ));
+		mappers.put(Table.TABLE_YUYUE_LIMIT,mf.createMapperTemplate(Table.TABLE_YUYUE_LIMIT.name().toUpperCase(), "id".toUpperCase(),ILimitMapper.class, BookedLimitModel.class,Seqs.seq_yuyue_limit+NEXTVAL ));
+		mappers.put(Table.SELF_TRANSACT_DRIVER,mf.createMapperTemplate(Table.SELF_TRANSACT_DRIVER.name().toUpperCase(), "flow_no".toUpperCase(),ITransactDriverMapper.class, TransactDriverModel.class ,Seqs.seq_self_transact_driver+NEXTVAL));
+		mappers.put(Table.SELF_TRANSACT_VEHICLE,mf.createMapperTemplate(Table.SELF_TRANSACT_VEHICLE.name().toUpperCase(), "flow_no".toUpperCase(),ITransactVehicleMapper.class, TransactVehicleModel.class,Seqs.seq_self_transact_vehicle+NEXTVAL ));
+		mappers.put(Table.SELF_TRANSACT_RESOURCE,mf.createMapperTemplate(Table.SELF_TRANSACT_RESOURCE.name().toUpperCase(), "flow_no".toUpperCase(),ITransactResourceMapper.class, TransactResourceModel.class ));
+
+		mappers.put(Table.PERSON,mf.createMapperTemplate(Table.PERSON.name().toUpperCase(), "id".toUpperCase(),IPersonMapper.class, PersonModel.class ));
+		mappers.put(Table.DRV_FLOW,mf.createMapperTemplate(Table.DRV_FLOW.name().toUpperCase(), "lsh".toUpperCase(),IDrvFlowMapper.class, DrvFlowModel.class ));
+		mappers.put(Table.DRIVINGLICENSE,mf.createMapperTemplate(Table.DRIVINGLICENSE.name().toUpperCase(), "dabh".toUpperCase(),IDrivingLicenseMapper.class, DrivingLicenseModel.class ));
+
+		mappers.put(Table.VEHICLE,mf.createMapperTemplate(Table.VEHICLE.name().toUpperCase(), "xh".toUpperCase(),IVehicleMapper.class, VehicleModel.class ));
+		
+		mappers.put(Table.VEH_FLOW,mf.createMapperTemplate(Table.VEH_FLOW.name().toUpperCase(), "lsh".toUpperCase(),IVehFlowMapper.class, VehFlowModel.class ));
+		mappers.put(Table.VEH_CODE,mf.createMapperTemplate(Table.VEH_CODE.name().toUpperCase(), "dmz".toUpperCase(),IVehCodeMapper.class, VehCodeModel.class ));
+		mappers.put(Table.DRV_CODE,mf.createMapperTemplate(Table.DRV_CODE.name().toUpperCase(), "dmz".toUpperCase(),IDrvCodeMapper.class, DrvCodeModel.class ));
+		    
+		mappers.put(Table.TABLE_SELF_KM1_CHECK_RECORD,mf.createMapperTemplate(Table.TABLE_SELF_KM1_CHECK_RECORD.name().toUpperCase(), "id".toUpperCase(),IKm1CheckRecordMapper.class, Km1CheckRecordModel.class ));
+		mappers.put(Table.TABLE_SELF_KM1_PREASIGN_RECORD,mf.createMapperTemplate(Table.TABLE_SELF_KM1_PREASIGN_RECORD.name().toUpperCase(), "id".toUpperCase(),IKm1PreasignRecordMapper.class, Km1PreasignRecordModel.class ));
+		mappers.put(Table.TABLE_SELF_FEE_LOG,mf.createMapperTemplate(Table.TABLE_SELF_FEE_LOG.name().toUpperCase(), "id".toUpperCase(),IFeeLogMapper.class, FeeLogModel.class ));
+
+		mappers.put(Table.TABLE_SELF_DEVICE,mf.createMapperTemplate(Table.TABLE_SELF_DEVICE.name().toUpperCase(), "id".toUpperCase(),IDeviceMapper.class, DeviceModel.class,Seqs.seq_self_device+NEXTVAL ));
+		mappers.put(Table.TABLE_SELF_DEVICE_SN,mf.createMapperTemplate(Table.TABLE_SELF_DEVICE_SN.name().toUpperCase(), "id".toUpperCase(),IDeviceSnMapper.class, DeviceSnModel.class,Seqs.seq_self_devicesn+NEXTVAL ));
+		mappers.put(Table.TABLE_SELF_HARD,mf.createMapperTemplate(Table.TABLE_SELF_HARD.name().toUpperCase(), "id".toUpperCase(),IHardwareMapper.class, HardwareModel.class,Seqs.seq_self_hardware+NEXTVAL ));
 		}catch(Exception ex){ex.printStackTrace();}
 		
 		return mappers;
@@ -117,8 +126,8 @@ public class GenMapperTool {
 		Connection c=null;
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
-			//c=  DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:oradrvde", "drv_admin", "stjj117");
-			c=  DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:oradrvde", "aspnet", "stjj117");
+			c=  DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:oradrvde", "drv_admin", "stjj117");
+			//c=  DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:oradrvde", "aspnet", "stjj117");
 			//c=  DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "hrsystem", "ken147");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -131,13 +140,13 @@ public class GenMapperTool {
 		Map<Table, MapperTemplate> mappers=getMappers(getConnection(), OracleMapperTemplate.class);
 		String srcPath="D:/tempProject/ett/dao/src/main/java/";
 		Table[] enTables=Table.values();
-	//	for (Enum<Table> et : enTables) {
-	//		try{
-	//		MapperTemplate mapper=mappers.get(et);
-		    MapperTemplate mapper=mappers.get(Table.SELF_TRANSACT_RESOURCE);
+		for (Enum<Table> et : enTables) {
+			try{
+			MapperTemplate mapper=mappers.get(et);
+		 //   MapperTemplate mapper=mappers.get(Table.DRV_FLOW);
 			System.out.println(mapper.generalMapplerXML(srcPath,"oracle"));
-	//		}catch(Exception ex){}
-	//	}
+			}catch(Exception ex){}
+		}
 
 		
 		

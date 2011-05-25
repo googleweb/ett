@@ -67,4 +67,20 @@ public class MD5Encrypt implements IEncrypt {
 		throw new Exception("can't use this method!");
 	}
 
+	
+	public static void main(String[] args){
+
+		try {
+			MD5Encrypt md5=new MD5Encrypt();
+			DESEncrypt des=new DESEncrypt();
+			String password="123456";
+			System.out.println(password+":"+md5.encrypt(password));
+			System.out.println(password+":"+des.encrypt(password));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	
 }
