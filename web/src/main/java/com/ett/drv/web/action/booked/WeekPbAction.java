@@ -108,7 +108,7 @@ public class WeekPbAction extends BaseAction implements ModelDriven<BookedWeekRe
 	
 	public void datagrid_weekRecords() throws Exception{
 		bookedBiz.loadCrudMapper(BookedWeekRecordModel.class);
-		ArrayList lListWeekRecords=bookedBiz.getModel();
+		List lListWeekRecords=bookedBiz.getModel();
 		JSONArray lListJson=ObjectUtil.toJsonArray(lListWeekRecords);
 		writeHTML(EasyUiUtil.toJsonDataGrid(lListJson,bookedBiz.count()).toString());
 
@@ -256,7 +256,7 @@ public class WeekPbAction extends BaseAction implements ModelDriven<BookedWeekRe
 		String ids=this.getParameter("ids");
 		ArrayList listIds=StringUtil.splitToList(ids, ",");
 		bookedBiz.loadCrudMapper(BookedWeekRecordModel.class);
-		ArrayList<BookedWeekRecordModel> listWeekRecords=bookedBiz.getModelInPk(listIds);
+		List<BookedWeekRecordModel> listWeekRecords=bookedBiz.getModelInPk(listIds);
 		int verifyCount=0;
         for (BookedWeekRecordModel weekRecord : listWeekRecords) {
 			weekRecord.setIChecked(BookedWeekRecordModel.CHECKED_VAILDATE);

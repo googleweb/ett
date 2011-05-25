@@ -2,6 +2,7 @@ package com.ett.drv.web.action.self;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.ett.model.DrvUser;
 import com.ett.self.BaseSelfAction;
@@ -87,7 +88,7 @@ public class IdentityAction extends BaseSelfAction implements ModelDriven<BaseTr
 		    DrivingLicenseModel query=new DrivingLicenseModel();
 		    query.setSfzmhm(sfzmhm);
 
-			ArrayList listDrvL = selfBiz.getModel(query);
+			List listDrvL = selfBiz.getModel(query);
 			if(listDrvL.size()>0){
 			  drlModel=(DrivingLicenseModel) listDrvL.get(0);	   
 			}else {
@@ -103,7 +104,7 @@ public class IdentityAction extends BaseSelfAction implements ModelDriven<BaseTr
 			   this.selfBiz.loadCrudMapper(VehicleModel.class);
 			   VehicleModel query=new VehicleModel();
 			   query.setSfzmhm(sfzmhm);
-				ArrayList driverCars=selfBiz.getModel(query);
+				List driverCars=selfBiz.getModel(query);
 				this.setHttpSession(ESessionKey.driverCars.name(),driverCars );
 				if(driverCars==null|| driverCars.size()==0){
 					return EJsp.error.name();
@@ -252,11 +253,11 @@ public class IdentityAction extends BaseSelfAction implements ModelDriven<BaseTr
         TransactResourceModel resModel=new TransactResourceModel();
         resModel.setFlowNo(flowNo);
         try {
-			resModel.setDriverIdBackImg(FileUtil.toBytes("h://"+TransactResourceModel.F.driverIdBackImg.name()+".jpg"));
-			resModel.setDriverIdFrontImg(FileUtil.toBytes("h://"+TransactResourceModel.F.driverIdFrontImg.name()+".jpg"));
-			resModel.setAgentIdBackImg(FileUtil.toBytes("h://"+TransactResourceModel.F.agentIdBackImg.name()+".jpg"));
-			resModel.setAgentIdFrontImg(FileUtil.toBytes("h://"+TransactResourceModel.F.agentIdFrontImg.name()+".jpg"));
-			resModel.setCaptureImg(FileUtil.toBytes("h://"+TransactResourceModel.F.captureImg.name()+".jpg"));
+			resModel.setDriverIdBackImg(FileUtil.toBytes("h://"+TransactResourceModel.F.DriverIdBackImg.name()+".jpg"));
+			resModel.setDriverIdFrontImg(FileUtil.toBytes("h://"+TransactResourceModel.F.DriverIdFrontImg.name()+".jpg"));
+			resModel.setAgentIdBackImg(FileUtil.toBytes("h://"+TransactResourceModel.F.AgentIdBackImg.name()+".jpg"));
+			resModel.setAgentIdFrontImg(FileUtil.toBytes("h://"+TransactResourceModel.F.AgentIdFrontImg.name()+".jpg"));
+			resModel.setCaptureImg(FileUtil.toBytes("h://"+TransactResourceModel.F.CaptureImg.name()+".jpg"));
 			this.selfBiz.loadCrudMapper(TransactResourceModel.class);
 			this.selfBiz.addModel(resModel);
 		} catch (IOException e) {

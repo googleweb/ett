@@ -31,8 +31,8 @@ String selfIdentifyPath=basePath+"self/Identity";
      <div class="divFun">
 
      <form action="<%=selfIdentifyPath %>/do/identityDriver.action" method="post">
-     <input type="hidden" name="<%=BaseTransactModel.F.driverIdNo %>" value="440103198408241530" />
-     <input type="hidden" name="<%=BaseTransactModel.F.driverIdName %>" value="林海晖" />
+     <input type="hidden" name="<%=BaseTransactModel.F.DriverIdNo %>" value="440103198408241530" />
+     <input type="hidden" name="<%=BaseTransactModel.F.DriverIdName %>" value="林海晖" />
      
 
      

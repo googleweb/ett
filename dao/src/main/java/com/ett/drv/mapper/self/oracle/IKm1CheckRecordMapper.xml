@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2011-05-24 02:10:51
+	Create Date:2011-05-25 10:26:46
 	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
 	Model:com.ett.drv.model.self.Km1CheckRecordModel 
 
@@ -10,11 +10,11 @@
 CKsddname,Lsh,Sfzmhm,Xm  
  } 
 
-private Double Id;         //ID  NUMBER 19
+private Integer Id;         //ID  NUMBER 19
 private String CCreateip;         //C_CREATEIP  VARCHAR2 1,020
 private Date TCreatetime;         //T_CREATETIME  DATE 0
 private String CCreator;         //C_CREATOR  VARCHAR2 120
-private Double IIsdeleted;         //I_ISDELETED  NUMBER 1
+private Integer IIsdeleted;         //I_ISDELETED  NUMBER 1
 private String CDescription;         //C_DESCRIPTION  VARCHAR2 1,020
 private String CKeywords;         //C_KEYWORDS  VARCHAR2 1,020
 private String CModifier;         //C_MODIFIER  VARCHAR2 1,020
@@ -43,11 +43,11 @@ C_KSDDNAME,LSH,SFZMHM,XM
 </sql>
 
 <sql id="insertCols">
-#{Id,jdbcType=FLOAT,javaType=Double},
+#{Id,jdbcType=INTEGER,javaType=Integer},
 #{CCreateip,jdbcType=VARCHAR,javaType=String},
 #{TCreatetime,jdbcType=DATE,javaType=Date},
 #{CCreator,jdbcType=VARCHAR,javaType=String},
-#{IIsdeleted,jdbcType=FLOAT,javaType=Double},
+#{IIsdeleted,jdbcType=INTEGER,javaType=Integer},
 #{CDescription,jdbcType=VARCHAR,javaType=String},
 #{CKeywords,jdbcType=VARCHAR,javaType=String},
 #{CModifier,jdbcType=VARCHAR,javaType=String},
@@ -66,7 +66,7 @@ C_KSDDNAME,LSH,SFZMHM,XM
 C_CREATEIP=#{model.CCreateip,jdbcType=VARCHAR,javaType=String},
 T_CREATETIME=#{model.TCreatetime,jdbcType=DATE,javaType=Date},
 C_CREATOR=#{model.CCreator,jdbcType=VARCHAR,javaType=String},
-I_ISDELETED=#{model.IIsdeleted,jdbcType=FLOAT,javaType=Double},
+I_ISDELETED=#{model.IIsdeleted,jdbcType=INTEGER,javaType=Integer},
 C_DESCRIPTION=#{model.CDescription,jdbcType=VARCHAR,javaType=String},
 C_KEYWORDS=#{model.CKeywords,jdbcType=VARCHAR,javaType=String},
 C_MODIFIER=#{model.CModifier,jdbcType=VARCHAR,javaType=String},
@@ -87,11 +87,11 @@ XM=#{model.Xm,jdbcType=VARCHAR,javaType=String},
 <sql id="join"></sql><!-- 别名m已被主表使用  -->
 
 <resultMap type="com.ett.drv.model.self.Km1CheckRecordModel" id="resultMap">
- <id column="ID"  property="Id" jdbcType="FLOAT" javaType="Double"/>
+ <id column="ID"  property="Id" jdbcType="INTEGER" javaType="Integer"/>
 <result column="C_CREATEIP"  property="CCreateip" jdbcType="VARCHAR" javaType="String"/>
 <result column="T_CREATETIME"  property="TCreatetime" jdbcType="DATE" javaType="Date"/>
 <result column="C_CREATOR"  property="CCreator" jdbcType="VARCHAR" javaType="String"/>
-<result column="I_ISDELETED"  property="IIsdeleted" jdbcType="FLOAT" javaType="Double"/>
+<result column="I_ISDELETED"  property="IIsdeleted" jdbcType="INTEGER" javaType="Integer"/>
 <result column="C_DESCRIPTION"  property="CDescription" jdbcType="VARCHAR" javaType="String"/>
 <result column="C_KEYWORDS"  property="CKeywords" jdbcType="VARCHAR" javaType="String"/>
 <result column="C_MODIFIER"  property="CModifier" jdbcType="VARCHAR" javaType="String"/>
@@ -107,21 +107,21 @@ XM=#{model.Xm,jdbcType=VARCHAR,javaType=String},
 
 
 <sql id="selectCondition">
-<if test="model.Id neq null">and m.ID = #{model.Id,jdbcType=FLOAT javaType=Double } </if> 
-<if test="model.CCreateip neq null">and m.C_CREATEIP = #{model.CCreateip,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Id neq null">and m.ID = #{model.Id,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.CCreateip neq null">and m.C_CREATEIP like #{model.CCreateip,jdbcType=VARCHAR javaType=String } </if> 
 <if test="model.TCreatetime neq null">and to_char(m.T_CREATETIME,'YYYY-MM-DD') = to_char(#{model.TCreatetime,jdbcType=DATE javaType=Date },'YYYY-MM-DD') </if> 
-<if test="model.CCreator neq null">and m.C_CREATOR = #{model.CCreator,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.IIsdeleted neq null">and m.I_ISDELETED = #{model.IIsdeleted,jdbcType=FLOAT javaType=Double } </if> 
-<if test="model.CDescription neq null">and m.C_DESCRIPTION = #{model.CDescription,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CKeywords neq null">and m.C_KEYWORDS = #{model.CKeywords,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CModifier neq null">and m.C_MODIFIER = #{model.CModifier,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CModifyip neq null">and m.C_MODIFYIP = #{model.CModifyip,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CCreator neq null">and m.C_CREATOR like #{model.CCreator,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.IIsdeleted neq null">and m.I_ISDELETED = #{model.IIsdeleted,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.CDescription neq null">and m.C_DESCRIPTION like #{model.CDescription,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CKeywords neq null">and m.C_KEYWORDS like #{model.CKeywords,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CModifier neq null">and m.C_MODIFIER like #{model.CModifier,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CModifyip neq null">and m.C_MODIFYIP like #{model.CModifyip,jdbcType=VARCHAR javaType=String } </if> 
 <if test="model.TModifytime neq null">and to_char(m.T_MODIFYTIME,'YYYY-MM-DD') = to_char(#{model.TModifytime,jdbcType=DATE javaType=Date },'YYYY-MM-DD') </if> 
-<if test="model.Ksdd neq null">and m.KSDD = #{model.Ksdd,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CKsddname neq null">and m.C_KSDDNAME = #{model.CKsddname,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.Lsh neq null">and m.LSH = #{model.Lsh,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.Sfzmhm neq null">and m.SFZMHM = #{model.Sfzmhm,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.Xm neq null">and m.XM = #{model.Xm,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Ksdd neq null">and m.KSDD like #{model.Ksdd,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CKsddname neq null">and m.C_KSDDNAME like #{model.CKsddname,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Lsh neq null">and m.LSH like #{model.Lsh,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Sfzmhm neq null">and m.SFZMHM like #{model.Sfzmhm,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Xm neq null">and m.XM like #{model.Xm,jdbcType=VARCHAR javaType=String } </if> 
 
 </sql>
 
@@ -150,7 +150,7 @@ XM=#{model.Xm,jdbcType=VARCHAR,javaType=String},
 </select>
 
 <select id="selectEqPk"  resultMap="resultMap">
-	select m.* from <include refid="table" /> m  where m.<include refid="pk" /> = #{Id,jdbcType=FLOAT,javaType=Double}
+	select m.* from <include refid="table" /> m  where m.<include refid="pk" /> = #{Id,jdbcType=INTEGER,javaType=Integer}
 </select>
 
 <select id="selectInPk" resultType="ArrayList" resultMap="resultMap" >
@@ -188,10 +188,10 @@ XM=#{model.Xm,jdbcType=VARCHAR,javaType=String},
 		<trim  prefixOverrides="," suffixOverrides=",">
 			<include refid="updateCols"/>
 		</trim>
-	where <include refid="pk" />=#{model.Id,jdbcType=FLOAT,javaType=Double}</update>
+	where <include refid="pk" />=#{model.Id,jdbcType=INTEGER,javaType=Integer}</update>
 
 <delete id="deleteEqPk" flushCache="true">
-	delete from <include refid="table"/> where <include refid="pk" /> =#{Id,jdbcType=FLOAT,javaType=Double}
+	delete from <include refid="table"/> where <include refid="pk" /> =#{Id,jdbcType=INTEGER,javaType=Integer}
 </delete>
 
 <delete id="deleteInPk" flushCache="true">
@@ -234,7 +234,7 @@ XM=#{model.Xm,jdbcType=VARCHAR,javaType=String},
 </select>
 
 <select id="selectViewEqPk"  resultMap="viewMap">
-	select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> = #{Id,jdbcType=FLOAT,javaType=Double}
+	select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> = #{Id,jdbcType=INTEGER,javaType=Integer}
 </select>
 
 <select id="selectViewInPk" resultType="ArrayList" resultMap="viewMap" >

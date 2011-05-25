@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2011-05-24 02:10:51
+	Create Date:2011-05-25 10:26:46
 	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
 	Model:com.ett.drv.model.admin.DictTypeModel 
 
@@ -29,7 +29,7 @@ ID,C_TYPENAME,C_DESCRIPTION
 </sql>
 
 <sql id="insertCols">
-seq_dicttype.nextval,
+#{Id,jdbcType=INTEGER,javaType=Integer},
 #{CTypename,jdbcType=VARCHAR,javaType=String},
 #{CDescription,jdbcType=VARCHAR,javaType=String},
 
@@ -58,8 +58,8 @@ C_DESCRIPTION=#{model.CDescription,jdbcType=VARCHAR,javaType=String},
 
 <sql id="selectCondition">
 <if test="model.Id neq null">and m.ID = #{model.Id,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.CTypename neq null">and m.C_TYPENAME = #{model.CTypename,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CDescription neq null">and m.C_DESCRIPTION = #{model.CDescription,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CTypename neq null">and m.C_TYPENAME like #{model.CTypename,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CDescription neq null">and m.C_DESCRIPTION like #{model.CDescription,jdbcType=VARCHAR javaType=String } </if> 
 
 </sql>
 

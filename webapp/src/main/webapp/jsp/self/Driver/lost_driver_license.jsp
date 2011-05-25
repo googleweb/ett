@@ -57,7 +57,7 @@ String selfDriverPath=basePath+"self/Driver";
       <table class="tableFun" border="1">
           <tr>
             <td>损失原因:        
-             <select name="<%=BaseTransactModel.F.reason %>">
+             <select name="<%=BaseTransactModel.F.Reason %>">
                <option value="A">A:灭失</option>
                <option value="G">G:签满换领登记证书</option>
              </select> 

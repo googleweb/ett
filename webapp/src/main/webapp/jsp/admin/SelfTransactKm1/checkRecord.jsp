@@ -117,7 +117,7 @@ String weekPbActionPath=basePath+"booked/WeekPb";
               <td style="width: 300px;">考场:
                    <input name="<%=Km1CheckRecordModel.F.Ksdd %>" 
                      class="<%=EasyUiModel.ComboBox.CLASS %>"
-                     <%=EasyUiModel.ComboBox.Properties.URL(weekPbActionPath+"/select/ksdd.action") %>
+                     <%=EasyUiModel.ComboBox.Properties.URL(weekPbActionPath+"/combobox/ksdd.action") %>
                       <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD("dictText") %>
   	                  <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD("dictValue") %>
   	                  <%=EasyUiModel.ComboBox.Properties.EDITABLE(false) %>

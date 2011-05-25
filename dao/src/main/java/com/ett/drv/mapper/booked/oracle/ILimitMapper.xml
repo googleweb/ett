@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2011-05-24 02:10:51
+	Create Date:2011-05-25 10:26:46
 	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
 	Model:com.ett.drv.model.booked.BookedLimitModel 
 
@@ -47,7 +47,7 @@ C_KSDD,I_TOTAL,I_USED_NUM,I_CHECKED_NUM,I_TPTOTAL,I_TPUSED_NUM,I_TPCHECKED_NUM,C
 </sql>
 
 <sql id="insertCols">
-seq_yuyue_limit.nextval,
+#{Id,jdbcType=INTEGER,javaType=Integer},
 #{IWeekNum,jdbcType=INTEGER,javaType=Integer},
 #{CCarType,jdbcType=VARCHAR,javaType=String},
 #{IDayofweek,jdbcType=INTEGER,javaType=Integer},
@@ -125,23 +125,23 @@ C_OPERATOR=#{model.COperator,jdbcType=VARCHAR,javaType=String},
 <sql id="selectCondition">
 <if test="model.Id neq null">and m.ID = #{model.Id,jdbcType=INTEGER javaType=Integer } </if> 
 <if test="model.IWeekNum neq null">and m.I_WEEK_NUM = #{model.IWeekNum,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.CCarType neq null">and m.C_CAR_TYPE = #{model.CCarType,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CCarType neq null">and m.C_CAR_TYPE like #{model.CCarType,jdbcType=VARCHAR javaType=String } </if> 
 <if test="model.IDayofweek neq null">and m.I_DAYOFWEEK = #{model.IDayofweek,jdbcType=INTEGER javaType=Integer } </if> 
 <if test="model.IKm neq null">and m.I_KM = #{model.IKm,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.CSchoolCode neq null">and m.C_SCHOOL_CODE = #{model.CSchoolCode,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CSchoolName neq null">and m.C_SCHOOL_NAME = #{model.CSchoolName,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.DateKsrq neq null">and m.DATE_KSRQ = #{model.DateKsrq,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CKsccCode neq null">and m.C_KSCC_CODE = #{model.CKsccCode,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CKscc neq null">and m.C_KSCC = #{model.CKscc,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CKsddCode neq null">and m.C_KSDD_CODE = #{model.CKsddCode,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CKsdd neq null">and m.C_KSDD = #{model.CKsdd,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CSchoolCode neq null">and m.C_SCHOOL_CODE like #{model.CSchoolCode,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CSchoolName neq null">and m.C_SCHOOL_NAME like #{model.CSchoolName,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.DateKsrq neq null">and m.DATE_KSRQ like #{model.DateKsrq,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CKsccCode neq null">and m.C_KSCC_CODE like #{model.CKsccCode,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CKscc neq null">and m.C_KSCC like #{model.CKscc,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CKsddCode neq null">and m.C_KSDD_CODE like #{model.CKsddCode,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CKsdd neq null">and m.C_KSDD like #{model.CKsdd,jdbcType=VARCHAR javaType=String } </if> 
 <if test="model.ITotal neq null">and m.I_TOTAL = #{model.ITotal,jdbcType=INTEGER javaType=Integer } </if> 
 <if test="model.IUsedNum neq null">and m.I_USED_NUM = #{model.IUsedNum,jdbcType=INTEGER javaType=Integer } </if> 
 <if test="model.ICheckedNum neq null">and m.I_CHECKED_NUM = #{model.ICheckedNum,jdbcType=INTEGER javaType=Integer } </if> 
 <if test="model.ITptotal neq null">and m.I_TPTOTAL = #{model.ITptotal,jdbcType=INTEGER javaType=Integer } </if> 
 <if test="model.ITpusedNum neq null">and m.I_TPUSED_NUM = #{model.ITpusedNum,jdbcType=INTEGER javaType=Integer } </if> 
 <if test="model.ITpcheckedNum neq null">and m.I_TPCHECKED_NUM = #{model.ITpcheckedNum,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.COperator neq null">and m.C_OPERATOR = #{model.COperator,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.COperator neq null">and m.C_OPERATOR like #{model.COperator,jdbcType=VARCHAR javaType=String } </if> 
 
 </sql>
 

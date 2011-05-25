@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2011-05-24 02:10:51
+	Create Date:2011-05-25 10:26:46
 	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
 	Model:com.ett.drv.model.booked.ExtraAssignModel 
 
@@ -37,7 +37,7 @@ ID,I_KM,C_SCHOOL_CODE,C_SCHOOL_NAME,DATE_KSRQ,C_KSCC_CODE,C_KSCC,C_KSDD_CODE,C_K
 </sql>
 
 <sql id="insertCols">
-seq_extra_assign.nextval,
+#{Id,jdbcType=INTEGER,javaType=Integer},
 #{IKm,jdbcType=INTEGER,javaType=Integer},
 #{CSchoolCode,jdbcType=VARCHAR,javaType=String},
 #{CSchoolName,jdbcType=VARCHAR,javaType=String},
@@ -91,15 +91,15 @@ C_OPERATOR=#{model.COperator,jdbcType=VARCHAR,javaType=String},
 <sql id="selectCondition">
 <if test="model.Id neq null">and m.ID = #{model.Id,jdbcType=INTEGER javaType=Integer } </if> 
 <if test="model.IKm neq null">and m.I_KM = #{model.IKm,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.CSchoolCode neq null">and m.C_SCHOOL_CODE = #{model.CSchoolCode,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CSchoolName neq null">and m.C_SCHOOL_NAME = #{model.CSchoolName,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.DateKsrq neq null">and m.DATE_KSRQ = #{model.DateKsrq,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CKsccCode neq null">and m.C_KSCC_CODE = #{model.CKsccCode,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CKscc neq null">and m.C_KSCC = #{model.CKscc,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CKsddCode neq null">and m.C_KSDD_CODE = #{model.CKsddCode,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CKsdd neq null">and m.C_KSDD = #{model.CKsdd,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CSchoolCode neq null">and m.C_SCHOOL_CODE like #{model.CSchoolCode,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CSchoolName neq null">and m.C_SCHOOL_NAME like #{model.CSchoolName,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.DateKsrq neq null">and m.DATE_KSRQ like #{model.DateKsrq,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CKsccCode neq null">and m.C_KSCC_CODE like #{model.CKsccCode,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CKscc neq null">and m.C_KSCC like #{model.CKscc,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CKsddCode neq null">and m.C_KSDD_CODE like #{model.CKsddCode,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CKsdd neq null">and m.C_KSDD like #{model.CKsdd,jdbcType=VARCHAR javaType=String } </if> 
 <if test="model.ITotal neq null">and m.I_TOTAL = #{model.ITotal,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.COperator neq null">and m.C_OPERATOR = #{model.COperator,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.COperator neq null">and m.C_OPERATOR like #{model.COperator,jdbcType=VARCHAR javaType=String } </if> 
 
 </sql>
 

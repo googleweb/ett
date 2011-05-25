@@ -1,6 +1,7 @@
 package com.ett.drv.web.action.admin;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.json.JSONObject;
 
@@ -272,21 +273,21 @@ public class SelfDeviceAction extends BaseAction {
 	
 	public void datagrid_device(){
 		this.selfBiz.loadCrudMapper(DeviceModel.class);
-		ArrayList list=this.selfBiz.getModel(this.getPager());
+		List list=this.selfBiz.getModel(this.getPager());
 		JSONObject jsonDG=EasyUiUtil.toJsonDataGrid(list,this.selfBiz.count());
 		this.writePlainText(jsonDG.toString());
 	}
 	
 	public void datagrid_deviceSn(){
 		this.selfBiz.loadCrudMapper(DeviceSnModel.class);
-		ArrayList list=this.selfBiz.getModel(this.getPager());
+		List list=this.selfBiz.getModel(this.getPager());
 		JSONObject jsonDG=EasyUiUtil.toJsonDataGrid(list,this.selfBiz.count());
 		this.writePlainText(jsonDG.toString());
 	}
 	
 	public void datagrid_hardware(){
 		this.selfBiz.loadCrudMapper(HardwareModel.class);
-		ArrayList list=this.selfBiz.getModel(this.getPager());
+		List list=this.selfBiz.getModel(this.getPager());
 		JSONObject jsonDG=EasyUiUtil.toJsonDataGrid(list,this.selfBiz.count());
 		this.writePlainText(jsonDG.toString());
 	}

@@ -108,7 +108,7 @@ String excelTemplatePath=basePath+"js/print/驾驶证申请表-初学.xlt";
         
           <tr>
             <th >&nbsp;档案编号</th>
-            <td >&nbsp;${licenseNo }</td>
+            <td >&nbsp;${LicenseNo }</td>
             <th >&nbsp;号牌号码</th>
             <td >&nbsp;${PlateNo}</td>
           </tr>
@@ -122,7 +122,7 @@ String excelTemplatePath=basePath+"js/print/驾驶证申请表-初学.xlt";
           
          <tr>
             <th>申请日期</th>
-            <td>&nbsp;<s:date name="createDate" format="yyyy-MM-dd" /></td>
+            <td>&nbsp;<s:date name="CreateDate" format="yyyy-MM-dd" /></td>
             <th>已打印凭条</th>
             <td>&nbsp;${PrintInd }</td>
           </tr>
@@ -184,26 +184,26 @@ String excelTemplatePath=basePath+"js/print/驾驶证申请表-初学.xlt";
             <td colspan="3">
                <ul class="ulThum">
                   <li >
-                      <img class="<%=imgThum %>"  src="<%=baseActionPath+"/stream/"+TransactResourceModel.F.driverIdFrontImg+".action" %>" alt="车主身份证正面"/>
+                      <img class="<%=imgThum %>"  src="<%=baseActionPath+"/stream/"+TransactResourceModel.F.DriverIdFrontImg+".action" %>" alt="车主身份证正面"/>
                       <br/>  车主身份证正面
                   </li>
                   <li >
-                      <img class="<%=imgThum %>"  src="<%=baseActionPath+"/stream/"+TransactResourceModel.F.driverIdBackImg+".action" %>" alt="车主身份证背面" />
+                      <img class="<%=imgThum %>"  src="<%=baseActionPath+"/stream/"+TransactResourceModel.F.DriverIdBackImg+".action" %>" alt="车主身份证背面" />
                       <br/>  车主身份证背面
                   </li>
                   <% if(isAgent){ %>
                   <li >
-                      <img class="<%=imgThum %>"  src="<%=baseActionPath+"/stream/"+TransactResourceModel.F.agentIdFrontImg+".action" %>" alt="代理人身份证正面" />
+                      <img class="<%=imgThum %>"  src="<%=baseActionPath+"/stream/"+TransactResourceModel.F.AgentIdFrontImg+".action" %>" alt="代理人身份证正面" />
                       <br/>  代理人身份证正面
                   </li>
                  <li >
-                      <img class="<%=imgThum %>"  src="<%=baseActionPath+"/stream/"+TransactResourceModel.F.agentIdBackImg+".action" %>" alt="代理人身份证背面" />
+                      <img class="<%=imgThum %>"  src="<%=baseActionPath+"/stream/"+TransactResourceModel.F.AgentIdBackImg+".action" %>" alt="代理人身份证背面" />
                       <br/>  代理人身份证背面
                   </li>
                   <% } %>
                   
                   <li >
-                      <img class="<%=imgThum %>"  src="<%=baseActionPath+"/stream/"+TransactResourceModel.F.captureImg+".action" %>" alt="现场拍摄照片" />
+                      <img class="<%=imgThum %>"  src="<%=baseActionPath+"/stream/"+TransactResourceModel.F.CaptureImg+".action" %>" alt="现场拍摄照片" />
                       <br/>  现场拍摄照片
                   </li>
                </ul>

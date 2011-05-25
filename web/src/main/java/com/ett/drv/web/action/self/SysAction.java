@@ -1,6 +1,7 @@
 package com.ett.drv.web.action.self;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -45,7 +46,7 @@ public class SysAction extends BaseAction {
 	
 	public void list_device() throws Exception{
 	    selfBiz.loadCrudMapper(DeviceModel.class);
-	    ArrayList list=selfBiz.getModel();
+	    List list=selfBiz.getModel();
 	    JSONArray jarr=ObjectUtil.toJsonArray(list);
 	    JSONObject dg=EasyUiUtil.toJsonDataGrid(jarr);
 	    this.writePlainText(dg.toString());
@@ -53,7 +54,7 @@ public class SysAction extends BaseAction {
 	
 	public void list_terminal() throws Exception{
 	    selfBiz.loadCrudMapper(TerminalModel.class);
-	    ArrayList list=selfBiz.getModel();
+	    List list=selfBiz.getModel();
 	    JSONArray jarr=ObjectUtil.toJsonArray(list);
 	    JSONObject dg=EasyUiUtil.toJsonDataGrid(jarr);
 	    this.writePlainText(dg.toString());

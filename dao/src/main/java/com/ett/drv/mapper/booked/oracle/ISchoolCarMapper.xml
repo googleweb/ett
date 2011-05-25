@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2011-05-24 02:10:51
+	Create Date:2011-05-25 10:26:46
 	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
 	Model:com.ett.drv.model.booked.SchoolCarModel 
 
@@ -9,7 +9,7 @@
   Id,Clpp,Coachno,Depcode,Depname,Glbm,Hmhp,Idcard,Mobile,Name  
  } 
 
-private Double Id;         //ID  NUMBER 19
+private Integer Id;         //ID  NUMBER 19
 private String Clpp;         //CLPP  VARCHAR2 255
 private String Coachno;         //COACHNO  VARCHAR2 255
 private String Depcode;         //DEPCODE  VARCHAR2 255
@@ -36,7 +36,7 @@ ID,CLPP,COACHNO,DEPCODE,DEPNAME,GLBM,HMHP,IDCARD,MOBILE,NAME
 </sql>
 
 <sql id="insertCols">
-seq_school_car_info.nextval,
+#{Id,jdbcType=INTEGER,javaType=Integer},
 #{Clpp,jdbcType=VARCHAR,javaType=String},
 #{Coachno,jdbcType=VARCHAR,javaType=String},
 #{Depcode,jdbcType=VARCHAR,javaType=String},
@@ -70,7 +70,7 @@ NAME=#{model.Name,jdbcType=VARCHAR,javaType=String},
 <sql id="join"></sql><!-- 别名m已被主表使用  -->
 
 <resultMap type="com.ett.drv.model.booked.SchoolCarModel" id="resultMap">
- <id column="ID"  property="Id" jdbcType="FLOAT" javaType="Double"/>
+ <id column="ID"  property="Id" jdbcType="INTEGER" javaType="Integer"/>
 <result column="CLPP"  property="Clpp" jdbcType="VARCHAR" javaType="String"/>
 <result column="COACHNO"  property="Coachno" jdbcType="VARCHAR" javaType="String"/>
 <result column="DEPCODE"  property="Depcode" jdbcType="VARCHAR" javaType="String"/>
@@ -85,16 +85,16 @@ NAME=#{model.Name,jdbcType=VARCHAR,javaType=String},
 
 
 <sql id="selectCondition">
-<if test="model.Id neq null">and m.ID = #{model.Id,jdbcType=FLOAT javaType=Double } </if> 
-<if test="model.Clpp neq null">and m.CLPP = #{model.Clpp,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.Coachno neq null">and m.COACHNO = #{model.Coachno,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.Depcode neq null">and m.DEPCODE = #{model.Depcode,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.Depname neq null">and m.DEPNAME = #{model.Depname,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.Glbm neq null">and m.GLBM = #{model.Glbm,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.Hmhp neq null">and m.HMHP = #{model.Hmhp,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.Idcard neq null">and m.IDCARD = #{model.Idcard,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.Mobile neq null">and m.MOBILE = #{model.Mobile,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.Name neq null">and m.NAME = #{model.Name,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Id neq null">and m.ID = #{model.Id,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.Clpp neq null">and m.CLPP like #{model.Clpp,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Coachno neq null">and m.COACHNO like #{model.Coachno,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Depcode neq null">and m.DEPCODE like #{model.Depcode,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Depname neq null">and m.DEPNAME like #{model.Depname,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Glbm neq null">and m.GLBM like #{model.Glbm,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Hmhp neq null">and m.HMHP like #{model.Hmhp,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Idcard neq null">and m.IDCARD like #{model.Idcard,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Mobile neq null">and m.MOBILE like #{model.Mobile,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Name neq null">and m.NAME like #{model.Name,jdbcType=VARCHAR javaType=String } </if> 
 
 </sql>
 
@@ -123,7 +123,7 @@ NAME=#{model.Name,jdbcType=VARCHAR,javaType=String},
 </select>
 
 <select id="selectEqPk"  resultMap="resultMap">
-	select m.* from <include refid="table" /> m  where m.<include refid="pk" /> = #{Id,jdbcType=FLOAT,javaType=Double}
+	select m.* from <include refid="table" /> m  where m.<include refid="pk" /> = #{Id,jdbcType=INTEGER,javaType=Integer}
 </select>
 
 <select id="selectInPk" resultType="ArrayList" resultMap="resultMap" >
@@ -161,10 +161,10 @@ NAME=#{model.Name,jdbcType=VARCHAR,javaType=String},
 		<trim  prefixOverrides="," suffixOverrides=",">
 			<include refid="updateCols"/>
 		</trim>
-	where <include refid="pk" />=#{model.Id,jdbcType=FLOAT,javaType=Double}</update>
+	where <include refid="pk" />=#{model.Id,jdbcType=INTEGER,javaType=Integer}</update>
 
 <delete id="deleteEqPk" flushCache="true">
-	delete from <include refid="table"/> where <include refid="pk" /> =#{Id,jdbcType=FLOAT,javaType=Double}
+	delete from <include refid="table"/> where <include refid="pk" /> =#{Id,jdbcType=INTEGER,javaType=Integer}
 </delete>
 
 <delete id="deleteInPk" flushCache="true">
@@ -207,7 +207,7 @@ NAME=#{model.Name,jdbcType=VARCHAR,javaType=String},
 </select>
 
 <select id="selectViewEqPk"  resultMap="viewMap">
-	select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> = #{Id,jdbcType=FLOAT,javaType=Double}
+	select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> = #{Id,jdbcType=INTEGER,javaType=Integer}
 </select>
 
 <select id="selectViewInPk" resultType="ArrayList" resultMap="viewMap" >

@@ -2,6 +2,7 @@ package com.ett.drv.web.action.admin;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -38,7 +39,7 @@ public class SelfTransactKm1Action extends BaseAction {
 	
 	public void datagrid_preasignRecord(){
 		this.selfBiz.loadCrudMapper(Km1PreasignRecordModel.class);
-		ArrayList listPreasignRecord=this.selfBiz.getModel(this.getPager());
+		List listPreasignRecord=this.selfBiz.getModel(this.getPager());
 		JSONArray jarrPreasignRecord=ObjectUtil.toJsonArray(listPreasignRecord);
 		JSONObject jsonDg=EasyUiUtil.toJsonDataGrid(jarrPreasignRecord,this.selfBiz.count());
 		this.writePlainText(jsonDg.toString());
@@ -47,7 +48,7 @@ public class SelfTransactKm1Action extends BaseAction {
 	
 	public void datagrid_checkRecord(){
 		this.selfBiz.loadCrudMapper(Km1CheckRecordModel.class);
-		ArrayList listPreasignRecord=this.selfBiz.getModel(this.getPager());
+		List listPreasignRecord=this.selfBiz.getModel(this.getPager());
 		JSONArray jarrPreasignRecord=ObjectUtil.toJsonArray(listPreasignRecord);
 		JSONObject jsonDg=EasyUiUtil.toJsonDataGrid(jarrPreasignRecord,this.selfBiz.count());
 		this.writePlainText(jsonDg.toString());
@@ -74,7 +75,7 @@ public class SelfTransactKm1Action extends BaseAction {
 			query.setTCreatetime(createTime);
 		}
 
-		ArrayList listPreasignRecord=this.selfBiz.getModel(query);
+		List listPreasignRecord=this.selfBiz.getModel(query);
 		//JSONArray jarrPreasignRecord=ObjectUtil.toJsonArray(listPreasignRecord);
 		JSONObject jsonDg=EasyUiUtil.toJsonDataGrid(listPreasignRecord);
 		this.writePlainText(jsonDg.toString());
@@ -107,7 +108,7 @@ public class SelfTransactKm1Action extends BaseAction {
 			query.setTCreatetime(createTime);
 		}
 
-		ArrayList listPreasignRecord=this.selfBiz.getModel(query);
+		List listPreasignRecord=this.selfBiz.getModel(query);
 		//JSONArray jarrPreasignRecord=ObjectUtil.toJsonArray(listPreasignRecord);
 		JSONObject jsonDg=EasyUiUtil.toJsonDataGrid(listPreasignRecord);
 		this.writePlainText(jsonDg.toString());

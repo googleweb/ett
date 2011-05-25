@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2011-05-24 02:10:51
+	Create Date:2011-05-25 10:26:46
 	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
 	Model:com.ett.drv.model.admin.MenuModel 
 
@@ -85,16 +85,16 @@ FOLDER=#{model.Folder,jdbcType=CHAR,javaType=String},
 
 
 <sql id="selectCondition">
-<if test="model.Id neq null">and m.ID = #{model.Id,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.Name neq null">and m.NAME = #{model.Name,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.Descp neq null">and m.DESCP = #{model.Descp,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.Url neq null">and m.URL = #{model.Url,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.Parma neq null">and m.PARMA = #{model.Parma,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.ParentId neq null">and m.PARENT_ID = #{model.ParentId,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Id neq null">and m.ID like #{model.Id,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Name neq null">and m.NAME like #{model.Name,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Descp neq null">and m.DESCP like #{model.Descp,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Url neq null">and m.URL like #{model.Url,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Parma neq null">and m.PARMA like #{model.Parma,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.ParentId neq null">and m.PARENT_ID like #{model.ParentId,jdbcType=VARCHAR javaType=String } </if> 
 <if test="model.Ordernum neq null">and m.ORDERNUM = #{model.Ordernum,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.Icon neq null">and m.ICON = #{model.Icon,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.Token neq null">and m.TOKEN = #{model.Token,jdbcType=CHAR javaType=String } </if> 
-<if test="model.Folder neq null">and m.FOLDER = #{model.Folder,jdbcType=CHAR javaType=String } </if> 
+<if test="model.Icon neq null">and m.ICON like #{model.Icon,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Token neq null">and m.TOKEN like #{model.Token,jdbcType=CHAR javaType=String } </if> 
+<if test="model.Folder neq null">and m.FOLDER like #{model.Folder,jdbcType=CHAR javaType=String } </if> 
 
 </sql>
 

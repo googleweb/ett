@@ -30,8 +30,8 @@ String selfIdentifyPath=basePath+"self/Identity";
   
   <div class="divFun">
    <form action="<%=selfIdentifyPath %>/do/identityAgent.action" method="post">
-     <input type="hidden" name="<%=BaseTransactModel.F.agentIdNo %>" value="350128198403194910" />
-     <input type="hidden" name="<%=BaseTransactModel.F.agentIdName %>" value="陈必武" />
+     <input type="hidden" name="<%=BaseTransactModel.F.AgentIdNo %>" value="350128198403194910" />
+     <input type="hidden" name="<%=BaseTransactModel.F.AgentIdName %>" value="陈必武" />
      <input type="image" src="<%=basePath%>/images/idcardposition.jpg" style="width: 399px;height:262px " />
    </form>
    </div>

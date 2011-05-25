@@ -3,6 +3,7 @@ package com.ett.drv.web.action.admin;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -41,7 +42,7 @@ public class SelfTransactVehAction extends BaseAction implements ModelDriven<Tra
 	
 	public void datagrid_all(){
 		this.selfBiz.loadCrudMapper(TransactVehicleModel.class);
-		ArrayList listTranDrv=this.selfBiz.getModel();
+		List listTranDrv=this.selfBiz.getModel();
 		JSONArray jarrTranDrv=ObjectUtil.toJsonArray(listTranDrv);
 		JSONObject jobjTranDrv=EasyUiUtil.toJsonDataGrid(jarrTranDrv);
         this.writePlainText(jobjTranDrv.toString());
@@ -66,7 +67,7 @@ public class SelfTransactVehAction extends BaseAction implements ModelDriven<Tra
     	DrivingLicenseModel query=new DrivingLicenseModel();
     	this.selfBiz.loadCrudMapper(DrivingLicenseModel.class);
     	query.setSfzmhm(_trvehModel.getDriverIdNo());
-    	ArrayList listDrvLince=selfBiz.getModel(query);
+    	List listDrvLince=selfBiz.getModel(query);
     	DrivingLicenseModel drvLinModel=new DrivingLicenseModel();
     	if(listDrvLince.size()==1){
     		drvLinModel=(DrivingLicenseModel) listDrvLince.get(0);

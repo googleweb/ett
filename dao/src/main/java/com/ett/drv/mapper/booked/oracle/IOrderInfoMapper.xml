@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2011-05-24 02:10:51
+	Create Date:2011-05-25 10:26:46
 	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
 	Model:com.ett.drv.model.booked.BookedOrderInfoModel 
 
@@ -54,7 +54,7 @@ C_IDCARD,C_CHECK_RESULT,C_ZJCX
 </sql>
 
 <sql id="insertCols">
-seq_yuyue_info.nextval,
+#{Id,jdbcType=INTEGER,javaType=Integer},
 #{CHmhp,jdbcType=VARCHAR,javaType=String},
 #{CKsccCode,jdbcType=VARCHAR,javaType=String},
 #{CKscc,jdbcType=VARCHAR,javaType=String},
@@ -146,29 +146,29 @@ C_ZJCX=#{model.CZjcx,jdbcType=VARCHAR,javaType=String},
 
 <sql id="selectCondition">
 <if test="model.Id neq null">and m.ID = #{model.Id,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.CHmhp neq null">and m.C_HMHP = #{model.CHmhp,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CKsccCode neq null">and m.C_KSCC_CODE = #{model.CKsccCode,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CKscc neq null">and m.C_KSCC = #{model.CKscc,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CKsddCode neq null">and m.C_KSDD_CODE = #{model.CKsddCode,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CKsdd neq null">and m.C_KSDD = #{model.CKsdd,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CHmhp neq null">and m.C_HMHP like #{model.CHmhp,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CKsccCode neq null">and m.C_KSCC_CODE like #{model.CKsccCode,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CKscc neq null">and m.C_KSCC like #{model.CKscc,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CKsddCode neq null">and m.C_KSDD_CODE like #{model.CKsddCode,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CKsdd neq null">and m.C_KSDD like #{model.CKsdd,jdbcType=VARCHAR javaType=String } </if> 
 <if test="model.IKm neq null">and m.I_KM = #{model.IKm,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.DateKsrq neq null">and m.DATE_KSRQ = #{model.DateKsrq,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.DatePxshrq neq null">and m.DATE_PXSHRQ = #{model.DatePxshrq,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.DateKsrq neq null">and m.DATE_KSRQ like #{model.DateKsrq,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.DatePxshrq neq null">and m.DATE_PXSHRQ like #{model.DatePxshrq,jdbcType=VARCHAR javaType=String } </if> 
 <if test="model.IPaibanid neq null">and m.I_PAIBANID = #{model.IPaibanid,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.CJbr neq null">and m.C_JBR = #{model.CJbr,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CDlrCode neq null">and m.C_DLR_CODE = #{model.CDlrCode,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CDlr neq null">and m.C_DLR = #{model.CDlr,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CJlyIdcard neq null">and m.C_JLY_IDCARD = #{model.CJlyIdcard,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CJlyXm neq null">and m.C_JLY_XM = #{model.CJlyXm,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CKssj neq null">and m.C_KSSJ = #{model.CKssj,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CLsh neq null">and m.C_LSH = #{model.CLsh,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CCheckOperator neq null">and m.C_CHECK_OPERATOR = #{model.CCheckOperator,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CCheckDate neq null">and m.C_CHECK_DATE = #{model.CCheckDate,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CJbr neq null">and m.C_JBR like #{model.CJbr,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CDlrCode neq null">and m.C_DLR_CODE like #{model.CDlrCode,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CDlr neq null">and m.C_DLR like #{model.CDlr,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CJlyIdcard neq null">and m.C_JLY_IDCARD like #{model.CJlyIdcard,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CJlyXm neq null">and m.C_JLY_XM like #{model.CJlyXm,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CKssj neq null">and m.C_KSSJ like #{model.CKssj,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CLsh neq null">and m.C_LSH like #{model.CLsh,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CCheckOperator neq null">and m.C_CHECK_OPERATOR like #{model.CCheckOperator,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CCheckDate neq null">and m.C_CHECK_DATE like #{model.CCheckDate,jdbcType=VARCHAR javaType=String } </if> 
 <if test="model.IChecked neq null">and m.I_CHECKED = #{model.IChecked,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.CXm neq null">and m.C_XM = #{model.CXm,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CIdcard neq null">and m.C_IDCARD = #{model.CIdcard,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CCheckResult neq null">and m.C_CHECK_RESULT = #{model.CCheckResult,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CZjcx neq null">and m.C_ZJCX = #{model.CZjcx,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CXm neq null">and m.C_XM like #{model.CXm,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CIdcard neq null">and m.C_IDCARD like #{model.CIdcard,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CCheckResult neq null">and m.C_CHECK_RESULT like #{model.CCheckResult,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CZjcx neq null">and m.C_ZJCX like #{model.CZjcx,jdbcType=VARCHAR javaType=String } </if> 
 
 </sql>
 

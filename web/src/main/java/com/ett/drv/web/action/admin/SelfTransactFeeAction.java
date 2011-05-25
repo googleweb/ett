@@ -2,6 +2,7 @@ package com.ett.drv.web.action.admin;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -45,7 +46,7 @@ public class SelfTransactFeeAction extends BaseAction implements ModelDriven<Fee
 		_feeLogModel.setTCreatetime(createDate);
 		query.setTCreatetime(createDate);
 		this.selfBiz.loadCrudMapper(FeeLogModel.class);
-		ArrayList listPreasignRecord=this.selfBiz.getModel(query);
+		List listPreasignRecord=this.selfBiz.getModel(query);
 		//JSONArray jarrPreasignRecord=ObjectUtil.toJsonArray(listPreasignRecord);
 		JSONObject jsonDg=EasyUiUtil.toJsonDataGrid(listPreasignRecord);
 		//System.err.println(jsonDg.toString());
@@ -72,7 +73,7 @@ public class SelfTransactFeeAction extends BaseAction implements ModelDriven<Fee
 	
 	public void datagrid_feeLog(){
 		this.selfBiz.loadCrudMapper(FeeLogModel.class);
-		ArrayList listPreasignRecord=this.selfBiz.getModel(this.getPager());
+		List listPreasignRecord=this.selfBiz.getModel(this.getPager());
 		JSONArray jarrPreasignRecord=ObjectUtil.toJsonArray(listPreasignRecord);
 		JSONObject jsonDg=EasyUiUtil.toJsonDataGrid(jarrPreasignRecord,this.selfBiz.count());
 		this.writePlainText(jsonDg.toString());
@@ -106,7 +107,7 @@ public class SelfTransactFeeAction extends BaseAction implements ModelDriven<Fee
 			query.setTCreatetime(createTime);
 		}
         this.selfBiz.loadCrudMapper(FeeLogModel.class);
-		ArrayList listPreasignRecord=this.selfBiz.getModel(query);
+		List listPreasignRecord=this.selfBiz.getModel(query);
 		//JSONArray jarrPreasignRecord=ObjectUtil.toJsonArray(listPreasignRecord);
 		JSONObject jsonDg=EasyUiUtil.toJsonDataGrid(listPreasignRecord);
 		this.writePlainText(jsonDg.toString());

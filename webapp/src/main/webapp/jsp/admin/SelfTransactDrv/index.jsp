@@ -34,7 +34,7 @@ String adminSelfTransactDrv=basePath+"admin/SelfTransactDrv";
        
     JsFunctionModel operaFormatter=new JsFunctionModel("operaFormatter",new String[]{"value","rowData","rowIndex"});
     operaFormatter
-    .appendContext("var href=\"{0}/to/verify.action?flowNo=\"+rowData[\"flowNo\"];",adminSelfTransactDrv)
+    .appendContext("var href=\"{0}/to/verify.action?FlowNo=\"+rowData[\"FlowNo\"];",adminSelfTransactDrv)
     .appendContext("return \"<a class='kia-icon edit' href='\"+href+\"' ></a>\";");
     
        JsListModel cols=new JsListModel();
