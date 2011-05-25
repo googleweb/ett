@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2011-05-24 02:10:51
+	Create Date:2011-05-25 10:26:46
 	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
 	Model:com.ett.drv.model.booked.BookedWeekRecordModel 
 
@@ -82,7 +82,7 @@ I_WEEK7_KM2_FP,I_WEEK7_KM3_NUM,I_WEEK7_KM3_FP,C_CHECK_OPERATOR,C_CHECK_DATE,I_CH
 </sql>
 
 <sql id="insertCols">
-seq_week_record.nextval,
+#{Id,jdbcType=INTEGER,javaType=Integer},
 #{IWeekNum,jdbcType=INTEGER,javaType=Integer},
 #{IWeek1Km1Num,jdbcType=INTEGER,javaType=Integer},
 #{IWeek1Km1Fp,jdbcType=VARCHAR,javaType=String},
@@ -248,51 +248,51 @@ C_WEEK_RANGE=#{model.CWeekRange,jdbcType=VARCHAR,javaType=String},
 <if test="model.Id neq null">and m.ID = #{model.Id,jdbcType=INTEGER javaType=Integer } </if> 
 <if test="model.IWeekNum neq null">and m.I_WEEK_NUM = #{model.IWeekNum,jdbcType=INTEGER javaType=Integer } </if> 
 <if test="model.IWeek1Km1Num neq null">and m.I_WEEK1_KM1_NUM = #{model.IWeek1Km1Num,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.IWeek1Km1Fp neq null">and m.I_WEEK1_KM1_FP = #{model.IWeek1Km1Fp,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.IWeek1Km1Fp neq null">and m.I_WEEK1_KM1_FP like #{model.IWeek1Km1Fp,jdbcType=VARCHAR javaType=String } </if> 
 <if test="model.IWeek1Km2Num neq null">and m.I_WEEK1_KM2_NUM = #{model.IWeek1Km2Num,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.IWeek1Km2Fp neq null">and m.I_WEEK1_KM2_FP = #{model.IWeek1Km2Fp,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.IWeek1Km2Fp neq null">and m.I_WEEK1_KM2_FP like #{model.IWeek1Km2Fp,jdbcType=VARCHAR javaType=String } </if> 
 <if test="model.IWeek1Km3Num neq null">and m.I_WEEK1_KM3_NUM = #{model.IWeek1Km3Num,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.IWeek1Km3Fp neq null">and m.I_WEEK1_KM3_FP = #{model.IWeek1Km3Fp,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.IWeek1Km3Fp neq null">and m.I_WEEK1_KM3_FP like #{model.IWeek1Km3Fp,jdbcType=VARCHAR javaType=String } </if> 
 <if test="model.IWeek2Km1Num neq null">and m.I_WEEK2_KM1_NUM = #{model.IWeek2Km1Num,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.IWeek2Km1Fp neq null">and m.I_WEEK2_KM1_FP = #{model.IWeek2Km1Fp,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.IWeek2Km1Fp neq null">and m.I_WEEK2_KM1_FP like #{model.IWeek2Km1Fp,jdbcType=VARCHAR javaType=String } </if> 
 <if test="model.IWeek2Km2Num neq null">and m.I_WEEK2_KM2_NUM = #{model.IWeek2Km2Num,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.IWeek2Km2Fp neq null">and m.I_WEEK2_KM2_FP = #{model.IWeek2Km2Fp,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.IWeek2Km2Fp neq null">and m.I_WEEK2_KM2_FP like #{model.IWeek2Km2Fp,jdbcType=VARCHAR javaType=String } </if> 
 <if test="model.IWeek2Km3Num neq null">and m.I_WEEK2_KM3_NUM = #{model.IWeek2Km3Num,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.IWeek2Km3Fp neq null">and m.I_WEEK2_KM3_FP = #{model.IWeek2Km3Fp,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.IWeek2Km3Fp neq null">and m.I_WEEK2_KM3_FP like #{model.IWeek2Km3Fp,jdbcType=VARCHAR javaType=String } </if> 
 <if test="model.IWeek3Km1Num neq null">and m.I_WEEK3_KM1_NUM = #{model.IWeek3Km1Num,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.IWeek3Km1Fp neq null">and m.I_WEEK3_KM1_FP = #{model.IWeek3Km1Fp,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.IWeek3Km1Fp neq null">and m.I_WEEK3_KM1_FP like #{model.IWeek3Km1Fp,jdbcType=VARCHAR javaType=String } </if> 
 <if test="model.IWeek3Km2Num neq null">and m.I_WEEK3_KM2_NUM = #{model.IWeek3Km2Num,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.IWeek3Km2Fp neq null">and m.I_WEEK3_KM2_FP = #{model.IWeek3Km2Fp,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.IWeek3Km2Fp neq null">and m.I_WEEK3_KM2_FP like #{model.IWeek3Km2Fp,jdbcType=VARCHAR javaType=String } </if> 
 <if test="model.IWeek3Km3Num neq null">and m.I_WEEK3_KM3_NUM = #{model.IWeek3Km3Num,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.IWeek3Km3Fp neq null">and m.I_WEEK3_KM3_FP = #{model.IWeek3Km3Fp,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.IWeek3Km3Fp neq null">and m.I_WEEK3_KM3_FP like #{model.IWeek3Km3Fp,jdbcType=VARCHAR javaType=String } </if> 
 <if test="model.IWeek4Km1Num neq null">and m.I_WEEK4_KM1_NUM = #{model.IWeek4Km1Num,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.IWeek4Km1Fp neq null">and m.I_WEEK4_KM1_FP = #{model.IWeek4Km1Fp,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.IWeek4Km1Fp neq null">and m.I_WEEK4_KM1_FP like #{model.IWeek4Km1Fp,jdbcType=VARCHAR javaType=String } </if> 
 <if test="model.IWeek4Km2Num neq null">and m.I_WEEK4_KM2_NUM = #{model.IWeek4Km2Num,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.IWeek4Km2Fp neq null">and m.I_WEEK4_KM2_FP = #{model.IWeek4Km2Fp,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.IWeek4Km2Fp neq null">and m.I_WEEK4_KM2_FP like #{model.IWeek4Km2Fp,jdbcType=VARCHAR javaType=String } </if> 
 <if test="model.IWeek4Km3Num neq null">and m.I_WEEK4_KM3_NUM = #{model.IWeek4Km3Num,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.IWeek4Km3Fp neq null">and m.I_WEEK4_KM3_FP = #{model.IWeek4Km3Fp,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.IWeek4Km3Fp neq null">and m.I_WEEK4_KM3_FP like #{model.IWeek4Km3Fp,jdbcType=VARCHAR javaType=String } </if> 
 <if test="model.IWeek5Km1Num neq null">and m.I_WEEK5_KM1_NUM = #{model.IWeek5Km1Num,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.IWeek5Km1Fp neq null">and m.I_WEEK5_KM1_FP = #{model.IWeek5Km1Fp,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.IWeek5Km1Fp neq null">and m.I_WEEK5_KM1_FP like #{model.IWeek5Km1Fp,jdbcType=VARCHAR javaType=String } </if> 
 <if test="model.IWeek5Km2Num neq null">and m.I_WEEK5_KM2_NUM = #{model.IWeek5Km2Num,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.IWeek5Km2Fp neq null">and m.I_WEEK5_KM2_FP = #{model.IWeek5Km2Fp,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.IWeek5Km2Fp neq null">and m.I_WEEK5_KM2_FP like #{model.IWeek5Km2Fp,jdbcType=VARCHAR javaType=String } </if> 
 <if test="model.IWeek5Km3Num neq null">and m.I_WEEK5_KM3_NUM = #{model.IWeek5Km3Num,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.IWeek5Km3Fp neq null">and m.I_WEEK5_KM3_FP = #{model.IWeek5Km3Fp,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.IWeek5Km3Fp neq null">and m.I_WEEK5_KM3_FP like #{model.IWeek5Km3Fp,jdbcType=VARCHAR javaType=String } </if> 
 <if test="model.IWeek6Km1Num neq null">and m.I_WEEK6_KM1_NUM = #{model.IWeek6Km1Num,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.IWeek6Km1Fp neq null">and m.I_WEEK6_KM1_FP = #{model.IWeek6Km1Fp,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.IWeek6Km1Fp neq null">and m.I_WEEK6_KM1_FP like #{model.IWeek6Km1Fp,jdbcType=VARCHAR javaType=String } </if> 
 <if test="model.IWeek6Km2Num neq null">and m.I_WEEK6_KM2_NUM = #{model.IWeek6Km2Num,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.IWeek6Km2Fp neq null">and m.I_WEEK6_KM2_FP = #{model.IWeek6Km2Fp,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.IWeek6Km2Fp neq null">and m.I_WEEK6_KM2_FP like #{model.IWeek6Km2Fp,jdbcType=VARCHAR javaType=String } </if> 
 <if test="model.IWeek6Km3Num neq null">and m.I_WEEK6_KM3_NUM = #{model.IWeek6Km3Num,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.IWeek6Km3Fp neq null">and m.I_WEEK6_KM3_FP = #{model.IWeek6Km3Fp,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.IWeek6Km3Fp neq null">and m.I_WEEK6_KM3_FP like #{model.IWeek6Km3Fp,jdbcType=VARCHAR javaType=String } </if> 
 <if test="model.IWeek7Km1Num neq null">and m.I_WEEK7_KM1_NUM = #{model.IWeek7Km1Num,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.IWeek7Km1Fp neq null">and m.I_WEEK7_KM1_FP = #{model.IWeek7Km1Fp,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.IWeek7Km1Fp neq null">and m.I_WEEK7_KM1_FP like #{model.IWeek7Km1Fp,jdbcType=VARCHAR javaType=String } </if> 
 <if test="model.IWeek7Km2Num neq null">and m.I_WEEK7_KM2_NUM = #{model.IWeek7Km2Num,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.IWeek7Km2Fp neq null">and m.I_WEEK7_KM2_FP = #{model.IWeek7Km2Fp,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.IWeek7Km2Fp neq null">and m.I_WEEK7_KM2_FP like #{model.IWeek7Km2Fp,jdbcType=VARCHAR javaType=String } </if> 
 <if test="model.IWeek7Km3Num neq null">and m.I_WEEK7_KM3_NUM = #{model.IWeek7Km3Num,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.IWeek7Km3Fp neq null">and m.I_WEEK7_KM3_FP = #{model.IWeek7Km3Fp,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CCheckOperator neq null">and m.C_CHECK_OPERATOR = #{model.CCheckOperator,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CCheckDate neq null">and m.C_CHECK_DATE = #{model.CCheckDate,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.IWeek7Km3Fp neq null">and m.I_WEEK7_KM3_FP like #{model.IWeek7Km3Fp,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CCheckOperator neq null">and m.C_CHECK_OPERATOR like #{model.CCheckOperator,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CCheckDate neq null">and m.C_CHECK_DATE like #{model.CCheckDate,jdbcType=VARCHAR javaType=String } </if> 
 <if test="model.IChecked neq null">and m.I_CHECKED = #{model.IChecked,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.CWeekRange neq null">and m.C_WEEK_RANGE = #{model.CWeekRange,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CWeekRange neq null">and m.C_WEEK_RANGE like #{model.CWeekRange,jdbcType=VARCHAR javaType=String } </if> 
 
 </sql>
 

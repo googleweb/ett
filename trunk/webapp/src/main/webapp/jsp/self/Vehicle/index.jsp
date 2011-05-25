@@ -30,16 +30,16 @@ String selfVehiclePath=basePath+"self/Vehicle";
            请选择机动车业务
      </div>
 		<div class="divFun">
-		<input class="btnmain" value="<%=TransactVehicleModel.Transact.EXCHANGE_PLATE %>"
-									onclick="javascript:document.location.href='<s:url value="/self/idCardReader!func.action"/>?capture=false&agent=true&returnurl=<s:url value="Identity/do/identityDriver.action"/>?transact=<%=TransactVehicleModel.ETransact.exchange_plate %>';"
+		<input class="btnmain" value="<%=TransactVehicleModel.Transacts.EXCHANGE_PLATE %>"
+									onclick="javascript:document.location.href='<s:url value="/self/idCardReader!func.action"/>?capture=false&agent=true&returnurl=<s:url value="Identity/do/identityDriver.action"/>?Transact=<%=TransactVehicleModel.ETransact.exchange_plate %>';"
 									type="button" />
 		<p/>
-		<input class="btnmain" value="<%=TransactVehicleModel.Transact.EXCHANGE_QUALIFIED %>"
-									onclick="javascript:document.location.href='<s:url value="/self/idCardReader!func.action"/>?capture=false&agent=true&returnurl=<s:url value="Identity/do/identityDriver.action"/>?transact=<%=TransactVehicleModel.ETransact.exchange_qualified %>';"
+		<input class="btnmain" value="<%=TransactVehicleModel.Transacts.EXCHANGE_QUALIFIED %>"
+									onclick="javascript:document.location.href='<s:url value="/self/idCardReader!func.action"/>?capture=false&agent=true&returnurl=<s:url value="Identity/do/identityDriver.action"/>?Transact=<%=TransactVehicleModel.ETransact.exchange_qualified %>';"
 									type="button" />
         <p/>
-		<input class="btnmain" value="<%=TransactVehicleModel.Transact.EXCHANGE_VEHICLE_LICENSE %>"
-									onclick="javascript:document.location.href='<s:url value="/self/idCardReader!func.action"/>?capture=false&agent=true&returnurl=<s:url value="Identity/do/identityDriver.action"/>?transact=<%=TransactVehicleModel.ETransact.exchange_vehicle_license %>';"
+		<input class="btnmain" value="<%=TransactVehicleModel.Transacts.EXCHANGE_VEHICLE_LICENSE %>"
+									onclick="javascript:document.location.href='<s:url value="/self/idCardReader!func.action"/>?capture=false&agent=true&returnurl=<s:url value="Identity/do/identityDriver.action"/>?Transact=<%=TransactVehicleModel.ETransact.exchange_vehicle_license %>';"
 									type="button" />
 
 		</div>

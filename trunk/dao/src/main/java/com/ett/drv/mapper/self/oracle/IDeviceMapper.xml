@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2011-05-24 02:10:51
+	Create Date:2011-05-25 10:26:46
 	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
 	Model:com.ett.drv.model.self.DeviceModel 
 
@@ -13,18 +13,18 @@ IAllowPreasignDays,BoolIsFeeATime,BoolIsFeeByVisacard,BoolIsPostFeeAll,BoolIsPri
 CMc2  
  } 
 
-private Double Id;         //ID  NUMBER 19
+private Integer Id;         //ID  NUMBER 19
 private String CCreateip;         //C_CREATEIP  VARCHAR2 1,020
 private Timestamp TCreatetime;         //T_CREATETIME  TIMESTAMP 0
 private String CCreator;         //C_CREATOR  VARCHAR2 120
-private Double IIsdeleted;         //I_ISDELETED  NUMBER 1
+private Integer IIsdeleted;         //I_ISDELETED  NUMBER 1
 private String CDescription;         //C_DESCRIPTION  VARCHAR2 1,020
 private String CKeywords;         //C_KEYWORDS  VARCHAR2 1,020
 private String CModifier;         //C_MODIFIER  VARCHAR2 1,020
 private String CModifyip;         //C_MODIFYIP  VARCHAR2 1,020
 private Timestamp TModifytime;         //T_MODIFYTIME  TIMESTAMP 0
 private String CCatalog;         //C_CATALOG  VARCHAR2 64
-private Double IDrvInterfaceTimeout;         //I_DRV_INTERFACE_TIMEOUT  NUMBER 10
+private Integer IDrvInterfaceTimeout;         //I_DRV_INTERFACE_TIMEOUT  NUMBER 10
 private String CDrvInterfaceUrl;         //C_DRV_INTERFACE_URL  VARCHAR2 200
 private String CFzjg;         //C_FZJG  VARCHAR2 20
 private String CGlbmCode;         //C_GLBM_CODE  VARCHAR2 20
@@ -37,21 +37,21 @@ private String CMac1;         //C_MAC1  VARCHAR2 20
 private String CMac2;         //C_MAC2  VARCHAR2 20
 private String CMachineName;         //C_MACHINE_NAME  VARCHAR2 50
 private String CPlaceAddress;         //C_PLACE_ADDRESS  VARCHAR2 200
-private Double BoolIspreasignall;         //BOOL_ISPREASIGNALL  NUMBER 1
-private Double IVehInterfaceTimeout;         //I_VEH_INTERFACE_TIMEOUT  NUMBER 10
+private Integer BoolIspreasignall;         //BOOL_ISPREASIGNALL  NUMBER 1
+private Integer IVehInterfaceTimeout;         //I_VEH_INTERFACE_TIMEOUT  NUMBER 10
 private String CVehInterfaceUrl;         //C_VEH_INTERFACE_URL  VARCHAR2 200
-private Double IVioInterfaceTimeout;         //I_VIO_INTERFACE_TIMEOUT  NUMBER 10
+private Integer IVioInterfaceTimeout;         //I_VIO_INTERFACE_TIMEOUT  NUMBER 10
 private String CVioInterfaceUrl;         //C_VIO_INTERFACE_URL  VARCHAR2 200
-private Double IYlwgTimeout;         //I_YLWG_TIMEOUT  NUMBER 10
+private Integer IYlwgTimeout;         //I_YLWG_TIMEOUT  NUMBER 10
 private String CYlwgUrl;         //C_YLWG_URL  VARCHAR2 200
-private Double IAllowPreasignDays;         //I_ALLOW_PREASIGN_DAYS  NUMBER 10
-private Double BoolIsFeeATime;         //BOOL_IS_FEE_A_TIME  NUMBER 1
-private Double BoolIsFeeByVisacard;         //BOOL_IS_FEE_BY_VISACARD  NUMBER 1
-private Double BoolIsPostFeeAll;         //BOOL_IS_POST_FEE_ALL  NUMBER 1
-private Double BoolIsPrintCompany;         //BOOL_IS_PRINT_COMPANY  NUMBER 1
+private Integer IAllowPreasignDays;         //I_ALLOW_PREASIGN_DAYS  NUMBER 10
+private Integer BoolIsFeeATime;         //BOOL_IS_FEE_A_TIME  NUMBER 1
+private Integer BoolIsFeeByVisacard;         //BOOL_IS_FEE_BY_VISACARD  NUMBER 1
+private Integer BoolIsPostFeeAll;         //BOOL_IS_POST_FEE_ALL  NUMBER 1
+private Integer BoolIsPrintCompany;         //BOOL_IS_PRINT_COMPANY  NUMBER 1
 private String CDefaultKsccCode;         //C_DEFAULT_KSCC_CODE  VARCHAR2 20
 private String CDefaultKsccName;         //C_DEFAULT_KSCC_NAME  VARCHAR2 64
-private Double IFeeInterfaceTimeout;         //I_FEE_INTERFACE_TIMEOUT  NUMBER 10
+private Integer IFeeInterfaceTimeout;         //I_FEE_INTERFACE_TIMEOUT  NUMBER 10
 private String CFeeInterfaceUrl;         //C_FEE_INTERFACE_URL  VARCHAR2 200
 private String Devicetype;         //DEVICETYPE  VARCHAR2 1,020
 private String CMc2;         //C_MC2  VARCHAR2 20
@@ -76,18 +76,18 @@ C_MC2
 </sql>
 
 <sql id="insertCols">
-seq_self_device.nextval,
+#{Id,jdbcType=INTEGER,javaType=Integer},
 #{CCreateip,jdbcType=VARCHAR,javaType=String},
 #{TCreatetime,jdbcType=TIMESTAMP,javaType=Timestamp},
 #{CCreator,jdbcType=VARCHAR,javaType=String},
-#{IIsdeleted,jdbcType=FLOAT,javaType=Double},
+#{IIsdeleted,jdbcType=INTEGER,javaType=Integer},
 #{CDescription,jdbcType=VARCHAR,javaType=String},
 #{CKeywords,jdbcType=VARCHAR,javaType=String},
 #{CModifier,jdbcType=VARCHAR,javaType=String},
 #{CModifyip,jdbcType=VARCHAR,javaType=String},
 #{TModifytime,jdbcType=TIMESTAMP,javaType=Timestamp},
 #{CCatalog,jdbcType=VARCHAR,javaType=String},
-#{IDrvInterfaceTimeout,jdbcType=FLOAT,javaType=Double},
+#{IDrvInterfaceTimeout,jdbcType=INTEGER,javaType=Integer},
 #{CDrvInterfaceUrl,jdbcType=VARCHAR,javaType=String},
 #{CFzjg,jdbcType=VARCHAR,javaType=String},
 #{CGlbmCode,jdbcType=VARCHAR,javaType=String},
@@ -100,21 +100,21 @@ seq_self_device.nextval,
 #{CMac2,jdbcType=VARCHAR,javaType=String},
 #{CMachineName,jdbcType=VARCHAR,javaType=String},
 #{CPlaceAddress,jdbcType=VARCHAR,javaType=String},
-#{BoolIspreasignall,jdbcType=FLOAT,javaType=Double},
-#{IVehInterfaceTimeout,jdbcType=FLOAT,javaType=Double},
+#{BoolIspreasignall,jdbcType=INTEGER,javaType=Integer},
+#{IVehInterfaceTimeout,jdbcType=INTEGER,javaType=Integer},
 #{CVehInterfaceUrl,jdbcType=VARCHAR,javaType=String},
-#{IVioInterfaceTimeout,jdbcType=FLOAT,javaType=Double},
+#{IVioInterfaceTimeout,jdbcType=INTEGER,javaType=Integer},
 #{CVioInterfaceUrl,jdbcType=VARCHAR,javaType=String},
-#{IYlwgTimeout,jdbcType=FLOAT,javaType=Double},
+#{IYlwgTimeout,jdbcType=INTEGER,javaType=Integer},
 #{CYlwgUrl,jdbcType=VARCHAR,javaType=String},
-#{IAllowPreasignDays,jdbcType=FLOAT,javaType=Double},
-#{BoolIsFeeATime,jdbcType=FLOAT,javaType=Double},
-#{BoolIsFeeByVisacard,jdbcType=FLOAT,javaType=Double},
-#{BoolIsPostFeeAll,jdbcType=FLOAT,javaType=Double},
-#{BoolIsPrintCompany,jdbcType=FLOAT,javaType=Double},
+#{IAllowPreasignDays,jdbcType=INTEGER,javaType=Integer},
+#{BoolIsFeeATime,jdbcType=INTEGER,javaType=Integer},
+#{BoolIsFeeByVisacard,jdbcType=INTEGER,javaType=Integer},
+#{BoolIsPostFeeAll,jdbcType=INTEGER,javaType=Integer},
+#{BoolIsPrintCompany,jdbcType=INTEGER,javaType=Integer},
 #{CDefaultKsccCode,jdbcType=VARCHAR,javaType=String},
 #{CDefaultKsccName,jdbcType=VARCHAR,javaType=String},
-#{IFeeInterfaceTimeout,jdbcType=FLOAT,javaType=Double},
+#{IFeeInterfaceTimeout,jdbcType=INTEGER,javaType=Integer},
 #{CFeeInterfaceUrl,jdbcType=VARCHAR,javaType=String},
 #{Devicetype,jdbcType=VARCHAR,javaType=String},
 #{CMc2,jdbcType=VARCHAR,javaType=String},
@@ -126,14 +126,14 @@ seq_self_device.nextval,
 C_CREATEIP=#{model.CCreateip,jdbcType=VARCHAR,javaType=String},
 T_CREATETIME=#{model.TCreatetime,jdbcType=TIMESTAMP,javaType=Timestamp},
 C_CREATOR=#{model.CCreator,jdbcType=VARCHAR,javaType=String},
-I_ISDELETED=#{model.IIsdeleted,jdbcType=FLOAT,javaType=Double},
+I_ISDELETED=#{model.IIsdeleted,jdbcType=INTEGER,javaType=Integer},
 C_DESCRIPTION=#{model.CDescription,jdbcType=VARCHAR,javaType=String},
 C_KEYWORDS=#{model.CKeywords,jdbcType=VARCHAR,javaType=String},
 C_MODIFIER=#{model.CModifier,jdbcType=VARCHAR,javaType=String},
 C_MODIFYIP=#{model.CModifyip,jdbcType=VARCHAR,javaType=String},
 T_MODIFYTIME=#{model.TModifytime,jdbcType=TIMESTAMP,javaType=Timestamp},
 C_CATALOG=#{model.CCatalog,jdbcType=VARCHAR,javaType=String},
-I_DRV_INTERFACE_TIMEOUT=#{model.IDrvInterfaceTimeout,jdbcType=FLOAT,javaType=Double},
+I_DRV_INTERFACE_TIMEOUT=#{model.IDrvInterfaceTimeout,jdbcType=INTEGER,javaType=Integer},
 C_DRV_INTERFACE_URL=#{model.CDrvInterfaceUrl,jdbcType=VARCHAR,javaType=String},
 C_FZJG=#{model.CFzjg,jdbcType=VARCHAR,javaType=String},
 C_GLBM_CODE=#{model.CGlbmCode,jdbcType=VARCHAR,javaType=String},
@@ -146,21 +146,21 @@ C_MAC1=#{model.CMac1,jdbcType=VARCHAR,javaType=String},
 C_MAC2=#{model.CMac2,jdbcType=VARCHAR,javaType=String},
 C_MACHINE_NAME=#{model.CMachineName,jdbcType=VARCHAR,javaType=String},
 C_PLACE_ADDRESS=#{model.CPlaceAddress,jdbcType=VARCHAR,javaType=String},
-BOOL_ISPREASIGNALL=#{model.BoolIspreasignall,jdbcType=FLOAT,javaType=Double},
-I_VEH_INTERFACE_TIMEOUT=#{model.IVehInterfaceTimeout,jdbcType=FLOAT,javaType=Double},
+BOOL_ISPREASIGNALL=#{model.BoolIspreasignall,jdbcType=INTEGER,javaType=Integer},
+I_VEH_INTERFACE_TIMEOUT=#{model.IVehInterfaceTimeout,jdbcType=INTEGER,javaType=Integer},
 C_VEH_INTERFACE_URL=#{model.CVehInterfaceUrl,jdbcType=VARCHAR,javaType=String},
-I_VIO_INTERFACE_TIMEOUT=#{model.IVioInterfaceTimeout,jdbcType=FLOAT,javaType=Double},
+I_VIO_INTERFACE_TIMEOUT=#{model.IVioInterfaceTimeout,jdbcType=INTEGER,javaType=Integer},
 C_VIO_INTERFACE_URL=#{model.CVioInterfaceUrl,jdbcType=VARCHAR,javaType=String},
-I_YLWG_TIMEOUT=#{model.IYlwgTimeout,jdbcType=FLOAT,javaType=Double},
+I_YLWG_TIMEOUT=#{model.IYlwgTimeout,jdbcType=INTEGER,javaType=Integer},
 C_YLWG_URL=#{model.CYlwgUrl,jdbcType=VARCHAR,javaType=String},
-I_ALLOW_PREASIGN_DAYS=#{model.IAllowPreasignDays,jdbcType=FLOAT,javaType=Double},
-BOOL_IS_FEE_A_TIME=#{model.BoolIsFeeATime,jdbcType=FLOAT,javaType=Double},
-BOOL_IS_FEE_BY_VISACARD=#{model.BoolIsFeeByVisacard,jdbcType=FLOAT,javaType=Double},
-BOOL_IS_POST_FEE_ALL=#{model.BoolIsPostFeeAll,jdbcType=FLOAT,javaType=Double},
-BOOL_IS_PRINT_COMPANY=#{model.BoolIsPrintCompany,jdbcType=FLOAT,javaType=Double},
+I_ALLOW_PREASIGN_DAYS=#{model.IAllowPreasignDays,jdbcType=INTEGER,javaType=Integer},
+BOOL_IS_FEE_A_TIME=#{model.BoolIsFeeATime,jdbcType=INTEGER,javaType=Integer},
+BOOL_IS_FEE_BY_VISACARD=#{model.BoolIsFeeByVisacard,jdbcType=INTEGER,javaType=Integer},
+BOOL_IS_POST_FEE_ALL=#{model.BoolIsPostFeeAll,jdbcType=INTEGER,javaType=Integer},
+BOOL_IS_PRINT_COMPANY=#{model.BoolIsPrintCompany,jdbcType=INTEGER,javaType=Integer},
 C_DEFAULT_KSCC_CODE=#{model.CDefaultKsccCode,jdbcType=VARCHAR,javaType=String},
 C_DEFAULT_KSCC_NAME=#{model.CDefaultKsccName,jdbcType=VARCHAR,javaType=String},
-I_FEE_INTERFACE_TIMEOUT=#{model.IFeeInterfaceTimeout,jdbcType=FLOAT,javaType=Double},
+I_FEE_INTERFACE_TIMEOUT=#{model.IFeeInterfaceTimeout,jdbcType=INTEGER,javaType=Integer},
 C_FEE_INTERFACE_URL=#{model.CFeeInterfaceUrl,jdbcType=VARCHAR,javaType=String},
 DEVICETYPE=#{model.Devicetype,jdbcType=VARCHAR,javaType=String},
 C_MC2=#{model.CMc2,jdbcType=VARCHAR,javaType=String},
@@ -174,18 +174,18 @@ C_MC2=#{model.CMc2,jdbcType=VARCHAR,javaType=String},
 <sql id="join"></sql><!-- 别名m已被主表使用  -->
 
 <resultMap type="com.ett.drv.model.self.DeviceModel" id="resultMap">
- <id column="ID"  property="Id" jdbcType="FLOAT" javaType="Double"/>
+ <id column="ID"  property="Id" jdbcType="INTEGER" javaType="Integer"/>
 <result column="C_CREATEIP"  property="CCreateip" jdbcType="VARCHAR" javaType="String"/>
 <result column="T_CREATETIME"  property="TCreatetime" jdbcType="TIMESTAMP" javaType="Timestamp"/>
 <result column="C_CREATOR"  property="CCreator" jdbcType="VARCHAR" javaType="String"/>
-<result column="I_ISDELETED"  property="IIsdeleted" jdbcType="FLOAT" javaType="Double"/>
+<result column="I_ISDELETED"  property="IIsdeleted" jdbcType="INTEGER" javaType="Integer"/>
 <result column="C_DESCRIPTION"  property="CDescription" jdbcType="VARCHAR" javaType="String"/>
 <result column="C_KEYWORDS"  property="CKeywords" jdbcType="VARCHAR" javaType="String"/>
 <result column="C_MODIFIER"  property="CModifier" jdbcType="VARCHAR" javaType="String"/>
 <result column="C_MODIFYIP"  property="CModifyip" jdbcType="VARCHAR" javaType="String"/>
 <result column="T_MODIFYTIME"  property="TModifytime" jdbcType="TIMESTAMP" javaType="Timestamp"/>
 <result column="C_CATALOG"  property="CCatalog" jdbcType="VARCHAR" javaType="String"/>
-<result column="I_DRV_INTERFACE_TIMEOUT"  property="IDrvInterfaceTimeout" jdbcType="FLOAT" javaType="Double"/>
+<result column="I_DRV_INTERFACE_TIMEOUT"  property="IDrvInterfaceTimeout" jdbcType="INTEGER" javaType="Integer"/>
 <result column="C_DRV_INTERFACE_URL"  property="CDrvInterfaceUrl" jdbcType="VARCHAR" javaType="String"/>
 <result column="C_FZJG"  property="CFzjg" jdbcType="VARCHAR" javaType="String"/>
 <result column="C_GLBM_CODE"  property="CGlbmCode" jdbcType="VARCHAR" javaType="String"/>
@@ -198,21 +198,21 @@ C_MC2=#{model.CMc2,jdbcType=VARCHAR,javaType=String},
 <result column="C_MAC2"  property="CMac2" jdbcType="VARCHAR" javaType="String"/>
 <result column="C_MACHINE_NAME"  property="CMachineName" jdbcType="VARCHAR" javaType="String"/>
 <result column="C_PLACE_ADDRESS"  property="CPlaceAddress" jdbcType="VARCHAR" javaType="String"/>
-<result column="BOOL_ISPREASIGNALL"  property="BoolIspreasignall" jdbcType="FLOAT" javaType="Double"/>
-<result column="I_VEH_INTERFACE_TIMEOUT"  property="IVehInterfaceTimeout" jdbcType="FLOAT" javaType="Double"/>
+<result column="BOOL_ISPREASIGNALL"  property="BoolIspreasignall" jdbcType="INTEGER" javaType="Integer"/>
+<result column="I_VEH_INTERFACE_TIMEOUT"  property="IVehInterfaceTimeout" jdbcType="INTEGER" javaType="Integer"/>
 <result column="C_VEH_INTERFACE_URL"  property="CVehInterfaceUrl" jdbcType="VARCHAR" javaType="String"/>
-<result column="I_VIO_INTERFACE_TIMEOUT"  property="IVioInterfaceTimeout" jdbcType="FLOAT" javaType="Double"/>
+<result column="I_VIO_INTERFACE_TIMEOUT"  property="IVioInterfaceTimeout" jdbcType="INTEGER" javaType="Integer"/>
 <result column="C_VIO_INTERFACE_URL"  property="CVioInterfaceUrl" jdbcType="VARCHAR" javaType="String"/>
-<result column="I_YLWG_TIMEOUT"  property="IYlwgTimeout" jdbcType="FLOAT" javaType="Double"/>
+<result column="I_YLWG_TIMEOUT"  property="IYlwgTimeout" jdbcType="INTEGER" javaType="Integer"/>
 <result column="C_YLWG_URL"  property="CYlwgUrl" jdbcType="VARCHAR" javaType="String"/>
-<result column="I_ALLOW_PREASIGN_DAYS"  property="IAllowPreasignDays" jdbcType="FLOAT" javaType="Double"/>
-<result column="BOOL_IS_FEE_A_TIME"  property="BoolIsFeeATime" jdbcType="FLOAT" javaType="Double"/>
-<result column="BOOL_IS_FEE_BY_VISACARD"  property="BoolIsFeeByVisacard" jdbcType="FLOAT" javaType="Double"/>
-<result column="BOOL_IS_POST_FEE_ALL"  property="BoolIsPostFeeAll" jdbcType="FLOAT" javaType="Double"/>
-<result column="BOOL_IS_PRINT_COMPANY"  property="BoolIsPrintCompany" jdbcType="FLOAT" javaType="Double"/>
+<result column="I_ALLOW_PREASIGN_DAYS"  property="IAllowPreasignDays" jdbcType="INTEGER" javaType="Integer"/>
+<result column="BOOL_IS_FEE_A_TIME"  property="BoolIsFeeATime" jdbcType="INTEGER" javaType="Integer"/>
+<result column="BOOL_IS_FEE_BY_VISACARD"  property="BoolIsFeeByVisacard" jdbcType="INTEGER" javaType="Integer"/>
+<result column="BOOL_IS_POST_FEE_ALL"  property="BoolIsPostFeeAll" jdbcType="INTEGER" javaType="Integer"/>
+<result column="BOOL_IS_PRINT_COMPANY"  property="BoolIsPrintCompany" jdbcType="INTEGER" javaType="Integer"/>
 <result column="C_DEFAULT_KSCC_CODE"  property="CDefaultKsccCode" jdbcType="VARCHAR" javaType="String"/>
 <result column="C_DEFAULT_KSCC_NAME"  property="CDefaultKsccName" jdbcType="VARCHAR" javaType="String"/>
-<result column="I_FEE_INTERFACE_TIMEOUT"  property="IFeeInterfaceTimeout" jdbcType="FLOAT" javaType="Double"/>
+<result column="I_FEE_INTERFACE_TIMEOUT"  property="IFeeInterfaceTimeout" jdbcType="INTEGER" javaType="Integer"/>
 <result column="C_FEE_INTERFACE_URL"  property="CFeeInterfaceUrl" jdbcType="VARCHAR" javaType="String"/>
 <result column="DEVICETYPE"  property="Devicetype" jdbcType="VARCHAR" javaType="String"/>
 <result column="C_MC2"  property="CMc2" jdbcType="VARCHAR" javaType="String"/>
@@ -221,48 +221,48 @@ C_MC2=#{model.CMc2,jdbcType=VARCHAR,javaType=String},
 
 
 <sql id="selectCondition">
-<if test="model.Id neq null">and m.ID = #{model.Id,jdbcType=FLOAT javaType=Double } </if> 
-<if test="model.CCreateip neq null">and m.C_CREATEIP = #{model.CCreateip,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Id neq null">and m.ID = #{model.Id,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.CCreateip neq null">and m.C_CREATEIP like #{model.CCreateip,jdbcType=VARCHAR javaType=String } </if> 
 <if test="model.TCreatetime neq null">and to_char(m.T_CREATETIME,'YYYY-MM-DD') = to_char(#{model.TCreatetime,jdbcType=TIMESTAMP javaType=Timestamp },'YYYY-MM-DD') </if> 
-<if test="model.CCreator neq null">and m.C_CREATOR = #{model.CCreator,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.IIsdeleted neq null">and m.I_ISDELETED = #{model.IIsdeleted,jdbcType=FLOAT javaType=Double } </if> 
-<if test="model.CDescription neq null">and m.C_DESCRIPTION = #{model.CDescription,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CKeywords neq null">and m.C_KEYWORDS = #{model.CKeywords,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CModifier neq null">and m.C_MODIFIER = #{model.CModifier,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CModifyip neq null">and m.C_MODIFYIP = #{model.CModifyip,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CCreator neq null">and m.C_CREATOR like #{model.CCreator,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.IIsdeleted neq null">and m.I_ISDELETED = #{model.IIsdeleted,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.CDescription neq null">and m.C_DESCRIPTION like #{model.CDescription,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CKeywords neq null">and m.C_KEYWORDS like #{model.CKeywords,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CModifier neq null">and m.C_MODIFIER like #{model.CModifier,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CModifyip neq null">and m.C_MODIFYIP like #{model.CModifyip,jdbcType=VARCHAR javaType=String } </if> 
 <if test="model.TModifytime neq null">and to_char(m.T_MODIFYTIME,'YYYY-MM-DD') = to_char(#{model.TModifytime,jdbcType=TIMESTAMP javaType=Timestamp },'YYYY-MM-DD') </if> 
-<if test="model.CCatalog neq null">and m.C_CATALOG = #{model.CCatalog,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.IDrvInterfaceTimeout neq null">and m.I_DRV_INTERFACE_TIMEOUT = #{model.IDrvInterfaceTimeout,jdbcType=FLOAT javaType=Double } </if> 
-<if test="model.CDrvInterfaceUrl neq null">and m.C_DRV_INTERFACE_URL = #{model.CDrvInterfaceUrl,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CFzjg neq null">and m.C_FZJG = #{model.CFzjg,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CGlbmCode neq null">and m.C_GLBM_CODE = #{model.CGlbmCode,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CGlbmName neq null">and m.C_GLBM_NAME = #{model.CGlbmName,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CIp1 neq null">and m.C_IP1 = #{model.CIp1,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CIp2 neq null">and m.C_IP2 = #{model.CIp2,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CKsddCode neq null">and m.C_KSDD_CODE = #{model.CKsddCode,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CKsddName neq null">and m.C_KSDD_NAME = #{model.CKsddName,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CMac1 neq null">and m.C_MAC1 = #{model.CMac1,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CMac2 neq null">and m.C_MAC2 = #{model.CMac2,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CMachineName neq null">and m.C_MACHINE_NAME = #{model.CMachineName,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CPlaceAddress neq null">and m.C_PLACE_ADDRESS = #{model.CPlaceAddress,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.BoolIspreasignall neq null">and m.BOOL_ISPREASIGNALL = #{model.BoolIspreasignall,jdbcType=FLOAT javaType=Double } </if> 
-<if test="model.IVehInterfaceTimeout neq null">and m.I_VEH_INTERFACE_TIMEOUT = #{model.IVehInterfaceTimeout,jdbcType=FLOAT javaType=Double } </if> 
-<if test="model.CVehInterfaceUrl neq null">and m.C_VEH_INTERFACE_URL = #{model.CVehInterfaceUrl,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.IVioInterfaceTimeout neq null">and m.I_VIO_INTERFACE_TIMEOUT = #{model.IVioInterfaceTimeout,jdbcType=FLOAT javaType=Double } </if> 
-<if test="model.CVioInterfaceUrl neq null">and m.C_VIO_INTERFACE_URL = #{model.CVioInterfaceUrl,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.IYlwgTimeout neq null">and m.I_YLWG_TIMEOUT = #{model.IYlwgTimeout,jdbcType=FLOAT javaType=Double } </if> 
-<if test="model.CYlwgUrl neq null">and m.C_YLWG_URL = #{model.CYlwgUrl,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.IAllowPreasignDays neq null">and m.I_ALLOW_PREASIGN_DAYS = #{model.IAllowPreasignDays,jdbcType=FLOAT javaType=Double } </if> 
-<if test="model.BoolIsFeeATime neq null">and m.BOOL_IS_FEE_A_TIME = #{model.BoolIsFeeATime,jdbcType=FLOAT javaType=Double } </if> 
-<if test="model.BoolIsFeeByVisacard neq null">and m.BOOL_IS_FEE_BY_VISACARD = #{model.BoolIsFeeByVisacard,jdbcType=FLOAT javaType=Double } </if> 
-<if test="model.BoolIsPostFeeAll neq null">and m.BOOL_IS_POST_FEE_ALL = #{model.BoolIsPostFeeAll,jdbcType=FLOAT javaType=Double } </if> 
-<if test="model.BoolIsPrintCompany neq null">and m.BOOL_IS_PRINT_COMPANY = #{model.BoolIsPrintCompany,jdbcType=FLOAT javaType=Double } </if> 
-<if test="model.CDefaultKsccCode neq null">and m.C_DEFAULT_KSCC_CODE = #{model.CDefaultKsccCode,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CDefaultKsccName neq null">and m.C_DEFAULT_KSCC_NAME = #{model.CDefaultKsccName,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.IFeeInterfaceTimeout neq null">and m.I_FEE_INTERFACE_TIMEOUT = #{model.IFeeInterfaceTimeout,jdbcType=FLOAT javaType=Double } </if> 
-<if test="model.CFeeInterfaceUrl neq null">and m.C_FEE_INTERFACE_URL = #{model.CFeeInterfaceUrl,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.Devicetype neq null">and m.DEVICETYPE = #{model.Devicetype,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CMc2 neq null">and m.C_MC2 = #{model.CMc2,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CCatalog neq null">and m.C_CATALOG like #{model.CCatalog,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.IDrvInterfaceTimeout neq null">and m.I_DRV_INTERFACE_TIMEOUT = #{model.IDrvInterfaceTimeout,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.CDrvInterfaceUrl neq null">and m.C_DRV_INTERFACE_URL like #{model.CDrvInterfaceUrl,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CFzjg neq null">and m.C_FZJG like #{model.CFzjg,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CGlbmCode neq null">and m.C_GLBM_CODE like #{model.CGlbmCode,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CGlbmName neq null">and m.C_GLBM_NAME like #{model.CGlbmName,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CIp1 neq null">and m.C_IP1 like #{model.CIp1,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CIp2 neq null">and m.C_IP2 like #{model.CIp2,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CKsddCode neq null">and m.C_KSDD_CODE like #{model.CKsddCode,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CKsddName neq null">and m.C_KSDD_NAME like #{model.CKsddName,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CMac1 neq null">and m.C_MAC1 like #{model.CMac1,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CMac2 neq null">and m.C_MAC2 like #{model.CMac2,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CMachineName neq null">and m.C_MACHINE_NAME like #{model.CMachineName,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CPlaceAddress neq null">and m.C_PLACE_ADDRESS like #{model.CPlaceAddress,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.BoolIspreasignall neq null">and m.BOOL_ISPREASIGNALL = #{model.BoolIspreasignall,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.IVehInterfaceTimeout neq null">and m.I_VEH_INTERFACE_TIMEOUT = #{model.IVehInterfaceTimeout,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.CVehInterfaceUrl neq null">and m.C_VEH_INTERFACE_URL like #{model.CVehInterfaceUrl,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.IVioInterfaceTimeout neq null">and m.I_VIO_INTERFACE_TIMEOUT = #{model.IVioInterfaceTimeout,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.CVioInterfaceUrl neq null">and m.C_VIO_INTERFACE_URL like #{model.CVioInterfaceUrl,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.IYlwgTimeout neq null">and m.I_YLWG_TIMEOUT = #{model.IYlwgTimeout,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.CYlwgUrl neq null">and m.C_YLWG_URL like #{model.CYlwgUrl,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.IAllowPreasignDays neq null">and m.I_ALLOW_PREASIGN_DAYS = #{model.IAllowPreasignDays,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.BoolIsFeeATime neq null">and m.BOOL_IS_FEE_A_TIME = #{model.BoolIsFeeATime,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.BoolIsFeeByVisacard neq null">and m.BOOL_IS_FEE_BY_VISACARD = #{model.BoolIsFeeByVisacard,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.BoolIsPostFeeAll neq null">and m.BOOL_IS_POST_FEE_ALL = #{model.BoolIsPostFeeAll,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.BoolIsPrintCompany neq null">and m.BOOL_IS_PRINT_COMPANY = #{model.BoolIsPrintCompany,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.CDefaultKsccCode neq null">and m.C_DEFAULT_KSCC_CODE like #{model.CDefaultKsccCode,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CDefaultKsccName neq null">and m.C_DEFAULT_KSCC_NAME like #{model.CDefaultKsccName,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.IFeeInterfaceTimeout neq null">and m.I_FEE_INTERFACE_TIMEOUT = #{model.IFeeInterfaceTimeout,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.CFeeInterfaceUrl neq null">and m.C_FEE_INTERFACE_URL like #{model.CFeeInterfaceUrl,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Devicetype neq null">and m.DEVICETYPE like #{model.Devicetype,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CMc2 neq null">and m.C_MC2 like #{model.CMc2,jdbcType=VARCHAR javaType=String } </if> 
 
 </sql>
 
@@ -291,7 +291,7 @@ C_MC2=#{model.CMc2,jdbcType=VARCHAR,javaType=String},
 </select>
 
 <select id="selectEqPk"  resultMap="resultMap">
-	select m.* from <include refid="table" /> m  where m.<include refid="pk" /> = #{Id,jdbcType=FLOAT,javaType=Double}
+	select m.* from <include refid="table" /> m  where m.<include refid="pk" /> = #{Id,jdbcType=INTEGER,javaType=Integer}
 </select>
 
 <select id="selectInPk" resultType="ArrayList" resultMap="resultMap" >
@@ -329,10 +329,10 @@ C_MC2=#{model.CMc2,jdbcType=VARCHAR,javaType=String},
 		<trim  prefixOverrides="," suffixOverrides=",">
 			<include refid="updateCols"/>
 		</trim>
-	where <include refid="pk" />=#{model.Id,jdbcType=FLOAT,javaType=Double}</update>
+	where <include refid="pk" />=#{model.Id,jdbcType=INTEGER,javaType=Integer}</update>
 
 <delete id="deleteEqPk" flushCache="true">
-	delete from <include refid="table"/> where <include refid="pk" /> =#{Id,jdbcType=FLOAT,javaType=Double}
+	delete from <include refid="table"/> where <include refid="pk" /> =#{Id,jdbcType=INTEGER,javaType=Integer}
 </delete>
 
 <delete id="deleteInPk" flushCache="true">
@@ -375,7 +375,7 @@ C_MC2=#{model.CMc2,jdbcType=VARCHAR,javaType=String},
 </select>
 
 <select id="selectViewEqPk"  resultMap="viewMap">
-	select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> = #{Id,jdbcType=FLOAT,javaType=Double}
+	select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> = #{Id,jdbcType=INTEGER,javaType=Integer}
 </select>
 
 <select id="selectViewInPk" resultType="ArrayList" resultMap="viewMap" >

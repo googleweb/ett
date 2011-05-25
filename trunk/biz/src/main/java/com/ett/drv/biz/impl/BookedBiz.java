@@ -4,6 +4,7 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.smartken.kia.core.model.impl.BaseCurdBiz;
@@ -56,7 +57,7 @@ public class BookedBiz extends BaseDrvBiz implements IBookedBiz {
 		BookedWeekRecordModel lWeekReurn=new BookedWeekRecordModel();
 		lWeekReurn.setIWeekNum(weekNum);
 		try {
-		ArrayList<BookedWeekRecordModel> lListWeek= weekRecordMapper.select(lWeekReurn);
+		List<BookedWeekRecordModel> lListWeek= weekRecordMapper.select(lWeekReurn);
 		lWeekReurn=lListWeek.get(0);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -70,7 +71,7 @@ public class BookedBiz extends BaseDrvBiz implements IBookedBiz {
 		Map<String, BookedLimitModel> lMapReturn=new HashMap<String, BookedLimitModel>();
 		BookedLimitModel lLimit=new BookedLimitModel();
 		lLimit.setIWeekNum(weekNum);
-        ArrayList<BookedLimitModel> lListLimit=limitMapper.select(lLimit);
+        List<BookedLimitModel> lListLimit=limitMapper.select(lLimit);
 		for (BookedLimitModel bookedLimitModel : lListLimit) {
 			   lMapReturn.put((String) bookedLimitModel.generalPK(), bookedLimitModel);	
 		}

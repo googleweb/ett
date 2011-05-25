@@ -2,6 +2,7 @@ package com.ett.drv.model.self;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import com.smartken.kia.core.model.impl.BaseModel;
 
@@ -15,7 +16,7 @@ public class FeeReconModel extends BaseModel {
     private int syn=1;
 	
 	
-	public FeeReconModel(Date createDate, ArrayList<FeeLogModel> listFeeLog){
+	public FeeReconModel(Date createDate, List<FeeLogModel> listFeeLog){
 		this.createDate=createDate;
 		this.tranCount=listFeeLog.size();
 		for (FeeLogModel feeLogModel : listFeeLog) {

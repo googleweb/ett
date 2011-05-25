@@ -3,6 +3,7 @@
 <%@page import="com.smartken.kia.core.util.StringUtil"%>
 <%@page import="com.ett.drv.model.self.Km1PreasignRecordModel"%>
 <%@page import="com.smartken.kia.core.util.EasyUiUtil"%>
+<%@page import="com.ett.drv.model.admin.DictModel"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -122,18 +123,18 @@ String weekPbActionPath=basePath+"booked/WeekPb";
               <td >考试场次:
                    <input name="<%=Km1PreasignRecordModel.F.Kscccode %>" 
                      class="<%=EasyUiModel.ComboBox.CLASS %>"
-                     <%=EasyUiModel.ComboBox.Properties.URL(weekPbActionPath+"/select/kscc.action") %>
-                      <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD("dictText") %>
-  	                  <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD("dictValue") %>
+                     <%=EasyUiModel.ComboBox.Properties.URL(weekPbActionPath+"/combobox/kscc.action") %>
+                      <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
+  	                  <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %>
   	                  <%=EasyUiModel.ComboBox.Properties.EDITABLE(false) %>
                    />
               </td>
              <td >考试地点:
                    <input name="<%=Km1PreasignRecordModel.F.Ksddcode %>" 
                      class="<%=EasyUiModel.ComboBox.CLASS %>"
-                     <%=EasyUiModel.ComboBox.Properties.URL(weekPbActionPath+"/select/ksdd.action") %>
-                      <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD("dictText") %>
-  	                  <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD("dictValue") %>
+                     <%=EasyUiModel.ComboBox.Properties.URL(weekPbActionPath+"/combobox/ksdd.action") %>
+                      <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
+  	                  <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %>
   	                  <%=EasyUiModel.ComboBox.Properties.EDITABLE(false) %>
                    />
               </td>

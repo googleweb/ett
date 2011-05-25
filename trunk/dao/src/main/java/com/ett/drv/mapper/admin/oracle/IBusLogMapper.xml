@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2011-05-24 02:10:51
+	Create Date:2011-05-25 10:26:46
 	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
 	Model:com.ett.drv.model.admin.BusLogModel 
 
@@ -82,13 +82,13 @@ I_DEPID=#{model.IDepid,jdbcType=INTEGER,javaType=Integer},
 
 <sql id="selectCondition">
 <if test="model.Id neq null">and m.ID = #{model.Id,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.COperator neq null">and m.C_OPERATOR = #{model.COperator,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CBustype neq null">and m.C_BUSTYPE = #{model.CBustype,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.COperator neq null">and m.C_OPERATOR like #{model.COperator,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CBustype neq null">and m.C_BUSTYPE like #{model.CBustype,jdbcType=VARCHAR javaType=String } </if> 
 <if test="model.Regdate neq null">and to_char(m.REGDATE,'YYYY-MM-DD') = to_char(#{model.Regdate,jdbcType=DATE javaType=Date },'YYYY-MM-DD') </if> 
-<if test="model.CContent neq null">and m.C_CONTENT = #{model.CContent,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CDes1 neq null">and m.C_DES1 = #{model.CDes1,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CDes2 neq null">and m.C_DES2 = #{model.CDes2,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CDes3 neq null">and m.C_DES3 = #{model.CDes3,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CContent neq null">and m.C_CONTENT like #{model.CContent,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CDes1 neq null">and m.C_DES1 like #{model.CDes1,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CDes2 neq null">and m.C_DES2 like #{model.CDes2,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CDes3 neq null">and m.C_DES3 like #{model.CDes3,jdbcType=VARCHAR javaType=String } </if> 
 <if test="model.IDepid neq null">and m.I_DEPID = #{model.IDepid,jdbcType=INTEGER javaType=Integer } </if> 
 
 </sql>

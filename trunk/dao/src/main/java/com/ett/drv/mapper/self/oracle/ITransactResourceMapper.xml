@@ -1,11 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" ?>
+<!--
+	Create Date:2011-05-25 11:51:40
+	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
+	Model:com.ett.drv.model.self.TransactResourceModel 
+
+
+ public static enum F { 
+  FlowNo,DriverIdFrontImg,DriverIdBackImg,AgentIdFrontImg,AgentIdBackImg,CaptureImg  
+ } 
+
+private String FlowNo;         //FLOW_NO  VARCHAR2 100
+private byte[] DriverIdFrontImg;         //DRIVER_ID_FRONT_IMG  BLOB 100
+private byte[] DriverIdBackImg;         //DRIVER_ID_BACK_IMG  BLOB 100
+private byte[] AgentIdFrontImg;         //AGENT_ID_FRONT_IMG  BLOB 100
+private byte[] AgentIdBackImg;         //AGENT_ID_BACK_IMG  BLOB 100
+private byte[] CaptureImg;         //CAPTURE_IMG  BLOB 100
+ -->
+
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ett.drv.mapper.self.ITransactResourceMapper">
 
 <cache flushInterval="30000" readOnly="true"></cache>
 
 
-<sql id="table">ASPNET.SELF_TRANSACT_RESOURCE</sql>
+<sql id="table">SELF_TRANSACT_RESOURCE</sql>
 
 <sql id="pk">FLOW_NO</sql>
 
@@ -14,94 +32,179 @@ FLOW_NO,DRIVER_ID_FRONT_IMG,DRIVER_ID_BACK_IMG,AGENT_ID_FRONT_IMG,AGENT_ID_BACK_
 </sql>
 
 <sql id="insertCols">
-#{flowNo,jdbcType=VARCHAR,javaType=String},
-#{driverIdFrontImg,jdbcType=BLOB},
-#{driverIdBackImg,jdbcType=BLOB},
-#{agentIdFrontImg,jdbcType=BLOB},
-#{agentIdBackImg,jdbcType=BLOB},
-#{captureImg,jdbcType=BLOB} 
+seq.nextval,
+#{DriverIdFrontImg,jdbcType=BLOB},
+#{DriverIdBackImg,jdbcType=BLOB},
+#{AgentIdFrontImg,jdbcType=BLOB},
+#{AgentIdBackImg,jdbcType=BLOB},
+#{CaptureImg,jdbcType=BLOB},
+
 </sql>
 
 <sql id="updateCols">
- <if test="pk neq null">FLOW_NO=#{pk},</if>
-DRIVER_ID_FRONT_IMG=#{model.driverIdFrontImg,jdbcType=BLOB},
-DRIVER_ID_BACK_IMG=#{model.driverIdBackImg,jdbcType=BLOB},
-AGENT_ID_FRONT_IMG=#{model.agentIdFrontImg,jdbcType=BLOB},
-AGENT_ID_BACK_IMG=#{model.agentIdBackImg,jdbcType=BLOB},
-CAPTURE_IMG=#{model.captureImg,jdbcType=BLOB}
+<if test="pk neq null">FLOW_NO=#{pk}</if>,
+DRIVER_ID_FRONT_IMG=#{DriverIdFrontImg,jdbcType=BLOB},
+DRIVER_ID_BACK_IMG=#{DriverIdBackImg,jdbcType=BLOB},
+AGENT_ID_FRONT_IMG=#{AgentIdFrontImg,jdbcType=BLOB},
+AGENT_ID_BACK_IMG=#{AgentIdBackImg,jdbcType=BLOB},
+CAPTURE_IMG=#{CaptureImg,jdbcType=BLOB},
+
 </sql>
 
-<sql id="orderby">order by FLOW_NO</sql>
+<sql id="orderby">order by m.FLOW_NO desc </sql>
 
 <sql id="joinColums"></sql>
 
 <sql id="join"></sql><!-- 别名m已被主表使用  -->
 
 <resultMap type="com.ett.drv.model.self.TransactResourceModel" id="resultMap">
- <id column="FLOW_NO"  property="flowNo" jdbcType="VARCHAR" javaType="String"/>
-<result column="DRIVER_ID_FRONT_IMG"  property="driverIdFrontImg" jdbcType="BLOB" />
-<result column="DRIVER_ID_BACK_IMG"  property="driverIdBackImg" jdbcType="BLOB" />
-<result column="AGENT_ID_FRONT_IMG"  property="agentIdFrontImg" jdbcType="BLOB" />
-<result column="AGENT_ID_BACK_IMG"  property="agentIdBackImg" jdbcType="BLOB" />
-<result column="CAPTURE_IMG"  property="captureImg" jdbcType="BLOB" />
+ <id column="FLOW_NO"  property="FlowNo" jdbcType="VARCHAR" javaType="String"/>
+<result column="DRIVER_ID_FRONT_IMG"  property="DriverIdFrontImg" jdbcType="BLOB" />
+<result column="DRIVER_ID_BACK_IMG"  property="DriverIdBackImg" jdbcType="BLOB" />
+<result column="AGENT_ID_FRONT_IMG"  property="AgentIdFrontImg" jdbcType="BLOB" />
+<result column="AGENT_ID_BACK_IMG"  property="AgentIdBackImg" jdbcType="BLOB" />
+<result column="CAPTURE_IMG"  property="CaptureImg" jdbcType="BLOB" />
+
  </resultMap>
 
 
+<sql id="selectCondition">
+<if test="model.FlowNo neq null">and m.FLOW_NO like #{model.FlowNo,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.DriverIdFrontImg neq null">and m.DRIVER_ID_FRONT_IMG = #{model.DriverIdFrontImg,jdbcType=BLOB javaType=Byte } </if> 
+<if test="model.DriverIdBackImg neq null">and m.DRIVER_ID_BACK_IMG = #{model.DriverIdBackImg,jdbcType=BLOB javaType=Byte } </if> 
+<if test="model.AgentIdFrontImg neq null">and m.AGENT_ID_FRONT_IMG = #{model.AgentIdFrontImg,jdbcType=BLOB javaType=Byte } </if> 
+<if test="model.AgentIdBackImg neq null">and m.AGENT_ID_BACK_IMG = #{model.AgentIdBackImg,jdbcType=BLOB javaType=Byte } </if> 
+<if test="model.CaptureImg neq null">and m.CAPTURE_IMG = #{model.CaptureImg,jdbcType=BLOB javaType=Byte } </if> 
+
+</sql>
+
+
 <select id="select" resultType="ArrayList" resultMap="resultMap">
-	 select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> 
-<trim prefix="where" prefixOverrides="and">
-<if test="model.flowNo neq null">and m.FLOW_NO=#{model.flowNo,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.driverIdFrontImg neq null">and m.DRIVER_ID_FRONT_IMG=#{model.driverIdFrontImg,jdbcType=BLOB  } </if> 
-<if test="model.driverIdBackImg neq null">and m.DRIVER_ID_BACK_IMG=#{model.driverIdBackImg,jdbcType=BLOB  } </if> 
-<if test="model.agentIdFrontImg neq null">and m.AGENT_ID_FRONT_IMG=#{model.agentIdFrontImg,jdbcType=BLOB  } </if> 
-<if test="model.agentIdBackImg neq null">and m.AGENT_ID_BACK_IMG=#{model.agentIdBackImg,jdbcType=BLOB  } </if> 
-<if test="model.captureImg neq null">and m.CAPTURE_IMG=#{model.captureImg,jdbcType=BLOB  } </if> 
-</trim>
-</select>
-<select id="selectEqPk" parameterType="String"  resultMap="resultMap">
-	 select <include refid="colums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> = #{flowNo,jdbcType=VARCHAR,javaType=String}
+	select m.* from <include refid="table" /> m   
+		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+			<include refid="selectCondition"/>
+		</trim>
+	<include refid="orderby"/>
 </select>
 
-<select id="count" resultType="int">
-	 select count(*) from <include refid="table"/>
+<select id="selectUnion" resultType="ArrayList" resultMap="resultMap">
+  select m.* from (
+	<trim  prefixOverrides="union" suffixOverrides="union">
+		<foreach collection="list" item="model">
+			<if test="model neq null">
+				union select m.* from <include refid="table" /> m 
+					<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+						<include refid="selectCondition"/>
+					</trim>
+			</if>
+		</foreach>
+	</trim>
+   ) m <include refid="orderby"/>
+</select>
+
+<select id="selectEqPk"  resultMap="resultMap">
+	select m.* from <include refid="table" /> m  where m.<include refid="pk" /> = #{FlowNo,jdbcType=VARCHAR,javaType=String}
 </select>
 
 <select id="selectInPk" resultType="ArrayList" resultMap="resultMap" >
-	 select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> in
-<foreach item="pk" collection="list" open="(" separator="," close=")"> #{pk} </foreach> 
-<include refid="orderby"/>
+	select m.* from <include refid="table" /> m  where m.<include refid="pk" /> in
+		<foreach item="pk" collection="list" open="(" separator="," close=")"> #{pk} </foreach>
+	<include refid="orderby"/>
 </select>
 
 <select id="selectNotInPk" resultType="ArrayList" resultMap="resultMap" >
-	 select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> not in
-<foreach item="pk" collection="list" open="(" separator="," close=")"> #{pk} </foreach> 
-<include refid="orderby"/>
+	select m.* from <include refid="table" /> m  where m.<include refid="pk" /> not in
+		<foreach item="pk" collection="list" open="(" separator="," close=")"> #{pk} </foreach>
+	<include refid="orderby"/>
 </select>
 
 <select  id="selectAll"  resultType="ArrayList"  resultMap="resultMap">
-	 select m.* <include refid="joinColums"/> from  <include refid="table" /> m <include refid="join"/> 
- <include refid="orderby"/>
+	select m.* from  <include refid="table" /> m
+	<include refid="orderby"/>
 </select>
 
-<insert id="insertOne" >
-	 insert into <include refid="table"/> ( <include refid="colums"/> ) values ( <include refid="insertCols"/>) 
+<select id="count" resultType="int">
+	select count(*) from <include refid="table"/>
+</select>
+
+<insert id="insertOne" flushCache="true" >
+	insert into <include refid="table"/> ( <include refid="colums"/> ) values  
+	(
+		<trim  prefixOverrides="," suffixOverrides=",">
+			<include refid="insertCols"/>
+		</trim>
+	)
 </insert>
 
 <update id="updateOne" flushCache="true" >
-	 update <include refid="table"/> set <include refid="updateCols"/> where <include refid="pk" />=#{model.flowNo,jdbcType=VARCHAR,javaType=String}
-</update>
+	update <include refid="table"/> set 
+		<trim  prefixOverrides="," suffixOverrides=",">
+			<include refid="updateCols"/>
+		</trim>
+	where <include refid="pk" />=#{model.FlowNo,jdbcType=VARCHAR,javaType=String}</update>
+
+<delete id="deleteEqPk" flushCache="true">
+	delete from <include refid="table"/> where <include refid="pk" /> =#{FlowNo,jdbcType=VARCHAR,javaType=String}
+</delete>
 
 <delete id="deleteInPk" flushCache="true">
-	 delete from <include refid="table"/> where <include refid="pk" /> in
-<foreach item="pk" collection="list" open="(" separator="," close=")">#{pk}</foreach>
+	delete from <include refid="table"/> where <include refid="pk" /> in
+		<foreach item="pk" collection="list" open="(" separator="," close=")">#{pk}</foreach>
 </delete>
 
 <delete id="deleteNotInPk" flushCache="true">
-	 delete from <include refid="table"/> where <include refid="pk" /> not in
-<foreach item="pk" collection="list" open="(" separator="," close=")">#{pk}</foreach>
+	delete from <include refid="table"/> where <include refid="pk" /> not in
+		<foreach item="pk" collection="list" open="(" separator="," close=")">#{pk}</foreach>
 </delete>
 
 
 
-</mapper>
+<resultMap type="com.ett.drv.model.self.TransactResourceModel" id="viewMap" extends="resultMap" ></resultMap>
 
+
+<sql id="selectViewCondition">
+	 <include refid="selectCondition"/>  
+</sql><select id="selectView" resultType="ArrayList" resultMap="viewMap">
+	select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> 
+		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+			<include refid="selectViewCondition"/>
+		</trim>	<include refid="orderby"/>
+</select>
+
+<select id="selectViewUnion" resultType="ArrayList" resultMap="viewMap">
+  select m.* from (
+	<trim  prefixOverrides="union" suffixOverrides="union">
+		<foreach collection="list" item="model">
+			<if test="model neq null">
+				union select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> 
+					<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+						<include refid="selectViewCondition"/>
+					</trim>
+			</if>
+		</foreach>
+	</trim>
+  ) m <include refid="orderby"/>
+</select>
+
+<select id="selectViewEqPk"  resultMap="viewMap">
+	select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> = #{FlowNo,jdbcType=VARCHAR,javaType=String}
+</select>
+
+<select id="selectViewInPk" resultType="ArrayList" resultMap="viewMap" >
+	select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> in
+	<foreach item="pk" collection="list" open="(" separator="," close=")"> #{pk} </foreach>
+	<include refid="orderby"/>
+</select>
+
+<select id="selectViewNotInPk" resultType="ArrayList" resultMap="viewMap" >
+	select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> not in
+	<foreach item="pk" collection="list" open="(" separator="," close=")"> #{pk} </foreach>
+	<include refid="orderby"/>
+</select>
+
+<select  id="selectViewAll"  resultType="ArrayList"  resultMap="viewMap">
+	select m.* <include refid="joinColums"/> from  <include refid="table" /> m <include refid="join"/>
+	<include refid="orderby"/>
+</select>
+
+</mapper>

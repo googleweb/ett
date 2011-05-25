@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2011-05-24 02:10:51
+	Create Date:2011-05-25 10:26:46
 	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
 	Model:com.ett.drv.model.self.TerminalModel 
 
@@ -10,7 +10,7 @@
 YlwgTimout,DriverUrl,DriverTimeout,CarUrl,CarTimeout,VioUrl,VioTimeout,Descp  
  } 
 
-private Double Id;         //ID  NUMBER 5
+private Integer Id;         //ID  NUMBER 5
 private String Glbm;         //GLBM  VARCHAR2 100
 private String Fzjg;         //FZJG  VARCHAR2 100
 private String Name;         //NAME  VARCHAR2 100
@@ -21,13 +21,13 @@ private String Ip1;         //IP1  VARCHAR2 100
 private String Ip2;         //IP2  VARCHAR2 100
 private String Address;         //ADDRESS  VARCHAR2 150
 private String YlwgUrl;         //YLWG_URL  VARCHAR2 50
-private Double YlwgTimout;         //YLWG_TIMOUT  NUMBER 5
+private Integer YlwgTimout;         //YLWG_TIMOUT  NUMBER 5
 private String DriverUrl;         //DRIVER_URL  VARCHAR2 150
-private Double DriverTimeout;         //DRIVER_TIMEOUT  NUMBER 5
+private Integer DriverTimeout;         //DRIVER_TIMEOUT  NUMBER 5
 private String CarUrl;         //CAR_URL  VARCHAR2 150
-private Double CarTimeout;         //CAR_TIMEOUT  NUMBER 5
+private Integer CarTimeout;         //CAR_TIMEOUT  NUMBER 5
 private String VioUrl;         //VIO_URL  VARCHAR2 150
-private Double VioTimeout;         //VIO_TIMEOUT  NUMBER 5
+private Integer VioTimeout;         //VIO_TIMEOUT  NUMBER 5
 private String Descp;         //DESCP  VARCHAR2 150
  -->
 
@@ -47,7 +47,7 @@ YLWG_TIMOUT,DRIVER_URL,DRIVER_TIMEOUT,CAR_URL,CAR_TIMEOUT,VIO_URL,VIO_TIMEOUT,DE
 </sql>
 
 <sql id="insertCols">
-#{Id,jdbcType=FLOAT,javaType=Double},
+#{Id,jdbcType=INTEGER,javaType=Integer},
 #{Glbm,jdbcType=VARCHAR,javaType=String},
 #{Fzjg,jdbcType=VARCHAR,javaType=String},
 #{Name,jdbcType=VARCHAR,javaType=String},
@@ -58,13 +58,13 @@ YLWG_TIMOUT,DRIVER_URL,DRIVER_TIMEOUT,CAR_URL,CAR_TIMEOUT,VIO_URL,VIO_TIMEOUT,DE
 #{Ip2,jdbcType=VARCHAR,javaType=String},
 #{Address,jdbcType=VARCHAR,javaType=String},
 #{YlwgUrl,jdbcType=VARCHAR,javaType=String},
-#{YlwgTimout,jdbcType=FLOAT,javaType=Double},
+#{YlwgTimout,jdbcType=INTEGER,javaType=Integer},
 #{DriverUrl,jdbcType=VARCHAR,javaType=String},
-#{DriverTimeout,jdbcType=FLOAT,javaType=Double},
+#{DriverTimeout,jdbcType=INTEGER,javaType=Integer},
 #{CarUrl,jdbcType=VARCHAR,javaType=String},
-#{CarTimeout,jdbcType=FLOAT,javaType=Double},
+#{CarTimeout,jdbcType=INTEGER,javaType=Integer},
 #{VioUrl,jdbcType=VARCHAR,javaType=String},
-#{VioTimeout,jdbcType=FLOAT,javaType=Double},
+#{VioTimeout,jdbcType=INTEGER,javaType=Integer},
 #{Descp,jdbcType=VARCHAR,javaType=String},
 
 </sql>
@@ -81,13 +81,13 @@ IP1=#{model.Ip1,jdbcType=VARCHAR,javaType=String},
 IP2=#{model.Ip2,jdbcType=VARCHAR,javaType=String},
 ADDRESS=#{model.Address,jdbcType=VARCHAR,javaType=String},
 YLWG_URL=#{model.YlwgUrl,jdbcType=VARCHAR,javaType=String},
-YLWG_TIMOUT=#{model.YlwgTimout,jdbcType=FLOAT,javaType=Double},
+YLWG_TIMOUT=#{model.YlwgTimout,jdbcType=INTEGER,javaType=Integer},
 DRIVER_URL=#{model.DriverUrl,jdbcType=VARCHAR,javaType=String},
-DRIVER_TIMEOUT=#{model.DriverTimeout,jdbcType=FLOAT,javaType=Double},
+DRIVER_TIMEOUT=#{model.DriverTimeout,jdbcType=INTEGER,javaType=Integer},
 CAR_URL=#{model.CarUrl,jdbcType=VARCHAR,javaType=String},
-CAR_TIMEOUT=#{model.CarTimeout,jdbcType=FLOAT,javaType=Double},
+CAR_TIMEOUT=#{model.CarTimeout,jdbcType=INTEGER,javaType=Integer},
 VIO_URL=#{model.VioUrl,jdbcType=VARCHAR,javaType=String},
-VIO_TIMEOUT=#{model.VioTimeout,jdbcType=FLOAT,javaType=Double},
+VIO_TIMEOUT=#{model.VioTimeout,jdbcType=INTEGER,javaType=Integer},
 DESCP=#{model.Descp,jdbcType=VARCHAR,javaType=String},
 
 </sql>
@@ -99,7 +99,7 @@ DESCP=#{model.Descp,jdbcType=VARCHAR,javaType=String},
 <sql id="join"></sql><!-- 别名m已被主表使用  -->
 
 <resultMap type="com.ett.drv.model.self.TerminalModel" id="resultMap">
- <id column="ID"  property="Id" jdbcType="FLOAT" javaType="Double"/>
+ <id column="ID"  property="Id" jdbcType="INTEGER" javaType="Integer"/>
 <result column="GLBM"  property="Glbm" jdbcType="VARCHAR" javaType="String"/>
 <result column="FZJG"  property="Fzjg" jdbcType="VARCHAR" javaType="String"/>
 <result column="NAME"  property="Name" jdbcType="VARCHAR" javaType="String"/>
@@ -110,38 +110,38 @@ DESCP=#{model.Descp,jdbcType=VARCHAR,javaType=String},
 <result column="IP2"  property="Ip2" jdbcType="VARCHAR" javaType="String"/>
 <result column="ADDRESS"  property="Address" jdbcType="VARCHAR" javaType="String"/>
 <result column="YLWG_URL"  property="YlwgUrl" jdbcType="VARCHAR" javaType="String"/>
-<result column="YLWG_TIMOUT"  property="YlwgTimout" jdbcType="FLOAT" javaType="Double"/>
+<result column="YLWG_TIMOUT"  property="YlwgTimout" jdbcType="INTEGER" javaType="Integer"/>
 <result column="DRIVER_URL"  property="DriverUrl" jdbcType="VARCHAR" javaType="String"/>
-<result column="DRIVER_TIMEOUT"  property="DriverTimeout" jdbcType="FLOAT" javaType="Double"/>
+<result column="DRIVER_TIMEOUT"  property="DriverTimeout" jdbcType="INTEGER" javaType="Integer"/>
 <result column="CAR_URL"  property="CarUrl" jdbcType="VARCHAR" javaType="String"/>
-<result column="CAR_TIMEOUT"  property="CarTimeout" jdbcType="FLOAT" javaType="Double"/>
+<result column="CAR_TIMEOUT"  property="CarTimeout" jdbcType="INTEGER" javaType="Integer"/>
 <result column="VIO_URL"  property="VioUrl" jdbcType="VARCHAR" javaType="String"/>
-<result column="VIO_TIMEOUT"  property="VioTimeout" jdbcType="FLOAT" javaType="Double"/>
+<result column="VIO_TIMEOUT"  property="VioTimeout" jdbcType="INTEGER" javaType="Integer"/>
 <result column="DESCP"  property="Descp" jdbcType="VARCHAR" javaType="String"/>
 
  </resultMap>
 
 
 <sql id="selectCondition">
-<if test="model.Id neq null">and m.ID = #{model.Id,jdbcType=FLOAT javaType=Double } </if> 
-<if test="model.Glbm neq null">and m.GLBM = #{model.Glbm,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.Fzjg neq null">and m.FZJG = #{model.Fzjg,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.Name neq null">and m.NAME = #{model.Name,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.Catalog neq null">and m.CATALOG = #{model.Catalog,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.Mac1 neq null">and m.MAC1 = #{model.Mac1,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.Mac2 neq null">and m.MAC2 = #{model.Mac2,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.Ip1 neq null">and m.IP1 = #{model.Ip1,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.Ip2 neq null">and m.IP2 = #{model.Ip2,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.Address neq null">and m.ADDRESS = #{model.Address,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.YlwgUrl neq null">and m.YLWG_URL = #{model.YlwgUrl,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.YlwgTimout neq null">and m.YLWG_TIMOUT = #{model.YlwgTimout,jdbcType=FLOAT javaType=Double } </if> 
-<if test="model.DriverUrl neq null">and m.DRIVER_URL = #{model.DriverUrl,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.DriverTimeout neq null">and m.DRIVER_TIMEOUT = #{model.DriverTimeout,jdbcType=FLOAT javaType=Double } </if> 
-<if test="model.CarUrl neq null">and m.CAR_URL = #{model.CarUrl,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CarTimeout neq null">and m.CAR_TIMEOUT = #{model.CarTimeout,jdbcType=FLOAT javaType=Double } </if> 
-<if test="model.VioUrl neq null">and m.VIO_URL = #{model.VioUrl,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.VioTimeout neq null">and m.VIO_TIMEOUT = #{model.VioTimeout,jdbcType=FLOAT javaType=Double } </if> 
-<if test="model.Descp neq null">and m.DESCP = #{model.Descp,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Id neq null">and m.ID = #{model.Id,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.Glbm neq null">and m.GLBM like #{model.Glbm,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Fzjg neq null">and m.FZJG like #{model.Fzjg,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Name neq null">and m.NAME like #{model.Name,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Catalog neq null">and m.CATALOG like #{model.Catalog,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Mac1 neq null">and m.MAC1 like #{model.Mac1,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Mac2 neq null">and m.MAC2 like #{model.Mac2,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Ip1 neq null">and m.IP1 like #{model.Ip1,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Ip2 neq null">and m.IP2 like #{model.Ip2,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Address neq null">and m.ADDRESS like #{model.Address,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.YlwgUrl neq null">and m.YLWG_URL like #{model.YlwgUrl,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.YlwgTimout neq null">and m.YLWG_TIMOUT = #{model.YlwgTimout,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.DriverUrl neq null">and m.DRIVER_URL like #{model.DriverUrl,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.DriverTimeout neq null">and m.DRIVER_TIMEOUT = #{model.DriverTimeout,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.CarUrl neq null">and m.CAR_URL like #{model.CarUrl,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CarTimeout neq null">and m.CAR_TIMEOUT = #{model.CarTimeout,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.VioUrl neq null">and m.VIO_URL like #{model.VioUrl,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.VioTimeout neq null">and m.VIO_TIMEOUT = #{model.VioTimeout,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.Descp neq null">and m.DESCP like #{model.Descp,jdbcType=VARCHAR javaType=String } </if> 
 
 </sql>
 
@@ -170,7 +170,7 @@ DESCP=#{model.Descp,jdbcType=VARCHAR,javaType=String},
 </select>
 
 <select id="selectEqPk"  resultMap="resultMap">
-	select m.* from <include refid="table" /> m  where m.<include refid="pk" /> = #{Id,jdbcType=FLOAT,javaType=Double}
+	select m.* from <include refid="table" /> m  where m.<include refid="pk" /> = #{Id,jdbcType=INTEGER,javaType=Integer}
 </select>
 
 <select id="selectInPk" resultType="ArrayList" resultMap="resultMap" >
@@ -208,10 +208,10 @@ DESCP=#{model.Descp,jdbcType=VARCHAR,javaType=String},
 		<trim  prefixOverrides="," suffixOverrides=",">
 			<include refid="updateCols"/>
 		</trim>
-	where <include refid="pk" />=#{model.Id,jdbcType=FLOAT,javaType=Double}</update>
+	where <include refid="pk" />=#{model.Id,jdbcType=INTEGER,javaType=Integer}</update>
 
 <delete id="deleteEqPk" flushCache="true">
-	delete from <include refid="table"/> where <include refid="pk" /> =#{Id,jdbcType=FLOAT,javaType=Double}
+	delete from <include refid="table"/> where <include refid="pk" /> =#{Id,jdbcType=INTEGER,javaType=Integer}
 </delete>
 
 <delete id="deleteInPk" flushCache="true">
@@ -254,7 +254,7 @@ DESCP=#{model.Descp,jdbcType=VARCHAR,javaType=String},
 </select>
 
 <select id="selectViewEqPk"  resultMap="viewMap">
-	select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> = #{Id,jdbcType=FLOAT,javaType=Double}
+	select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> = #{Id,jdbcType=INTEGER,javaType=Integer}
 </select>
 
 <select id="selectViewInPk" resultType="ArrayList" resultMap="viewMap" >

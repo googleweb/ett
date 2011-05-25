@@ -38,15 +38,15 @@ String selfDriverPath=basePath+"self/Driver";
   -->     
      
      		<input class="btnmain" value="驾驶证到期更换"
-									onclick="javascript:document.location.href='<s:url value="/self/idCardReader!func.action"/>?capture=false&agent=true&returnurl=<s:url value="Identity/do/identityDriver.action?transact=exchange_driver_license"/>';"
+									onclick="javascript:document.location.href='<s:url value="/self/idCardReader!func.action"/>?capture=false&agent=true&returnurl=<s:url value="Identity/do/identityDriver.action?Transact=exchange_driver_license"/>';"
 									type="button" />
 		<p/>
 		<input class="btnmain" value="驾驶证损坏"
-									onclick="javascript:document.location.href='<s:url value="/self/idCardReader!func.action"/>?capture=false&agent=true&returnurl=<s:url value="Identity/do/identityDriver.action?transact=destory_driver_license"/>';"
+									onclick="javascript:document.location.href='<s:url value="/self/idCardReader!func.action"/>?capture=false&agent=true&returnurl=<s:url value="Identity/do/identityDriver.action?Transact=destory_driver_license"/>';"
 									type="button" />
         <p/>
 		<input class="btnmain" value="驾驶证遗失"
-									onclick="javascript:document.location.href='<s:url value="/self/idCardReader!func.action"/>?capture=false&agent=true&returnurl=<s:url value="Identity/do/identityDriver.action?transact=lost_driver_license"/>';"
+									onclick="javascript:document.location.href='<s:url value="/self/idCardReader!func.action"/>?capture=false&agent=true&returnurl=<s:url value="Identity/do/identityDriver.action?Transact=lost_driver_license"/>';"
 									type="button" />
      </div>
   </body>

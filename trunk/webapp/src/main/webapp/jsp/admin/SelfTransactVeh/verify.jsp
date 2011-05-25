@@ -140,38 +140,38 @@ String excelTemplatePath=basePath+"js/print/机动车牌证申请表.xls";
           
           <tr>
             <th>付款方式</th>
-            <td>&nbsp;${payment}</td>
+            <td>&nbsp;${Payment}</td>
             <th>领取方式</th>
-            <td>&nbsp;${receive }</td>
+            <td>&nbsp;${Receive }</td>
           </tr>
           
           <tr>
             <th>业务费用</th>
-            <td>&nbsp;${costTransact}</td>
+            <td>&nbsp;${CostTransact}</td>
             <th>快递费用</th>
-            <td>&nbsp;${costPost }</td>
+            <td>&nbsp;${CostPost }</td>
           </tr>
 
          <tr>
             <th>总费用</th>
-            <td>&nbsp;${costTransact+costPost}</td>
+            <td>&nbsp;${CostTransact+costPost}</td>
             <th>已付款</th>
-            <td>&nbsp;${payInd }</td>
+            <td>&nbsp;${CayInd }</td>
           </tr>
           
           <tr>
             <th>车主身份证号码</th>
-            <td>&nbsp;${driverIdNo}</td>
+            <td>&nbsp;${CriverIdNo}</td>
             <th>车主姓名</th>
-            <td>&nbsp;${driverIdName }</td>
+            <td>&nbsp;${CriverIdName }</td>
           </tr>
           
           <% if(isAgent){ %>
           <tr>
             <th>代理人身份证号码</th>
-            <td>&nbsp;${agentIdNo}</td>
+            <td>&nbsp;${AgentIdNo}</td>
             <th>代理人姓名</th>
-            <td>&nbsp;${agentIdName }</td>
+            <td>&nbsp;${AgentIdName }</td>
           </tr>
           <%} %>
           
@@ -185,26 +185,26 @@ String excelTemplatePath=basePath+"js/print/机动车牌证申请表.xls";
             <td colspan="3">
                <ul class="ulThum">
                   <li >
-                      <img class="<%=imgThum %>"  src="<%=baseActionPath+"/stream/"+TransactResourceModel.F.driverIdFrontImg+".action" %>" alt="车主身份证正面"/>
+                      <img class="<%=imgThum %>"  src="<%=baseActionPath+"/stream/"+TransactResourceModel.F.DriverIdFrontImg+".action" %>" alt="车主身份证正面"/>
                       <br/>  车主身份证正面
                   </li>
                   <li >
-                      <img class="<%=imgThum %>"  src="<%=baseActionPath+"/stream/"+TransactResourceModel.F.driverIdBackImg+".action" %>" alt="车主身份证背面" />
+                      <img class="<%=imgThum %>"  src="<%=baseActionPath+"/stream/"+TransactResourceModel.F.DriverIdBackImg+".action" %>" alt="车主身份证背面" />
                       <br/>  车主身份证背面
                   </li>
                   <% if(isAgent){ %>
                   <li >
-                      <img class="<%=imgThum %>"  src="<%=baseActionPath+"/stream/"+TransactResourceModel.F.agentIdFrontImg+".action" %>" alt="代理人身份证正面" />
+                      <img class="<%=imgThum %>"  src="<%=baseActionPath+"/stream/"+TransactResourceModel.F.AgentIdFrontImg+".action" %>" alt="代理人身份证正面" />
                       <br/>  代理人身份证正面
                   </li>
                  <li >
-                      <img class="<%=imgThum %>"  src="<%=baseActionPath+"/stream/"+TransactResourceModel.F.agentIdBackImg+".action" %>" alt="代理人身份证背面" />
+                      <img class="<%=imgThum %>"  src="<%=baseActionPath+"/stream/"+TransactResourceModel.F.AgentIdBackImg+".action" %>" alt="代理人身份证背面" />
                       <br/>  代理人身份证背面
                   </li>
                   <% } %>
                   
                   <li >
-                      <img class="<%=imgThum %>"  src="<%=baseActionPath+"/stream/"+TransactResourceModel.F.captureImg+".action" %>" alt="现场拍摄照片" />
+                      <img class="<%=imgThum %>"  src="<%=baseActionPath+"/stream/"+TransactResourceModel.F.CaptureImg+".action" %>" alt="现场拍摄照片" />
                       <br/>  现场拍摄照片
                   </li>
                </ul>

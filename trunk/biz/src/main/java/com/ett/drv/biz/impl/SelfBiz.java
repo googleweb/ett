@@ -2,6 +2,7 @@ package com.ett.drv.biz.impl;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 
 
@@ -176,7 +177,7 @@ public class SelfBiz extends BaseDrvBiz implements ISelfBiz{
         int synCount=0;
 		query.setTCreatetime(createDate);
 		try {
-			ArrayList<FeeLogModel> listPreasignRecord=this.feeLogMapper.select(query);
+			List<FeeLogModel> listPreasignRecord=this.feeLogMapper.select(query);
 			for (FeeLogModel feeLogModel : listPreasignRecord) {
 				feeLogModel.setISyn(Double.valueOf(1));
 				synCount+= this.feeLogMapper.updateOne(feeLogModel);

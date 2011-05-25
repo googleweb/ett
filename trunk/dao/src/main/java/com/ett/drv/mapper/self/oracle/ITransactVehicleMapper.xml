@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2011-05-24 02:10:51
+	Create Date:2011-05-25 10:26:46
 	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
 	Model:com.ett.drv.model.self.TransactVehicleModel 
 
@@ -33,8 +33,8 @@ private String PrintInd;         //PRINT_IND  CHAR 1
 private String PlateNo;         //PLATE_NO  VARCHAR2 30
 private Integer Seqno;         //SEQNO  NUMBER 38
 private String Item;         //ITEM  VARCHAR2 50
-private Double CostPost;         //COST_POST  NUMBER 126
-private Double CostTransact;         //COST_TRANSACT  NUMBER 126
+private Float CostPost;         //COST_POST  NUMBER 126
+private Float CostTransact;         //COST_TRANSACT  NUMBER 126
 private String PlateClass;         //PLATE_CLASS  VARCHAR2 100
 private String PassInd;         //PASS_IND  CHAR 1
  -->
@@ -56,7 +56,7 @@ ITEM,COST_POST,COST_TRANSACT,PLATE_CLASS,PASS_IND
 </sql>
 
 <sql id="insertCols">
-seq_self_transact_vehicle.nextval,
+#{Transact,jdbcType=VARCHAR,javaType=String},
 #{Applicat,jdbcType=VARCHAR,javaType=String},
 #{DriverIdNo,jdbcType=VARCHAR,javaType=String},
 #{AgentIdNo,jdbcType=VARCHAR,javaType=String},
@@ -78,8 +78,8 @@ seq_self_transact_vehicle.nextval,
 #{PlateNo,jdbcType=VARCHAR,javaType=String},
 #{Seqno,jdbcType=INTEGER,javaType=Integer},
 #{Item,jdbcType=VARCHAR,javaType=String},
-#{CostPost,jdbcType=FLOAT,javaType=Double},
-#{CostTransact,jdbcType=FLOAT,javaType=Double},
+#{CostPost,jdbcType=FLOAT,javaType=Float},
+#{CostTransact,jdbcType=FLOAT,javaType=Float},
 #{PlateClass,jdbcType=VARCHAR,javaType=String},
 #{PassInd,jdbcType=CHAR,javaType=String},
 
@@ -108,8 +108,8 @@ PRINT_IND=#{model.PrintInd,jdbcType=CHAR,javaType=String},
 PLATE_NO=#{model.PlateNo,jdbcType=VARCHAR,javaType=String},
 SEQNO=#{model.Seqno,jdbcType=INTEGER,javaType=Integer},
 ITEM=#{model.Item,jdbcType=VARCHAR,javaType=String},
-COST_POST=#{model.CostPost,jdbcType=FLOAT,javaType=Double},
-COST_TRANSACT=#{model.CostTransact,jdbcType=FLOAT,javaType=Double},
+COST_POST=#{model.CostPost,jdbcType=FLOAT,javaType=Float},
+COST_TRANSACT=#{model.CostTransact,jdbcType=FLOAT,javaType=Float},
 PLATE_CLASS=#{model.PlateClass,jdbcType=VARCHAR,javaType=String},
 PASS_IND=#{model.PassInd,jdbcType=CHAR,javaType=String},
 
@@ -144,8 +144,8 @@ PASS_IND=#{model.PassInd,jdbcType=CHAR,javaType=String},
 <result column="PLATE_NO"  property="PlateNo" jdbcType="VARCHAR" javaType="String"/>
 <result column="SEQNO"  property="Seqno" jdbcType="INTEGER" javaType="Integer"/>
 <result column="ITEM"  property="Item" jdbcType="VARCHAR" javaType="String"/>
-<result column="COST_POST"  property="CostPost" jdbcType="FLOAT" javaType="Double"/>
-<result column="COST_TRANSACT"  property="CostTransact" jdbcType="FLOAT" javaType="Double"/>
+<result column="COST_POST"  property="CostPost" jdbcType="FLOAT" javaType="Float"/>
+<result column="COST_TRANSACT"  property="CostTransact" jdbcType="FLOAT" javaType="Float"/>
 <result column="PLATE_CLASS"  property="PlateClass" jdbcType="VARCHAR" javaType="String"/>
 <result column="PASS_IND"  property="PassInd" jdbcType="CHAR" javaType="String"/>
 
@@ -153,32 +153,32 @@ PASS_IND=#{model.PassInd,jdbcType=CHAR,javaType=String},
 
 
 <sql id="selectCondition">
-<if test="model.Transact neq null">and m.TRANSACT = #{model.Transact,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.Applicat neq null">and m.APPLICAT = #{model.Applicat,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.DriverIdNo neq null">and m.DRIVER_ID_NO = #{model.DriverIdNo,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.AgentIdNo neq null">and m.AGENT_ID_NO = #{model.AgentIdNo,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.DriverIdName neq null">and m.DRIVER_ID_NAME = #{model.DriverIdName,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.AgentIdName neq null">and m.AGENT_ID_NAME = #{model.AgentIdName,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Transact neq null">and m.TRANSACT like #{model.Transact,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Applicat neq null">and m.APPLICAT like #{model.Applicat,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.DriverIdNo neq null">and m.DRIVER_ID_NO like #{model.DriverIdNo,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.AgentIdNo neq null">and m.AGENT_ID_NO like #{model.AgentIdNo,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.DriverIdName neq null">and m.DRIVER_ID_NAME like #{model.DriverIdName,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.AgentIdName neq null">and m.AGENT_ID_NAME like #{model.AgentIdName,jdbcType=VARCHAR javaType=String } </if> 
 <if test="model.CreateDate neq null">and to_char(m.CREATE_DATE,'YYYY-MM-DD') = to_char(#{model.CreateDate,jdbcType=DATE javaType=Date },'YYYY-MM-DD') </if> 
 <if test="model.VerifyDate neq null">and to_char(m.VERIFY_DATE,'YYYY-MM-DD') = to_char(#{model.VerifyDate,jdbcType=DATE javaType=Date },'YYYY-MM-DD') </if> 
-<if test="model.VerifyInd neq null">and m.VERIFY_IND = #{model.VerifyInd,jdbcType=CHAR javaType=String } </if> 
-<if test="model.Tel neq null">and m.TEL = #{model.Tel,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.VerifyerFk neq null">and m.VERIFYER_FK = #{model.VerifyerFk,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.Remark neq null">and m.REMARK = #{model.Remark,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.Payment neq null">and m.PAYMENT = #{model.Payment,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.Receive neq null">and m.RECEIVE = #{model.Receive,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.FlowNo neq null">and m.FLOW_NO = #{model.FlowNo,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.Phone neq null">and m.PHONE = #{model.Phone,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.Reason neq null">and m.REASON = #{model.Reason,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.PayInd neq null">and m.PAY_IND = #{model.PayInd,jdbcType=CHAR javaType=String } </if> 
-<if test="model.PrintInd neq null">and m.PRINT_IND = #{model.PrintInd,jdbcType=CHAR javaType=String } </if> 
-<if test="model.PlateNo neq null">and m.PLATE_NO = #{model.PlateNo,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.VerifyInd neq null">and m.VERIFY_IND like #{model.VerifyInd,jdbcType=CHAR javaType=String } </if> 
+<if test="model.Tel neq null">and m.TEL like #{model.Tel,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.VerifyerFk neq null">and m.VERIFYER_FK like #{model.VerifyerFk,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Remark neq null">and m.REMARK like #{model.Remark,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Payment neq null">and m.PAYMENT like #{model.Payment,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Receive neq null">and m.RECEIVE like #{model.Receive,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.FlowNo neq null">and m.FLOW_NO like #{model.FlowNo,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Phone neq null">and m.PHONE like #{model.Phone,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Reason neq null">and m.REASON like #{model.Reason,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.PayInd neq null">and m.PAY_IND like #{model.PayInd,jdbcType=CHAR javaType=String } </if> 
+<if test="model.PrintInd neq null">and m.PRINT_IND like #{model.PrintInd,jdbcType=CHAR javaType=String } </if> 
+<if test="model.PlateNo neq null">and m.PLATE_NO like #{model.PlateNo,jdbcType=VARCHAR javaType=String } </if> 
 <if test="model.Seqno neq null">and m.SEQNO = #{model.Seqno,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.Item neq null">and m.ITEM = #{model.Item,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CostPost neq null">and m.COST_POST = #{model.CostPost,jdbcType=FLOAT javaType=Double } </if> 
-<if test="model.CostTransact neq null">and m.COST_TRANSACT = #{model.CostTransact,jdbcType=FLOAT javaType=Double } </if> 
-<if test="model.PlateClass neq null">and m.PLATE_CLASS = #{model.PlateClass,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.PassInd neq null">and m.PASS_IND = #{model.PassInd,jdbcType=CHAR javaType=String } </if> 
+<if test="model.Item neq null">and m.ITEM like #{model.Item,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CostPost neq null">and m.COST_POST = #{model.CostPost,jdbcType=FLOAT javaType=Float } </if> 
+<if test="model.CostTransact neq null">and m.COST_TRANSACT = #{model.CostTransact,jdbcType=FLOAT javaType=Float } </if> 
+<if test="model.PlateClass neq null">and m.PLATE_CLASS like #{model.PlateClass,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.PassInd neq null">and m.PASS_IND like #{model.PassInd,jdbcType=CHAR javaType=String } </if> 
 
 </sql>
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2011-05-24 02:10:51
+	Create Date:2011-05-25 10:26:46
 	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
 	Model:com.ett.drv.model.admin.DepartmentModel 
 
@@ -36,7 +36,7 @@ ID,C_CONNECTOR,C_MOBILE,C_PHONE,C_COMPANYCODE,C_DEPFULLNAME,C_DEPNICKNAME,C_DEPC
 </sql>
 
 <sql id="insertCols">
-seq_department.nextval,
+#{Id,jdbcType=INTEGER,javaType=Integer},
 #{CConnector,jdbcType=VARCHAR,javaType=String},
 #{CMobile,jdbcType=VARCHAR,javaType=String},
 #{CPhone,jdbcType=VARCHAR,javaType=String},
@@ -86,15 +86,15 @@ C_DEPTYPE=#{model.CDeptype,jdbcType=VARCHAR,javaType=String},
 
 <sql id="selectCondition">
 <if test="model.Id neq null">and m.ID = #{model.Id,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.CConnector neq null">and m.C_CONNECTOR = #{model.CConnector,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CMobile neq null">and m.C_MOBILE = #{model.CMobile,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CPhone neq null">and m.C_PHONE = #{model.CPhone,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CCompanycode neq null">and m.C_COMPANYCODE = #{model.CCompanycode,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CDepfullname neq null">and m.C_DEPFULLNAME = #{model.CDepfullname,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CDepnickname neq null">and m.C_DEPNICKNAME = #{model.CDepnickname,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CDepcode neq null">and m.C_DEPCODE = #{model.CDepcode,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CParentcode neq null">and m.C_PARENTCODE = #{model.CParentcode,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CDeptype neq null">and m.C_DEPTYPE = #{model.CDeptype,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CConnector neq null">and m.C_CONNECTOR like #{model.CConnector,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CMobile neq null">and m.C_MOBILE like #{model.CMobile,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CPhone neq null">and m.C_PHONE like #{model.CPhone,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CCompanycode neq null">and m.C_COMPANYCODE like #{model.CCompanycode,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CDepfullname neq null">and m.C_DEPFULLNAME like #{model.CDepfullname,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CDepnickname neq null">and m.C_DEPNICKNAME like #{model.CDepnickname,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CDepcode neq null">and m.C_DEPCODE like #{model.CDepcode,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CParentcode neq null">and m.C_PARENTCODE like #{model.CParentcode,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CDeptype neq null">and m.C_DEPTYPE like #{model.CDeptype,jdbcType=VARCHAR javaType=String } </if> 
 
 </sql>
 

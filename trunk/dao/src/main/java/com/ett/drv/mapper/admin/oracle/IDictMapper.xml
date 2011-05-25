@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2011-05-24 02:10:51
+	Create Date:2011-05-25 10:26:46
 	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
 	Model:com.ett.drv.model.admin.DictModel 
 
@@ -34,7 +34,7 @@ ID,C_TYPENAME,C_DICT_TEXT,C_DICT_VALUE,C_DES1,C_DES2,C_DES3,C_STATE
 </sql>
 
 <sql id="insertCols">
-seq_dict.nextval,
+#{Id,jdbcType=INTEGER,javaType=Integer},
 #{CTypename,jdbcType=VARCHAR,javaType=String},
 #{CDictText,jdbcType=VARCHAR,javaType=String},
 #{CDictValue,jdbcType=VARCHAR,javaType=String},
@@ -78,13 +78,13 @@ C_STATE=#{model.CState,jdbcType=VARCHAR,javaType=String},
 
 <sql id="selectCondition">
 <if test="model.Id neq null">and m.ID = #{model.Id,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.CTypename neq null">and m.C_TYPENAME = #{model.CTypename,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CDictText neq null">and m.C_DICT_TEXT = #{model.CDictText,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CDictValue neq null">and m.C_DICT_VALUE = #{model.CDictValue,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CDes1 neq null">and m.C_DES1 = #{model.CDes1,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CDes2 neq null">and m.C_DES2 = #{model.CDes2,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CDes3 neq null">and m.C_DES3 = #{model.CDes3,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CState neq null">and m.C_STATE = #{model.CState,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CTypename neq null">and m.C_TYPENAME like #{model.CTypename,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CDictText neq null">and m.C_DICT_TEXT like #{model.CDictText,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CDictValue neq null">and m.C_DICT_VALUE like #{model.CDictValue,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CDes1 neq null">and m.C_DES1 like #{model.CDes1,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CDes2 neq null">and m.C_DES2 like #{model.CDes2,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CDes3 neq null">and m.C_DES3 like #{model.CDes3,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CState neq null">and m.C_STATE like #{model.CState,jdbcType=VARCHAR javaType=String } </if> 
 
 </sql>
 

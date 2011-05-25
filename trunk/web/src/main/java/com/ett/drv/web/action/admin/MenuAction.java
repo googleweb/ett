@@ -2,6 +2,7 @@ package com.ett.drv.web.action.admin;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -114,7 +115,7 @@ public class MenuAction extends BaseAction
 	public void list_Tree() throws Exception{
 		ArrayList lListToken=StringUtil.toList("root");
 		adminBiz.loadCrudMapper(MenuModel.class);
-		ArrayList<MenuModel> lListMenu=adminBiz.getModelNotInPk(lListToken);
+		List<MenuModel> lListMenu=adminBiz.getModelNotInPk(lListToken);
 		JSONArray lJsonMenu=this.loadTreeNode(lListMenu,"root");
 		this.writeHTML(lJsonMenu.toString());
 
@@ -124,7 +125,7 @@ public class MenuAction extends BaseAction
 	public void list_ComboTree() throws Exception{
 		ArrayList lListIds=StringUtil.toList((String) menu.getId());
 		adminBiz.loadCrudMapper(MenuModel.class);
-	    ArrayList<MenuModel> lListMenu =adminBiz.getModelNotInPk(lListIds);
+	    List<MenuModel> lListMenu =adminBiz.getModelNotInPk(lListIds);
 	    JSONArray lJsonMenu=this.loadTreeNode(lListMenu,null);
 	    this.writePlainText(lJsonMenu.toString());
 	}
@@ -184,7 +185,7 @@ public class MenuAction extends BaseAction
 	
 	
 	
-	private JSONArray loadTreeNode(ArrayList<MenuModel> pArrTreeNode,String pParentId) 
+	private JSONArray loadTreeNode(List<MenuModel> pArrTreeNode,String pParentId) 
 	{
 		JSONArray lArrJson=new JSONArray();
 		try

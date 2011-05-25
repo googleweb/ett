@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2011-05-24 02:10:51
+	Create Date:2011-05-25 10:26:46
 	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
 	Model:com.ett.drv.model.admin.UserModel 
 
@@ -37,7 +37,7 @@ ID,C_LOGIN_NAME,C_FULL_NAME,C_PWD,I_ROLEID,I_DEPID,C_IDCARD,C_WORKID,C_BEGINIP,C
 </sql>
 
 <sql id="insertCols">
-seq_user.nextval,
+#{Id,jdbcType=INTEGER,javaType=Integer},
 #{CLoginName,jdbcType=VARCHAR,javaType=String},
 #{CFullName,jdbcType=VARCHAR,javaType=String},
 #{CPwd,jdbcType=VARCHAR,javaType=String},
@@ -90,16 +90,16 @@ C_STATE=#{model.CState,jdbcType=VARCHAR,javaType=String},
 
 <sql id="selectCondition">
 <if test="model.Id neq null">and m.ID = #{model.Id,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.CLoginName neq null">and m.C_LOGIN_NAME = #{model.CLoginName,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CFullName neq null">and m.C_FULL_NAME = #{model.CFullName,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CPwd neq null">and m.C_PWD = #{model.CPwd,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CLoginName neq null">and m.C_LOGIN_NAME like #{model.CLoginName,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CFullName neq null">and m.C_FULL_NAME like #{model.CFullName,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CPwd neq null">and m.C_PWD like #{model.CPwd,jdbcType=VARCHAR javaType=String } </if> 
 <if test="model.IRoleid neq null">and m.I_ROLEID = #{model.IRoleid,jdbcType=INTEGER javaType=Integer } </if> 
 <if test="model.IDepid neq null">and m.I_DEPID = #{model.IDepid,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.CIdcard neq null">and m.C_IDCARD = #{model.CIdcard,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CWorkid neq null">and m.C_WORKID = #{model.CWorkid,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CBeginip neq null">and m.C_BEGINIP = #{model.CBeginip,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CEndip neq null">and m.C_ENDIP = #{model.CEndip,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CState neq null">and m.C_STATE = #{model.CState,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CIdcard neq null">and m.C_IDCARD like #{model.CIdcard,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CWorkid neq null">and m.C_WORKID like #{model.CWorkid,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CBeginip neq null">and m.C_BEGINIP like #{model.CBeginip,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CEndip neq null">and m.C_ENDIP like #{model.CEndip,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CState neq null">and m.C_STATE like #{model.CState,jdbcType=VARCHAR javaType=String } </if> 
 
 </sql>
 

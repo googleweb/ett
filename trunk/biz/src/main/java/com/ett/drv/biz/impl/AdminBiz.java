@@ -2,6 +2,8 @@ package com.ett.drv.biz.impl;
 
 
 import java.util.ArrayList;
+import java.util.List;
+
 import com.ett.drv.biz.IAdminBiz;
 import com.smartken.kia.core.model.impl.BaseCurdBiz;
 import com.smartken.kia.core.pager.PageBounds;
@@ -62,8 +64,8 @@ public class AdminBiz extends BaseDrvBiz implements IAdminBiz {
 		DictModel lDict=new DictModel();
 		lDict.setCTypename(TYPE_NAME_KSCC);
 		//lDict.setC(code);
-		ArrayList<DictModel> lListKscc=dictMapper.select(lDict);
-		return lListKscc;
+		List<DictModel> lListKscc=dictMapper.select(lDict);
+		return (ArrayList<DictModel>) lListKscc;
 	}
 
 
@@ -72,8 +74,8 @@ public class AdminBiz extends BaseDrvBiz implements IAdminBiz {
 		DictModel lDict=new DictModel();
 		lDict.setCTypename(TYPE_NAME_KSDD);
 		//lDict.setCTypename(code);
-		ArrayList<DictModel> lListKsdd=dictMapper.select(lDict);
-		return lListKsdd;
+		List<DictModel> lListKsdd=dictMapper.select(lDict);
+		return (ArrayList<DictModel>) lListKsdd;
 	}
 
 
@@ -82,8 +84,8 @@ public class AdminBiz extends BaseDrvBiz implements IAdminBiz {
 	    DepartmentModel lDep=new DepartmentModel();
         lDep.setCDeptype(DEP_TYPE_SCHOOL);
         lDep.setCDepcode(code);
-        ArrayList<DepartmentModel> lListSchool=departmentMapper.select(lDep);
-        return lListSchool;
+        List<DepartmentModel> lListSchool=departmentMapper.select(lDep);
+        return (ArrayList<DepartmentModel>) lListSchool;
 	}
 
 
@@ -126,7 +128,7 @@ public class AdminBiz extends BaseDrvBiz implements IAdminBiz {
 		query.setCLoginName(loginName);
 		query.setCPwd(pwd);
 		try {
-			ArrayList<UserModel> listUser=this.userMapper.select(query);
+			List<UserModel> listUser=this.userMapper.select(query);
 			userModel=listUser.get(0);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

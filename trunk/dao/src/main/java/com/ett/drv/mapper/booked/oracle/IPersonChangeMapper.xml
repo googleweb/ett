@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2011-05-24 02:10:51
+	Create Date:2011-05-25 10:26:46
 	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
 	Model:com.ett.drv.model.booked.PersonChangeModel 
 
@@ -112,21 +112,21 @@ C_EMAIL=#{model.CEmail,jdbcType=VARCHAR,javaType=String},
 
 <sql id="selectCondition">
 <if test="model.Id neq null">and m.ID = #{model.Id,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.CName neq null">and m.C_NAME = #{model.CName,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CIdcardType neq null">and m.C_IDCARD_TYPE = #{model.CIdcardType,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CIdcard neq null">and m.C_IDCARD = #{model.CIdcard,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CDabh neq null">and m.C_DABH = #{model.CDabh,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.COldPhone neq null">and m.C_OLD_PHONE = #{model.COldPhone,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CNewPhone neq null">and m.C_NEW_PHONE = #{model.CNewPhone,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CNewAddress neq null">and m.C_NEW_ADDRESS = #{model.CNewAddress,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CNewPostcode neq null">and m.C_NEW_POSTCODE = #{model.CNewPostcode,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CName neq null">and m.C_NAME like #{model.CName,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CIdcardType neq null">and m.C_IDCARD_TYPE like #{model.CIdcardType,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CIdcard neq null">and m.C_IDCARD like #{model.CIdcard,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CDabh neq null">and m.C_DABH like #{model.CDabh,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.COldPhone neq null">and m.C_OLD_PHONE like #{model.COldPhone,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CNewPhone neq null">and m.C_NEW_PHONE like #{model.CNewPhone,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CNewAddress neq null">and m.C_NEW_ADDRESS like #{model.CNewAddress,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CNewPostcode neq null">and m.C_NEW_POSTCODE like #{model.CNewPostcode,jdbcType=VARCHAR javaType=String } </if> 
 <if test="model.ISyn neq null">and m.I_SYN = #{model.ISyn,jdbcType=INTEGER javaType=Integer } </if> 
 <if test="model.DateCreatetime neq null">and to_char(m.DATE_CREATETIME,'YYYY-MM-DD') = to_char(#{model.DateCreatetime,jdbcType=DATE javaType=Date },'YYYY-MM-DD') </if> 
-<if test="model.CCheckOperator neq null">and m.C_CHECK_OPERATOR = #{model.CCheckOperator,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CCheckDate neq null">and m.C_CHECK_DATE = #{model.CCheckDate,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CCheckOperator neq null">and m.C_CHECK_OPERATOR like #{model.CCheckOperator,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CCheckDate neq null">and m.C_CHECK_DATE like #{model.CCheckDate,jdbcType=VARCHAR javaType=String } </if> 
 <if test="model.IChecked neq null">and m.I_CHECKED = #{model.IChecked,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.CCheckResult neq null">and m.C_CHECK_RESULT = #{model.CCheckResult,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CEmail neq null">and m.C_EMAIL = #{model.CEmail,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CCheckResult neq null">and m.C_CHECK_RESULT like #{model.CCheckResult,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.CEmail neq null">and m.C_EMAIL like #{model.CEmail,jdbcType=VARCHAR javaType=String } </if> 
 
 </sql>
 
