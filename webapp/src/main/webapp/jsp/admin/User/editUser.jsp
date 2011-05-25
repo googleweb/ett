@@ -58,51 +58,51 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            <tr>
              <th>用户名</th>
              <td style="width: 35%">
-               <input name="loginName" type="text"  value="${loginName}" />
+               <input name="CLoginName" type="text"  value="${CLoginName}" />
              </td>
             <th>密码</th>
              <td style="width: 35%">
-               <input name="pwd" type="text"  value="${pwd}" />
+               <input name="CPwd" type="text"  value="${CPwd}" />
              </td>
            </tr>
            <tr>
             <th>工作号</th>
              <td style="width: 35%">
-               <input name="workid" type="text" value="${workid}" />
+               <input name="CWorkid" type="text" value="${CWorkid}" />
              </td>
             <th>角色号</th>
              <td style="width: 35%">
-              <input name="roleid" value="${roleid}" />
+              <input name="IRoleid" value="${IRoleid}" />
              </td>
            </tr>
            <tr>
             <th>状态</th>
              <td style="width: 35%">
-               <input name="state"  type="text" value="${state}" />
+               <input name="CState"  type="text" value="${CState}" />
              </td>
             <th>卡号</th>
              <td style="width: 35%">
-               <input name="idcard"  type="text" value="${idcard}" />
+               <input name="CIdcard"  type="text" value="${CIdcard}" />
              </td>
            </tr>
            <tr>
             <th>部门编号</th>
              <td style="width: 35%">
-               <input name="workid"  type="text" value="${workid}" />
+               <input name="CWorkid"  type="text" value="${CWorkid}" />
              </td>
             <th>全名</th>
              <td style="width: 35%">
-               <input name="fullName" value="${fullName}" />
+               <input name="CFullName" value="${CFullName}" />
              </td>
            </tr>
            <tr>
            <th>开始IP</th>
              <td style="width: 35%">
-               <input name="beginip" type="text" value="${beginip}" />
+               <input name="CBeginip" type="text" value="${CBeginip}" />
              </td>
               <th>结束IP</th> 
              <td style="width: 35%">
-               <input name="endip" type="text" value="${endip}" />
+               <input name="CEndip" type="text" value="${CEndip}" />
              </td>
            </tr>
            <tr>
