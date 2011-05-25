@@ -2,6 +2,7 @@ package com.ett.drv.web.action.admin;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.json.JSONObject;
 
@@ -23,8 +24,8 @@ public class UserAction extends BaseAction implements ModelDriven<UserModel> {
 		// TODO Auto-generated method stub
 	}	
 	public String do_login(){
-		String loginName=this.getParameter(UserModel.F.loginName);
-		String pwd=this.getParameter(UserModel.F.pwd);
+		String loginName=this.getParameter(UserModel.F.CLoginName);
+		String pwd=this.getParameter(UserModel.F.CPwd);
 		_userModel=adminBiz.login(loginName, pwd);
 		if(_userModel!=null){
 		   this.setSessionAttribute(AuthFilter.AUTH_USER, _userModel);
@@ -51,7 +52,7 @@ public class UserAction extends BaseAction implements ModelDriven<UserModel> {
 	public void datagrid_users(){
 		//查处所以User，输出json格式的datagrid    User/datagrid/users.action
 		this.adminBiz.loadCrudMapper(UserModel.class);
-		ArrayList list=this.adminBiz.getModel(this.getPager());
+		List list=this.adminBiz.getModel(this.getPager());
 		JSONObject jsonDG=EasyUiUtil.toJsonDataGrid(list,this.adminBiz.count());
 		this.writePlainText(jsonDG.toString());		
 	}	
