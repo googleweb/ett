@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2011-05-25 10:26:46
+	Create Date:2011-05-25 04:53:47
 	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
 	Model:com.ett.drv.model.admin.BusAllInfoModel 
 
@@ -64,7 +64,7 @@ IS_PRINT_RETURN
 </sql>
 
 <sql id="insertCols">
-#{Id,jdbcType=INTEGER,javaType=Integer},
+seq_bus_all_info.nextval,
 #{CLsh,jdbcType=VARCHAR,javaType=String},
 #{CDabh,jdbcType=VARCHAR,javaType=String},
 #{CXm,jdbcType=VARCHAR,javaType=String},
@@ -101,37 +101,37 @@ IS_PRINT_RETURN
 
 <sql id="updateCols">
 <if test="pk neq null">ID=#{pk}</if>,
-C_LSH=#{model.CLsh,jdbcType=VARCHAR,javaType=String},
-C_DABH=#{model.CDabh,jdbcType=VARCHAR,javaType=String},
-C_XM=#{model.CXm,jdbcType=VARCHAR,javaType=String},
-C_IDCARDTYPE=#{model.CIdcardtype,jdbcType=VARCHAR,javaType=String},
-C_IDCARD=#{model.CIdcard,jdbcType=VARCHAR,javaType=String},
-C_SEX=#{model.CSex,jdbcType=VARCHAR,javaType=String},
-C_BIRTHDAY=#{model.CBirthday,jdbcType=VARCHAR,javaType=String},
-C_NATION=#{model.CNation,jdbcType=VARCHAR,javaType=String},
-C_CAR_TYPE=#{model.CCarType,jdbcType=VARCHAR,javaType=String},
-I_STATE=#{model.IState,jdbcType=INTEGER,javaType=Integer},
-C_OPERATOR=#{model.COperator,jdbcType=VARCHAR,javaType=String},
-CHECKDATE=#{model.Checkdate,jdbcType=VARCHAR,javaType=String},
-REGDATE=#{model.Regdate,jdbcType=DATE,javaType=Date},
-C_REGAREA_CODE=#{model.CRegareaCode,jdbcType=VARCHAR,javaType=String},
-C_REGAREA=#{model.CRegarea,jdbcType=VARCHAR,javaType=String},
-C_POSTCODE=#{model.CPostcode,jdbcType=VARCHAR,javaType=String},
-C_PHONE=#{model.CPhone,jdbcType=VARCHAR,javaType=String},
-C_HEIGHT=#{model.CHeight,jdbcType=VARCHAR,javaType=String},
-C_ZSL=#{model.CZsl,jdbcType=VARCHAR,javaType=String},
-C_YSL=#{model.CYsl,jdbcType=VARCHAR,javaType=String},
-C_BSL=#{model.CBsl,jdbcType=VARCHAR,javaType=String},
-C_TL=#{model.CTl,jdbcType=VARCHAR,javaType=String},
-C_SZ=#{model.CSz,jdbcType=VARCHAR,javaType=String},
-C_ZXZ=#{model.CZxz,jdbcType=VARCHAR,javaType=String},
-C_YXZ=#{model.CYxz,jdbcType=VARCHAR,javaType=String},
-C_QGJB=#{model.CQgjb,jdbcType=VARCHAR,javaType=String},
-C_HOSPITAL=#{model.CHospital,jdbcType=VARCHAR,javaType=String},
-I_PRINT_ADD=#{model.IPrintAdd,jdbcType=INTEGER,javaType=Integer},
-I_PRINT_RETURN=#{model.IPrintReturn,jdbcType=INTEGER,javaType=Integer},
-IS_PRINT_ADD=#{model.IsPrintAdd,jdbcType=INTEGER,javaType=Integer},
-IS_PRINT_RETURN=#{model.IsPrintReturn,jdbcType=INTEGER,javaType=Integer},
+C_LSH=#{CLsh,jdbcType=VARCHAR,javaType=String},
+C_DABH=#{CDabh,jdbcType=VARCHAR,javaType=String},
+C_XM=#{CXm,jdbcType=VARCHAR,javaType=String},
+C_IDCARDTYPE=#{CIdcardtype,jdbcType=VARCHAR,javaType=String},
+C_IDCARD=#{CIdcard,jdbcType=VARCHAR,javaType=String},
+C_SEX=#{CSex,jdbcType=VARCHAR,javaType=String},
+C_BIRTHDAY=#{CBirthday,jdbcType=VARCHAR,javaType=String},
+C_NATION=#{CNation,jdbcType=VARCHAR,javaType=String},
+C_CAR_TYPE=#{CCarType,jdbcType=VARCHAR,javaType=String},
+I_STATE=#{IState,jdbcType=INTEGER,javaType=Integer},
+C_OPERATOR=#{COperator,jdbcType=VARCHAR,javaType=String},
+CHECKDATE=#{Checkdate,jdbcType=VARCHAR,javaType=String},
+REGDATE=#{Regdate,jdbcType=DATE,javaType=Date},
+C_REGAREA_CODE=#{CRegareaCode,jdbcType=VARCHAR,javaType=String},
+C_REGAREA=#{CRegarea,jdbcType=VARCHAR,javaType=String},
+C_POSTCODE=#{CPostcode,jdbcType=VARCHAR,javaType=String},
+C_PHONE=#{CPhone,jdbcType=VARCHAR,javaType=String},
+C_HEIGHT=#{CHeight,jdbcType=VARCHAR,javaType=String},
+C_ZSL=#{CZsl,jdbcType=VARCHAR,javaType=String},
+C_YSL=#{CYsl,jdbcType=VARCHAR,javaType=String},
+C_BSL=#{CBsl,jdbcType=VARCHAR,javaType=String},
+C_TL=#{CTl,jdbcType=VARCHAR,javaType=String},
+C_SZ=#{CSz,jdbcType=VARCHAR,javaType=String},
+C_ZXZ=#{CZxz,jdbcType=VARCHAR,javaType=String},
+C_YXZ=#{CYxz,jdbcType=VARCHAR,javaType=String},
+C_QGJB=#{CQgjb,jdbcType=VARCHAR,javaType=String},
+C_HOSPITAL=#{CHospital,jdbcType=VARCHAR,javaType=String},
+I_PRINT_ADD=#{IPrintAdd,jdbcType=INTEGER,javaType=Integer},
+I_PRINT_RETURN=#{IPrintReturn,jdbcType=INTEGER,javaType=Integer},
+IS_PRINT_ADD=#{IsPrintAdd,jdbcType=INTEGER,javaType=Integer},
+IS_PRINT_RETURN=#{IsPrintReturn,jdbcType=INTEGER,javaType=Integer},
 
 </sql>
 

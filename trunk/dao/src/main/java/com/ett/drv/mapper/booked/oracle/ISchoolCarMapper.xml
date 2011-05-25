@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2011-05-25 10:26:46
+	Create Date:2011-05-25 04:53:47
 	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
 	Model:com.ett.drv.model.booked.SchoolCarModel 
 
@@ -36,7 +36,7 @@ ID,CLPP,COACHNO,DEPCODE,DEPNAME,GLBM,HMHP,IDCARD,MOBILE,NAME
 </sql>
 
 <sql id="insertCols">
-#{Id,jdbcType=INTEGER,javaType=Integer},
+seq_school_car_info.nextval,
 #{Clpp,jdbcType=VARCHAR,javaType=String},
 #{Coachno,jdbcType=VARCHAR,javaType=String},
 #{Depcode,jdbcType=VARCHAR,javaType=String},
@@ -51,15 +51,15 @@ ID,CLPP,COACHNO,DEPCODE,DEPNAME,GLBM,HMHP,IDCARD,MOBILE,NAME
 
 <sql id="updateCols">
 <if test="pk neq null">ID=#{pk}</if>,
-CLPP=#{model.Clpp,jdbcType=VARCHAR,javaType=String},
-COACHNO=#{model.Coachno,jdbcType=VARCHAR,javaType=String},
-DEPCODE=#{model.Depcode,jdbcType=VARCHAR,javaType=String},
-DEPNAME=#{model.Depname,jdbcType=VARCHAR,javaType=String},
-GLBM=#{model.Glbm,jdbcType=VARCHAR,javaType=String},
-HMHP=#{model.Hmhp,jdbcType=VARCHAR,javaType=String},
-IDCARD=#{model.Idcard,jdbcType=VARCHAR,javaType=String},
-MOBILE=#{model.Mobile,jdbcType=VARCHAR,javaType=String},
-NAME=#{model.Name,jdbcType=VARCHAR,javaType=String},
+CLPP=#{Clpp,jdbcType=VARCHAR,javaType=String},
+COACHNO=#{Coachno,jdbcType=VARCHAR,javaType=String},
+DEPCODE=#{Depcode,jdbcType=VARCHAR,javaType=String},
+DEPNAME=#{Depname,jdbcType=VARCHAR,javaType=String},
+GLBM=#{Glbm,jdbcType=VARCHAR,javaType=String},
+HMHP=#{Hmhp,jdbcType=VARCHAR,javaType=String},
+IDCARD=#{Idcard,jdbcType=VARCHAR,javaType=String},
+MOBILE=#{Mobile,jdbcType=VARCHAR,javaType=String},
+NAME=#{Name,jdbcType=VARCHAR,javaType=String},
 
 </sql>
 

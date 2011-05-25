@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2011-05-25 10:26:46
+	Create Date:2011-05-25 04:53:47
 	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
 	Model:com.ett.drv.model.admin.RoleModel 
 
@@ -30,7 +30,7 @@ ID,C_NAME,C_DESCRIPTION,C_ROLESTRING
 </sql>
 
 <sql id="insertCols">
-#{Id,jdbcType=INTEGER,javaType=Integer},
+seq_role.nextval,
 #{CName,jdbcType=VARCHAR,javaType=String},
 #{CDescription,jdbcType=VARCHAR,javaType=String},
 #{CRolestring,jdbcType=VARCHAR,javaType=String},
@@ -39,9 +39,9 @@ ID,C_NAME,C_DESCRIPTION,C_ROLESTRING
 
 <sql id="updateCols">
 <if test="pk neq null">ID=#{pk}</if>,
-C_NAME=#{model.CName,jdbcType=VARCHAR,javaType=String},
-C_DESCRIPTION=#{model.CDescription,jdbcType=VARCHAR,javaType=String},
-C_ROLESTRING=#{model.CRolestring,jdbcType=VARCHAR,javaType=String},
+C_NAME=#{CName,jdbcType=VARCHAR,javaType=String},
+C_DESCRIPTION=#{CDescription,jdbcType=VARCHAR,javaType=String},
+C_ROLESTRING=#{CRolestring,jdbcType=VARCHAR,javaType=String},
 
 </sql>
 

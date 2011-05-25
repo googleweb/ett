@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2011-05-25 11:51:40
+	Create Date:2011-05-25 04:53:47
 	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
 	Model:com.ett.drv.model.self.TransactResourceModel 
 
@@ -32,7 +32,7 @@ FLOW_NO,DRIVER_ID_FRONT_IMG,DRIVER_ID_BACK_IMG,AGENT_ID_FRONT_IMG,AGENT_ID_BACK_
 </sql>
 
 <sql id="insertCols">
-seq.nextval,
+#{FlowNo,jdbcType=VARCHAR,javaType=String},
 #{DriverIdFrontImg,jdbcType=BLOB},
 #{DriverIdBackImg,jdbcType=BLOB},
 #{AgentIdFrontImg,jdbcType=BLOB},

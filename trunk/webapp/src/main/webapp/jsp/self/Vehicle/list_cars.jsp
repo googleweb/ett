@@ -75,11 +75,11 @@ String selfVehiclePath=basePath+"self/Vehicle";
       %>
          <tr>
           <td><%=tmpVeh.getHphm() %></td>
-          <td><%=tmpVeh.getHpzlName() %></td>
+          <td><%=tmpVeh.getHpzlName()  %></td>
           <td><%=tmpVeh.getZtName() %></td>
           <td>
           <form action="<%=selfVehiclePath %>/to/transact.action" method="post">
-            <input type="hidden" name="<%=VehicleModel.F.xh %>" value="<%=tmpVeh.getXh() %>" />
+            <input type="hidden" name="<%=VehicleModel.F.Xh %>" value="<%=tmpVeh.getXh() %>" />
             <button type="submit" class="btnmain">办理业务</button>
           </form>
         </tr>

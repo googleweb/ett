@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2011-05-25 10:26:46
+	Create Date:2011-05-25 04:53:47
 	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
 	Model:com.ett.drv.model.admin.MenuModel 
 
@@ -51,15 +51,15 @@ ID,NAME,DESCP,URL,PARMA,PARENT_ID,ORDERNUM,ICON,TOKEN,FOLDER
 
 <sql id="updateCols">
 <if test="pk neq null">ID=#{pk}</if>,
-NAME=#{model.Name,jdbcType=VARCHAR,javaType=String},
-DESCP=#{model.Descp,jdbcType=VARCHAR,javaType=String},
-URL=#{model.Url,jdbcType=VARCHAR,javaType=String},
-PARMA=#{model.Parma,jdbcType=VARCHAR,javaType=String},
-PARENT_ID=#{model.ParentId,jdbcType=VARCHAR,javaType=String},
-ORDERNUM=#{model.Ordernum,jdbcType=INTEGER,javaType=Integer},
-ICON=#{model.Icon,jdbcType=VARCHAR,javaType=String},
-TOKEN=#{model.Token,jdbcType=CHAR,javaType=String},
-FOLDER=#{model.Folder,jdbcType=CHAR,javaType=String},
+NAME=#{Name,jdbcType=VARCHAR,javaType=String},
+DESCP=#{Descp,jdbcType=VARCHAR,javaType=String},
+URL=#{Url,jdbcType=VARCHAR,javaType=String},
+PARMA=#{Parma,jdbcType=VARCHAR,javaType=String},
+PARENT_ID=#{ParentId,jdbcType=VARCHAR,javaType=String},
+ORDERNUM=#{Ordernum,jdbcType=INTEGER,javaType=Integer},
+ICON=#{Icon,jdbcType=VARCHAR,javaType=String},
+TOKEN=#{Token,jdbcType=CHAR,javaType=String},
+FOLDER=#{Folder,jdbcType=CHAR,javaType=String},
 
 </sql>
 

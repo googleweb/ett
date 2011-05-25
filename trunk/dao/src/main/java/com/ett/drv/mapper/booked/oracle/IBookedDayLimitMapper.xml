@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2011-05-25 10:26:46
+	Create Date:2011-05-25 04:53:47
 	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
 	Model:com.ett.drv.model.booked.BookedDayLimitModel 
 
@@ -30,7 +30,7 @@ ID,C_CARTYPE,I_DAYS,I_KM
 </sql>
 
 <sql id="insertCols">
-#{Id,jdbcType=INTEGER,javaType=Integer},
+seq_yuyue_day_limit.nextval,
 #{CCartype,jdbcType=VARCHAR,javaType=String},
 #{IDays,jdbcType=INTEGER,javaType=Integer},
 #{IKm,jdbcType=INTEGER,javaType=Integer},
@@ -39,9 +39,9 @@ ID,C_CARTYPE,I_DAYS,I_KM
 
 <sql id="updateCols">
 <if test="pk neq null">ID=#{pk}</if>,
-C_CARTYPE=#{model.CCartype,jdbcType=VARCHAR,javaType=String},
-I_DAYS=#{model.IDays,jdbcType=INTEGER,javaType=Integer},
-I_KM=#{model.IKm,jdbcType=INTEGER,javaType=Integer},
+C_CARTYPE=#{CCartype,jdbcType=VARCHAR,javaType=String},
+I_DAYS=#{IDays,jdbcType=INTEGER,javaType=Integer},
+I_KM=#{IKm,jdbcType=INTEGER,javaType=Integer},
 
 </sql>
 

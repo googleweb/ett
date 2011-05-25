@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2011-05-25 10:26:46
+	Create Date:2011-05-25 04:53:47
 	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
 	Model:com.ett.drv.model.admin.DictModel 
 
@@ -34,7 +34,7 @@ ID,C_TYPENAME,C_DICT_TEXT,C_DICT_VALUE,C_DES1,C_DES2,C_DES3,C_STATE
 </sql>
 
 <sql id="insertCols">
-#{Id,jdbcType=INTEGER,javaType=Integer},
+seq_dict.nextval,
 #{CTypename,jdbcType=VARCHAR,javaType=String},
 #{CDictText,jdbcType=VARCHAR,javaType=String},
 #{CDictValue,jdbcType=VARCHAR,javaType=String},
@@ -47,13 +47,13 @@ ID,C_TYPENAME,C_DICT_TEXT,C_DICT_VALUE,C_DES1,C_DES2,C_DES3,C_STATE
 
 <sql id="updateCols">
 <if test="pk neq null">ID=#{pk}</if>,
-C_TYPENAME=#{model.CTypename,jdbcType=VARCHAR,javaType=String},
-C_DICT_TEXT=#{model.CDictText,jdbcType=VARCHAR,javaType=String},
-C_DICT_VALUE=#{model.CDictValue,jdbcType=VARCHAR,javaType=String},
-C_DES1=#{model.CDes1,jdbcType=VARCHAR,javaType=String},
-C_DES2=#{model.CDes2,jdbcType=VARCHAR,javaType=String},
-C_DES3=#{model.CDes3,jdbcType=VARCHAR,javaType=String},
-C_STATE=#{model.CState,jdbcType=VARCHAR,javaType=String},
+C_TYPENAME=#{CTypename,jdbcType=VARCHAR,javaType=String},
+C_DICT_TEXT=#{CDictText,jdbcType=VARCHAR,javaType=String},
+C_DICT_VALUE=#{CDictValue,jdbcType=VARCHAR,javaType=String},
+C_DES1=#{CDes1,jdbcType=VARCHAR,javaType=String},
+C_DES2=#{CDes2,jdbcType=VARCHAR,javaType=String},
+C_DES3=#{CDes3,jdbcType=VARCHAR,javaType=String},
+C_STATE=#{CState,jdbcType=VARCHAR,javaType=String},
 
 </sql>
 

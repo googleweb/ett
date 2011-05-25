@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2011-05-25 10:26:46
+	Create Date:2011-05-25 04:53:47
 	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
 	Model:com.ett.drv.model.booked.BookedOrderInfoModel 
 
@@ -54,7 +54,7 @@ C_IDCARD,C_CHECK_RESULT,C_ZJCX
 </sql>
 
 <sql id="insertCols">
-#{Id,jdbcType=INTEGER,javaType=Integer},
+seq_yuyue_info.nextval,
 #{CHmhp,jdbcType=VARCHAR,javaType=String},
 #{CKsccCode,jdbcType=VARCHAR,javaType=String},
 #{CKscc,jdbcType=VARCHAR,javaType=String},
@@ -83,29 +83,29 @@ C_IDCARD,C_CHECK_RESULT,C_ZJCX
 
 <sql id="updateCols">
 <if test="pk neq null">ID=#{pk}</if>,
-C_HMHP=#{model.CHmhp,jdbcType=VARCHAR,javaType=String},
-C_KSCC_CODE=#{model.CKsccCode,jdbcType=VARCHAR,javaType=String},
-C_KSCC=#{model.CKscc,jdbcType=VARCHAR,javaType=String},
-C_KSDD_CODE=#{model.CKsddCode,jdbcType=VARCHAR,javaType=String},
-C_KSDD=#{model.CKsdd,jdbcType=VARCHAR,javaType=String},
-I_KM=#{model.IKm,jdbcType=INTEGER,javaType=Integer},
-DATE_KSRQ=#{model.DateKsrq,jdbcType=VARCHAR,javaType=String},
-DATE_PXSHRQ=#{model.DatePxshrq,jdbcType=VARCHAR,javaType=String},
-I_PAIBANID=#{model.IPaibanid,jdbcType=INTEGER,javaType=Integer},
-C_JBR=#{model.CJbr,jdbcType=VARCHAR,javaType=String},
-C_DLR_CODE=#{model.CDlrCode,jdbcType=VARCHAR,javaType=String},
-C_DLR=#{model.CDlr,jdbcType=VARCHAR,javaType=String},
-C_JLY_IDCARD=#{model.CJlyIdcard,jdbcType=VARCHAR,javaType=String},
-C_JLY_XM=#{model.CJlyXm,jdbcType=VARCHAR,javaType=String},
-C_KSSJ=#{model.CKssj,jdbcType=VARCHAR,javaType=String},
-C_LSH=#{model.CLsh,jdbcType=VARCHAR,javaType=String},
-C_CHECK_OPERATOR=#{model.CCheckOperator,jdbcType=VARCHAR,javaType=String},
-C_CHECK_DATE=#{model.CCheckDate,jdbcType=VARCHAR,javaType=String},
-I_CHECKED=#{model.IChecked,jdbcType=INTEGER,javaType=Integer},
-C_XM=#{model.CXm,jdbcType=VARCHAR,javaType=String},
-C_IDCARD=#{model.CIdcard,jdbcType=VARCHAR,javaType=String},
-C_CHECK_RESULT=#{model.CCheckResult,jdbcType=VARCHAR,javaType=String},
-C_ZJCX=#{model.CZjcx,jdbcType=VARCHAR,javaType=String},
+C_HMHP=#{CHmhp,jdbcType=VARCHAR,javaType=String},
+C_KSCC_CODE=#{CKsccCode,jdbcType=VARCHAR,javaType=String},
+C_KSCC=#{CKscc,jdbcType=VARCHAR,javaType=String},
+C_KSDD_CODE=#{CKsddCode,jdbcType=VARCHAR,javaType=String},
+C_KSDD=#{CKsdd,jdbcType=VARCHAR,javaType=String},
+I_KM=#{IKm,jdbcType=INTEGER,javaType=Integer},
+DATE_KSRQ=#{DateKsrq,jdbcType=VARCHAR,javaType=String},
+DATE_PXSHRQ=#{DatePxshrq,jdbcType=VARCHAR,javaType=String},
+I_PAIBANID=#{IPaibanid,jdbcType=INTEGER,javaType=Integer},
+C_JBR=#{CJbr,jdbcType=VARCHAR,javaType=String},
+C_DLR_CODE=#{CDlrCode,jdbcType=VARCHAR,javaType=String},
+C_DLR=#{CDlr,jdbcType=VARCHAR,javaType=String},
+C_JLY_IDCARD=#{CJlyIdcard,jdbcType=VARCHAR,javaType=String},
+C_JLY_XM=#{CJlyXm,jdbcType=VARCHAR,javaType=String},
+C_KSSJ=#{CKssj,jdbcType=VARCHAR,javaType=String},
+C_LSH=#{CLsh,jdbcType=VARCHAR,javaType=String},
+C_CHECK_OPERATOR=#{CCheckOperator,jdbcType=VARCHAR,javaType=String},
+C_CHECK_DATE=#{CCheckDate,jdbcType=VARCHAR,javaType=String},
+I_CHECKED=#{IChecked,jdbcType=INTEGER,javaType=Integer},
+C_XM=#{CXm,jdbcType=VARCHAR,javaType=String},
+C_IDCARD=#{CIdcard,jdbcType=VARCHAR,javaType=String},
+C_CHECK_RESULT=#{CCheckResult,jdbcType=VARCHAR,javaType=String},
+C_ZJCX=#{CZjcx,jdbcType=VARCHAR,javaType=String},
 
 </sql>
 

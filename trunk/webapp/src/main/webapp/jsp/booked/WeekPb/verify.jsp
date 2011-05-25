@@ -35,14 +35,14 @@ String bookedWeekPbPath=basePath+"booked/WeekPb";
 	       var innerWidth=$("#innerDiv").width();
 	       <% 
 	    String tableWeekPb="tableWeekPb";
-        EasyUiModel weekPbDG=new EasyUiModel(StringUtil.quota("#"+tableWeekPb),EasyUiModel.DataGrid.NAME);
+        EasyUiModel weekPbDG=new EasyUiModel(JQueryModel.id(tableWeekPb),EasyUiModel.DataGrid.NAME);
         weekPbDG.appendAttrs(DataGrid.Properties.TITLE,StringUtil.quota("周排班列表"))
         .appendAttrs(DataGrid.Properties.URL,"booked/WeekPb/list/DataGrid.action?format=json",true)
         .appendAttrs(EasyUiModel.DataGrid.Properties.FIT_COLUMNS,true)
         .appendAttrs(EasyUiModel.DataGrid.Properties.WIDTH,"innerWidth")
         .appendAttrs(EasyUiModel.DataGrid.Properties.HEIGHT,"innerHeight")
         .appendAttrs(EasyUiModel.DataGrid.Properties.PAGINATION,true)
-        .appendAttrs(EasyUiModel.DataGrid.Properties.ID_FIELD,"id",true)
+        .appendAttrs(EasyUiModel.DataGrid.Properties.ID_FIELD,"Id",true)
         .appendAttrs(EasyUiModel.DataGrid.Events.ON_DBL_CLICK_ROW,new JsFunctionModel(new String[]{"index,data"}).appendContext("document.location.href=\"booked/WeekPb/to/assign.action?weekNum=\"+data.IWeekNum;"));
         List weekPbColumns=new JsListModel();
         List weekPbR1=new JsListModel();

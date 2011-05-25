@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ett.drv.mapper.self.ITransactResourceMapper">
+
+<cache flushInterval="30000" readOnly="true"></cache>
+
+
+<sql id="table">ASPNET.SELF_TRANSACT_RESOURCE</sql>
+
+<sql id="pk">FLOW_NO</sql>
+
+<sql id="colums">
+FLOW_NO,DRIVER_ID_FRONT_IMG,DRIVER_ID_BACK_IMG,AGENT_ID_FRONT_IMG,AGENT_ID_BACK_IMG,CAPTURE_IMG 
+</sql>
+
+<sql id="insertCols">
+#{flowNo,jdbcType=VARCHAR,javaType=String},
+#{driverIdFrontImg,jdbcType=BLOB},
+#{driverIdBackImg,jdbcType=BLOB},
+#{agentIdFrontImg,jdbcType=BLOB},
+#{agentIdBackImg,jdbcType=BLOB},
+#{captureImg,jdbcType=BLOB} 
+</sql>
+
+<sql id="updateCols">
+ <if test="pk neq null">FLOW_NO=#{pk},</if>
+DRIVER_ID_FRONT_IMG=#{model.driverIdFrontImg,jdbcType=BLOB},
+DRIVER_ID_BACK_IMG=#{model.driverIdBackImg,jdbcType=BLOB},
+AGENT_ID_FRONT_IMG=#{model.agentIdFrontImg,jdbcType=BLOB},
+AGENT_ID_BACK_IMG=#{model.agentIdBackImg,jdbcType=BLOB},
+CAPTURE_IMG=#{model.captureImg,jdbcType=BLOB}
+</sql>
+
+<sql id="orderby">order by FLOW_NO</sql>
+
+<sql id="joinColums"></sql>
+
+<sql id="join"></sql><!-- 别名m已被主表使用  -->
+
+<resultMap type="com.ett.drv.model.self.TransactResourceModel" id="resultMap">
+ <id column="FLOW_NO"  property="flowNo" jdbcType="VARCHAR" javaType="String"/>
+<result column="DRIVER_ID_FRONT_IMG"  property="driverIdFrontImg" jdbcType="BLOB" />
+<result column="DRIVER_ID_BACK_IMG"  property="driverIdBackImg" jdbcType="BLOB" />
+<result column="AGENT_ID_FRONT_IMG"  property="agentIdFrontImg" jdbcType="BLOB" />
+<result column="AGENT_ID_BACK_IMG"  property="agentIdBackImg" jdbcType="BLOB" />
+<result column="CAPTURE_IMG"  property="captureImg" jdbcType="BLOB" />
+ </resultMap>
+
+
+<select id="select" resultType="ArrayList" resultMap="resultMap">
+	 select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> 
+<trim prefix="where" prefixOverrides="and">
+<if test="model.flowNo neq null">and m.FLOW_NO=#{model.flowNo,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.driverIdFrontImg neq null">and m.DRIVER_ID_FRONT_IMG=#{model.driverIdFrontImg,jdbcType=BLOB  } </if> 
+<if test="model.driverIdBackImg neq null">and m.DRIVER_ID_BACK_IMG=#{model.driverIdBackImg,jdbcType=BLOB  } </if> 
+<if test="model.agentIdFrontImg neq null">and m.AGENT_ID_FRONT_IMG=#{model.agentIdFrontImg,jdbcType=BLOB  } </if> 
+<if test="model.agentIdBackImg neq null">and m.AGENT_ID_BACK_IMG=#{model.agentIdBackImg,jdbcType=BLOB  } </if> 
+<if test="model.captureImg neq null">and m.CAPTURE_IMG=#{model.captureImg,jdbcType=BLOB  } </if> 
+</trim>
+</select>
+<select id="selectEqPk" parameterType="String"  resultMap="resultMap">
+	 select <include refid="colums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> = #{flowNo,jdbcType=VARCHAR,javaType=String}
+</select>
+
+<select id="count" resultType="int">
+	 select count(*) from <include refid="table"/>
+</select>
+
+<select id="selectInPk" resultType="ArrayList" resultMap="resultMap" >
+	 select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> in
+<foreach item="pk" collection="list" open="(" separator="," close=")"> #{pk} </foreach> 
+<include refid="orderby"/>
+</select>
+
+<select id="selectNotInPk" resultType="ArrayList" resultMap="resultMap" >
+	 select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> not in
+<foreach item="pk" collection="list" open="(" separator="," close=")"> #{pk} </foreach> 
+<include refid="orderby"/>
+</select>
+
+<select  id="selectAll"  resultType="ArrayList"  resultMap="resultMap">
+	 select m.* <include refid="joinColums"/> from  <include refid="table" /> m <include refid="join"/> 
+ <include refid="orderby"/>
+</select>
+
+<insert id="insertOne" >
+	 insert into <include refid="table"/> ( <include refid="colums"/> ) values ( <include refid="insertCols"/>) 
+</insert>
+
+<update id="updateOne" flushCache="true" >
+	 update <include refid="table"/> set <include refid="updateCols"/> where <include refid="pk" />=#{model.flowNo,jdbcType=VARCHAR,javaType=String}
+</update>
+
+<delete id="deleteInPk" flushCache="true">
+	 delete from <include refid="table"/> where <include refid="pk" /> in
+<foreach item="pk" collection="list" open="(" separator="," close=")">#{pk}</foreach>
+</delete>
+
+<delete id="deleteNotInPk" flushCache="true">
+	 delete from <include refid="table"/> where <include refid="pk" /> not in
+<foreach item="pk" collection="list" open="(" separator="," close=")">#{pk}</foreach>
+</delete>
+
+
+
+</mapper>
+

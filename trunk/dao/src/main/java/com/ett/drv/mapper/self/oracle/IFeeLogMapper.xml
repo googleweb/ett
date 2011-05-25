@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2011-05-25 10:26:46
+	Create Date:2011-05-25 04:53:47
 	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
 	Model:com.ett.drv.model.self.FeeLogModel 
 
@@ -79,27 +79,27 @@ I_SYN
 
 <sql id="updateCols">
 <if test="pk neq null">ID=#{pk}</if>,
-C_CREATEIP=#{model.CCreateip,jdbcType=VARCHAR,javaType=String},
-T_CREATETIME=#{model.TCreatetime,jdbcType=DATE,javaType=Date},
-C_CREATOR=#{model.CCreator,jdbcType=VARCHAR,javaType=String},
-I_ISDELETED=#{model.IIsdeleted,jdbcType=INTEGER,javaType=Integer},
-C_DESCRIPTION=#{model.CDescription,jdbcType=VARCHAR,javaType=String},
-C_KEYWORDS=#{model.CKeywords,jdbcType=VARCHAR,javaType=String},
-C_MODIFIER=#{model.CModifier,jdbcType=VARCHAR,javaType=String},
-C_MODIFYIP=#{model.CModifyip,jdbcType=VARCHAR,javaType=String},
-T_MODIFYTIME=#{model.TModifytime,jdbcType=DATE,javaType=Date},
-BUSTYPE=#{model.Bustype,jdbcType=VARCHAR,javaType=String},
-DETAIL=#{model.Detail,jdbcType=VARCHAR,javaType=String},
-FEETYPE=#{model.Feetype,jdbcType=VARCHAR,javaType=String},
-MONEY=#{model.Money,jdbcType=INTEGER,javaType=Integer},
-SFZMHM=#{model.Sfzmhm,jdbcType=VARCHAR,javaType=String},
-VISACARD=#{model.Visacard,jdbcType=VARCHAR,javaType=String},
-XM=#{model.Xm,jdbcType=VARCHAR,javaType=String},
-FEELSH=#{model.Feelsh,jdbcType=VARCHAR,javaType=String},
-POSTFEE=#{model.Postfee,jdbcType=INTEGER,javaType=Integer},
-FEEWAYTYPE=#{model.Feewaytype,jdbcType=VARCHAR,javaType=String},
-RELATIONID=#{model.Relationid,jdbcType=VARCHAR,javaType=String},
-I_SYN=#{model.ISyn,jdbcType=INTEGER,javaType=Integer},
+C_CREATEIP=#{CCreateip,jdbcType=VARCHAR,javaType=String},
+T_CREATETIME=#{TCreatetime,jdbcType=DATE,javaType=Date},
+C_CREATOR=#{CCreator,jdbcType=VARCHAR,javaType=String},
+I_ISDELETED=#{IIsdeleted,jdbcType=INTEGER,javaType=Integer},
+C_DESCRIPTION=#{CDescription,jdbcType=VARCHAR,javaType=String},
+C_KEYWORDS=#{CKeywords,jdbcType=VARCHAR,javaType=String},
+C_MODIFIER=#{CModifier,jdbcType=VARCHAR,javaType=String},
+C_MODIFYIP=#{CModifyip,jdbcType=VARCHAR,javaType=String},
+T_MODIFYTIME=#{TModifytime,jdbcType=DATE,javaType=Date},
+BUSTYPE=#{Bustype,jdbcType=VARCHAR,javaType=String},
+DETAIL=#{Detail,jdbcType=VARCHAR,javaType=String},
+FEETYPE=#{Feetype,jdbcType=VARCHAR,javaType=String},
+MONEY=#{Money,jdbcType=INTEGER,javaType=Integer},
+SFZMHM=#{Sfzmhm,jdbcType=VARCHAR,javaType=String},
+VISACARD=#{Visacard,jdbcType=VARCHAR,javaType=String},
+XM=#{Xm,jdbcType=VARCHAR,javaType=String},
+FEELSH=#{Feelsh,jdbcType=VARCHAR,javaType=String},
+POSTFEE=#{Postfee,jdbcType=INTEGER,javaType=Integer},
+FEEWAYTYPE=#{Feewaytype,jdbcType=VARCHAR,javaType=String},
+RELATIONID=#{Relationid,jdbcType=VARCHAR,javaType=String},
+I_SYN=#{ISyn,jdbcType=INTEGER,javaType=Integer},
 
 </sql>
 
