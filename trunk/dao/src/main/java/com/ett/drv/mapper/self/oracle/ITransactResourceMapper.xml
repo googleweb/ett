@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2011-05-25 04:53:47
+	Create Date:2011-05-26 11:06:52
 	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
 	Model:com.ett.drv.model.self.TransactResourceModel 
 
@@ -42,12 +42,12 @@ FLOW_NO,DRIVER_ID_FRONT_IMG,DRIVER_ID_BACK_IMG,AGENT_ID_FRONT_IMG,AGENT_ID_BACK_
 </sql>
 
 <sql id="updateCols">
-<if test="pk neq null">FLOW_NO=#{pk}</if>,
-DRIVER_ID_FRONT_IMG=#{DriverIdFrontImg,jdbcType=BLOB},
-DRIVER_ID_BACK_IMG=#{DriverIdBackImg,jdbcType=BLOB},
-AGENT_ID_FRONT_IMG=#{AgentIdFrontImg,jdbcType=BLOB},
-AGENT_ID_BACK_IMG=#{AgentIdBackImg,jdbcType=BLOB},
-CAPTURE_IMG=#{CaptureImg,jdbcType=BLOB},
+<if test="pk neq null">FLOW_NO=#{pk},</if>
+DRIVER_ID_FRONT_IMG=#{model.DriverIdFrontImg,jdbcType=BLOB},
+DRIVER_ID_BACK_IMG=#{model.DriverIdBackImg,jdbcType=BLOB},
+AGENT_ID_FRONT_IMG=#{model.AgentIdFrontImg,jdbcType=BLOB},
+AGENT_ID_BACK_IMG=#{model.AgentIdBackImg,jdbcType=BLOB},
+CAPTURE_IMG=#{model.CaptureImg,jdbcType=BLOB},
 
 </sql>
 

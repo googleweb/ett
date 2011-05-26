@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2011-05-25 04:53:47
+	Create Date:2011-05-26 11:06:52
 	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
 	Model:com.ett.drv.model.self.DeviceSnModel 
 
@@ -64,22 +64,22 @@ seq_self_devicesn.nextval,
 </sql>
 
 <sql id="updateCols">
-<if test="pk neq null">ID=#{pk}</if>,
-C_CREATEIP=#{CCreateip,jdbcType=VARCHAR,javaType=String},
-T_CREATETIME=#{TCreatetime,jdbcType=TIMESTAMP,javaType=Timestamp},
-C_CREATOR=#{CCreator,jdbcType=VARCHAR,javaType=String},
-I_ISDELETED=#{IIsdeleted,jdbcType=INTEGER,javaType=Integer},
-C_DESCRIPTION=#{CDescription,jdbcType=VARCHAR,javaType=String},
-C_KEYWORDS=#{CKeywords,jdbcType=VARCHAR,javaType=String},
-C_MODIFIER=#{CModifier,jdbcType=VARCHAR,javaType=String},
-C_MODIFYIP=#{CModifyip,jdbcType=VARCHAR,javaType=String},
-T_MODIFYTIME=#{TModifytime,jdbcType=TIMESTAMP,javaType=Timestamp},
-C_DEVICE_IP=#{CDeviceIp,jdbcType=VARCHAR,javaType=String},
-C_JKNAME=#{CJkname,jdbcType=VARCHAR,javaType=String},
-C_JKID=#{CJkid,jdbcType=VARCHAR,javaType=String},
-C_JKXLH=#{CJkxlh,jdbcType=VARCHAR,javaType=String},
-C_SN=#{CSn,jdbcType=VARCHAR,javaType=String},
-C_XTLB=#{CXtlb,jdbcType=VARCHAR,javaType=String},
+<if test="pk neq null">ID=#{pk},</if>
+C_CREATEIP=#{model.CCreateip,jdbcType=VARCHAR,javaType=String},
+T_CREATETIME=#{model.TCreatetime,jdbcType=TIMESTAMP,javaType=Timestamp},
+C_CREATOR=#{model.CCreator,jdbcType=VARCHAR,javaType=String},
+I_ISDELETED=#{model.IIsdeleted,jdbcType=INTEGER,javaType=Integer},
+C_DESCRIPTION=#{model.CDescription,jdbcType=VARCHAR,javaType=String},
+C_KEYWORDS=#{model.CKeywords,jdbcType=VARCHAR,javaType=String},
+C_MODIFIER=#{model.CModifier,jdbcType=VARCHAR,javaType=String},
+C_MODIFYIP=#{model.CModifyip,jdbcType=VARCHAR,javaType=String},
+T_MODIFYTIME=#{model.TModifytime,jdbcType=TIMESTAMP,javaType=Timestamp},
+C_DEVICE_IP=#{model.CDeviceIp,jdbcType=VARCHAR,javaType=String},
+C_JKNAME=#{model.CJkname,jdbcType=VARCHAR,javaType=String},
+C_JKID=#{model.CJkid,jdbcType=VARCHAR,javaType=String},
+C_JKXLH=#{model.CJkxlh,jdbcType=VARCHAR,javaType=String},
+C_SN=#{model.CSn,jdbcType=VARCHAR,javaType=String},
+C_XTLB=#{model.CXtlb,jdbcType=VARCHAR,javaType=String},
 
 </sql>
 

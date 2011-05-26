@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2011-05-25 04:53:47
+	Create Date:2011-05-26 11:06:52
 	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
 	Model:com.ett.drv.model.admin.DepartmentModel 
 
@@ -50,16 +50,16 @@ seq_department.nextval,
 </sql>
 
 <sql id="updateCols">
-<if test="pk neq null">ID=#{pk}</if>,
-C_CONNECTOR=#{CConnector,jdbcType=VARCHAR,javaType=String},
-C_MOBILE=#{CMobile,jdbcType=VARCHAR,javaType=String},
-C_PHONE=#{CPhone,jdbcType=VARCHAR,javaType=String},
-C_COMPANYCODE=#{CCompanycode,jdbcType=VARCHAR,javaType=String},
-C_DEPFULLNAME=#{CDepfullname,jdbcType=VARCHAR,javaType=String},
-C_DEPNICKNAME=#{CDepnickname,jdbcType=VARCHAR,javaType=String},
-C_DEPCODE=#{CDepcode,jdbcType=VARCHAR,javaType=String},
-C_PARENTCODE=#{CParentcode,jdbcType=VARCHAR,javaType=String},
-C_DEPTYPE=#{CDeptype,jdbcType=VARCHAR,javaType=String},
+<if test="pk neq null">ID=#{pk},</if>
+C_CONNECTOR=#{model.CConnector,jdbcType=VARCHAR,javaType=String},
+C_MOBILE=#{model.CMobile,jdbcType=VARCHAR,javaType=String},
+C_PHONE=#{model.CPhone,jdbcType=VARCHAR,javaType=String},
+C_COMPANYCODE=#{model.CCompanycode,jdbcType=VARCHAR,javaType=String},
+C_DEPFULLNAME=#{model.CDepfullname,jdbcType=VARCHAR,javaType=String},
+C_DEPNICKNAME=#{model.CDepnickname,jdbcType=VARCHAR,javaType=String},
+C_DEPCODE=#{model.CDepcode,jdbcType=VARCHAR,javaType=String},
+C_PARENTCODE=#{model.CParentcode,jdbcType=VARCHAR,javaType=String},
+C_DEPTYPE=#{model.CDeptype,jdbcType=VARCHAR,javaType=String},
 
 </sql>
 

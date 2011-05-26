@@ -96,8 +96,8 @@ public class GenMapperTool {
 		mappers.put(Table.TABLE_YUYUE_DAY_LIMIT,mf.createMapperTemplate(Table.TABLE_YUYUE_DAY_LIMIT.name().toUpperCase(), "id".toUpperCase(),IBookedDayLimitMapper.class, BookedDayLimitModel.class,Seqs.seq_yuyue_day_limit+NEXTVAL ));
 		mappers.put(Table.TABLE_YUYUE_INFO,mf.createMapperTemplate(Table.TABLE_YUYUE_INFO.name().toUpperCase(), "id".toUpperCase(),IOrderInfoMapper.class, BookedOrderInfoModel .class,Seqs.seq_yuyue_info+NEXTVAL ));
 		mappers.put(Table.TABLE_YUYUE_LIMIT,mf.createMapperTemplate(Table.TABLE_YUYUE_LIMIT.name().toUpperCase(), "id".toUpperCase(),ILimitMapper.class, BookedLimitModel.class,Seqs.seq_yuyue_limit+NEXTVAL ));
-		mappers.put(Table.SELF_TRANSACT_DRIVER,mf.createMapperTemplate(Table.SELF_TRANSACT_DRIVER.name().toUpperCase(), "flow_no".toUpperCase(),ITransactDriverMapper.class, TransactDriverModel.class ,Seqs.seq_self_transact_driver+NEXTVAL));
-		mappers.put(Table.SELF_TRANSACT_VEHICLE,mf.createMapperTemplate(Table.SELF_TRANSACT_VEHICLE.name().toUpperCase(), "flow_no".toUpperCase(),ITransactVehicleMapper.class, TransactVehicleModel.class,Seqs.seq_self_transact_vehicle+NEXTVAL ));
+		mappers.put(Table.SELF_TRANSACT_DRIVER,mf.createMapperTemplate(Table.SELF_TRANSACT_DRIVER.name().toUpperCase(), "flow_no".toUpperCase(),ITransactDriverMapper.class, TransactDriverModel.class ));
+		mappers.put(Table.SELF_TRANSACT_VEHICLE,mf.createMapperTemplate(Table.SELF_TRANSACT_VEHICLE.name().toUpperCase(), "flow_no".toUpperCase(),ITransactVehicleMapper.class, TransactVehicleModel.class));
 		mappers.put(Table.SELF_TRANSACT_RESOURCE,mf.createMapperTemplate(Table.SELF_TRANSACT_RESOURCE.name().toUpperCase(), "flow_no".toUpperCase(),ITransactResourceMapper.class, TransactResourceModel.class ));
 
 		mappers.put(Table.PERSON,mf.createMapperTemplate(Table.PERSON.name().toUpperCase(), "id".toUpperCase(),IPersonMapper.class, PersonModel.class ));
