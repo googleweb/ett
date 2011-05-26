@@ -22,6 +22,9 @@ public class UserModel extends BaseModel {
 		private String CBeginip;         //C_BEGINIP  VARCHAR2 30
 		private String CEndip;         //C_ENDIP  VARCHAR2 30
 		private String CState;         //C_STATE  VARCHAR2 8
+		private String CKm;         //C_KM  VARCHAR2 10
+		
+		
 		public Integer getId() {
 			return Id;
 		}
@@ -87,6 +90,12 @@ public class UserModel extends BaseModel {
 		}
 		public void setCState(String cState) {
 			CState = cState;
+		}
+		public String getCKm() {
+			return CKm;
+		}
+		public void setCKm(String cKm) {
+			CKm = cKm;
 		}
 		
 		

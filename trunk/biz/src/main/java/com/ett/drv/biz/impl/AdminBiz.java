@@ -132,6 +132,7 @@ public class AdminBiz extends BaseDrvBiz implements IAdminBiz {
 			userModel=listUser.get(0);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
+			e.printStackTrace();
 			return userModel;
 		}
 		return userModel;
