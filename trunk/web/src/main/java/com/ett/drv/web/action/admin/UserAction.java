@@ -1,13 +1,13 @@
 package com.ett.drv.web.action.admin;
 
-import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
+import com.ett.drv.model.admin.DepartmentModel;
 import com.ett.drv.model.admin.UserModel;
-import com.ett.drv.model.self.DeviceModel;
 import com.ett.drv.web.action.BaseAction;
 import com.ett.drv.web.filter.AuthFilter;
 import com.opensymphony.xwork2.ModelDriven;
@@ -35,7 +35,6 @@ public class UserAction extends BaseAction implements ModelDriven<UserModel> {
 		}
 	}
 	public UserModel getModel() {
-		// TODO Auto-generated method stub
 		if(isGet()){
 			int id=ObjectUtil.formatInt(this.getParameter("id"));
 			if(id==0)
@@ -108,5 +107,16 @@ public class UserAction extends BaseAction implements ModelDriven<UserModel> {
 			resultModel.setMsg("没有用户被删除");
 		}
 		this.writePlainText(resultModel.toJson().toString());   	
+    }
+    @SuppressWarnings("unchecked")
+	public void find_deptid(){
+    	ArrayList lListKscc = null;
+		try {
+			lListKscc = adminBiz.listSchool(null);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		JSONArray lJsonKscc= ObjectUtil.toJsonArray(lListKscc);
+		this.writePlainText(lJsonKscc.toString());
     }
 }

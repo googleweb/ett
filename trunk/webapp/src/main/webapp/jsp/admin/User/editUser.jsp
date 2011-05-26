@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@page import="com.smartken.kia.core.model.impl.EasyUiModel"%>
+<%@page import="com.ett.drv.model.admin.DepartmentModel"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
 <%
@@ -103,11 +104,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            <tr>
             <th>部门编号</th>
              <td style="width: 35%">
-                <!--  这里写错了   -->
-               <input name="IDepid"  type="text" value="${IDepid}" 
-               class="<%=EasyUiModel.ValidateBox.CLASS %>"
+             <input name="IDepid" 
+                       valuefield="CDepcode"
+                   textfield="CDepnickname"
+                     url="http://localhost:8080/webapp/admin/User/find/deptid.action" 
+                 
+  	         editable="false"
+  	                  class="<%=EasyUiModel.ComboBox.CLASS %>"
                  <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
-               />
+                   />
              </td>
             <th>全名</th>
              <td style="width: 35%">
