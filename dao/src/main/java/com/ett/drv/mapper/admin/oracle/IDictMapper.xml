@@ -89,7 +89,7 @@ C_STATE=#{model.CState,jdbcType=VARCHAR,javaType=String},
 </sql>
 
 
-<select id="select" resultType="ArrayList" resultMap="resultMap">
+<select id="select" resultType="ArrayList" resultMap="resultMap"  >
 	select m.* from <include refid="table" /> m   
 		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
 			<include refid="selectCondition"/>

@@ -1,6 +1,7 @@
 package com.ett.drv.biz;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Date;
 
 
@@ -27,4 +28,5 @@ public interface IAdminBiz extends IBaseCrudBiz {
 	
 	public UserModel login(String loginName,String pwd);
 	
+	public List<DictModel> listIdcardType() throws Exception;
 }

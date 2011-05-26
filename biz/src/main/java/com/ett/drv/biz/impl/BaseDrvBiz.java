@@ -4,8 +4,10 @@ import com.ett.drv.mapper.admin.IDepartmentMapper;
 import com.ett.drv.mapper.admin.IDictMapper;
 import com.ett.drv.mapper.admin.IMenuMapper;
 import com.ett.drv.mapper.admin.IUserMapper;
+import com.ett.drv.mapper.booked.ICarOwnerChangeMapper;
 import com.ett.drv.mapper.booked.ILimitMapper;
 import com.ett.drv.mapper.booked.IOrderInfoMapper;
+import com.ett.drv.mapper.booked.IPersonChangeMapper;
 import com.ett.drv.mapper.booked.IWeekRecordMapper;
 import com.ett.drv.mapper.self.IDeviceMapper;
 import com.ett.drv.mapper.self.IDeviceSnMapper;
@@ -28,6 +30,8 @@ import com.ett.drv.model.admin.UserModel;
 import com.ett.drv.model.booked.BookedLimitModel;
 import com.ett.drv.model.booked.BookedOrderInfoModel;
 import com.ett.drv.model.booked.BookedWeekRecordModel;
+import com.ett.drv.model.booked.CarOwnerChangeModel;
+import com.ett.drv.model.booked.PersonChangeModel;
 import com.ett.drv.model.self.DeviceModel;
 import com.ett.drv.model.self.DeviceSnModel;
 import com.ett.drv.model.self.DrivingLicenseModel;
@@ -67,7 +71,8 @@ public abstract class BaseDrvBiz extends BaseCurdBiz {
 	protected IDeviceMapper<DeviceModel> deviceMapper;
 	protected IDeviceSnMapper<DeviceSnModel> deviceSnMapper;
 	protected IHardwareMapper<HardwareModel> hardwareMapper;
-
+    protected IPersonChangeMapper<PersonChangeModel> personChangeMapper;
+    protected ICarOwnerChangeMapper<CarOwnerChangeModel> carOwnerChangeMapper;
 
 
 	public void setDictMapper(IDictMapper<DictModel> dictMapper) {
@@ -201,6 +206,22 @@ public abstract class BaseDrvBiz extends BaseCurdBiz {
 	public void setHardwareMapper(IHardwareMapper<HardwareModel> hardwareMapper) {
 		this.hardwareMapper = hardwareMapper;
 		this.addCrudMapper(HardwareModel.class, hardwareMapper);
+	}
+
+
+
+	public void setPersonChangeMapper(
+			IPersonChangeMapper<PersonChangeModel> personChangeMapper) {
+		this.personChangeMapper = personChangeMapper;
+		this.addCrudMapper(PersonChangeModel.class, personChangeMapper);
+	}
+
+
+
+	public void setCarOwnerChangeMapper(
+			ICarOwnerChangeMapper<CarOwnerChangeModel> carOwnerChangeMapper) {
+		this.carOwnerChangeMapper = carOwnerChangeMapper;
+		this.addCrudMapper(CarOwnerChangeModel.class, carOwnerChangeMapper);
 	}
 	
 	
