@@ -48,7 +48,7 @@ function clickAddHandler(){
 		);    //   end:$("#divEdit").dialog
  }
 function dblClickRowHandler(rowIndex,rowData){ 
-	    var id=rowData["id"];
+	    var id=rowData["Id"];
 	    var fullname=rowData["<%=UserModel.F.CFullName%>"];
   		var href='<%=basePath%>'+"admin/User/to/editUser.action?id="+id;
   		$("#divEditUser").dialog({
@@ -65,7 +65,7 @@ function clickRemoveHandler(){
 					var selectsRows=$("#test").datagrid("getSelections");
 					var ids="";
 					$.each(selectsRows,function(index,row){
-							ids+=','+row['id'];  
+							ids+=','+row['Id'];  
 							});
 					var action="<%=basePath%>"+"admin/User/do/deleteUser.action";
 					$.post(action,{ids:ids},
@@ -92,13 +92,14 @@ $(document).ready(function(){
 	[ 
 	{field:"Id",checkbox:true},
 	{field:"<%=UserModel.F.CLoginName%>",title:"用户名",width:150},
-	{field:"<%=UserModel.F.CBeginip%>",title:"开始IP",width:150},
+	{field:"<%=UserModel.F.CPwd%>",title:"密码",width:150},
 	{field:"<%=UserModel.F.CWorkid%>",title:"工作号",width:150},
 	{field:"<%=UserModel.F.IRoleid%>",title:"角色号",width:150},
 	{field:"<%=UserModel.F.CState%>",title:"状态",width:150},
 	{field:"<%=UserModel.F.CIdcard%>",title:"卡号",width:150},
 	{field:"<%=UserModel.F.IDepid%>",title:"部门编号",width:150},
 	{field:"<%=UserModel.F.CFullName%>",title:"全名",width:150},
+	{field:"<%=UserModel.F.CBeginip%>",title:"开始IP",width:150},
 	{field:"<%=UserModel.F.CEndip%>",title:"结束IP",width:150}	
 	]
 	] 

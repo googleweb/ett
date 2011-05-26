@@ -31,9 +31,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	   $.messager.confirm('操作提示','确认保存',function(yes){
 		   if(yes){
 			   $("#formUser").form('submit',{
-				   url:"http://localhost:8080/webapp/admin/User/do/editUser.action"
-				   ,
+				   url:"http://localhost:8080/webapp/admin/User/do/editUser.action",
 				   success:function(str){
+				   	   $("#formUser").form("clear");
 					   var json=Kia.util.strToJson(str);
 					   Kia.util.handleJsonResult(json);
 				   }
@@ -46,63 +46,91 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    
   </head>
  
-  <body><%--
-   修改用户页面 ${fullName}
-   <form name="form">
-   		<input name="name" type="text" value="${loginName}">
-   </form>
-   --%><div class="innerDiv">
+  <body>
+  <div class="innerDiv">
      <form id="formUser"  method="post">
+     <input type="hidden" name="Id" value="${Id}" />
        <table class="editTable" cellspacing="0">
          <tbody>
            <tr>
              <th>用户名</th>
              <td style="width: 35%">
-               <input name="CLoginName" type="text"  value="${CLoginName}" />
+               <input name="CLoginName" type="text"  value="${CLoginName}"
+                 class="<%=EasyUiModel.ValidateBox.CLASS %>"
+                 <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+                />
              </td>
             <th>密码</th>
              <td style="width: 35%">
-               <input name="CPwd" type="text"  value="${CPwd}" />
+               <input name="CPwd" type="text"  value="${CPwd}" 
+               	class="<%=EasyUiModel.ValidateBox.CLASS %>"
+                 <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+               />
              </td>
            </tr>
            <tr>
             <th>工作号</th>
              <td style="width: 35%">
-               <input name="CWorkid" type="text" value="${CWorkid}" />
+               <input name="CWorkid" type="text" value="${CWorkid}" 
+               class="<%=EasyUiModel.ValidateBox.CLASS %>"
+                 <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+               />
              </td>
             <th>角色号</th>
              <td style="width: 35%">
-              <input name="IRoleid" value="${IRoleid}" />
+              <input name="IRoleid" value="${IRoleid}" 
+              class="<%=EasyUiModel.ValidateBox.CLASS %>"
+                 <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+              />
              </td>
            </tr>
            <tr>
             <th>状态</th>
              <td style="width: 35%">
-               <input name="CState"  type="text" value="${CState}" />
+               <input name="CState"  type="text" value="${CState}" 
+               class="<%=EasyUiModel.ValidateBox.CLASS %>"
+                 <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+               />
              </td>
             <th>卡号</th>
              <td style="width: 35%">
-               <input name="CIdcard"  type="text" value="${CIdcard}" />
+               <input name="CIdcard"  type="text" value="${CIdcard}" 
+               class="<%=EasyUiModel.ValidateBox.CLASS %>"
+                 <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+               />
              </td>
            </tr>
            <tr>
             <th>部门编号</th>
              <td style="width: 35%">
-               <input name="CWorkid"  type="text" value="${CWorkid}" />
+                <!--  这里写错了   -->
+               <input name="IDepid"  type="text" value="${IDepid}" 
+               class="<%=EasyUiModel.ValidateBox.CLASS %>"
+                 <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+               />
              </td>
             <th>全名</th>
              <td style="width: 35%">
-               <input name="CFullName" value="${CFullName}" />
+               <input name="CFullName" value="${CFullName}" 
+               class="<%=EasyUiModel.ValidateBox.CLASS %>"
+                 <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+               />
              </td>
            </tr>
            <tr>
            <th>开始IP</th>
              <td style="width: 35%">
-               <input name="CBeginip" type="text" value="${CBeginip}" />
+               <input name="CBeginip" type="text" value="${CBeginip}" 
+               class="<%=EasyUiModel.ValidateBox.CLASS %>"
+                 <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+               />
              </td>
               <th>结束IP</th> 
              <td style="width: 35%">
-               <input name="CEndip" type="text" value="${CEndip}" />
+               <input name="CEndip" type="text" value="${CEndip}" 
+               class="<%=EasyUiModel.ValidateBox.CLASS %>"
+                 <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+               />
              </td>
            </tr>
            <tr>
