@@ -119,6 +119,14 @@
   <property name="mapperInterface" value="com.ett.drv.mapper.booked.IOrderInfoMapper"></property>
 </bean>
 
+<bean id="carOwnerChangeMapper" parent="baseMapper">
+  <property name="mapperInterface" value="com.ett.drv.mapper.booked.ICarOwnerChangeMapper"></property>
+</bean>
+
+<bean id="personChangeMapper" parent="baseMapper">
+  <property name="mapperInterface" value="com.ett.drv.mapper.booked.IPersonChangeMapper"></property>
+</bean>
+
 
 <bean id="dictMapper" parent="baseMapper">
   <property name="mapperInterface" value="com.ett.drv.mapper.admin.IDictMapper"></property>
@@ -219,6 +227,8 @@
    <property name="deviceMapper" ref="deviceMapper"></property>
    <property name="deviceSnMapper" ref="deviceSnMapper"></property>
    <property name="hardwareMapper" ref="hardwareMapper"></property>
+   <property name="carOwnerChangeMapper" ref="carOwnerChangeMapper"></property>
+   <property name="personChangeMapper" ref="personChangeMapper"></property>
 </bean>
 
 <bean id="baseBookedBiz" abstract="true" class="com.ett.drv.biz.impl.BookedBiz"  parent="baseDrvBiz" ></bean>

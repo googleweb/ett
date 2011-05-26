@@ -5,6 +5,7 @@
 String.prototype.toJson=function(){
 	try{
 		var json=eval("("+this.toString()+")");
+		return json;
 	}catch(ex){
 		return {};
 	}
@@ -13,6 +14,7 @@ String.prototype.toJson=function(){
 
 String.prototype.messager=function(handler){
     try{
+      
        var json=this.toJson();
        var msg=json["msg"]||"";
 	   var title=json["title"]||"操作结果";
@@ -34,6 +36,7 @@ String.prototype.messager=function(handler){
 		   $.messager.prompt(title,msg,handler==null?function(val){return val;}:handler);
 	   }
     }catch(ex){
+    	alert(ex);
     	$.messager.alert("Format error","The result is not a Messager format");
     }	 
 };

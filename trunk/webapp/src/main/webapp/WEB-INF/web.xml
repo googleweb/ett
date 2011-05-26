@@ -1,70 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app id="DrvHelperSystem" version="2.4"
-	xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
-	<display-name>DrvHelperSystem</display-name>
-	<welcome-file-list>
-		<welcome-file>/index.html</welcome-file>
-		<welcome-file>/index.htm</welcome-file>
-		<welcome-file>/index.jsp</welcome-file>
-		<welcome-file>/default.html</welcome-file>
-		<welcome-file>/default.htm</welcome-file>
-		<welcome-file>/default.jsp</welcome-file>
-		<welcome-file>/jsp/rbac/login.jsp</welcome-file>
-	</welcome-file-list>
-	<context-param>
-		<param-name>contextConfigLocation</param-name>
-		<param-value>
-			classpath*:com/**/applicationContext*.xml,
-			/WEB-INF/classes/applicationContext*.xml
-		</param-value>
-	</context-param>
-	<!--t由Sprng载入的Log4j配置文件位置 -->
-	<context-param>
-		<param-name>log4jConfigLocation</param-name>
-		<param-value>/WEB-INF/classes/log4j.xml</param-value>
-	</context-param>
-
-	<!--tSpring默认刷新Log4j配置文件的间隔,单位为millisecond -->
-	<context-param>
-		<param-name>log4jRefreshInterval</param-name>
-		<param-value>60000</param-value>
-	</context-param>
-
-
-	<!-- <listener> <listener-class>com.ft.drv.DrvCountListener</listener-class> 
-		</listener> -->
-
-	<!--jbpm动态部署 <servlet> <servlet-name>GDP Deployer Servlet</servlet-name> 
-		<servlet-class>org.jbpm.web.ProcessUploadServlet</servlet-class> <load-on-startup>1</load-on-startup> 
-		</servlet> <servlet-mapping> <servlet-name>GDP Deployer Servlet</servlet-name> 
-		<url-pattern>/upload/*</url-pattern> </servlet-mapping> -->
-	<!--end jbpm动态部署 -->
-
-	<!--jms集成jetty配置 <context-param> <description>The URL of the Message Broker 
-		to connect to</description> <param-name>org.apache.activemq.brokerURL</param-name> 
-		<param-value>vm://localhost</param-value> </context-param> <context-param> 
-		<description>Whether we should include an embedded broker or not</description> 
-		<param-name>org.apache.activemq.embeddedBroker</param-name> <param-value>true</param-value> 
-		</context-param> <servlet> <servlet-name>MqAjaxServlet</servlet-name> <servlet-class>org.apache.activemq.web.AjaxServlet</servlet-class> 
-		<load-on-startup>1</load-on-startup> </servlet> <servlet-mapping> <servlet-name>MqAjaxServlet</servlet-name> 
-		<url-pattern>/amq/*</url-pattern> </servlet-mapping> <filter> <filter-name>MqSession</filter-name> 
-		<filter-class>org.apache.activemq.web.SessionFilter</filter-class> </filter> 
-		<filter-mapping> <filter-name>MqSession</filter-name> <url-pattern>/*</url-pattern> 
-		</filter-mapping> -->
-	<!--End jms 集成jetty配置 -->
-	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
-	<!-- Include this if you are using Hibernate <filter> <filter-name>openEntityManagerInViewFilter</filter-name> 
+ xmlns="http://java.sun.com/xml/ns/j2ee"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+ <display-name>DrvHelperSystem</display-name>
+ <context-param>
+  <param-name>contextConfigLocation</param-name>
+  <param-value>classpath*:com/**/applicationContext*.xml,
+			/WEB-INF/classes/applicationContext*.xml</param-value>
+ </context-param>
+ <!--t由Sprng载入的Log4j配置文件位置 -->
+ <context-param>
+  <param-name>log4jConfigLocation</param-name>
+  <param-value>/WEB-INF/classes/log4j.xml</param-value>
+ </context-param>
+ <!--tSpring默认刷新Log4j配置文件的间隔,单位为millisecond -->
+ <context-param>
+  <param-name>log4jRefreshInterval</param-name>
+  <param-value>60000</param-value>
+ </context-param>
+ <!-- Include this if you are using Hibernate <filter> <filter-name>openEntityManagerInViewFilter</filter-name> 
 		<filter-class> org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter 
-		</filter-class> </filter> -->
-
-
-
-
-
-	<!-- 指定此项可使spring取回的DomainObject在JSP(View层)做完所有的事情后，才将Hibernate Session 
+		</filter-class> </filter> 
+ 指定此项可使spring取回的DomainObject在JSP(View层)做完所有的事情后，才将Hibernate Session 
 		给Close <filter> <filter-name>loginFilter</filter-name> <filter-class> com.ft.site.commons.web.util.LoginFilter 
 		</filter-class> <init-param> <description>the url wanted to login!</description> 
 		<param-name>loginurl</param-name> <param-value>/json/login.action</param-value> 
@@ -72,8 +29,8 @@
 		<param-name>excludes</param-name> <param-value>login!logout.action;login.jsp;login.action;index.jsp;viewweek-List.jsp;yuyue-List.jsp;viewweek!print.action;yuyue!beginYuyue.action;yuyue!begin.action;dictValue</param-value> 
 		</init-param> <init-param> <description>the url wanted been filter!</description> 
 		<param-name>suffixes</param-name> <param-value>.do;.jsp;.action;.html</param-value> 
-		</init-param> </filter> -->
-	<!-- 指定此项可使spring取回的DomainObject在JSP(View层)做完所有的事情后，才将Hibernate Session 
+		</init-param> </filter> 
+ 指定此项可使spring取回的DomainObject在JSP(View层)做完所有的事情后，才将Hibernate Session 
 		给Close
 	<filter>
 		<filter-name>lazyLoadingFilter</filter-name>
@@ -85,36 +42,36 @@
 		</init-param>
 	</filter>
 	  -->
-	<!---->
-	<filter>
-		<filter-name>struts-cleanup</filter-name>
-		<filter-class>org.apache.struts2.dispatcher.ActionContextCleanUp</filter-class>
-	</filter>
-
-	<filter>
-		<filter-name>sitemesh</filter-name>
-		<filter-class>com.opensymphony.module.sitemesh.filter.PageFilter</filter-class>
-	</filter>
-
-	<filter>
-		<filter-name>struts2</filter-name>
-		<filter-class>
-			org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
-	</filter>
-
-	<filter>
-		<filter-name>encodingFilter</filter-name>
-		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
-		<init-param>
-			<param-name>encoding</param-name>
-			<param-value>UTF-8</param-value>
-		</init-param>
-		<init-param>
-			<param-name>forceEncoding</param-name>
-			<param-value>true</param-value>
-		</init-param>
-	</filter>
-	<!-- begin axis2配置
+ <filter>
+  <filter-name>struts-cleanup</filter-name>
+  <filter-class>org.apache.struts2.dispatcher.ActionContextCleanUp</filter-class>
+ </filter>
+ <filter>
+  <filter-name>sitemesh</filter-name>
+  <filter-class>com.opensymphony.module.sitemesh.filter.PageFilter</filter-class>
+ </filter>
+ <filter>
+  <filter-name>struts2</filter-name>
+  <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+ </filter>
+ <filter>
+  <filter-name>encodingFilter</filter-name>
+  <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+  <init-param>
+   <param-name>encoding</param-name>
+   <param-value>UTF-8</param-value>
+  </init-param>
+  <init-param>
+   <param-name>forceEncoding</param-name>
+   <param-value>true</param-value>
+  </init-param>
+ </filter>
+ <!-- 结束DWR配置 -->
+ <filter>
+  <filter-name>authFilter</filter-name>
+  <filter-class>com.ett.drv.web.filter.AuthFilter</filter-class>
+ </filter>
+ <!-- begin axis2配置
 	<servlet>
 		<display-name>Apache-Axis Servlet</display-name>
 		<servlet-name>AxisServlet</servlet-name>
@@ -125,150 +82,153 @@
 		<servlet-name>AxisServlet</servlet-name>
 		<url-pattern>/services/*</url-pattern>
 	</servlet-mapping>
-	 -->
-	<!-- end axis2配置 -->
-
-
-
-	<!--<filter-mapping> <filter-name>hibernateFilter</filter-name> <url-pattern>*.action</url-pattern> 
-		</filter-mapping> -->
-
-	<!--使用sitemesh freemarker中要使用ActionContext（即使用标签获取上下文） -->
-
-	<!-- t登陆过滤器 <filter-mapping> <filter-name>loginFilter</filter-name> <url-pattern>/*</url-pattern> 
-		</filter-mapping> -->
-
-
-	<!--hbm配置的过滤器 
+	 
+ end axis2配置 
+<filter-mapping> <filter-name>hibernateFilter</filter-name> <url-pattern>*.action</url-pattern> 
+		</filter-mapping> 
+使用sitemesh freemarker中要使用ActionContext（即使用标签获取上下文） 
+ t登陆过滤器 <filter-mapping> <filter-name>loginFilter</filter-name> <url-pattern>/*</url-pattern> 
+		</filter-mapping> 
+hbm配置的过滤器 
 	<filter-mapping>
 		<filter-name>lazyLoadingFilter</filter-name>
 		<url-pattern>*.action</url-pattern>
 	</filter-mapping>  
 	-->
-	<!---->
-	<filter-mapping>
-		<filter-name>struts-cleanup</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
+ <filter-mapping>
+  <filter-name>struts-cleanup</filter-name>
+  <url-pattern>/*</url-pattern>
+ </filter-mapping>
+ <filter-mapping>
+  <filter-name>sitemesh</filter-name>
+  <url-pattern>/*</url-pattern>
+ </filter-mapping>
+ <filter-mapping>
+  <filter-name>struts2</filter-name>
+  <url-pattern>/*</url-pattern>
+ </filter-mapping>
+ <!--t 字符编码过滤 -->
+ <filter-mapping>
+  <filter-name>encodingFilter</filter-name>
+  <url-pattern>/*</url-pattern>
+ </filter-mapping>
+ <filter-mapping>
+  <filter-name>authFilter</filter-name>
+  <url-pattern>/jsp/admin/*</url-pattern>
+ </filter-mapping>
+ <!-- <listener> <listener-class>com.ft.drv.DrvCountListener</listener-class> 
+		</listener> 
+jbpm动态部署 <servlet> <servlet-name>GDP Deployer Servlet</servlet-name> 
+		<servlet-class>org.jbpm.web.ProcessUploadServlet</servlet-class> <load-on-startup>1</load-on-startup> 
+		</servlet> <servlet-mapping> <servlet-name>GDP Deployer Servlet</servlet-name> 
+		<url-pattern>/upload/*</url-pattern> </servlet-mapping> 
+end jbpm动态部署 
+jms集成jetty配置 <context-param> <description>The URL of the Message Broker 
+		to connect to</description> <param-name>org.apache.activemq.brokerURL</param-name> 
+		<param-value>vm://localhost</param-value> </context-param> <context-param> 
+		<description>Whether we should include an embedded broker or not</description> 
+		<param-name>org.apache.activemq.embeddedBroker</param-name> <param-value>true</param-value> 
+		</context-param> <servlet> <servlet-name>MqAjaxServlet</servlet-name> <servlet-class>org.apache.activemq.web.AjaxServlet</servlet-class> 
+		<load-on-startup>1</load-on-startup> </servlet> <servlet-mapping> <servlet-name>MqAjaxServlet</servlet-name> 
+		<url-pattern>/amq/*</url-pattern> </servlet-mapping> <filter> <filter-name>MqSession</filter-name> 
+		<filter-class>org.apache.activemq.web.SessionFilter</filter-class> </filter> 
+		<filter-mapping> <filter-name>MqSession</filter-name> <url-pattern>/*</url-pattern> 
+		</filter-mapping> 
+End jms 集成jetty配置 -->
+ <listener>
+  <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+ </listener>
+ <!--在spring 中配置Log4J，注意要用到log4jConfigLocation ，这个也是网上找到的资料才明白，原来在spring中使用log4j，还需要在web.xml中配置 -->
+ <listener>
+  <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+ </listener>
+ <!-- 开始DWR配置 -->
+ <servlet>
+  <servlet-name>dwr-invoker</servlet-name>
+  <servlet-class>uk.ltd.getahead.dwr.DWRServlet</servlet-class>
+  <init-param>
+   <param-name>debug</param-name>
+   <param-value>true</param-value>
+  </init-param>
+  <init-param>
+   <param-name>crossDomainSessionSecurity</param-name>
+   <param-value>false</param-value>
+  </init-param>
+  <init-param>
+   <param-name>allowScriptTagRemoting</param-name>
+   <param-value>true</param-value>
+  </init-param>
+ </servlet>
+ <servlet-mapping>
+  <servlet-name>dwr-invoker</servlet-name>
+  <url-pattern>/dwr/*</url-pattern>
+ </servlet-mapping>
+ <welcome-file-list>
+  <welcome-file>/index.html</welcome-file>
+  <welcome-file>/index.htm</welcome-file>
+  <welcome-file>/index.jsp</welcome-file>
+  <welcome-file>/default.html</welcome-file>
+  <welcome-file>/default.htm</welcome-file>
+  <welcome-file>/default.jsp</welcome-file>
+  <welcome-file>/jsp/rbac/login.jsp</welcome-file>
+ </welcome-file-list>
+ <error-page>
+  <error-code>404</error-code>
+  <location>/error.jsp</location>
+ </error-page>
+ <!--jstl标签定义 -->
+ <jsp-config>
+  <taglib>
+   <taglib-uri>http://java.sun.com/jstl/fmt</taglib-uri>
+   <taglib-location>/WEB-INF/tlds/fmt.tld</taglib-location>
+  </taglib>
+  <taglib>
+   <taglib-uri>http://java.sun.com/jstl/fmt-rt</taglib-uri>
+   <taglib-location>/WEB-INF/tlds/fmt-rt.tld</taglib-location>
+  </taglib>
+  <taglib>
+   <taglib-uri>http://java.sun.com/jstl/core</taglib-uri>
+   <taglib-location>/WEB-INF/tlds/c.tld</taglib-location>
+  </taglib>
+  <taglib>
+   <taglib-uri>http://java.sun.com/jstl/core-rt</taglib-uri>
+   <taglib-location>/WEB-INF/tlds/c-rt.tld</taglib-location>
+  </taglib>
+  <taglib>
+   <taglib-uri>http://java.sun.com/jstl/sql</taglib-uri>
+   <taglib-location>/WEB-INF/tlds/sql.tld</taglib-location>
+  </taglib>
+  <taglib>
+   <taglib-uri>http://java.sun.com/jstl/sql-rt</taglib-uri>
+   <taglib-location>/WEB-INF/tlds/sql-rt.tld</taglib-location>
+  </taglib>
+  <taglib>
+   <taglib-uri>http://java.sun.com/jstl/x</taglib-uri>
+   <taglib-location>/WEB-INF/tlds/x.tld</taglib-location>
+  </taglib>
+  <taglib>
+   <taglib-uri>http://java.sun.com/jstl/x-rt</taglib-uri>
+   <taglib-location>/WEB-INF/tlds/x-rt.tld</taglib-location>
+  </taglib>
+  <taglib>
+   <taglib-uri>sitemesh-decorator</taglib-uri>
+   <taglib-location>/WEB-INF/tlds/sitemesh-decorator.tld</taglib-location>
+  </taglib>
+  <taglib>
+   <taglib-uri>sitemesh-page</taglib-uri>
+   <taglib-location>/WEB-INF/tlds/sitemesh-page.tld</taglib-location>
+  </taglib>
+  <taglib>
+   <taglib-uri>http://jsptags.com/tags/navigation/pager</taglib-uri>
+   <taglib-location>/WEB-INF/jsp/pager-taglib.tld</taglib-location>
+  </taglib>
+ </jsp-config>
+ <login-config>
+  <auth-method>BASIC</auth-method>
+ </login-config>
+ 
 
-	<filter-mapping>
-		<filter-name>sitemesh</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
-
-	<filter-mapping>
-		<filter-name>struts2</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
-
-	<!--t 字符编码过滤 -->
-	<filter-mapping>
-		<filter-name>encodingFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
 
 
-	<!-- 开始DWR配置 -->
-	<servlet>
-		<servlet-name>dwr-invoker</servlet-name>
-		<servlet-class>uk.ltd.getahead.dwr.DWRServlet</servlet-class>
-		<init-param>
-			<param-name>debug</param-name>
-			<param-value>true</param-value>
-		</init-param>
-		<init-param>
-			<param-name>crossDomainSessionSecurity</param-name>
-			<param-value>false</param-value>
-		</init-param>
-		<init-param>
-			<param-name>allowScriptTagRemoting</param-name>
-			<param-value>true</param-value>
-		</init-param>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>dwr-invoker</servlet-name>
-		<url-pattern>/dwr/*</url-pattern>
-	</servlet-mapping>
-	<!-- 结束DWR配置 -->
-
-
-	<filter>
-	    <filter-name>authFilter</filter-name>
-	    <filter-class>com.ett.drv.web.filter.AuthFilter</filter-class>
-	</filter>
-	
-	<filter-mapping>
-	   <filter-name>authFilter</filter-name>
-	   <url-pattern>/jsp/admin/*</url-pattern>
-	</filter-mapping>
-	
-
-
-
-
-
-	<!--在spring 中配置Log4J，注意要用到log4jConfigLocation ，这个也是网上找到的资料才明白，原来在spring中使用log4j，还需要在web.xml中配置 -->
-	<listener>
-		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
-	</listener>
-
-
-
-	<!--jstl标签定义 -->
-	<jsp-config>
-		<taglib>
-			<taglib-uri>http://java.sun.com/jstl/fmt</taglib-uri>
-			<taglib-location>/WEB-INF/tlds/fmt.tld</taglib-location>
-		</taglib>
-
-		<taglib>
-			<taglib-uri>http://java.sun.com/jstl/fmt-rt</taglib-uri>
-			<taglib-location>/WEB-INF/tlds/fmt-rt.tld</taglib-location>
-		</taglib>
-
-		<taglib>
-			<taglib-uri>http://java.sun.com/jstl/core</taglib-uri>
-			<taglib-location>/WEB-INF/tlds/c.tld</taglib-location>
-		</taglib>
-
-		<taglib>
-			<taglib-uri>http://java.sun.com/jstl/core-rt</taglib-uri>
-			<taglib-location>/WEB-INF/tlds/c-rt.tld</taglib-location>
-		</taglib>
-
-		<taglib>
-			<taglib-uri>http://java.sun.com/jstl/sql</taglib-uri>
-			<taglib-location>/WEB-INF/tlds/sql.tld</taglib-location>
-		</taglib>
-
-		<taglib>
-			<taglib-uri>http://java.sun.com/jstl/sql-rt</taglib-uri>
-			<taglib-location>/WEB-INF/tlds/sql-rt.tld</taglib-location>
-		</taglib>
-
-		<taglib>
-			<taglib-uri>http://java.sun.com/jstl/x</taglib-uri>
-			<taglib-location>/WEB-INF/tlds/x.tld</taglib-location>
-		</taglib>
-
-		<taglib>
-			<taglib-uri>http://java.sun.com/jstl/x-rt</taglib-uri>
-			<taglib-location>/WEB-INF/tlds/x-rt.tld</taglib-location>
-		</taglib>
-
-		<taglib>
-			<taglib-uri>sitemesh-decorator</taglib-uri>
-			<taglib-location>/WEB-INF/tlds/sitemesh-decorator.tld</taglib-location>
-		</taglib>
-		<taglib>
-			<taglib-uri>sitemesh-page</taglib-uri>
-			<taglib-location>/WEB-INF/tlds/sitemesh-page.tld</taglib-location>
-		</taglib>
-		<taglib>
-			<taglib-uri>http://jsptags.com/tags/navigation/pager</taglib-uri>
-			<taglib-location>/WEB-INF/jsp/pager-taglib.tld</taglib-location>
-		</taglib>
-	</jsp-config>
-
+ 
 </web-app>

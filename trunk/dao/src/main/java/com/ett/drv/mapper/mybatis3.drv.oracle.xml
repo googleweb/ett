@@ -30,6 +30,8 @@
 <mapper resource="com/ett/drv/mapper/booked/oracle/IWeekRecordMapper.xml"/>
 <mapper resource="com/ett/drv/mapper/booked/oracle/ILimitMapper.xml"/>
 <mapper resource="com/ett/drv/mapper/booked/oracle/IOrderInfoMapper.xml"/>
+<mapper resource="com/ett/drv/mapper/booked/oracle/IPersonChangeMapper.xml"/>
+<mapper resource="com/ett/drv/mapper/booked/oracle/ICarOwnerChangeMapper.xml"/>
 <mapper resource="com/ett/drv/mapper/admin/oracle/IDictMapper.xml"/>
 <mapper resource="com/ett/drv/mapper/admin/oracle/IDepartmentMapper.xml"/>
 <mapper resource="com/ett/drv/mapper/admin/oracle/IMenuMapper.xml"/>
