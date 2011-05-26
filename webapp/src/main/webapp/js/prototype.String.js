@@ -43,12 +43,15 @@ String.prototype.isDateTimeFormat=function(){
 	
 };
 
-
+//判断字符是否符合身份证格式
 String.prototype.isIdNoFormat=function(){
 	
 };
 
+//从身份证里提出出日期
 String.prototype.getIdNoBornDate=function(){
 	return new Date();
-}
+};
+
+
 
