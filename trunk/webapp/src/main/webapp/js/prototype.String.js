@@ -39,9 +39,21 @@ String.prototype.messager=function(handler){
 };
 
 
-String.prototype.isDateTimeFormat=function(){
+//判断字符串是否只包含英文字母
+String.prototype.isAlph=function(){
 	
 };
+
+//判断字符串是否只包含英文字母和数字
+String.prototype.isAlphOrNum=function(){
+	
+};
+
+//判断字符串是否不包含任何标点符号
+String.prototype.isNotSymbol=function(){
+	
+};
+
 
 //判断字符是否符合身份证格式
 String.prototype.isIdNoFormat=function(){
