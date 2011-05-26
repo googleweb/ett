@@ -57,17 +57,17 @@ seq_user.nextval,
 
 <sql id="updateCols">
 <if test="pk neq null">ID=#{pk}</if>,
-C_LOGIN_NAME=#{CLoginName,jdbcType=VARCHAR,javaType=String},
-C_FULL_NAME=#{CFullName,jdbcType=VARCHAR,javaType=String},
-C_PWD=#{CPwd,jdbcType=VARCHAR,javaType=String},
-I_ROLEID=#{IRoleid,jdbcType=INTEGER,javaType=Integer},
-I_DEPID=#{IDepid,jdbcType=INTEGER,javaType=Integer},
-C_IDCARD=#{CIdcard,jdbcType=VARCHAR,javaType=String},
-C_WORKID=#{CWorkid,jdbcType=VARCHAR,javaType=String},
-C_BEGINIP=#{CBeginip,jdbcType=VARCHAR,javaType=String},
-C_ENDIP=#{CEndip,jdbcType=VARCHAR,javaType=String},
-C_STATE=#{CState,jdbcType=VARCHAR,javaType=String},
-C_KM=#{CKm,jdbcType=VARCHAR,javaType=String},
+C_LOGIN_NAME=#{model.CLoginName,jdbcType=VARCHAR,javaType=String},
+C_FULL_NAME=#{model.CFullName,jdbcType=VARCHAR,javaType=String},
+C_PWD=#{model.CPwd,jdbcType=VARCHAR,javaType=String},
+I_ROLEID=#{model.IRoleid,jdbcType=INTEGER,javaType=Integer},
+I_DEPID=#{model.IDepid,jdbcType=INTEGER,javaType=Integer},
+C_IDCARD=#{model.CIdcard,jdbcType=VARCHAR,javaType=String},
+C_WORKID=#{model.CWorkid,jdbcType=VARCHAR,javaType=String},
+C_BEGINIP=#{model.CBeginip,jdbcType=VARCHAR,javaType=String},
+C_ENDIP=#{model.CEndip,jdbcType=VARCHAR,javaType=String},
+C_STATE=#{model.CState,jdbcType=VARCHAR,javaType=String},
+C_KM=#{model.CKm,jdbcType=VARCHAR,javaType=String},
 
 </sql>
 
