@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2011-05-25 04:53:47
+	Create Date:2011-05-26 11:06:52
 	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
 	Model:com.ett.drv.model.admin.RoleModel 
 
@@ -38,10 +38,10 @@ seq_role.nextval,
 </sql>
 
 <sql id="updateCols">
-<if test="pk neq null">ID=#{pk}</if>,
-C_NAME=#{CName,jdbcType=VARCHAR,javaType=String},
-C_DESCRIPTION=#{CDescription,jdbcType=VARCHAR,javaType=String},
-C_ROLESTRING=#{CRolestring,jdbcType=VARCHAR,javaType=String},
+<if test="pk neq null">ID=#{pk},</if>
+C_NAME=#{model.CName,jdbcType=VARCHAR,javaType=String},
+C_DESCRIPTION=#{model.CDescription,jdbcType=VARCHAR,javaType=String},
+C_ROLESTRING=#{model.CRolestring,jdbcType=VARCHAR,javaType=String},
 
 </sql>
 

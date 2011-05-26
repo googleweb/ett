@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2011-05-25 05:18:51
+	Create Date:2011-05-26 11:08:05
 	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
 	Model:com.ett.drv.model.dict.VehCodeModel 
 
@@ -42,12 +42,12 @@ DMLB,DMZ,DMSM1,DMSM2,DMSM3,DMSM4
 </sql>
 
 <sql id="updateCols">
-DMLB=#{Dmlb,jdbcType=INTEGER,javaType=Integer},
-<if test="pk neq null">DMZ=#{pk}</if>,
-DMSM1=#{Dmsm1,jdbcType=VARCHAR,javaType=String},
-DMSM2=#{Dmsm2,jdbcType=VARCHAR,javaType=String},
-DMSM3=#{Dmsm3,jdbcType=VARCHAR,javaType=String},
-DMSM4=#{Dmsm4,jdbcType=VARCHAR,javaType=String},
+DMLB=#{model.Dmlb,jdbcType=INTEGER,javaType=Integer},
+<if test="pk neq null">DMZ=#{pk},</if>
+DMSM1=#{model.Dmsm1,jdbcType=VARCHAR,javaType=String},
+DMSM2=#{model.Dmsm2,jdbcType=VARCHAR,javaType=String},
+DMSM3=#{model.Dmsm3,jdbcType=VARCHAR,javaType=String},
+DMSM4=#{model.Dmsm4,jdbcType=VARCHAR,javaType=String},
 
 </sql>
 

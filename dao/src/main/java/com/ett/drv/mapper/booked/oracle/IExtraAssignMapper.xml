@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2011-05-25 04:53:47
+	Create Date:2011-05-26 11:06:52
 	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
 	Model:com.ett.drv.model.booked.ExtraAssignModel 
 
@@ -52,17 +52,17 @@ seq_extra_assign.nextval,
 </sql>
 
 <sql id="updateCols">
-<if test="pk neq null">ID=#{pk}</if>,
-I_KM=#{IKm,jdbcType=INTEGER,javaType=Integer},
-C_SCHOOL_CODE=#{CSchoolCode,jdbcType=VARCHAR,javaType=String},
-C_SCHOOL_NAME=#{CSchoolName,jdbcType=VARCHAR,javaType=String},
-DATE_KSRQ=#{DateKsrq,jdbcType=VARCHAR,javaType=String},
-C_KSCC_CODE=#{CKsccCode,jdbcType=VARCHAR,javaType=String},
-C_KSCC=#{CKscc,jdbcType=VARCHAR,javaType=String},
-C_KSDD_CODE=#{CKsddCode,jdbcType=VARCHAR,javaType=String},
-C_KSDD=#{CKsdd,jdbcType=VARCHAR,javaType=String},
-I_TOTAL=#{ITotal,jdbcType=INTEGER,javaType=Integer},
-C_OPERATOR=#{COperator,jdbcType=VARCHAR,javaType=String},
+<if test="pk neq null">ID=#{pk},</if>
+I_KM=#{model.IKm,jdbcType=INTEGER,javaType=Integer},
+C_SCHOOL_CODE=#{model.CSchoolCode,jdbcType=VARCHAR,javaType=String},
+C_SCHOOL_NAME=#{model.CSchoolName,jdbcType=VARCHAR,javaType=String},
+DATE_KSRQ=#{model.DateKsrq,jdbcType=VARCHAR,javaType=String},
+C_KSCC_CODE=#{model.CKsccCode,jdbcType=VARCHAR,javaType=String},
+C_KSCC=#{model.CKscc,jdbcType=VARCHAR,javaType=String},
+C_KSDD_CODE=#{model.CKsddCode,jdbcType=VARCHAR,javaType=String},
+C_KSDD=#{model.CKsdd,jdbcType=VARCHAR,javaType=String},
+I_TOTAL=#{model.ITotal,jdbcType=INTEGER,javaType=Integer},
+C_OPERATOR=#{model.COperator,jdbcType=VARCHAR,javaType=String},
 
 </sql>
 

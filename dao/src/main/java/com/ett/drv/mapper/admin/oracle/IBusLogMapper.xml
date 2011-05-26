@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2011-05-25 04:53:47
+	Create Date:2011-05-26 11:06:52
 	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
 	Model:com.ett.drv.model.admin.BusLogModel 
 
@@ -48,15 +48,15 @@ seq_buslog.nextval,
 </sql>
 
 <sql id="updateCols">
-<if test="pk neq null">ID=#{pk}</if>,
-C_OPERATOR=#{COperator,jdbcType=VARCHAR,javaType=String},
-C_BUSTYPE=#{CBustype,jdbcType=VARCHAR,javaType=String},
-REGDATE=#{Regdate,jdbcType=DATE,javaType=Date},
-C_CONTENT=#{CContent,jdbcType=VARCHAR,javaType=String},
-C_DES1=#{CDes1,jdbcType=VARCHAR,javaType=String},
-C_DES2=#{CDes2,jdbcType=VARCHAR,javaType=String},
-C_DES3=#{CDes3,jdbcType=VARCHAR,javaType=String},
-I_DEPID=#{IDepid,jdbcType=INTEGER,javaType=Integer},
+<if test="pk neq null">ID=#{pk},</if>
+C_OPERATOR=#{model.COperator,jdbcType=VARCHAR,javaType=String},
+C_BUSTYPE=#{model.CBustype,jdbcType=VARCHAR,javaType=String},
+REGDATE=#{model.Regdate,jdbcType=DATE,javaType=Date},
+C_CONTENT=#{model.CContent,jdbcType=VARCHAR,javaType=String},
+C_DES1=#{model.CDes1,jdbcType=VARCHAR,javaType=String},
+C_DES2=#{model.CDes2,jdbcType=VARCHAR,javaType=String},
+C_DES3=#{model.CDes3,jdbcType=VARCHAR,javaType=String},
+I_DEPID=#{model.IDepid,jdbcType=INTEGER,javaType=Integer},
 
 </sql>
 

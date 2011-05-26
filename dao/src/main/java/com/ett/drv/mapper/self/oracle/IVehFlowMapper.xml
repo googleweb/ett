@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2011-05-25 05:18:51
+	Create Date:2011-05-26 11:08:05
 	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
 	Model:com.ett.drv.model.self.VehFlowModel 
 
@@ -74,27 +74,27 @@ XZQH,SQRQ,BJRQ,XYGW,YWLC,LSZT,GLBM,FPBJ,FFBJ,RKBJ
 </sql>
 
 <sql id="updateCols">
-<if test="pk neq null">LSH=#{pk}</if>,
-XH=#{Xh,jdbcType=CHAR,javaType=String},
-YWLX=#{Ywlx,jdbcType=CHAR,javaType=String},
-YWYY=#{Ywyy,jdbcType=VARCHAR,javaType=String},
-SYR=#{Syr,jdbcType=VARCHAR,javaType=String},
-CLSBDH=#{Clsbdh,jdbcType=VARCHAR,javaType=String},
-HPZL=#{Hpzl,jdbcType=CHAR,javaType=String},
-HPHM=#{Hphm,jdbcType=VARCHAR,javaType=String},
-CLPP1=#{Clpp1,jdbcType=VARCHAR,javaType=String},
-CLXH=#{Clxh,jdbcType=VARCHAR,javaType=String},
-CLLX=#{Cllx,jdbcType=CHAR,javaType=String},
-XZQH=#{Xzqh,jdbcType=VARCHAR,javaType=String},
-SQRQ=#{Sqrq,jdbcType=DATE,javaType=Date},
-BJRQ=#{Bjrq,jdbcType=DATE,javaType=Date},
-XYGW=#{Xygw,jdbcType=CHAR,javaType=String},
-YWLC=#{Ywlc,jdbcType=VARCHAR,javaType=String},
-LSZT=#{Lszt,jdbcType=CHAR,javaType=String},
-GLBM=#{Glbm,jdbcType=VARCHAR,javaType=String},
-FPBJ=#{Fpbj,jdbcType=CHAR,javaType=String},
-FFBJ=#{Ffbj,jdbcType=CHAR,javaType=String},
-RKBJ=#{Rkbj,jdbcType=CHAR,javaType=String},
+<if test="pk neq null">LSH=#{pk},</if>
+XH=#{model.Xh,jdbcType=CHAR,javaType=String},
+YWLX=#{model.Ywlx,jdbcType=CHAR,javaType=String},
+YWYY=#{model.Ywyy,jdbcType=VARCHAR,javaType=String},
+SYR=#{model.Syr,jdbcType=VARCHAR,javaType=String},
+CLSBDH=#{model.Clsbdh,jdbcType=VARCHAR,javaType=String},
+HPZL=#{model.Hpzl,jdbcType=CHAR,javaType=String},
+HPHM=#{model.Hphm,jdbcType=VARCHAR,javaType=String},
+CLPP1=#{model.Clpp1,jdbcType=VARCHAR,javaType=String},
+CLXH=#{model.Clxh,jdbcType=VARCHAR,javaType=String},
+CLLX=#{model.Cllx,jdbcType=CHAR,javaType=String},
+XZQH=#{model.Xzqh,jdbcType=VARCHAR,javaType=String},
+SQRQ=#{model.Sqrq,jdbcType=DATE,javaType=Date},
+BJRQ=#{model.Bjrq,jdbcType=DATE,javaType=Date},
+XYGW=#{model.Xygw,jdbcType=CHAR,javaType=String},
+YWLC=#{model.Ywlc,jdbcType=VARCHAR,javaType=String},
+LSZT=#{model.Lszt,jdbcType=CHAR,javaType=String},
+GLBM=#{model.Glbm,jdbcType=VARCHAR,javaType=String},
+FPBJ=#{model.Fpbj,jdbcType=CHAR,javaType=String},
+FFBJ=#{model.Ffbj,jdbcType=CHAR,javaType=String},
+RKBJ=#{model.Rkbj,jdbcType=CHAR,javaType=String},
 
 </sql>
 

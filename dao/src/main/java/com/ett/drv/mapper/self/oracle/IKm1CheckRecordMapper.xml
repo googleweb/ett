@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2011-05-25 04:53:47
+	Create Date:2011-05-26 11:06:52
 	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
 	Model:com.ett.drv.model.self.Km1CheckRecordModel 
 
@@ -62,21 +62,21 @@ C_KSDDNAME,LSH,SFZMHM,XM
 </sql>
 
 <sql id="updateCols">
-<if test="pk neq null">ID=#{pk}</if>,
-C_CREATEIP=#{CCreateip,jdbcType=VARCHAR,javaType=String},
-T_CREATETIME=#{TCreatetime,jdbcType=DATE,javaType=Date},
-C_CREATOR=#{CCreator,jdbcType=VARCHAR,javaType=String},
-I_ISDELETED=#{IIsdeleted,jdbcType=INTEGER,javaType=Integer},
-C_DESCRIPTION=#{CDescription,jdbcType=VARCHAR,javaType=String},
-C_KEYWORDS=#{CKeywords,jdbcType=VARCHAR,javaType=String},
-C_MODIFIER=#{CModifier,jdbcType=VARCHAR,javaType=String},
-C_MODIFYIP=#{CModifyip,jdbcType=VARCHAR,javaType=String},
-T_MODIFYTIME=#{TModifytime,jdbcType=DATE,javaType=Date},
-KSDD=#{Ksdd,jdbcType=VARCHAR,javaType=String},
-C_KSDDNAME=#{CKsddname,jdbcType=VARCHAR,javaType=String},
-LSH=#{Lsh,jdbcType=VARCHAR,javaType=String},
-SFZMHM=#{Sfzmhm,jdbcType=VARCHAR,javaType=String},
-XM=#{Xm,jdbcType=VARCHAR,javaType=String},
+<if test="pk neq null">ID=#{pk},</if>
+C_CREATEIP=#{model.CCreateip,jdbcType=VARCHAR,javaType=String},
+T_CREATETIME=#{model.TCreatetime,jdbcType=DATE,javaType=Date},
+C_CREATOR=#{model.CCreator,jdbcType=VARCHAR,javaType=String},
+I_ISDELETED=#{model.IIsdeleted,jdbcType=INTEGER,javaType=Integer},
+C_DESCRIPTION=#{model.CDescription,jdbcType=VARCHAR,javaType=String},
+C_KEYWORDS=#{model.CKeywords,jdbcType=VARCHAR,javaType=String},
+C_MODIFIER=#{model.CModifier,jdbcType=VARCHAR,javaType=String},
+C_MODIFYIP=#{model.CModifyip,jdbcType=VARCHAR,javaType=String},
+T_MODIFYTIME=#{model.TModifytime,jdbcType=DATE,javaType=Date},
+KSDD=#{model.Ksdd,jdbcType=VARCHAR,javaType=String},
+C_KSDDNAME=#{model.CKsddname,jdbcType=VARCHAR,javaType=String},
+LSH=#{model.Lsh,jdbcType=VARCHAR,javaType=String},
+SFZMHM=#{model.Sfzmhm,jdbcType=VARCHAR,javaType=String},
+XM=#{model.Xm,jdbcType=VARCHAR,javaType=String},
 
 </sql>
 

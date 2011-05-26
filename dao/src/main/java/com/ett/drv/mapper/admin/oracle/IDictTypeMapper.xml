@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2011-05-25 04:53:47
+	Create Date:2011-05-26 11:06:52
 	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
 	Model:com.ett.drv.model.admin.DictTypeModel 
 
@@ -36,9 +36,9 @@ seq_dicttype.nextval,
 </sql>
 
 <sql id="updateCols">
-<if test="pk neq null">ID=#{pk}</if>,
-C_TYPENAME=#{CTypename,jdbcType=VARCHAR,javaType=String},
-C_DESCRIPTION=#{CDescription,jdbcType=VARCHAR,javaType=String},
+<if test="pk neq null">ID=#{pk},</if>
+C_TYPENAME=#{model.CTypename,jdbcType=VARCHAR,javaType=String},
+C_DESCRIPTION=#{model.CDescription,jdbcType=VARCHAR,javaType=String},
 
 </sql>
 

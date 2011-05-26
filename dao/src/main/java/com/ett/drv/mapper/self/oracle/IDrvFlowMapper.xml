@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2011-05-25 05:18:51
+	Create Date:2011-05-26 11:08:05
 	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
 	Model:com.ett.drv.model.self.DrvFlowModel 
 
@@ -66,23 +66,23 @@ GLBM,FFBZ,RKBZ,HDBZ,XGZL,ZJCX
 </sql>
 
 <sql id="updateCols">
-<if test="pk neq null">LSH=#{pk}</if>,
-SFZMHM=#{Sfzmhm,jdbcType=VARCHAR,javaType=String},
-DABH=#{Dabh,jdbcType=VARCHAR,javaType=String},
-XM=#{Xm,jdbcType=VARCHAR,javaType=String},
-YWLX=#{Ywlx,jdbcType=VARCHAR,javaType=String},
-YWYY=#{Ywyy,jdbcType=VARCHAR,javaType=String},
-KSSJ=#{Kssj,jdbcType=DATE,javaType=Date},
-JSSJ=#{Jssj,jdbcType=DATE,javaType=Date},
-YWGW=#{Ywgw,jdbcType=VARCHAR,javaType=String},
-KSKM=#{Kskm,jdbcType=VARCHAR,javaType=String},
-XYGW=#{Xygw,jdbcType=VARCHAR,javaType=String},
-GLBM=#{Glbm,jdbcType=VARCHAR,javaType=String},
-FFBZ=#{Ffbz,jdbcType=VARCHAR,javaType=String},
-RKBZ=#{Rkbz,jdbcType=VARCHAR,javaType=String},
-HDBZ=#{Hdbz,jdbcType=VARCHAR,javaType=String},
-XGZL=#{Xgzl,jdbcType=VARCHAR,javaType=String},
-ZJCX=#{Zjcx,jdbcType=VARCHAR,javaType=String},
+<if test="pk neq null">LSH=#{pk},</if>
+SFZMHM=#{model.Sfzmhm,jdbcType=VARCHAR,javaType=String},
+DABH=#{model.Dabh,jdbcType=VARCHAR,javaType=String},
+XM=#{model.Xm,jdbcType=VARCHAR,javaType=String},
+YWLX=#{model.Ywlx,jdbcType=VARCHAR,javaType=String},
+YWYY=#{model.Ywyy,jdbcType=VARCHAR,javaType=String},
+KSSJ=#{model.Kssj,jdbcType=DATE,javaType=Date},
+JSSJ=#{model.Jssj,jdbcType=DATE,javaType=Date},
+YWGW=#{model.Ywgw,jdbcType=VARCHAR,javaType=String},
+KSKM=#{model.Kskm,jdbcType=VARCHAR,javaType=String},
+XYGW=#{model.Xygw,jdbcType=VARCHAR,javaType=String},
+GLBM=#{model.Glbm,jdbcType=VARCHAR,javaType=String},
+FFBZ=#{model.Ffbz,jdbcType=VARCHAR,javaType=String},
+RKBZ=#{model.Rkbz,jdbcType=VARCHAR,javaType=String},
+HDBZ=#{model.Hdbz,jdbcType=VARCHAR,javaType=String},
+XGZL=#{model.Xgzl,jdbcType=VARCHAR,javaType=String},
+ZJCX=#{model.Zjcx,jdbcType=VARCHAR,javaType=String},
 
 </sql>
 

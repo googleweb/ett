@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2011-05-25 04:53:47
+	Create Date:2011-05-26 11:06:52
 	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
 	Model:com.ett.drv.model.booked.CarOwnerChangeModel 
 
@@ -66,23 +66,23 @@ seq_car_owner_change_info.nextval,
 </sql>
 
 <sql id="updateCols">
-<if test="pk neq null">ID=#{pk}</if>,
-C_CJH=#{CCjh,jdbcType=VARCHAR,javaType=String},
-C_FDJH=#{CFdjh,jdbcType=VARCHAR,javaType=String},
-C_DJZS=#{CDjzs,jdbcType=VARCHAR,javaType=String},
-C_HMHP=#{CHmhp,jdbcType=VARCHAR,javaType=String},
-C_HPZL=#{CHpzl,jdbcType=VARCHAR,javaType=String},
-C_OLD_PHONE=#{COldPhone,jdbcType=VARCHAR,javaType=String},
-C_NEW_PHONE=#{CNewPhone,jdbcType=VARCHAR,javaType=String},
-C_NEW_ADDRESS=#{CNewAddress,jdbcType=VARCHAR,javaType=String},
-C_NEW_POSTCODE=#{CNewPostcode,jdbcType=VARCHAR,javaType=String},
-I_SYN=#{ISyn,jdbcType=INTEGER,javaType=Integer},
-DATE_CREATETIME=#{DateCreatetime,jdbcType=DATE,javaType=Date},
-C_CHECK_OPERATOR=#{CCheckOperator,jdbcType=VARCHAR,javaType=String},
-C_CHECK_DATE=#{CCheckDate,jdbcType=VARCHAR,javaType=String},
-I_CHECKED=#{IChecked,jdbcType=INTEGER,javaType=Integer},
-C_CHECK_RESULT=#{CCheckResult,jdbcType=VARCHAR,javaType=String},
-C_EMAIL=#{CEmail,jdbcType=VARCHAR,javaType=String},
+<if test="pk neq null">ID=#{pk},</if>
+C_CJH=#{model.CCjh,jdbcType=VARCHAR,javaType=String},
+C_FDJH=#{model.CFdjh,jdbcType=VARCHAR,javaType=String},
+C_DJZS=#{model.CDjzs,jdbcType=VARCHAR,javaType=String},
+C_HMHP=#{model.CHmhp,jdbcType=VARCHAR,javaType=String},
+C_HPZL=#{model.CHpzl,jdbcType=VARCHAR,javaType=String},
+C_OLD_PHONE=#{model.COldPhone,jdbcType=VARCHAR,javaType=String},
+C_NEW_PHONE=#{model.CNewPhone,jdbcType=VARCHAR,javaType=String},
+C_NEW_ADDRESS=#{model.CNewAddress,jdbcType=VARCHAR,javaType=String},
+C_NEW_POSTCODE=#{model.CNewPostcode,jdbcType=VARCHAR,javaType=String},
+I_SYN=#{model.ISyn,jdbcType=INTEGER,javaType=Integer},
+DATE_CREATETIME=#{model.DateCreatetime,jdbcType=DATE,javaType=Date},
+C_CHECK_OPERATOR=#{model.CCheckOperator,jdbcType=VARCHAR,javaType=String},
+C_CHECK_DATE=#{model.CCheckDate,jdbcType=VARCHAR,javaType=String},
+I_CHECKED=#{model.IChecked,jdbcType=INTEGER,javaType=Integer},
+C_CHECK_RESULT=#{model.CCheckResult,jdbcType=VARCHAR,javaType=String},
+C_EMAIL=#{model.CEmail,jdbcType=VARCHAR,javaType=String},
 
 </sql>
 

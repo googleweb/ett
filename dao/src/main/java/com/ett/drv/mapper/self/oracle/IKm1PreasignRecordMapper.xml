@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2011-05-25 04:53:47
+	Create Date:2011-05-26 11:06:52
 	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
 	Model:com.ett.drv.model.self.Km1PreasignRecordModel 
 
@@ -72,26 +72,26 @@ JXMC,KSCCCODE,KSCCNAME,KSDDCODE,KSDDNAME,KSRQ,LSH,SFZMHM,XM
 </sql>
 
 <sql id="updateCols">
-<if test="pk neq null">ID=#{pk}</if>,
-C_CREATEIP=#{CCreateip,jdbcType=VARCHAR,javaType=String},
-T_CREATETIME=#{TCreatetime,jdbcType=DATE,javaType=Date},
-C_CREATOR=#{CCreator,jdbcType=VARCHAR,javaType=String},
-I_ISDELETED=#{IIsdeleted,jdbcType=INTEGER,javaType=Integer},
-C_DESCRIPTION=#{CDescription,jdbcType=VARCHAR,javaType=String},
-C_KEYWORDS=#{CKeywords,jdbcType=VARCHAR,javaType=String},
-C_MODIFIER=#{CModifier,jdbcType=VARCHAR,javaType=String},
-C_MODIFYIP=#{CModifyip,jdbcType=VARCHAR,javaType=String},
-T_MODIFYTIME=#{TModifytime,jdbcType=DATE,javaType=Date},
-JXDM=#{Jxdm,jdbcType=VARCHAR,javaType=String},
-JXMC=#{Jxmc,jdbcType=VARCHAR,javaType=String},
-KSCCCODE=#{Kscccode,jdbcType=VARCHAR,javaType=String},
-KSCCNAME=#{Ksccname,jdbcType=VARCHAR,javaType=String},
-KSDDCODE=#{Ksddcode,jdbcType=VARCHAR,javaType=String},
-KSDDNAME=#{Ksddname,jdbcType=VARCHAR,javaType=String},
-KSRQ=#{Ksrq,jdbcType=TIMESTAMP,javaType=Timestamp},
-LSH=#{Lsh,jdbcType=VARCHAR,javaType=String},
-SFZMHM=#{Sfzmhm,jdbcType=VARCHAR,javaType=String},
-XM=#{Xm,jdbcType=VARCHAR,javaType=String},
+<if test="pk neq null">ID=#{pk},</if>
+C_CREATEIP=#{model.CCreateip,jdbcType=VARCHAR,javaType=String},
+T_CREATETIME=#{model.TCreatetime,jdbcType=DATE,javaType=Date},
+C_CREATOR=#{model.CCreator,jdbcType=VARCHAR,javaType=String},
+I_ISDELETED=#{model.IIsdeleted,jdbcType=INTEGER,javaType=Integer},
+C_DESCRIPTION=#{model.CDescription,jdbcType=VARCHAR,javaType=String},
+C_KEYWORDS=#{model.CKeywords,jdbcType=VARCHAR,javaType=String},
+C_MODIFIER=#{model.CModifier,jdbcType=VARCHAR,javaType=String},
+C_MODIFYIP=#{model.CModifyip,jdbcType=VARCHAR,javaType=String},
+T_MODIFYTIME=#{model.TModifytime,jdbcType=DATE,javaType=Date},
+JXDM=#{model.Jxdm,jdbcType=VARCHAR,javaType=String},
+JXMC=#{model.Jxmc,jdbcType=VARCHAR,javaType=String},
+KSCCCODE=#{model.Kscccode,jdbcType=VARCHAR,javaType=String},
+KSCCNAME=#{model.Ksccname,jdbcType=VARCHAR,javaType=String},
+KSDDCODE=#{model.Ksddcode,jdbcType=VARCHAR,javaType=String},
+KSDDNAME=#{model.Ksddname,jdbcType=VARCHAR,javaType=String},
+KSRQ=#{model.Ksrq,jdbcType=TIMESTAMP,javaType=Timestamp},
+LSH=#{model.Lsh,jdbcType=VARCHAR,javaType=String},
+SFZMHM=#{model.Sfzmhm,jdbcType=VARCHAR,javaType=String},
+XM=#{model.Xm,jdbcType=VARCHAR,javaType=String},
 
 </sql>
 
