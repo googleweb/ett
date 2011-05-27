@@ -11,25 +11,25 @@ public class Km1CheckRecordModel extends BaseModel {
 		CKsddname,Lsh,Sfzmhm,Xm  
 		 } 
 
-		private Double Id;         //ID  NUMBER 19
-		private String CCreateip;         //C_CREATEIP  VARCHAR2 1,020
-		private Date TCreatetime;         //T_CREATETIME  DATE 0
-		private String CCreator;         //C_CREATOR  VARCHAR2 120
-		private Double IIsdeleted;         //I_ISDELETED  NUMBER 1
-		private String CDescription;         //C_DESCRIPTION  VARCHAR2 1,020
-		private String CKeywords;         //C_KEYWORDS  VARCHAR2 1,020
-		private String CModifier;         //C_MODIFIER  VARCHAR2 1,020
-		private String CModifyip;         //C_MODIFYIP  VARCHAR2 1,020
-		private Date TModifytime;         //T_MODIFYTIME  DATE 0
-		private String Ksdd;         //KSDD  VARCHAR2 1,020
-		private String CKsddname;         //C_KSDDNAME  VARCHAR2 1,020
-		private String Lsh;         //LSH  VARCHAR2 1,020
-		private String Sfzmhm;         //SFZMHM  VARCHAR2 1,020
-		private String Xm;         //XM  VARCHAR2 1,020
-		public Double getId() {
+	 private Integer Id;         //ID  NUMBER 19
+	 private String CCreateip;         //C_CREATEIP  VARCHAR2 1,020
+	 private Date TCreatetime;         //T_CREATETIME  DATE 0
+	 private String CCreator;         //C_CREATOR  VARCHAR2 120
+	 private Integer IIsdeleted;         //I_ISDELETED  NUMBER 1
+	 private String CDescription;         //C_DESCRIPTION  VARCHAR2 1,020
+	 private String CKeywords;         //C_KEYWORDS  VARCHAR2 1,020
+	 private String CModifier;         //C_MODIFIER  VARCHAR2 1,020
+	 private String CModifyip;         //C_MODIFYIP  VARCHAR2 1,020
+	 private Date TModifytime;         //T_MODIFYTIME  DATE 0
+	 private String Ksdd;         //KSDD  VARCHAR2 1,020
+	 private String CKsddname;         //C_KSDDNAME  VARCHAR2 1,020
+	 private String Lsh;         //LSH  VARCHAR2 1,020
+	 private String Sfzmhm;         //SFZMHM  VARCHAR2 1,020
+	 private String Xm;         //XM  VARCHAR2 1,020
+		public Integer getId() {
 			return Id;
 		}
-		public void setId(Double id) {
+		public void setId(Integer id) {
 			Id = id;
 		}
 		public String getCCreateip() {
@@ -50,10 +50,10 @@ public class Km1CheckRecordModel extends BaseModel {
 		public void setCCreator(String cCreator) {
 			CCreator = cCreator;
 		}
-		public Double getIIsdeleted() {
+		public Integer getIIsdeleted() {
 			return IIsdeleted;
 		}
-		public void setIIsdeleted(Double iIsdeleted) {
+		public void setIIsdeleted(Integer iIsdeleted) {
 			IIsdeleted = iIsdeleted;
 		}
 		public String getCDescription() {

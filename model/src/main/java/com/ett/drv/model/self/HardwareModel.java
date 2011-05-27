@@ -20,26 +20,26 @@ public class HardwareModel extends BaseModel {
 			CBrand,CCatalog,ICom,IDeviceId,IStopbits  
 			 } 
 
-			private Double Id;         //ID  NUMBER 19
-			private String CCreateip;         //C_CREATEIP  VARCHAR2 1,020
-			private Timestamp TCreatetime;         //T_CREATETIME  TIMESTAMP 0
-			private String CCreator;         //C_CREATOR  VARCHAR2 120
-			private Double IIsdeleted;         //I_ISDELETED  NUMBER 1
-			private String CDescription;         //C_DESCRIPTION  VARCHAR2 1,020
-			private String CKeywords;         //C_KEYWORDS  VARCHAR2 1,020
-			private String CModifier;         //C_MODIFIER  VARCHAR2 1,020
-			private String CModifyip;         //C_MODIFYIP  VARCHAR2 1,020
-			private Timestamp TModifytime;         //T_MODIFYTIME  TIMESTAMP 0
-			private Double IBaud;         //I_BAUD  NUMBER 10
-			private String CBrand;         //C_BRAND  VARCHAR2 64
-			private String CCatalog;         //C_CATALOG  VARCHAR2 64
-			private Double ICom;         //I_COM  NUMBER 10
-			private Double IDeviceId;         //I_DEVICE_ID  NUMBER 19
-			private Double IStopbits;         //I_STOPBITS  NUMBER 10
-			public Double getId() {
+		 private Integer Id;         //ID  NUMBER 19
+		 private String CCreateip;         //C_CREATEIP  VARCHAR2 1,020
+		 private Timestamp TCreatetime;         //T_CREATETIME  TIMESTAMP 0
+		 private String CCreator;         //C_CREATOR  VARCHAR2 120
+		 private Integer IIsdeleted;         //I_ISDELETED  NUMBER 1
+		 private String CDescription;         //C_DESCRIPTION  VARCHAR2 1,020
+		 private String CKeywords;         //C_KEYWORDS  VARCHAR2 1,020
+		 private String CModifier;         //C_MODIFIER  VARCHAR2 1,020
+		 private String CModifyip;         //C_MODIFYIP  VARCHAR2 1,020
+		 private Timestamp TModifytime;         //T_MODIFYTIME  TIMESTAMP 0
+		 private Integer IBaud;         //I_BAUD  NUMBER 10
+		 private String CBrand;         //C_BRAND  VARCHAR2 64
+		 private String CCatalog;         //C_CATALOG  VARCHAR2 64
+		 private Integer ICom;         //I_COM  NUMBER 10
+		 private Integer IDeviceId;         //I_DEVICE_ID  NUMBER 19
+		 private Integer IStopbits;         //I_STOPBITS  NUMBER 10
+			public Integer getId() {
 				return Id;
 			}
-			public void setId(Double id) {
+			public void setId(Integer id) {
 				Id = id;
 			}
 			public String getCCreateip() {
@@ -60,10 +60,10 @@ public class HardwareModel extends BaseModel {
 			public void setCCreator(String cCreator) {
 				CCreator = cCreator;
 			}
-			public Double getIIsdeleted() {
+			public Integer getIIsdeleted() {
 				return IIsdeleted;
 			}
-			public void setIIsdeleted(Double iIsdeleted) {
+			public void setIIsdeleted(Integer iIsdeleted) {
 				IIsdeleted = iIsdeleted;
 			}
 			public String getCDescription() {
@@ -96,10 +96,10 @@ public class HardwareModel extends BaseModel {
 			public void setTModifytime(Timestamp tModifytime) {
 				TModifytime = tModifytime;
 			}
-			public Double getIBaud() {
+			public Integer getIBaud() {
 				return IBaud;
 			}
-			public void setIBaud(Double iBaud) {
+			public void setIBaud(Integer iBaud) {
 				IBaud = iBaud;
 			}
 			public String getCBrand() {
@@ -114,22 +114,22 @@ public class HardwareModel extends BaseModel {
 			public void setCCatalog(String cCatalog) {
 				CCatalog = cCatalog;
 			}
-			public Double getICom() {
+			public Integer getICom() {
 				return ICom;
 			}
-			public void setICom(Double iCom) {
+			public void setICom(Integer iCom) {
 				ICom = iCom;
 			}
-			public Double getIDeviceId() {
+			public Integer getIDeviceId() {
 				return IDeviceId;
 			}
-			public void setIDeviceId(Double iDeviceId) {
+			public void setIDeviceId(Integer iDeviceId) {
 				IDeviceId = iDeviceId;
 			}
-			public Double getIStopbits() {
+			public Integer getIStopbits() {
 				return IStopbits;
 			}
-			public void setIStopbits(Double iStopbits) {
+			public void setIStopbits(Integer iStopbits) {
 				IStopbits = iStopbits;
 			}
 			

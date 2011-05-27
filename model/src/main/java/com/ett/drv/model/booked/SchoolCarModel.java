@@ -9,20 +9,20 @@ public class SchoolCarModel extends BaseModel{
 		  Id,Clpp,Coachno,Depcode,Depname,Glbm,Hmhp,Idcard,Mobile,Name  
 		 } 
 
-		private Double Id;         //ID  NUMBER 19
-		private String Clpp;         //CLPP  VARCHAR2 255
-		private String Coachno;         //COACHNO  VARCHAR2 255
-		private String Depcode;         //DEPCODE  VARCHAR2 255
-		private String Depname;         //DEPNAME  VARCHAR2 255
-		private String Glbm;         //GLBM  VARCHAR2 255
-		private String Hmhp;         //HMHP  VARCHAR2 255
-		private String Idcard;         //IDCARD  VARCHAR2 255
-		private String Mobile;         //MOBILE  VARCHAR2 255
-		private String Name;         //NAME  VARCHAR2 255	
-		public Double getId() {
+	 private Integer Id;         //ID  NUMBER 19
+	 private String Clpp;         //CLPP  VARCHAR2 255
+	 private String Coachno;         //COACHNO  VARCHAR2 255
+	 private String Depcode;         //DEPCODE  VARCHAR2 255
+	 private String Depname;         //DEPNAME  VARCHAR2 255
+	 private String Glbm;         //GLBM  VARCHAR2 255
+	 private String Hmhp;         //HMHP  VARCHAR2 255
+	 private String Idcard;         //IDCARD  VARCHAR2 255
+	 private String Mobile;         //MOBILE  VARCHAR2 255
+	 private String Name;         //NAME  VARCHAR2 255
+		public Integer getId() {
 			return Id;
 		}
-		public void setId(Double id) {
+		public void setId(Integer id) {
 			Id = id;
 		}
 		public String getClpp() {

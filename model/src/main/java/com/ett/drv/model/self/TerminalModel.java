@@ -21,26 +21,26 @@ public class TerminalModel extends BaseModel {
 		YlwgTimout,DriverUrl,DriverTimeout,CarUrl,CarTimeout,VioUrl,VioTimeout,Descp  
 		 } 
 
-		private Double Id;         //ID  NUMBER 5
-		private String Glbm;         //GLBM  VARCHAR2 100
-		private String Fzjg;         //FZJG  VARCHAR2 100
-		private String Name;         //NAME  VARCHAR2 100
-		private String Catalog;         //CATALOG  VARCHAR2 100
-		private String Mac1;         //MAC1  VARCHAR2 100
-		private String Mac2;         //MAC2  VARCHAR2 100
-		private String Ip1;         //IP1  VARCHAR2 100
-		private String Ip2;         //IP2  VARCHAR2 100
-		private String Address;         //ADDRESS  VARCHAR2 150
-		private String YlwgUrl;         //YLWG_URL  VARCHAR2 50
-		private Double YlwgTimout;         //YLWG_TIMOUT  NUMBER 5
-		private String DriverUrl;         //DRIVER_URL  VARCHAR2 150
-		private Double DriverTimeout;         //DRIVER_TIMEOUT  NUMBER 5
-		private String CarUrl;         //CAR_URL  VARCHAR2 150
-		private Double CarTimeout;         //CAR_TIMEOUT  NUMBER 5
-		private String VioUrl;         //VIO_URL  VARCHAR2 150
-		private Double VioTimeout;         //VIO_TIMEOUT  NUMBER 5
-		private String Descp;         //DESCP  VARCHAR2 150
-		public Double getId() {
+	 private Integer Id;         //ID  NUMBER 5
+	 private String Glbm;         //GLBM  VARCHAR2 100
+	 private String Fzjg;         //FZJG  VARCHAR2 100
+	 private String Name;         //NAME  VARCHAR2 100
+	 private String Catalog;         //CATALOG  VARCHAR2 100
+	 private String Mac1;         //MAC1  VARCHAR2 100
+	 private String Mac2;         //MAC2  VARCHAR2 100
+	 private String Ip1;         //IP1  VARCHAR2 100
+	 private String Ip2;         //IP2  VARCHAR2 100
+	 private String Address;         //ADDRESS  VARCHAR2 150
+	 private String YlwgUrl;         //YLWG_URL  VARCHAR2 50
+	 private Integer YlwgTimout;         //YLWG_TIMOUT  NUMBER 5
+	 private String DriverUrl;         //DRIVER_URL  VARCHAR2 150
+	 private Integer DriverTimeout;         //DRIVER_TIMEOUT  NUMBER 5
+	 private String CarUrl;         //CAR_URL  VARCHAR2 150
+	 private Integer CarTimeout;         //CAR_TIMEOUT  NUMBER 5
+	 private String VioUrl;         //VIO_URL  VARCHAR2 150
+	 private Integer VioTimeout;         //VIO_TIMEOUT  NUMBER 5
+	 private String Descp;         //DESCP  VARCHAR2 150
+		public Integer getId() {
 			return Id;
 		}
 
@@ -48,7 +48,7 @@ public class TerminalModel extends BaseModel {
 
 
 
-		public void setId(Double id) {
+		public void setId(Integer id) {
 			Id = id;
 		}
 
@@ -216,7 +216,7 @@ public class TerminalModel extends BaseModel {
 
 
 
-		public Double getYlwgTimout() {
+		public Integer getYlwgTimout() {
 			return YlwgTimout;
 		}
 
@@ -224,7 +224,7 @@ public class TerminalModel extends BaseModel {
 
 
 
-		public void setYlwgTimout(Double ylwgTimout) {
+		public void setYlwgTimout(Integer ylwgTimout) {
 			YlwgTimout = ylwgTimout;
 		}
 
@@ -248,7 +248,7 @@ public class TerminalModel extends BaseModel {
 
 
 
-		public Double getDriverTimeout() {
+		public Integer getDriverTimeout() {
 			return DriverTimeout;
 		}
 
@@ -256,7 +256,7 @@ public class TerminalModel extends BaseModel {
 
 
 
-		public void setDriverTimeout(Double driverTimeout) {
+		public void setDriverTimeout(Integer driverTimeout) {
 			DriverTimeout = driverTimeout;
 		}
 
@@ -280,7 +280,7 @@ public class TerminalModel extends BaseModel {
 
 
 
-		public Double getCarTimeout() {
+		public Integer getCarTimeout() {
 			return CarTimeout;
 		}
 
@@ -288,7 +288,7 @@ public class TerminalModel extends BaseModel {
 
 
 
-		public void setCarTimeout(Double carTimeout) {
+		public void setCarTimeout(Integer carTimeout) {
 			CarTimeout = carTimeout;
 		}
 
@@ -312,7 +312,7 @@ public class TerminalModel extends BaseModel {
 
 
 
-		public Double getVioTimeout() {
+		public Integer getVioTimeout() {
 			return VioTimeout;
 		}
 
@@ -320,7 +320,7 @@ public class TerminalModel extends BaseModel {
 
 
 
-		public void setVioTimeout(Double vioTimeout) {
+		public void setVioTimeout(Integer vioTimeout) {
 			VioTimeout = vioTimeout;
 		}
 

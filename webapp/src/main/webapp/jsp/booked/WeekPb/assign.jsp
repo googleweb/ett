@@ -174,7 +174,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
   	<div class="innerDiv" id="innerDiv">
-  	<form action="booked/WeekPb/to/assign.action" method="post">
+  	<form action="<%=basePath %>booked/WeekPb/to/assign.action" method="post">
 	  	<table  class="editTable" cellpadding="1" cellspacing="0">
 	  	  <tr>
 	  	    <td><s:property value="%{getText('booked.searchDate')}" /> </td>
@@ -220,19 +220,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	           <td>科目<s:property value="#km.key"/></td>
                <td>&nbsp;
                <form action="<%=basePath %>booked/WeekPb/reload/assign.action" method="post">
-               <input name="<s:property value="%{'iweek'+#dw.value+'Km'+#km.value+'Num'}" />" 
-                      value="<s:property value="#request['iweek'+#dw.value+'Km'+#km.value+'Num']" />" class="<%=txtLimitNum %>" />
+               <input name="<s:property value="%{'IWeek'+#dw.value+'Km'+#km.value+'Num'}" />" 
+                      value="<s:property value="#request['IWeek'+#dw.value+'Km'+#km.value+'Num']" />" class="<%=txtLimitNum %>" />
                   &nbsp;<button type="submit">修改</button>
                </form>
                </td>  
                <td>&nbsp;
-                  <s:if test="#request['iweek'+#dw.value+'Km'+#km.value+'Num'] gte #request['iweek'+#dw.value+'Km'+#km.value+'Assgined'] ">
-                     <s:property value="#request['iweek'+#dw.value+'Km'+#km.value+'Assgined']" />/
-                     <s:property value="%{#request['iweek'+#dw.value+'Km'+#km.value+'Num'] - #request['iweek'+#dw.value+'Km'+#km.value+'Assgined']}" />
+                  <s:if test="#request['IWeek'+#dw.value+'Km'+#km.value+'Num'] gte #request['IWeek'+#dw.value+'Km'+#km.value+'Assgined'] ">
+                     <s:property value="#request['IWeek'+#dw.value+'Km'+#km.value+'Assgined']" />/
+                     <s:property value="%{#request['IWeek'+#dw.value+'Km'+#km.value+'Num'] - #request['IWeek'+#dw.value+'Km'+#km.value+'Assgined']}" />
                   </s:if>
                   <s:else>
                      <span style="color:red;">
-                     <s:property value="#request['iweek'+#dw.value+'Km'+#km.value+'Assgined']" /><br/>
+                     <s:property value="#request['IWeek'+#dw.value+'Km'+#km.value+'Assgined']" /><br/>
                      分配数已超过总数
                      </span>
                   </s:else>
