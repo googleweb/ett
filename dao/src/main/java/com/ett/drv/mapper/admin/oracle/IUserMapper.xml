@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2011-05-25 04:53:47
+	Create Date:2011-05-26 11:06:52
 	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
 	Model:com.ett.drv.model.admin.UserModel 
 
@@ -56,7 +56,7 @@ seq_user.nextval,
 </sql>
 
 <sql id="updateCols">
-<if test="pk neq null">ID=#{pk}</if>,
+<if test="pk neq null">ID=#{pk},</if>
 C_LOGIN_NAME=#{model.CLoginName,jdbcType=VARCHAR,javaType=String},
 C_FULL_NAME=#{model.CFullName,jdbcType=VARCHAR,javaType=String},
 C_PWD=#{model.CPwd,jdbcType=VARCHAR,javaType=String},
