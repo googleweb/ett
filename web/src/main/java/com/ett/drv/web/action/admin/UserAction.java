@@ -109,7 +109,7 @@ public class UserAction extends BaseAction implements ModelDriven<UserModel> {
 		this.writePlainText(resultModel.toJson().toString());   	
     }
     @SuppressWarnings("unchecked")
-	public void find_deptid(){
+	public void combobox_deptid(){
     	ArrayList lListKscc = null;
 		try {
 			lListKscc = adminBiz.listSchool(null);

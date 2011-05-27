@@ -6,6 +6,7 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+String adminUserPath=basePath+"/admin/User";
 %><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -28,19 +29,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <script type="text/javascript">
     
    function clickSave(){
-	   
-	   $.messager.confirm('操作提示','确认保存',function(yes){
+ 
+	     $.messager.confirm('操作提示','确认保存',function(yes){
 		   if(yes){
 			   $("#formUser").form('submit',{
-				   url:"http://localhost:8080/webapp/admin/User/do/editUser.action",
-				   success:function(str){
-				   	   $("#formUser").form("clear");
-					   var json=Kia.util.strToJson(str);
-					   Kia.util.handleJsonResult(json);
+				   url:"<%=adminUserPath%>/do/editUser.action",
+				   onSubmit:function(){ return $(this).form("validate"); }
+				   ,success:function(str){
+				     str.messager();
 				   }
 			   });
 		   }
-	   })
+	     });
    }
    
    </script>
@@ -105,9 +105,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <th>部门编号</th>
              <td style="width: 35%">
              <input name="IDepid" 
-                       valuefield="CDepcode"
+                       valuefield="Id"
                    textfield="CDepnickname"
-                     url="http://localhost:8080/webapp/admin/User/find/deptid.action" 
+                     url="<%=adminUserPath %>/combobox/deptid.action" 
                  
   	         editable="false"
   	                  class="<%=EasyUiModel.ComboBox.CLASS %>"
