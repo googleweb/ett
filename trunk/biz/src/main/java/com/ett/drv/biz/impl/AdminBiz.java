@@ -137,6 +137,16 @@ public class AdminBiz extends BaseDrvBiz implements IAdminBiz {
 		}
 		return userModel;		
 	}
+
+
+	public List<DictModel> listIdcardType() throws Exception {
+		// TODO Auto-generated method stub
+		String typeName="身份证明名称";
+		DictModel query=new DictModel();
+		query.setCTypename(typeName);
+		List<DictModel> listDict=this.dictMapper.select(query);
+		return listDict;
+	}
 	
 	
 
