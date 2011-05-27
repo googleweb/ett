@@ -36,7 +36,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    String tableWeekPb="tableWeekPb";
         EasyUiModel weekPbDG=new EasyUiModel(JQueryModel.id(tableWeekPb),EasyUiModel.DataGrid.NAME);
         weekPbDG.appendAttrs(DataGrid.Properties.TITLE,StringUtil.quota("周排班列表"))
-        .appendAttrs(DataGrid.Properties.URL,"booked/WeekPb/dataGrid/weekRecords.action?format=json",true)
+        .appendAttrs(DataGrid.Properties.URL,"booked/WeekPb/datagrid/weekRecords.action?format=json",true)
         .appendAttrs(EasyUiModel.DataGrid.Properties.FIT_COLUMNS,true)
         .appendAttrs(EasyUiModel.DataGrid.Properties.WIDTH,"innerWidth")
         .appendAttrs(EasyUiModel.DataGrid.Properties.HEIGHT,"innerHeight")

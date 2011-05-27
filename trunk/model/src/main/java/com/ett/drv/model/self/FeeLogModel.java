@@ -12,32 +12,32 @@ public class FeeLogModel extends BaseModel {
 		ISyn  
 		 } 
 
-		private Double Id;         //ID  NUMBER 19
-		private String CCreateip;         //C_CREATEIP  VARCHAR2 1,020
-		private Date TCreatetime;         //T_CREATETIME  DATE 0
-		private String CCreator;         //C_CREATOR  VARCHAR2 120
-		private Double IIsdeleted;         //I_ISDELETED  NUMBER 1
-		private String CDescription;         //C_DESCRIPTION  VARCHAR2 1,020
-		private String CKeywords;         //C_KEYWORDS  VARCHAR2 1,020
-		private String CModifier;         //C_MODIFIER  VARCHAR2 1,020
-		private String CModifyip;         //C_MODIFYIP  VARCHAR2 1,020
-		private Date TModifytime;         //T_MODIFYTIME  DATE 0
-		private String Bustype;         //BUSTYPE  VARCHAR2 120
-		private String Detail;         //DETAIL  VARCHAR2 800
-		private String Feetype;         //FEETYPE  VARCHAR2 120
-		private Double Money;         //MONEY  NUMBER 10
-		private String Sfzmhm;         //SFZMHM  VARCHAR2 72
-		private String Visacard;         //VISACARD  VARCHAR2 120
-		private String Xm;         //XM  VARCHAR2 120
-		private String Feelsh;         //FEELSH  VARCHAR2 1,056
-		private Double Postfee;         //POSTFEE  NUMBER 10
-		private String Feewaytype;         //FEEWAYTYPE  VARCHAR2 120
-		private String Relationid;         //RELATIONID  VARCHAR2 1,020
-		private Double ISyn;         //I_SYN  NUMBER 1
-		public Double getId() {
+	 private Integer Id;         //ID  NUMBER 19
+	 private String CCreateip;         //C_CREATEIP  VARCHAR2 1,020
+	 private Date TCreatetime;         //T_CREATETIME  DATE 0
+	 private String CCreator;         //C_CREATOR  VARCHAR2 120
+	 private Integer IIsdeleted;         //I_ISDELETED  NUMBER 1
+	 private String CDescription;         //C_DESCRIPTION  VARCHAR2 1,020
+	 private String CKeywords;         //C_KEYWORDS  VARCHAR2 1,020
+	 private String CModifier;         //C_MODIFIER  VARCHAR2 1,020
+	 private String CModifyip;         //C_MODIFYIP  VARCHAR2 1,020
+	 private Date TModifytime;         //T_MODIFYTIME  DATE 0
+	 private String Bustype;         //BUSTYPE  VARCHAR2 120
+	 private String Detail;         //DETAIL  VARCHAR2 800
+	 private String Feetype;         //FEETYPE  VARCHAR2 120
+	 private Integer Money;         //MONEY  NUMBER 10
+	 private String Sfzmhm;         //SFZMHM  VARCHAR2 72
+	 private String Visacard;         //VISACARD  VARCHAR2 120
+	 private String Xm;         //XM  VARCHAR2 120
+	 private String Feelsh;         //FEELSH  VARCHAR2 1,056
+	 private Integer Postfee;         //POSTFEE  NUMBER 10
+	 private String Feewaytype;         //FEEWAYTYPE  VARCHAR2 120
+	 private String Relationid;         //RELATIONID  VARCHAR2 1,020
+	 private Integer ISyn;         //I_SYN  NUMBER 1
+		public Integer getId() {
 			return Id;
 		}
-		public void setId(Double id) {
+		public void setId(Integer id) {
 			Id = id;
 		}
 		public String getCCreateip() {
@@ -58,10 +58,10 @@ public class FeeLogModel extends BaseModel {
 		public void setCCreator(String cCreator) {
 			CCreator = cCreator;
 		}
-		public Double getIIsdeleted() {
+		public Integer getIIsdeleted() {
 			return IIsdeleted;
 		}
-		public void setIIsdeleted(Double iIsdeleted) {
+		public void setIIsdeleted(Integer iIsdeleted) {
 			IIsdeleted = iIsdeleted;
 		}
 		public String getCDescription() {
@@ -112,10 +112,10 @@ public class FeeLogModel extends BaseModel {
 		public void setFeetype(String feetype) {
 			Feetype = feetype;
 		}
-		public Double getMoney() {
+		public Integer getMoney() {
 			return Money;
 		}
-		public void setMoney(Double money) {
+		public void setMoney(Integer money) {
 			Money = money;
 		}
 		public String getSfzmhm() {
@@ -142,10 +142,10 @@ public class FeeLogModel extends BaseModel {
 		public void setFeelsh(String feelsh) {
 			Feelsh = feelsh;
 		}
-		public Double getPostfee() {
+		public Integer getPostfee() {
 			return Postfee;
 		}
-		public void setPostfee(Double postfee) {
+		public void setPostfee(Integer postfee) {
 			Postfee = postfee;
 		}
 		public String getFeewaytype() {
@@ -160,10 +160,10 @@ public class FeeLogModel extends BaseModel {
 		public void setRelationid(String relationid) {
 			Relationid = relationid;
 		}
-		public Double getISyn() {
+		public Integer getISyn() {
 			return ISyn;
 		}
-		public void setISyn(Double iSyn) {
+		public void setISyn(Integer iSyn) {
 			ISyn = iSyn;
 		}
 	

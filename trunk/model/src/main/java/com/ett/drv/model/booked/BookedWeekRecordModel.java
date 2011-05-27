@@ -10,6 +10,7 @@ import java.util.Map;
 
 import com.smartken.kia.core.util.DateTimeUtil;
 import com.smartken.kia.core.util.ObjectUtil;
+import com.smartken.kia.core.util.StringUtil;
 import com.smartken.kia.core.model.impl.BaseModel;
 
 public class BookedWeekRecordModel extends BaseModel{
@@ -541,6 +542,7 @@ public class BookedWeekRecordModel extends BaseModel{
 
 	public void setIWeekNum(Integer iWeekNum) {
 		IWeekNum = iWeekNum;
+		this.loadWeekDays();
 	}
 
 
@@ -1093,6 +1095,14 @@ public class BookedWeekRecordModel extends BaseModel{
 
 	public void setCWeekRange(String cWeekRange) {
 		CWeekRange = cWeekRange;
+		if(StringUtil.isBlank(cWeekRange))return;
+		String[] strs=cWeekRange.split("至");
+		String str=strs[0];
+		Date d=DateTimeUtil.parse(str);
+	    Calendar cal=Calendar.getInstance();
+	    cal.setTime(d);
+	    this.year=cal.get(Calendar.YEAR);
+	    this.loadWeekDays();
 	}
 
 

@@ -44,7 +44,7 @@ C_CHECK_OPERATOR,C_CHECK_DATE,I_CHECKED,C_CHECK_RESULT,C_EMAIL
 </sql>
 
 <sql id="insertCols">
-#{Id,jdbcType=INTEGER,javaType=Integer},
+SEQ_PERSON_CHANGE.nextval,
 #{CName,jdbcType=VARCHAR,javaType=String},
 #{CIdcardType,jdbcType=VARCHAR,javaType=String},
 #{CIdcard,jdbcType=VARCHAR,javaType=String},

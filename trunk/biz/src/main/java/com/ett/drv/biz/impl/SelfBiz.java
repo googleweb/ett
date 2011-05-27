@@ -179,7 +179,7 @@ public class SelfBiz extends BaseDrvBiz implements ISelfBiz{
 		try {
 			List<FeeLogModel> listPreasignRecord=this.feeLogMapper.select(query);
 			for (FeeLogModel feeLogModel : listPreasignRecord) {
-				feeLogModel.setISyn(Double.valueOf(1));
+				feeLogModel.setISyn(1);
 				synCount+= this.feeLogMapper.updateOne(feeLogModel);
 			}
 		} catch (Exception e) {
