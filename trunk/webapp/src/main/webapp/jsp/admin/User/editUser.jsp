@@ -1,6 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@page import="com.smartken.kia.core.model.impl.EasyUiModel"%>
 <%@page import="com.ett.drv.model.admin.DepartmentModel"%>
+<%@page import="com.ett.drv.model.admin.UserModel"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
 <%
@@ -33,9 +34,10 @@ String adminUserPath=basePath+"/admin/User";
 	     $.messager.confirm('操作提示','确认保存',function(yes){
 		   if(yes){
 			   $("#formUser").form('submit',{
-				   url:"<%=adminUserPath%>/do/editUser.action",
-				   onSubmit:function(){ return $(this).form("validate"); }
+				   url:"<%=adminUserPath%>/do/editUser.action"
+				   ,onSubmit:function(){ return $(this).form("validate"); }
 				   ,success:function(str){
+				    $(this).form("clear");
 				     str.messager();
 				   }
 			   });
@@ -78,11 +80,23 @@ String adminUserPath=basePath+"/admin/User";
                />
              </td>
             <th>角色号</th>
-             <td style="width: 35%">
+             <!--<td style="width: 35%">
               <input name="IRoleid" value="${IRoleid}" 
               class="<%=EasyUiModel.ValidateBox.CLASS %>"
                  <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
               />
+             </td>
+           -->
+            <td style="width: 35%">
+             <input name="<%= UserModel.F.IRoleid %>" 
+                       valuefield="Id"
+                   textfield="CName"
+                     url="<%=adminUserPath %>/combobox/roleid.action" 
+                 value="${IRoleid}"
+  	         editable="false"
+  	                  class="<%=EasyUiModel.ComboBox.CLASS %>"
+                 <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+                   />
              </td>
            </tr>
            <tr>
@@ -108,7 +122,7 @@ String adminUserPath=basePath+"/admin/User";
                        valuefield="Id"
                    textfield="CDepnickname"
                      url="<%=adminUserPath %>/combobox/deptid.action" 
-                 
+                 value="${IDepid}"
   	         editable="false"
   	                  class="<%=EasyUiModel.ComboBox.CLASS %>"
                  <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>

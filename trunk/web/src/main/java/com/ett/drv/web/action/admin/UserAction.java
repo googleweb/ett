@@ -110,13 +110,23 @@ public class UserAction extends BaseAction implements ModelDriven<UserModel> {
     }
     @SuppressWarnings("unchecked")
 	public void combobox_deptid(){
-    	ArrayList lListKscc = null;
+    	ArrayList lListShool = null;
 		try {
-			lListKscc = adminBiz.listSchool(null);
+			lListShool = adminBiz.listSchool(null);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		JSONArray lJsonKscc= ObjectUtil.toJsonArray(lListKscc);
+		JSONArray lJsonKscc= ObjectUtil.toJsonArray(lListShool);
+		this.writePlainText(lJsonKscc.toString());
+    }
+    public void combobox_roleid(){
+    	ArrayList lListRole = null;
+		try {
+			lListRole= adminBiz.listRoleModel();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		JSONArray lJsonKscc= ObjectUtil.toJsonArray(lListRole);
 		this.writePlainText(lJsonKscc.toString());
     }
 }
