@@ -212,7 +212,7 @@
   <property name="departmentMapper" ref="departmentMapper"></property>
   <property name="userMapper" ref="userMapper"></property>
   <property name="menuMapper" ref="menuMapper"></property>
-
+  <property name="roleMapper" ref="roleMapper"></property>
    <property name="terminalMapper"  ref="terminalMapper"></property>
    <property name="transactDriverMapper" ref="transactDriverMapper"></property>
    <property name="transactVehicleMapper" ref="transactVehicleMapper"></property>

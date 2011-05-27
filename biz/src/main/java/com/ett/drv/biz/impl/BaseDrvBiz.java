@@ -3,6 +3,7 @@ package com.ett.drv.biz.impl;
 import com.ett.drv.mapper.admin.IDepartmentMapper;
 import com.ett.drv.mapper.admin.IDictMapper;
 import com.ett.drv.mapper.admin.IMenuMapper;
+import com.ett.drv.mapper.admin.IRoleMapper;
 import com.ett.drv.mapper.admin.IUserMapper;
 import com.ett.drv.mapper.booked.ICarOwnerChangeMapper;
 import com.ett.drv.mapper.booked.ILimitMapper;
@@ -26,6 +27,7 @@ import com.ett.drv.mapper.self.IVehicleMapper;
 import com.ett.drv.model.admin.DepartmentModel;
 import com.ett.drv.model.admin.DictModel;
 import com.ett.drv.model.admin.MenuModel;
+import com.ett.drv.model.admin.RoleModel;
 import com.ett.drv.model.admin.UserModel;
 import com.ett.drv.model.booked.BookedLimitModel;
 import com.ett.drv.model.booked.BookedOrderInfoModel;
@@ -52,6 +54,7 @@ public abstract class BaseDrvBiz extends BaseCurdBiz {
 
 	protected IDictMapper<DictModel> dictMapper;
 	protected IDepartmentMapper<DepartmentModel> departmentMapper;
+	protected IRoleMapper<RoleModel> roleMapper;
 	protected IMenuMapper<MenuModel> menuMapper;
 	protected IUserMapper<UserModel> userMapper;
 	protected IWeekRecordMapper<BookedWeekRecordModel> weekRecordMapper;
@@ -73,6 +76,7 @@ public abstract class BaseDrvBiz extends BaseCurdBiz {
 	protected IHardwareMapper<HardwareModel> hardwareMapper;
     protected IPersonChangeMapper<PersonChangeModel> personChangeMapper;
     protected ICarOwnerChangeMapper<CarOwnerChangeModel> carOwnerChangeMapper;
+   
 
 
 	public void setDictMapper(IDictMapper<DictModel> dictMapper) {
@@ -223,8 +227,10 @@ public abstract class BaseDrvBiz extends BaseCurdBiz {
 		this.carOwnerChangeMapper = carOwnerChangeMapper;
 		this.addCrudMapper(CarOwnerChangeModel.class, carOwnerChangeMapper);
 	}
-	
-	
-	
-	
+	public IRoleMapper<RoleModel> getRoleMapper() {
+		return roleMapper;
+	}
+	public void setRoleMapper(IRoleMapper<RoleModel> roleMapper) {
+		this.roleMapper = roleMapper;
+	}
 }
