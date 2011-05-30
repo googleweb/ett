@@ -2,6 +2,7 @@ package com.ett.drv.biz.impl;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -58,7 +59,12 @@ public class BookedBiz extends BaseDrvBiz implements IBookedBiz {
 		lWeekReurn.setIWeekNum(weekNum);
 		try {
 		List<BookedWeekRecordModel> lListWeek= weekRecordMapper.select(lWeekReurn);
-		lWeekReurn=lListWeek.get(0);
+		if(lListWeek.size()>0){
+			lWeekReurn=lListWeek.get(0);
+		}else{
+			Calendar cal=Calendar.getInstance();
+			lWeekReurn.setYear(cal.get(Calendar.YEAR));
+		}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

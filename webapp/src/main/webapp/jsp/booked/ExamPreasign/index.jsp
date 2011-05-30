@@ -97,6 +97,7 @@ String bookedExamPreasgin=basePath+"/booked/ExamPreasign";
 	 </td>
 	 <td style="width: 14%">
 	   &nbsp;<s:property value="#request['weekRecord.IWeek'+#dw.value+'Km'+#km.value+'Fp']" />
+	   </br><a href="<%=bookedExamPreasgin %>/to/preasign.action?Id=${weekRecord.id}">预约</a>
 	 </td>
 	</s:iterator>
 

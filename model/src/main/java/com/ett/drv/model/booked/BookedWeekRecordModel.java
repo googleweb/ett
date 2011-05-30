@@ -1113,6 +1113,13 @@ public class BookedWeekRecordModel extends BaseModel{
 
 
 
+	public void setYear(Integer year) {
+		this.year = year;
+		this.loadWeekDays();
+	}
+
+
+
 	
 	
 	
