@@ -1,7 +1,15 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@page import="com.smartken.kia.core.model.impl.EasyUiModel"%>
+<%@page import="com.smartken.kia.core.model.impl.JsContextModel"%>
+<%@page import="com.smartken.kia.core.model.impl.JQueryModel"%>
+<%@page import="com.smartken.kia.core.model.impl.JsFunctionModel"%>
+<%@page import="com.ett.drv.model.booked.CarOwnerChangeModel"%>
+<%@page import="com.ett.drv.model.admin.DictModel"%>
+
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+String bookedInfoChangePath=basePath+"booked/InfoChange";
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -19,159 +27,194 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+	<jsp:include page="/plugin/index.jsp">
+	      <jsp:param value="jquery,easyui" name="plugin"/>
+	   </jsp:include>
+	   <jsp:include page="/css/index.jsp"></jsp:include>
+	   <jsp:include page="/js/index.jsp"></jsp:include>
+	<%
+       String formCar="formCar";
+    
+       JsFunctionModel clickSaveHandler=new JsFunctionModel("clickSaveHandler",null);
+       clickSaveHandler
+       .appendContext("$.messager.confirm('操作提示','确认变更驾驶人信息?',function(yes){")
+       .appendContext("var url=\"{0}\";",bookedInfoChangePath+"/do/saveCarChange.action")
+       .appendContext("{0}.form(\"submit\",'{'",JQueryModel.id(formCar))
+       .appendContext("url:url")
+       .appendContext(",success:function(str){str.messager();}")
+       .appendContext(",onSubmit:function(){ return $(this).form(\"validate\"); }")
+       .appendContext("});  //form ")
+       .appendContext("});  //$.messager.confirm")
+       ;
+    
+       JsContextModel jsContext=new JsContextModel();
+       jsContext.appendScript("{0}.form(\"validate\");",JQueryModel.id(formCar));
+       JsContextModel jsFun=new JsContextModel();
+       jsFun.appendScript(clickSaveHandler);
+    %>
+    <script type="text/javascript">
+      <%=jsFun.toScirpt()%>
+      <%=JQueryModel.DOC_READY_START%>
+      <%=jsContext.toScirpt()%>
+      <%=JQueryModel.DOC_READY_END %>
+    
+    </script>
 
   </head>
   
   <body>
-    <table border="0" cellpadding="4" cellspacing="1" width="200px" class="table-border">
-<tr class="table-title">
-<td >
-车主联系方式变更备案 
-</td>
-</tr>
-<tr class="table-title">
-<td style="height: 50px" style="text-align: left">
-以下项目均为必填（选）项：
-</td>
-</tr>
-<tr class="table-content">
-<td class="table-title">
- 请选择证件核发地<select  id="cbcity" name="city" onchange="citychange();" style="font-size:15pt;height:17px;width:213px;">
-                                    <option value="">请选择</option>
-                                    <option selected="" value="A">广州</option>
-                                    <option value="B">深圳</option>
-                                    <option value="S">东莞</option>
-                                    <option value="E">佛山</option>
-                                    <option value="Y">南海</option>
-                                    <option value="X">顺德</option>
-                                    <option value="G">湛江</option>
-                                    <option value="C">珠海</option>
-                                    <option value="D">汕头</option>
-                                    <option value="F">韶关</option>
-                                    <option value="H">肇庆</option>
-                                    <option value="J">江门</option>
-                                    <option value="K">茂名</option>
-                                    <option value="L">惠州</option>
-                                    <option value="M">梅州</option>
-                                    <option value="N">汕尾</option>
-                                    <option value="P">河源</option>
-                                    <option value="Q">阳江</option>
-                                    <option value="R">清远</option>
-                                    <option value="T">中山</option>
-                                    <option value="U">潮州</option>
-                                    <option value="V">揭阳</option>
-                                    <option value="W">云浮</option>
+    <div
+<%=EasyUiModel.Layout.Properties.REGION(EasyUiModel.REGION_CENTER) %>>
+<h1>车主联系方式变更备案 </h1>
+<form method="post" id="<%=formCar %>">
+<table border="0" cellpadding="4" cellspacing="0" width="200px"
+style="font-size:1.2em" class="editTable">
+           <tr>
+			   
+				<th style="width: 350px;">
+					以下项目均为必填（选）项：
+				</th>
+				 <td>&nbsp;</td>
+			</tr>
+		
+			<tr >
+				<th >车牌号码</th>
+				<td>				   
+				   <input class="<%=EasyUiModel.ValidateBox.CLASS %>"
+				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+				    <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("车牌号码必须输入！") %>
+				    name="carownerChange.<%=CarOwnerChangeModel.F.CHmhp %>"
+				    <%=EasyUiModel.ValidateBox.Properties.VALID_TYPE("carno") %>
+				    />
+				</td>
+			</tr>
+			<tr >
+				<th >号牌种类</th>
+				<td>
+				   <input class="<%=EasyUiModel.ComboBox.CLASS %>"
+				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+				    <%=EasyUiModel.ComboBox.Properties.URL(bookedInfoChangePath+"/combobox/carType.action") %>
+				    <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
+				    <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %>
+				    <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("车牌种类必须输入！") %>
+				    name="carownerChange.<%=CarOwnerChangeModel.F.CHpzl %>"
+				    value="A"
+				    />
+				</td>
+			</tr>
+			<tr >
+				<th >车架号码后5位</th>
+				<td>				   
+				   <input class="<%=EasyUiModel.ValidateBox.CLASS %>"
+				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+				    <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("车架号码后5位必须输入！") %>
+				    name="carownerChange.<%=CarOwnerChangeModel.F.CCjh %>"
+				     <%=EasyUiModel.ValidateBox.Properties.VALID_TYPE("five") %>
+				    />
+				</td>
+			</tr>
+			<tr >
+				<th >发动机号码后5位</th>
+				<td>				   
+				   <input class="<%=EasyUiModel.ValidateBox.CLASS %>"
+				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+				    <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("发动机号码后5位必须输入！") %>
+				    name="carownerChange.<%=CarOwnerChangeModel.F.CFdjh %>"
+				     <%=EasyUiModel.ValidateBox.Properties.VALID_TYPE("five") %>
+				    />
+				</td>
+			</tr>
+			<tr >
+				<th >登记证书号码</th>
+				<td>				   
+				   <input class="<%=EasyUiModel.ValidateBox.CLASS %>"
+				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+				    <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("登记证书号码必须输入！") %>
+				    name="carownerChange.<%=CarOwnerChangeModel.F.CDjzs %>"
+				    />
+				</td>
+			</tr>
+			<tr >
+				<th >手机号码</th>
+				<td>				   
+				   <input class="<%=EasyUiModel.ValidateBox.CLASS %>"
+				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+				    <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("手机号码必须输入！") %>
+				    name="carownerChange.<%=CarOwnerChangeModel.F.COldPhone %>"
+				      <%=EasyUiModel.ValidateBox.Properties.VALID_TYPE("mobile") %>
+				    />
+				</td>
+			</tr>
+			<tr>
+			   
+				<th>
+					请填写变更后的联系方式，三项都必须输入
+				</th>
+				 <td>&nbsp;</td>
+			</tr>
+			<tr>
+			<th>联系地址</th>
+				<td >
+		           <input class="<%=EasyUiModel.ValidateBox.CLASS %>"
+				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+				    <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("联系地址必须输入！") %>
+				    name="carownerChange.<%=CarOwnerChangeModel.F.CNewAddress %>"
+				    />
+					(必须包含省、直辖市、自治区的名字)
+				</td>
+			</tr>
+			<tr >
+				<th>邮政编码</th>
+				<td>
+				<input class="<%=EasyUiModel.ValidateBox.CLASS %>"
+				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+				    <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("邮政编码必须输入！") %>
+				    name="carownerChange.<%=CarOwnerChangeModel.F.CNewPostcode %>"
+				    <%=EasyUiModel.ValidateBox.Properties.VALID_TYPE("zip") %>
+				    />
+				 </td>
+			</tr>
+			<tr>
+			  <th>联系电话</th>
+				<td>				   
+				<input class="<%=EasyUiModel.ValidateBox.CLASS %>"
+				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+				    <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("联系电话必须输入！") %>
+                     name="carownerChange.<%=CarOwnerChangeModel.F.CNewPhone %>"
+                     <%=EasyUiModel.ValidateBox.Properties.VALID_TYPE("phone") %>
+				    />
+				 </td>
+			</tr>
+			<tr >
+			    <th>电子邮箱</th>
+				<td>				  
+				  <input class="<%=EasyUiModel.ValidateBox.CLASS %>"
+				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+				    <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("电子邮箱必须输入！") %>
+				     name="carownerChange.<%=CarOwnerChangeModel.F.CEmail %>"
+				    <%=EasyUiModel.ValidateBox.Properties.VALID_TYPE("email") %>
+				    />
+				 </td>
+			</tr>
 
-
-</td>
-</tr>
-<tr class="table-content">
-<td class="table-title">
-号 牌 号 码
-    <asp:textbox id="txtHmhpPrefix" runat="server" value="粤" enable="false" width="30px">
-    </asp:textbox>&nbsp;<asp:textbox id="txtHmhpEnd" onkeyup="this.value=this.value.toUpperCase();" runat="server"></asp:textbox>
-   
-</td>
-</tr>
-<tr class="table-content">
-<td class="table-title">
-号 牌 种 类&nbsp;&nbsp;&nbsp;&nbsp;
-<asp:dropdownlist id="cbHpzlValue" style="font-size:15pt;height:17px;width:213px;" runat="server">
-    <asp:ListItem Value="01">大型汽车</asp:ListItem>
-    <asp:ListItem Value="02">小型汽车</asp:ListItem>
-                                <asp:ListItem Value="05">境外汽车</asp:ListItem>
-                                <asp:ListItem Value="06">外籍汽车</asp:ListItem>
-                                <asp:ListItem Value="07">两、三轮摩托车</asp:ListItem>
-                                <asp:ListItem Value="11">境外摩托车</asp:ListItem>
-                                <asp:ListItem Value="12">外籍摩托车</asp:ListItem>
-                                <asp:ListItem Value="15">挂车</asp:ListItem>
-                                <asp:ListItem Value="20">临时入境汽车</asp:ListItem>
-                                <asp:ListItem Value="21">临时入境摩托车</asp:ListItem>
-                                <asp:ListItem Value="22" Selected="True">临时行驶汽车</asp:ListItem>
-                                <asp:ListItem Value="23">公安警车</asp:ListItem>
-                                <asp:ListItem Value="99">其它</asp:ListItem>                            
-    </asp:dropdownlist>
-</td>
-</tr>
-<tr class="table-content">
-<td class="table-title">
-车架号码后5位&nbsp;&nbsp;
-<asp:textbox id="txtCjh" runat="server">
-</asp:textbox>
-</td>
-</tr>
-<tr class="table-content">
-<td class="table-title">
-发动机号码后5位
-<asp:textbox id="txtFdjh" runat="server">
-</asp:textbox>
-</td>
-</tr>
-<tr class="table-content">
-<td class="table-title">
-登记证书号码&nbsp;&nbsp;&nbsp;
-<asp:textbox id="txtDjzs" runat="server">
-</asp:textbox>
-</td>
-</tr>
-<tr class="table-content">
-<td class="table-title">
-手 机 号 码&nbsp;&nbsp;&nbsp;&nbsp;
-<asp:textbox id="txtOldPhone" runat="server" onblur="synphone();">
-</asp:textbox>
-<span style="color: red">*</span>
-</td>
-</tr>
-<tr class="table-title">
-<td  style="height: 50px" style="text-align: left">
-请填写变更后的联系方式，三项都必须输入。
-</td>
-</tr>
-<tr class="table-content">
-<td class="table-title">
-联 系 地 址&nbsp;&nbsp;&nbsp;&nbsp;
-
-<asp:textbox id="txtNewAddress" runat="server" width="384px">
-</asp:textbox>
-(必须包含省、直辖市、自治区的名字)
-</td>
-</tr>
-<tr class="table-content">
-<td class="table-title">
-邮 政 编 码&nbsp;&nbsp;&nbsp;&nbsp;
-
-<asp:textbox id="txtNewPostCode" runat="server">
-</asp:textbox>
-</td>
-</tr>
-<tr class="table-content">
-<td class="table-title">
-联 系 电 话&nbsp;&nbsp;&nbsp;&nbsp;
-
-
-    <asp:TextBox ID="txtNewPhone" runat="server"></asp:TextBox>
-
-
-</td>
-</tr>
-<tr class="table-content">
-<td class="table-title">
-电 子 邮 箱&nbsp;&nbsp;&nbsp;&nbsp;
-
-
-    <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
-
-
-</td>
-</tr>
-
-<tr class="table-content">
-<td class="table-title">
-
-    <asp:Button ID="btnSave" runat="server" Text="确定" onclick="btnSave_Click" />
-
-</td>
-</tr>
-</table>
-  </body>
+			<tr >
+			<td>&nbsp;</td>
+				<td >
+                   <a class="<%=EasyUiModel.LinkButton.CLASS %>"
+                     <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_SAVE) %>
+                     onclick="<%=clickSaveHandler.getFunName() %>()"  
+                   >确认修改
+                   </a>
+				</td>
+			</tr>
+		</table>    
+	   </form>
+	  </div>
+	 
+	</body>
 </html>
+
+
+			
+			
+

@@ -148,6 +148,15 @@ public class AdminBiz extends BaseDrvBiz implements IAdminBiz {
 		List<DictModel> listDict=this.dictMapper.select(query);
 		return listDict;
 	}
+	
+	
+	public List<DictModel> listCarType() throws Exception{
+		String typeName="车辆类型";
+		DictModel query=new DictModel();
+		query.setCTypename(typeName);
+		List<DictModel> listDict=this.dictMapper.select(query);
+		return listDict;
+	}
 
 	
 	public ArrayList<RoleModel> listRoleModel() throws Exception {
