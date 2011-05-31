@@ -64,7 +64,7 @@ $.extend($.fn.validatebox.defaults.rules, {
 	   	        validator:function(value,param){
 	                   return value.isChinese(); 
 	            }
-                ,message: '只能是中文名'
+                ,message: '只能是中文'
    }
     ,five:{
 	   	      validator:function(value,param){
