@@ -37,8 +37,8 @@ String bookedInfoChangePath=basePath+"booked/InfoChange";
     
        JsFunctionModel clickSaveHandler=new JsFunctionModel("clickSaveHandler",null);
        clickSaveHandler
-       .appendContext("$.messager.confirm('操作提示','确认变更驾驶人信息?',function(yes){")
-       .appendContext("var url=\"{0}\";",bookedInfoChangePath+"/do/saveCarChange.action")
+       .appendContext("$.messager.confirm('操作提示','确认变更车主联系方式信息?',function(yes){")
+       .appendContext("var url=\"{0}\";",bookedInfoChangePath+"/do/saveCarOwnerChange.action")
        .appendContext("{0}.form(\"submit\",'{'",JQueryModel.id(formCar))
        .appendContext("url:url")
        .appendContext(",success:function(str){str.messager();}")
@@ -83,7 +83,7 @@ style="font-size:1.2em" class="editTable">
 				   <input class="<%=EasyUiModel.ValidateBox.CLASS %>"
 				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
 				    <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("车牌号码必须输入！") %>
-				    name="carownerChange.<%=CarOwnerChangeModel.F.CHmhp %>"
+				    name="cardOwnerChange.<%=CarOwnerChangeModel.F.CHmhp %>"
 				    <%=EasyUiModel.ValidateBox.Properties.VALID_TYPE("carno") %>
 				    />
 				</td>
@@ -97,7 +97,7 @@ style="font-size:1.2em" class="editTable">
 				    <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
 				    <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %>
 				    <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("车牌种类必须输入！") %>
-				    name="carownerChange.<%=CarOwnerChangeModel.F.CHpzl %>"
+				    name="cardOwnerChange.<%=CarOwnerChangeModel.F.CHpzl %>"
 				    value="A"
 				    />
 				</td>
@@ -108,7 +108,7 @@ style="font-size:1.2em" class="editTable">
 				   <input class="<%=EasyUiModel.ValidateBox.CLASS %>"
 				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
 				    <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("车架号码后5位必须输入！") %>
-				    name="carownerChange.<%=CarOwnerChangeModel.F.CCjh %>"
+				    name="cardOwnerChange.<%=CarOwnerChangeModel.F.CCjh %>"
 				     <%=EasyUiModel.ValidateBox.Properties.VALID_TYPE("five") %>
 				    />
 				</td>
@@ -119,7 +119,7 @@ style="font-size:1.2em" class="editTable">
 				   <input class="<%=EasyUiModel.ValidateBox.CLASS %>"
 				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
 				    <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("发动机号码后5位必须输入！") %>
-				    name="carownerChange.<%=CarOwnerChangeModel.F.CFdjh %>"
+				    name="cardOwnerChange.<%=CarOwnerChangeModel.F.CFdjh %>"
 				     <%=EasyUiModel.ValidateBox.Properties.VALID_TYPE("five") %>
 				    />
 				</td>
@@ -130,7 +130,7 @@ style="font-size:1.2em" class="editTable">
 				   <input class="<%=EasyUiModel.ValidateBox.CLASS %>"
 				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
 				    <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("登记证书号码必须输入！") %>
-				    name="carownerChange.<%=CarOwnerChangeModel.F.CDjzs %>"
+				    name="cardOwnerChange.<%=CarOwnerChangeModel.F.CDjzs %>"
 				    />
 				</td>
 			</tr>
@@ -140,7 +140,7 @@ style="font-size:1.2em" class="editTable">
 				   <input class="<%=EasyUiModel.ValidateBox.CLASS %>"
 				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
 				    <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("手机号码必须输入！") %>
-				    name="carownerChange.<%=CarOwnerChangeModel.F.COldPhone %>"
+				    name="cardOwnerChange.<%=CarOwnerChangeModel.F.COldPhone %>"
 				      <%=EasyUiModel.ValidateBox.Properties.VALID_TYPE("mobile") %>
 				    />
 				</td>
@@ -158,7 +158,7 @@ style="font-size:1.2em" class="editTable">
 		           <input class="<%=EasyUiModel.ValidateBox.CLASS %>"
 				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
 				    <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("联系地址必须输入！") %>
-				    name="carownerChange.<%=CarOwnerChangeModel.F.CNewAddress %>"
+				    name="cardOwnerChange.<%=CarOwnerChangeModel.F.CNewAddress %>"
 				    />
 					(必须包含省、直辖市、自治区的名字)
 				</td>
@@ -169,7 +169,7 @@ style="font-size:1.2em" class="editTable">
 				<input class="<%=EasyUiModel.ValidateBox.CLASS %>"
 				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
 				    <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("邮政编码必须输入！") %>
-				    name="carownerChange.<%=CarOwnerChangeModel.F.CNewPostcode %>"
+				    name="cardOwnerChange.<%=CarOwnerChangeModel.F.CNewPostcode %>"
 				    <%=EasyUiModel.ValidateBox.Properties.VALID_TYPE("zip") %>
 				    />
 				 </td>
@@ -180,7 +180,7 @@ style="font-size:1.2em" class="editTable">
 				<input class="<%=EasyUiModel.ValidateBox.CLASS %>"
 				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
 				    <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("联系电话必须输入！") %>
-                     name="carownerChange.<%=CarOwnerChangeModel.F.CNewPhone %>"
+                     name="cardOwnerChange.<%=CarOwnerChangeModel.F.CNewPhone %>"
                      <%=EasyUiModel.ValidateBox.Properties.VALID_TYPE("phone") %>
 				    />
 				 </td>
@@ -191,7 +191,7 @@ style="font-size:1.2em" class="editTable">
 				  <input class="<%=EasyUiModel.ValidateBox.CLASS %>"
 				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
 				    <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("电子邮箱必须输入！") %>
-				     name="carownerChange.<%=CarOwnerChangeModel.F.CEmail %>"
+				     name="cardOwnerChange.<%=CarOwnerChangeModel.F.CEmail %>"
 				    <%=EasyUiModel.ValidateBox.Properties.VALID_TYPE("email") %>
 				    />
 				 </td>

@@ -77,6 +77,22 @@ public class InfoChangeAction extends BaseAction {
 		}
 		this.writePlainText(resultModel.toJson().toString());
 	}
+	public void do_saveCarOwnerChange(){
+		ResultModel resultModel=new ResultModel();
+		resultModel.setAction(ResultModel.ACTION_ALERT);
+		this.bookedBiz.loadCrudMapper(CarOwnerChangeModel.class);
+		int re=0;
+		re+=this.bookedBiz.addModel(cardOwnerChange);
+
+		if(re==1){
+			resultModel.setTitle("操作成功");
+			resultModel.setMsg("车主联系方式变更成功");
+		}else{
+			resultModel.setTitle("操作失败");
+			resultModel.setMsg("车主联系方式变更失败");
+		}
+		this.writePlainText(resultModel.toJson().toString());
+	}
 	
 	@Override
 	public void clear() {
