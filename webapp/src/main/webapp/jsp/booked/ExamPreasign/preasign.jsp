@@ -3,6 +3,7 @@
 <%@page import="com.smartken.kia.core.util.EasyUiUtil"%>
 <%@page import="com.ett.drv.model.booked.BookedDayLimitModel"%>
 <%@page import="com.ett.drv.model.booked.BookedOrderInfoModel"%>
+<%@page import="com.ett.drv.model.admin.DictModel"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -38,8 +39,7 @@ String bookedExamPreasgin=basePath+"/booked/ExamPreasign";
        JsListModel cols=new JsListModel();
        JsListModel row1=new JsListModel();
        
-       JsMapModel colId=EasyUiUtil.createTextColumn(BookedOrderInfoModel.F.Id);
-       colId.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"编号",true);
+       JsMapModel colId=EasyUiUtil.createCheckBoxColumn(BookedOrderInfoModel.F.Id);
        
        JsMapModel colCLsh=EasyUiUtil.createTextColumn(BookedOrderInfoModel.F.CLsh);
        colCLsh.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"流水号",true);
@@ -77,6 +77,13 @@ String bookedExamPreasgin=basePath+"/booked/ExamPreasign";
        
        cols.add(row1);
        
+       JsListModel toolbarPass=new JsListModel();
+       JsMapModel btnCanclePreasign=new JsMapModel();
+       btnCanclePreasign.put("text","撤销预约",true);
+       btnCanclePreasign.put("iconCls","icon-cancel",true);
+       //btnCanclePreasign.put("handler","");
+       
+       toolbarPass.add(btnCanclePreasign);
        
        EasyUiModel datagridPass=new EasyUiModel(JQueryModel.id(tablePass),EasyUiModel.DataGrid.NAME);
        EasyUiModel datagridFail=new EasyUiModel(JQueryModel.id(tableFail),EasyUiModel.DataGrid.NAME);
@@ -86,6 +93,8 @@ String bookedExamPreasgin=basePath+"/booked/ExamPreasign";
        .appendAttrs(EasyUiModel.DataGrid.Properties.FIT,true)
        .appendAttrs(EasyUiModel.DataGrid.Properties.URL,bookedExamPreasgin+"/datagrid/passOrderInfo.action",true)
        .appendAttrs(EasyUiModel.DataGrid.Properties.COLUMNS,cols)
+       .appendAttrs(EasyUiModel.DataGrid.Properties.TOOLBAR,toolbarPass)
+       .appendAttrs(EasyUiModel.DataGrid.Properties.ROWNUNMBERS,true)
        ;
        
        datagridFail
@@ -116,12 +125,45 @@ String bookedExamPreasgin=basePath+"/booked/ExamPreasign";
          <td style="text-align: center; font-size: 1.2em" 
          >约考日期${limit.dateKsrq}&nbsp;驾校 ${limit.CSchoolName } 预约申请名单
          <p/>
-           科目<input/>地点<input/>场次<input/>
+                      科目&nbsp;<input
+                     class="<%=EasyUiModel.ComboBox.CLASS %>"
+   	                 <%=EasyUiModel.ComboBox.Properties.URL(bookedExamPreasgin+"/combobox/kskm.action") %>
+  	                 <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
+  	                  <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %>
+  	                  <%=EasyUiModel.ComboBox.Properties.REQUIRED(true) %>
+  	                  <%=EasyUiModel.ComboBox.Properties.EDITABLE(false) %>
+                      />
+        &nbsp;地点&nbsp;<input
+          	                 class="<%=EasyUiModel.ComboBox.CLASS %>"
+   	                 <%=EasyUiModel.ComboBox.Properties.URL(bookedExamPreasgin+"/combobox/ksdd.action") %>
+  	                 <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
+  	                  <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %>
+  	                  <%=EasyUiModel.ComboBox.Properties.REQUIRED(true) %>
+  	                  <%=EasyUiModel.ComboBox.Properties.EDITABLE(false) %>
+                     />
+        &nbsp;场次&nbsp;<input
+                  	  class="<%=EasyUiModel.ComboBox.CLASS %>"
+   	                 <%=EasyUiModel.ComboBox.Properties.URL(bookedExamPreasgin+"/combobox/kscc.action") %>
+  	                 <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
+  	                  <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %>
+  	                  <%=EasyUiModel.ComboBox.Properties.REQUIRED(true) %>
+  	                  <%=EasyUiModel.ComboBox.Properties.EDITABLE(false) %>
+        />
          </td>
        </tr>
        <tr>
-         <td style="text-align: right;">
-                  证件号码<input/>培训审核日期<input/>号码号牌<input/> <button>约考</button>
+         <td style="text-align: right;padding-right: 20px">
+                  证件号码&nbsp;<input  class="<%=EasyUiModel.ValidateBox.CLASS %>"
+                       <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+                       <%=EasyUiModel.ValidateBox.Properties.VALID_TYPE("idCard") %>
+                  />
+       &nbsp;培训审核日期&nbsp;<input class="<%=EasyUiModel.DateBox.CLASS %>" 
+                       <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+       />
+       &nbsp;号码号牌&nbsp;<input class="<%=EasyUiModel.ValidateBox.CLASS %>"
+                        <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+                       <%=EasyUiModel.ValidateBox.Properties.VALID_TYPE("carno") %>
+       /> &nbsp;<button>约考</button>
          </td>
        </tr>
       </table>

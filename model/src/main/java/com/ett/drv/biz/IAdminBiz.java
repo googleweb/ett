@@ -14,13 +14,14 @@ public interface IAdminBiz extends IBaseCrudBiz {
 
 	public static String TYPE_NAME_KSCC="考试场次";
 	public static String TYPE_NAME_KSDD="考试地点";
+	public static String TYPE_NAME_KSKM="考试科目";
 	public static String DEP_TYPE_SCHOOL="驾校";
 	
-	public ArrayList<DictModel> listKscc(String code) throws Exception;
+	public List<DictModel> listKscc(String code) throws Exception;
 	
-	public ArrayList<DictModel> listKsdd(String code) throws Exception;
+	public List<DictModel> listKsdd(String code) throws Exception;
 	
-	public ArrayList<DepartmentModel> listSchool(String code) throws Exception;
+	public List<DepartmentModel> listSchool(String code) throws Exception;
 	
 	public ArrayList<RoleModel> listRoleModel() throws Exception;
 
@@ -31,4 +32,6 @@ public interface IAdminBiz extends IBaseCrudBiz {
 	public List<DictModel> listIdcardType() throws Exception;
 	
 	public List<DictModel> listCarType() throws Exception;
+	
+	public List<DictModel> listKskm(String code) throws Exception;
 }

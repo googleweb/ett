@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 
@@ -125,6 +126,31 @@ public class ExamPreasignAction extends BaseAction  {
 		}
 		JSONObject datagrid=EasyUiUtil.toJsonDataGrid(listPass);
 		this.writePlainText(datagrid.toString());
+	}
+	
+	
+	public  void combobox_kscc() throws Exception
+	{
+
+		List lListKscc=adminBiz.listKscc(null);
+		JSONArray lJsonKscc= ObjectUtil.toJsonArray(lListKscc);
+		this.writePlainText(lJsonKscc.toString());
+	}
+	
+	public void combobox_ksdd() throws Exception
+	{
+
+		List lListKsdd=adminBiz.listKsdd(null);
+		JSONArray lJsonKsdd= ObjectUtil.toJsonArray(lListKsdd);
+		this.writePlainText(lJsonKsdd.toString());
+	}
+	
+	public void combobox_kskm() throws Exception
+	{
+
+		List lListKsdd=adminBiz.listKskm(null);
+		JSONArray lJsonKsdd= ObjectUtil.toJsonArray(lListKsdd);
+		this.writePlainText(lJsonKsdd.toString());
 	}
 	
 }

@@ -41,12 +41,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         //lSbrScript.append(getCssLinkTag(lStrPlugFloder+"/kia-icon.css"));
         lSbrScript.append(getScriptTag(lStrPlugFloder+"/core.js"));
         lSbrScript.append(getScriptTag(lStrPlugFloder+"/setting.js"));
+        lSbrScript.append(getScriptTag(lStrPlugFloder+"/prototype.String.js"));
         lSbrScript.append(getScriptTag(lStrPlugFloder+"/prototype.date.js"));
         lSbrScript.append(getScriptTag(lStrPlugFloder+"/extends.jquery.js"));
         lSbrScript.append(getScriptTag(lStrPlugFloder+"/extends.easyui.js"));
         //lSbrScript.append(getScriptTag(lStrPlugFloder+"/common/util.js"));
         lSbrScript.append(getScriptTag(lStrPlugFloder+"/ui.datagrid.js"));
-        lSbrScript.append(getScriptTag(lStrPlugFloder+"/prototype.String.js"));
+        
      }
      
      if(lStrCommon.length()>0){

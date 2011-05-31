@@ -130,7 +130,7 @@ public class WeekPbAction extends BaseAction implements ModelDriven<BookedWeekRe
 //        DepartmentModel lDep=new DepartmentModel();
 //        lDep.setDeptype("驾校");
 //        iDrvadminBiz.loadCrudMapper(DepartmentModel.class);
-        ArrayList lListSchool=adminBiz.listSchool(null);
+        List lListSchool=adminBiz.listSchool(null);
 		JSONArray lJsonSchools= ObjectUtil.toJsonArray(lListSchool);
 		this.writePlainText(lJsonSchools.toString());
 	}
@@ -140,7 +140,7 @@ public class WeekPbAction extends BaseAction implements ModelDriven<BookedWeekRe
 		//DictModel lDict=new DictModel();
 		//lDict.setTypeName("考试场次");
 		//iDrvadminBiz.loadCrudMapper(DictModel.class);
-		ArrayList lListKscc=adminBiz.listKscc(null);
+		List lListKscc=adminBiz.listKscc(null);
 		JSONArray lJsonKscc= ObjectUtil.toJsonArray(lListKscc);
 		this.writePlainText(lJsonKscc.toString());
 	}
@@ -150,7 +150,7 @@ public class WeekPbAction extends BaseAction implements ModelDriven<BookedWeekRe
 //		DictModel lDict=new DictModel();
 //		lDict.setTypeName("考试地点");
 //		iDrvadminBiz.loadCrudMapper(DictModel.class);
-		ArrayList lListKsdd=adminBiz.listKsdd(null);
+		List lListKsdd=adminBiz.listKsdd(null);
 		JSONArray lJsonKsdd= ObjectUtil.toJsonArray(lListKsdd);
 		this.writePlainText(lJsonKsdd.toString());
 	}
