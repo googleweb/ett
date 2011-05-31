@@ -8,7 +8,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.smartken.kia.core.enums.ResultEnum;
 import com.smartken.kia.core.model.impl.BaseCurdBiz;
+import com.smartken.kia.core.model.impl.ResultModel;
 import com.smartken.kia.core.util.DateTimeUtil;
 
 import com.ett.drv.biz.IBookedBiz;
@@ -21,33 +23,6 @@ import com.ett.drv.model.booked.BookedWeekRecordModel;
 
 public class BookedBiz extends BaseDrvBiz implements IBookedBiz {
 
-	/**
-	private IWeekRecordMapper<BookedWeekRecordModel> weekRecordMapper;
-	private ILimitMapper<BookedLimitModel> limitMapper;
-	private IOrderInfoMapper<BookedOrderInfoModel> orderInfoMapper;
-	
-	
-	
-	public void setLimitMapper(ILimitMapper<BookedLimitModel> iLimitMapper) {
-		this.limitMapper = iLimitMapper;
-		this.addCrudMapper(BookedLimitModel.class, iLimitMapper);
-	}
-	
-
-	public void setWeekRecordMapper(
-			IWeekRecordMapper<BookedWeekRecordModel> weekRecordMapper) {
-		this.weekRecordMapper = weekRecordMapper;
-		this.addCrudMapper(BookedWeekRecordModel.class, weekRecordMapper);
-	}
-
-
-	public void setOrderInfoMapper(
-			IOrderInfoMapper<BookedOrderInfoModel> orderInfoMapper) {
-		this.orderInfoMapper = orderInfoMapper;
-		this.addCrudMapper(BookedOrderInfoModel.class, orderInfoMapper);
-	}
-
-*/
 
 
 	
@@ -82,6 +57,20 @@ public class BookedBiz extends BaseDrvBiz implements IBookedBiz {
 			   lMapReturn.put((String) bookedLimitModel.generalPK(), bookedLimitModel);	
 		}
 	   return lMapReturn;
+	}
+
+
+	public ResultModel tranExamPreasgin(BookedOrderInfoModel orderInfoModel) {
+		// TODO Auto-generated method stub
+		ResultModel reModel=new ResultModel();
+		int re=0;
+		try {
+			re+= this.orderInfoMapper.insertOne(orderInfoModel);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return reModel;
 	}
 
 }

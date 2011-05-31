@@ -245,7 +245,7 @@ destroy-method="close">
 	</tx:advice>
 
 	<aop:config>
-		<aop:pointcut expression="execution(* com.ett.*.biz.*.*(..))" id="methodHibernate"/>
+		<aop:pointcut expression="execution(* com.ett.self.biz.*.*(..))" id="methodHibernate"/>
 		<aop:advisor advice-ref="txAdviceHibernate" pointcut-ref="methodHibernate" />
 		
 	</aop:config>
