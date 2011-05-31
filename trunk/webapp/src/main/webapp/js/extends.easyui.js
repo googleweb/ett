@@ -97,3 +97,34 @@ $.extend($.fn.validatebox.defaults.rules, {
 		 return new Date();
 	 }
  }
+ 
+ 
+  $.fn.panel.defaults.onMove=function(left,top){
+ 	     if(left<0){
+            $(this).panel("move",{left:10});
+    	 }
+    	 if(top<0){
+    		$(this).panel("move",{top:10});
+    	 }
+    	 var right=left+$(this).width();
+    	 var buttom=top+$(this).height();
+    	 var wiw=parseInt(window.innerWidth);
+    	 var wih=parseInt(window.innerHeight);
+    	 if(right>wiw){  
+    		 var r=wiw-$(this).width()-30;
+    		 $(this).panel("move",{left:r});
+    	 }
+    	 if(buttom>wih){  
+    		  var b=wih-$(this).height()-50;
+    		 $(this).panel("move",{top:b});
+    	 }
+ }
+  
+ $.fn.window.defaults.onMove= $.fn.panel.defaults.onMove;
+ $.fn.dialog.defaults.onMove= $.fn.panel.defaults.onMove;
+
+ $.fn.form.defaults.success=function(str){ str.messager(null);}
+ $.fn.form.defaults.onSubmit=function(){ return $(this).form("validate"); }
+ $.fn.form.defaults.onLoadError=function(){
+	 $.messager.alert("Error","Can't access to the remote site.","error");
+ }

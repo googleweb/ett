@@ -110,7 +110,7 @@ public class UserAction extends BaseAction implements ModelDriven<UserModel> {
     }
     @SuppressWarnings("unchecked")
 	public void combobox_deptid(){
-    	ArrayList lListShool = null;
+    	List lListShool = null;
 		try {
 			lListShool = adminBiz.listSchool(null);
 		} catch (Exception e) {

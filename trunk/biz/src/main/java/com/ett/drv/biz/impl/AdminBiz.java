@@ -164,6 +164,16 @@ public class AdminBiz extends BaseDrvBiz implements IAdminBiz {
 		List<RoleModel> list=this.roleMapper.selectAll();
 		return (ArrayList<RoleModel>) list;
 	}
+
+
+	public List<DictModel> listKskm(String code) throws Exception {
+		// TODO Auto-generated method stub
+		String typeName=IAdminBiz.TYPE_NAME_KSKM;
+		DictModel query=new DictModel();
+		query.setCTypename(typeName);
+		List<DictModel> listDict=this.dictMapper.select(query);
+		return listDict;
+	}
 	
 	
 
