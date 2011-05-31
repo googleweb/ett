@@ -159,6 +159,7 @@ style="font-size:1.2em" class="editTable">
 				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
 				    <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("联系地址必须输入！") %>
 				    name="cardOwnerChange.<%=CarOwnerChangeModel.F.CNewAddress %>"
+				    <%=EasyUiModel.ValidateBox.Properties.VALID_TYPE("Chinese") %>
 				    />
 					(必须包含省、直辖市、自治区的名字)
 				</td>
