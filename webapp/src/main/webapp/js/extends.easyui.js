@@ -128,3 +128,10 @@ $.extend($.fn.validatebox.defaults.rules, {
  $.fn.form.defaults.onLoadError=function(){
 	 $.messager.alert("Error","Can't access to the remote site.","error");
  }
+ 
+  $.fn.datagrid.defaults.fit=true;
+ $.fn.datagrid.defaults.pagination=true;
+ $.fn.datagrid.defaults.nowrap=true;
+ $.fn.datagrid.defaults.idField="Id";
+ $.fn.datagrid.defaults.rownumbers=true;
+ $.fn.datagrid.defaults.pageSize=20;
