@@ -41,7 +41,7 @@
     
        JsFunctionModel clickSaveHandler=new JsFunctionModel("clickSaveHandler",null);
        clickSaveHandler
-       .appendContext("$.messager.confirm('操作提示','确认变更驾驶人信息?',function(yes){")
+       .appendContext("$.messager.confirm('操作提示','确认车主联系方式?',function(yes){")
        .appendContext("var url=\"{0}\";",bookedInfoChangePath+"/do/savePersonChange.action")
        .appendContext("{0}.form(\"submit\",'{'",JQueryModel.id(formPerson))
        .appendContext("url:url")
@@ -73,14 +73,15 @@
 	  >
 	 <h1>驾驶人联系方式变更备案</h1>
 	 <form method="post" id="<%=formPerson %>">
-	 <table border="0" cellpadding="4" cellspacing="0" width="200px" style="font-size: 1.2em"
-			class="editTable">
+	 <table border="0" cellpadding="4" cellspacing="0" width="200px"
+style="font-size:1.2em" class="editTable">
 			<tr >
 				<th style="width: 350px;">驾驶人姓名</th>
 				<td><input class="<%=EasyUiModel.ValidateBox.CLASS %>"
 				    name="personChange.<%=PersonChangeModel.F.CName %>"
 				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
 				    <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("姓名必须输入！") %>
+				     <%=EasyUiModel.ValidateBox.Properties.VALID_TYPE("Chinese") %>
 				/></td>
 			</tr>
 			<tr >
@@ -104,6 +105,7 @@
 				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
 				    <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("身份证明号码必须输入！") %>
 				    name="personChange.<%=PersonChangeModel.F.CIdcard %>"
+				   <%=EasyUiModel.ValidateBox.Properties.VALID_TYPE("idCard") %>
 				    />
 				</td>
 			</tr>
@@ -124,6 +126,7 @@
 				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
 				    <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("手机号码必须输入！") %>
 				    name="personChange.<%=PersonChangeModel.F.COldPhone %>"
+				     <%=EasyUiModel.ValidateBox.Properties.VALID_TYPE("mobile") %>
 				    />
 				</td>
 			</tr>
@@ -152,6 +155,7 @@
 				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
 				    <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("邮政编码必须输入！") %>
 				    name="personChange.<%=PersonChangeModel.F.CNewPostcode %>"
+				     <%=EasyUiModel.ValidateBox.Properties.VALID_TYPE("zip") %>
 				    />
 				 </td>
 			</tr>
@@ -160,9 +164,11 @@
 				<td>				   
 				<input class="<%=EasyUiModel.ValidateBox.CLASS %>"
 				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
-				    <%=EasyUiModel.ValidateBox.Properties.INVALID_MESSAGE("联系电话必须输入！") %>
+				    <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("联系电话必须输入！") %>
                      name="personChange.<%=PersonChangeModel.F.CNewPhone %>"
+                     <%=EasyUiModel.ValidateBox.Properties.VALID_TYPE("phone") %>
 				    />
+				    
 				 </td>
 			</tr>
 			<tr >

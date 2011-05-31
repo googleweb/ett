@@ -40,7 +40,7 @@ public class InfoChangeAction extends BaseAction {
 	
 	
 	
-	public String to_careOwnerChange() throws Exception{
+	public String to_carOwnerChange() throws Exception{
 		return ResultEnum.jsp.name();
 	}
 	
@@ -91,6 +91,15 @@ public class InfoChangeAction extends BaseAction {
 			listIdcardType=this.adminBiz.listIdcardType();
 			jarr=ObjectUtil.toJsonArray(listIdcardType);
 		} catch (Exception e) {e.printStackTrace();}
+		this.writePlainText(jarr.toString());
+	}
+	public void combobox_carType(){
+		List listcarType=new ArrayList<DictModel>();
+		JSONArray jarr=new JSONArray();
+		try{
+			listcarType=this.adminBiz.listCarType();
+			jarr=ObjectUtil.toJsonArray(listcarType);
+		}catch (Exception e) {e.printStackTrace();}
 		this.writePlainText(jarr.toString());
 	}
 

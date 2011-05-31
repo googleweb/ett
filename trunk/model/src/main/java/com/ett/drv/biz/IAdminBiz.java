@@ -29,4 +29,6 @@ public interface IAdminBiz extends IBaseCrudBiz {
 	public UserModel login(String loginName,String pwd);
 	
 	public List<DictModel> listIdcardType() throws Exception;
+	
+	public List<DictModel> listCarType() throws Exception;
 }
