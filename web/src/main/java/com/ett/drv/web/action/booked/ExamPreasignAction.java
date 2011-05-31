@@ -18,6 +18,7 @@ import com.ett.drv.model.booked.BookedWeekRecordModel;
 import com.ett.drv.web.action.BaseAction;
 import com.opensymphony.xwork2.ModelDriven;
 import com.smartken.kia.core.enums.ResultEnum;
+import com.smartken.kia.core.model.impl.ResultModel;
 import com.smartken.kia.core.util.DateTimeUtil;
 import com.smartken.kia.core.util.EasyUiUtil;
 import com.smartken.kia.core.util.ObjectUtil;
@@ -28,6 +29,7 @@ public class ExamPreasignAction extends BaseAction  {
 	
 	private BookedWeekRecordModel weekRecord;
 	private BookedLimitModel limit;
+	private BookedOrderInfoModel orderInfo;
 	
 	private int Id;
 	
@@ -40,6 +42,9 @@ public class ExamPreasignAction extends BaseAction  {
     	return limit;
     }
 	
+    public void setOrderInfo(BookedOrderInfoModel model){
+    	this.orderInfo=model;
+    }
 
 
 	public void setId(int id) {
@@ -151,6 +156,29 @@ public class ExamPreasignAction extends BaseAction  {
 		List lListKsdd=adminBiz.listKskm(null);
 		JSONArray lJsonKsdd= ObjectUtil.toJsonArray(lListKsdd);
 		this.writePlainText(lJsonKsdd.toString());
+	}
+	
+	public void do_cancelPreasign(){
+		String ids=ObjectUtil.formatString(this.getParameter("ids")) ;
+		List listId=StringUtil.splitToList(ids,",");
+		ResultModel reModel=new ResultModel();
+		int re=0;
+		this.bookedBiz.loadCrudMapper(BookedOrderInfoModel.class);
+		re+=this.bookedBiz.removeModelInPk(listId);
+		reModel.setAction(ResultModel.ACTION_ALERT);
+		if(re>0){
+			reModel.setTitle("操作成功");
+			reModel.setMsg("成功撤消{0}条记录",re);
+		}else{
+			reModel.setTitle("操作失败");
+			reModel.setMsg("没有预约记录被撤消",re);
+		}
+		this.writePlainText(reModel.toJson().toString());
+	}
+	
+	public void do_preasign(){
+		ResultModel reModel=this.bookedBiz.tranExamPreasgin(orderInfo);
+		this.writePlainText(reModel.toJson().toString());
 	}
 	
 }
