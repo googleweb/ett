@@ -144,6 +144,10 @@
   <property name="mapperInterface" value="com.ett.drv.mapper.admin.IUserMapper"></property>
 </bean>
 
+<bean id="roleMapper" parent="baseMapper">
+  <property name="mapperInterface" value="com.ett.drv.mapper.admin.IRoleMapper"></property>
+</bean>
+
 <bean id="terminalMapper" parent="baseMapper">
   <property name="mapperInterface" value="com.ett.drv.mapper.self.ITerminalMapper"></property>
 </bean>

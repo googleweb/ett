@@ -227,10 +227,9 @@ public abstract class BaseDrvBiz extends BaseCurdBiz {
 		this.carOwnerChangeMapper = carOwnerChangeMapper;
 		this.addCrudMapper(CarOwnerChangeModel.class, carOwnerChangeMapper);
 	}
-	public IRoleMapper<RoleModel> getRoleMapper() {
-		return roleMapper;
-	}
+
 	public void setRoleMapper(IRoleMapper<RoleModel> roleMapper) {
 		this.roleMapper = roleMapper;
+		this.addCrudMapper(RoleModel.class, roleMapper);
 	}
 }

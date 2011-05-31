@@ -36,6 +36,7 @@
 <mapper resource="com/ett/drv/mapper/admin/oracle/IDepartmentMapper.xml"/>
 <mapper resource="com/ett/drv/mapper/admin/oracle/IMenuMapper.xml"/>
 <mapper resource="com/ett/drv/mapper/admin/oracle/IUserMapper.xml"/>
+<mapper resource="com/ett/drv/mapper/admin/oracle/IRoleMapper.xml"/>
 
 <mapper resource="com/ett/drv/mapper/self/oracle/IDeviceMapper.xml"/>
 <mapper resource="com/ett/drv/mapper/self/oracle/ITerminalMapper.xml"/>
