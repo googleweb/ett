@@ -30,6 +30,7 @@ public class ExamPreasignAction extends BaseAction  {
 	private BookedWeekRecordModel weekRecord;
 	private BookedLimitModel limit;
 	private BookedOrderInfoModel orderInfo;
+	private List<BookedOrderInfoModel> listOrderInfoModels=new ArrayList<BookedOrderInfoModel>();
 	
 	private int Id;
 	
@@ -113,7 +114,7 @@ public class ExamPreasignAction extends BaseAction  {
 		List<BookedOrderInfoModel> listOrderInfo=getOrderInfo(Id);
 		List listPass=new ArrayList();
 		for(BookedOrderInfoModel boModel : listOrderInfo){
-			if(boModel.getIChecked()!=2){
+			if(ObjectUtil.isNotEquals(2, boModel.getIChecked())){
 				listPass.add(boModel);
 			}
 		}
@@ -125,7 +126,7 @@ public class ExamPreasignAction extends BaseAction  {
 		List<BookedOrderInfoModel> listOrderInfo=getOrderInfo(Id);
 		List listPass=new ArrayList();
 		for(BookedOrderInfoModel boModel : listOrderInfo){
-			if(boModel.getIChecked()==2){
+			if(ObjectUtil.isEquals(2, boModel.getIChecked())){
 				listPass.add(boModel);
 			}
 		}

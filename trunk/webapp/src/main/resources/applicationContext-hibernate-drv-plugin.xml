@@ -30,6 +30,21 @@
 		</bean>
 		-->
 		
+			   <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"> 
+        <property name="locations"> 
+          <list> 
+            <value>WEB-INF/system.properties</value> 
+            </list> 
+         </property> 
+   </bean>
+	
+	
+	  <bean id="dataSourceDrv" class="org.springframework.jndi.JndiObjectFactoryBean">
+      <property name="jndiName" value="${jndi.oradrvde2}"></property>
+    </bean>   
+		
+		<!--  
+		
 		<bean id="dataSourceDrv" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 			<property name="driverClassName" value="oracle.jdbc.OracleDriver"></property>
 			<property name="url" value="jdbc:oracle:thin:@192.168.1.10:1521:oradrvde"/>
@@ -37,6 +52,8 @@
 			<property name="password" value="stjj117"/>
 
 		</bean>
+		
+		-->
 	<!--jndi
 <bean id="dataSourceDrv" class="org.springframework.jndi.JndiObjectFactoryBean">
   <property name="resourceRef">
@@ -215,7 +232,7 @@
 	</tx:advice>
 
 	<aop:config>
-		<aop:pointcut expression="execution(* com.ett.*.biz.*.*(..))" id="methodHibernateDrv"/>
+		<aop:pointcut expression="execution(* com.ett.self.biz.*.*(..))" id="methodHibernateDrv"/>
 		<aop:advisor advice-ref="txAdviceHibernateDrv" pointcut-ref="methodHibernateDrv" />
 		
 	</aop:config>

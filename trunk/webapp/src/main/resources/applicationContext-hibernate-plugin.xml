@@ -34,13 +34,27 @@ jdbc:oracle:thin:@(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = 127.0.0.1)(P
 
 		</bean>
 	-->
+	
+	   <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"> 
+        <property name="locations"> 
+          <list> 
+            <value>WEB-INF/system.properties</value> 
+            </list> 
+         </property> 
+   </bean>
+	
+	
+	  <bean id="dataSourceHibernate" class="org.springframework.jndi.JndiObjectFactoryBean">
+      <property name="jndiName" value="${jndi.oradrvde}"></property>
+    </bean>    
+    <!--  
 	<bean id="dataSourceHibernate" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 			<property name="driverClassName" value="oracle.jdbc.OracleDriver"></property>
 			<property name="url" value="jdbc:oracle:thin:@192.168.1.10:1521:oradrvde"/>
 			<property name="username" value="aspnet"/>
 			<property name="password" value="stjj117"/>
     </bean>
-	
+	-->
 <!--jndi
 <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
   <property name="resourceRef">
