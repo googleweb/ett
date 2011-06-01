@@ -7,6 +7,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.ett.drv.model.admin.DepartmentModel;
+import com.ett.drv.model.admin.RoleModel;
 import com.ett.drv.model.admin.UserModel;
 import com.ett.drv.web.action.BaseAction;
 import com.ett.drv.web.filter.AuthFilter;
@@ -120,12 +121,9 @@ public class UserAction extends BaseAction implements ModelDriven<UserModel> {
 		this.writePlainText(lJsonKscc.toString());
     }
     public void combobox_roleid(){
-    	ArrayList lListRole = null;
-		try {
-			lListRole= adminBiz.listRoleModel();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+    	List lListRole = new ArrayList();
+    	this.adminBiz.loadCrudMapper(RoleModel.class);
+    	lListRole=this.adminBiz.getModel();
 		JSONArray lJsonKscc= ObjectUtil.toJsonArray(lListRole);
 		this.writePlainText(lJsonKscc.toString());
     }
