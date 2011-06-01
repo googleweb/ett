@@ -24,14 +24,13 @@ import com.smartken.kia.core.util.EasyUiUtil;
 import com.smartken.kia.core.util.ObjectUtil;
 import com.smartken.kia.core.util.StringUtil;
 
-public class ExamPreasignAction extends BaseAction  {
+public class ExamPreasignAction extends BaseAction implements ModelDriven<BookedOrderInfoModel>  {
 
 	
 	private BookedWeekRecordModel weekRecord;
 	private BookedLimitModel limit;
 	private BookedOrderInfoModel orderInfo;
-	private List<BookedOrderInfoModel> listOrderInfoModels=new ArrayList<BookedOrderInfoModel>();
-	
+
 	private int Id;
 	
 	
@@ -43,9 +42,6 @@ public class ExamPreasignAction extends BaseAction  {
     	return limit;
     }
 	
-    public void setOrderInfo(BookedOrderInfoModel model){
-    	this.orderInfo=model;
-    }
 
 
 	public void setId(int id) {
@@ -60,6 +56,17 @@ public class ExamPreasignAction extends BaseAction  {
 
 
 
+
+	@Override
+	public void prepare() throws Exception {
+		// TODO Auto-generated method stub
+		super.prepare();
+		if(isPost()){
+			if(orderInfo==null){
+				orderInfo=new BookedOrderInfoModel();
+			}
+		}
+	}
 
 	@Override
 	public String to_index() throws Exception {
@@ -180,6 +187,11 @@ public class ExamPreasignAction extends BaseAction  {
 	public void do_preasign(){
 		ResultModel reModel=this.bookedBiz.tranExamPreasgin(orderInfo);
 		this.writePlainText(reModel.toJson().toString());
+	}
+
+	public BookedOrderInfoModel getModel() {
+		// TODO Auto-generated method stub
+		return orderInfo;
 	}
 	
 }

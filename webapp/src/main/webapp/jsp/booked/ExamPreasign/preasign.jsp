@@ -36,6 +36,13 @@ String bookedExamPreasgin=basePath+"/booked/ExamPreasign";
        String tablePass="tablePass";
        String tableFail="tableFail";
        String formPreasign="formPreasign";
+       
+       
+       JsFunctionModel clickPreasginHander=new JsFunctionModel("clickPreasginHander",null);
+       clickPreasginHander
+       .appendContext("url=\"{0}\";",bookedExamPreasgin+"/do/preasign.action")
+       .appendContext("{0}.form(\"submit\",'{'url:url '}');",JQueryModel.id(formPreasign))
+       ;
     
        JsListModel cols=new JsListModel();
        JsListModel row1=new JsListModel();
@@ -117,12 +124,16 @@ String bookedExamPreasgin=basePath+"/booked/ExamPreasign";
        ;
        
        
+       JsContextModel jsFun=new JsContextModel();
+       jsFun.appendScript(clickPreasginHander);
+       
        JsContextModel jsContext=new JsContextModel();
        jsContext.appendScript(datagridPass);
        jsContext.appendScript(datagridFail);
     %>
     
     <script type="text/javascript">
+    <%=jsFun.toScirpt() %>
     <%=JQueryModel.DOC_READY_START %>
     <%=jsContext.toScirpt() %>
     <%=JQueryModel.DOC_READY_END %>
@@ -131,15 +142,16 @@ String bookedExamPreasgin=basePath+"/booked/ExamPreasign";
   
   <body>
      <div>
-      <form  id="<%=formPreasign %>" method="post" action="<%=bookedExamPreasgin %>/do/preasign.action" >
-      <input type="hidden" value="${limit.id}" name="orderInfo.<%=BookedOrderInfoModel.F.IPaibanid %>" />
+      <form  id="<%=formPreasign %>" method="post" >
+      
       <table class="editTable" cellspacing="0"
       >
        <tr>
          <td style="text-align: center; font-size: 1.2em" 
          >约考日期${limit.dateKsrq}&nbsp;驾校 ${limit.CSchoolName } 预约申请名单
          <p/>
-                      科目&nbsp;<input  name="orderInfo.<%=BookedOrderInfoModel.F.IKm %>"
+         <input type="hidden" value="${limit.id}" name="<%=BookedOrderInfoModel.F.IPaibanid %>" />
+                      科目&nbsp;<input  name="<%=BookedOrderInfoModel.F.IKm %>"
                      class="<%=EasyUiModel.ComboBox.CLASS %>"
    	                 <%=EasyUiModel.ComboBox.Properties.URL(bookedExamPreasgin+"/combobox/kskm.action") %>
   	                 <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
@@ -147,7 +159,7 @@ String bookedExamPreasgin=basePath+"/booked/ExamPreasign";
   	                  <%=EasyUiModel.ComboBox.Properties.REQUIRED(true) %>
   	                  <%=EasyUiModel.ComboBox.Properties.EDITABLE(false) %>
                       />
-        &nbsp;地点&nbsp;<input  name="orderInfo.<%=BookedOrderInfoModel.F.CKsddCode %>"
+        &nbsp;地点&nbsp;<input  name="<%=BookedOrderInfoModel.F.CKsddCode %>"
           	                 class="<%=EasyUiModel.ComboBox.CLASS %>"
    	                 <%=EasyUiModel.ComboBox.Properties.URL(bookedExamPreasgin+"/combobox/ksdd.action") %>
   	                 <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
@@ -155,7 +167,7 @@ String bookedExamPreasgin=basePath+"/booked/ExamPreasign";
   	                  <%=EasyUiModel.ComboBox.Properties.REQUIRED(true) %>
   	                  <%=EasyUiModel.ComboBox.Properties.EDITABLE(false) %>
                      />
-        &nbsp;场次&nbsp;<input  name="orderInfo.<%=BookedOrderInfoModel.F.CKsccCode %>"
+        &nbsp;场次&nbsp;<input  name="<%=BookedOrderInfoModel.F.CKsccCode %>"
                   	  class="<%=EasyUiModel.ComboBox.CLASS %>"
    	                 <%=EasyUiModel.ComboBox.Properties.URL(bookedExamPreasgin+"/combobox/kscc.action") %>
   	                 <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
@@ -167,21 +179,21 @@ String bookedExamPreasgin=basePath+"/booked/ExamPreasign";
        </tr>
        <tr>
          <td style="text-align: left;padding-left: 50px">
-                  证件号码&nbsp;<input   name="orderInfo.<%=BookedOrderInfoModel.F.CIdcard %>"  
+                  证件号码&nbsp;<input   name="<%=BookedOrderInfoModel.F.CIdcard %>"  
                       class="<%=EasyUiModel.ValidateBox.CLASS %>"
                        <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
                        <%=EasyUiModel.ValidateBox.Properties.VALID_TYPE("idCard") %>
                       />
-       &nbsp;培训审核日期&nbsp;<input class="<%=EasyUiModel.DateBox.CLASS %>"  name="orderInfo.<%=BookedOrderInfoModel.F.DatePxshrq %>" 
+       &nbsp;培训审核日期&nbsp;<input class="<%=EasyUiModel.DateBox.CLASS %>"  name="<%=BookedOrderInfoModel.F.DatePxshrq %>" 
                        <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
                      />
-       &nbsp;号牌号码&nbsp;<input class="<%=EasyUiModel.ValidateBox.CLASS %>" name="orderInfo.<%=BookedOrderInfoModel.F.CHmhp %>"
+       &nbsp;号牌号码&nbsp;<input class="<%=EasyUiModel.ValidateBox.CLASS %>" name="<%=BookedOrderInfoModel.F.CHmhp %>"
                         <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
                        <%=EasyUiModel.ValidateBox.Properties.VALID_TYPE("carno") %>
                      /> 
        &nbsp;<a  class="<%=EasyUiModel.LinkButton.CLASS %>"
                     <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_OK) %>
-                    onclick="<%="$('#"+formPreasign+"')" %>.form('submit');"
+                    onclick="<%=clickPreasginHander.getFunName() %>()"
                >约考</a>
          </td>
        </tr>

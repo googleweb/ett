@@ -47,7 +47,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         lSbrScript.append(getScriptTag(lStrPlugFloder+"/extends.jquery.js"));
         lSbrScript.append(getScriptTag(lStrPlugFloder+"/extends.easyui.js"));
         //lSbrScript.append(getScriptTag(lStrPlugFloder+"/common/util.js"));
-        lSbrScript.append(getScriptTag(lStrPlugFloder+"/ui.datagrid.js"));
+        lSbrScript.append(getScriptTag(lStrPlugFloder+"/easyui.CrudDatagrid.js"));
         
      }
      
