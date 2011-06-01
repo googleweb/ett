@@ -123,7 +123,7 @@ $.extend($.fn.validatebox.defaults.rules, {
  $.fn.window.defaults.onMove= $.fn.panel.defaults.onMove;
  $.fn.dialog.defaults.onMove= $.fn.panel.defaults.onMove;
 
- $.fn.form.defaults.success=function(str){ str.messager(null);}
+ $.fn.form.defaults.success=function(str){str.messager(null);}
  $.fn.form.defaults.onSubmit=function(){ return $(this).form("validate"); }
  $.fn.form.defaults.onLoadError=function(){
 	 $.messager.alert("Error","Can't access to the remote site.","error");
