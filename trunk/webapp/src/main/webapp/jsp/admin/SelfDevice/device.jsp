@@ -111,10 +111,12 @@ String adminDeviceActionPath=basePath+"/admin/SelfDevice";
        row1.add(colPlaceAddress);
        row1.add(colYlwgUrl);
        row1.add(colCatalog);
-       row1.add(colOpera);
+       //row1.add(colOpera);
        
        cols.add(row1);
        
+       JsListModel formEditors=row1;
+       //formEditors.remove(0);
        
        JsListModel toolbar=new JsListModel();
        
@@ -138,7 +140,7 @@ String adminDeviceActionPath=basePath+"/admin/SelfDevice";
        .appendAttrs(EasyUiModel.DataGrid.Properties.COLUMNS,cols)
        .appendAttrs(EasyUiModel.DataGrid.Properties.PAGINATION,true)
        .appendAttrs(EasyUiModel.DataGrid.Properties.URL,adminDeviceActionPath+"/datagrid/device.action",true)       
-       .appendAttrs(EasyUiModel.DataGrid.Properties.TOOLBAR,toolbar.toScirpt())
+       .appendAttrs(EasyUiModel.DataGrid.Properties.TOOLBAR,"toolbar")
        //.appendAttrs(EasyUiModel.DataGrid.Events.ON_DBL_CLICK_ROW,"dblClickRowHandler")
        ;
        
@@ -152,17 +154,23 @@ String adminDeviceActionPath=basePath+"/admin/SelfDevice";
        
        
        JsContextModel funContext=new JsContextModel();
-       funContext.appendScript(clickAddHandler);
-       funContext.appendScript(clickEditHandler);
-       funContext.appendScript(clickRemoveHandler);
+      // funContext.appendScript(clickAddHandler);
+       //funContext.appendScript(clickEditHandler);
+      // funContext.appendScript(clickRemoveHandler);
     %>
     
      <script type="text/javascript">
-    function operaFormatter(value,rowData,rowIndex){
-    	var aEidt="<a title='编辑' href='javascript:void(0)' class='kia-icon edit' onclick='<%=clickEditHandler.getFunName()%>("+rowData["id"]+");'></a>";
-        return aEidt;
-    }
-    <%=funContext.toScirpt()%> 
+       <%=funContext.toScirpt()%>
+       try{
+       var opts={};
+       opts["regexp"]="<%=tableDG %>";
+       opts["editors"]=<%=formEditors.toScirpt() %>;
+       opts["urlAdd"]="<%=adminDeviceActionPath %>/do/editDevice.action";
+       opts["urlRemove"]="<%=adminDeviceActionPath %>/do/removeDevice.action";
+       opts["urlUpdate"]=opts["urlAdd"];
+       var crud=new CrudDatagrid(opts);
+       var toolbar=crud.getToolbar();
+       }catch(ex) {alert(ex);}
        <%=JQueryModel.DOC_READY_START%>
        <%=context.toScirpt()%>
        <%=JQueryModel.DOC_READY_END%>
