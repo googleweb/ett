@@ -114,7 +114,7 @@ hbm配置的过滤器
  </filter-mapping>
  <filter-mapping>
   <filter-name>authFilter</filter-name>
-  <url-pattern>/jsp/admin/*</url-pattern>
+  <url-pattern>/jsp/*,/admin/*,/booked/*</url-pattern>
  </filter-mapping>
  <!-- <listener> <listener-class>com.ft.drv.DrvCountListener</listener-class> 
 		</listener> 

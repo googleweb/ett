@@ -166,14 +166,14 @@ kiaLoadFields:function(){
 	var urlRemove=opts["urlRemove"]||"";
 	var data=opts["data"]||{};
 	var objDiv=$("<div></div>");
-	objDiv.css("width","100%")
-	.css("height","100%")
+	objDiv.css("width","auto")
+	.css("height","auto")
 	.css("overflow","hidden")
 	;
 	var objForm=$("<form method='post'></form>");
 	var objTable=$("<table cellspacing='0' ></table>");
 	objTable.addClass("editTable");
-	objTable.css("table-layout","auto");
+	objTable.css("table-layout","inherit");
 	$.each(data,function(dataName,dataValue){
 		var hidden=$("<input type=\"hidden\" />")
 		hidden.attr("name",prefix+dataName).attr("value",dataValue);
@@ -205,7 +205,7 @@ kiaLoadFields:function(){
 			inputObj.val(data[inputName]);
 		}
 	    
-	    inputObj.css("width","90%").attr("name",prefix+inputName);
+	    inputObj.attr("name",prefix+inputName);
 		var span=$("<span></span>");
 		span.html(inputTitle);
 		//td.html(data[inputName]);
@@ -213,7 +213,7 @@ kiaLoadFields:function(){
 		th.append(span).append(":");
 		tr.append(th);
 		tr.append(td);
-		if(index%colNum==colNum-1){
+		if(index%colNum==colNum-1||index==editors.length-1){
 		    objTable.append(tr);
 		}
 
@@ -235,14 +235,20 @@ kiaLoadFields:function(){
 	tdOpera.attr("colspan",colNum*2);
 	var aSave=$("<a></a>");
 	var aClear=$("<a></a>");
+	var aReset=$("<a></a>");
 	tdOpera.append(aSave);
-	tdOpera.append(aClear);
+	//tdOpera.append(aClear);
+	tdOpera.append(aReset);
     aSave.linkbutton({
     	text:"保存"
     	,iconCls:"icon-save"
     });
     aClear.linkbutton({
     	text:"清空"
+    	,iconCls:"icon-cancel"
+    });
+    aReset.linkbutton({
+    	text:"重置"
     	,iconCls:"icon-cancel"
     });
     aSave.click(function(){
@@ -258,6 +264,7 @@ kiaLoadFields:function(){
     	
     });
     aClear.click(function(){objForm.form("clear");});
+    aReset.click(function(){objForm[0].reset();});
 	objTable.append(trOpera);
     objForm.append(objTable);
 	objDiv.append(objForm);

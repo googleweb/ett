@@ -43,7 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      }
      if(isExist(lArrPlugins,"easyui"))
      {
-         lStrPlugFloder=basePath+"/jquery-easyui-1.2.2"; 
+         lStrPlugFloder=basePath+"/jquery-easyui-1.2.3"; 
          lSbrScript.append(getScriptTag(lStrPlugFloder+"/jquery.easyui.min.js"))
     	 .append(getCssLinkTag(lStrPlugFloder+"/themes/default/easyui.css"))
     	  .append(getCssLinkTag(lStrPlugFloder+"/themes/icon.css"));
