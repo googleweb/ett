@@ -20,6 +20,7 @@ var CrudDatagrid=function(opts){
 };
 
 CrudDatagrid.prototype.getToolbar=function(opts){
+	        var textBtnAdd=opts["textBtnAdd"]||"新建";
 		    var newRow=new this._initRow();
 	        var regexp=this._regexp;
 	        var id=this._id;
@@ -29,7 +30,7 @@ CrudDatagrid.prototype.getToolbar=function(opts){
 	        var formOpts={};
     	    formOpts["editors"]=this._editors;
     	    formOpts["prefix"]=opts["prefix"]||"";
-	    	var btnAdd={iconCls:"icon-add",text:"新建"
+	    	var btnAdd={iconCls:"icon-add",text:textBtnAdd
 	        ,handler:function(){
 	    		formOpts["data"]=newRow;
 	    		formOpts["urlSave"]=urlAdd;
