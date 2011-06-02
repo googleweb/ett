@@ -2,6 +2,7 @@ package com.ett.drv.biz.impl;
 
 import com.ett.drv.mapper.admin.IDepartmentMapper;
 import com.ett.drv.mapper.admin.IDictMapper;
+import com.ett.drv.mapper.admin.IDictTypeMapper;
 import com.ett.drv.mapper.admin.IMenuMapper;
 import com.ett.drv.mapper.admin.IRoleMapper;
 import com.ett.drv.mapper.admin.IUserMapper;
@@ -26,6 +27,7 @@ import com.ett.drv.mapper.self.IVehFlowMapper;
 import com.ett.drv.mapper.self.IVehicleMapper;
 import com.ett.drv.model.admin.DepartmentModel;
 import com.ett.drv.model.admin.DictModel;
+import com.ett.drv.model.admin.DictTypeModel;
 import com.ett.drv.model.admin.MenuModel;
 import com.ett.drv.model.admin.RoleModel;
 import com.ett.drv.model.admin.UserModel;
@@ -53,6 +55,12 @@ import com.smartken.kia.core.model.impl.BaseCurdBiz;
 public abstract class BaseDrvBiz extends BaseCurdBiz {
 
 	protected IDictMapper<DictModel> dictMapper;
+	protected IDictTypeMapper<DictTypeModel> dictTypeMapper;
+	public void setDictTypeMapper(IDictTypeMapper<DictTypeModel> dictTypeMapper) {
+		this.dictTypeMapper = dictTypeMapper;
+		this.addCrudMapper(DictTypeModel.class, dictTypeMapper);
+	}
+
 	protected IDepartmentMapper<DepartmentModel> departmentMapper;
 	protected IRoleMapper<RoleModel> roleMapper;
 	protected IMenuMapper<MenuModel> menuMapper;

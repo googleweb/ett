@@ -127,7 +127,9 @@
 <bean id="dictMapper" parent="baseMapper">
   <property name="mapperInterface" value="com.ett.drv.mapper.admin.IDictMapper"></property>
 </bean>
-
+<bean id="dictTypeMapper" parent="baseMapper">
+  <property name="mapperInterface" value="com.ett.drv.mapper.admin.IDictTypeMapper"></property>
+</bean>
 <bean id="departmentMapper" parent="baseMapper">
   <property name="mapperInterface" value="com.ett.drv.mapper.admin.IDepartmentMapper"></property>
 </bean>
@@ -229,6 +231,7 @@
    <property name="hardwareMapper" ref="hardwareMapper"></property>
    <property name="carOwnerChangeMapper" ref="carOwnerChangeMapper"></property>
    <property name="personChangeMapper" ref="personChangeMapper"></property>
+   <property name="dictTypeMapper"     ref="dictTypeMapper"></property>
 </bean>
 
 <bean id="baseBookedBiz" abstract="true" class="com.ett.drv.biz.impl.BookedBiz"  parent="baseDrvBiz" ></bean>
