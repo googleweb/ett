@@ -5,7 +5,7 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-String adminDeviceActionPath=basePath+"/admin/SelfDevice";
+String adminDeviceActionPath=basePath+"admin/SelfDevice";
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -98,7 +98,17 @@ String adminDeviceActionPath=basePath+"/admin/SelfDevice";
        JsMapModel colYlwgUrl=EasyUiUtil.createTextColumn(DeviceModel.F.CYlwgUrl);
        colYlwgUrl.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"网关地址",true);
        
-     
+       JsMapModel colCCreateip=EasyUiUtil.createTextColumn(DeviceModel.F.CCreateip);
+       colCCreateip.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"设备Ip",true);
+       
+       JsMapModel colCDefaultKsccCode=EasyUiUtil.createTextColumn(DeviceModel.F.CDefaultKsccCode);
+       colCDefaultKsccCode.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"考试场次",true);
+       
+       JsMapModel colCDrvInterfaceUrl=EasyUiUtil.createTextColumn(DeviceModel.F.CDrvInterfaceUrl);
+       colCDrvInterfaceUrl.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"网关地址",true);
+       
+       JsMapModel colCGlbmCode=EasyUiUtil.createTextColumn(DeviceModel.F.CGlbmCode);
+       colCGlbmCode.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"管理部门",true);
        
        JsMapModel colOpera=EasyUiUtil.createTextColumn("xxx",true);
        colOpera.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"opera",true);
@@ -110,13 +120,21 @@ String adminDeviceActionPath=basePath+"/admin/SelfDevice";
        row1.add(colMachineName);
        row1.add(colPlaceAddress);
        row1.add(colYlwgUrl);
-       row1.add(colCatalog);
        //row1.add(colOpera);
        
        cols.add(row1);
        
-       JsListModel formEditors=row1;
-       //formEditors.remove(0);
+       JsListModel formEditors=new JsListModel();
+       formEditors.add(colCatalog);
+       formEditors.add(colDevicetype);
+       formEditors.add(colMachineName);
+       formEditors.add(colPlaceAddress);
+       formEditors.add(colYlwgUrl);
+       formEditors.add(colCCreateip);
+       formEditors.add(colCDefaultKsccCode);
+       formEditors.add(colCDrvInterfaceUrl);
+       formEditors.add(colCGlbmCode);
+
        
        JsListModel toolbar=new JsListModel();
        
@@ -163,13 +181,16 @@ String adminDeviceActionPath=basePath+"/admin/SelfDevice";
        <%=funContext.toScirpt()%>
        try{
        var opts={};
-       opts["regexp"]="<%=tableDG %>";
+       opts["regexp"]="#<%=tableDG %>";
        opts["editors"]=<%=formEditors.toScirpt() %>;
        opts["urlAdd"]="<%=adminDeviceActionPath %>/do/editDevice.action";
        opts["urlRemove"]="<%=adminDeviceActionPath %>/do/removeDevice.action";
        opts["urlUpdate"]=opts["urlAdd"];
+       opts["initRow"]=function(){return <%=initRow.toJson().toString() %> ;};
+       var toolbarOpts={};
+       toolbarOpts["prefix"]="device.";
        var crud=new CrudDatagrid(opts);
-       var toolbar=crud.getToolbar();
+       var toolbar=crud.getToolbar(toolbarOpts);
        }catch(ex) {alert(ex);}
        <%=JQueryModel.DOC_READY_START%>
        <%=context.toScirpt()%>
