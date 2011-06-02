@@ -37,7 +37,10 @@
  id="com.ett.drv.web.action.admin.MenuAction"
 >
 </bean>
-
+<bean class="com.ett.drv.web.action.admin.DicttypeAction" parent="baseAction"
+ id="com.ett.drv.web.action.admin.DicttypeAction"
+>
+</bean>
 <bean class="com.ett.drv.web.action.admin.RoleAction" parent="baseAction"
  id="com.ett.drv.web.action.admin.RoleAction"
 >

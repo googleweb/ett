@@ -43,7 +43,6 @@ public class RoleAction extends BaseAction implements ModelDriven<RoleModel> {
 	}
 	@SuppressWarnings("unchecked")
 	public void datagrid_role(){
-		System.out.println("4");
 		this.adminBiz.loadCrudMapper(RoleModel.class);
 		List<IFormatterModel> list=(List<IFormatterModel>) this.adminBiz.getModel(this.getPager());
 		JSONObject jsonDG=EasyUiUtil.toJsonDataGrid(list,this.adminBiz.count());
@@ -108,12 +107,12 @@ public class RoleAction extends BaseAction implements ModelDriven<RoleModel> {
 		if(re>0){
 			resultModel.setTitle("操作成功");
 			//resultModel.setAction(ResultModel.ACTION_CONFIRM);
-			resultModel.setMsg("成功删除{0}个用户",re);
+			resultModel.setMsg("成功删除{0}个角色",re);
 	
 		}else {
 			resultModel.setAction(ResultModel.ACTION_ALERT);
 			resultModel.setTitle("操作失败");
-			resultModel.setMsg("没有用户被删除");
+			resultModel.setMsg("没有角色被删除");
 		}
 		this.writePlainText(resultModel.toJson().toString());   
 	}
