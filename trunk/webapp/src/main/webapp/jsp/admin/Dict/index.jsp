@@ -29,7 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	     </jsp:include>
          <jsp:include page="/css/index.jsp"></jsp:include>
          <jsp:include page="/js/index.jsp"></jsp:include>  
-
+  
   <script type="text/javascript">
  
   function operaFormatter(value,rowData,rowIndex){
@@ -103,9 +103,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   {field:"<%=DictModel.F.CState%>",title:"状态",width:150}
    
   ]],
+  groupField:'<%=DictModel.F.CTypename%>',
+  view: groupview,
   pagination:true,
   onDblClickRow:dblClickRowHandler
   ,
+  groupFormatter:function(value, rows){
+					return value + ' - ' + rows.length + ' Item(s)';
+				},
   url:"<%=basePath%>admin/Dict/datagrid/dicts.action"
     }
   );
