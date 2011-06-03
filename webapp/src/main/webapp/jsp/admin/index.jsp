@@ -31,7 +31,7 @@ String adminMenuPath=basePath+"admin/Menu";
 						return;
 					if($("#mainTabs").tabs("exists",node.text)==false)
 					{
-                        var src="<%=basePath %>"+node.attributes.url;
+                        var src="<%=basePath%>"+node.attributes.url;
                         var iframe="<iframe class='innerFrame' frameborder='0' src='"+src+"' />";
 						$("#mainTabs").tabs('add',{
 						                       title:node.text,
