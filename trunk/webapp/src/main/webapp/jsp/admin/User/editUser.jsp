@@ -80,13 +80,6 @@ String adminUserPath=basePath+"/admin/User";
                />
              </td>
             <th>角色号</th>
-             <!--<td style="width: 35%">
-              <input name="IRoleid" value="${IRoleid}" 
-              class="<%=EasyUiModel.ValidateBox.CLASS %>"
-                 <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
-              />
-             </td>
-           -->
             <td style="width: 35%">
              <input name="<%= UserModel.F.IRoleid %>" 
                        valuefield="Id"
