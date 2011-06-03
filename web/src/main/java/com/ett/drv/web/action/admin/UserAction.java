@@ -6,12 +6,12 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import com.ett.drv.model.admin.DepartmentModel;
 import com.ett.drv.model.admin.RoleModel;
 import com.ett.drv.model.admin.UserModel;
 import com.ett.drv.web.action.BaseAction;
 import com.ett.drv.web.filter.AuthFilter;
 import com.opensymphony.xwork2.ModelDriven;
+import com.smartken.kia.core.model.IFormatterModel;
 import com.smartken.kia.core.model.impl.ResultModel;
 import com.smartken.kia.core.util.EasyUiUtil;
 import com.smartken.kia.core.util.ObjectUtil;
@@ -19,10 +19,13 @@ import com.smartken.kia.core.util.StringUtil;
 
 public class UserAction extends BaseAction implements ModelDriven<UserModel> {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private UserModel _userModel;
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
 	}	
 	public String do_login(){
 		String loginName=this.getParameter(UserModel.F.CLoginName);
@@ -50,11 +53,20 @@ public class UserAction extends BaseAction implements ModelDriven<UserModel> {
 	}
 	@SuppressWarnings("unchecked")
 	public void datagrid_users(){
-		//查处所以User，输出json格式的datagrid    User/datagrid/users.action
+		UserModel query=new UserModel();
+		String Username=this.getParameter("Username");
+		if(StringUtil.isNotBlank(Username)){
+			Username="%"+Username+"%";
+			query.setCLoginName(Username);
+		}
+		String IRoleid=this.getParameter("IRoleid");
+		if(StringUtil.isNotBlank(IRoleid)){
+			query.setIRoleid(Integer.valueOf(IRoleid));
+		}
 		this.adminBiz.loadCrudMapper(UserModel.class);
-		List list=this.adminBiz.getModel(this.getPager());
+		List list=this.adminBiz.getView(query,this.getPager());
 		JSONObject jsonDG=EasyUiUtil.toJsonDataGrid(list,this.adminBiz.count());
-		this.writePlainText(jsonDG.toString());		
+		this.writePlainText(jsonDG.toString());
 	}	
 	public String to_editUser(){
 	    return "jsp";
@@ -86,7 +98,6 @@ public class UserAction extends BaseAction implements ModelDriven<UserModel> {
 	}
     @SuppressWarnings("unchecked")
 	public void do_deleteUser(){
-    	//根据id删除User，，并输出json格式的保存结果
     	ArrayList lListIds=new ArrayList();
 		String ids=this.getParameter("ids");
 		int re=0;
@@ -127,4 +138,23 @@ public class UserAction extends BaseAction implements ModelDriven<UserModel> {
 		JSONArray lJsonKscc= ObjectUtil.toJsonArray(lListRole);
 		this.writePlainText(lJsonKscc.toString());
     }
+    @SuppressWarnings("unchecked")
+	public void search_User(){
+		UserModel userModel=new UserModel();
+		String Username=this.getParameter("Username");
+		if(StringUtil.isNotBlank(Username)){
+			Username="%"+Username+"%";
+			userModel.setCLoginName(Username);
+		}
+		String IRoleid=this.getParameter("IRoleid");
+		if(StringUtil.isNotBlank(IRoleid)){
+			userModel.setIRoleid(Integer.valueOf(IRoleid));
+		}
+        this.selfBiz.loadCrudMapper(UserModel.class);
+		List<IFormatterModel> searchUser=this.selfBiz.getModel(userModel);
+		JSONObject jsonDg=EasyUiUtil.toJsonDataGrid(searchUser);
+		this.writePlainText(jsonDg.toString());
+	}
+
+
 }

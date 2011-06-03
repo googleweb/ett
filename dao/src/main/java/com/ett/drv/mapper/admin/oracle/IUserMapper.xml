@@ -73,9 +73,13 @@ C_KM=#{model.CKm,jdbcType=VARCHAR,javaType=String},
 
 <sql id="orderby">order by m.ID desc </sql>
 
-<sql id="joinColums"></sql>
-
-<sql id="join"></sql><!-- 别名m已被主表使用  -->
+<sql id="joinColums">
+   ,role.c_name as role_name
+</sql>
+  
+<sql id="join">
+  left join TABLE_ROLES role on role.id=m.i_roleid 
+</sql><!-- 别名m已被主表使用  -->
 
 <resultMap type="com.ett.drv.model.admin.UserModel" id="resultMap">
  <id column="ID"  property="Id" jdbcType="INTEGER" javaType="Integer"/>
@@ -191,7 +195,11 @@ C_KM=#{model.CKm,jdbcType=VARCHAR,javaType=String},
 
 
 
-<resultMap type="com.ett.drv.model.admin.UserModel" id="viewMap" extends="resultMap" ></resultMap>
+<resultMap type="com.ett.drv.model.admin.UserModel" id="viewMap" extends="resultMap"  >
+   <association property="roleModel" column="I_ROLEID" javaType="com.ett.drv.model.admin.RoleModel" >
+      <result column="role_name" property="CName" javaType="String" jdbcType="VARCHAR" />
+   </association>
+</resultMap>
 
 
 <sql id="selectViewCondition">

@@ -149,7 +149,8 @@ C_ROLESTRING=#{model.CRolestring,jdbcType=VARCHAR,javaType=String},
 
 
 
-<resultMap type="com.ett.drv.model.admin.RoleModel" id="viewMap" extends="resultMap" ></resultMap>
+<resultMap type="com.ett.drv.model.admin.RoleModel" id="viewMap" extends="resultMap" >
+</resultMap>
 
 
 <sql id="selectViewCondition">

@@ -32,10 +32,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <jsp:include page="/js/index.jsp"></jsp:include>  
   </head>
 <script type="text/javascript">
-function operaFormatter(value,rowData,rowIndex){
-    	var aEidt="<a title='编辑' href='javascript:void(0)' class='kia-icon edit' onclick='clickEditHandler("+rowData["id"]+");'></a>";
-        return aEidt;
-    }
+function searchUser(){
+	$("#formSearch").form("submit",{
+	  	url:'<%=basePath%>'+"admin/User/search/User.action",
+	   	success:function(str){
+	  			var json=Kia.util.strToJson(str); 
+	   			$("#test").datagrid("loadData",json); 
+	   			}
+  		}
+  );
+}
+
 function clickAddHandler(){ 
   		var href='<%=basePath%>'+"admin/User/to/editUser.action";
   		$("#divEditUser").dialog({
@@ -94,7 +101,7 @@ $(document).ready(function(){
 	{field:"<%=UserModel.F.CLoginName%>",title:"用户名",width:150},
 	{field:"<%=UserModel.F.CPwd%>",title:"密码",width:150},
 	{field:"<%=UserModel.F.CWorkid%>",title:"工作号",width:150},
-	{field:"<%=UserModel.F.IRoleid%>",title:"角色号",width:150},
+	{field:"<%=UserModel.V.RoleName%>",title:"角色号",width:150},
 	{field:"<%=UserModel.F.CState%>",title:"状态",width:150},
 	{field:"<%=UserModel.F.CIdcard%>",title:"卡号",width:150},
 	{field:"<%=UserModel.F.IDepid%>",title:"部门编号",width:150},
@@ -113,6 +120,31 @@ $(document).ready(function(){
 </script>
   <body>
     <div class="innerDiv">
+    <form method="post" id="formSearch">
+         <table class="editTable" cellspacing="0">
+            <tr>
+              <td style="width: 300px;">
+              		用户名:<input name="Username" class="easyui-validatebox" />
+              </td>
+              <td style="width: 35%">
+                 	角色名： <input name="<%= UserModel.F.IRoleid %>" 
+                       valuefield="Id"
+                   textfield="CName"
+                     url="<%=basePath%>admin/User/combobox/roleid.action" 
+                 value="${IRoleid}"
+  	         editable="false"
+  	                  class="<%=EasyUiModel.ComboBox.CLASS %>"
+                 <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+                   />
+             </td>
+              <td>
+                 <a class="easyui-linkbutton"  id="aSearch"
+                    onclick="searchUser()"
+                 >查询</a>
+              </td>         
+            </tr>
+         </table>
+      </form>
 	<table id="test"></table>
 	</div>
 	<div id="divEditUser"></div>	

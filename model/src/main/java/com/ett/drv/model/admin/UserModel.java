@@ -1,5 +1,8 @@
 package com.ett.drv.model.admin;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.smartken.kia.core.model.impl.BaseModel;
 
 
@@ -10,6 +13,10 @@ public class UserModel extends BaseModel {
 	 public static enum F { 
 		  Id,CLoginName,CFullName,CPwd,IRoleid,IDepid,CIdcard,CWorkid,CBeginip,CEndip,CState  
 		 } 
+	 
+	 public static enum V{
+		 RoleName
+	 }
 
 		private Integer Id;         //ID  NUMBER 38
 		private String CLoginName;         //C_LOGIN_NAME  VARCHAR2 30
@@ -23,6 +30,8 @@ public class UserModel extends BaseModel {
 		private String CEndip;         //C_ENDIP  VARCHAR2 30
 		private String CState;         //C_STATE  VARCHAR2 8
 		private String CKm;         //C_KM  VARCHAR2 10
+		
+		private RoleModel roleModel=new RoleModel();
 		
 		
 		public Integer getId() {
@@ -96,6 +105,27 @@ public class UserModel extends BaseModel {
 		}
 		public void setCKm(String cKm) {
 			CKm = cKm;
+		}
+		public RoleModel getRoleModel() {
+			return roleModel;
+		}
+		public void setRoleModel(RoleModel roleModel) {
+			this.roleModel = roleModel;
+		}
+		
+		
+		@Override
+		public JSONObject toJson() {
+			// TODO Auto-generated method stub
+			JSONObject json= super.toJson();
+			try {
+				json.put(UserModel.V.RoleName.name(), roleModel.getCName());
+				
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return json;
 		}
 		
 		
