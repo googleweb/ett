@@ -2,6 +2,7 @@
 <%@page import="com.smartken.kia.core.model.impl.EasyUiModel"%>
 <%@page import="com.ett.drv.model.admin.DepartmentModel"%>
 <%@page import="com.ett.drv.model.admin.DictModel"%>
+<%@page import="com.ett.drv.model.admin.DictTypeModel"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
 <%
@@ -55,6 +56,22 @@ String adminDictPath=basePath+"/admin/Dict";
      <input type="hidden" name="Id" value="${id}" />
        <table class="editTable" cellspacing="0">
          <tbody>
+          <tr>
+             <th>字典类型</th>
+             <td style="width: 35%">
+                    <input name="CTypename" type="text"  value="${CTypename}"
+                     class="<%=EasyUiModel.ComboBox.CLASS %>"
+				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+				    <%=EasyUiModel.ComboBox.Properties.URL(adminDictPath+"/combobox/DictType.action") %>
+				    <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictTypeModel.F.CTypename.name()) %>
+				    <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictTypeModel.F.CTypename.name()) %>
+				    <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("字典类型必须输入！") %>
+				   
+				  
+				    />
+		     <th>&nbsp;</th><td>&nbsp;</td>
+           
+           </tr>
            <tr>
              <th>字典名</th>
              <td style="width: 35%">

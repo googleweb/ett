@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.ett.drv.model.admin.DepartmentModel;
 import com.ett.drv.model.admin.DictModel;
+import com.ett.drv.model.admin.DictTypeModel;
 import com.ett.drv.model.admin.RoleModel;
 import com.ett.drv.model.admin.UserModel;
 import com.ett.drv.model.booked.BookedLimitModel;
@@ -34,4 +35,6 @@ public interface IAdminBiz extends IBaseCrudBiz {
 	public List<DictModel> listCarType() throws Exception;
 	
 	public List<DictModel> listKskm(String code) throws Exception;
+	
+	public List<DictTypeModel> listDictType() throws Exception;
 }

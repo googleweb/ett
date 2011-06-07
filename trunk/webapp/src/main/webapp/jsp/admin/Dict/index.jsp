@@ -109,7 +109,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   onDblClickRow:dblClickRowHandler
   ,
   groupFormatter:function(value, rows){
-					return value + ' - ' + rows.length + ' Item(s)';
+					return value + ' - ' + rows.length + ' 条';
 				},
   url:"<%=basePath%>admin/Dict/datagrid/dicts.action"
     }
