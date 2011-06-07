@@ -204,7 +204,8 @@ C_KM=#{model.CKm,jdbcType=VARCHAR,javaType=String},
 
 <sql id="selectViewCondition">
 	 <include refid="selectCondition"/>  
-</sql><select id="selectView" resultType="ArrayList" resultMap="viewMap">
+</sql>
+<select id="selectView" resultType="ArrayList" resultMap="viewMap">
 	select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> 
 		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
 			<include refid="selectViewCondition"/>

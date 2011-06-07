@@ -140,21 +140,19 @@ public class UserAction extends BaseAction implements ModelDriven<UserModel> {
     }
     @SuppressWarnings("unchecked")
 	public void search_User(){
-		UserModel userModel=new UserModel();
+		UserModel query=new UserModel();
 		String Username=this.getParameter("Username");
 		if(StringUtil.isNotBlank(Username)){
 			Username="%"+Username+"%";
-			userModel.setCLoginName(Username);
+			query.setCLoginName(Username);
 		}
 		String IRoleid=this.getParameter("IRoleid");
 		if(StringUtil.isNotBlank(IRoleid)){
-			userModel.setIRoleid(Integer.valueOf(IRoleid));
+			query.setIRoleid(Integer.valueOf(IRoleid));
 		}
-        this.selfBiz.loadCrudMapper(UserModel.class);
-		List<IFormatterModel> searchUser=this.selfBiz.getModel(userModel);
-		JSONObject jsonDg=EasyUiUtil.toJsonDataGrid(searchUser);
+        this.adminBiz.loadCrudMapper(UserModel.class);
+        List list=this.adminBiz.getView(query,this.getPager());
+		JSONObject jsonDg=EasyUiUtil.toJsonDataGrid(list);
 		this.writePlainText(jsonDg.toString());
 	}
-
-
 }
