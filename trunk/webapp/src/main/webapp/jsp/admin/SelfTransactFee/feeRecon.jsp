@@ -96,10 +96,8 @@ String feeActionPath=basePath+"admin/SelfTransactFee";
         dataGrid.appendAttrs(EasyUiModel.DataGrid.Properties.FIT,true);
         //dataGrid.appendAttrs(EasyUiModel.DataGrid.Properties.URL,feeActionPath+"/datagrid/feeLog.action",true);
         dataGrid.appendAttrs(EasyUiModel.DataGrid.Properties.COLUMNS,cols);
-        dataGrid.appendAttrs(EasyUiModel.DataGrid.Properties.ID_FIELD,"id",true);
         //dataGrid.appendAttrs(EasyUiModel.DataGrid.Properties.PAGINATION,true);
         dataGrid.appendAttrs(EasyUiModel.DataGrid.Properties.SINGLE_SELECT,true);
-        dataGrid.appendAttrs(EasyUiModel.DataGrid.Properties.ROWNUNMBERS,true);
         
         JsFunctionModel clickSearchHanlder= new JsFunctionModel("clickSearchHanlder",new String[]{});
         clickSearchHanlder
@@ -182,7 +180,7 @@ String feeActionPath=basePath+"admin/SelfTransactFee";
          </table>
        </form>
      </div>  
-  
+  <br />
       <div class="innerDiv" style="height: 70%">
    <table id="<%=tableDG %>"></table>
    </div>

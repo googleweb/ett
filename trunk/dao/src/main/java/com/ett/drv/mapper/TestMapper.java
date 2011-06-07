@@ -12,20 +12,22 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Test;
 
 import com.ett.drv.mapper.booked.ILimitMapper;
+import com.ett.drv.mapper.self.ITransactResourceMapper;
 import com.ett.drv.model.booked.BookedLimitModel;
+import com.ett.drv.model.self.TransactResourceModel;
 import com.smartken.kia.core.pager.PageBounds;
 import com.smartken.kia.core.test.IMapperTestCase;
 
 public class TestMapper {
 
-	private static IMapperTestCase<BookedLimitModel> mapperTestCase;
+	private static IMapperTestCase<TransactResourceModel> mapperTestCase;
 	
 	private static Object objTestPk;
 	private static ArrayList listTestPk;
-	private static BookedLimitModel objTest;
-	private static BookedLimitModel q1;
-	private static BookedLimitModel q2;
-	private static ArrayList<BookedLimitModel> qs;
+	private static TransactResourceModel objTest;
+	private static TransactResourceModel q1;
+	private static TransactResourceModel q2;
+	private static ArrayList<TransactResourceModel> qs;
 	
 	static {
 		String resource = "com/ett/drv/mapper/mybatis3.test.xml";
@@ -38,20 +40,21 @@ public class TestMapper {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		mapperTestCase=new IMapperTestCase<BookedLimitModel>(sf,ILimitMapper.class);
-		objTestPk=1;
+		mapperTestCase=new IMapperTestCase<TransactResourceModel>(sf,ITransactResourceMapper.class);
+		objTestPk="220110520075294";
 		listTestPk=new ArrayList();
 		listTestPk.add(1);
 		listTestPk.add(2);
-		q1=new BookedLimitModel();
-		q2=new BookedLimitModel();
-		q1.setId(1);
-		q2.setId(2);
+		q1=new TransactResourceModel();
+		q2=new TransactResourceModel();
+		q1.setFlowNo("120110425037090");
+		q2.setFlowNo("220110520012727");
 		qs=new ArrayList();
 		qs.add(q1);
 		qs.add(q2);
 		//fail("Not yet implemented");
-		objTest=new BookedLimitModel();
+		objTest=new TransactResourceModel();
+		objTest.setFlowNo("120110425037090");
 	}
 	
 	@Test
@@ -113,9 +116,15 @@ public class TestMapper {
 	}
 
 	@Test
-	public void testSelectEqPk() throws Exception {
-		mapperTestCase.selectEqPk(objTestPk);
-		fail("Not yet implemented");
+	public void testSelectEqPk()  {
+		TransactResourceModel transactResourceModel=null;
+		try {
+			transactResourceModel= mapperTestCase.selectEqPk(objTestPk);
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		assertNull(transactResourceModel);
 	}
 
 	@Test
@@ -144,7 +153,7 @@ public class TestMapper {
 
 	@Test
 	public void testSelectUnion() throws Exception {
-		mapperTestCase.selectUnion(qs);
+       		mapperTestCase.selectUnion(qs);
 		fail("Not yet implemented");
 	}
 

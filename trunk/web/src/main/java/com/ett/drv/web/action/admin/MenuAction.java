@@ -89,7 +89,7 @@ public class MenuAction extends BaseAction
              //return NONE;
 		}else if(req.getMethod().equalsIgnoreCase(METHOD_POST))
 		{
-	    	lListIds.add(menu.getId());
+	    	lListIds.add(menu.getMenuid());
 	    	this.adminBiz.removeModelInPk(lListIds);
 	    	//return INPUT;
 		} 
@@ -99,31 +99,22 @@ public class MenuAction extends BaseAction
 		}finally{return ;}
 	}
 
-	public void fn_search() {
-		// TODO Auto-generated method stub
-		//JSONArray lArrJson=iadminBiz.getMenuDataGrid();
-		//System.out.println(iadminBiz.getMenuDataGrid().toString());
-		//this.writeHTML(EasyUIHelper.toJsonDataGrid(iadminBiz.getMenuDataGrid()).toString());
-		return ;
-	}
-
 
 
 
 	
 	
-	public void list_Tree() throws Exception{
-		ArrayList lListToken=StringUtil.toList("root");
+	public void tree_menu() throws Exception{
 		adminBiz.loadCrudMapper(MenuModel.class);
-		List<MenuModel> lListMenu=adminBiz.getModelNotInPk(lListToken);
-		JSONArray lJsonMenu=this.loadTreeNode(lListMenu,"root");
+		List<MenuModel> lListMenu=adminBiz.getModel();
+		JSONArray lJsonMenu=this.loadTreeNode(lListMenu,null);
 		this.writeHTML(lJsonMenu.toString());
 
 	}
 	
 	
-	public void list_ComboTree() throws Exception{
-		ArrayList lListIds=StringUtil.toList((String) menu.getId());
+	public void comboTree_menu() throws Exception{
+		ArrayList lListIds=StringUtil.toList(menu.getMenuid().toString());
 		adminBiz.loadCrudMapper(MenuModel.class);
 	    List<MenuModel> lListMenu =adminBiz.getModelNotInPk(lListIds);
 	    JSONArray lJsonMenu=this.loadTreeNode(lListMenu,null);
@@ -133,14 +124,14 @@ public class MenuAction extends BaseAction
 
 
 	
-	public void list_DataGrid() throws Exception {
+	public void datagrid_menu() throws Exception {
 		// TODO Auto-generated method stub
 		PageBounds pb=this.getPager();
 		adminBiz.loadCrudMapper(MenuModel.class);
-		PageArrayList listMenu=adminBiz.getModelNotInPk(StringUtil.toList("root"),pb);
+		List listMenu=adminBiz.getModel(pb);
 		//System.out.println("list:"+lArrJson.toString());
 		JSONArray jarrMenu=ObjectUtil.toJsonArray(listMenu);
-		 JSONObject lJsonDg=EasyUiUtil.toJsonDataGrid(jarrMenu,listMenu.getCount());
+		 JSONObject lJsonDg=EasyUiUtil.toJsonDataGrid(jarrMenu,adminBiz.count());
 		if(ObjectUtil.isEquals(this.getDataFormat(), DataFormatEnum.json.toString()))
 		{
 		  this.writeHTML(lJsonDg.toString());
@@ -185,21 +176,21 @@ public class MenuAction extends BaseAction
 	
 	
 	
-	private JSONArray loadTreeNode(List<MenuModel> pArrTreeNode,String pParentId) 
+	private JSONArray loadTreeNode(List<MenuModel> pArrTreeNode,Integer pParentId) 
 	{
 		JSONArray lArrJson=new JSONArray();
 		try
 		{
 		for (MenuModel mtn : pArrTreeNode) {
-			if(ObjectUtil.isEquals(pParentId, mtn.getParentId()))
+			if(ObjectUtil.isEquals(pParentId, mtn.getParentid()))
 			{
 				JSONObject json=new JSONObject();
 				JSONObject jsonAttrs=new JSONObject();
-				jsonAttrs.put("url", mtn.getUrl());
-				json.put(EasyUiUtil.JSON_TREE_ID, mtn.getId());
-				json.put(EasyUiUtil.JSON_TREE_TEXT, mtn.getName());
-				json.put(EasyUiUtil.JSON_TREE_CHILDREN, loadTreeNode(pArrTreeNode, (String) mtn.getId()));
-				json.put(EasyUiUtil.JSON_TREE_ICONCLS, mtn.getIcon());
+				jsonAttrs.put("url", mtn.getJavaUrl());
+				json.put(EasyUiUtil.JSON_TREE_ID, mtn.getMenuid());
+				json.put(EasyUiUtil.JSON_TREE_TEXT, mtn.getMenutext());
+				json.put(EasyUiUtil.JSON_TREE_CHILDREN, loadTreeNode(pArrTreeNode,mtn.getMenuid()));
+				json.put(EasyUiUtil.JSON_TREE_ICONCLS, mtn.getIconCls());
 	            json.put(EasyUiUtil.JSON_TREE_ATTRIBUTES, jsonAttrs);
 				//json.put(EASYUI_TREE_IMAGE, mtn.getName());
 				lArrJson.put(json);

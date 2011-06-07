@@ -7,54 +7,41 @@ import com.smartken.kia.core.model.impl.BaseModel;
 public class MenuModel extends BaseModel {
 
 	 public static enum F { 
-		  Id,Name,Descp,Url,Parma,ParentId,Ordernum,Icon,Token,Folder  
+		  Menuid,Menuurl,Menutext,Menuimg,Ordernum,Isparent,Parentid,JavaUrl,IconCls  
 		 } 
 
-		private String Id;         //ID  VARCHAR2 100
-		private String Name;         //NAME  VARCHAR2 100
-		private String Descp;         //DESCP  VARCHAR2 400
-		private String Url;         //URL  VARCHAR2 400
-		private String Parma;         //PARMA  VARCHAR2 400
-		private String ParentId;         //PARENT_ID  VARCHAR2 20
+		private Integer Menuid;         //MENUID  NUMBER 38
+		private String Menuurl;         //MENUURL  VARCHAR2 200
+		private String Menutext;         //MENUTEXT  VARCHAR2 200
+		private String Menuimg;         //MENUIMG  VARCHAR2 100
 		private Integer Ordernum;         //ORDERNUM  NUMBER 38
-		private String Icon;         //ICON  VARCHAR2 50
-		private String Token;         //TOKEN  CHAR 3
-		private String Folder;         //FOLDER  CHAR 1
-		public String getId() {
-			return Id;
+		private Integer Isparent;         //ISPARENT  NUMBER 38
+		private Integer Parentid;         //PARENTID  NUMBER 38
+		private String JavaUrl;         //JAVA_URL  VARCHAR2 500
+		private String IconCls;         //ICON_CLS  VARCHAR2 100
+		public Integer getMenuid() {
+			return Menuid;
 		}
-		public void setId(String id) {
-			Id = id;
+		public void setMenuid(Integer menuid) {
+			Menuid = menuid;
 		}
-		public String getName() {
-			return Name;
+		public String getMenuurl() {
+			return Menuurl;
 		}
-		public void setName(String name) {
-			Name = name;
+		public void setMenuurl(String menuurl) {
+			Menuurl = menuurl;
 		}
-		public String getDescp() {
-			return Descp;
+		public String getMenutext() {
+			return Menutext;
 		}
-		public void setDescp(String descp) {
-			Descp = descp;
+		public void setMenutext(String menutext) {
+			Menutext = menutext;
 		}
-		public String getUrl() {
-			return Url;
+		public String getMenuimg() {
+			return Menuimg;
 		}
-		public void setUrl(String url) {
-			Url = url;
-		}
-		public String getParma() {
-			return Parma;
-		}
-		public void setParma(String parma) {
-			Parma = parma;
-		}
-		public String getParentId() {
-			return ParentId;
-		}
-		public void setParentId(String parentId) {
-			ParentId = parentId;
+		public void setMenuimg(String menuimg) {
+			Menuimg = menuimg;
 		}
 		public Integer getOrdernum() {
 			return Ordernum;
@@ -62,25 +49,32 @@ public class MenuModel extends BaseModel {
 		public void setOrdernum(Integer ordernum) {
 			Ordernum = ordernum;
 		}
-		public String getIcon() {
-			return Icon;
+		public Integer getIsparent() {
+			return Isparent;
 		}
-		public void setIcon(String icon) {
-			Icon = icon;
+		public void setIsparent(Integer isparent) {
+			Isparent = isparent;
 		}
-		public String getToken() {
-			return Token;
+		public Integer getParentid() {
+			return Parentid;
 		}
-		public void setToken(String token) {
-			Token = token;
+		public void setParentid(Integer parentid) {
+			Parentid = parentid;
 		}
-		public String getFolder() {
-			return Folder;
+		public String getJavaUrl() {
+			return JavaUrl;
 		}
-		public void setFolder(String folder) {
-			Folder = folder;
+		public void setJavaUrl(String javaUrl) {
+			JavaUrl = javaUrl;
 		}
-
-	
+		public String getIconCls() {
+			return IconCls;
+		}
+		public void setIconCls(String iconCls) {
+			IconCls = iconCls;
+		}
+		
+		
+		
 	
 }

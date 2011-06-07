@@ -67,13 +67,13 @@ public class GenMapperTool {
 	    
 	    ,TABLE_SELF_KM1_CHECK_RECORD,TABLE_SELF_KM1_PREASIGN_RECORD,TABLE_SELF_FEE_LOG
 	    
-	    ,TABLE_SELF_DEVICE,TABLE_SELF_DEVICE_SN,TABLE_SELF_HARD
+	    ,TABLE_SELF_DEVICE,TABLE_SELF_DEVICE_SN,TABLE_SELF_HARD,TABLE_MENUS
 	}
 	
 	public static enum Seqs{
 		seq_bus_all_info,seq_buslog,seq_car_owner_change_info,seq_department,seq_dict,seq_dicttype,seq_extra_assign,seq_fp_approve,seq_role,seq_school_car_info
 		,seq_self_device,seq_self_devicesn,seq_self_hardware,seq_self_transact_driver,seq_self_transact_vehicle,seq_student,seq_table_person_change_info
-		,seq_user,seq_week_record,seq_yuyue_day_limit,seq_yuyue_info,seq_yuyue_limit
+		,seq_user,seq_week_record,seq_yuyue_day_limit,seq_yuyue_info,seq_yuyue_limit,seq_menu
 	}
 	
 	public static String NEXTVAL=".nextval";
@@ -82,7 +82,7 @@ public class GenMapperTool {
 		MapperFactory mf=new MapperFactory(con,cls);
 		Map<Table,MapperTemplate> mappers=new HashMap<Table, MapperTemplate>();
 		try{
-		mappers.put(Table.DRV_ADMIN_MENU,mf.createMapperTemplate(Table.DRV_ADMIN_MENU.name().toUpperCase(), "id".toUpperCase(),IMenuMapper.class, MenuModel.class ));
+		mappers.put(Table.TABLE_MENUS,mf.createMapperTemplate(Table.TABLE_MENUS.name().toUpperCase(), "menuid".toUpperCase(),IMenuMapper.class, MenuModel.class,Seqs.seq_menu+NEXTVAL));
 		mappers.put(Table.TABLE_BUS_ALL_INFO,mf.createMapperTemplate(Table.TABLE_BUS_ALL_INFO.name().toUpperCase(), "id".toUpperCase(),IBusAllInfoMapper.class, BusAllInfoModel.class,Seqs.seq_bus_all_info+NEXTVAL ));
 		mappers.put(Table.TABLE_BUSLOGS,mf.createMapperTemplate(Table.TABLE_BUSLOGS.name().toUpperCase(), "id".toUpperCase(),IBusLogMapper.class, BusLogModel.class,Seqs.seq_buslog+NEXTVAL ));
 		mappers.put(Table.TABLE_CAR_OWNER_CHANGE_INFO,mf.createMapperTemplate(Table.TABLE_CAR_OWNER_CHANGE_INFO.name().toUpperCase(), "id".toUpperCase(),ICarOwnerChangeMapper.class, CarOwnerChangeModel.class,Seqs.seq_car_owner_change_info+NEXTVAL ));
@@ -128,8 +128,8 @@ public class GenMapperTool {
 		Connection c=null;
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
-			c=  DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:oradrvde", "drv_admin", "stjj117");
-			//c=  DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:oradrvde", "aspnet", "stjj117");
+			//c=  DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:oradrvde", "drv_admin", "stjj117");
+			c=  DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:oradrvde", "aspnet", "stjj117");
 			//c=  DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "hrsystem", "ken147");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -142,13 +142,13 @@ public class GenMapperTool {
 		Map<Table, MapperTemplate> mappers=getMappers(getConnection(), OracleMapperTemplate.class);
 		String srcPath="D:/tempProject/ett/dao/src/main/java/";
 		Table[] enTables=Table.values();
-		for (Enum<Table> et : enTables) {
-			try{
-			MapperTemplate mapper=mappers.get(et);
-		 //   MapperTemplate mapper=mappers.get(Table.DRV_FLOW);
+		//for (Enum<Table> et : enTables) {
+		//	try{
+		//	MapperTemplate mapper=mappers.get(et);
+		    MapperTemplate mapper=mappers.get(Table.TABLE_MENUS);
 			System.out.println(mapper.generalMapplerXML(srcPath,"oracle"));
-			}catch(Exception ex){}
-		}
+		//	}catch(Exception ex){}
+		//}
 
 		
 		

@@ -63,11 +63,20 @@
    <property name="jndiName" value="${jndi.oradrvde}"></property>
  </bean>    
  
+   <bean id="dataSourceDrv" class="org.springframework.jndi.JndiObjectFactoryBean">
+   <property name="jndiName" value="${jndi.oradrvde2}"></property>
+ </bean>    
  
  
    
 <bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">
        <property name="dataSource" ref="dataSource"></property>
+       <property name="configLocation" value="classpath:com/ett/drv/mapper/mybatis3.drv.oracle.xml"></property>
+       
+</bean>
+
+<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactoryDrv">
+       <property name="dataSource" ref="dataSourceDrv"></property>
        <property name="configLocation" value="classpath:com/ett/drv/mapper/mybatis3.drv.oracle.xml"></property>
        
 </bean>
@@ -100,7 +109,9 @@
      <property name="sqlSessionFactory" ref="sqlSessionFactory" />
    </bean>
  
-
+ <bean id="baseDrvMapper" class="org.mybatis.spring.mapper.MapperFactoryBean" abstract="true" >
+     <property name="sqlSessionFactory" ref="sqlSessionFactoryDrv" />
+   </bean>
    
 
 <bean id="weekReocrdMapper" parent="baseMapper">
@@ -165,19 +176,19 @@
   <property name="mapperInterface" value="com.ett.drv.mapper.self.ITransactResourceMapper"></property>
 </bean>
 
-<bean id="drivingLicenseMapper" parent="baseMapper">
+<bean id="drivingLicenseMapper" parent="baseDrvMapper">
   <property name="mapperInterface" value="com.ett.drv.mapper.self.IDrivingLicenseMapper"></property>
 </bean>
 
-<bean id="vehicleMapper" parent="baseMapper">
+<bean id="vehicleMapper" parent="baseDrvMapper">
   <property name="mapperInterface" value="com.ett.drv.mapper.self.IVehicleMapper"></property>
 </bean>
 
-<bean id="vehFlowMapper" parent="baseMapper">
+<bean id="vehFlowMapper" parent="baseDrvMapper">
   <property name="mapperInterface" value="com.ett.drv.mapper.self.IVehFlowMapper"></property>
 </bean>
 
-<bean id="drvFlowMapper" parent="baseMapper">
+<bean id="drvFlowMapper" parent="baseDrvMapper">
   <property name="mapperInterface" value="com.ett.drv.mapper.self.IDrvFlowMapper"></property>
 </bean>
 

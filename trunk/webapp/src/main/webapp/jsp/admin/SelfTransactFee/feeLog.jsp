@@ -156,8 +156,8 @@ String feeActionPath=basePath+"admin/SelfTransactFee";
          </table>
        </form>
      </div>  
-  
-      <div class="innerDiv" style="height: 90%">
+    <br />
+      <div class="innerDiv" style="height: 80%">
    <table id="<%=tableDG %>"></table>
    </div>
       

@@ -70,10 +70,11 @@ CrudDatagrid.prototype.getToolbar=function(opts){
 		        ,text:"删除"
 		       ,handler:function(){
 	            			var selectsRows=$(regexp).datagrid("getSelections");
-	            			if(selectsRows.length==0){$.messager.alert("","没有记录被选中");return;}
+	            			var deleteCount=selectsRows.length;
+	            			if(deleteCount==0){$.messager.alert("","没有记录被选中");return;}
 							var ids="";
 							ids=selectsRows.getUnionStr(id,",");
-							$.messager.confirm("操作提示","是否删除"+selectsRows.length+"条记录",function(ok){
+							$.messager.confirm("操作提示","是否删除"+deleteCount+"条记录",function(ok){
 								if(ok){
 							    //var removeRowsAction=basePath+"/common/Datagrid/do/removeRows.action?modelClass="+modelClass;
 						        $.post(urlRemove,{ids:ids},function(str){

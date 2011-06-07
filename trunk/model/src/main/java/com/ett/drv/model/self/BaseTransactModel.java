@@ -128,8 +128,8 @@ public abstract class BaseTransactModel extends BaseModel {
 		protected String PrintInd;         //PRINT_IND  CHAR 1
 		//protected String LicenseNo;         //LICENSE_NO  VARCHAR2 100
 		protected String Item;         //ITEM  VARCHAR2 50
-		protected Double CostPost;         //COST_POST  NUMBER 126
-		protected Double CostTransact;         //COST_TRANSACT  NUMBER 126
+		protected Float CostPost;         //COST_POST  NUMBER 126
+		protected Float CostTransact;         //COST_TRANSACT  NUMBER 126
 		protected String PassInd;         //PASS_IND  CHAR 1
 		protected Integer Seqno;         //SEQNO  NUMBER 38
 		public String getTransact() {
@@ -404,7 +404,7 @@ public abstract class BaseTransactModel extends BaseModel {
 
 
 
-		public Double getCostPost() {
+		public Float getCostPost() {
 			return CostPost;
 		}
 
@@ -412,7 +412,7 @@ public abstract class BaseTransactModel extends BaseModel {
 
 
 
-		public void setCostPost(Double costPost) {
+		public void setCostPost(Float costPost) {
 			CostPost = costPost;
 		}
 
@@ -420,7 +420,7 @@ public abstract class BaseTransactModel extends BaseModel {
 
 
 
-		public Double getCostTransact() {
+		public Float getCostTransact() {
 			return CostTransact;
 		}
 
@@ -428,7 +428,7 @@ public abstract class BaseTransactModel extends BaseModel {
 
 
 
-		public void setCostTransact(Double costTransact) {
+		public void setCostTransact(Float costTransact) {
 			CostTransact = costTransact;
 		}
 

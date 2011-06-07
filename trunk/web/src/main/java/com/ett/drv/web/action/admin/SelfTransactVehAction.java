@@ -89,7 +89,7 @@ public class SelfTransactVehAction extends BaseAction implements ModelDriven<Tra
 	}
 	
 	
-	public void stream_driverIdFrontImg(){
+	public void stream_DriverIdFrontImg(){
 		try{
 	    this.selfBiz.loadCrudMapper(TransactResourceModel.class);
 	    _trvResourceModel=(TransactResourceModel)this.selfBiz.getModelEqPk(_trvehModel.getFlowNo());
@@ -100,7 +100,7 @@ public class SelfTransactVehAction extends BaseAction implements ModelDriven<Tra
 		}
 	}
 	
-	public void stream_driverIdBackImg(){
+	public void stream_DriverIdBackImg(){
 		try{
 		this.selfBiz.loadCrudMapper(TransactResourceModel.class);
 		_trvResourceModel=(TransactResourceModel)this.selfBiz.getModelEqPk(_trvehModel.getFlowNo());
@@ -111,7 +111,7 @@ public class SelfTransactVehAction extends BaseAction implements ModelDriven<Tra
 		}
 	}
 	
-	public void stream_agentIdFrontImg(){
+	public void stream_AgentIdFrontImg(){
 		try{
 		this.selfBiz.loadCrudMapper(TransactResourceModel.class);
 		_trvResourceModel=(TransactResourceModel)this.selfBiz.getModelEqPk(_trvehModel.getFlowNo());
@@ -122,7 +122,7 @@ public class SelfTransactVehAction extends BaseAction implements ModelDriven<Tra
 		}
 	}
 	
-	public void stream_agentIdBackImg(){
+	public void stream_AgentIdBackImg(){
 		try{
 			this.selfBiz.loadCrudMapper(TransactResourceModel.class);
 			_trvResourceModel=(TransactResourceModel)this.selfBiz.getModelEqPk(_trvehModel.getFlowNo());

@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2011-05-26 11:06:52
+	Create Date:2011-06-07 01:02:56
 	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
 	Model:com.ett.drv.model.admin.MenuModel 
 
 
  public static enum F { 
-  Id,Name,Descp,Url,Parma,ParentId,Ordernum,Icon,Token,Folder  
+  Menuid,Menuurl,Menutext,Menuimg,Ordernum,Isparent,Parentid,JavaUrl,IconCls  
  } 
 
-private String Id;         //ID  VARCHAR2 100
-private String Name;         //NAME  VARCHAR2 100
-private String Descp;         //DESCP  VARCHAR2 400
-private String Url;         //URL  VARCHAR2 400
-private String Parma;         //PARMA  VARCHAR2 400
-private String ParentId;         //PARENT_ID  VARCHAR2 20
+private Integer Menuid;         //MENUID  NUMBER 38
+private String Menuurl;         //MENUURL  VARCHAR2 200
+private String Menutext;         //MENUTEXT  VARCHAR2 200
+private String Menuimg;         //MENUIMG  VARCHAR2 100
 private Integer Ordernum;         //ORDERNUM  NUMBER 38
-private String Icon;         //ICON  VARCHAR2 50
-private String Token;         //TOKEN  CHAR 3
-private String Folder;         //FOLDER  CHAR 1
+private Integer Isparent;         //ISPARENT  NUMBER 38
+private Integer Parentid;         //PARENTID  NUMBER 38
+private String JavaUrl;         //JAVA_URL  VARCHAR2 500
+private String IconCls;         //ICON_CLS  VARCHAR2 100
  -->
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
@@ -27,74 +26,70 @@ private String Folder;         //FOLDER  CHAR 1
 <cache flushInterval="30000" readOnly="true"></cache>
 
 
-<sql id="table">DRV_ADMIN_MENU</sql>
+<sql id="table">TABLE_MENUS</sql>
 
-<sql id="pk">ID</sql>
+<sql id="pk">MENUID</sql>
 
 <sql id="colums">
-ID,NAME,DESCP,URL,PARMA,PARENT_ID,ORDERNUM,ICON,TOKEN,FOLDER 
+MENUID,MENUURL,MENUTEXT,MENUIMG,ORDERNUM,ISPARENT,PARENTID,JAVA_URL,ICON_CLS 
 </sql>
 
 <sql id="insertCols">
-#{Id,jdbcType=VARCHAR,javaType=String},
-#{Name,jdbcType=VARCHAR,javaType=String},
-#{Descp,jdbcType=VARCHAR,javaType=String},
-#{Url,jdbcType=VARCHAR,javaType=String},
-#{Parma,jdbcType=VARCHAR,javaType=String},
-#{ParentId,jdbcType=VARCHAR,javaType=String},
+seq_menu.nextval,
+#{Menuurl,jdbcType=VARCHAR,javaType=String},
+#{Menutext,jdbcType=VARCHAR,javaType=String},
+#{Menuimg,jdbcType=VARCHAR,javaType=String},
 #{Ordernum,jdbcType=INTEGER,javaType=Integer},
-#{Icon,jdbcType=VARCHAR,javaType=String},
-#{Token,jdbcType=CHAR,javaType=String},
-#{Folder,jdbcType=CHAR,javaType=String},
+#{Isparent,jdbcType=INTEGER,javaType=Integer},
+#{Parentid,jdbcType=INTEGER,javaType=Integer},
+#{JavaUrl,jdbcType=VARCHAR,javaType=String},
+#{IconCls,jdbcType=VARCHAR,javaType=String},
 
 </sql>
 
 <sql id="updateCols">
-<if test="pk neq null">ID=#{pk},</if>
-NAME=#{model.Name,jdbcType=VARCHAR,javaType=String},
-DESCP=#{model.Descp,jdbcType=VARCHAR,javaType=String},
-URL=#{model.Url,jdbcType=VARCHAR,javaType=String},
-PARMA=#{model.Parma,jdbcType=VARCHAR,javaType=String},
-PARENT_ID=#{model.ParentId,jdbcType=VARCHAR,javaType=String},
+<if test="pk neq null">MENUID=#{pk},</if>
+MENUURL=#{model.Menuurl,jdbcType=VARCHAR,javaType=String},
+MENUTEXT=#{model.Menutext,jdbcType=VARCHAR,javaType=String},
+MENUIMG=#{model.Menuimg,jdbcType=VARCHAR,javaType=String},
 ORDERNUM=#{model.Ordernum,jdbcType=INTEGER,javaType=Integer},
-ICON=#{model.Icon,jdbcType=VARCHAR,javaType=String},
-TOKEN=#{model.Token,jdbcType=CHAR,javaType=String},
-FOLDER=#{model.Folder,jdbcType=CHAR,javaType=String},
+ISPARENT=#{model.Isparent,jdbcType=INTEGER,javaType=Integer},
+PARENTID=#{model.Parentid,jdbcType=INTEGER,javaType=Integer},
+JAVA_URL=#{model.JavaUrl,jdbcType=VARCHAR,javaType=String},
+ICON_CLS=#{model.IconCls,jdbcType=VARCHAR,javaType=String},
 
 </sql>
 
-<sql id="orderby">order by m.ID desc </sql>
+<sql id="orderby">order by m.MENUID desc </sql>
 
 <sql id="joinColums"></sql>
 
 <sql id="join"></sql><!-- 别名m已被主表使用  -->
 
 <resultMap type="com.ett.drv.model.admin.MenuModel" id="resultMap">
- <id column="ID"  property="Id" jdbcType="VARCHAR" javaType="String"/>
-<result column="NAME"  property="Name" jdbcType="VARCHAR" javaType="String"/>
-<result column="DESCP"  property="Descp" jdbcType="VARCHAR" javaType="String"/>
-<result column="URL"  property="Url" jdbcType="VARCHAR" javaType="String"/>
-<result column="PARMA"  property="Parma" jdbcType="VARCHAR" javaType="String"/>
-<result column="PARENT_ID"  property="ParentId" jdbcType="VARCHAR" javaType="String"/>
+ <id column="MENUID"  property="Menuid" jdbcType="INTEGER" javaType="Integer"/>
+<result column="MENUURL"  property="Menuurl" jdbcType="VARCHAR" javaType="String"/>
+<result column="MENUTEXT"  property="Menutext" jdbcType="VARCHAR" javaType="String"/>
+<result column="MENUIMG"  property="Menuimg" jdbcType="VARCHAR" javaType="String"/>
 <result column="ORDERNUM"  property="Ordernum" jdbcType="INTEGER" javaType="Integer"/>
-<result column="ICON"  property="Icon" jdbcType="VARCHAR" javaType="String"/>
-<result column="TOKEN"  property="Token" jdbcType="CHAR" javaType="String"/>
-<result column="FOLDER"  property="Folder" jdbcType="CHAR" javaType="String"/>
+<result column="ISPARENT"  property="Isparent" jdbcType="INTEGER" javaType="Integer"/>
+<result column="PARENTID"  property="Parentid" jdbcType="INTEGER" javaType="Integer"/>
+<result column="JAVA_URL"  property="JavaUrl" jdbcType="VARCHAR" javaType="String"/>
+<result column="ICON_CLS"  property="IconCls" jdbcType="VARCHAR" javaType="String"/>
 
  </resultMap>
 
 
 <sql id="selectCondition">
-<if test="model.Id neq null">and m.ID like #{model.Id,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.Name neq null">and m.NAME like #{model.Name,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.Descp neq null">and m.DESCP like #{model.Descp,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.Url neq null">and m.URL like #{model.Url,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.Parma neq null">and m.PARMA like #{model.Parma,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.ParentId neq null">and m.PARENT_ID like #{model.ParentId,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.Ordernum neq null">and m.ORDERNUM = #{model.Ordernum,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.Icon neq null">and m.ICON like #{model.Icon,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.Token neq null">and m.TOKEN like #{model.Token,jdbcType=CHAR javaType=String } </if> 
-<if test="model.Folder neq null">and m.FOLDER like #{model.Folder,jdbcType=CHAR javaType=String } </if> 
+<if test="model.Menuid neq null">and m.MENUID = #{model.Menuid,jdbcType=INTEGER, javaType=Integer } </if> 
+<if test="model.Menuurl neq null">and m.MENUURL like #{model.Menuurl,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model.Menutext neq null">and m.MENUTEXT like #{model.Menutext,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model.Menuimg neq null">and m.MENUIMG like #{model.Menuimg,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model.Ordernum neq null">and m.ORDERNUM = #{model.Ordernum,jdbcType=INTEGER, javaType=Integer } </if> 
+<if test="model.Isparent neq null">and m.ISPARENT = #{model.Isparent,jdbcType=INTEGER, javaType=Integer } </if> 
+<if test="model.Parentid neq null">and m.PARENTID = #{model.Parentid,jdbcType=INTEGER, javaType=Integer } </if> 
+<if test="model.JavaUrl neq null">and m.JAVA_URL like #{model.JavaUrl,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model.IconCls neq null">and m.ICON_CLS like #{model.IconCls,jdbcType=VARCHAR ,javaType=String } </if> 
 
 </sql>
 
@@ -123,7 +118,7 @@ FOLDER=#{model.Folder,jdbcType=CHAR,javaType=String},
 </select>
 
 <select id="selectEqPk"  resultMap="resultMap">
-	select m.* from <include refid="table" /> m  where m.<include refid="pk" /> = #{Id,jdbcType=VARCHAR,javaType=String}
+	select m.* from <include refid="table" /> m  where m.<include refid="pk" /> = #{Menuid,jdbcType=INTEGER,javaType=Integer}
 </select>
 
 <select id="selectInPk" resultType="ArrayList" resultMap="resultMap" >
@@ -161,10 +156,10 @@ FOLDER=#{model.Folder,jdbcType=CHAR,javaType=String},
 		<trim  prefixOverrides="," suffixOverrides=",">
 			<include refid="updateCols"/>
 		</trim>
-	where <include refid="pk" />=#{model.Id,jdbcType=VARCHAR,javaType=String}</update>
+	where <include refid="pk" />=#{model.Menuid,jdbcType=INTEGER,javaType=Integer}</update>
 
 <delete id="deleteEqPk" flushCache="true">
-	delete from <include refid="table"/> where <include refid="pk" /> =#{Id,jdbcType=VARCHAR,javaType=String}
+	delete from <include refid="table"/> where <include refid="pk" /> =#{Menuid,jdbcType=INTEGER,javaType=Integer}
 </delete>
 
 <delete id="deleteInPk" flushCache="true">
@@ -207,7 +202,7 @@ FOLDER=#{model.Folder,jdbcType=CHAR,javaType=String},
 </select>
 
 <select id="selectViewEqPk"  resultMap="viewMap">
-	select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> = #{Id,jdbcType=VARCHAR,javaType=String}
+	select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> = #{Menuid,jdbcType=INTEGER,javaType=Integer}
 </select>
 
 <select id="selectViewInPk" resultType="ArrayList" resultMap="viewMap" >
