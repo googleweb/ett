@@ -2,6 +2,7 @@
 <%@page import="com.smartken.kia.core.model.impl.EasyUiModel"%>
 <%@page import="com.ett.drv.model.admin.DepartmentModel"%>
 <%@page import="com.ett.drv.model.admin.UserModel"%>
+<%@page import="com.smartken.kia.core.model.impl.JQueryModel"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
 <%
@@ -43,7 +44,20 @@ String adminRolePath=basePath+"/admin/Role";
 			   });
 		   }
 	     });
+	     
+	  
+	     
    }
+  $(document).ready(function(){
+      var url="<%=adminRolePath%>"+"/checkbox/Menu";
+      $.getJSON(url,function(json){
+	    	 $.each(json,function(index,item){
+	    		 var input= $("<input />").attr("name","CRolestring").attr("type","checkbox").val(data["Menuid"]);
+	    		 $("#roledisplay").append(input);
+	    	 });
+	     });
+        }
+   
    
    </script>
    
@@ -73,12 +87,12 @@ String adminRolePath=basePath+"/admin/Role";
            </tr>
            <tr>
             <th>介绍</th>
-             <td style="width: 35%">
+             <td style="width: 35%" id="roledisplay"><%--
                <input name="CRolestring" type="text" value="${CRolestring}" 
                class="<%=EasyUiModel.ValidateBox.CLASS %>"
                  <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
                />
-             </td>          
+             --%></td>          
            <tr>
              <td colspan="4" style="text-align: right">
              <a class="<%=EasyUiModel.LinkButton.CLASS %>"

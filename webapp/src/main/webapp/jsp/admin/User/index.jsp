@@ -126,15 +126,14 @@ $(document).ready(function(){
               <td style="width: 300px;">
               		用户名:<input name="Username" class="easyui-validatebox" />
               </td>
-              <td style="width: 35%">
-                 	角色名： <input name="<%= UserModel.F.IRoleid %>" 
+              <td style="width: 300px">
+                 	角色名:<input name="<%= UserModel.F.IRoleid %>" 
                        valuefield="Id"
                    textfield="CName"
                      url="<%=basePath%>admin/User/combobox/roleid.action" 
                  value="${IRoleid}"
-  	         editable="false"
-  	                  class="<%=EasyUiModel.ComboBox.CLASS %>"
-                 <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+                  editable="false"
+  	                  class="<%=EasyUiModel.ComboBox.CLASS %>"      
                    />
              </td>
               <td>
