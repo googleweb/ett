@@ -25,6 +25,7 @@
 
 <mappers>
 <mapper resource="com/ett/drv/mapper/booked/oracle/ILimitMapper.xml"/>
+<mapper resource="com/ett/drv/mapper/self/oracle/ITransactResourceMapper.xml"/>
 
 </mappers>
 

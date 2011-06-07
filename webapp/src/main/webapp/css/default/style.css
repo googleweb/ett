@@ -32,7 +32,7 @@ a:HOVER{
 input
 {
 	 height: 25px;
-	 width:180px;
+	 width:150px;
 
 }
 
@@ -73,7 +73,7 @@ iframe
 	border-color: #66CCFF;
 	width: auto;
 	background-color: #EDF4FE;
-	table-layout: auto;
+	table-layout: fixed;
 }
 
 .editTable td

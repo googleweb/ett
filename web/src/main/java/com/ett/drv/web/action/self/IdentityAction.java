@@ -226,8 +226,8 @@ public class IdentityAction extends BaseSelfAction implements ModelDriven<BaseTr
     	String flowNo="";
     	_trModel.setReceive(BaseTransactModel.Receives.PULL_OR_POST);
     	_trModel.setSeqno(this.getiIdGeneratorBiz().createNewId());
-    	_trModel.setCostPost(Double.valueOf(0));
-    	_trModel.setCostTransact(Double.valueOf(35));
+    	_trModel.setCostPost(Float.valueOf(0));
+    	_trModel.setCostTransact(Float.valueOf(35));
 //    	    	String flowNo="";
         
     	//_trModel.setCostPost(costPost)

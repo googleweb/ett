@@ -1,5 +1,5 @@
 driver=oracle.jdbc.driver.OracleDriver
-#url=jdbc:oracle:thin:@localhost:1521:oradrvde
-url=jdbc:oracle:oci8:@oradrvde
+url=jdbc:oracle:thin:@localhost:1521:oradrvde
+#url=jdbc:oracle:oci8:@oradrvde
 username=aspnet
 password=stjj117

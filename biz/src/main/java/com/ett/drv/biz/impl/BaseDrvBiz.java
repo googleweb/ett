@@ -56,10 +56,7 @@ public abstract class BaseDrvBiz extends BaseCurdBiz {
 
 	protected IDictMapper<DictModel> dictMapper;
 	protected IDictTypeMapper<DictTypeModel> dictTypeMapper;
-	public void setDictTypeMapper(IDictTypeMapper<DictTypeModel> dictTypeMapper) {
-		this.dictTypeMapper = dictTypeMapper;
-		this.addCrudMapper(DictTypeModel.class, dictTypeMapper);
-	}
+
 
 	protected IDepartmentMapper<DepartmentModel> departmentMapper;
 	protected IRoleMapper<RoleModel> roleMapper;
@@ -239,5 +236,10 @@ public abstract class BaseDrvBiz extends BaseCurdBiz {
 	public void setRoleMapper(IRoleMapper<RoleModel> roleMapper) {
 		this.roleMapper = roleMapper;
 		this.addCrudMapper(RoleModel.class, roleMapper);
+	}
+	
+	public void setDictTypeMapper(IDictTypeMapper<DictTypeModel> dictTypeMapper) {
+		this.dictTypeMapper = dictTypeMapper;
+		this.addCrudMapper(DictTypeModel.class, dictTypeMapper);
 	}
 }

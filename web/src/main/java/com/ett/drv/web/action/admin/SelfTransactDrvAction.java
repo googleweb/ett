@@ -27,7 +27,7 @@ public class SelfTransactDrvAction extends BaseAction implements ModelDriven<Tra
 
 	private ISelfBiz selfBiz;
 	private TransactDriverModel _trDrvModel;
-	private TransactResourceModel _trvResourceModel;
+
 	
 	public void setSelfBiz(ISelfBiz selfBiz) {
 		this.selfBiz = selfBiz;
@@ -87,44 +87,44 @@ public class SelfTransactDrvAction extends BaseAction implements ModelDriven<Tra
     
     
     
-	public void stream_driverIdFrontImg(){
+	public void stream_DriverIdFrontImg(){
 		try{
-	    this.selfBiz.loadCrudMapper(TransactResourceModel.class);
-	    _trvResourceModel=(TransactResourceModel)this.selfBiz.getModelEqPk(_trDrvModel.getFlowNo());
-		byte[] bytes=_trvResourceModel.getDriverIdFrontImg();
+	    if(this.selfBiz.loadCrudMapper(TransactResourceModel.class))return;
+	    TransactResourceModel trm=(TransactResourceModel)this.selfBiz.getModelEqPk(_trDrvModel.getFlowNo());
+		byte[] bytes=trm.getDriverIdFrontImg();
 		this.writeStream(bytes);
 		}catch(Exception ex){
 			ex.printStackTrace();
 		}
 	}
 	
-	public void stream_driverIdBackImg(){
-		try{
-		this.selfBiz.loadCrudMapper(TransactResourceModel.class);
-		_trvResourceModel=(TransactResourceModel)this.selfBiz.getModelEqPk(_trDrvModel.getFlowNo());
-		byte[] bytes=_trvResourceModel.getDriverIdBackImg();
-		this.writeStream(bytes);
-		}catch(Exception ex){
-			ex.printStackTrace();
-		}
-	}
-	
-	public void stream_agentIdFrontImg(){
+	public void stream_DriverIdBackImg(){
 		try{
 		this.selfBiz.loadCrudMapper(TransactResourceModel.class);
-		_trvResourceModel=(TransactResourceModel)this.selfBiz.getModelEqPk(_trDrvModel.getFlowNo());
-		byte[] bytes=_trvResourceModel.getAgentIdFrontImg();
+		TransactResourceModel trm=(TransactResourceModel)this.selfBiz.getModelEqPk(_trDrvModel.getFlowNo());
+		byte[] bytes=trm.getDriverIdBackImg();
 		this.writeStream(bytes);
 		}catch(Exception ex){
 			ex.printStackTrace();
 		}
 	}
 	
-	public void stream_agentIdBackImg(){
+	public void stream_AgentIdFrontImg(){
+		try{
+		this.selfBiz.loadCrudMapper(TransactResourceModel.class);
+		TransactResourceModel trm=(TransactResourceModel)this.selfBiz.getModelEqPk(_trDrvModel.getFlowNo());
+		byte[] bytes=trm.getAgentIdFrontImg();
+		this.writeStream(bytes);
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
+	}
+	
+	public void stream_AgentIdBackImg(){
 		try{
 			this.selfBiz.loadCrudMapper(TransactResourceModel.class);
-			_trvResourceModel=(TransactResourceModel)this.selfBiz.getModelEqPk(_trDrvModel.getFlowNo());
-		byte[] bytes=_trvResourceModel.getAgentIdBackImg();
+			TransactResourceModel trm=(TransactResourceModel)this.selfBiz.getModelEqPk(_trDrvModel.getFlowNo());
+		byte[] bytes=trm.getAgentIdBackImg();
 		this.writeStream(bytes);
 		}catch(Exception ex){
 			ex.printStackTrace();
@@ -134,8 +134,8 @@ public class SelfTransactDrvAction extends BaseAction implements ModelDriven<Tra
 	public void stream_captureImg(){
 		try{
 			this.selfBiz.loadCrudMapper(TransactResourceModel.class);
-			_trvResourceModel=(TransactResourceModel)this.selfBiz.getModelEqPk(_trDrvModel.getFlowNo());
-		byte[] bytes=_trvResourceModel.getCaptureImg();
+			TransactResourceModel trm=(TransactResourceModel)this.selfBiz.getModelEqPk(_trDrvModel.getFlowNo());
+		byte[] bytes=trm.getCaptureImg();
 		this.writeStream(bytes);
 		}catch(Exception ex){
 			ex.printStackTrace();

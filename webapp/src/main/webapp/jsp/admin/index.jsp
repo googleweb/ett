@@ -24,7 +24,7 @@ String adminMenuPath=basePath+"admin/Menu";
 		    });
     	 
     		$('#MenuTreeNode').tree({
-				url: '<%=adminMenuPath%>/list/Tree.action',
+				url: '<%=adminMenuPath%>/tree/menu.action',
 				animate:true,
 				onClick:function(node){
 					if(node.attributes.url.length<1)
@@ -64,7 +64,7 @@ String adminMenuPath=basePath+"admin/Menu";
             <iframe src="layout/footer.jsp" scrolling="no" frameborder="0"></iframe>
 		</div>
 		-->
-		<div region="west" iconCls="icon-reload" id="MenuTreeNode" split="false" style="width:220px;padding: 5%">
+		<div region="west" iconCls="icon-reload" id="MenuTreeNode" split="false" style="width:300px;padding: 5%"  title="菜单导航">
 		</div>
 
 		<div region="center"  >
