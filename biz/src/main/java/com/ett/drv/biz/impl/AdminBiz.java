@@ -14,6 +14,7 @@ import com.ett.drv.mapper.admin.IMenuMapper;
 import com.ett.drv.mapper.admin.IUserMapper;
 import com.ett.drv.model.admin.DepartmentModel;
 import com.ett.drv.model.admin.DictModel;
+import com.ett.drv.model.admin.DictTypeModel;
 import com.ett.drv.model.admin.MenuModel;
 import com.ett.drv.model.admin.RoleModel;
 import com.ett.drv.model.admin.UserModel;
@@ -172,6 +173,13 @@ public class AdminBiz extends BaseDrvBiz implements IAdminBiz {
 		DictModel query=new DictModel();
 		query.setCTypename(typeName);
 		List<DictModel> listDict=this.dictMapper.select(query);
+		return listDict;
+	}
+	
+	
+	public List<DictTypeModel> listDictType() throws Exception{
+		DictTypeModel query=new DictTypeModel();
+		List<DictTypeModel> listDict=this.dictTypeMapper.select(query);
 		return listDict;
 	}
 	

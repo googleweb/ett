@@ -3,9 +3,11 @@ package com.ett.drv.web.action.admin;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.ett.drv.model.admin.DictModel;
+import com.ett.drv.model.admin.DictTypeModel;
 import com.ett.drv.model.admin.UserModel;
 import com.ett.drv.web.action.BaseAction;
 import com.opensymphony.xwork2.ModelDriven;
@@ -60,7 +62,7 @@ public class DictAction extends BaseAction implements ModelDriven<DictModel>{
 	}
 	public void  do_editDict(){
 		int re=0;
-		System.out.println("233");
+		
 		if(this.isPost()){
 			
 			this.adminBiz.loadCrudMapper(DictModel.class);
@@ -109,4 +111,13 @@ public class DictAction extends BaseAction implements ModelDriven<DictModel>{
 		}
 		this.writePlainText(resultModel.toJson().toString());   	
     }
+	public void combobox_DictType(){
+		List listDictType=new ArrayList<DictTypeModel>();
+		JSONArray jarr=new JSONArray();
+		try {
+			listDictType=this.adminBiz.listDictType();
+			jarr=ObjectUtil.toJsonArray(listDictType);
+		} catch (Exception e) {e.printStackTrace();}
+		this.writePlainText(jarr.toString());
+	}
 }
