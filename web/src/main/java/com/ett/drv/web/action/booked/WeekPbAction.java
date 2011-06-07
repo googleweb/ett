@@ -202,6 +202,7 @@ public class WeekPbAction extends BaseAction implements ModelDriven<BookedWeekRe
     
     public void do_addLimit() throws Exception{
     	BookedLimitModel addLimit=this.tempLimit;
+    	addLimit.setIWeekNum(bookedWeekRecordModel.getIWeekNum());
     	addLimit=adminBiz.fillObject(addLimit);
     	this.bookedWeekRecordModel.getLimits().put((String) addLimit.generalPK(), addLimit);
     	ResultModel result=new ResultModel();

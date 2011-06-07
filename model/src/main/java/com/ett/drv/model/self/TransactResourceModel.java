@@ -51,8 +51,9 @@ public class TransactResourceModel extends BaseModel {
 		public void setCaptureImg(byte[] captureImg) {
 			CaptureImg = captureImg;
 		}
-	
-	
+		
+		
+		
 	
 	
 	

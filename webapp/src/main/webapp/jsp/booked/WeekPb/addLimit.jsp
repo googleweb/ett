@@ -56,20 +56,15 @@ String bookedWeekPbPath=basePath+"booked/WeekPb";
            JsMapModel optEditForm=new JsMapModel();
            optEditForm.put(EasyUiModel.Form.Properties.URL,bookedWeekPbPath+"/do/addLimit.action",true);
            optEditForm.put(EasyUiModel.Form.Events.SUCCESS,
-                new JsFunctionModel(new String[]{"data"})
-                .appendContext("var re=eval('('+data+')');")
-                .appendContext(new EasyUiMessager()
-                                .setTitle("re.title")
-                                .setMsg("re.msg")
-                                .alert()
-                )
+                new JsFunctionModel(new String[]{"str"})
+                .appendContext("str.messager();")
            );
            
-           JQueryModel btnSaveClick=new JQueryModel(StringUtil.formatId("#","-",formEditLimit,aSaveLimit),JQueryModel.Events.CLICK);
+           JQueryModel btnSaveClick=new JQueryModel(JQueryModel.id(formEditLimit+"-"+aSaveLimit),JQueryModel.Events.CLICK);
            btnSaveClick.appendParma(
                new JsFunctionModel(null)
                .appendContext(
-                 new EasyUiModel(StringUtil.formatId(true,"#",null,formEditLimit),
+                 new EasyUiModel(JQueryModel.id(formEditLimit),
                                     EasyUiModel.Form.NAME,
                                     EasyUiModel.Form.Methods.SUBMIT,
                                     optEditForm.toScirpt())
@@ -99,9 +94,9 @@ String bookedWeekPbPath=basePath+"booked/WeekPb";
   <body>
   	      <div class="innerDiv">
   	        <form  id="<%=formEditLimit %>" method="post">
-  	         <input type="hidden" name="tempLimit.km" value="${tempLimit.km}">
-  	         <input type="hidden" name="tempLimit.dayofweek" value="${tempLimit.dayofweek}">
-  	        <input type="hidden" name="tempLimit.dateKsrq" value="${tempLimit.dateKsrq}">
+  	         <input type="hidden" name="tempLimit.IKm" value="${tempLimit.IKm}">
+  	         <input type="hidden" name="tempLimit.IDayofweek" value="${tempLimit.IDayofweek}">
+  	        <input type="hidden" name="tempLimit.DateKsrq" value="${tempLimit.dateKsrq}">
   	          <table class="editTable">
   	            <tr>
   	              <td>考试场次</td>

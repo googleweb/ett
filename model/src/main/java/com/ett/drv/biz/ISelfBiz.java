@@ -19,4 +19,7 @@ public interface ISelfBiz extends IBaseCrudBiz{
 	
 	
 	public int doSynFeelog(Date createDate);
+	
+	
+	public byte[] getSelfResource(String flowNo,String resName);
 }

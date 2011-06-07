@@ -40,97 +40,7 @@ import com.smartken.kia.core.util.StringUtil;
 
 public class SelfBiz extends BaseDrvBiz implements ISelfBiz{
 
-/**
-	
-	private IDeviceMapper<DeviceModel> deviceMapper;
-	private ITerminalMapper<TerminalModel> terminalMapper;
-	private ITransactDriverMapper<TransactDriverModel> transactDriverMapper;
-	private ITransactVehicleMapper<TransactVehicleModel> transactVehicleMapper;
-	private IDrivingLicenseMapper<DrivingLicenseModel> drivingLicenseMapper;
-	private IVehicleMapper<VehicleModel> vehicleMapper;
-	private IVehFlowMapper<VehFlowModel> vehFlowMapper;
-	private IDrvFlowMapper<DrvFlowModel> drvFlowMapper;
-	private ITransactResourceMapper<TransactResourceModel> transactResourceMapper;
-	private IKm1CheckRecordMapper<Km1CheckRecordModel> km1CheckRecordMapper;
-	private IKm1PreasignRecordMapper<Km1PreasignRecordModel> km1PreasignRecordMapper;
-	private IFeeLogMapper<FeeLogModel> feeLogMapper;
-	
-	
-	public void setDeviceMapper(IDeviceMapper<DeviceModel> deviceMapper) {
-		this.deviceMapper = deviceMapper;
-		this.addCrudMapper(DeviceModel.class, deviceMapper);
-	}
-	public void setTerminalMapper(ITerminalMapper<TerminalModel> terminalMapper) {
-		this.terminalMapper = terminalMapper;
-		this.addCrudMapper(TerminalModel.class, terminalMapper);
-	}
-	public void setTransactDriverMapper(
-			ITransactDriverMapper<TransactDriverModel> transactDriverMapper) {
-		this.transactDriverMapper = transactDriverMapper;
-		this.addCrudMapper(TransactDriverModel.class, transactDriverMapper);
-	}
-	public void setTransactVehicleMapper(
-			ITransactVehicleMapper<TransactVehicleModel> transactVehicleMapper) {
-		this.transactVehicleMapper = transactVehicleMapper;
-		this.addCrudMapper(TransactVehicleModel.class, transactVehicleMapper);
-	}
-	
-	
-	public void setDrivingLicenseMapper(
-			IDrivingLicenseMapper<DrivingLicenseModel> drivingLicenseMapper) {
-		this.drivingLicenseMapper = drivingLicenseMapper;
-		this.addCrudMapper(DrivingLicenseModel.class, drivingLicenseMapper);
-	}
-	
-	
-	public void setVehicleMapper(IVehicleMapper<VehicleModel> vehicleMapper) {
-		this.vehicleMapper = vehicleMapper;
-		this.addCrudMapper(VehicleModel.class, vehicleMapper);
-	}
-	
-	
-	
-	public void setVehFlowMapper(IVehFlowMapper<VehFlowModel> vehFlowMapper) {
-		this.vehFlowMapper = vehFlowMapper;
-		this.addCrudMapper(VehFlowModel.class, vehFlowMapper);
-	}
-	
-	
-	
-	public void setDrvFlowMapper(IDrvFlowMapper<DrvFlowModel> drvFlowMapper) {
-		this.drvFlowMapper = drvFlowMapper;
-		this.addCrudMapper(DrvFlowModel.class, drvFlowMapper);
-	}
-	
-	
-	
-	
-	public void setTransactResourceMapper(
-			ITransactResourceMapper<TransactResourceModel> transactResourceMapper) {
-		this.transactResourceMapper = transactResourceMapper;
-		this.addCrudMapper(TransactResourceModel.class, transactResourceMapper);
-	}
-	
-	
-	
-	
-	
-	public void setKm1CheckRecordMapper(
-			IKm1CheckRecordMapper<Km1CheckRecordModel> km1CheckRecordMapper) {
-		this.km1CheckRecordMapper = km1CheckRecordMapper;
-		this.addCrudMapper(Km1CheckRecordModel.class, km1CheckRecordMapper);
-	}
-	public void setKm1PreasignRecordMapper(
-			IKm1PreasignRecordMapper<Km1PreasignRecordModel> km1PreasignRecordMapper) {
-		this.km1PreasignRecordMapper = km1PreasignRecordMapper;
-	    this.addCrudMapper(Km1PreasignRecordModel.class, km1PreasignRecordMapper);
-	}
-	public void setFeeLogMapper(IFeeLogMapper<FeeLogModel> feeLogMapper) {
-		this.feeLogMapper = feeLogMapper;
-		this.addCrudMapper(FeeLogModel.class, feeLogMapper);
-	}
 
-	**/
 
 	public String saveTransactAndFlow(TransactVehicleModel trModel,VehFlowModel flowModel) {
 		// TODO Auto-generated method stub
@@ -187,6 +97,20 @@ public class SelfBiz extends BaseDrvBiz implements ISelfBiz{
 			return synCount;
 		}
 		return synCount;
+	}
+
+	public byte[] getSelfResource(String flowNo, String resName) {
+		// TODO Auto-generated method stub
+		byte[] bs=null;
+		if(StringUtil.isBlank(flowNo)||StringUtil.isBlank(resName))return bs;
+		try {
+			TransactResourceModel trModel=this.transactResourceMapper.selectEqPk(flowNo);
+			bs=(byte[]) trModel.eval(resName);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return bs;
 	}
 	
 	
