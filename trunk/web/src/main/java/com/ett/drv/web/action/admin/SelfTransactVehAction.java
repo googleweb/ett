@@ -88,6 +88,12 @@ public class SelfTransactVehAction extends BaseAction implements ModelDriven<Tra
 		
 	}
 	
+	public void stream_resImg(){
+		String resName=this.getParameter("resName");
+		String flowNo=_trvehModel.getFlowNo();
+		byte[] bs=this.selfBiz.getSelfResource(flowNo, resName);
+		this.writeStream(bs);
+	}
 	
 	public void stream_DriverIdFrontImg(){
 		try{

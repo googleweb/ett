@@ -185,26 +185,26 @@ String excelTemplatePath=basePath+"js/print/机动车牌证申请表.xls";
             <td colspan="3">
                <ul class="ulThum">
                   <li >
-                      <img class="<%=imgThum %>"  src="<%=baseActionPath+"/stream/"+TransactResourceModel.F.DriverIdFrontImg+".action" %>" alt="车主身份证正面"/>
+                      <img class="<%=imgThum %>"  src="<%=baseActionPath+"/stream/resImg.action?resName="+TransactResourceModel.F.DriverIdFrontImg %>" alt="车主身份证正面"/>
                       <br/>  车主身份证正面
                   </li>
                   <li >
-                      <img class="<%=imgThum %>"  src="<%=baseActionPath+"/stream/"+TransactResourceModel.F.DriverIdBackImg+".action" %>" alt="车主身份证背面" />
+                      <img class="<%=imgThum %>"  src="<%=baseActionPath+"/stream/resImg.action?resName="+TransactResourceModel.F.DriverIdBackImg %>" alt="车主身份证背面" />
                       <br/>  车主身份证背面
                   </li>
                   <% if(isAgent){ %>
                   <li >
-                      <img class="<%=imgThum %>"  src="<%=baseActionPath+"/stream/"+TransactResourceModel.F.AgentIdFrontImg+".action" %>" alt="代理人身份证正面" />
+                      <img class="<%=imgThum %>"  src="<%=baseActionPath+"/stream/resImg.action?resName="+TransactResourceModel.F.AgentIdFrontImg %>" alt="代理人身份证正面" />
                       <br/>  代理人身份证正面
                   </li>
                  <li >
-                      <img class="<%=imgThum %>"  src="<%=baseActionPath+"/stream/"+TransactResourceModel.F.AgentIdBackImg+".action" %>" alt="代理人身份证背面" />
+                      <img class="<%=imgThum %>"  src="<%=baseActionPath+"/stream/resImg.action?resName="+TransactResourceModel.F.AgentIdBackImg %>" alt="代理人身份证背面" />
                       <br/>  代理人身份证背面
                   </li>
                   <% } %>
                   
                   <li >
-                      <img class="<%=imgThum %>"  src="<%=baseActionPath+"/stream/"+TransactResourceModel.F.CaptureImg+".action" %>" alt="现场拍摄照片" />
+                      <img class="<%=imgThum %>"  src="<%=baseActionPath+"/stream/resImg.action?resName="+TransactResourceModel.F.CaptureImg %>" alt="现场拍摄照片" />
                       <br/>  现场拍摄照片
                   </li>
                </ul>

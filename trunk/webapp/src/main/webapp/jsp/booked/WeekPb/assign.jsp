@@ -66,22 +66,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                //.appendContext("var total=limitId.split(',')[1];")
             .appendContext("var ldate=limitId.split(',')[2];")
             .appendContext("var parma=$.param({dw:dw,km:km});")
+            .appendContext("{0}.html(\"{1}\");",JQueryModel.id(divEditLimit),JsFunctionModel.iframe(basePath+"booked/WeekPb/to/addLimit.action?\"+parma+\""))
             .appendContext(
-                 new EasyUiModel(StringUtil.quota("#"+divEditLimit),EasyUiModel.Dialog.NAME)
+                 new EasyUiModel(JQueryModel.id(divEditLimit),EasyUiModel.Dialog.NAME)
                    .appendAttrs(EasyUiModel.Dialog.Properties.WIDTH,400)
                    .appendAttrs(EasyUiModel.Dialog.Properties.HEIGHT,300)
                    .appendAttrs(EasyUiModel.Dialog.Properties.MODAL,true)
                    .appendAttrs(EasyUiModel.Dialog.Properties.TITLE,"\"新增分配项目-\"+ldate")
-                   .appendAttrs(EasyUiModel.Dialog.Events.ON_BEFORE_OPEN,
-                                 new JsFunctionModel(null)
-                                   .appendContext(
-                                   new JQueryModel("this",JQueryModel.Properties.HTML).appendParma(JsFunctionModel.iframe(basePath+"booked/WeekPb/to/addLimit.action?\"+parma+\""),true)
-                                ))
                    .appendAttrs(EasyUiModel.Dialog.Events.ON_CLOSE,new JsFunctionModel(null).appendContext("location.href='"+basePath+"booked/WeekPb/reload/assign.action';"))
                )
            ;
            
-           JQueryModel btnAddLimit=new JQueryModel(StringUtil.quota("."+aAddLimit),JQueryModel.Events.CLICK);
+           JQueryModel btnAddLimit=new JQueryModel(JQueryModel.cls(aAddLimit),JQueryModel.Events.CLICK);
            btnAddLimit.appendParma(handlerAddLimitClick);
            
            JsFunctionModel handlerRemoveLimitsClick=new JsFunctionModel(null);
@@ -177,7 +173,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	<form action="<%=basePath %>booked/WeekPb/to/assign.action" method="post">
 	  	<table  class="editTable" cellpadding="1" cellspacing="0">
 	  	  <tr>
-	  	    <td><s:property value="%{getText('booked.searchDate')}" /> </td>
+	  	    <td>排班日期： </td>
 	  	    <td><input id="<%=txtSearchDate %>" name="searchDate" />
 	  	    <button type="submit"><div class="kia-icon search"></div>查询</button>
 	  	    </td>
@@ -278,7 +274,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	        <tr>
   	          <td colspan="20">
   	            <a id="<%=aSaveWeek %>"
-	            onclick="menuAddForm_submit('sys/Menu/fn/add.action')">保存</a>
+	            onclick="menuAddForm_submit('admin/Menu/do/add.action')">保存</a>
 	            <a id="<%=aBack %>"
 	            href="booked/WeekPb/to/index.action" >返回</a>
   	          </td>
