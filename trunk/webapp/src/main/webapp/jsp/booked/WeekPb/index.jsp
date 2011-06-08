@@ -5,6 +5,7 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+String bookedWeekPbPath=basePath+"booked/WeekPb";
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -42,7 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         .appendAttrs(EasyUiModel.DataGrid.Properties.HEIGHT,"innerHeight")
         .appendAttrs(EasyUiModel.DataGrid.Properties.PAGINATION,true)
         .appendAttrs(EasyUiModel.DataGrid.Properties.ID_FIELD,"Id",true)
-        .appendAttrs(EasyUiModel.DataGrid.Events.ON_DBL_CLICK_ROW,new JsFunctionModel(new String[]{"index,data"}).appendContext("document.location.href=\"booked/WeekPb/to/assign.action?weekNum=\"+data['IWeekNum'];"));
+        .appendAttrs(EasyUiModel.DataGrid.Events.ON_DBL_CLICK_ROW,new JsFunctionModel(new String[]{"index,data"}).appendContext("document.location.href='"+bookedWeekPbPath+"/to/assign.action?weekNum='+data['IWeekNum']"));
         List weekPbColumns=new JsListModel();
         List weekPbR1=new JsListModel();
         JsMapModel<String,Object> weekPbR1C1=new JsMapModel<String,Object>();

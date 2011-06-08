@@ -19,4 +19,6 @@ public interface IBookedBiz extends IBaseCrudBiz{
 	
 	
 	public ResultModel tranExamPreasgin(BookedOrderInfoModel orderInfoModel);
+	
+	public ResultModel tranSaveWeekPb(BookedWeekRecordModel weekPb);
 }

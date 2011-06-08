@@ -9,6 +9,7 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+String bookedWeekPbPath=basePath+"booked/WeekPb";
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -110,16 +111,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                .appendContext("var keys=key.split('_');")   
                //.appendContext("var total=limitId.split(',')[1];")
                .appendContext("var ldate=limitId.split(',')[1];")
+               .appendContext("{0}.html(\"{1}\");",JQueryModel.id(divEditLimit),JsFunctionModel.iframe(basePath+"booked/WeekPb/to/editLimit.action?limitKey=\"+key+\""))
                .appendContext(
                  new EasyUiModel(JQueryModel.id(divEditLimit),EasyUiModel.Dialog.NAME)
                    .appendAttrs(EasyUiModel.Dialog.Properties.WIDTH,400)
                    .appendAttrs(EasyUiModel.Dialog.Properties.HEIGHT,300)
                    .appendAttrs(EasyUiModel.Dialog.Properties.MODAL,true)
                    .appendAttrs(EasyUiModel.Dialog.Properties.TITLE,"\"修改分配项目-\"+ldate")
-                   .appendAttrs(EasyUiModel.Dialog.Events.ON_BEFORE_OPEN,
-                                 new JsFunctionModel(null).appendContext(
-                                   new JQueryModel("this",JQueryModel.Properties.HTML).appendParma(JsFunctionModel.iframe(basePath+"booked/WeekPb/to/editLimit.action?limitKey=\"+key+\""),true)
-                                ))
                    .appendAttrs(EasyUiModel.Dialog.Events.ON_CLOSE,new JsFunctionModel(null).appendContext("location.href='"+basePath+"booked/WeekPb/reload/assign.action';"))
                )
            );
@@ -181,16 +179,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  	</table>
   	</form>
   	
-     ${weekRange}:${weekNum}
   	  
-  	   <table  class="editTable" cellpadding="1" cellspacing="0">
+  	   <table  class="editTable" cellpadding="1" cellspacing="0" style="width:100%">
   	     <thead>
   	        <tr>
-  	          <td  style="width:15%" >星期</td>
-  	          <td style="width:8%">科目</td>
-  	          <td style="width:12%">分配总数</td>
-  	          <td style="width:8%">已分配/剩余</td>
-  	          <td >分配明细</td>
+  	          <td  style="width:180px" >星期</td>
+  	          <td style="width:100px">科目</td>
+  	          <td style="width:250px">分配总数</td>
+  	          <td style="width:150px">已分配/剩余</td>
+  	          <td style="width:500px">分配明细</td>
   	        </tr>
   	        
 
@@ -222,47 +219,39 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                </form>
                </td>  
                <td>&nbsp;
-                  <s:if test="#request['IWeek'+#dw.value+'Km'+#km.value+'Num'] gte #request['IWeek'+#dw.value+'Km'+#km.value+'Assgined'] ">
-                     <s:property value="#request['IWeek'+#dw.value+'Km'+#km.value+'Assgined']" />/
-                     <s:property value="%{#request['IWeek'+#dw.value+'Km'+#km.value+'Num'] - #request['IWeek'+#dw.value+'Km'+#km.value+'Assgined']}" />
+                  <s:if test="#request['IWeek'+#dw.value+'Km'+#km.value+'Num'] gte #request['week'+#dw.value+'Km'+#km.value+'Assgined'] ">
+                     <s:property value="#request['week'+#dw.value+'Km'+#km.value+'Assgined']" />/
+                     <s:property value="%{#request['IWeek'+#dw.value+'Km'+#km.value+'Num'] - #request['week'+#dw.value+'Km'+#km.value+'Assgined']}" />
                   </s:if>
                   <s:else>
                      <span style="color:red;">
-                     <s:property value="#request['IWeek'+#dw.value+'Km'+#km.value+'Assgined']" /><br/>
+                     <s:property value="#request['week'+#dw.value+'Km'+#km.value+'Assgined']" /><br/>
                      分配数已超过总数
                      </span>
                   </s:else>
+                  <p/>
+                   <a class="<%=EasyUiModel.LinkButton.CLASS %> <%=aAddLimit %>"  <%=EasyUiModel.Layout.Properties.ICON_CLS(EasyUiModel.ICON_ADD) %>
+                     id="<s:property value="#dw.value"/>,<s:property value="#km.value"/>,<s:property value="value.DateKsrq" />" >新增排班
+                   </a>
                </td>
                <td>
-                 <table style="width: 80%">
-                    <tr>
-                       <td >
-                        <a class="kia-icon add <%=aAddLimit %>" title="新增菜单" 
-                        id="<s:property value="#dw.value"/>,<s:property value="#km.value"/>,<s:property value="value.dateKsrq" />" >&nbsp;
-                        </a>
-
-                      </td>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td><a class="kia-icon remove <%=aRemoveLimits %>" title="清空" 
-                      id="<s:property value="#dw.value"/>,<s:property value="#km.value"/>,<s:property value="value.dateKsrq" />" >&nbsp;
-                      </a></td>
+                 <table class="editTable" style="width: 80%" cellspacing="0">
+                 <tbody>
                    <s:iterator value="limits" status="st">
-                   <s:if test="value.dayofweek eq #dw.value && value.km eq #km.value">
-                    </tr>
+                   <s:if test="value.IDayofweek eq #dw.value && value.IKm eq #km.value">
                    <tr>
-                     <td><s:property value="value.ksdd" /></td>
-                     <td><s:property value="value.kscc" /></td>
-                     <td><s:property value="value.schoolName" /></td>
-                     <td><s:property value="value.total" /></td>
+                     <td><s:property value="value.CKsdd" /></td>
+                     <td><s:property value="value.CKscc" /></td>
+                     <td><s:property value="value.CSchoolName" /></td>
+                     <td><s:property value="value.ITotal" /></td>
                      <td>
-                        <a class="kia-icon edit <%=aEditLimit %>" name="<s:property value="key" />" id="<s:property value="key" />,<s:property value="value.dateKsrq" />" ></a>
+                        <a class="kia-icon edit <%=aEditLimit %>" name="<s:property value="key" />" id="<s:property value="key" />,<s:property value="value.DateKsrq" />" ></a>
                          <a class="kia-icon remove <%=aRemoveLimit %>" id="<s:property value="key" />" ></a>
                      </td>
                    </tr>
                    </s:if>
                    </s:iterator>
+                  </tbody>
                  </table>
                </td>
   	        </tr> 
@@ -274,7 +263,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	        <tr>
   	          <td colspan="20">
   	            <a id="<%=aSaveWeek %>"
-	            onclick="menuAddForm_submit('admin/Menu/do/add.action')">保存</a>
+	            onclick="$.get('<%=bookedWeekPbPath %>/do/saveWeekPb.action',function(str){str.messager();});">保存</a>
 	            <a id="<%=aBack %>"
 	            href="booked/WeekPb/to/index.action" >返回</a>
   	          </td>

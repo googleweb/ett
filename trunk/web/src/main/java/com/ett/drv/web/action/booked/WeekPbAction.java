@@ -276,4 +276,9 @@ public class WeekPbAction extends BaseAction implements ModelDriven<BookedWeekRe
         this.writePlainText(re.toJson().toString());
 	}
 	
+	public void do_saveWeekPb() throws Exception{
+		ResultModel resultModel=this.bookedBiz.tranSaveWeekPb(bookedWeekRecordModel);
+		this.writePlainText(resultModel.toJson().toString());
+	}
+	
 }

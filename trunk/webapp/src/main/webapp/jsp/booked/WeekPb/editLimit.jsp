@@ -47,7 +47,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           
 
            
-           EasyUiModel numberTotal=new EasyUiModel(StringUtil.quota("#"+formEditLimit+"-"+txtTotal),EasyUiModel.NumberSpinner.NAME);
+           EasyUiModel numberTotal=new EasyUiModel(JQueryModel.id(formEditLimit+"-"+txtTotal),EasyUiModel.NumberSpinner.NAME);
            numberTotal.appendAttrs(EasyUiModel.Spinner.Properties.INCREMENT,5)
            .appendAttrs(EasyUiModel.NumberBox.Properties.MIN,1)
            .appendAttrs(EasyUiModel.Spinner.Properties.REQUIRED,true)
@@ -58,21 +58,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            
            JsMapModel optEditForm=new JsMapModel();
            optEditForm.put(EasyUiModel.Form.Properties.URL,basePath+"booked/WeekPb/do/editLimit.action",true);
-           optEditForm.put(EasyUiModel.Form.Events.SUCCESS,
-                new JsFunctionModel(new String[]{"data"})
-                .appendContext("var re=eval('('+data+')');")
-                .appendContext(new EasyUiMessager()
-                                .setTitle("re.title")
-                                .setMsg("re.msg")
-                                .alert()
-                )
-           );
            
-           JQueryModel btnSaveClick=new JQueryModel(StringUtil.formatId(true,"#","-",formEditLimit,aSaveLimit),JQueryModel.Events.CLICK);
+           JQueryModel btnSaveClick=new JQueryModel(JQueryModel.id(formEditLimit+"-"+aSaveLimit),JQueryModel.Events.CLICK);
            btnSaveClick.appendParma(
                new JsFunctionModel(null)
                .appendContext(
-                 new EasyUiModel(StringUtil.formatId(true,"#",null,formEditLimit),
+                 new EasyUiModel(JQueryModel.id(formEditLimit),
                                     EasyUiModel.Form.NAME,
                                     EasyUiModel.Form.Methods.SUBMIT,
                                     optEditForm.toScirpt())
@@ -134,13 +125,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	               <a id=<%=StringUtil.formatId(null,"-",formEditLimit,aSaveLimit) %>
   	                  class="<%=EasyUiModel.LinkButton.CLASS %>"
   	                  <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_SAVE) %>
-  	               >
-  	               
-  	               </a>
+  	               >保存</a>
+  	               <!--  
   	               <a id=<%=StringUtil.formatId(null,"-",formEditLimit,aReset) %> 
   	                 	class="<%=EasyUiModel.LinkButton.CLASS %>"
   	                  <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_RELOAD) %>
-  	               ></a>
+  	               >重置</a>
+  	               -->
   	              </td>
   	            </tr>
   	          </table>

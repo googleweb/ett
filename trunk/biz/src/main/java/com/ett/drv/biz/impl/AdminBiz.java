@@ -96,18 +96,18 @@ public class AdminBiz extends BaseDrvBiz implements IAdminBiz {
 		// TODO Auto-generated method stub
 		if(StringUtil.isNotBlank(pLimit.getCKsccCode()))
 		{
-		   DictModel dict=new DictModel();
-		   dict.setCTypename(TYPE_NAME_KSCC);
-		   dict.setCTypename(pLimit.getCKsccCode());
-		   DictModel dictKscc=dictMapper.select(dict).get(0);
+		   DictModel q=new DictModel();
+		   q.setCTypename(TYPE_NAME_KSCC);
+		   q.setCDictValue(pLimit.getCKsccCode());
+		   DictModel dictKscc=dictMapper.select(q).get(0);
 		   pLimit.setCKscc(dictKscc.getCDictText());
 		}
 		if(StringUtil.isNotBlank(pLimit.getCKsddCode()))
 		{
-		   DictModel dict=new DictModel();
-		   dict.setCTypename(TYPE_NAME_KSDD);
-		   dict.setCTypename(pLimit.getCKsddCode());
-		   DictModel dictKsdd=dictMapper.select(dict).get(0);
+		   DictModel q=new DictModel();
+		   q.setCTypename(TYPE_NAME_KSDD);
+		   q.setCDictValue(pLimit.getCKsddCode());
+		   DictModel dictKsdd=dictMapper.select(q).get(0);
 		   pLimit.setCKsdd(dictKsdd.getCDictText());
 		}
 		if(StringUtil.isNotBlank(pLimit.getCSchoolCode()))
