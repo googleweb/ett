@@ -50,15 +50,15 @@ function clickAddHandler(){
 function dblClickRowHandler(rowIndex,rowData){ 
 	    var id=rowData["Id"];
 	    var fullname=rowData["<%=RoleModel.F.CName%>"];
-  		var href='<%=basePath%>'+"admin/Role/to/modifyRole.action?id="+id;
+  		var href="<%=basePath%>admin/Role/to/modifyRole.action?id="+id;
+  		$("#divEditRole").kiaIframe(href);
   		$("#divEditRole").dialog({
-  			title:"修改角色:"+fullname,
+  			title:"修改角色:"+fullname+":"+id,
 			height:400,
 			width:600,
 			onClose:function(){ $('#test').datagrid('reload'); },
-	    	modal:true,
-			onBeforeOpen:function(){$(this).kiaIframe(href);}} 
-		);//   end:$("#divEdit").dialog
+	    	modal:true
+		});//   end:$("#divEdit").dialog
  }
 function clickRemoveHandler(){ 
  		 $.messager.confirm('操作提示','确认删除角色?',function(yes){		 		

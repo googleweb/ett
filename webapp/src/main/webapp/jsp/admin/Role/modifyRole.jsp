@@ -4,7 +4,6 @@
 <%@page import="com.ett.drv.model.admin.UserModel"%>
 <%@page import="com.smartken.kia.core.model.impl.JQueryModel"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
-
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -27,10 +26,32 @@ String adminRolePath=basePath+"/admin/Role";
 	<jsp:include page="/js/index.jsp"></jsp:include>
    <jsp:include page="/css/index.jsp"></jsp:include>
    
-   
+   <% %>
    <script type="text/javascript">
-    
-   function clickSave(){
+   $(document).ready(function(){
+	     
+    	 var url='<%=adminRolePath%>'+"/checkbox/Menu";
+         $.getJSON(url,function(json){
+	    	 $.each(json,function(index,item){
+	    		 var input= $("<input />");
+	    		 var li=$("<li></li>");
+	    		 var text=item["Menutext"]||"";
+	    		 input.attr("name","CRolestring").attr("type","checkbox").val(item["Menuid"]);
+	    		 li.append(text+":").append(input);
+	    		 $("#roledisplay").append(li);
+	    	 });
+	    	 
+	    	  var qxian=$("#cRolestring").val();
+             var qxians=qxian.split(";");
+	        $.each(qxians,function(n,item){
+	    			if(item==null||item.length==0) return true;
+	    			$(":checkbox[value='"+item+"']").attr("checked","checked");	 
+	    		 });
+	    	 
+	     });   //$.getJSON(url,function(json){
+
+     });    
+function clickSave(){
  
 	     $.messager.confirm('操作提示','确认保存',function(yes){
 		   if(yes){
@@ -43,29 +64,14 @@ String adminRolePath=basePath+"/admin/Role";
 				   }
 			   });
 		   }
-	     });
-	     
-	  
-	     
+	     });     
    }
-  $(document).ready(function(){
-      var url="<%=adminRolePath%>"+"/checkbox/Menu";
-      $.getJSON(url,function(json){
-	    	 $.each(json,function(index,item){
-	    		 var input= $("<input />").attr("name","CRolestring").attr("type","checkbox").val(data["Menuid"]);
-	    		 $("#roledisplay").append(input);
-	    	 });
-	     });
-        }
-   
-   
    </script>
-   
   </head>
- 
   <body>
   <div class="innerDiv">
      <form id="formUser"  method="post">
+     <input type="hidden"  id="cRolestring" value="${CRolestring}" />
      <input type="hidden" name="Id" value="${Id}" />
        <table class="editTable" cellspacing="0">
          <tbody>
@@ -87,12 +93,9 @@ String adminRolePath=basePath+"/admin/Role";
            </tr>
            <tr>
             <th>介绍</th>
-             <td style="width: 35%" id="roledisplay"><%--
-               <input name="CRolestring" type="text" value="${CRolestring}" 
-               class="<%=EasyUiModel.ValidateBox.CLASS %>"
-                 <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
-               />
-             --%></td>          
+             <td style="width: 35%"  colspan="3">
+               <ul id="roledisplay" ></ul>         
+             </td>          
            <tr>
              <td colspan="4" style="text-align: right">
              <a class="<%=EasyUiModel.LinkButton.CLASS %>"

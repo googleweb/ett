@@ -10,6 +10,11 @@ String adminMenuPath=basePath+"admin/Menu";
  <html>
  <head>
  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ 	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">    
+	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+	<meta http-equiv="description" content="This is my page">
   	<jsp:include page="/plugin/index.jsp">
 	 <jsp:param value="jquery,easyui" name="plugin"/>
 	</jsp:include>
@@ -17,6 +22,7 @@ String adminMenuPath=basePath+"admin/Menu";
   <jsp:include page="/js/index.jsp"></jsp:include>
   <script type="text/javascript">
      $(document).ready(function(){
+    	
     	   $("#mainTabs").tabs('add',{
 			   title:"信息中心",
 			   closable:false,
