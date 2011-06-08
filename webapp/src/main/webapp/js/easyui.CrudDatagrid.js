@@ -71,7 +71,7 @@ CrudDatagrid.prototype.getToolbar=function(opts){
 		       ,handler:function(){
 	            			var selectsRows=$(regexp).datagrid("getSelections");
 	            			var deleteCount=selectsRows.length;
-	            			if(deleteCount==0){$.messager.alert("","没有记录被选中");return;}
+	            			if(deleteCount==0){$.messager.alert("","没有记录被选中","error");return;}
 							var ids="";
 							ids=selectsRows.getUnionStr(id,",");
 							$.messager.confirm("操作提示","是否删除"+deleteCount+"条记录",function(ok){
@@ -81,6 +81,7 @@ CrudDatagrid.prototype.getToolbar=function(opts){
 					              try{
 					               var re=new String(str);
                                    re.messager();
+                                  $(regexp).datagrid("clearSelections");
 						          $(regexp).datagrid("reload");
 						         }catch(ex){alert(ex);}
 							    });

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -12,6 +13,7 @@ import com.smartken.kia.core.enums.ResultEnum;
 import com.smartken.kia.core.model.impl.BaseCurdBiz;
 import com.smartken.kia.core.model.impl.ResultModel;
 import com.smartken.kia.core.util.DateTimeUtil;
+import com.smartken.kia.core.util.ObjectUtil;
 
 import com.ett.drv.biz.IBookedBiz;
 import com.ett.drv.mapper.booked.ILimitMapper;
@@ -72,5 +74,48 @@ public class BookedBiz extends BaseDrvBiz implements IBookedBiz {
 		}
 		return reModel;
 	}
+
+
+	public ResultModel tranSaveWeekPb(BookedWeekRecordModel weekPb) {
+		// TODO Auto-generated method stub
+		ResultModel reModel=new ResultModel();
+		int re=0;
+		try {
+			weekPb.updateFpContext(weekPb.getLimits());
+			re+=this.weekRecordMapper.updateOne(weekPb);
+			int weekNum=weekPb.getIWeekNum();
+			List<BookedLimitModel> listDelectLimit=new ArrayList<BookedLimitModel>();
+			BookedLimitModel q=new BookedLimitModel();
+			q.setIWeekNum(weekNum);
+			listDelectLimit=this.limitMapper.select(q);
+		    List<Integer> ids=new ArrayList<Integer>();
+            for(BookedLimitModel blm: listDelectLimit){
+            	ids.add(blm.getId());
+            }
+			
+			re+=this.limitMapper.deleteInPk(ids);
+			Map<String,BookedLimitModel> limits=weekPb.getLimits();
+			for(Iterator<String> it=limits.keySet().iterator();it.hasNext();){
+			   BookedLimitModel limit=limits.get(it.next());
+			   re+=this.limitMapper.insertOne(limit);
+			}
+			reModel.setAction(ResultModel.ACTION_ALERT);
+	    if(re==0){
+	    	reModel.setTitle("操作失败");
+	    	reModel.setMsg("周排班保存失败");
+	    }else{
+	    	reModel.setTitle("操作成功");
+	    	reModel.setMsg("周排班保存成功");
+	    }
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return reModel;
+	}
+	
+	
+
 
 }

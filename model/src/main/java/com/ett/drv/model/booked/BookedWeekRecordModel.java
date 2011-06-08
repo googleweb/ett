@@ -218,7 +218,7 @@ public class BookedWeekRecordModel extends BaseModel{
 			BookedLimitModel tempLimit=mapLimt.get(tempKey);
 			int dow=tempLimit.getIDayofweek();
 			int km=tempLimit.getIKm();
-			String assignName=MessageFormat.format("IWeek{0}Km{1}Assgined", dow,km);
+			String assignName=MessageFormat.format("week{0}Km{1}Assgined", dow,km);
 			try {
 				int assgin= Integer.parseInt(this.eval(assignName).toString()); 
 				assgin+=tempLimit.getITotal();
@@ -228,6 +228,46 @@ public class BookedWeekRecordModel extends BaseModel{
 		}
 			
 	}
+	
+	public void updateFpContext(Map<String, BookedLimitModel> limits){
+		for(int w=1;w<8;w++){
+			for(int k=1;k<3;k++){
+				String fpName=MessageFormat.format("IWeek{0}Km{1}Fp", w,k);
+				try {
+					this.eval(fpName, "");
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		for(Iterator<String> it=limits.keySet().iterator();it.hasNext();){
+			BookedLimitModel bolModel=limits.get(it.next());
+			int dow=bolModel.getIDayofweek();
+			int km=bolModel.getIKm();
+			String fpName=MessageFormat.format("IWeek{0}Km{1}Fp", dow,km);
+			String pattern="<br/>{0};{1};{2};{3};{4};{5};{6}";
+			try {
+				String  newContext=MessageFormat.format(pattern
+				   ,bolModel.getCKsddCode()
+				   ,bolModel.getCKsdd()
+				   ,bolModel.getCKsccCode()
+				   ,bolModel.getCKscc()
+				   ,bolModel.getCSchoolCode()
+				   ,bolModel.getCSchoolName()
+				   ,bolModel.getId()
+				);
+				String context=(String) this.eval(fpName);
+				context+=newContext;
+				this.eval(fpName,context);
+				
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	
 
 	public Map<String, BookedLimitModel> getLimits() {
 		return limits;
@@ -238,6 +278,7 @@ public class BookedWeekRecordModel extends BaseModel{
 
 	public void setLimits(Map<String, BookedLimitModel> limits) {
 		this.limits = limits;
+
 	}
 
 
