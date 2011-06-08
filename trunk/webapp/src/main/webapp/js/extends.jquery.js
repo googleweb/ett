@@ -19,7 +19,7 @@ kiaLoadFields:function(){
  }
  
  ,kiaIframe:function(url){
-	  $(this).html("<iframe scrolling='no' frameborder='0' src='"+url+"' style='width:100%;height:100%;overflow:hidden;'></iframe>");
+	  $(this).html("<iframe  frameborder='0' src='"+url+"' style='width:100%;height:100%;'></iframe>");
  }
  
  ,kiaAuthFields:function(authJson){

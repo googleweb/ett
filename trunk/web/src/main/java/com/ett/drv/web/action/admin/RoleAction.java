@@ -3,6 +3,7 @@ package com.ett.drv.web.action.admin;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.ett.drv.model.admin.MenuModel;
@@ -83,6 +84,7 @@ public class RoleAction extends BaseAction implements ModelDriven<RoleModel> {
 	}
 
 	public void do_modifyRole() {
+		
 		int re = 0;
 		if (this.isPost()) {
 			this.adminBiz.loadCrudMapper(RoleModel.class);
@@ -129,16 +131,13 @@ public class RoleAction extends BaseAction implements ModelDriven<RoleModel> {
 
 	@SuppressWarnings("unchecked")
 	public void  checkbox_Menu(){
+		MenuModel query=new MenuModel();
+		query.setIsparent(0);
 		this.adminBiz.loadCrudMapper(MenuModel.class);
 		List<IFormatterModel> list = (List<IFormatterModel>) this.adminBiz
-				.getModel(this.getPager());
-		JSONObject jsonDG = EasyUiUtil.toJsonDataGrid(list, this.adminBiz
-				.count());
-		this.writePlainText(jsonDG.toString());
-		
-		
+				.getView(query);
+		this.writePlainText((ObjectUtil.toJsonArray(list).toString()));	
 	}
-
 	@Override
 	public void clear() {
 	}
