@@ -44,10 +44,11 @@ String adminDictTypePath=basePath+"admin/Dicttype";
       
       JsMapModel colTypeName=EasyUiUtil.createTextColumn(DictTypeModel.F.CTypename);
       colTypeName.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"类型名称",true);
+      colTypeName.put(EasyUiModel.DataGrid.ColumnProperties.EDITOR,EasyUiUtil.createValidateboxEditor(true,null));
       
       JsMapModel colCDescription=EasyUiUtil.createTextColumn(DictTypeModel.F.CDescription);
       colCDescription.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"类型描述",true);
-      
+      colCDescription.put(EasyUiModel.DataGrid.ColumnProperties.EDITOR,EasyUiUtil.createValidateboxEditor(true,null));
       row1.add(colId);
       row1.add(colTypeName);
       row1.add(colCDescription);
