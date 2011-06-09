@@ -63,7 +63,7 @@ NAME=#{model.Name,jdbcType=VARCHAR,javaType=String},
 
 </sql>
 
-<sql id="orderby">order by m.ID desc </sql>
+<sql id="orderby">order by m.DEPCODE,m.ID desc </sql>
 
 <sql id="joinColums"></sql>
 

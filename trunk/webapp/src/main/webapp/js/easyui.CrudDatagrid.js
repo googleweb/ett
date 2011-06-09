@@ -20,6 +20,7 @@ var CrudDatagrid=function(opts){
 };
 
 CrudDatagrid.prototype.getToolbar=function(opts){
+	        opts=opts||{};
 	        var textBtnAdd=opts["textBtnAdd"]||"新建";
 		    var newRow=new this._initRow();
 	        var regexp=this._regexp;
@@ -48,7 +49,7 @@ CrudDatagrid.prototype.getToolbar=function(opts){
 	        var btnUpdate={iconCls:"icon-edit",text:"修改"
 	        ,handler:function(){ 	
 	        	var selectRow=$(regexp).datagrid("getSelected");
-	        	if(!selectRow){$.messager.alert("","没有记录被选中");return;}
+	        	if(!selectRow){$.messager.alert("","没有记录被选中","error");return;}
 	        	var rowIndex=$(regexp).datagrid("getRowIndex",selectRow);
 	            formOpts["data"]=selectRow;
 	    		formOpts["urlSave"]=urlUpdate;
