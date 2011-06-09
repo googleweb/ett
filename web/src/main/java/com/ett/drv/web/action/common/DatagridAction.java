@@ -67,7 +67,7 @@ public class DatagridAction extends BaseAction {
 		ResultModel rm=new ResultModel();
 		if(listPk.size()<1)return;
 		try {
-			int result=this.adminBiz.removeModelInPk(listPk);
+			int result=this.adminBiz.removeModelInPk(listPk).getRe();
 			rm.setTitle("操作成功");
 			rm.setMsg("成功从数据库删除{0}条记录",result);	
 		} catch (Exception e) {
@@ -95,7 +95,7 @@ public class DatagridAction extends BaseAction {
 //	        if(StringUtil.isBlank(ObjectUtil.formatString(bm.eval(this.pk)))){
 //	        	bm.eval(pk,pkObj);
 //	        }
-	        result=this.adminBiz.modifyOrAddModel(bm);
+	        result=this.adminBiz.modifyOrAddModel(bm).getRe();
 			rm.setTitle("操作成功");
 			rm.setMsg("成功保存{0}条记录",result);	
 		} catch (Exception e) {

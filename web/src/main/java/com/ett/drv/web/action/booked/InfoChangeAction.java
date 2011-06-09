@@ -66,7 +66,7 @@ public class InfoChangeAction extends BaseAction {
 //		
 //		personChange.setId(pcm.getId());
 		int re=0;
-		re+=this.bookedBiz.addModel(personChange);
+		re+=this.bookedBiz.addModel(personChange).getRe();
 
 		if(re==1){
 			resultModel.setTitle("操作成功");
@@ -82,7 +82,7 @@ public class InfoChangeAction extends BaseAction {
 		resultModel.setAction(ResultModel.ACTION_ALERT);
 		this.bookedBiz.loadCrudMapper(CarOwnerChangeModel.class);
 		int re=0;
-		re+=this.bookedBiz.addModel(cardOwnerChange);
+		re+=this.bookedBiz.addModel(cardOwnerChange).getRe();
 
 		if(re==1){
 			resultModel.setTitle("操作成功");

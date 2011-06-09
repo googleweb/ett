@@ -157,7 +157,7 @@ public class SelfTransactVehAction extends BaseAction implements ModelDriven<Tra
         //System.out.println(this._trvehModel.toJson());
         int re=0;
         this.selfBiz.loadCrudMapper(TransactVehicleModel.class);
-        re+=this.selfBiz.modifyModel(_trvehModel);
+        re+=this.selfBiz.modifyModel(_trvehModel).getRe();
         ResultModel resultModel=new ResultModel();
         String msg="";
         if(re==1){

@@ -172,7 +172,7 @@ public class ExamPreasignAction extends BaseAction implements ModelDriven<Booked
 		ResultModel reModel=new ResultModel();
 		int re=0;
 		this.bookedBiz.loadCrudMapper(BookedOrderInfoModel.class);
-		re+=this.bookedBiz.removeModelInPk(listId);
+		re+=this.bookedBiz.removeModelInPk(listId).getRe();
 		reModel.setAction(ResultModel.ACTION_ALERT);
 		if(re>0){
 			reModel.setTitle("操作成功");

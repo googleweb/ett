@@ -66,7 +66,7 @@ public class DictAction extends BaseAction implements ModelDriven<DictModel>{
 		if(this.isPost()){
 			
 			this.adminBiz.loadCrudMapper(DictModel.class);
-			re+=this.adminBiz.modifyOrAddModel(_dictModel);
+			re+=this.adminBiz.modifyOrAddModel(_dictModel).getRe();
 		}
 		ResultModel resultModel=new ResultModel();
 		if(re==1){
@@ -96,7 +96,7 @@ public class DictAction extends BaseAction implements ModelDriven<DictModel>{
 		{
              lListIds=StringUtil.splitToList(ids,",");
              this.adminBiz.loadCrudMapper(DictModel.class);
-             re+=this.adminBiz.removeModelInPk(lListIds);
+             re+=this.adminBiz.removeModelInPk(lListIds).getRe();
 		}
 		ResultModel resultModel=new ResultModel();
 		if(re>0){

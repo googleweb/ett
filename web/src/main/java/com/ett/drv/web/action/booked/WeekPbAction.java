@@ -261,7 +261,7 @@ public class WeekPbAction extends BaseAction implements ModelDriven<BookedWeekRe
 		int verifyCount=0;
         for (BookedWeekRecordModel weekRecord : listWeekRecords) {
 			weekRecord.setIChecked(BookedWeekRecordModel.CHECKED_VAILDATE);
-			verifyCount+=bookedBiz.modifyModel(weekRecord);
+			verifyCount+=bookedBiz.modifyModel(weekRecord).getRe();
 		}
         ResultModel re=new ResultModel();
         if(verifyCount>0){
