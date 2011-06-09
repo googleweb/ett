@@ -1,12 +1,14 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@page import="com.ett.drv.model.admin.DictModel"%>
-<%@ taglib prefix="s" uri="/struts-tags" %>
-<%@page import="com.smartken.kia.core.util.EasyUiUtil"%>
-<%@page import="com.smartken.kia.core.model.impl.*"%>
-<%@page import="com.ett.model.*" %>
+<%@ page import="com.ett.drv.model.admin.DictModel"%>
+<%@ page import="com.ett.drv.model.admin.DictTypeModel"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ page import="com.smartken.kia.core.util.EasyUiUtil"%>
+<%@ page import="com.smartken.kia.core.model.impl.*"%>
+<%@ page import="com.ett.model.*"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+String adminDictPath=basePath+"/admin/Dict";
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -24,112 +26,103 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-         <jsp:include page="/plugin/index.jsp">
-	 	    <jsp:param value="jquery,easyui" name="plugin"/>
-	     </jsp:include>
-         <jsp:include page="/css/index.jsp"></jsp:include>
-         <jsp:include page="/js/index.jsp"></jsp:include>  
-  
+	<jsp:include page="/plugin/index.jsp">
+	   <jsp:param value="jquery,easyui" name="plugin"/>
+	</jsp:include>
+	<jsp:include page="/css/index.jsp"></jsp:include>
+	<jsp:include page="/js/index.jsp"></jsp:include>
+
+  </head>
   <script type="text/javascript">
- 
-  function operaFormatter(value,rowData,rowIndex){
-  var aEdit="<a title='编辑' href='javascript:void(0)' class='kia-iconedit' onclick='clickEditHandler("+rowData["id"]+");'></a>";
-  return aEdit;
-  }
-  function clickAddHandler(){
-  var href="<%=basePath%>admin/Dict/to/editDict.action";
-  //var href="http://www.163.com";
-  //alert(href);
-    $("#divEditDict").dialog({
-            title:'新增字典',
-            height:400,
-            width:600,
-            onClose:function(){$('#test').datagrid('reload');},
-            modal:true,
-            onOpen:function(){
-            
-           // alert('123');
-            $(this).kiaIframe(href);}
-            }); 
-  }
+  <%
+  String Dict="Dict";
+  JsListModel cols=new JsListModel();
+  JsListModel row1=new JsListModel();
   
-  function dblClickRowHandler(rowIndex,rowData){
-  var id=rowData["Id"];
-  var dictText=rowData["<%=DictModel.F.CDictText%>"];
-  var title="修改字典："+dictText;
-  var href="<%=basePath%>admin/Dict/to/editDict.action?id="+id;
-  //alert(href);
-            $("#divEditDict").dialog({
-            title:title,
-            height:400,
-            width:600,
-            onClose:function(){$('#test').datagrid('reload');},
-            modal:true,
-            onOpen:function(){$(this).kiaIframe(href);}
-            
-            });  //$("#divEditUser").dialog({
-            
-  }//function dbClickRowHandler(rowIndex,rowData){
-            
-  function clickRemoveHandler(){
-            $.messager.confirm('操作提示','确认删除字典？',function(yes){
-            var selectsRows=$("#test").datagrid("getSelections");
-            var ids="";
-            $.each(selectsRows,function(index,row){
-            ids+=','+row['Id'];
-            });
-            var action="<%=basePath%>"+"admin/Dict/do/deleteDict.action";
-            $.post(action,{ids:ids},
-            				function(str){
-                                   str.messager();
-            					$("#test").datagrid("reload");}
-            	   );  //$.post(action,{ids:ids},
- });   //$.messager.confirm('操作提示','确认删除用户？',function(yes){
+  JsMapModel colId=EasyUiUtil.createCheckBoxColumn(DictModel.F.Id);
  
- }//function clickRemoveHandler(){
- <%=JQueryModel.DOC_READY_START%>
-
-  $("#test").datagrid({fit:true,
-  toolbar:[
-          {text:"新增字典",
-           iconCls:"icon-add",
-           handler:clickAddHandler},
-           {text:"删除字典",
-            iconCls:"icon-remove",
-            handler:clickRemoveHandler}
-  ],
-  columns:[[
-  {field:"Id",checkbox:true},
-  {field:"<%=DictModel.F.CTypename%>",title:"字典类别名",width:150},
-  {field:"<%=DictModel.F.CDictText%>",title:"字典名",width:150},
-  {field:"<%=DictModel.F.CDictValue%>",title:"字典值",width:150},
-  {field:"<%=DictModel.F.CDes1%>",title:"Des1",width:150},
-  {field:"<%=DictModel.F.CDes2%>",title:"Des2",width:150},
-  {field:"<%=DictModel.F.CDes3%>",title:"Des3",width:150},
-  {field:"<%=DictModel.F.CState%>",title:"状态",width:150}
-   
-  ]],
-  groupField:'<%=DictModel.F.CTypename%>',
-  view: groupview,
-  pagination:true,
-  onDblClickRow:dblClickRowHandler
-  ,
-  groupFormatter:function(value, rows){
-					return value + ' - ' + rows.length + ' 条';
-				},
-  url:"<%=basePath%>admin/Dict/datagrid/dicts.action"
-    }
-  );
-
+  JsMapModel colCDictText=EasyUiUtil.createTextColumn(DictModel.F.CDictText);
+  colCDictText.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"字典名",true);
+  JsMapModel colCDictValue=EasyUiUtil.createTextColumn(DictModel.F.CDictValue);
+  colCDictValue.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"字典值",true);
+  JsMapModel colCDes1=EasyUiUtil.createTextColumn(DictModel.F.CDes1);
+  colCDes1.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"CDes1",true);
+  JsMapModel colCDes2=EasyUiUtil.createTextColumn(DictModel.F.CDes2);
+  colCDes2.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"CDes2",true);
+  JsMapModel colCDes3=EasyUiUtil.createTextColumn(DictModel.F.CDes3);
+  colCDes3.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"CDes3",true);
+  JsMapModel colCState=EasyUiUtil.createTextColumn(DictModel.F.CState);
+  colCState.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"状态",true);
   
+  JsMapModel optKm=new JsMapModel();
+  optKm.put(EasyUiModel.ComboBox.Properties.URL,adminDictPath+"/combobox/DictType.action",true);
+  optKm.put(EasyUiModel.ComboBox.Properties.TEXT_FIELD,DictTypeModel.F.CTypename.name(),true);
+  optKm.put(EasyUiModel.ComboBox.Properties.VALUE_FIELD,DictTypeModel.F.CTypename.name(),true);
+  
+  JsMapModel colCTypename=EasyUiUtil.createTextColumn(DictModel.F.CTypename);
+  colCTypename.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"字典类别",true);
+  colCTypename.put(EasyUiModel.DataGrid.ColumnProperties.EDITOR,EasyUiUtil.createComboboxEditor(true,optKm));
+  
+  
+  row1.add(colId);
+  row1.add(colCTypename);
+  row1.add(colCDictText);
+  row1.add(colCDictValue);
+  row1.add(colCDes1);
+  row1.add(colCDes2);
+  row1.add(colCDes3);
+  row1.add(colCState);
+  
+  cols.add(row1);
+  
+  JsListModel formCols=new JsListModel();
+  formCols.add(colCTypename);
+  formCols.add(colCDictText);
+  formCols.add(colCDictValue);
+  formCols.add(colCDes1);
+  formCols.add(colCDes2);
+  formCols.add(colCDes3);
+  formCols.add(colCState);
+  
+  EasyUiModel datagridDict=new EasyUiModel(JQueryModel.id(Dict),EasyUiModel.DataGrid.NAME);
+  datagridDict.appendAttrs(EasyUiModel.DataGrid.Properties.TITLE,"字典管理",true)
+  				  .appendAttrs(EasyUiModel.DataGrid.Properties.URL,basePath+"admin/Dict/datagrid/dicts.action",true)
+  				  .appendAttrs(EasyUiModel.DataGrid.Properties.COLUMNS,cols)
+  				  .appendAttrs(EasyUiModel.DataGrid.Properties.TOOLBAR,"toolbar")
+  				  .appendAttrs(EasyUiModel.DataGrid.Properties.VIEW,"groupview")
+  				  .appendAttrs("groupFormatter",
+  				     new JsFunctionModel(new String[]{"value","rows"})
+  				     .appendContext("return value +'-'+ rows.length + '条';")
+  				  )
+  				  .appendAttrs("groupField",DictTypeModel.F.CTypename,true)
+  ;				  
+  JsContextModel jsContext=new JsContextModel();
+  jsContext.appendScript(datagridDict);
+  
+  DictModel initRow=new DictModel();
+  
+  %>
+  var opts={};
+  opts["urlAdd"]="<%=adminDictPath%>/do/add.action";
+  opts["urlUpdate"]="<%=adminDictPath%>/do/modify.action";
+  opts["urlRemove"]="<%=adminDictPath%>/do/delete.action";
+  opts["regexp"]="#<%=Dict%>";
+  opts["initRow"]=function(){return <%=initRow.toJson().toString()%>;};
+  opts["editors"]=<%=formCols.toScirpt()%>;
+  
+  var crud=new CrudDatagrid(opts);
+  var formOpts={};
+  var toolbar=crud.getToolbar(formOpts);
+  
+  <%=JQueryModel.DOC_READY_START%>
+  <%=jsContext.toScirpt()%>
   <%=JQueryModel.DOC_READY_END%>
-  </script>
   
-    </head>
-  <body>
-   <div class="innerDiv">
-   <table id="test"></table>
-   </div>
-   <div id="divEditDict"></div>
+  </script>
+  <body> 
+    <div class="innerDiv">
+    <table id="<%=Dict%>"></table>
+    </div>
+    <div id="divEditBookLimit"></div>
   </body>
 </html>
