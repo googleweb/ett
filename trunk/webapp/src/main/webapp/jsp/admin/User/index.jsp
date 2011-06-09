@@ -32,6 +32,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <jsp:include page="/js/index.jsp"></jsp:include>  
   </head>
 <script type="text/javascript">
+function fuweiMiMa(){
+	var selectsRows=$("#test").datagrid("getSelections");
+	var obj=selectsRows.length;
+	if(obj!=0){
+ 		 $.messager.confirm('操作提示','确认复位密码 ?',function(yes){		 		
+					var ids="";
+					$.each(selectsRows,function(index,row){
+							ids+=','+row['Id'];  
+							});
+					var action="<%=basePath%>"+"admin/User/do/fuweiUser.action";
+					$.post(action,{ids:ids},
+							function(str){
+									var json=Kia.util.strToJson(str);
+									Kia.util.handleJsonResult(json);
+									$("#test").datagrid("reload");
+									$("#test").datagrid("clearSelections");
+							
+					});
+		});  //$.messager
+	}
+	else
+		{
+		$.messager.alert('操作提示','请选择要删除的记录！');
+		}
+}
 function searchUser(){
 	$("#formSearch").form("submit",{
 	  	url:'<%=basePath%>'+"admin/User/search/User.action",
@@ -104,6 +129,10 @@ $(document).ready(function(){
 			{text:"删除用户",
 			iconCls:"icon-remove",
 			handler:clickRemoveHandler}
+	, 
+			{text:"密码复位",
+			iconCls:"icon-remove",
+			handler:fuweiMiMa}
 	] 
     ,
 	columns:[ 
@@ -144,7 +173,7 @@ $(document).ready(function(){
                    textfield="CName"
                      url="<%=basePath%>admin/User/combobox/roleid.action" 
                  value="${IRoleid}"
-                  editable="false"
+                  editable="true"
   	                  class="<%=EasyUiModel.ComboBox.CLASS %>"      
                    />
              </td>

@@ -1,6 +1,7 @@
 package com.ett.drv.web.action.admin;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.json.JSONArray;
@@ -107,6 +108,35 @@ public class UserAction extends BaseAction implements ModelDriven<UserModel> {
 			resultModel.setAction(ResultModel.ACTION_ALERT);
 			resultModel.setTitle("操作失败");
 			resultModel.setMsg("没有用户被删除");
+		}
+		this.writePlainText(resultModel.toJson().toString());   	
+    }
+    public void do_fuweiUser(){
+    	ArrayList lListIds=new ArrayList();
+		String ids=this.getParameter("ids");
+		int re=0;
+	    if(ids!=null)
+		{
+             lListIds=StringUtil.splitToList(ids,",");
+             this.adminBiz.loadCrudMapper(UserModel.class);
+             List UserModelList=this.adminBiz.getModelInPk(lListIds);
+             for(int tu=0;tu<UserModelList.size();tu++){
+            	UserModel userModel=(UserModel) UserModelList.get(tu);
+            	userModel.setCPwd("123456");
+            	this.adminBiz.modifyModel(userModel);
+            	re++;
+             }             
+		}
+		ResultModel resultModel=new ResultModel();
+		if(re>0){
+			resultModel.setTitle("操作成功");
+			//resultModel.setAction(ResultModel.ACTION_CONFIRM);
+			resultModel.setMsg("成功复位{0}个用户",re);
+	
+		}else {
+			resultModel.setAction(ResultModel.ACTION_ALERT);
+			resultModel.setTitle("操作失败");
+			resultModel.setMsg("没有用户被复位");
 		}
 		this.writePlainText(resultModel.toJson().toString());   	
     }
