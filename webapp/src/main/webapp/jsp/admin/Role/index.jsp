@@ -37,15 +37,16 @@ function operaFormatter(value,rowData,rowIndex){
         return aEidt;
     }
 function clickAddHandler(){ 
-  		var href='<%=basePath%>'+"admin/Role/to/addRole.action";
-  		$("#divEditRole").dialog({
+  		var href="<%=basePath%>admin/Role/to/modifyRole.action?id=0";
+  		var div=$("<div></div>");
+  		div.kiaIframe(href);
+  		div.dialog({
   			title:"新增角色",
 			height:400,
 			width:600,
-			onClose:function(){ $('#test').datagrid('reload'); },
-	    	modal:true,
-			onBeforeOpen:function(){$(this).kiaIframe(href);}} 
-		);    //   end:$("#divEdit").dialog
+			onClose:function(){ $('#test').datagrid('reload'); $(this).panel("destroy");},
+	    	modal:true
+		});    //   end:$("#divEdit").dialog
  }
 function dblClickRowHandler(rowIndex,rowData){ 
 	    var id=rowData["Id"];
@@ -61,8 +62,9 @@ function dblClickRowHandler(rowIndex,rowData){
 		});//   end:$("#divEdit").dialog
  }
 function clickRemoveHandler(){ 
- 		 $.messager.confirm('操作提示','确认删除角色?',function(yes){		 		
-					var selectsRows=$("#test").datagrid("getSelections");
+	var selectsRows=$("#test").datagrid("getSelections");	 
+	if(selectsRows!=0){
+ 		 $.messager.confirm('操作提示','确认删除角色?',function(yes){		 							
 					var ids="";
 					$.each(selectsRows,function(index,row){
 							ids+=','+row['Id'];  
@@ -72,8 +74,12 @@ function clickRemoveHandler(){
 							function(str){
 									str.messager();
 									$("#test").datagrid("reload");
+									$("#test").datagrid("clearSelections");
 					});
 		});  //$.messager
+	}else{
+		$.messager.alert('操作提示','请选择要删除的记录！');
+	}
 }
 $(document).ready(function(){   
 	$("#test").datagrid({fit:true,

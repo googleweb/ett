@@ -11,7 +11,6 @@ import com.ett.drv.model.admin.UserModel;
 import com.ett.drv.web.action.BaseAction;
 import com.ett.drv.web.filter.AuthFilter;
 import com.opensymphony.xwork2.ModelDriven;
-import com.smartken.kia.core.model.IFormatterModel;
 import com.smartken.kia.core.model.impl.ResultModel;
 import com.smartken.kia.core.util.EasyUiUtil;
 import com.smartken.kia.core.util.ObjectUtil;
@@ -53,18 +52,9 @@ public class UserAction extends BaseAction implements ModelDriven<UserModel> {
 	}
 	@SuppressWarnings("unchecked")
 	public void datagrid_users(){
-		UserModel query=new UserModel();
-		String Username=this.getParameter("Username");
-		if(StringUtil.isNotBlank(Username)){
-			Username="%"+Username+"%";
-			query.setCLoginName(Username);
-		}
-		String IRoleid=this.getParameter("IRoleid");
-		if(StringUtil.isNotBlank(IRoleid)){
-			query.setIRoleid(Integer.valueOf(IRoleid));
-		}
+	
 		this.adminBiz.loadCrudMapper(UserModel.class);
-		List list=this.adminBiz.getView(query,this.getPager());
+		List list=this.adminBiz.getView();
 		JSONObject jsonDG=EasyUiUtil.toJsonDataGrid(list,this.adminBiz.count());
 		this.writePlainText(jsonDG.toString());
 	}	
@@ -82,11 +72,11 @@ public class UserAction extends BaseAction implements ModelDriven<UserModel> {
 			resultModel.setTitle("操作成功");
 			String pattern="";
 			if(_userModel.getId()==null){
-				pattern="用户管理:{0}保存成功,再添加一个用户？";
+				pattern="用户管理:保存成功";
 				resultModel.setAction(ResultModel.ACTION_CONFIRM);
 				//hardware=new HardwareModel();
 			}else {
-				pattern="用户管理:{0}保存成功";
+				pattern="用户管理:保存成功";
 			}
 			resultModel.setMsg(pattern,re);;
 			
@@ -135,6 +125,8 @@ public class UserAction extends BaseAction implements ModelDriven<UserModel> {
     	List lListRole = new ArrayList();
     	this.adminBiz.loadCrudMapper(RoleModel.class);
     	lListRole=this.adminBiz.getModel();
+    	RoleModel roleModel=new RoleModel();
+    	lListRole.add(roleModel);
 		JSONArray lJsonKscc= ObjectUtil.toJsonArray(lListRole);
 		this.writePlainText(lJsonKscc.toString());
     }
@@ -152,6 +144,7 @@ public class UserAction extends BaseAction implements ModelDriven<UserModel> {
 		}
         this.adminBiz.loadCrudMapper(UserModel.class);
         List list=this.adminBiz.getView(query,this.getPager());
+    
 		JSONObject jsonDg=EasyUiUtil.toJsonDataGrid(list);
 		this.writePlainText(jsonDg.toString());
 	}

@@ -67,6 +67,7 @@ public class DictAction extends BaseAction implements ModelDriven<DictModel>{
 			
 			this.adminBiz.loadCrudMapper(DictModel.class);
 			re+=this.adminBiz.modifyOrAddModel(_dictModel).getRe();
+			
 		}
 		ResultModel resultModel=new ResultModel();
 		if(re==1){

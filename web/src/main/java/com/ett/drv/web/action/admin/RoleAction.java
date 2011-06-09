@@ -72,7 +72,7 @@ public class RoleAction extends BaseAction implements ModelDriven<RoleModel> {
 		if (re == 1) {
 			resultModel.setTitle("操作成功");
 			String pattern = "";
-			pattern = "角色管理:{0}保存成功,再添加一个用户？";
+			pattern = "角色管理:保存成功？";
 			resultModel.setAction(ResultModel.ACTION_CONFIRM);
 			resultModel.setMsg(pattern, re);
 			;
@@ -84,10 +84,12 @@ public class RoleAction extends BaseAction implements ModelDriven<RoleModel> {
 	}
 
 	public void do_modifyRole() {
-		
 		int re = 0;
 		if (this.isPost()) {
 			this.adminBiz.loadCrudMapper(RoleModel.class);
+			String cRolostring=roleModel.getCRolestring();
+			cRolostring=cRolostring.replace(",",";");
+			roleModel.setCRolestring(cRolostring);
 			re += this.adminBiz.modifyOrAddModel(roleModel).getRe();
 		}
 		ResultModel resultModel = new ResultModel();
@@ -95,7 +97,7 @@ public class RoleAction extends BaseAction implements ModelDriven<RoleModel> {
 			resultModel.setTitle("操作成功");
 			String pattern = "";
 			resultModel.setAction(ResultModel.ACTION_CONFIRM);
-			pattern = "用户管理:{0}保存成功";
+			pattern = "用户管理:保存成功";
 			resultModel.setMsg(pattern, re);
 			;
 		} else {
@@ -132,7 +134,7 @@ public class RoleAction extends BaseAction implements ModelDriven<RoleModel> {
 	@SuppressWarnings("unchecked")
 	public void  checkbox_Menu(){
 		MenuModel query=new MenuModel();
-		query.setIsparent(0);
+		//query.setIsparent(0);
 		this.adminBiz.loadCrudMapper(MenuModel.class);
 		List<IFormatterModel> list = (List<IFormatterModel>) this.adminBiz
 				.getView(query);
