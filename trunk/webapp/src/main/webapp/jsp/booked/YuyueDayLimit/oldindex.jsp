@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@page import="com.ett.drv.model.admin.DictModel"%>
+<%@page import="com.ett.drv.model.booked.BookedDayLimitModel"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@page import="com.smartken.kia.core.util.EasyUiUtil"%>
 <%@page import="com.smartken.kia.core.model.impl.*"%>
@@ -37,48 +37,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   return aEdit;
   }
   function clickAddHandler(){
-  var href="<%=basePath%>admin/Dict/to/editDict.action";
-  //var href="http://www.163.com";
-  //alert(href);
-    $("#divEditDict").dialog({
-            title:'新增字典',
-            height:400,
-            width:600,
-            onClose:function(){$('#test').datagrid('reload');},
-            modal:true,
-            onOpen:function(){
-            
-           // alert('123');
-            $(this).kiaIframe(href);}
-            }); 
+  var href="<%=basePath%>booked/YuyueDayLimit/to/editYuyueDayLimit.action?";
+  $("#divEditDayLimit").dialog({
+    title:"新增",
+    height:400,
+    width:600,
+    onClose:function(){$('#test').datagrid('reload');},
+    modal:true,
+    onBeforeOpen:function(){$(this).kiaIframe(href);}
+  });
   }
   
   function dblClickRowHandler(rowIndex,rowData){
   var id=rowData["Id"];
-  var dictText=rowData["<%=DictModel.F.CDictText%>"];
-  var title="修改字典："+dictText;
-  var href="<%=basePath%>admin/Dict/to/editDict.action?id="+id;
-  //alert(href);
-            $("#divEditDict").dialog({
+  var dictText=rowData["<%=BookedDayLimitModel.F.CCartype%>"];
+  var title="修改："+dictText;
+  var href="<%=basePath%>booked/YuyueDayLimit/to/editYuyueDayLimit.action?id="+id;
+            $("#divEditDayLimit").dialog({
             title:title,
             height:400,
             width:600,
             onClose:function(){$('#test').datagrid('reload');},
             modal:true,
-            onOpen:function(){$(this).kiaIframe(href);}
+            onBeforeOpen:function(){$(this).kiaIframe(href);}
             
             });  //$("#divEditUser").dialog({
             
   }//function dbClickRowHandler(rowIndex,rowData){
             
   function clickRemoveHandler(){
-            $.messager.confirm('操作提示','确认删除字典？',function(yes){
+            $.messager.confirm('操作提示','确认删除？',function(yes){
             var selectsRows=$("#test").datagrid("getSelections");
             var ids="";
             $.each(selectsRows,function(index,row){
             ids+=','+row['Id'];
             });
-            var action="<%=basePath%>"+"admin/Dict/do/deleteDict.action";
+            var action="<%=basePath%>"+"booked/YuyueDayLimit/do/delete.action";
             $.post(action,{ids:ids},
             				function(str){
                                    str.messager();
@@ -91,33 +85,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
   $("#test").datagrid({fit:true,
   toolbar:[
-          {text:"新增字典",
+          {text:"新增",
            iconCls:"icon-add",
            handler:clickAddHandler},
-           {text:"删除字典",
+           {text:"删除",
             iconCls:"icon-remove",
             handler:clickRemoveHandler}
   ],
   columns:[[
   {field:"Id",checkbox:true},
-  {field:"<%=DictModel.F.CTypename%>",title:"字典类别名",width:150},
-  {field:"<%=DictModel.F.CDictText%>",title:"字典名",width:150},
-  {field:"<%=DictModel.F.CDictValue%>",title:"字典值",width:150},
-  {field:"<%=DictModel.F.CDes1%>",title:"Des1",width:150},
-  {field:"<%=DictModel.F.CDes2%>",title:"Des2",width:150},
-  {field:"<%=DictModel.F.CDes3%>",title:"Des3",width:150},
-  {field:"<%=DictModel.F.CState%>",title:"状态",width:150}
+  {field:"<%=BookedDayLimitModel.F.CCartype%>",title:"车类型",width:150},
+  {field:"<%=BookedDayLimitModel.F.IDays%>",title:"间隔时间",width:150},
+  {field:"<%=BookedDayLimitModel.F.IKm%>",title:"科目号",width:150}
+  
    
   ]],
-  groupField:'<%=DictModel.F.CTypename%>',
-  view: groupview,
+
+  
   pagination:true,
   onDblClickRow:dblClickRowHandler
   ,
-  groupFormatter:function(value, rows){
-					return value + ' - ' + rows.length + ' 条';
-				},
-  url:"<%=basePath%>admin/Dict/datagrid/dicts.action"
+  
+  url:"<%=basePath%>booked/YuyueDayLimit/datagrid/yuyuedaylimit.action"
     }
   );
 
@@ -130,6 +119,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <div class="innerDiv">
    <table id="test"></table>
    </div>
-   <div id="divEditDict"></div>
+   <div id="divEditDayLimit"></div>
   </body>
 </html>
