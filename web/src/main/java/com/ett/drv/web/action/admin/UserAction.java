@@ -1,12 +1,12 @@
 package com.ett.drv.web.action.admin;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import com.ett.common.security.MD5Encrypt;
 import com.ett.drv.model.admin.RoleModel;
 import com.ett.drv.model.admin.UserModel;
 import com.ett.drv.web.action.BaseAction;
@@ -66,6 +66,14 @@ public class UserAction extends BaseAction implements ModelDriven<UserModel> {
 		int re=0;
 		if(this.isPost()){
 			this.adminBiz.loadCrudMapper(UserModel.class);
+			MD5Encrypt mD5=new MD5Encrypt();
+			try{
+				// mD5.encrypt(UserModel.F.CPwd);
+				String CPwd=_userModel.getCPwd();
+				_userModel.setCPwd(mD5.encrypt(CPwd));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			re+=this.adminBiz.modifyOrAddModel(_userModel).getRe();
 		}
 		ResultModel resultModel=new ResultModel();
