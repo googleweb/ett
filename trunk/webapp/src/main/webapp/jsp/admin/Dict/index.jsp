@@ -37,15 +37,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   return aEdit;
   }
   function clickAddHandler(){
-  var href="<%=basePath%>admin/Dict/to/editDict.action";
-  $("#divEditDict").dialog({
-    title:"新增字典",
-    height:400,
-    width:600,
-    onClose:function(){$('#test').datagrid('reload');},
-    modal:true,
-    onBeforeOpen:function(){$(this).kiaIframe(href);}
-  });
+  //var href="<%=basePath%>admin/Dict/to/editDict.action?id="3+102;
+  var href="http://www.163.com";
+  //alert(href);
+    $("#divEditDict").dialog({
+            title:'新增字典',
+            height:400,
+            width:600,
+            onClose:function(){$('#test').datagrid('reload');},
+            modal:true,
+            onOpen:function(){
+            
+           // alert('123');
+            $(this).kiaIframe(href);}
+            }); 
   }
   
   function dblClickRowHandler(rowIndex,rowData){
@@ -53,13 +58,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   var dictText=rowData["<%=DictModel.F.CDictText%>"];
   var title="修改字典："+dictText;
   var href="<%=basePath%>admin/Dict/to/editDict.action?id="+id;
+  //alert(href);
             $("#divEditDict").dialog({
             title:title,
             height:400,
             width:600,
             onClose:function(){$('#test').datagrid('reload');},
             modal:true,
-            onBeforeOpen:function(){$(this).kiaIframe(href);}
+            onOpen:function(){$(this).kiaIframe(href);}
             
             });  //$("#divEditUser").dialog({
             

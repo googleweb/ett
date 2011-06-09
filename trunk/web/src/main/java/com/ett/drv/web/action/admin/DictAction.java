@@ -73,11 +73,11 @@ public class DictAction extends BaseAction implements ModelDriven<DictModel>{
 			resultModel.setTitle("操作成功");
 			String pattern="";
 			if(_dictModel.getId()==null){
-				pattern="用户管理:{0}保存成功,再添加一个用户？";
+				pattern="字典管理:{0}保存成功,再添加一个用户？";
 				resultModel.setAction(ResultModel.ACTION_CONFIRM);
 				//hardware=new HardwareModel();
 			}else {
-				pattern="用户管理:{0}保存成功";
+				pattern="字典管理:{0}保存成功";
 			}
 			resultModel.setMsg(pattern,re);;
 			
