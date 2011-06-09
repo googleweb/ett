@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ page import="com.ett.drv.model.booked.BookedDayLimitModel"%>
+<%@ page import="com.ett.drv.model.admin.DictModel"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ page import="com.smartken.kia.core.util.EasyUiUtil"%>
 <%@ page import="com.smartken.kia.core.model.impl.*"%>
@@ -43,8 +44,17 @@ String bookedDayLimitPath=basePath+"booked/YuyueDayLimit";
   colCarType.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"车类型",true);
   JsMapModel colDayLimit=EasyUiUtil.createTextColumn(BookedDayLimitModel.F.IDays);
   colDayLimit.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"间隔天数",true);
+  
+  
+  JsMapModel optKm=new JsMapModel();
+  optKm.put(EasyUiModel.ComboBox.Properties.URL,bookedDayLimitPath+"/combobox/Km.action",true);
+  optKm.put(EasyUiModel.ComboBox.Properties.TEXT_FIELD,DictModel.F.CDictText.name(),true);
+  optKm.put(EasyUiModel.ComboBox.Properties.VALUE_FIELD,DictModel.F.CDictValue.name(),true);
+  
   JsMapModel colKm=EasyUiUtil.createTextColumn(BookedDayLimitModel.F.IKm);
   colKm.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"科目号",true);
+  colKm.put(EasyUiModel.DataGrid.ColumnProperties.EDITOR,EasyUiUtil.createComboboxEditor(true,optKm));
+  
   
   row1.add(colId);
   row1.add(colCarType);
@@ -59,7 +69,7 @@ String bookedDayLimitPath=basePath+"booked/YuyueDayLimit";
   formCols.add(colKm);
   
   EasyUiModel datagridDayLimit=new EasyUiModel(JQueryModel.id(bookedDayLimit),EasyUiModel.DataGrid.NAME);
-  datagridDayLimit.appendAttrs(EasyUiModel.DataGrid.Properties.TITLE,"预约间隔天数管理",true)
+  datagridDayLimit.appendAttrs(EasyUiModel.DataGrid.Properties.TITLE,"预约间隔限制管理",true)
   				  .appendAttrs(EasyUiModel.DataGrid.Properties.URL,bookedDayLimitPath+"/datagrid/yuyuedaylimit.action",true)
   				  .appendAttrs(EasyUiModel.DataGrid.Properties.COLUMNS,cols)
   				  .appendAttrs(EasyUiModel.DataGrid.Properties.TOOLBAR,"toolbar");
@@ -71,9 +81,26 @@ String bookedDayLimitPath=basePath+"booked/YuyueDayLimit";
   
   %>
   var opts={};
-  opts["urlAdd"]="<%=bookedDayLimitPath%>"
+  opts["urlAdd"]="<%=bookedDayLimitPath%>/do/add.action";
+  opts["urlUpdate"]="<%=bookedDayLimitPath%>/do/modify.action";
+  opts["urlRemove"]="<%=bookedDayLimitPath%>/do/deleteDayLimit.action";
+  opts["regexp"]="#<%=bookedDayLimit%>";
+  opts["initRow"]=function(){return <%=initRow.toJson().toString()%>;};
+  opts["editors"]=<%=formCols.toScirpt()%>;
+  
+  var crud=new CrudDatagrid(opts);
+  var formOpts={};
+  var toolbar=crud.getToolbar(formOpts);
+  
+  <%=JQueryModel.DOC_READY_START%>
+  <%=jsContext.toScirpt()%>
+  <%=JQueryModel.DOC_READY_END%>
+  
   </script>
   <body> 
-    This is my JSP page. <br>
+    <div class="innerDiv">
+    <table id="<%=bookedDayLimit%>"></table>
+    </div>
+    <div id="divEditBookLimit"></div>
   </body>
 </html>

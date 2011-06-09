@@ -10,6 +10,7 @@ import org.json.JSONObject;
 
 
 import com.ett.drv.model.admin.DictModel;
+import com.ett.drv.model.admin.DictTypeModel;
 import com.ett.drv.model.booked.BookedDayLimitModel;
 
 import com.ett.drv.web.action.BaseAction;
@@ -124,6 +125,68 @@ public class YuyueDayLimitAction extends BaseAction implements ModelDriven<Booke
 			resultModel.setTitle("操作失败");
 		}
 		this.writePlainText(resultModel.toJson().toString());
+	}
+	public void  do_add(){
+		int re=0;
+		if(this.isPost()){
+			this.bookedBiz.loadCrudMapper(BookedDayLimitModel.class);
+			re+=this.bookedBiz.modifyOrAddModel(BookedDayLimitModel).getRe();
+		}
+		ResultModel resultModel=new ResultModel();
+		if(re==1){
+			resultModel.setTitle("操作成功");
+			String pattern="";
+			pattern="预约间隔限制管理:{0}保存成功,再添加一个？";
+			resultModel.setAction(ResultModel.ACTION_CONFIRM);
+			resultModel.setMsg(pattern,re);;
+		}else {
+			resultModel.setAction(ResultModel.ACTION_ALERT);
+			resultModel.setTitle("操作失败");
+		}
+		this.writePlainText(resultModel.toJson().toString());
+	}
+	public void  do_modify(){
+		int re=0;
+		if(this.isPost()){
+			this.bookedBiz.loadCrudMapper(BookedDayLimitModel.class);
+			re+=this.bookedBiz.modifyOrAddModel(BookedDayLimitModel).getRe();
+		}
+		ResultModel resultModel=new ResultModel();
+		if(re==1){
+			resultModel.setTitle("操作成功");
+			String pattern="";			
+			resultModel.setAction(ResultModel.ACTION_CONFIRM);
+			pattern="预约间隔限制管理:{0}保存成功";	
+			resultModel.setMsg(pattern,re);;			
+		}else {
+			resultModel.setAction(ResultModel.ACTION_ALERT);
+			resultModel.setTitle("操作失败");
+		}
+		this.writePlainText(resultModel.toJson().toString());
+		
+	}
+	public void  do_deleteDayLimit(){
+		List lListIds=new ArrayList();
+		String ids=this.getParameter("ids");
+		int re=0;
+	    if(ids!=null)
+		{
+             lListIds=StringUtil.splitToList(ids,",");
+             this.bookedBiz.loadCrudMapper(BookedDayLimitModel.class);
+             re+=this.bookedBiz.removeModelInPk(lListIds).getRe();
+		}
+		ResultModel resultModel=new ResultModel();
+		if(re>0){
+			resultModel.setTitle("操作成功");
+			//resultModel.setAction(ResultModel.ACTION_CONFIRM);
+			resultModel.setMsg("成功删除{0}个预约间隔限制类型",re);
+	
+		}else {
+			resultModel.setAction(ResultModel.ACTION_ALERT);
+			resultModel.setTitle("操作失败");
+			resultModel.setMsg("没有预约间隔类型被删除");
+		}
+		this.writePlainText(resultModel.toJson().toString());   
 	}
 	
 	
