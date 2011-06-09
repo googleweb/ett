@@ -64,7 +64,7 @@ public class DicttypeAction extends BaseAction implements ModelDriven<DictTypeMo
 		int re=0;
 		if(this.isPost()){
 			this.adminBiz.loadCrudMapper(DictTypeModel.class);
-			re+=this.adminBiz.modifyOrAddModel(dictTypeModel);
+			re+=this.adminBiz.modifyOrAddModel(dictTypeModel).getRe();
 		}
 		ResultModel resultModel=new ResultModel();
 		if(re==1){
@@ -83,7 +83,7 @@ public class DicttypeAction extends BaseAction implements ModelDriven<DictTypeMo
 		int re=0;
 		if(this.isPost()){
 			this.adminBiz.loadCrudMapper(DictTypeModel.class);
-			re+=this.adminBiz.modifyOrAddModel(dictTypeModel);
+			re+=this.adminBiz.modifyOrAddModel(dictTypeModel).getRe();
 		}
 		ResultModel resultModel=new ResultModel();
 		if(re==1){
@@ -107,7 +107,7 @@ public class DicttypeAction extends BaseAction implements ModelDriven<DictTypeMo
 		{
              lListIds=StringUtil.splitToList(ids,",");
              this.adminBiz.loadCrudMapper(DictTypeModel.class);
-             re+=this.adminBiz.removeModelInPk(lListIds);
+             re+=this.adminBiz.removeModelInPk(lListIds).getRe();
 		}
 		ResultModel resultModel=new ResultModel();
 		if(re>0){

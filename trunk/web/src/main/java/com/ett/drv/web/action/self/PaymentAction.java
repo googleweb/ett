@@ -99,11 +99,11 @@ public class PaymentAction extends BaseSelfAction implements ModelDriven<BaseTra
     		TransactDriverModel trdrvModel=(TransactDriverModel)_trModel;
     		this.selfBiz.loadCrudMapper(TransactDriverModel.class);
     		
-    		re+=this.selfBiz.modifyModel(trdrvModel);
+    		re+=this.selfBiz.modifyModel(trdrvModel).getRe();
     	}else if(_trModel instanceof TransactVehicleModel){
     		TransactVehicleModel trvehModel=(TransactVehicleModel)_trModel;
     		this.selfBiz.loadCrudMapper(TransactVehicleModel.class);
-    		re+=this.selfBiz.modifyModel(trvehModel);
+    		re+=this.selfBiz.modifyModel(trvehModel).getRe();
     	}
     	if(re==0){
     		return EJsp.error.name();

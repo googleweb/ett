@@ -75,7 +75,7 @@ public class UserAction extends BaseAction implements ModelDriven<UserModel> {
 		int re=0;
 		if(this.isPost()){
 			this.adminBiz.loadCrudMapper(UserModel.class);
-			re+=this.adminBiz.modifyOrAddModel(_userModel);
+			re+=this.adminBiz.modifyOrAddModel(_userModel).getRe();
 		}
 		ResultModel resultModel=new ResultModel();
 		if(re==1){
@@ -105,7 +105,7 @@ public class UserAction extends BaseAction implements ModelDriven<UserModel> {
 		{
              lListIds=StringUtil.splitToList(ids,",");
              this.adminBiz.loadCrudMapper(UserModel.class);
-             re+=this.adminBiz.removeModelInPk(lListIds);
+             re+=this.adminBiz.removeModelInPk(lListIds).getRe();
 		}
 		ResultModel resultModel=new ResultModel();
 		if(re>0){

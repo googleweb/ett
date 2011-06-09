@@ -120,7 +120,7 @@ public class SelfDeviceAction extends BaseAction {
 		int re=0;
 		if(this.isPost()){
 			this.selfBiz.loadCrudMapper(HardwareModel.class);
-			re+=this.selfBiz.modifyOrAddModel(hardware);
+			re+=this.selfBiz.modifyOrAddModel(hardware).getRe();
 		}
 		ResultModel resultModel=new ResultModel();
 		if(re==1){
@@ -146,7 +146,7 @@ public class SelfDeviceAction extends BaseAction {
 		int re=0;
 		if(this.isPost()){
 			this.selfBiz.loadCrudMapper(DeviceModel.class);
-			re+=this.selfBiz.modifyOrAddModel(device);
+			re+=this.selfBiz.modifyOrAddModel(device).getRe();
 		}
 		ResultModel resultModel=new ResultModel();
 		if(re==1){
@@ -173,7 +173,7 @@ public class SelfDeviceAction extends BaseAction {
 		int re=0;
 		if(this.isPost()){
 			this.selfBiz.loadCrudMapper(DeviceSnModel.class);
-			re+=this.selfBiz.modifyOrAddModel(deviceSn);
+			re+=this.selfBiz.modifyOrAddModel(deviceSn).getRe();
 		}
 		ResultModel resultModel=new ResultModel();
 		if(re==1){
@@ -204,7 +204,7 @@ public class SelfDeviceAction extends BaseAction {
 		{
              lListIds=StringUtil.splitToList(ids,",");
              this.selfBiz.loadCrudMapper(DeviceModel.class);
-             re+=this.selfBiz.removeModelInPk(lListIds);
+             re+=this.selfBiz.removeModelInPk(lListIds).getRe();
 		}
 		ResultModel resultModel=new ResultModel();
 		if(re>0){
@@ -229,7 +229,7 @@ public class SelfDeviceAction extends BaseAction {
 		{
              lListIds=StringUtil.splitToList(ids,",");
              this.selfBiz.loadCrudMapper(HardwareModel.class);
-             re+=this.selfBiz.removeModelInPk(lListIds);
+             re+=this.selfBiz.removeModelInPk(lListIds).getRe();
 		}
 		ResultModel resultModel=new ResultModel();
 		if(re>0){
@@ -253,7 +253,7 @@ public class SelfDeviceAction extends BaseAction {
 		{
              lListIds=StringUtil.splitToList(ids,",");
              this.selfBiz.loadCrudMapper(DeviceSnModel.class);
-             re+=this.selfBiz.removeModelInPk(lListIds);
+             re+=this.selfBiz.removeModelInPk(lListIds).getRe();
 		}
 		ResultModel resultModel=new ResultModel();
 		if(re>0){

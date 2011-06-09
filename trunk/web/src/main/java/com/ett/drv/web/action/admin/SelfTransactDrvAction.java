@@ -149,7 +149,7 @@ public class SelfTransactDrvAction extends BaseAction implements ModelDriven<Tra
         //System.out.println(this._trDrvModel.toJson());
         int re=0;
         this.selfBiz.loadCrudMapper(TransactDriverModel.class);
-        re+=this.selfBiz.modifyModel(_trDrvModel);
+        re+=this.selfBiz.modifyModel(_trDrvModel).getRe();
         ResultModel resultModel=new ResultModel();
         String msg="";
         if(re==1){

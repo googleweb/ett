@@ -66,7 +66,7 @@ public class RoleAction extends BaseAction implements ModelDriven<RoleModel> {
 		int re = 0;
 		if (this.isPost()) {
 			this.adminBiz.loadCrudMapper(RoleModel.class);
-			re += this.adminBiz.modifyOrAddModel(roleModel);
+			re += this.adminBiz.modifyOrAddModel(roleModel).getRe();
 		}
 		ResultModel resultModel = new ResultModel();
 		if (re == 1) {
@@ -88,7 +88,7 @@ public class RoleAction extends BaseAction implements ModelDriven<RoleModel> {
 		int re = 0;
 		if (this.isPost()) {
 			this.adminBiz.loadCrudMapper(RoleModel.class);
-			re += this.adminBiz.modifyOrAddModel(roleModel);
+			re += this.adminBiz.modifyOrAddModel(roleModel).getRe();
 		}
 		ResultModel resultModel = new ResultModel();
 		if (re == 1) {
@@ -113,7 +113,7 @@ public class RoleAction extends BaseAction implements ModelDriven<RoleModel> {
 		if (ids != null) {
 			lListIds = StringUtil.splitToList(ids, ",");
 			this.adminBiz.loadCrudMapper(RoleModel.class);
-			re += this.adminBiz.removeModelInPk(lListIds);
+			re += this.adminBiz.removeModelInPk(lListIds).getRe();
 		}
 		ResultModel resultModel = new ResultModel();
 		if (re > 0) {
