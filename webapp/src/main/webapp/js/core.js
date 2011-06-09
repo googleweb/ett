@@ -117,6 +117,12 @@ handleJsonResult:function(json,handler){
 		   $.messager.prompt(title,msg,handler==null?function(val){return val;}:handler);
 	   }
 	}
+
+,
+getIframeContext:function(src){
+	return "<iframe frameborder='0' src='"+src+"' style='width:100%;height:100%;overflow:hidden;'></iframe>";
+}
+
 }
 
 var SimpleDateFormat= function(formatString){
