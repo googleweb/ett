@@ -6,6 +6,7 @@ import com.ett.drv.mapper.admin.IDictTypeMapper;
 import com.ett.drv.mapper.admin.IMenuMapper;
 import com.ett.drv.mapper.admin.IRoleMapper;
 import com.ett.drv.mapper.admin.IUserMapper;
+import com.ett.drv.mapper.booked.IBookedDayLimitMapper;
 import com.ett.drv.mapper.booked.ICarOwnerChangeMapper;
 import com.ett.drv.mapper.booked.ILimitMapper;
 import com.ett.drv.mapper.booked.IOrderInfoMapper;
@@ -31,6 +32,7 @@ import com.ett.drv.model.admin.DictTypeModel;
 import com.ett.drv.model.admin.MenuModel;
 import com.ett.drv.model.admin.RoleModel;
 import com.ett.drv.model.admin.UserModel;
+import com.ett.drv.model.booked.BookedDayLimitModel;
 import com.ett.drv.model.booked.BookedLimitModel;
 import com.ett.drv.model.booked.BookedOrderInfoModel;
 import com.ett.drv.model.booked.BookedWeekRecordModel;
@@ -81,7 +83,7 @@ public abstract class BaseDrvBiz extends BaseCurdBiz {
 	protected IHardwareMapper<HardwareModel> hardwareMapper;
     protected IPersonChangeMapper<PersonChangeModel> personChangeMapper;
     protected ICarOwnerChangeMapper<CarOwnerChangeModel> carOwnerChangeMapper;
-   
+    protected IBookedDayLimitMapper<BookedDayLimitModel> bookedDayLimitMapper;
 
 
 	public void setDictMapper(IDictMapper<DictModel> dictMapper) {
@@ -242,4 +244,14 @@ public abstract class BaseDrvBiz extends BaseCurdBiz {
 		this.dictTypeMapper = dictTypeMapper;
 		this.addCrudMapper(DictTypeModel.class, dictTypeMapper);
 	}
+
+
+
+	public void setBookedDayLimitMapper(
+			IBookedDayLimitMapper<BookedDayLimitModel> bookedDayLimitMapper) {
+		this.bookedDayLimitMapper = bookedDayLimitMapper;
+		this.addCrudMapper(BookedDayLimitModel.class, bookedDayLimitMapper);
+	}
+	
+	
 }

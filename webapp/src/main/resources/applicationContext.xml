@@ -130,6 +130,10 @@
   <property name="mapperInterface" value="com.ett.drv.mapper.booked.ICarOwnerChangeMapper"></property>
 </bean>
 
+<bean id="bookedDayLimitMapper" parent="baseMapper">
+  <property name="mapperInterface" value="com.ett.drv.mapper.booked.IBookedDayLimitMapper"></property>
+</bean>
+
 <bean id="personChangeMapper" parent="baseMapper">
   <property name="mapperInterface" value="com.ett.drv.mapper.booked.IPersonChangeMapper"></property>
 </bean>
