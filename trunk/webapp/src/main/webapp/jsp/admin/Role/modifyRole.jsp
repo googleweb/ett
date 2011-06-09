@@ -59,18 +59,17 @@ String adminRolePath=basePath+"/admin/Role";
 	    		 var div=$("<div></div>");
 	    		 div.append(text+":").append(input);
 	    		 fieldset.append(div);    	
-	    		 }catch(ex){alert(ex);}
-	    	 });
-	    	 
-	    	  var qxian=$("#cRolestring").val();
+	    		 }catch(ex){alert(ex);}	    	
+	    	 });	    		  	    	 
+				var qxian=$("#cRolestring").val();
              var qxians=qxian.split(";");
-	        $.each(qxians,function(n,item){
+	       	 $.each(qxians,function(n,item){
 	    			if(item==null||item.length==0) return true;
-	    			$(":checkbox[value='"+item+"']").attr("checked","checked");	 
+	    			//alert(item);
+	    			$(":checkbox[value='"+item+"']").attr("checked","checked");	
 	    		 });
-	    	 
-	     });   //$.getJSON(url,function(json){
-
+         });   //$.getJSON(url,function(json){
+			
      });    
 function clickSave(){
  
