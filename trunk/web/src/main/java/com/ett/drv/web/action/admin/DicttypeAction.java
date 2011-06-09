@@ -70,7 +70,7 @@ public class DicttypeAction extends BaseAction implements ModelDriven<DictTypeMo
 		if(re==1){
 			resultModel.setTitle("操作成功");
 			String pattern="";
-			pattern="字典类型管理:{0}保存成功,再添加一个字典类型？";
+			pattern="字典类型管理:保存成功";
 			resultModel.setAction(ResultModel.ACTION_CONFIRM);
 			resultModel.setMsg(pattern,re);;
 		}else {
@@ -90,7 +90,7 @@ public class DicttypeAction extends BaseAction implements ModelDriven<DictTypeMo
 			resultModel.setTitle("操作成功");
 			String pattern="";			
 			resultModel.setAction(ResultModel.ACTION_CONFIRM);
-			pattern="字典类型管理:{0}保存成功";	
+			pattern="字典类型管理:保存成功";	
 			resultModel.setMsg(pattern,re);;			
 		}else {
 			resultModel.setAction(ResultModel.ACTION_ALERT);

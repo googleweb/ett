@@ -68,8 +68,11 @@ function dblClickRowHandler(rowIndex,rowData){
 		);//   end:$("#divEdit").dialog
  }
 function clickRemoveHandler(){ 
+	var selectsRows=$("#test").datagrid("getSelections");
+	var obj=selectsRows.length;
+	//alert(obj);
+	if(obj!=0){
  		 $.messager.confirm('操作提示','确认删除用户?',function(yes){		 		
-					var selectsRows=$("#test").datagrid("getSelections");
 					var ids="";
 					$.each(selectsRows,function(index,row){
 							ids+=','+row['Id'];  
@@ -80,8 +83,16 @@ function clickRemoveHandler(){
 									var json=Kia.util.strToJson(str);
 									Kia.util.handleJsonResult(json);
 									$("#test").datagrid("reload");
+									$("#test").datagrid("clearSelections");
+									
+									
 					});
 		});  //$.messager
+	}
+	else
+		{
+		$.messager.alert('操作提示','请选择要删除的记录！');
+		}
 }
 $(document).ready(function(){   
 	$("#test").datagrid({fit:true,
@@ -116,6 +127,7 @@ $(document).ready(function(){
 	,
 	url:'<%=basePath%>'+"admin/User/datagrid/users.action"} 
 );    //   end:$("#tableDG").datagrid
+	
 }); //$(document).ready
 </script>
   <body>

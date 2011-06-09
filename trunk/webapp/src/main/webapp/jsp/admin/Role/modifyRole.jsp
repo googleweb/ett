@@ -28,17 +28,38 @@ String adminRolePath=basePath+"/admin/Role";
    
    <% %>
    <script type="text/javascript">
+   
+   
    $(document).ready(function(){
 	     
-    	 var url='<%=adminRolePath%>'+"/checkbox/Menu";
+    	 var url='<%=adminRolePath%>'+"/checkbox/Menu.action";
          $.getJSON(url,function(json){
-	    	 $.each(json,function(index,item){
-	    		 var input= $("<input />");
-	    		 var li=$("<li></li>");
+        	 $.each(json,function(index,item){
+        		 var id=item["Menuid"]||"";
+        		 if(id=="")return true;
+        		 var fieldset=$("<fieldset></fieldset>");
+        		 fieldset.attr("id","menu_"+id);
+        		 var isparent=item["Isparent"];
+	 	         if(isparent==1){
+	 	        	var  legend=$("<legend>"+item["Menutext"]+"</legend>");
+	 	            fieldset.append(legend);
+	 	        	$("#fieldset").append(fieldset);
+	 	         }      		 
+        	 });
+        	 $.each(json,function(index,item){
+        		 try{
+        		 var isparent=item["Isparent"];
+        		 var parentId=item["Parentid"]
+                 if(isparent==1) return true;
+                 var id=item["Menuid"];
+	 	         var input= $("<input />");
+	    		 var fieldset=$("#menu_"+parentId);
 	    		 var text=item["Menutext"]||"";
-	    		 input.attr("name","CRolestring").attr("type","checkbox").val(item["Menuid"]);
-	    		 li.append(text+":").append(input);
-	    		 $("#roledisplay").append(li);
+	    		 input.attr("name","CRolestring").attr("type","checkbox").val(id);
+	    		 var div=$("<div></div>");
+	    		 div.append(text+":").append(input);
+	    		 fieldset.append(div);    	
+	    		 }catch(ex){alert(ex);}
 	    	 });
 	    	 
 	    	  var qxian=$("#cRolestring").val();
@@ -94,14 +115,19 @@ function clickSave(){
            <tr>
             <th>介绍</th>
              <td style="width: 35%"  colspan="3">
-               <ul id="roledisplay" ></ul>         
-             </td>          
+               <ul id="roledisplay" ></ul>  
+               <div id="fieldset">
+               </div>       
+             </td>  
+             </tr>
+                     
            <tr>
              <td colspan="4" style="text-align: right">
              <a class="<%=EasyUiModel.LinkButton.CLASS %>"
                 <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_SAVE) %>
                 onclick="clickSave()" 
              >保存</a>
+           </td>
            </tr>
          </tbody>
        </table>
