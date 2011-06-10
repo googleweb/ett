@@ -58,6 +58,7 @@ String adminDictPath=basePath+"/admin/Dict";
   optKm.put(EasyUiModel.ComboBox.Properties.URL,adminDictPath+"/combobox/DictType.action",true);
   optKm.put(EasyUiModel.ComboBox.Properties.TEXT_FIELD,DictTypeModel.F.CTypename.name(),true);
   optKm.put(EasyUiModel.ComboBox.Properties.VALUE_FIELD,DictTypeModel.F.CTypename.name(),true);
+  optKm.put(EasyUiModel.ComboBox.Properties.EDITABLE,"false");
   
   JsMapModel colCTypename=EasyUiUtil.createTextColumn(DictModel.F.CTypename);
   colCTypename.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"字典类别",true);

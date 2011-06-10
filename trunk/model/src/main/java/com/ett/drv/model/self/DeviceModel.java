@@ -16,7 +16,7 @@ public class DeviceModel extends BaseModel {
 		 } 
 
 	 private Integer Id;         //ID  NUMBER 19
-	 private String CCreateip;         //C_CREATEIP  VARCHAR2 1,020
+	 private String CCreateip;         //C_CREATEIP  VARCHAR2 1,020 设备Ip
 	 private Timestamp TCreatetime;         //T_CREATETIME  TIMESTAMP 0
 	 private String CCreator;         //C_CREATOR  VARCHAR2 120
 	 private Integer IIsdeleted;         //I_ISDELETED  NUMBER 1
@@ -25,37 +25,37 @@ public class DeviceModel extends BaseModel {
 	 private String CModifier;         //C_MODIFIER  VARCHAR2 1,020
 	 private String CModifyip;         //C_MODIFYIP  VARCHAR2 1,020
 	 private Timestamp TModifytime;         //T_MODIFYTIME  TIMESTAMP 0
-	 private String CCatalog;         //C_CATALOG  VARCHAR2 64
-	 private Integer IDrvInterfaceTimeout;         //I_DRV_INTERFACE_TIMEOUT  NUMBER 10
-	 private String CDrvInterfaceUrl;         //C_DRV_INTERFACE_URL  VARCHAR2 200
-	 private String CFzjg;         //C_FZJG  VARCHAR2 20
-	 private String CGlbmCode;         //C_GLBM_CODE  VARCHAR2 20
-	 private String CGlbmName;         //C_GLBM_NAME  VARCHAR2 64
-	 private String CIp1;         //C_IP1  VARCHAR2 20
-	 private String CIp2;         //C_IP2  VARCHAR2 20
-	 private String CKsddCode;         //C_KSDD_CODE  VARCHAR2 20
-	 private String CKsddName;         //C_KSDD_NAME  VARCHAR2 64
-	 private String CMac1;         //C_MAC1  VARCHAR2 20
-	 private String CMac2;         //C_MAC2  VARCHAR2 20
-	 private String CMachineName;         //C_MACHINE_NAME  VARCHAR2 50
-	 private String CPlaceAddress;         //C_PLACE_ADDRESS  VARCHAR2 200
-	 private Integer BoolIspreasignall;         //BOOL_ISPREASIGNALL  NUMBER 1
-	 private Integer IVehInterfaceTimeout;         //I_VEH_INTERFACE_TIMEOUT  NUMBER 10
-	 private String CVehInterfaceUrl;         //C_VEH_INTERFACE_URL  VARCHAR2 200
-	 private Integer IVioInterfaceTimeout;         //I_VIO_INTERFACE_TIMEOUT  NUMBER 10
-	 private String CVioInterfaceUrl;         //C_VIO_INTERFACE_URL  VARCHAR2 200
+	 private String CCatalog;         //C_CATALOG  VARCHAR2 64 设备类型
+	 private Integer IDrvInterfaceTimeout;         //I_DRV_INTERFACE_TIMEOUT  NUMBER 10 驾驶人接口timeout
+	 private String CDrvInterfaceUrl;         //C_DRV_INTERFACE_URL  VARCHAR2 200 驾驶人接口URL
+	 private String CFzjg;         //C_FZJG  VARCHAR2 20 发证机关
+	 private String CGlbmCode;         //C_GLBM_CODE  VARCHAR2 20 管理部门代码
+	 private String CGlbmName;         //C_GLBM_NAME  VARCHAR2 64 管理部门名称
+	 private String CIp1;         //C_IP1  VARCHAR2 20 机器内网IP
+	 private String CIp2;         //C_IP2  VARCHAR2 20外网IP
+	 private String CKsddCode;         //C_KSDD_CODE  VARCHAR2 20 考试地点代码
+	 private String CKsddName;         //C_KSDD_NAME  VARCHAR2 64考试地点名称
+	 private String CMac1;         //C_MAC1  VARCHAR2 20 网卡地址
+	 private String CMac2;         //C_MAC2  VARCHAR2 20网卡地址2
+	 private String CMachineName;         //C_MACHINE_NAME  VARCHAR2 50 机器名
+	 private String CPlaceAddress;         //C_PLACE_ADDRESS  VARCHAR2 200 放置地点
+	 private Integer BoolIspreasignall;         //BOOL_ISPREASIGNALL  NUMBER 1 是否允许预约全部考场
+	 private Integer IVehInterfaceTimeout;         //I_VEH_INTERFACE_TIMEOUT  NUMBER 10  机动车接口timeout
+	 private String CVehInterfaceUrl;         //C_VEH_INTERFACE_URL  VARCHAR2 200 机动车接口URL
+	 private Integer IVioInterfaceTimeout;         //I_VIO_INTERFACE_TIMEOUT  NUMBER 10  违法接口timeout
+	 private String CVioInterfaceUrl;         //C_VIO_INTERFACE_URL  VARCHAR2 200 违法接口URL
 	 private Integer IYlwgTimeout;         //I_YLWG_TIMEOUT  NUMBER 10
-	 private String CYlwgUrl;         //C_YLWG_URL  VARCHAR2 200
-	 private Integer IAllowPreasignDays;         //I_ALLOW_PREASIGN_DAYS  NUMBER 10
-	 private Integer BoolIsFeeATime;         //BOOL_IS_FEE_A_TIME  NUMBER 1
-	 private Integer BoolIsFeeByVisacard;         //BOOL_IS_FEE_BY_VISACARD  NUMBER 1
-	 private Integer BoolIsPostFeeAll;         //BOOL_IS_POST_FEE_ALL  NUMBER 1
-	 private Integer BoolIsPrintCompany;         //BOOL_IS_PRINT_COMPANY  NUMBER 1
-	 private String CDefaultKsccCode;         //C_DEFAULT_KSCC_CODE  VARCHAR2 20
-	 private String CDefaultKsccName;         //C_DEFAULT_KSCC_NAME  VARCHAR2 64
-	 private Integer IFeeInterfaceTimeout;         //I_FEE_INTERFACE_TIMEOUT  NUMBER 10
-	 private String CFeeInterfaceUrl;         //C_FEE_INTERFACE_URL  VARCHAR2 200
-	 private String Devicetype;         //DEVICETYPE  VARCHAR2 1,020
+	 private String CYlwgUrl;         //C_YLWG_URL  VARCHAR2 200 网关地址
+	 private Integer IAllowPreasignDays;         //I_ALLOW_PREASIGN_DAYS  NUMBER 10 允许预约的天数
+	 private Integer BoolIsFeeATime;         //BOOL_IS_FEE_A_TIME  NUMBER 1 是否一次交费
+	 private Integer BoolIsFeeByVisacard;         //BOOL_IS_FEE_BY_VISACARD  NUMBER 1 是否允许通过银联卡缴费
+	 private Integer BoolIsPostFeeAll;         //BOOL_IS_POST_FEE_ALL  NUMBER 1  是否能允许邮政一次收费
+	 private Integer BoolIsPrintCompany;         //BOOL_IS_PRINT_COMPANY  NUMBER 1 是否打印公司名称
+	 private String CDefaultKsccCode;         //C_DEFAULT_KSCC_CODE  VARCHAR2 20 默认考试场次代码
+	 private String CDefaultKsccName;         //C_DEFAULT_KSCC_NAME  VARCHAR2 64默认考试乘此名称
+	 private Integer IFeeInterfaceTimeout;         //I_FEE_INTERFACE_TIMEOUT  NUMBER 10 缴费接口timeout
+	 private String CFeeInterfaceUrl;         //C_FEE_INTERFACE_URL  VARCHAR2 200 缴费接口URL
+	 private String Devicetype;         //DEVICETYPE  VARCHAR2 1,020 设备种类
 	 private String CMc2;         //C_MC2  VARCHAR2 20
 	public Integer getId() {
 		return Id;
