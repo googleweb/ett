@@ -42,7 +42,10 @@
  id="com.ett.drv.web.action.booked.ExamPreasignAction"
 >
 </bean>
-
+<bean class="com.ett.drv.web.action.admin.DepartmentAction" parent="baseAction"
+ id="com.ett.drv.web.action.admin.DepartmentAction"
+>
+</bean>
 <bean class="com.ett.drv.web.action.admin.MenuAction" parent="baseAction"
  id="com.ett.drv.web.action.admin.MenuAction"
 >

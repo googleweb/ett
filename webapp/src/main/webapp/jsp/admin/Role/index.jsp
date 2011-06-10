@@ -37,7 +37,7 @@ function operaFormatter(value,rowData,rowIndex){
         return aEidt;
     }
 function clickAddHandler(){ 
-  		var href="<%=basePath%>admin/Role/to/modifyRole.action?id=0";
+  		var href="<%=basePath%>admin/Role/to/modifyRole.action";
   		var div=$("<div></div>");
   		div.kiaIframe(href);
   		div.dialog({
@@ -47,6 +47,7 @@ function clickAddHandler(){
 			onClose:function(){ $('#test').datagrid('reload'); $(this).panel("destroy");},
 	    	modal:true
 		});    //   end:$("#divEdit").dialog
+		return false;
  }
 function dblClickRowHandler(rowIndex,rowData){ 
 	    var id=rowData["Id"];
@@ -60,6 +61,7 @@ function dblClickRowHandler(rowIndex,rowData){
 			onClose:function(){ $('#test').datagrid('reload'); },
 	    	modal:true
 		});//   end:$("#divEdit").dialog
+		return false;
  }
 function clickRemoveHandler(){ 
 	var selectsRows=$("#test").datagrid("getSelections");	 

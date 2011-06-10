@@ -65,7 +65,7 @@ String adminRolePath=basePath+"/admin/Role";
              var qxians=qxian.split(";");
 	       	 $.each(qxians,function(n,item){
 	    			if(item==null||item.length==0) return true;
-	    			//alert(item);
+	    			alert(item);
 	    			$(":checkbox[value='"+item+"']").attr("checked","checked");	
 	    		 });
          });   //$.getJSON(url,function(json){

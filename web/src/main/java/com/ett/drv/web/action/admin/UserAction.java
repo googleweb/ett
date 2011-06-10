@@ -30,7 +30,12 @@ public class UserAction extends BaseAction implements ModelDriven<UserModel> {
 	public String do_login(){
 		String loginName=this.getParameter(UserModel.F.CLoginName);
 		String pwd=this.getParameter(UserModel.F.CPwd);
-		_userModel=adminBiz.login(loginName, pwd);
+		MD5Encrypt mD5=new MD5Encrypt();
+		try {
+			_userModel=adminBiz.login(loginName, mD5.encrypt(pwd));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		if(_userModel!=null){
 		   this.setSessionAttribute(AuthFilter.AUTH_USER, _userModel);
 		   return "login_success";
@@ -128,9 +133,14 @@ public class UserAction extends BaseAction implements ModelDriven<UserModel> {
              lListIds=StringUtil.splitToList(ids,",");
              this.adminBiz.loadCrudMapper(UserModel.class);
              List UserModelList=this.adminBiz.getModelInPk(lListIds);
+             MD5Encrypt mD5=new MD5Encrypt();
              for(int tu=0;tu<UserModelList.size();tu++){
             	UserModel userModel=(UserModel) UserModelList.get(tu);
-            	userModel.setCPwd("123456");
+            	try {
+            		userModel.setCPwd(mD5.encrypt("123456"));
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
             	this.adminBiz.modifyModel(userModel);
             	re++;
              }             
