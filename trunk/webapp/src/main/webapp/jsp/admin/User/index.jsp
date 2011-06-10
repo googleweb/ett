@@ -69,15 +69,16 @@ function searchUser(){
 }
 
 function clickAddHandler(){ 
-  		var href='<%=basePath%>'+"admin/User/to/editUser.action";
+  		var href='<%=basePath%>'+"admin/User/to/editUser.action?id=0";
   		$("#divEditUser").dialog({
   			title:"新增用户",
 			height:400,
 			width:600,
 			onClose:function(){ $('#test').datagrid('reload'); },
 	    	modal:true,
-			onBeforeOpen:function(){$(this).kiaIframe(href);}} 
+			onOpen:function(){$(this).kiaIframe(href);}} 
 		);    //   end:$("#divEdit").dialog
+		return false;
  }
 function dblClickRowHandler(rowIndex,rowData){ 
 	    var id=rowData["Id"];
@@ -89,8 +90,9 @@ function dblClickRowHandler(rowIndex,rowData){
 			width:600,
 			onClose:function(){ $('#test').datagrid('reload'); },
 	    	modal:true,
-			onBeforeOpen:function(){$(this).kiaIframe(href);}} 
+			onOpen:function(){$(this).kiaIframe(href);}} 
 		);//   end:$("#divEdit").dialog
+		return false;
  }
 function clickRemoveHandler(){ 
 	var selectsRows=$("#test").datagrid("getSelections");
