@@ -42,7 +42,8 @@ String bookedDayLimitPath=basePath+"booked/YuyueDayLimit";
   JsMapModel colId=EasyUiUtil.createCheckBoxColumn(BookedDayLimitModel.F.Id);
   JsMapModel colCarType=EasyUiUtil.createTextColumn(BookedDayLimitModel.F.CCartype);
   colCarType.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"车类型",true);
-  JsMapModel colDayLimit=EasyUiUtil.createTextColumn(BookedDayLimitModel.F.IDays);
+  
+  JsMapModel colDayLimit=EasyUiUtil.createIntColumn(BookedDayLimitModel.F.IDays);
   colDayLimit.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"间隔天数",true);
   
   
@@ -50,6 +51,7 @@ String bookedDayLimitPath=basePath+"booked/YuyueDayLimit";
   optKm.put(EasyUiModel.ComboBox.Properties.URL,bookedDayLimitPath+"/combobox/Km.action",true);
   optKm.put(EasyUiModel.ComboBox.Properties.TEXT_FIELD,DictModel.F.CDictText.name(),true);
   optKm.put(EasyUiModel.ComboBox.Properties.VALUE_FIELD,DictModel.F.CDictValue.name(),true);
+  optKm.put(EasyUiModel.ComboBox.Properties.EDITABLE,"false");
   
   JsMapModel colKm=EasyUiUtil.createTextColumn(BookedDayLimitModel.F.IKm);
   colKm.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"科目号",true);

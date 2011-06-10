@@ -128,21 +128,22 @@ public class YuyueDayLimitAction extends BaseAction implements ModelDriven<Booke
 	}
 	public void  do_add(){
 		int re=0;
+		ResultModel resultModel=new ResultModel();
 		if(this.isPost()){
 			this.bookedBiz.loadCrudMapper(BookedDayLimitModel.class);
-			re+=this.bookedBiz.modifyOrAddModel(BookedDayLimitModel).getRe();
+			resultModel=this.bookedBiz.modifyOrAddModel(BookedDayLimitModel);
 		}
-		ResultModel resultModel=new ResultModel();
-		if(re==1){
-			resultModel.setTitle("操作成功");
-			String pattern="";
-			pattern="预约间隔限制管理:{0}保存成功,再添加一个？";
-			resultModel.setAction(ResultModel.ACTION_CONFIRM);
-			resultModel.setMsg(pattern,re);;
-		}else {
-			resultModel.setAction(ResultModel.ACTION_ALERT);
-			resultModel.setTitle("操作失败");
-		}
+//		ResultModel resultModel=new ResultModel();
+//		if(re==1){
+//			resultModel.setTitle("操作成功");
+//			String pattern="";
+//			pattern="预约间隔限制管理:{0}保存成功,再添加一个？";
+//			resultModel.setAction(ResultModel.ACTION_CONFIRM);
+//			resultModel.setMsg(pattern,re);;
+//		}else {
+//			resultModel.setAction(ResultModel.ACTION_ALERT);
+//			resultModel.setTitle("操作失败");
+//		}
 		this.writePlainText(resultModel.toJson().toString());
 	}
 	public void  do_modify(){

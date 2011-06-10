@@ -124,21 +124,22 @@ public class DictAction extends BaseAction implements ModelDriven<DictModel>{
 	}
 	public void  do_add(){
 		int re=0;
+		ResultModel resultModel=new ResultModel();
 		if(this.isPost()){
 			this.adminBiz.loadCrudMapper(DictModel.class);
-			re+=this.adminBiz.modifyOrAddModel(_dictModel).getRe();
+			resultModel=this.adminBiz.modifyOrAddModel(_dictModel);
 		}
-		ResultModel resultModel=new ResultModel();
-		if(re==1){
-			resultModel.setTitle("操作成功");
-			String pattern="";
-			pattern="字典管理:{0}保存成功,再添加一个？";
-			resultModel.setAction(ResultModel.ACTION_CONFIRM);
-			resultModel.setMsg(pattern,re);;
-		}else {
-			resultModel.setAction(ResultModel.ACTION_ALERT);
-			resultModel.setTitle("操作失败");
-		}
+//		ResultModel resultModel=new ResultModel();
+//		if(re==1){
+//			resultModel.setTitle("操作成功");
+//			String pattern="";
+//			pattern="保存成功";
+//			resultModel.setAction(ResultModel.ACTION_CONFIRM);
+//			resultModel.setMsg(pattern,re);;
+//		}else {
+//			resultModel.setAction(ResultModel.ACTION_ALERT);
+//			resultModel.setTitle("操作失败");
+//		}
 		this.writePlainText(resultModel.toJson().toString());
 	}
 	public void  do_modify(){
