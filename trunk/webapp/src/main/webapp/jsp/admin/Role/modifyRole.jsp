@@ -60,15 +60,14 @@ String adminRolePath=basePath+"/admin/Role";
 	    		 div.append(text+":").append(input);
 	    		 fieldset.append(div);    	
 	    		 }catch(ex){alert(ex);}	    	
-	    	 });	    		  	    	 
-				var qxian=$("#cRolestring").val();
+	    	 });	    		  	    	 				
+	    		 });
+         var qxian=$("#cRolestring").val();
              var qxians=qxian.split(";");
 	       	 $.each(qxians,function(n,item){
 	    			if(item==null||item.length==0) return true;
-	    			alert(item);
-	    			$(":checkbox[value='"+item+"']").attr("checked","checked");	
-	    		 });
-         });   //$.getJSON(url,function(json){
+	    			$(":checkbox[value="+item+"]").attr("checked","checked");	
+         });     //$.getJSON(url,function(json){
 			
      });    
 function clickSave(){
