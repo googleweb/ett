@@ -182,6 +182,19 @@ public class AdminBiz extends BaseDrvBiz implements IAdminBiz {
 		List<DictTypeModel> listDict=this.dictTypeMapper.select(query);
 		return listDict;
 	}
+
+
+	public List<DictModel> listDictValid() throws Exception {
+		// TODO Auto-generated method stub
+		String DictValid=IAdminBiz.DICT_VALID;
+		DictModel query=new DictModel();
+		query.setCTypename(DictValid);
+		List<DictModel> listDict=this.dictMapper.select(query);
+		return listDict;
+	}
+
+
+	
 	
 	
 

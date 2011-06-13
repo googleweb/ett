@@ -26,7 +26,14 @@ String adminDeviceActionPath=basePath+"admin/SelfDevice";
     <jsp:include page="/css/index.jsp"></jsp:include>
     <jsp:include page="/js/index.jsp"></jsp:include>
 
-
+<style type="text/css">
+   .tableDetail{
+     width: 100%;
+     table-layout: auto;
+     padding: 3px;
+   }
+ 
+</style>
     <%
        String tableDG="tableDG";
     
@@ -165,7 +172,7 @@ String adminDeviceActionPath=basePath+"admin/SelfDevice";
        colBoolIsFeeByVisacard.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"是否允许通过银联卡缴费",true);
        
        JsMapModel colBoolIsPostFeeAll=EasyUiUtil.createTextColumn(DeviceModel.F.BoolIsPostFeeAll);
-       colBoolIsPostFeeAll.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"收费允许邮政一次收费",true);
+       colBoolIsPostFeeAll.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"是否允许邮政一次收费",true);
        
        JsMapModel colBoolIsPrintCompany=EasyUiUtil.createTextColumn(DeviceModel.F.BoolIsPrintCompany);
        colBoolIsPrintCompany.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"是否打印公司名称",true);
@@ -188,32 +195,32 @@ String adminDeviceActionPath=basePath+"admin/SelfDevice";
        row1.add(colMachineName);
        row1.add(colPlaceAddress);
        row1.add(colYlwgUrl);
-       row1.add(colCCreateip);
-       row1.add(colCDefaultKsccCode);
-       row1.add(colCDefaultKsccName);
-       row1.add(colCDrvInterfaceUrl);
-       row1.add(colCGlbmCode);
-       row1.add(colCGlbmName);
-       row1.add(colIDrvInterfaceTimeout);
-       row1.add(colCFzjg);
-       row1.add(colCIp1);
-       row1.add(colCIp2);
-       row1.add(colCKsddCode);
-       row1.add(colCKsddName);
-       row1.add(colCMac1);
-       row1.add(colCMac2);
-       row1.add(colBoolIspreasignall);
-       row1.add(colIVehInterfaceTimeout);
-       row1.add(colCVehInterfaceUrl);
-       row1.add(colIVioInterfaceTimeout);
-       row1.add(colCVioInterfaceUrl);
-       row1.add(colIAllowPreasignDays);
-       row1.add(colBoolIsFeeATime);
-       row1.add(colBoolIsFeeByVisacard);
-       row1.add(colBoolIsPostFeeAll);
-       row1.add(colBoolIsPrintCompany);
-       row1.add(colIFeeInterfaceTimeout);
-       row1.add(colCFeeInterfaceUrl);
+       //row1.add(colCCreateip);
+      // row1.add(colCDefaultKsccCode);
+       //row1.add(colCDefaultKsccName);
+      // row1.add(colCDrvInterfaceUrl);
+      // row1.add(colCGlbmCode);
+      // row1.add(colCGlbmName);
+      // row1.add(colIDrvInterfaceTimeout);
+       //row1.add(colCFzjg);
+      // row1.add(colCIp1);
+      // row1.add(colCIp2);
+      // row1.add(colCKsddCode);
+      // row1.add(colCKsddName);
+      // row1.add(colCMac1);
+      // row1.add(colCMac2);
+      // row1.add(colBoolIspreasignall);
+      // row1.add(colIVehInterfaceTimeout);
+      // row1.add(colCVehInterfaceUrl);
+      // row1.add(colIVioInterfaceTimeout);
+      // row1.add(colCVioInterfaceUrl);
+      // row1.add(colIAllowPreasignDays);
+      // row1.add(colBoolIsFeeATime);
+      // row1.add(colBoolIsFeeByVisacard);
+      // row1.add(colBoolIsPostFeeAll);
+     //  row1.add(colBoolIsPrintCompany);
+      // row1.add(colIFeeInterfaceTimeout);
+    //   row1.add(colCFeeInterfaceUrl);
        
        
        //row1.add(colOpera);
@@ -278,6 +285,32 @@ String adminDeviceActionPath=basePath+"admin/SelfDevice";
        .appendAttrs(EasyUiModel.DataGrid.Properties.URL,adminDeviceActionPath+"/datagrid/device.action",true)       
        .appendAttrs(EasyUiModel.DataGrid.Properties.TOOLBAR,"toolbar")
        .appendAttrs(EasyUiModel.DataGrid.Properties.TITLE,"自助设备管理",true)
+       .appendAttrs(EasyUiModel.DataGrid.Properties.VIEW,"detailview")
+       .appendAttrs("detailFormatter",new JsFunctionModel(new String[]{"rowIndex","rowData"})
+  				    .appendContext("return \"<table class='tableDetail'><tr><td>设备Ip:\"+rowData.CCreateip+\"</td>"+
+  				    "<td>默认考试场次代码:\"+rowData.CDefaultKsccCode+\"</td>"+
+  				    "<td>默认考试场次名称:\"+rowData.CDefaultKsccName+\"</td>"+
+  				    "<td>驾驶人接口URL:\"+rowData.CDrvInterfaceUrl+\"</td>"+
+  				    "<td>发证机关:\"+rowData.CFzjg+\"</td></tr><tr>"+
+  				    "<td>机器内网IP:\"+rowData.CIp1+\"</td>"+
+  				    "<td>外网IP:\"+rowData.CIp2+\"</td>"+
+  				    "<td>考试地点代码:\"+rowData.CKsddCode+\"</td>"+
+  				    "<td>考试地点名称:\"+rowData.CKsddCodeName+\"</td>"+
+  				    "<td>网卡地址:\"+rowData.CMac1+\"</td></tr><tr>"+
+  				    "<td>网卡地址2:\"+rowData.CMac2+\"</td>"+
+  				    "<td>是否允许预约全部考场:\"+rowData.BoolIspreasignall+\"</td>"+
+  				    "<td>机动车接口timeout:\"+rowData.IVehInterfaceTimeout+\"</td>"+
+  				    "<td>机动车接口URL:\"+rowData.CVehInterfaceUrl+\"</td>"+
+  				    "<td>违法接口timeout:\"+rowData.IVioInterfaceTimeout+\"</td></tr><tr>"+
+  				    "<td>违法接口URL:\"+rowData.CVioInterfaceUrl+\"</td>"+
+  				    "<td>允许预约的天数:\"+rowData.IAllowPreasignDays+\"</td>"+
+  				    "<td>是否一次交费:\"+rowData.BoolIsFeeATime+\"</td>"+
+  				    "<td>是否允许通过银联卡缴费:\"+rowData.BoolIsFeeByVisacard+\"</td>"+
+  				    "<td>是否允许邮政一次收费:\"+rowData.BoolIsPostFeeAll+\"</td></tr><tr>"+
+  				    "<td>是否打印公司名称:\"+rowData.BoolIsPrintCompany+\"</td>"+
+  				    "<td>缴费接口timeout:\"+rowData.IFeeInterfaceTimeout+\"</td>"+
+  				    "<td>缴费URL:\"+rowData.CFeeInterfaceUrl+\"</td>"+
+  				    "</tr></table>\";"))
        //.appendAttrs(EasyUiModel.DataGrid.Events.ON_DBL_CLICK_ROW,"dblClickRowHandler")
        ;
        

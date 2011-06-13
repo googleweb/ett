@@ -122,6 +122,17 @@ public class DictAction extends BaseAction implements ModelDriven<DictModel>{
 		} catch (Exception e) {e.printStackTrace();}
 		this.writePlainText(jarr.toString());
 	}
+	
+	public void combobox_DictValid(){
+		List ListDictValid=new ArrayList<DictModel>();
+		JSONArray jarr=new JSONArray();
+		try{
+			ListDictValid=this.adminBiz.listDictValid();
+			jarr=ObjectUtil.toJsonArray(ListDictValid);
+		}catch (Exception e){e.printStackTrace();}
+		this.writePlainText(jarr.toString());
+	}
+	
 	public void  do_add(){
 		int re=0;
 		ResultModel resultModel=new ResultModel();

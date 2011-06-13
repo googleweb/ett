@@ -17,6 +17,7 @@ public interface IAdminBiz extends IBaseCrudBiz {
 	public static String TYPE_NAME_KSDD="考试地点";
 	public static String TYPE_NAME_KSKM="考试科目";
 	public static String DEP_TYPE_SCHOOL="驾校";
+	public static String DICT_VALID="字典状态";
 	
 	public List<DictModel> listKscc(String code) throws Exception;
 	
@@ -37,4 +38,6 @@ public interface IAdminBiz extends IBaseCrudBiz {
 	public List<DictModel> listKskm(String code) throws Exception;
 	
 	public List<DictTypeModel> listDictType() throws Exception;
+	
+	public List<DictModel> listDictValid() throws Exception;
 }
