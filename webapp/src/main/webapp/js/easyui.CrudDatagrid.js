@@ -160,6 +160,38 @@ CrudDatagrid.prototype.getOperaFormatter=function(){
 	 }catch(ex){alert(ex);}
 }
 
+CrudDatagrid.prototype.getEditRowHandler=function(opts){
+	  opts=opts||{};
+	  var regexp=this._regexp;
+	  var id=this._id;
+	  var urlRemove=this._urlRemove;
+	  var urlAdd=this._urlAdd;
+	  var urlUpdate=this._urlUpdate;
+	  var formOpts={};
+      formOpts["editors"]=this._editors;
+      formOpts["prefix"]=opts["prefix"]||"";
+	  var fun=function(rowIndex,rowData){
+
+	            formOpts["data"]=rowData;
+	    		formOpts["urlSave"]=urlUpdate;
+	    		var i=parseInt(rowIndex);
+	    		var title="修改记录序号:"+(i+1);
+	    		var div=$("<div></div>");	    		
+	    		div.kiaCrudForm(formOpts);
+	            div.dialog({
+	              title:title
+    		      ,modal:true
+    		     //,onBeforeOpen:function(){$(this).kiaCrudForm(formOpts);}
+	             ,onClose:function(){$(this).dialog("destroy",true);}
+	             ,onDestroy:function(){$(regexp).datagrid("reload");}
+    	        });
+	        	
+     }
+	 return fun;
+	
+}
+	
+
 
 function dateboxFormatter(value,row,index){
 

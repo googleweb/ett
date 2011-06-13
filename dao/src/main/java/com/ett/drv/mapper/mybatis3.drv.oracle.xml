@@ -3,9 +3,23 @@
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
+
+<settings>
+    <setting name="cacheEnabled" value="true"/>
+    <setting name="lazyLoadingEnabled" value="true"/>
+     <setting name="multipleResultSetsEnabled" value="true"/>
+	<setting name="useColumnLabel" value="true"/>
+	<setting name="useGeneratedKeys" value="false"/>
+	<setting name="enhancementEnabled" value="false"/>
+	<setting name="defaultExecutorType" value="SIMPLE"/>
+	<setting name="defaultStatementTimeout" value="25000"/>
+</settings>
+
 <typeAliases>
   <typeAlias type="java.sql.Timestamp" alias="Timestamp"/>
 </typeAliases>
+
+
 
 <plugins>
 	<plugin interceptor="com.smartken.kia.core.plugin.mybatis.OffsetLimitInterceptor">

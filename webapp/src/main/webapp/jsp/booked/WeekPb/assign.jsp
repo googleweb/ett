@@ -76,6 +76,7 @@ String bookedWeekPbPath=basePath+"booked/WeekPb";
                    .appendAttrs(EasyUiModel.Dialog.Properties.TITLE,"\"新增分配项目-\"+ldate")
                    .appendAttrs(EasyUiModel.Dialog.Events.ON_CLOSE,new JsFunctionModel(null).appendContext("location.href='"+basePath+"booked/WeekPb/reload/assign.action';"))
                )
+            .appendContext("return false;")
            ;
            
            JQueryModel btnAddLimit=new JQueryModel(JQueryModel.cls(aAddLimit),JQueryModel.Events.CLICK);
@@ -120,6 +121,7 @@ String bookedWeekPbPath=basePath+"booked/WeekPb";
                    .appendAttrs(EasyUiModel.Dialog.Properties.TITLE,"\"修改分配项目-\"+ldate")
                    .appendAttrs(EasyUiModel.Dialog.Events.ON_CLOSE,new JsFunctionModel(null).appendContext("location.href='"+basePath+"booked/WeekPb/reload/assign.action';"))
                )
+               .appendContext("return false;")
            );
            
            JQueryModel btnRemoveLimit=new JQueryModel(JQueryModel.cls(aRemoveLimit),JQueryModel.Events.CLICK);
