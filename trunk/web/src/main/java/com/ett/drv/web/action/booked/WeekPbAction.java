@@ -281,4 +281,15 @@ public class WeekPbAction extends BaseAction implements ModelDriven<BookedWeekRe
 		this.writePlainText(resultModel.toJson().toString());
 	}
 	
+	public String to_listLimits(){
+		return ResultEnum.jsp.name();
+	}
+	
+	public void datagrid_limits(){
+		this.bookedBiz.loadCrudMapper(BookedLimitModel.class);
+		List listLimits=this.bookedBiz.getModel(this.getPager());
+		JSONObject datagrid=EasyUiUtil.toJsonDataGrid(listLimits);
+		this.writePlainText(datagrid.toString());
+	}
+	
 }

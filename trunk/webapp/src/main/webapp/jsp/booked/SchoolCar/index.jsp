@@ -98,6 +98,7 @@ String bookedSchoolCarPath=basePath+"booked/SchoolCar";
       .appendAttrs(EasyUiModel.DataGrid.Properties.URL,bookedSchoolCarPath+"/datagrid/schoolCar.action",true)
       .appendAttrs(EasyUiModel.DataGrid.Properties.COLUMNS,cols)
       .appendAttrs(EasyUiModel.DataGrid.Properties.TOOLBAR,"toolbar")
+      .appendAttrs(EasyUiModel.DataGrid.Events.ON_DBL_CLICK_ROW,"dblClickRowHandler")
       .appendAttrs("view","groupview")
       .appendAttrs("groupField",SchoolCarModel.F.Depcode,true)
       .appendAttrs("groupFormatter",new JsFunctionModel(new String[]{"value","rows"})
@@ -120,6 +121,7 @@ String bookedSchoolCarPath=basePath+"booked/SchoolCar";
        var crud=new CrudDatagrid(opts);
        var formOpts={};
        var toolbar=crud.getToolbar();
+       var dblClickRowHandler=crud.getEditRowHandler();
        <%=JQueryModel.DOC_READY_START%>
        <%=jsContext.toScirpt() %> 
        <%=JQueryModel.DOC_READY_END%>

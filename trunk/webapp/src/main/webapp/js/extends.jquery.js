@@ -166,14 +166,10 @@ kiaLoadFields:function(){
 	var urlRemove=opts["urlRemove"]||"";
 	var data=opts["data"]||{};
 	var objDiv=$("<div></div>");
-	objDiv.css("width","auto")
-	.css("height","auto")
-	.css("overflow","hidden")
-	;
 	var objForm=$("<form method='post'></form>");
 	var objTable=$("<table cellspacing='0' ></table>");
 	objTable.addClass("editTable");
-	objTable.css("table-layout","inherit");
+	//objTable.css("table-layout","inherit");
 	$.each(data,function(dataName,dataValue){
 		var hidden=$("<input type=\"hidden\" />")
 		hidden.attr("name",prefix+dataName).attr("value",dataValue);

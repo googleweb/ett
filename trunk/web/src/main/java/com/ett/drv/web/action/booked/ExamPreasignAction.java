@@ -191,7 +191,21 @@ public class ExamPreasignAction extends BaseAction implements ModelDriven<Booked
 
 	public BookedOrderInfoModel getModel() {
 		// TODO Auto-generated method stub
+		if(orderInfo==null){
+			orderInfo=new BookedOrderInfoModel();
+		}
 		return orderInfo;
+	}
+	
+	public String to_verify(){
+		return ResultEnum.jsp.name();
+	}
+	
+	public void datagrid_orderInfo(){
+		this.bookedBiz.loadCrudMapper(BookedOrderInfoModel.class);
+		List listOrderInfo=this.bookedBiz.getModel(this.getPager());
+		JSONObject datagrid=EasyUiUtil.toJsonDataGrid(listOrderInfo,this.bookedBiz.count());
+		this.writePlainText(datagrid.toString());
 	}
 	
 }

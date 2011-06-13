@@ -135,3 +135,4 @@ $.extend($.fn.validatebox.defaults.rules, {
  $.fn.datagrid.defaults.idField="Id";
  $.fn.datagrid.defaults.rownumbers=true;
  $.fn.datagrid.defaults.pageSize=20;
+ $.fn.datagrid.defaults.groupFormatter=function(value,rows){return value + ' - 共' + rows.length + ' 条';};
