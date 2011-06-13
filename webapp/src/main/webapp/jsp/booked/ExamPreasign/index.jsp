@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@page import="com.smartken.kia.core.model.impl.EasyUiModel"%>
+<%@page import="com.smartken.kia.core.model.impl.JQueryModel"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%
 String path = request.getContextPath();
@@ -28,7 +29,26 @@ String bookedExamPreasgin=basePath+"/booked/ExamPreasign";
     <jsp:include page="/css/index.jsp"></jsp:include>
     <jsp:include page="/js/index.jsp"></jsp:include>
   
-
+   <script type="text/javascript">
+     <%=JQueryModel.DOC_READY_START %>
+     
+      $(".tdFp").each(function(index){
+    	  var depCode="4405B";
+    	  var newContext="";
+    	  var context=$(this).html();
+    	  var limits=context.split("<br>");
+    	  for(var i=0;i<limits.length;i++){
+    		  var limit=limits[i];
+    		  var id=limit.split(";")[6]||0;
+    		  if(id==0||id==null)continue;
+    		  var href="<%=bookedExamPreasgin %>/to/preasign.action?Id="+id;
+    		  limit=limit.replace(depCode,"<a href='"+href+"'>"+depCode+"</a>");
+    		  newContext=newContext+limit;
+    	  }
+    	  $(this).html(newContext);
+      });
+     <%=JQueryModel.DOC_READY_END%>
+   </script>
 
 
   </head>
@@ -93,11 +113,10 @@ String bookedExamPreasgin=basePath+"/booked/ExamPreasign";
 	</th>
 	<s:iterator value="#{'一':1,'二':2,'三':3}" id="km" >
 	 <td style="width: 14%">
-	   &nbsp;<s:property value="#request['weekRecord.IWeek'+#dw.value+'Km'+#km.value+'Num']" />
+	   &nbsp;<s:property  value="#request['weekRecord.IWeek'+#dw.value+'Km'+#km.value+'Num']" />
 	 </td>
-	 <td style="width: 14%">
-	   &nbsp;<s:property value="#request['weekRecord.IWeek'+#dw.value+'Km'+#km.value+'Fp']" />
-	   </br><a href="<%=bookedExamPreasgin %>/to/preasign.action?Id=${weekRecord.id}">预约</a>
+	 <td style="width: 14%" class="tdFp">
+	   &nbsp;<s:property escape="false" value="#request['weekRecord.IWeek'+#dw.value+'Km'+#km.value+'Fp']" />
 	 </td>
 	</s:iterator>
 

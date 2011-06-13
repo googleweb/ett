@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.poi.hssf.record.formula.functions.Fpos;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -12,6 +13,7 @@ import org.json.JSONObject;
 
 
 import com.ett.drv.biz.impl.BookedBiz;
+import com.ett.drv.model.booked.BookedDayLimitModel;
 import com.ett.drv.model.booked.BookedLimitModel;
 import com.ett.drv.model.booked.BookedOrderInfoModel;
 import com.ett.drv.model.booked.BookedWeekRecordModel;
@@ -206,6 +208,39 @@ public class ExamPreasignAction extends BaseAction implements ModelDriven<Booked
 		List listOrderInfo=this.bookedBiz.getModel(this.getPager());
 		JSONObject datagrid=EasyUiUtil.toJsonDataGrid(listOrderInfo,this.bookedBiz.count());
 		this.writePlainText(datagrid.toString());
+	}
+	
+	
+	public String to_extraAssign(){
+		return ResultEnum.jsp.name();
+	}
+	
+
+	public void datagrid_extraAssignLimits(){
+		String ksrq=this.getParameter("ksrq");
+		this.bookedBiz.loadCrudMapper(BookedLimitModel.class);
+		List list=new ArrayList();
+		if(StringUtil.isBlank(ksrq)){
+			list=this.bookedBiz.getModel(this.getPager());
+		}else{
+			BookedLimitModel q=new BookedLimitModel();
+			q.setDateKsrq(ksrq);
+			list=this.bookedBiz.getModel(q,this.getPager());
+		}
+
+		JSONObject jsonDG=EasyUiUtil.toJsonDataGrid(list,this.bookedBiz.count());
+		this.writePlainText(jsonDG.toString());	
+	}
+	
+	public void do_extraAssign(){
+		
+		int tpNum=ObjectUtil.formatInt(this.getParameter("tpNum"));
+		int id=ObjectUtil.formatInt(this.getParameter("id"));
+		this.bookedBiz.loadCrudMapper(BookedLimitModel.class);
+		BookedLimitModel bLimitModel=(BookedLimitModel) this.bookedBiz.getModelEqPk(id);
+		bLimitModel.setITptotal(tpNum);
+		ResultModel reModel=this.bookedBiz.modifyModel(bLimitModel);
+		this.writePlainText(reModel.toJson().toString());
 	}
 	
 }

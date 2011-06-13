@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import com.smartken.kia.core.util.DateTimeUtil;
@@ -229,7 +230,7 @@ public class BookedWeekRecordModel extends BaseModel{
 			
 	}
 	
-	public void updateFpContext(Map<String, BookedLimitModel> limits){
+	public void updateFpContext(List<BookedLimitModel> limits){
 		for(int w=1;w<8;w++){
 			for(int k=1;k<3;k++){
 				String fpName=MessageFormat.format("IWeek{0}Km{1}Fp", w,k);
@@ -241,8 +242,8 @@ public class BookedWeekRecordModel extends BaseModel{
 				}
 			}
 		}
-		for(Iterator<String> it=limits.keySet().iterator();it.hasNext();){
-			BookedLimitModel bolModel=limits.get(it.next());
+		for(Iterator<BookedLimitModel> it=limits.iterator();it.hasNext();){
+			BookedLimitModel bolModel=it.next();
 			int dow=bolModel.getIDayofweek();
 			int km=bolModel.getIKm();
 			String fpName=MessageFormat.format("IWeek{0}Km{1}Fp", dow,km);

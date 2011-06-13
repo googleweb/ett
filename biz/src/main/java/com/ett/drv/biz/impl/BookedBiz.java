@@ -81,15 +81,14 @@ public class BookedBiz extends BaseDrvBiz implements IBookedBiz {
 		ResultModel reModel=new ResultModel();
 		int re=0;
 		try {
-			weekPb.updateFpContext(weekPb.getLimits());
-			re+=this.weekRecordMapper.updateOne(weekPb);
+
 			int weekNum=weekPb.getIWeekNum();
-			List<BookedLimitModel> listDelectLimit=new ArrayList<BookedLimitModel>();
+			List<BookedLimitModel> listLimit=new ArrayList<BookedLimitModel>();
 			BookedLimitModel q=new BookedLimitModel();
 			q.setIWeekNum(weekNum);
-			listDelectLimit=this.limitMapper.select(q);
+			listLimit=this.limitMapper.select(q);
 		    List<Integer> ids=new ArrayList<Integer>();
-            for(BookedLimitModel blm: listDelectLimit){
+            for(BookedLimitModel blm: listLimit){
             	ids.add(blm.getId());
             }
 			
@@ -99,6 +98,9 @@ public class BookedBiz extends BaseDrvBiz implements IBookedBiz {
 			   BookedLimitModel limit=limits.get(it.next());
 			   re+=this.limitMapper.insertOne(limit);
 			}
+			listLimit=this.limitMapper.select(q);
+			weekPb.updateFpContext(listLimit);
+			re+=this.weekRecordMapper.updateOne(weekPb);
 			reModel.setAction(ResultModel.ACTION_ALERT);
 	    if(re==0){
 	    	reModel.setTitle("操作失败");

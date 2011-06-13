@@ -157,7 +157,8 @@ String bookedExamPreasgin=basePath+"/booked/ExamPreasign";
   	                 <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
   	                  <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %>
   	                  <%=EasyUiModel.ComboBox.Properties.REQUIRED(true) %>
-  	                  <%=EasyUiModel.ComboBox.Properties.EDITABLE(false) %>
+  	                  <%=EasyUiModel.ComboBox.Properties.DISABLED(false) %>
+  	                  value="${limit.IKm}"
                       />
         &nbsp;地点&nbsp;<input  name="<%=BookedOrderInfoModel.F.CKsddCode %>"
           	                 class="<%=EasyUiModel.ComboBox.CLASS %>"
@@ -165,7 +166,8 @@ String bookedExamPreasgin=basePath+"/booked/ExamPreasign";
   	                 <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
   	                  <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %>
   	                  <%=EasyUiModel.ComboBox.Properties.REQUIRED(true) %>
-  	                  <%=EasyUiModel.ComboBox.Properties.EDITABLE(false) %>
+  	                  <%=EasyUiModel.ComboBox.Properties.DISABLED(false) %>
+  	                  value="${limit.CKsddCode}"
                      />
         &nbsp;场次&nbsp;<input  name="<%=BookedOrderInfoModel.F.CKsccCode %>"
                   	  class="<%=EasyUiModel.ComboBox.CLASS %>"
@@ -173,7 +175,8 @@ String bookedExamPreasgin=basePath+"/booked/ExamPreasign";
   	                 <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
   	                  <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %>
   	                  <%=EasyUiModel.ComboBox.Properties.REQUIRED(true) %>
-  	                  <%=EasyUiModel.ComboBox.Properties.EDITABLE(false) %>
+  	                  <%=EasyUiModel.ComboBox.Properties.DISABLED(false) %>
+  	                  value="${limit.CKsccCode}"
         />
          </td>
        </tr>
@@ -211,11 +214,7 @@ String bookedExamPreasgin=basePath+"/booked/ExamPreasign";
     </div>
    <div style="height: 40%">
       <table id="<%=tableFail %>">
-        <tfoot>
-                 <tr>
-           <td colspan="100">xxxx</td>
-         </tr>
-        </tfoot>
+
       </table>  
     </div>
   
