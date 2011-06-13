@@ -73,7 +73,7 @@ iframe
 	border-color: #66CCFF;
 	width: auto;
 	background-color: #EDF4FE;
-	table-layout: fixed;
+	table-layout: auto;
 }
 
 .editTable td
