@@ -28,11 +28,15 @@ String adminUserPath=basePath+"/admin/User";
    
    
    <script type="text/javascript">
+   $(document).ready(function(){
+		$("select option").each(function(){
+			alert(this);
+		}); 
+		
+	   
+   });
     
    function clickSave(){
- 
-	     $.messager.confirm('操作提示','确认保存',function(yes){
-		   if(yes){
 			   $("#formUser").form('submit',{
 				   url:"<%=adminUserPath%>/do/editUser.action"
 				   ,onSubmit:function(){ return $(this).form("validate"); }
@@ -41,8 +45,6 @@ String adminUserPath=basePath+"/admin/User";
 				     str.messager();
 				   }
 			   });
-		   }
-	     });
    }
    
    </script>
@@ -63,10 +65,10 @@ String adminUserPath=basePath+"/admin/User";
                  <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
                 />
              </td>
-            <th>密码</th>
+           <th>全名</th>
              <td style="width: 35%">
-               <input name="CPwd" type="text"  value="${CPwd}" 
-               	class="<%=EasyUiModel.ValidateBox.CLASS %>"
+               <input name="CFullName" value="${CFullName}" 
+               class="<%=EasyUiModel.ValidateBox.CLASS %>"
                  <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
                />
              </td>
@@ -95,10 +97,13 @@ String adminUserPath=basePath+"/admin/User";
            <tr>
             <th>状态</th>
              <td style="width: 35%">
-               <input name="CState"  type="text" value="${CState}" 
-               class="<%=EasyUiModel.ValidateBox.CLASS %>"
-                 <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
-               />
+             <select id="bumen" name="CState" onchange="sltChange()" 
+             	 class="<%=EasyUiModel.ValidateBox.CLASS %>"
+                 <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>>
+ 						<option value="有效">有效</option>
+						<option value="无效">无效</option>
+				</select>
+             
              </td>
             <th>卡号</th>
              <td style="width: 35%">
@@ -108,27 +113,7 @@ String adminUserPath=basePath+"/admin/User";
                />
              </td>
            </tr>
-           <tr>
-            <th>部门编号</th>
-             <td style="width: 35%">
-             <input name="IDepid" 
-                       valuefield="Id"
-                   textfield="CDepnickname"
-                     url="<%=adminUserPath %>/combobox/deptid.action" 
-                 value="${IDepid}"
-  	         editable="false"
-  	                  class="<%=EasyUiModel.ComboBox.CLASS %>"
-                 <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
-                   />
-             </td>
-            <th>全名</th>
-             <td style="width: 35%">
-               <input name="CFullName" value="${CFullName}" 
-               class="<%=EasyUiModel.ValidateBox.CLASS %>"
-                 <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
-               />
-             </td>
-           </tr>
+          
            <tr>
            <th>开始IP</th>
              <td style="width: 35%">
@@ -144,6 +129,21 @@ String adminUserPath=basePath+"/admin/User";
                  <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
                />
              </td>
+           </tr>
+            <tr>
+            <th>部门编号</th>
+             <td style="width: 35%">
+             <input name="IDepid" 
+                       valuefield="Id"
+                   textfield="CDepnickname"
+                     url="<%=adminUserPath %>/combobox/deptid.action" 
+                 value="${IDepid}"
+  	         editable="false"
+  	                  class="<%=EasyUiModel.ComboBox.CLASS %>"
+                 <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+                   />
+             </td>
+            
            </tr>
            <tr>
              <td colspan="4" style="text-align: right">

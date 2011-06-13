@@ -100,7 +100,7 @@ $(document).ready(function(){
 	{field:"Id",checkbox:true},
 	{field:"<%=RoleModel.F.CName%>",title:"名称",width:150},
 	{field:"<%=RoleModel.F.CDescription%>",title:"描述",width:150},
-	{field:"<%=RoleModel.F.CRolestring%>",title:"介绍",width:150}
+	{field:"<%=RoleModel.F.CRolestring%>",title:"权限",width:150}
 	
 	]
 	] 

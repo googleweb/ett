@@ -71,9 +71,6 @@ String adminRolePath=basePath+"/admin/Role";
 			
      });    
 function clickSave(){
- 
-	     $.messager.confirm('操作提示','确认保存',function(yes){
-		   if(yes){
 			   $("#formUser").form('submit',{
 				   url:"<%=adminRolePath%>/do/modifyRole.action"
 				   ,onSubmit:function(){ return $(this).form("validate"); }
@@ -82,9 +79,7 @@ function clickSave(){
 				     str.messager();
 				   }
 			   });
-		   }
-	     });     
-   }
+S   }
    </script>
   </head>
   <body>

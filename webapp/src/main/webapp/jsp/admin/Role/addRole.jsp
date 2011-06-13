@@ -30,9 +30,6 @@ String adminUserPath=basePath+"/admin/Role";
    <script type="text/javascript">
     
    function clickSave(){
- 
-	     $.messager.confirm('操作提示','确认保存',function(yes){
-		   if(yes){
 			   $("#formRole").form('submit',{
 				   url:'<%=basePath%>'+"admin/Role/do/addRole.action"
 				  // alert('url');
@@ -42,8 +39,6 @@ String adminUserPath=basePath+"/admin/Role";
 				     str.messager();
 				   }
 			   });
-		   }
-	     });
    }
    
    </script>

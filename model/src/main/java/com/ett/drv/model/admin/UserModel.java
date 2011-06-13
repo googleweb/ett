@@ -6,18 +6,14 @@ import org.json.JSONObject;
 import com.smartken.kia.core.model.impl.BaseModel;
 
 
-public class UserModel extends BaseModel {
-
-
-	
+public class UserModel extends BaseModel {	
 	 public static enum F { 
 		  Id,CLoginName,CFullName,CPwd,IRoleid,IDepid,CIdcard,CWorkid,CBeginip,CEndip,CState  
 		 } 
 	 
 	 public static enum V{
-		 RoleName
+		 RoleName,DepName
 	 }
-
 		private Integer Id;         //ID  NUMBER 38
 		private String CLoginName;         //C_LOGIN_NAME  VARCHAR2 30
 		private String CFullName;         //C_FULL_NAME  VARCHAR2 30
@@ -33,7 +29,14 @@ public class UserModel extends BaseModel {
 		
 		private RoleModel roleModel=new RoleModel();
 		
+		private DepartmentModel departmentModel=new DepartmentModel();
 		
+		public  DepartmentModel getDepartmentModel(){
+			return departmentModel;  
+		}
+		public void  setDepartmentModel(DepartmentModel departmentModel){
+			this.departmentModel=departmentModel;
+		}		
 		public Integer getId() {
 			return Id;
 		}
@@ -111,25 +114,18 @@ public class UserModel extends BaseModel {
 		}
 		public void setRoleModel(RoleModel roleModel) {
 			this.roleModel = roleModel;
-		}
-		
-		
+		}	
 		@Override
 		public JSONObject toJson() {
 			// TODO Auto-generated method stub
 			JSONObject json= super.toJson();
 			try {
-				json.put(UserModel.V.RoleName.name(), roleModel.getCName());
-				
+				json.put(UserModel.V.RoleName.name(), roleModel.getCName());		
+				json.put(UserModel.V.DepName.name(),departmentModel.getCDepnickname());
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			return json;
 		}
-		
-		
-	
-	
-	
 }
