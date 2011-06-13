@@ -51,8 +51,16 @@ String adminDictPath=basePath+"/admin/Dict";
   colCDes2.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"CDes2",true);
   JsMapModel colCDes3=EasyUiUtil.createTextColumn(DictModel.F.CDes3);
   colCDes3.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"CDes3",true);
+  
+  JsMapModel optkm1=new JsMapModel();
+  optkm1.put(EasyUiModel.ComboBox.Properties.URL,adminDictPath+"/combobox/DictValid.action",true);
+  optkm1.put(EasyUiModel.ComboBox.Properties.TEXT_FIELD,DictModel.F.CState.name(),true);
+  optkm1.put(EasyUiModel.ComboBox.Properties.VALUE_FIELD,DictModel.F.CState.name(),true);
+  optkm1.put(EasyUiModel.ComboBox.Properties.EDITABLE,"false");
   JsMapModel colCState=EasyUiUtil.createTextColumn(DictModel.F.CState);
   colCState.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"状态",true);
+  colCState.put(EasyUiModel.DataGrid.ColumnProperties.EDITOR,EasyUiUtil.createComboboxEditor(true,optkm1));
+  
   
   JsMapModel optKm=new JsMapModel();
   optKm.put(EasyUiModel.ComboBox.Properties.URL,adminDictPath+"/combobox/DictType.action",true);
