@@ -66,19 +66,41 @@ public class UserAction extends BaseAction implements ModelDriven<UserModel> {
 	}	
 	public String to_editUser(){
 	    return "jsp";
-	}	
+	}
+	public String to_addUser(){
+		return "jsp";
+	}
+	public void  do_addUser(){
+		int re=0;
+		if(this.isPost()){
+			this.adminBiz.loadCrudMapper(UserModel.class);
+			MD5Encrypt mD5=new  MD5Encrypt();
+			try{
+				String CPwd=_userModel.getCPwd();
+				_userModel.setCPwd(mD5.encrypt(CPwd));
+				re+=this.adminBiz.modifyOrAddModel(_userModel).getRe();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		ResultModel resultModel=new ResultModel();
+		if(re>0){
+			resultModel.setTitle("操作成功");
+			//resultModel.setAction(ResultModel.ACTION_CONFIRM);
+			resultModel.setMsg("成功添加{0}个用户",re);
+	
+		}else {
+			resultModel.setAction(ResultModel.ACTION_ALERT);
+			resultModel.setTitle("操作失败");
+			resultModel.setMsg("没有用户被添加");
+		}
+		this.writePlainText(resultModel.toJson().toString());   	
+		
+	}
 	public void  do_editUser(){
 		int re=0;
 		if(this.isPost()){
 			this.adminBiz.loadCrudMapper(UserModel.class);
-			MD5Encrypt mD5=new MD5Encrypt();
-			try{
-				// mD5.encrypt(UserModel.F.CPwd);
-				String CPwd=_userModel.getCPwd();
-				_userModel.setCPwd(mD5.encrypt(CPwd));
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
 			re+=this.adminBiz.modifyOrAddModel(_userModel).getRe();
 		}
 		ResultModel resultModel=new ResultModel();

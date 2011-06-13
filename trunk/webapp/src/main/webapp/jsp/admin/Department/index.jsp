@@ -43,7 +43,7 @@ String adminDictTypePath=basePath+"admin/Department";
       JsMapModel colId=EasyUiUtil.createCheckBoxColumn(DepartmentModel.F.Id);
       
       JsMapModel CDepnickname=EasyUiUtil.createTextColumn(DepartmentModel.F.CDepnickname);
-      CDepnickname.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"类型名称",true);
+      CDepnickname.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"部门名称",true);
       CDepnickname.put(EasyUiModel.DataGrid.ColumnProperties.EDITOR,EasyUiUtil.createValidateboxEditor(true,null));
       
       JsMapModel CCompanycode=EasyUiUtil.createTextColumn(DepartmentModel.F.CCompanycode);
@@ -51,12 +51,8 @@ String adminDictTypePath=basePath+"admin/Department";
       CCompanycode.put(EasyUiModel.DataGrid.ColumnProperties.EDITOR,EasyUiUtil.createValidateboxEditor(true,null));
       
       JsMapModel CConnector=EasyUiUtil.createTextColumn(DepartmentModel.F.CConnector);
-      CConnector.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"连接",true);
+      CConnector.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"联系人",true);
       CConnector.put(EasyUiModel.DataGrid.ColumnProperties.EDITOR,EasyUiUtil.createValidateboxEditor(true,null));
-      
-      JsMapModel CDepcode=EasyUiUtil.createTextColumn(DepartmentModel.F.CDepcode);
-      CDepcode.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"部门编号",true);
-      CDepcode.put(EasyUiModel.DataGrid.ColumnProperties.EDITOR,EasyUiUtil.createValidateboxEditor(true,null));
       
       JsMapModel CDepfullname=EasyUiUtil.createTextColumn(DepartmentModel.F.CDepfullname);
       CDepfullname.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"部门全名",true);
@@ -67,11 +63,11 @@ String adminDictTypePath=basePath+"admin/Department";
       CDeptype.put(EasyUiModel.DataGrid.ColumnProperties.EDITOR,EasyUiUtil.createValidateboxEditor(true,null));
       
       JsMapModel CMobile=EasyUiUtil.createTextColumn(DepartmentModel.F.CMobile);
-      CMobile.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"座机",true);
+      CMobile.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"固定电话",true);
       CMobile.put(EasyUiModel.DataGrid.ColumnProperties.EDITOR,EasyUiUtil.createValidateboxEditor(true,null));
       
       JsMapModel CParentcode=EasyUiUtil.createTextColumn(DepartmentModel.F.CParentcode);
-      CParentcode.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"父类编号",true);
+      CParentcode.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"管理部门代码",true);
       CParentcode.put(EasyUiModel.DataGrid.ColumnProperties.EDITOR,EasyUiUtil.createValidateboxEditor(true,null));
       
       
@@ -84,7 +80,6 @@ String adminDictTypePath=basePath+"admin/Department";
       row1.add(CDepnickname);
       row1.add(CCompanycode);
       row1.add(CConnector);
-      row1.add(CDepcode);
       row1.add(CDepfullname);
       row1.add(CDeptype);
       row1.add(CMobile);
@@ -97,7 +92,6 @@ String adminDictTypePath=basePath+"admin/Department";
       formCols.add(CDepnickname);
       formCols.add(CCompanycode);
       formCols.add(CConnector);
-      formCols.add(CDepcode);
       formCols.add(CDepfullname);
       formCols.add(CDeptype);
       formCols.add(CMobile);

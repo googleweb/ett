@@ -75,10 +75,12 @@ C_KM=#{model.CKm,jdbcType=VARCHAR,javaType=String},
 
 <sql id="joinColums">
    ,role.c_name as role_name
+   ,dep.C_DEPNICKNAME as dep_name
 </sql>
   
 <sql id="join">
   left join TABLE_ROLES role on role.id=m.i_roleid 
+  left join TABLE_DepartmentS dep on dep.id=m.I_DEPID
 </sql><!-- 别名m已被主表使用  -->
 
 <resultMap type="com.ett.drv.model.admin.UserModel" id="resultMap">
@@ -94,10 +96,7 @@ C_KM=#{model.CKm,jdbcType=VARCHAR,javaType=String},
 <result column="C_ENDIP"  property="CEndip" jdbcType="VARCHAR" javaType="String"/>
 <result column="C_STATE"  property="CState" jdbcType="VARCHAR" javaType="String"/>
 <result column="C_KM"  property="CKm" jdbcType="VARCHAR" javaType="String"/>
-
  </resultMap>
-
-
 <sql id="selectCondition">
 <if test="model.Id neq null">and m.ID = #{model.Id,jdbcType=INTEGER javaType=Integer } </if> 
 <if test="model.CLoginName neq null">and m.C_LOGIN_NAME like #{model.CLoginName,jdbcType=VARCHAR javaType=String } </if> 
@@ -199,6 +198,11 @@ C_KM=#{model.CKm,jdbcType=VARCHAR,javaType=String},
    <association property="roleModel" column="I_ROLEID" javaType="com.ett.drv.model.admin.RoleModel" >
       <result column="role_name" property="CName" javaType="String" jdbcType="VARCHAR" />
    </association>
+   <association property="departmentModel" column="I_DEPID" javaType="com.ett.drv.model.admin.DepartmentModel">
+      <result  column="dep_name" property="CDepnickname" javaType="String" jdbcType="VARCHAR" />
+   </association>
+
+
 </resultMap>
 
 
