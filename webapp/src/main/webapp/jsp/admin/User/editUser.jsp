@@ -50,7 +50,9 @@ String adminUserPath=basePath+"/admin/User";
    </script>
    
   </head>
- 
+ <% 
+ 	reques
+ %>
   <body>
   <div class="innerDiv">
      <form id="formUser"  method="post">
