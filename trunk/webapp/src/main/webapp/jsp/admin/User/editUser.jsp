@@ -121,6 +121,7 @@ String adminUserPath=basePath+"/admin/User";
                <input name="CBeginip" type="text" value="${CBeginip}" 
                class="<%=EasyUiModel.ValidateBox.CLASS %>"
                  <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("开始IP必须输入！") %>
+                   <%=EasyUiModel.ValidateBox.Properties.VALID_TYPE("ip") %>
                  <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
                />
              </td>
@@ -129,6 +130,7 @@ String adminUserPath=basePath+"/admin/User";
                <input name="CEndip" type="text" value="${CEndip}" 
                class="<%=EasyUiModel.ValidateBox.CLASS %>"
                <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("结束IP必须输入！") %>
+                 <%=EasyUiModel.ValidateBox.Properties.VALID_TYPE("ip") %>
                  <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
                />
              </td>

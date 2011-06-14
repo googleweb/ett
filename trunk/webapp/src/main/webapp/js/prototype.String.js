@@ -1,7 +1,4 @@
 
-
-
-
 String.prototype.toJson=function(){
 	try{
 		var json=eval("("+this.toString()+")");
@@ -82,7 +79,6 @@ String.prototype.getIdNoBornDate=function(){
 		var day=this.slice(12,14);
 		return new Date(year+"/"+month+"/"+day);
 	}
-	
 };
 //电话
 String.prototype.isPhoneFormat=function(){
@@ -114,7 +110,5 @@ String.prototype.carNo=function(){
 //IP地址
 String.prototype.ip=function(){
 	return (/^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/.test(this));
-
-
 }
 ;
