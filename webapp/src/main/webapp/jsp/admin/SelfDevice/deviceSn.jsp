@@ -33,7 +33,7 @@ String adminDeviceActionPath=basePath+"/admin/SelfDevice";
     
     String divEdit="divEdit";
     
-    
+    /**
     JsFunctionModel clickAddHandler=new JsFunctionModel("clickAddHandler",new String[]{});
     clickAddHandler
     .appendContext("var href=\"{0}\";",adminDeviceActionPath+"/edit/deviceSn.action")
@@ -77,6 +77,7 @@ String adminDeviceActionPath=basePath+"/admin/SelfDevice";
     .appendContext("});")
     .appendContext("});  //$.messager")
     ;
+    **/
     
     JsListModel cols=new JsListModel();
     
@@ -87,14 +88,18 @@ String adminDeviceActionPath=basePath+"/admin/SelfDevice";
     JsMapModel colJkname=EasyUiUtil.createTextColumn(DeviceSnModel.F.CJkname);
     colJkname.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"接口名",true);
 
-    JsMapModel colJkxlh=EasyUiUtil.createTextColumn(DeviceSnModel.F.CJkxlh);
+    JsMapModel colJkxlh=EasyUiUtil.createIntColumn(DeviceSnModel.F.CJkxlh);
     colJkxlh.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"接口序列号",true);
 
-    JsMapModel colJkid=EasyUiUtil.createTextColumn(DeviceSnModel.F.CJkid);
+    JsMapModel colJkid=EasyUiUtil.createIntColumn(DeviceSnModel.F.CJkid);
     colJkid.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"接口ID",true);
-
+    
+    JsMapModel optkm1=new JsMapModel();
+    optkm1.put(EasyUiModel.ValidateBox.Properties.REQUIRED,"true");
+    optkm1.put(EasyUiModel.ValidateBox.Properties.VALID_TYPE,"five",true);
     JsMapModel colDeviceIp=EasyUiUtil.createTextColumn(DeviceSnModel.F.CDeviceIp);
     colDeviceIp.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"设备IP",true);
+    colDeviceIp.put(EasyUiModel.DataGrid.ColumnProperties.EDITOR,EasyUiUtil.createValidateboxEditor(true,optkm1));
 
     JsMapModel colSn=EasyUiUtil.createTextColumn(DeviceSnModel.F.CSn);
     colSn.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"sn",true);
@@ -102,20 +107,25 @@ String adminDeviceActionPath=basePath+"/admin/SelfDevice";
     JsMapModel colKeywords=EasyUiUtil.createTextColumn(DeviceSnModel.F.CKeywords);
     colKeywords.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"keywords",true);
     
-    JsMapModel colOpera=EasyUiUtil.createTextColumn("xxx",true);
-    colOpera.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"opera",true);
-    colOpera.put(EasyUiModel.DataGrid.ColumnProperties.FORMATTER,"operaFormatter");
+    //JsMapModel colOpera=EasyUiUtil.createTextColumn("xxx",true);
+    //colOpera.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"opera",true);
+    //colOpera.put(EasyUiModel.DataGrid.ColumnProperties.FORMATTER,"operaFormatter");
     
     row1.add(colId);
     row1.add(colJkxlh);
     row1.add(colJkid);
     row1.add(colJkname);
     row1.add(colDeviceIp);
-    row1.add(colOpera);
+    //row1.add(colOpera);
     
     cols.add(row1);
     
-    
+    JsListModel formCols=new JsListModel();
+    formCols.add(colJkxlh);
+    formCols.add(colJkid);
+    formCols.add(colJkname);
+    formCols.add(colDeviceIp);
+    /**
     JsListModel toolbar=new JsListModel();
     
     JsMapModel btnAdd=new JsMapModel();
@@ -130,16 +140,20 @@ String adminDeviceActionPath=basePath+"/admin/SelfDevice";
     
     toolbar.add(btnAdd);
     toolbar.add(btnRemove);
+    **/
     
     EasyUiModel datagrid=new EasyUiModel(JQueryModel.id(tableDG),EasyUiModel.DataGrid.NAME);
     datagrid
     //.appendAttrs(EasyUiModel.DataGrid.Properties.TITLE,"xxxx",true)
-    .appendAttrs(EasyUiModel.DataGrid.Properties.FIT,true)
+    //.appendAttrs(EasyUiModel.DataGrid.Properties.FIT,true)
     .appendAttrs(EasyUiModel.DataGrid.Properties.COLUMNS,cols)
-    .appendAttrs(EasyUiModel.DataGrid.Properties.PAGINATION,true)
+    //.appendAttrs(EasyUiModel.DataGrid.Properties.PAGINATION,true)
     .appendAttrs(EasyUiModel.DataGrid.Properties.URL,adminDeviceActionPath+"/datagrid/deviceSn.action",true)
-    .appendAttrs(EasyUiModel.DataGrid.Properties.TOOLBAR,toolbar.toScirpt())
+    //.appendAttrs(EasyUiModel.DataGrid.Properties.TOOLBAR,toolbar.toScirpt())
     //.appendAttrs(EasyUiModel.DataGrid.Events.ON_DBL_CLICK_ROW,"dblClickRowHandler")
+    .appendAttrs(EasyUiModel.DataGrid.Properties.COLUMNS,cols)
+    .appendAttrs(EasyUiModel.DataGrid.Properties.TOOLBAR,"toolbar")
+    .appendAttrs(EasyUiModel.DataGrid.Properties.TITLE,"自助设备接口管理",true)
     ;
     
     DeviceSnModel initRow=new DeviceSnModel();
@@ -149,20 +163,28 @@ String adminDeviceActionPath=basePath+"/admin/SelfDevice";
     context.appendScript(datagrid);
     
     JsContextModel funContext=new JsContextModel();
-    funContext.appendScript(clickAddHandler);
-    funContext.appendScript(clickEditHandler);
-    funContext.appendScript(clickRemoveHandler);
+   // funContext.appendScript(clickAddHandler);
+   // funContext.appendScript(clickEditHandler);
+   // funContext.appendScript(clickRemoveHandler);
     %>
     
      <script type="text/javascript">
-    function operaFormatter(value,rowData,rowIndex){
-    	var aEidt="<a title='编辑' href='javascript:void(0)' class='kia-icon edit' onclick='<%=clickEditHandler.getFunName()%>("+rowData["id"]+");'></a>";
-        return aEidt;
-    }
-    <%=funContext.toScirpt()%> 
-       <%=JQueryModel.DOC_READY_START%>
-       <%=context.toScirpt()%>
-       <%=JQueryModel.DOC_READY_END%>
+    var opts={};
+    opts["urlAdd"]="<%=adminDeviceActionPath%>/do/editDeviceSn.action";
+    opts["urlUpdate"]="<%=adminDeviceActionPath%>/do/editDeviceSn.action";
+    opts["urlRemove"]="<%=adminDeviceActionPath%>/do/removeDeviceSn.action";
+    opts["regexp"]="#<%=tableDG%>";
+    opts["initRow"]=function(){return <%=initRow.toJson().toString()%>; };
+    opts["editors"]=<%=formCols.toScirpt() %>;
+    
+    var crud= new CrudDatagrid(opts);
+    var formOpts={};
+    formOpts["prefix"]="deviceSn.";
+    var toolbar=crud.getToolbar(formOpts);
+
+    <%=JQueryModel.DOC_READY_START %>
+    <%=context.toScirpt()%>
+    <%=JQueryModel.DOC_READY_END %>
     </script>
 
   </head>

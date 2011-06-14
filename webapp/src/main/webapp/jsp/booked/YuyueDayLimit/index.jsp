@@ -39,9 +39,13 @@ String bookedDayLimitPath=basePath+"booked/YuyueDayLimit";
   JsListModel cols=new JsListModel();
   JsListModel row1=new JsListModel();
   
+  JsMapModel optkm1=new JsMapModel();
+  optkm1.put(EasyUiModel.ValidateBox.Properties.REQUIRED,"true");
+  optkm1.put(EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE,"车类型必须输入",true);
   JsMapModel colId=EasyUiUtil.createCheckBoxColumn(BookedDayLimitModel.F.Id);
   JsMapModel colCarType=EasyUiUtil.createTextColumn(BookedDayLimitModel.F.CCartype);
   colCarType.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"车类型",true);
+  colCarType.put(EasyUiModel.DataGrid.ColumnProperties.EDITOR,EasyUiUtil.createValidateboxEditor(true,optkm1));
   
   JsMapModel colDayLimit=EasyUiUtil.createIntColumn(BookedDayLimitModel.F.IDays);
   colDayLimit.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"间隔天数",true);
