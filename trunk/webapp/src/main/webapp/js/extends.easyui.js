@@ -128,6 +128,8 @@ $.extend($.fn.validatebox.defaults.rules, {
   
  $.fn.window.defaults.onMove= $.fn.panel.defaults.onMove;
  $.fn.dialog.defaults.onMove= $.fn.panel.defaults.onMove;
+ 
+ $.fn.window.defaults.shadow=false;
 
  $.fn.form.defaults.success=function(str){str.messager(null);}
  $.fn.form.defaults.onSubmit=function(){ return $(this).form("validate"); }
