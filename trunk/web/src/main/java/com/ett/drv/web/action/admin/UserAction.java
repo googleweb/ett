@@ -7,11 +7,13 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.ett.common.security.MD5Encrypt;
+import com.ett.drv.model.admin.DictModel;
 import com.ett.drv.model.admin.RoleModel;
 import com.ett.drv.model.admin.UserModel;
 import com.ett.drv.web.action.BaseAction;
 import com.ett.drv.web.filter.AuthFilter;
 import com.opensymphony.xwork2.ModelDriven;
+import com.smartken.kia.core.model.IFormatterModel;
 import com.smartken.kia.core.model.impl.ResultModel;
 import com.smartken.kia.core.util.EasyUiUtil;
 import com.smartken.kia.core.util.ObjectUtil;
@@ -199,6 +201,17 @@ public class UserAction extends BaseAction implements ModelDriven<UserModel> {
     	lListRole.add(roleModel);
 		JSONArray lJsonKscc= ObjectUtil.toJsonArray(lListRole);
 		this.writePlainText(lJsonKscc.toString());
+    }
+    @SuppressWarnings("unchecked")
+	public void combobox_state(){
+		@SuppressWarnings("unused")
+		List<IFormatterModel>  list=new ArrayList<IFormatterModel>();
+    	this.adminBiz.loadCrudMapper(DictModel.class);
+    	DictModel dictModel=new DictModel();
+    	dictModel.setCTypename("用户状态");
+    	list=this.adminBiz.getModel(dictModel);
+    	JSONArray  json=ObjectUtil.toJsonArray(list);
+    	this.writePlainText(json.toString());
     }
     @SuppressWarnings("unchecked")
 	public void search_User(){

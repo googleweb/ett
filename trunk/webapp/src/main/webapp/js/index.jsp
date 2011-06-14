@@ -48,15 +48,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         lSbrScript.append(getScriptTag(lStrPlugFloder+"/extends.easyui.js"));
         //lSbrScript.append(getScriptTag(lStrPlugFloder+"/common/util.js"));
         lSbrScript.append(getScriptTag(lStrPlugFloder+"/easyui.CrudDatagrid.js"));
-        
+      
+     }     
+     if(lStrCommon.length()>0){    	 
      }
-     
-     if(lStrCommon.length()>0){
-    	 
-     }
- 
      _PW.write(lSbrScript.toString());
-
 %>
 
 

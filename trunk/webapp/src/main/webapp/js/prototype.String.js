@@ -111,5 +111,10 @@ String.prototype.isFive=function(){
 String.prototype.carNo=function(){
 	return (/\d{5}$|[A-Z]{1}\d{4}|\d{1}[A-Z]{1}\d{3}|[A-Z]{2}\d{3}$/.test(this));
 };
+//IP地址
+String.prototype.ip=function(){
+	return (/^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/.test(this));
 
 
+}
+;
