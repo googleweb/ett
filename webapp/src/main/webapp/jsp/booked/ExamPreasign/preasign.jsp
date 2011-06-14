@@ -144,7 +144,7 @@ String bookedExamPreasgin=basePath+"/booked/ExamPreasign";
      <div>
       <form  id="<%=formPreasign %>" method="post" >
       
-      <table class="editTable" cellspacing="0"
+      <table class="editTable" cellspacing="0" style="width: 100%"
       >
        <tr>
          <td style="text-align: center; font-size: 1.2em" 

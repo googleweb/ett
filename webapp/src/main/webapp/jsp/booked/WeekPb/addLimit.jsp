@@ -55,10 +55,6 @@ String bookedWeekPbPath=basePath+"booked/WeekPb";
            
            JsMapModel optEditForm=new JsMapModel();
            optEditForm.put(EasyUiModel.Form.Properties.URL,bookedWeekPbPath+"/do/addLimit.action",true);
-           optEditForm.put(EasyUiModel.Form.Events.SUCCESS,
-                new JsFunctionModel(new String[]{"str"})
-                .appendContext("str.messager();")
-           );
            
            JQueryModel btnSaveClick=new JQueryModel(JQueryModel.id(formEditLimit+"-"+aSaveLimit),JQueryModel.Events.CLICK);
            btnSaveClick.appendParma(

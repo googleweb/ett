@@ -117,7 +117,29 @@ public class BookedBiz extends BaseDrvBiz implements IBookedBiz {
 		return reModel;
 	}
 	
-	
+	public ResultModel tranVerifyOrderInfo(List<String> listPk){
+		ResultModel reModel=new ResultModel();
+		int re=0;
+		try {
+			List<BookedOrderInfoModel> orders=this.orderInfoMapper.selectInPk(listPk);
+			for(BookedOrderInfoModel bInfoModel :orders){
+				bInfoModel.setIChecked(1);
+				re+=this.orderInfoMapper.updateOne(bInfoModel);
+			}
+			if(re>0){
+				reModel.setTitle("审核成功");
+				reModel.setMsg(re+"条预约记录已审核");
+			}else{
+				reModel.setAction(ResultModel.ACTION_ALERT);
+				reModel.setTitle("审核失败");
+				reModel.setMsg("没有预约记录被审核");
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return reModel;
+	}
 
 
 }
