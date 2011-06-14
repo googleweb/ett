@@ -95,8 +95,8 @@ String adminDeviceActionPath=basePath+"/admin/SelfDevice";
     colJkid.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"接口ID",true);
     
     JsMapModel optkm1=new JsMapModel();
-    optkm1.put(EasyUiModel.ValidateBox.Properties.REQUIRED,"true");
-    optkm1.put(EasyUiModel.ValidateBox.Properties.VALID_TYPE,"five",true);
+   // optkm1.put(EasyUiModel.ValidateBox.Properties.REQUIRED,"true");
+    optkm1.put(EasyUiModel.ValidateBox.Properties.VALID_TYPE,"ip",true);
     JsMapModel colDeviceIp=EasyUiUtil.createTextColumn(DeviceSnModel.F.CDeviceIp);
     colDeviceIp.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"设备IP",true);
     colDeviceIp.put(EasyUiModel.DataGrid.ColumnProperties.EDITOR,EasyUiUtil.createValidateboxEditor(true,optkm1));

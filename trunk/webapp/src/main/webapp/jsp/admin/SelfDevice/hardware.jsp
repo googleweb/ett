@@ -182,7 +182,7 @@ String adminDeviceActionPath=basePath+"admin/SelfDevice";
     
     var crud= new CrudDatagrid(opts);
     var formOpts={};
-    formOpts["prefix"]="device.";
+    formOpts["prefix"]="hardware.";
     var toolbar=crud.getToolbar(formOpts);
     
 

@@ -137,27 +137,28 @@ public class SelfDeviceAction extends BaseAction implements ModelDriven<Hardware
 	
 	public void do_editHardware(){
 		int re=0;
+		ResultModel resultModel=new ResultModel();
 		if(this.isPost()){
 			this.selfBiz.loadCrudMapper(HardwareModel.class);
-			re+=this.selfBiz.modifyOrAddModel(hardware).getRe();
-		}
-		ResultModel resultModel=new ResultModel();
-		if(re==1){
-			resultModel.setTitle("操作成功");
-			String pattern="";
-			if(hardware.getId()==null){
-				pattern="硬件设备:{0}保存成功,再添加一个硬件？";
-				resultModel.setAction(ResultModel.ACTION_CONFIRM);
-				//hardware=new HardwareModel();
-			}else {
-				pattern="硬件设备:{0}保存成功";
-			}
-			resultModel.setMsg(pattern, hardware.getCCatalog());
-			
-		}else {
-			resultModel.setAction(ResultModel.ACTION_ALERT);
-			resultModel.setTitle("操作失败");
-		}
+			resultModel=this.selfBiz.modifyOrAddModel(hardware);
+//		}
+//		ResultModel resultModel=new ResultModel();
+//		if(re==1){
+//			resultModel.setTitle("操作成功");
+//			String pattern="";
+//			if(hardware.getId()==null){
+//				pattern="硬件设备:{0}保存成功,再添加一个硬件？";
+//				resultModel.setAction(ResultModel.ACTION_CONFIRM);
+//				//hardware=new HardwareModel();
+//			}else {
+//				pattern="硬件设备:{0}保存成功";
+//			}
+//			resultModel.setMsg(pattern, hardware.getCCatalog());
+//			
+//		}else {
+//			resultModel.setAction(ResultModel.ACTION_ALERT);
+//			resultModel.setTitle("操作失败");
+	}
 		this.writePlainText(resultModel.toJson().toString());
 	}
 	
@@ -193,6 +194,7 @@ public class SelfDeviceAction extends BaseAction implements ModelDriven<Hardware
 		if(this.isPost()){
 			this.selfBiz.loadCrudMapper(DeviceSnModel.class);
 			re+=this.selfBiz.modifyOrAddModel(deviceSn).getRe();
+			
 		}
 		ResultModel resultModel=new ResultModel();
 		if(re==1){
