@@ -5,21 +5,26 @@ import java.util.List;
 
 import org.json.JSONObject;
 
+
+import com.ett.drv.model.booked.BookedDayLimitModel;
 import com.ett.drv.model.self.DeviceModel;
 import com.ett.drv.model.self.DeviceSnModel;
 import com.ett.drv.model.self.HardwareModel;
 import com.ett.drv.web.action.BaseAction;
+import com.opensymphony.xwork2.ModelDriven;
 import com.smartken.kia.core.enums.ResultEnum;
 import com.smartken.kia.core.model.impl.ResultModel;
 import com.smartken.kia.core.pager.PageArrayList;
 import com.smartken.kia.core.util.EasyUiUtil;
+import com.smartken.kia.core.util.ObjectUtil;
 import com.smartken.kia.core.util.StringUtil;
 
-public class SelfDeviceAction extends BaseAction {
+public class SelfDeviceAction extends BaseAction implements ModelDriven<HardwareModel>{
 
 	private HardwareModel hardware;
 	private DeviceModel device;
 	private DeviceSnModel deviceSn;
+	
 	
 	
 	
@@ -43,6 +48,20 @@ public class SelfDeviceAction extends BaseAction {
 	
 	public String to_hardware(){
 		return ResultEnum.jsp.name();
+	}
+	public HardwareModel getModel() {
+		// TODO Auto-generated method stub
+		if(isGet()){
+			int id=ObjectUtil.formatInt(this.getParameter("id"));
+			if(id==0)
+			{
+			 hardware=new HardwareModel();
+			}else{
+				this.selfBiz.loadCrudMapper(HardwareModel.class);
+				hardware=(HardwareModel) this.selfBiz.getModelEqPk(id);
+			}
+		}
+		return hardware;
 	}
 	
 	public String edit_hardware(){
@@ -259,12 +278,12 @@ public class SelfDeviceAction extends BaseAction {
 		if(re>0){
 			resultModel.setTitle("操作成功");
 			//resultModel.setAction(ResultModel.ACTION_CONFIRM);
-			resultModel.setMsg("成功删除{0}个硬件设备",re);
+			resultModel.setMsg("成功删除{0}个自助设备接口",re);
 	
 		}else {
 			resultModel.setAction(ResultModel.ACTION_ALERT);
 			resultModel.setTitle("操作失败");
-			resultModel.setMsg("没有硬件设备被删除");
+			resultModel.setMsg("没有自助设备接口被删除");
 		}
 		this.writePlainText(resultModel.toJson().toString());
 	}
@@ -325,5 +344,18 @@ public class SelfDeviceAction extends BaseAction {
 		this.deviceSn = deviceSn;
 	}
 	
+	public void  do_add(){
+		int re=0;
+		ResultModel resultModel=new ResultModel();
+		if(this.isPost()){
+			this.selfBiz.loadCrudMapper(HardwareModel.class);
+			resultModel=this.selfBiz.modifyOrAddModel(hardware);
+		}
+	    this.writePlainText(resultModel.toJson().toString());
+}
+	
+	
+
+
 	
 }
