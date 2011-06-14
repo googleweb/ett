@@ -78,6 +78,12 @@ $.extend($.fn.validatebox.defaults.rules, {
 	            }
                 ,message: '车牌输入格式错误'
    }
+     ,ip:{
+	   	      validator:function(value,param){
+	                   return value.ip(); 
+	            }
+                ,message: 'IP输入格式错误'
+   }
 
 });   //$.extend($.fn.validatebox.defaults.rules, {
  

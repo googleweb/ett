@@ -28,14 +28,6 @@ String adminUserPath=basePath+"/admin/User";
    
    
    <script type="text/javascript">
-   $(document).ready(function(){
-		$("select option").each(function(){
-			alert(this);
-		}); 
-		
-	   
-   });
-    
    function clickSave(){
 			   $("#formUser").form('submit',{
 				   url:"<%=adminUserPath%>/do/editUser.action"
@@ -45,14 +37,13 @@ String adminUserPath=basePath+"/admin/User";
 				     str.messager();
 				   }
 			   });
+			   
    }
    
    </script>
    
   </head>
- <% 
- 	reques
- %>
+ 
   <body>
   <div class="innerDiv">
      <form id="formUser"  method="post">
@@ -65,12 +56,14 @@ String adminUserPath=basePath+"/admin/User";
                <input name="CLoginName" type="text"  value="${CLoginName}"
                  class="<%=EasyUiModel.ValidateBox.CLASS %>"
                  <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+                 <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("用户名必须输入！") %>
                 />
              </td>
            <th>全名</th>
              <td style="width: 35%">
                <input name="CFullName" value="${CFullName}" 
                class="<%=EasyUiModel.ValidateBox.CLASS %>"
+               <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("全名必须输入！") %>
                  <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
                />
              </td>
@@ -80,6 +73,7 @@ String adminUserPath=basePath+"/admin/User";
              <td style="width: 35%">
                <input name="CWorkid" type="text" value="${CWorkid}" 
                class="<%=EasyUiModel.ValidateBox.CLASS %>"
+               <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("工作号必须输入！") %>
                  <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
                />
              </td>
@@ -92,6 +86,7 @@ String adminUserPath=basePath+"/admin/User";
                  value="${IRoleid}"
   	         editable="false"
   	                  class="<%=EasyUiModel.ComboBox.CLASS %>"
+  	                <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("角色号必须输入！") %>   
                  <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
                    />
              </td>
@@ -99,18 +94,22 @@ String adminUserPath=basePath+"/admin/User";
            <tr>
             <th>状态</th>
              <td style="width: 35%">
-             <select id="bumen" name="CState" onchange="sltChange()" 
-             	 class="<%=EasyUiModel.ValidateBox.CLASS %>"
-                 <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>>
- 						<option value="有效">有效</option>
-						<option value="无效">无效</option>
-				</select>
-             
+             <input class="<%=EasyUiModel.ComboBox.CLASS %>" 
+                 name="CState"   
+                 value="${CState}"
+                 valuefield="CDictValue"
+                 textfield="CDictValue"
+                 editable="false"
+                 url="<%=adminUserPath %>/combobox/state.action"
+                 	<%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("状态必须输入！") %>
+                 <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+             />
              </td>
             <th>卡号</th>
              <td style="width: 35%">
                <input name="CIdcard"  type="text" value="${CIdcard}" 
                class="<%=EasyUiModel.ValidateBox.CLASS %>"
+                <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("卡号必须输入！") %>
                  <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
                />
              </td>
@@ -121,6 +120,7 @@ String adminUserPath=basePath+"/admin/User";
              <td style="width: 35%">
                <input name="CBeginip" type="text" value="${CBeginip}" 
                class="<%=EasyUiModel.ValidateBox.CLASS %>"
+                 <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("开始IP必须输入！") %>
                  <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
                />
              </td>
@@ -128,6 +128,7 @@ String adminUserPath=basePath+"/admin/User";
              <td style="width: 35%">
                <input name="CEndip" type="text" value="${CEndip}" 
                class="<%=EasyUiModel.ValidateBox.CLASS %>"
+               <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("结束IP必须输入！") %>
                  <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
                />
              </td>
@@ -142,6 +143,7 @@ String adminUserPath=basePath+"/admin/User";
                  value="${IDepid}"
   	         editable="false"
   	                  class="<%=EasyUiModel.ComboBox.CLASS %>"
+  	                  <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("部门编号必须输入！") %>
                  <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
                    />
              </td>
