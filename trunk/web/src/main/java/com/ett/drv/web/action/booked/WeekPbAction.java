@@ -172,6 +172,7 @@ public class WeekPbAction extends BaseAction implements ModelDriven<BookedWeekRe
 		tempLimit.setIDayofweek(ObjectUtil.formatInt(req.getParameter("dw"),1));
 		tempLimit.setIKm(ObjectUtil.formatInt(req.getParameter("km"),1));
 		tempLimit.setIWeekNum(bookedWeekRecordModel.getIWeekNum());
+		tempLimit.setDateKsrq(ObjectUtil.formatString(req.getParameter("ksrq")));
 		this.bookedWeekRecordModel.calLimitAssgined();
 		return ResultEnum.jsp.toString();
 	}

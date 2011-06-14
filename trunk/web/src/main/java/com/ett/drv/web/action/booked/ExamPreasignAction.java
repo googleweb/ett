@@ -95,12 +95,9 @@ public class ExamPreasignAction extends BaseAction implements ModelDriven<Booked
 
 	
 	public String to_preasign() throws Exception{
-		int Id=ObjectUtil.formatInt(this.getParameter("Id")) ;
-		if(Id==0){
-			
-		}
+		int limitId=ObjectUtil.formatInt(this.getParameter("limitId")) ;
 		this.bookedBiz.loadCrudMapper(BookedLimitModel.class);
-		Object obj=this.bookedBiz.getModelEqPk(Id);
+		Object obj=this.bookedBiz.getModelEqPk(limitId);
 		if(obj!=null){
 			limit=(BookedLimitModel)obj;
 		}else{
@@ -204,8 +201,28 @@ public class ExamPreasignAction extends BaseAction implements ModelDriven<Booked
 	}
 	
 	public void datagrid_orderInfo(){
+		String strIdCard= this.getParameter("idCard");
+		String strKm=this.getParameter("km");
+		String strChecked=this.getParameter("checked");
+		Integer intKm=null;
+		Integer intChecked=null;
+		if(StringUtil.isBlank(strIdCard)){
+			strIdCard=null;
+		}
+		if(ObjectUtil.formatInt(strKm,-1)!=-1){
+			intKm=ObjectUtil.formatInt(strKm);
+		}
+		if(ObjectUtil.formatInt(strChecked,-1)!=-1){
+			intChecked=ObjectUtil.formatInt(strChecked);
+		}
+		
+		BookedOrderInfoModel q=new BookedOrderInfoModel();
+		q.setCIdcard(strIdCard);
+		q.setIKm(intKm);
+		q.setIChecked(intChecked);
+		
 		this.bookedBiz.loadCrudMapper(BookedOrderInfoModel.class);
-		List listOrderInfo=this.bookedBiz.getModel(this.getPager());
+		List listOrderInfo=this.bookedBiz.getModel(q,this.getPager());
 		JSONObject datagrid=EasyUiUtil.toJsonDataGrid(listOrderInfo,this.bookedBiz.count());
 		this.writePlainText(datagrid.toString());
 	}
@@ -241,6 +258,14 @@ public class ExamPreasignAction extends BaseAction implements ModelDriven<Booked
 		bLimitModel.setITptotal(tpNum);
 		ResultModel reModel=this.bookedBiz.modifyModel(bLimitModel);
 		this.writePlainText(reModel.toJson().toString());
+	}
+	
+	
+	public void do_verifyOrderInfo(){
+	   String ids=this.getParameter("ids");
+	   List<String> listPk=StringUtil.splitToList(ids,",");
+	   ResultModel reModel=this.bookedBiz.tranVerifyOrderInfo(listPk);
+	   this.writePlainText(reModel.toJson().toString());
 	}
 	
 }

@@ -5,7 +5,7 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-String bookedExamPreasgin=basePath+"/booked/ExamPreasign";
+String bookedExamPreasgin=basePath+"booked/ExamPreasign";
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -32,7 +32,7 @@ String bookedExamPreasgin=basePath+"/booked/ExamPreasign";
    <script type="text/javascript">
      <%=JQueryModel.DOC_READY_START %>
      
-      $(".tdFp").each(function(index){
+      $(".spanFp").each(function(index){
     	  var depCode="4405B";
     	  var newContext="";
     	  var context=$(this).html();
@@ -41,7 +41,7 @@ String bookedExamPreasgin=basePath+"/booked/ExamPreasign";
     		  var limit=limits[i];
     		  var id=limit.split(";")[6]||0;
     		  if(id==0||id==null)continue;
-    		  var href="<%=bookedExamPreasgin %>/to/preasign.action?Id="+id;
+    		  var href="<%=bookedExamPreasgin %>/to/preasign.action?limitId="+id;
     		  limit=limit.replace(depCode,"<a href='"+href+"'>"+depCode+"</a>");
     		  newContext=newContext+limit;
     	  }
@@ -115,8 +115,10 @@ String bookedExamPreasgin=basePath+"/booked/ExamPreasign";
 	 <td style="width: 14%">
 	   &nbsp;<s:property  value="#request['weekRecord.IWeek'+#dw.value+'Km'+#km.value+'Num']" />
 	 </td>
-	 <td style="width: 14%" class="tdFp">
-	   &nbsp;<s:property escape="false" value="#request['weekRecord.IWeek'+#dw.value+'Km'+#km.value+'Fp']" />
+	 <td style="width: 14%" >
+	   <span class="spanFp">
+	   <s:property escape="false" value="#request['weekRecord.IWeek'+#dw.value+'Km'+#km.value+'Fp']" />
+	   </span>
 	 </td>
 	</s:iterator>
 

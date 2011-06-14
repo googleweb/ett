@@ -232,7 +232,7 @@ public class BookedWeekRecordModel extends BaseModel{
 	
 	public void updateFpContext(List<BookedLimitModel> limits){
 		for(int w=1;w<8;w++){
-			for(int k=1;k<3;k++){
+			for(int k=1;k<4;k++){
 				String fpName=MessageFormat.format("IWeek{0}Km{1}Fp", w,k);
 				try {
 					this.eval(fpName, "");

@@ -2,6 +2,7 @@ package com.ett.drv.biz;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import com.smartken.kia.core.model.IBaseCrudBiz;
@@ -21,4 +22,6 @@ public interface IBookedBiz extends IBaseCrudBiz{
 	public ResultModel tranExamPreasgin(BookedOrderInfoModel orderInfoModel);
 	
 	public ResultModel tranSaveWeekPb(BookedWeekRecordModel weekPb);
+	
+	public ResultModel tranVerifyOrderInfo(List<String> listPk);
 }

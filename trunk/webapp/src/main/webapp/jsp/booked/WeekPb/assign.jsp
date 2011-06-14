@@ -66,7 +66,7 @@ String bookedWeekPbPath=basePath+"booked/WeekPb";
             .appendContext("var km=limitId.split(',')[1];")   
                //.appendContext("var total=limitId.split(',')[1];")
             .appendContext("var ldate=limitId.split(',')[2];")
-            .appendContext("var parma=$.param({dw:dw,km:km});")
+            .appendContext("var parma=$.param({dw:dw,km:km,ksrq:ldate});")
             .appendContext("{0}.html(\"{1}\");",JQueryModel.id(divEditLimit),JsFunctionModel.iframe(basePath+"booked/WeekPb/to/addLimit.action?\"+parma+\""))
             .appendContext(
                  new EasyUiModel(JQueryModel.id(divEditLimit),EasyUiModel.Dialog.NAME)
@@ -171,9 +171,9 @@ String bookedWeekPbPath=basePath+"booked/WeekPb";
   <body>
   	<div class="innerDiv" id="innerDiv">
   	<form action="<%=basePath %>booked/WeekPb/to/assign.action" method="post">
-	  	<table  class="editTable" cellpadding="1" cellspacing="0">
+	  	<table  class="editTable" cellpadding="1" cellspacing="0" style="width: 100%" >
 	  	  <tr>
-	  	    <td>排班日期： </td>
+	  	    <td style="width: 200px">排班日期： </td>
 	  	    <td><input id="<%=txtSearchDate %>" name="searchDate" />
 	  	    <button type="submit"><div class="kia-icon search"></div>查询</button>
 	  	    </td>
@@ -233,7 +233,8 @@ String bookedWeekPbPath=basePath+"booked/WeekPb";
                   </s:else>
                   <p/>
                    <a class="<%=EasyUiModel.LinkButton.CLASS %> <%=aAddLimit %>"  <%=EasyUiModel.Layout.Properties.ICON_CLS(EasyUiModel.ICON_ADD) %>
-                     id="<s:property value="#dw.value"/>,<s:property value="#km.value"/>,<s:property value="value.DateKsrq" />" >新增排班
+                     id="<s:property value="#dw.value"/>,<s:property value="#km.value"/>,<s:if test="#dw.value eq 1"><s:date name="monday" format="yyyy-MM-dd"/></s:if><s:elseif test="#dw.value eq 2"><s:date name="tuesday" format="yyyy-MM-dd"/></s:elseif><s:elseif test="#dw.value eq 3"><s:date name="wednesday" format="yyyy-MM-dd"/></s:elseif><s:elseif test="#dw.value eq 4"><s:date name="thursday" format="yyyy-MM-dd"/></s:elseif><s:elseif test="#dw.value eq 5"><s:date name="friday" format="yyyy-MM-dd"/></s:elseif><s:elseif test="#dw.value eq 6"><s:date name="saturday" format="yyyy-MM-dd"/></s:elseif><s:elseif test="#dw.value eq 7"><s:date name="sunday" format="yyyy-MM-dd"/></s:elseif>" >
+                                                        新增排班
                    </a>
                </td>
                <td>

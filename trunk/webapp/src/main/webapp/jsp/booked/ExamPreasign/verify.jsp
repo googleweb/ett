@@ -35,6 +35,27 @@ String bookedExamPreasignPath=basePath+"booked/ExamPreasign";
     <jsp:include page="/js/index.jsp"></jsp:include>
 	<%
 	   String tablePreasign="tablePreasign";
+	
+	   String inputIdCard="inputIdCard";
+	   String inputKm="inputKm";
+	   String inputChecked="inputChecked";
+	   
+	   JsFunctionModel clickSearchHandler=new JsFunctionModel("clickSearchHandler",null);
+	   clickSearchHandler
+	   .appendContext("var idCard={0}.val(); ",JQueryModel.id(inputIdCard))
+	   .appendContext("var km={0}.combobox(\"getValue\"); ",JQueryModel.id(inputKm))
+	   .appendContext("var checked={0}.combobox(\"getValue\"); ",JQueryModel.id(inputChecked))
+	   .appendContext("{0}.datagrid(\"reload\",'{'idCard:idCard,km:km,checked:checked'}');",JQueryModel.id(tablePreasign))
+	   ;
+	   
+	   JsFunctionModel clickVerifyHandler=new JsFunctionModel("clickVerifyHandler",null);
+	   clickVerifyHandler
+	   .appendContext("var selectRows={0}.datagrid(\"getSelections\");",JQueryModel.id(tablePreasign))
+	   .appendContext("var ids=selectRows.getUnionStr('Id',',');")
+	   .appendContext("var url=\"{0}\";",bookedExamPreasignPath+"/do/verifyOrderInfo.action")
+	   .appendContext("$.get(url,'{'ids:ids'}',function(str)'{'str.messager(); {0}.datagrid(\"reload\"); {0}.datagrid(\"clearSelections\"); '}')",JQueryModel.id(tablePreasign))
+	   ;
+	   
 	    
 	   JsListModel cols=new JsListModel();
 	   JsListModel row1=new JsListModel();
@@ -103,12 +124,16 @@ String bookedExamPreasignPath=basePath+"booked/ExamPreasign";
 	   .appendAttrs(EasyUiModel.DataGrid.Properties.GROUP_FIELD,BookedOrderInfoModel.F.IChecked,true)
 	   ;
 	   
+	   JsContextModel jsFun=new JsContextModel();
+	   jsFun.appendScript(clickSearchHandler);
+	   jsFun.appendScript(clickVerifyHandler);
+	   
 	   JsContextModel jsContext=new JsContextModel();
 	   jsContext.appendScript(datagridExam);
 	%>
 
     <script type="text/javascript">
-     
+    <%=jsFun.toScirpt() %>
     <%=JQueryModel.DOC_READY_START%>
     <%=jsContext.toScirpt()%>
     <%=JQueryModel.DOC_READY_END%>
@@ -117,7 +142,38 @@ String bookedExamPreasignPath=basePath+"booked/ExamPreasign";
   </head>
   
   <body>
-     <div style="width: 100%;height: 100%">
+    <div style="width: 100%;height: 8%" >
+       <table class="editTable" cellspacing="0" style="width: 100%">
+         <tr>
+           <td style="text-align: right;">
+              证件号码 &nbsp;  <input id="<%=inputIdCard %>" />
+      &nbsp; 考试科目 &nbsp;  <select id="<%=inputKm %>"
+                                class="<%=EasyUiModel.ComboBox.CLASS %>" 
+                            >
+                              <option value="-1">全部</option>
+                              <option value="1">科目一</option>
+                              <option value="2">科目二</option>
+                              <option value="3">科目三</option>
+                            </select>
+     &nbsp;  审核结果 &nbsp;  <select id="<%=inputChecked %>"
+                                class="<%=EasyUiModel.ComboBox.CLASS %>" 
+                            >
+                              <option value="-1">全部</option>
+                              <option value="0">未审核</option>
+                              <option value="1">已审核</option>
+                              <option value="2">审核不过</option>
+                            </select>
+      <a  class="<%=EasyUiModel.LinkButton.CLASS %>"  <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_SEARCH) %>  
+          onclick="<%=clickSearchHandler.getFunName() %>()"
+      >查询</a>
+      <a  class="<%=EasyUiModel.LinkButton.CLASS %>"  <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_OK) %> 
+         onclick="<%=clickVerifyHandler.getFunName() %>()"
+      >审核</a>       
+           </td>
+         </tr>
+       </table>
+     </div>
+     <div style="width: 100%;height: 90%">
       <table id="<%=tablePreasign %>"></table>
       </div>
   </body>
