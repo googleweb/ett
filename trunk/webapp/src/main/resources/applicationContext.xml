@@ -87,12 +87,15 @@
 
 
  
-	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	<bean id="txDrvManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource"/>
+		<property name="defaultTimeout" value="30000"></property>
+		<property name="transactionSynchronization" value="2"></property>
 	</bean>
 	
 
-	<tx:advice id="txAdvice" transaction-manager="txManager">
+	<tx:advice id="txDrvAdvice" transaction-manager="txDrvManager" >
+	
 		<tx:attributes>
 			<tx:method name="tran*" propagation="REQUIRED"/>			
 		</tx:attributes>
@@ -100,7 +103,7 @@
 
 	<aop:config>
 		<aop:pointcut expression="execution(* com.ett.drv.biz.impl.*.*(..))" id="drvMehtod"/>
-		<aop:advisor advice-ref="txAdvice" pointcut-ref="drvMehtod" />
+		<aop:advisor advice-ref="txDrvAdvice" pointcut-ref="drvMehtod" />
 		
 	</aop:config>
 

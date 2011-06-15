@@ -70,13 +70,14 @@ function searchUser(){
 
 function clickAddHandler(){ 
   		var href='<%=basePath%>'+"admin/User/to/addUser.action?id=0";
-  		$("#divEditUser").dialog({
+  		var div=$("<div></div>");
+  		div.kiaIframe(href);
+  		div.dialog({
   			title:"新增用户",
 			height:400,
 			width:600,
-			onClose:function(){ $('#test').datagrid('reload'); },
-	    	modal:true,
-			onOpen:function(){$(this).kiaIframe(href);}} 
+			onClose:function(){ $('#test').datagrid('reload'); $(this).panel('destroy');}
+		} 
 		);    //   end:$("#divEdit").dialog
 		return false;
  }
@@ -84,13 +85,14 @@ function dblClickRowHandler(rowIndex,rowData){
 	    var id=rowData["Id"];
 	    var fullname=rowData["<%=UserModel.F.CFullName%>"];
   		var href='<%=basePath%>'+"admin/User/to/editUser.action?id="+id;
-  		$("#divEditUser").dialog({
+  		var div=$("<div></div>");
+  		div.kiaIframe(href);
+  		div.dialog({
   			title:"修改用户:"+fullname,
 			height:400,
 			width:600,
-			onClose:function(){ $('#test').datagrid('reload'); },
-	    	modal:true,
-			onOpen:function(){$(this).kiaIframe(href);}} 
+			onClose:function(){ $('#test').datagrid('reload'); $(this).panel('destroy');}
+	      }
 		);//   end:$("#divEdit").dialog
 		return false;
  }
@@ -163,7 +165,7 @@ $(document).ready(function(){
   <body>
     <div class="innerDiv">
     <form method="post" id="formSearch">
-         <table class="editTable" cellspacing="0">
+         <table class="editTable" cellspacing="0" style="width: 100%">
             <tr>
               <td style="width: 300px;">
               		用户名:<input name="Username" class="easyui-validatebox" />
@@ -180,6 +182,7 @@ $(document).ready(function(){
              </td>
               <td>
                  <a class="easyui-linkbutton"  id="aSearch"
+                    <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_SEARCH) %>
                     onclick="searchUser()"
                  >查询</a>
               </td>         

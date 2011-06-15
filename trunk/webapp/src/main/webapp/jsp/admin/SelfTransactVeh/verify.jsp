@@ -58,10 +58,9 @@ String excelTemplatePath=basePath+"js/print/机动车牌证申请表.xls";
       clickVerifyHandler
       //.appendContext("alert(verifyInd);")
       .appendContext("{0}.val(passInd);",JQueryModel.id(inputPassInd))
-      .appendContext("{0}.form(\"submit\",\n '{' url:{1} \n ,success:{2} \n '}' );"
+      .appendContext("{0}.form(\"submit\",\n '{' url:{1} \n  \n '}' );"
                ,JQueryModel.id(formVerify)
                ,StringUtil.quota(baseActionPath+"/do/verify.action")
-               ,"function(str){try{var json=Kia.util.strToJson(str);Kia.util.handleJsonResult(json);}catch(ex){alert(ex);} }"
       )
       ;
       
