@@ -30,23 +30,38 @@ String adminRolePath=basePath+"/admin/Role";
    <script type="text/javascript">
    
    
-   $(document).ready(function(){
+   function clickSave(){
+			   $("#formUser").form('submit',{
+				   url:"<%=adminRolePath%>/do/modifyRole.action"
+				   ,onSubmit:function(){ return $(this).form("validate"); }
+				   ,success:function(str){
+				    $(this).form("clear");
+				     str.messager();
+				   }
+			   });
+ }
+   
+   var jsonMenus=${menus};
+  
+   
+  <%=JQueryModel.DOC_READY_START%>
 	     
-    	 var url='<%=adminRolePath%>'+"/checkbox/Menu.action";
-         $.getJSON(url,function(json){
-        	 $.each(json,function(index,item){
+        	 $.each(jsonMenus,function(index,item){
         		 var id=item["Menuid"]||"";
         		 if(id=="")return true;
         		 var fieldset=$("<fieldset></fieldset>");
         		 fieldset.attr("id","menu_"+id);
         		 var isparent=item["Isparent"];
 	 	         if(isparent==1){
+	 	        	var  topCheckbox=$("<input type='checkbox' />");
+	 	        	topCheckbox.addClass("topMenu").attr("name","CRolestring").val(item["Menuid"]);
 	 	        	var  legend=$("<legend>"+item["Menutext"]+"</legend>");
+	 	        	legend.append(topCheckbox);
 	 	            fieldset.append(legend);
 	 	        	$("#fieldset").append(fieldset);
 	 	         }      		 
         	 });
-        	 $.each(json,function(index,item){
+        	 $.each(jsonMenus,function(index,item){
         		 try{
         		 var isparent=item["Isparent"];
         		 var parentId=item["Parentid"]
@@ -61,25 +76,28 @@ String adminRolePath=basePath+"/admin/Role";
 	    		 fieldset.append(div);    	
 	    		 }catch(ex){alert(ex);}	    	
 	    	 });	    		  	    	 				
-	    		 });
+	    
          var qxian=$("#cRolestring").val();
              var qxians=qxian.split(";");
 	       	 $.each(qxians,function(n,item){
 	    			if(item==null||item.length==0) return true;
 	    			$(":checkbox[value="+item+"]").attr("checked","checked");	
-         });     //$.getJSON(url,function(json){
+	    	 });		
+	       	 
+	    $(".topMenu").each(function(){
+	    	$(this).click(function(){
+	    		var checked=$(this).attr("checked");
+	    		var id=$(this).val();
+	    		$("#menu_"+id).find(":checkbox").each(function(){
+	    			 $(this).attr("checked",checked);
+	    		});
+	    	});
+	    });   //$(".topMenu").change(function(){
+	    			
 			
-     });    
-function clickSave(){
-			   $("#formUser").form('submit',{
-				   url:"<%=adminRolePath%>/do/modifyRole.action"
-				   ,onSubmit:function(){ return $(this).form("validate"); }
-				   ,success:function(str){
-				    $(this).form("clear");
-				     str.messager();
-				   }
-			   });
-S   }
+<%=JQueryModel.DOC_READY_END%>
+         
+
    </script>
   </head>
   <body>

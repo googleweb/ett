@@ -44,8 +44,7 @@ function clickAddHandler(){
   			title:"新增角色",
 			height:400,
 			width:600,
-			onClose:function(){ $('#test').datagrid('reload'); $(this).panel("destroy");},
-	    	modal:true
+			onClose:function(){ $('#test').datagrid('reload'); $(this).panel("destroy");}
 		});    //   end:$("#divEdit").dialog
 		return false;
  }
@@ -58,8 +57,7 @@ function dblClickRowHandler(rowIndex,rowData){
   			title:"修改角色:"+fullname+":"+id,
 			height:400,
 			width:600,
-			onClose:function(){ $('#test').datagrid('reload'); },
-	    	modal:true
+			onClose:function(){ $('#test').datagrid('reload'); }
 		});//   end:$("#divEdit").dialog
 		return false;
  }

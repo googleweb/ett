@@ -24,7 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body style="background-image: url('<%=basePath %>images/banner1.jpg');">
   <div style="padding: 20px;font-size: 1.3em">
-     欢迎管理员 使用驾驶人辅助系统！！！！
+     ${authUser.CFullName } 使用驾驶人辅助系统！！！！
   </div>
               
   </body>

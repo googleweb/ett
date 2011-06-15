@@ -27,6 +27,8 @@ import com.opensymphony.xwork2.interceptor.Interceptor;
 import com.ett.drv.biz.IAdminBiz;
 import com.ett.drv.biz.IBookedBiz;
 import com.ett.drv.biz.ISelfBiz;
+import com.ett.drv.model.admin.UserModel;
+import com.ett.drv.web.filter.AuthFilter;
 import com.smartken.kia.core.enums.DataFormatEnum;
 import com.smartken.kia.core.enums.ResultEnum;
 import com.smartken.kia.core.model.IBaseAction;
@@ -57,6 +59,11 @@ implements Preparable,IBaseAction
 	    
 		return ResultEnum.jsp.name();
 	    
+	}
+	
+	public UserModel getAuthUser(){
+		UserModel userModel=(UserModel) this.getSessionAttribute(AuthFilter.AUTH_USER);
+		return userModel;
 	}
 	
 	protected void writeHTML(String lStrHTML)

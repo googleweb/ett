@@ -59,6 +59,10 @@ public class RoleAction extends BaseAction implements ModelDriven<RoleModel> {
 	}
 
 	public String to_modifyRole() {
+		this.adminBiz.loadCrudMapper(MenuModel.class);
+		List allMenu=this.adminBiz.getModel();
+		JSONArray jarrMenu=ObjectUtil.toJsonArray(allMenu);
+		this.setRequestAttribute("menus", jarrMenu.toString());
 		return "jsp";
 	}
 
@@ -136,8 +140,7 @@ public class RoleAction extends BaseAction implements ModelDriven<RoleModel> {
 		MenuModel query=new MenuModel();
 		//query.setIsparent(0);
 		this.adminBiz.loadCrudMapper(MenuModel.class);
-		List<IFormatterModel> list = (List<IFormatterModel>) this.adminBiz
-				.getView(query);
+		List list = this.adminBiz.getModel();
 		this.writePlainText((ObjectUtil.toJsonArray(list).toString()));	
 	}
 	@Override

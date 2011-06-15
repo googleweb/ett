@@ -107,15 +107,18 @@ hbm配置的过滤器
   <filter-name>struts2</filter-name>
   <url-pattern>/*</url-pattern>
  </filter-mapping>
+ 
  <!--t 字符编码过滤 -->
  <filter-mapping>
   <filter-name>encodingFilter</filter-name>
   <url-pattern>/*</url-pattern>
  </filter-mapping>
+ 
  <filter-mapping>
-  <filter-name>authFilter</filter-name>
-  <url-pattern>/jsp/*,/admin/*,/booked/*</url-pattern>
+   <filter-name>authFilter</filter-name>
+   <url-pattern>/jsp/*</url-pattern>
  </filter-mapping>
+
  <!-- <listener> <listener-class>com.ft.drv.DrvCountListener</listener-class> 
 		</listener> 
 jbpm动态部署 <servlet> <servlet-name>GDP Deployer Servlet</servlet-name> 

@@ -15,6 +15,8 @@ import org.json.JSONObject;
 import com.opensymphony.xwork2.ModelDriven;
 import com.ett.drv.biz.IAdminBiz;
 import com.ett.drv.model.admin.MenuModel;
+import com.ett.drv.model.admin.RoleModel;
+import com.ett.drv.model.admin.UserModel;
 import com.smartken.kia.core.util.EasyUiUtil;
 import com.smartken.kia.core.util.ObjectUtil;
 import com.smartken.kia.core.util.StringUtil;
@@ -105,8 +107,12 @@ public class MenuAction extends BaseAction
 	
 	
 	public void tree_menu() throws Exception{
+		UserModel userModel= this.getAuthUser();
+		RoleModel roleModel=userModel.getRoleModel();
+		String strRole=roleModel.getCRolestring();
+		List<String> listPk=StringUtil.splitToList(strRole, ";");
 		adminBiz.loadCrudMapper(MenuModel.class);
-		List<MenuModel> lListMenu=adminBiz.getModel();
+		List<MenuModel> lListMenu=adminBiz.getModelInPk(listPk);
 		JSONArray lJsonMenu=this.loadTreeNode(lListMenu,null);
 		this.writeHTML(lJsonMenu.toString());
 

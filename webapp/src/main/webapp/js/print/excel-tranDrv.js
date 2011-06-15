@@ -52,10 +52,10 @@ var idTmr = "";
          var xlsheet2=xls.Workbooks(1).Worksheets(1);
          
          //xlsheet2.Cells(4,3).Value=document.getElementById("txtXm").value;
-         xlsheet2.Cells(4,3).Value=data["xm"]||"";
-         xlsheet2.Cells(3,25).Value=data["dabh"]||"";
+         xlsheet2.Cells(4,3).Value=data["Xm"]||"";
+         xlsheet2.Cells(3,25).Value=data["Dabh"]||"";
          //xlsheet2.Cells(4,14).Value=document.getElementById("cbXbValue").value;
-         xlsheet2.Cells(4,14).Value=data["xb"]||"";
+         xlsheet2.Cells(4,14).Value=data["Xb"]||"";
          //alert("csrq"+document.getElementById("txtCsrq").value);
          // xlsheet2.Cells(4,19).Value=document.getElementById("txtCsrq").value;
          //var csrq=new Date(data["csrq"]||"");
@@ -64,19 +64,19 @@ var idTmr = "";
          
          //alert("cbGjValue"+getText("cbGjValue"));
          // xlsheet2.Cells(4,27).Value=getText("cbGjValue");
-          xlsheet2.Cells(4,27).Value=data["gj"]||"";
+          xlsheet2.Cells(4,27).Value=data["Gj"]||"";
           
          
           //alert(document.getElementById("txtSfzmhm"));
           
           //var strtmp2=document.getElementById("txtSfzmhm").value;
-          var strtmp2=data["sfzmhm"]||"";
+          var strtmp2=data["Sfzmhm"]||"";
           //alert(strtmp2);
           
           
           
           //xlsheet2.Cells(5,3).Value=getText("cbSfzmmcValue");
-          xlsheet2.Cells(5,3).Value=data["sfzmmc"]=="1"?"居民身份证":"";
+          xlsheet2.Cells(5,3).Value=data["Sfzmmc"]=="1"?"居民身份证":"";
           var i=7;
           var len=strtmp2.length;
           for(var j=0;j<len;j++)
@@ -94,7 +94,7 @@ var idTmr = "";
           
           //alert("zzz");
           //var tmp=document.getElementById("txtZzzm").value;
-          var tmp=data["zzzm"]||"";
+          var tmp=data["Zzzm"]||"";
          // alert(tmp);
           if(tmp&&tmp.length>0)
           {
@@ -114,12 +114,12 @@ var idTmr = "";
             //xlsheet2.Cells(9,18).Value=document.getElementById("txtLxzsyzbm").value;
             //xlsheet2.Cells(10,11).Value=document.getElementById("cbZkcxValue").value;
      
-            xlsheet2.Cells(7,3).Value=data["djzsxxdz"]||"";
+            xlsheet2.Cells(7,3).Value=data["Djzsxxdz"]||"";
             
-            xlsheet2.Cells(8,3).Value=data["lxzsxxdz"]||"";
-            xlsheet2.Cells(9,3).Value=data["lxdh"]||"";
+            xlsheet2.Cells(8,3).Value=data["Lxzsxxdz"]||"";
+            xlsheet2.Cells(9,3).Value=data["Lxdh"]||"";
             //xlsheet2.Cells(10,3).Value=data["sjhm"]||"";
-            xlsheet2.Cells(9,18).Value=data["lxzsyzbm"]||"";
+            xlsheet2.Cells(9,18).Value=data["Lxzsyzbm"]||"";
             //xlsheet2.Cells(10,11).Value=data["djzsxxdz"]||"";document.getElementById("cbZkcxValue").value;
          
         //alert("xlsheet2->"+xlsheet2);

@@ -22,19 +22,17 @@ a:HOVER{
 	cursor: pointer;
 }
 
-
+legend{
+   color: blue;
+   font-weight: bolder;
+}
 
 .b
 {
 	border: 1px solid #C0C0C0;
 }
 
-input
-{
-	 height: 25px;
-	 width:150px;
 
-}
 
 textarea
 {

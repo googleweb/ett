@@ -132,6 +132,10 @@ public class AdminBiz extends BaseDrvBiz implements IAdminBiz {
 		try {
 			List<UserModel> listUser=this.userMapper.select(query);
 			userModel=listUser.get(0);
+			RoleModel roleModel=this.roleMapper.selectEqPk(userModel.getIRoleid());
+			DepartmentModel depModel=this.departmentMapper.selectEqPk(userModel.getIDepid());
+			userModel.setRoleModel(roleModel);
+			userModel.setDepartmentModel(depModel);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
