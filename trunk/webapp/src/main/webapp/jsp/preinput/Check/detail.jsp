@@ -262,6 +262,7 @@ haha
 <tr>
 <td style="text-align: center;" colspan="8">
 <input type="button" value="保存" style="width:10%"/>
+<input type="button" value="审核" style="width:10%"/>
 <input type="button" value="打印申请表" style="width:10%"/>
 <input type="button" value="关闭" style="width:10%"/>
 </td>

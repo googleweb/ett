@@ -150,17 +150,7 @@ function clickRemoveHandler(){
 }
 $(document).ready(function(){   
 	$("#test").datagrid({fit:true,
-	toolbar:[ 
-			{text:"新增",
-			iconCls:"icon-add",
-			handler:clickAddHandler}
-	, 
-			{text:"删除",
-			iconCls:"icon-remove",
-			handler:clickRemoveHandler}
 	
-	] 
-    ,
 	columns:[ 
 	[ 
 	{field:"Id",checkbox:true},
@@ -170,8 +160,8 @@ $(document).ready(function(){
 	{field:"<%=UserModel.F.CState%>",title:"驾校名称",width:150},
 	{field:"<%=UserModel.F.CIdcard%>",title:"审核结果",width:150},
 	{field:"<%=UserModel.V.DepName%>",title:"审核信息",width:150},
-	{field:"<%=UserModel.F.CFullName%>",title:"经办人",width:150},
-	{field:"xxx",title:"详细",formatter:operaFormatter,width:150,}	
+	{field:"<%=UserModel.F.CFullName%>",title:"经办人",width:150}
+	
 	]
 	] 
 	,
@@ -185,7 +175,7 @@ $(document).ready(function(){
 </script>
   <body>
     <div  style="height: 20%">
-    <p style="text-align: center"><h3>初学+增驾申请名单列表</h3></p>
+    <p style="text-align: center"><h3>初学+增驾结果结果反馈</h3></p>
     <form method="post" id="formSearch">
          <table class="editTable" cellspacing="0" align="right">
          <tr>   
