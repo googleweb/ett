@@ -46,7 +46,7 @@ function showdialog(href){
 
 function operaFormatter(value,rowData,rowIndex){
 	var id=rowData["Id"];
-    var href="preinput/List/to/detail.action?id="+id;
+    var href="preinput/Check/to/detail.action?id="+id;
     return "<a class='kia-icon edit' onclick='return showdialog("+href+")' href="+href+"></a>";
     $("#divEditUser").dialog({
   			title:"修改用户:",
@@ -96,7 +96,7 @@ function searchUser(){
 }
 
 function clickAddHandler(){ 
-  		var href="preinput/List/to/detail.action?id="+id;
+  		var href='<%=basePath%>'+"admin/User/to/addUser.action?id=0";
   		$("#divEditUser").dialog({
   			title:"新增用户",
 			height:400,
@@ -150,17 +150,7 @@ function clickRemoveHandler(){
 }
 $(document).ready(function(){   
 	$("#test").datagrid({fit:true,
-	toolbar:[ 
-			{text:"新增",
-			iconCls:"icon-add",
-			handler:clickAddHandler}
-	, 
-			{text:"删除",
-			iconCls:"icon-remove",
-			handler:clickRemoveHandler}
 	
-	] 
-    ,
 	columns:[ 
 	[ 
 	{field:"Id",checkbox:true},
@@ -185,7 +175,7 @@ $(document).ready(function(){
 </script>
   <body>
     <div  style="height: 20%">
-    <p style="text-align: center"><h3>初学+增驾申请名单列表</h3></p>
+    <p style="text-align: center"><h3>初学+增驾审核名单列表</h3></p>
     <form method="post" id="formSearch">
          <table class="editTable" cellspacing="0" align="right">
          <tr>   
@@ -193,10 +183,23 @@ $(document).ready(function(){
               		身份证明号码:<input name="Username" class="easyui-validatebox" />
               </td>
               <td>
+              <select>
+              <option value="volvo">已审核</option>
+              <option value="saab">未审核</option>
+              <option value="fiat" selected="selected">审核失败</option>
+              <option value="audi">全部</option>
+              </select>
+              </td> 
+              <td>
                  <a class="easyui-linkbutton"  id="aSearch"
                     onclick="searchIdcardNo()"
                  >查询</a>
-              </td>         
+              </td>
+              <td>
+                 <a class="easyui-linkbutton"  id="aSearch"
+                    onclick="searchIdcardNo()"
+                 >审核</a>
+              </td>        
             </tr>
          </table>
       </form>
