@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+
+<package name="preinput"  extends="base-package" namespace="/preinput" >
+   <action name="*/*/*" 
+     class="com.ett.drv.web.action.preinput.{1}Action" method="{2}_{3}">
+      <result name="input">/jsp/preinput/{1}/{3}.jsp</result>
+      <result name="jsp">/jsp/preinput/{1}/{3}.jsp</result>
+      <result name="edit">/jsp/preinput/{1}/edit/{3}.jsp</result>
+      <result name="login_success">/jsp/preinput/index.jsp</result>
+      <result name="login_fail">/login.jsp</result>
+   </action> 
+</package>
+</struts>
