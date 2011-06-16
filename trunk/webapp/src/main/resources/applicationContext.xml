@@ -90,7 +90,6 @@
 	<bean id="txDrvManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource"/>
 		<property name="defaultTimeout" value="30000"></property>
-		<property name="transactionSynchronization" value="2"></property>
 	</bean>
 	
 

@@ -174,7 +174,7 @@ String bookedWeekPbPath=basePath+"booked/WeekPb";
 	  	<table  class="editTable" cellpadding="1" cellspacing="0" style="width: 100%" >
 	  	  <tr>
 	  	    <td style="width: 200px">排班日期： </td>
-	  	    <td><input id="<%=txtSearchDate %>" name="searchDate" />
+	  	    <td><input id="<%=txtSearchDate %>" name="createDate" />
 	  	    <button type="submit"><div class="kia-icon search"></div>查询</button>
 	  	    </td>
 	  	  </tr>

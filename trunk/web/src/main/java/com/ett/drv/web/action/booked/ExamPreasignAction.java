@@ -13,6 +13,7 @@ import org.json.JSONObject;
 
 
 import com.ett.drv.biz.impl.BookedBiz;
+import com.ett.drv.model.admin.UserModel;
 import com.ett.drv.model.booked.BookedDayLimitModel;
 import com.ett.drv.model.booked.BookedLimitModel;
 import com.ett.drv.model.booked.BookedOrderInfoModel;
@@ -202,9 +203,10 @@ public class ExamPreasignAction extends BaseAction implements ModelDriven<Booked
 	
 	public void datagrid_orderInfo(){
 		String strIdCard= this.getParameter("idCard");
-		String strKm=this.getParameter("km");
 		String strChecked=this.getParameter("checked");
-		Integer intKm=null;
+		UserModel userModel=this.getAuthUser();
+		String strKm=userModel.getCKm();
+		Integer intKm=ObjectUtil.formatInt(strKm,-1);
 		Integer intChecked=null;
 		if(StringUtil.isBlank(strIdCard)){
 			strIdCard=null;

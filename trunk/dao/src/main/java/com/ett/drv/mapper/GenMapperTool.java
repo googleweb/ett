@@ -145,7 +145,7 @@ public class GenMapperTool {
 		//for (Enum<Table> et : enTables) {
 		//	try{
 		//	MapperTemplate mapper=mappers.get(et);
-		    MapperTemplate mapper=mappers.get(Table.TABLE_MENUS);
+		    MapperTemplate mapper=mappers.get(Table.TABLE_USERS);
 			System.out.println(mapper.generalMapplerXML(srcPath,"oracle"));
 		//	}catch(Exception ex){}
 		//}
