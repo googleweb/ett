@@ -1,6 +1,7 @@
 package com.ett.drv.web.action.booked;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -23,6 +24,7 @@ import com.ett.drv.web.action.BaseAction;
 import com.ett.drv.biz.IBookedBiz;
 import com.ett.drv.model.admin.DepartmentModel;
 import com.ett.drv.model.admin.DictModel;
+import com.ett.drv.model.admin.UserModel;
 import com.ett.drv.model.booked.BookedLimitModel;
 import com.ett.drv.model.booked.BookedWeekRecordModel;
 
@@ -74,6 +76,7 @@ public class WeekPbAction extends BaseAction implements ModelDriven<BookedWeekRe
 		// TODO Auto-generated method stub
 		bookedBiz.loadCrudMapper(BookedWeekRecordModel.class);
 		HttpServletRequest req=this.getRequest();
+		UserModel userModel=this.getAuthUser();
 		if(this.bookedWeekRecordModel==null)
 		{this.bookedWeekRecordModel=new BookedWeekRecordModel();}
 		try{
@@ -85,16 +88,31 @@ public class WeekPbAction extends BaseAction implements ModelDriven<BookedWeekRe
 				this.bookedWeekRecordModel=bookedBiz.getWeekRecord(weekNum);
 			    if(this.bookedWeekRecordModel!=null){
 			    	this.bookedWeekRecordModel.setLimits(bookedBiz.getLimits(this.bookedWeekRecordModel.getIWeekNum()));
+			    }else{
+			    	Calendar cal=Calendar.getInstance();
+			    	int year=cal.get(Calendar.YEAR);
+			    	this.bookedWeekRecordModel=new BookedWeekRecordModel(year, weekNum);
+			    	this.bookedWeekRecordModel.setCCheckOperator(userModel.getCFullName());
 			    }
+			}else if(StringUtil.isNotBlank(req.getParameter("creatDate"))){
+
+				
 			}
 		}else if(req.getMethod().equalsIgnoreCase(METHOD_POST))
 		{
-			if(ObjectUtil.isNotEmpty(searchDate))
+			if(ObjectUtil.isNotEmpty(req.getParameter("createDate")))
 			{
-				int weekNum=DateTimeUtil.getWeekOfYear(searchDate);
-				BookedWeekRecordModel model=bookedBiz.getWeekRecord(weekNum);
-				this.bookedWeekRecordModel=model==null?new BookedWeekRecordModel():model;
-			    this.bookedWeekRecordModel.setLimits(bookedBiz.getLimits(weekNum));
+				Date createDate=DateTimeUtil.parse(req.getParameter("createDate"));
+				Calendar cal=Calendar.getInstance();
+				int weekNum=cal.get(Calendar.WEEK_OF_YEAR);
+				this.bookedWeekRecordModel=bookedBiz.getWeekRecord(weekNum);
+			    if(this.bookedWeekRecordModel!=null){
+			    	this.bookedWeekRecordModel.setLimits(bookedBiz.getLimits(this.bookedWeekRecordModel.getIWeekNum()));
+			    }else{
+			    	int year=cal.get(Calendar.YEAR);
+			    	this.bookedWeekRecordModel=new BookedWeekRecordModel(year, weekNum);
+			    	this.bookedWeekRecordModel.setCCheckOperator(userModel.getCFullName());
+			    }
 			}
 		}
 		}catch(Exception ex)

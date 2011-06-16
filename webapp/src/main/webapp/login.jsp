@@ -35,8 +35,8 @@ String adminUserPath=basePath+"admin/User";
    <div id="loginDiv" style=" background-image: url('<%=basePath %>images/mainback.jpg'); width:595px;height:53px;padding-top: 230px;">
         <form action="<%=adminUserPath %>/do/login.action" method="post">
 
-          用户帐号<input name="CLoginName" style="width: 150px" type="text" class="easyui-validatebox" required="true" value="admin" ></td>  &nbsp;&nbsp;
-         密码 <input name="CPwd" style="width: 150px" type="password" class="easyui-validatebox" required="true" value="BKkQ2ROUZ7A="></td>  &nbsp;&nbsp;          
+          用户帐号<input name="CLoginName" style="width: 150px" type="text" class="easyui-validatebox" required="true" value="" ></td>  &nbsp;&nbsp;
+         密码 <input name="CPwd" style="width: 150px" type="password" class="easyui-validatebox" required="true" value=""></td>  &nbsp;&nbsp;          
    <input type="image" src="<%=basePath %>images/login_btn.gif" style="width: 74px;height: 24px"/>
     </form>
     </div>

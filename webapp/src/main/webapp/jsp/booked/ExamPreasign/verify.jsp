@@ -147,14 +147,7 @@ String bookedExamPreasignPath=basePath+"booked/ExamPreasign";
          <tr>
            <td style="text-align: right;">
               证件号码 &nbsp;  <input id="<%=inputIdCard %>" />
-      &nbsp; 考试科目 &nbsp;  <select id="<%=inputKm %>"
-                                class="<%=EasyUiModel.ComboBox.CLASS %>" 
-                            >
-                              <option value="-1">全部</option>
-                              <option value="1">科目一</option>
-                              <option value="2">科目二</option>
-                              <option value="3">科目三</option>
-                            </select>
+
      &nbsp;  审核结果 &nbsp;  <select id="<%=inputChecked %>"
                                 class="<%=EasyUiModel.ComboBox.CLASS %>" 
                             >

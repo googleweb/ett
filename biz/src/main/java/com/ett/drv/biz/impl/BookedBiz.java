@@ -91,8 +91,10 @@ public class BookedBiz extends BaseDrvBiz implements IBookedBiz {
             for(BookedLimitModel blm: listLimit){
             	ids.add(blm.getId());
             }
-			
-			re+=this.limitMapper.deleteInPk(ids);
+			if(ids.size()>0){
+				re+=this.limitMapper.deleteInPk(ids);	
+			}
+
 			Map<String,BookedLimitModel> limits=weekPb.getLimits();
 			for(Iterator<String> it=limits.keySet().iterator();it.hasNext();){
 			   BookedLimitModel limit=limits.get(it.next());
@@ -100,9 +102,12 @@ public class BookedBiz extends BaseDrvBiz implements IBookedBiz {
 			}
 			listLimit=this.limitMapper.select(q);
 			weekPb.updateFpContext(listLimit);
-			re+=this.weekRecordMapper.updateOne(weekPb);
-			reModel.setAction(ResultModel.ACTION_ALERT);
+			if(this.weekRecordMapper.updateOne(weekPb)==0){
+				re+=this.weekRecordMapper.insertOne(weekPb);
+			}
+			
 	    if(re==0){
+	    	reModel.setAction(ResultModel.ACTION_ALERT);
 	    	reModel.setTitle("操作失败");
 	    	reModel.setMsg("周排班保存失败");
 	    }else{

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2011-05-26 11:06:52
+	Create Date:2011-06-16 03:53:35
 	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
 	Model:com.ett.drv.model.admin.UserModel 
 
@@ -73,15 +73,9 @@ C_KM=#{model.CKm,jdbcType=VARCHAR,javaType=String},
 
 <sql id="orderby">order by m.ID desc </sql>
 
-<sql id="joinColums">
-   ,role.c_name as role_name
-   ,dep.C_DEPNICKNAME as dep_name
-</sql>
-  
-<sql id="join">
-  left join TABLE_ROLES role on role.id=m.i_roleid 
-  left join TABLE_DepartmentS dep on dep.id=m.I_DEPID
-</sql><!-- 别名m已被主表使用  -->
+<sql id="joinColums"></sql>
+
+<sql id="join"></sql><!-- 别名m已被主表使用  -->
 
 <resultMap type="com.ett.drv.model.admin.UserModel" id="resultMap">
  <id column="ID"  property="Id" jdbcType="INTEGER" javaType="Integer"/>
@@ -96,20 +90,23 @@ C_KM=#{model.CKm,jdbcType=VARCHAR,javaType=String},
 <result column="C_ENDIP"  property="CEndip" jdbcType="VARCHAR" javaType="String"/>
 <result column="C_STATE"  property="CState" jdbcType="VARCHAR" javaType="String"/>
 <result column="C_KM"  property="CKm" jdbcType="VARCHAR" javaType="String"/>
+
  </resultMap>
+
+
 <sql id="selectCondition">
-<if test="model.Id neq null">and m.ID = #{model.Id,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.CLoginName neq null">and m.C_LOGIN_NAME like #{model.CLoginName,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CFullName neq null">and m.C_FULL_NAME like #{model.CFullName,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CPwd neq null">and m.C_PWD like #{model.CPwd,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.IRoleid neq null">and m.I_ROLEID = #{model.IRoleid,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.IDepid neq null">and m.I_DEPID = #{model.IDepid,jdbcType=INTEGER javaType=Integer } </if> 
-<if test="model.CIdcard neq null">and m.C_IDCARD like #{model.CIdcard,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CWorkid neq null">and m.C_WORKID like #{model.CWorkid,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CBeginip neq null">and m.C_BEGINIP like #{model.CBeginip,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CEndip neq null">and m.C_ENDIP like #{model.CEndip,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CState neq null">and m.C_STATE like #{model.CState,jdbcType=VARCHAR javaType=String } </if> 
-<if test="model.CKm neq null">and m.C_KM like #{model.CKm,jdbcType=VARCHAR javaType=String } </if> 
+<if test="model.Id neq null">and m.ID = #{model.Id,jdbcType=INTEGER, javaType=Integer } </if> 
+<if test="model.CLoginName neq null">and m.C_LOGIN_NAME like #{model.CLoginName,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model.CFullName neq null">and m.C_FULL_NAME like #{model.CFullName,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model.CPwd neq null">and m.C_PWD like #{model.CPwd,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model.IRoleid neq null">and m.I_ROLEID = #{model.IRoleid,jdbcType=INTEGER, javaType=Integer } </if> 
+<if test="model.IDepid neq null">and m.I_DEPID = #{model.IDepid,jdbcType=INTEGER, javaType=Integer } </if> 
+<if test="model.CIdcard neq null">and m.C_IDCARD like #{model.CIdcard,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model.CWorkid neq null">and m.C_WORKID like #{model.CWorkid,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model.CBeginip neq null">and m.C_BEGINIP like #{model.CBeginip,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model.CEndip neq null">and m.C_ENDIP like #{model.CEndip,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model.CState neq null">and m.C_STATE like #{model.CState,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model.CKm neq null">and m.C_KM like #{model.CKm,jdbcType=VARCHAR ,javaType=String } </if> 
 
 </sql>
 
@@ -194,22 +191,12 @@ C_KM=#{model.CKm,jdbcType=VARCHAR,javaType=String},
 
 
 
-<resultMap type="com.ett.drv.model.admin.UserModel" id="viewMap" extends="resultMap"  >
-   <association property="roleModel" column="I_ROLEID" javaType="com.ett.drv.model.admin.RoleModel" >
-      <result column="role_name" property="CName" javaType="String" jdbcType="VARCHAR" />
-   </association>
-   <association property="departmentModel" column="I_DEPID" javaType="com.ett.drv.model.admin.DepartmentModel">
-      <result  column="dep_name" property="CDepnickname" javaType="String" jdbcType="VARCHAR" />
-   </association>
-
-
-</resultMap>
+<resultMap type="com.ett.drv.model.admin.UserModel" id="viewMap" extends="resultMap" ></resultMap>
 
 
 <sql id="selectViewCondition">
 	 <include refid="selectCondition"/>  
-</sql>
-<select id="selectView" resultType="ArrayList" resultMap="viewMap">
+</sql><select id="selectView" resultType="ArrayList" resultMap="viewMap">
 	select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> 
 		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
 			<include refid="selectViewCondition"/>

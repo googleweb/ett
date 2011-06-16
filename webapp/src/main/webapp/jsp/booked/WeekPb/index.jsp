@@ -82,7 +82,25 @@ String bookedWeekPbPath=basePath+"booked/WeekPb";
   </head>
   
   <body>
-  	<div class="innerDiv" id="innerDiv">
+    <div style="height: 8%">
+     <form action="<%=bookedWeekPbPath %>/to/assign.action" method="post" id="formWeekPb">
+      <table class="editTable" cellspacing="0" style="width: 100%">
+           <tr>
+              <td style="text-align: right;">
+                  <input class="<%=EasyUiModel.DateBox.CLASS %>"  name="createDate"  
+                    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+                    <%=EasyUiModel.Combo.Properties.EDITABLE(false) %>
+                    <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("必须输入日期") %>
+                  /> 
+                  <a  class="<%=EasyUiModel.LinkButton.CLASS %>"  <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_ADD) %>
+                      onclick="var isVerify=$('#formWeekPb').form('validate');if(isVerify){ $('#formWeekPb').submit();} "     
+                  >创建排班</a>
+              </td>
+           </tr>
+      </table>
+      </form>
+    </div>
+  	<div style="height: 90%">
 	<table id="<%=tableWeekPb %>"></table>
 	</div>
   </body>

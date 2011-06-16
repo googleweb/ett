@@ -2,12 +2,16 @@ package com.ett.drv.model.booked;
 
 import java.math.BigDecimal;
 import java.text.MessageFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+
+import sun.tools.tree.ThisExpression;
 
 import com.smartken.kia.core.util.DateTimeUtil;
 import com.smartken.kia.core.util.ObjectUtil;
@@ -27,6 +31,80 @@ public class BookedWeekRecordModel extends BaseModel{
 		IWeek5Km3Fp,IWeek6Km1Num,IWeek6Km1Fp,IWeek6Km2Num,IWeek6Km2Fp,IWeek6Km3Num,IWeek6Km3Fp,IWeek7Km1Num,IWeek7Km1Fp,IWeek7Km2Num,
 		IWeek7Km2Fp,IWeek7Km3Num,IWeek7Km3Fp,CCheckOperator,CCheckDate,IChecked,CWeekRange  
 		 } 
+	 
+	 public BookedWeekRecordModel(){
+		 super();
+	 }
+	 
+	 public BookedWeekRecordModel(int year,int weekNum){
+		 this.setYear(year);
+		 this.setIWeekNum(weekNum);
+		 this.loadWeekDays();
+		 this.init();
+	 }
+	 
+	 public BookedWeekRecordModel(Date date){
+		 Calendar cal=Calendar.getInstance();
+		 cal.setTime(date);
+		 int year=cal.get(Calendar.YEAR);
+		 int weekNum=cal.get(Calendar.WEEK_OF_YEAR);
+		 this.setYear(year);
+		 this.setIWeekNum(weekNum);
+		 this.loadWeekDays();
+		 this.init();
+	 }
+	 
+	 public void init(){
+		 this.IWeek1Km1Fp="";
+		 this.IWeek1Km1Num=0;
+		 this.IWeek1Km2Fp="";
+		 this.IWeek1Km2Num=0;
+		 this.IWeek1Km3Fp="";
+		 this.IWeek1Km3Num=0;
+		 
+		 this.IWeek2Km1Fp="";
+		 this.IWeek2Km1Num=0;
+		 this.IWeek2Km2Fp="";
+		 this.IWeek2Km2Num=0;
+		 this.IWeek2Km3Fp="";
+		 this.IWeek2Km3Num=0;
+		 
+		 this.IWeek3Km1Fp="";
+		 this.IWeek3Km1Num=0;
+		 this.IWeek3Km2Fp="";
+		 this.IWeek3Km2Num=0;
+		 this.IWeek3Km3Fp="";
+		 this.IWeek3Km3Num=0;
+		 
+		 this.IWeek4Km1Fp="";
+		 this.IWeek4Km1Num=0;
+		 this.IWeek4Km2Fp="";
+		 this.IWeek4Km2Num=0;
+		 this.IWeek4Km3Fp="";
+		 this.IWeek4Km3Num=0;
+		 
+		 this.IWeek5Km1Fp="";
+		 this.IWeek5Km1Num=0;
+		 this.IWeek5Km2Fp="";
+		 this.IWeek5Km2Num=0;
+		 this.IWeek5Km3Fp="";
+		 this.IWeek5Km3Num=0;
+		 
+		 this.IWeek6Km1Fp="";
+		 this.IWeek6Km1Num=0;
+		 this.IWeek6Km2Fp="";
+		 this.IWeek6Km2Num=0;
+		 this.IWeek6Km3Fp="";
+		 this.IWeek6Km3Num=0;
+		 
+		 this.IWeek7Km1Fp="";
+		 this.IWeek7Km1Num=0;
+		 this.IWeek7Km2Fp="";
+		 this.IWeek7Km2Num=0;
+		 this.IWeek7Km3Fp="";
+		 this.IWeek7Km3Num=0;
+		 
+	 }
 
 		private Integer Id;         //ID  NUMBER 38
 		private Integer IWeekNum;         //I_WEEK_NUM  NUMBER 38
@@ -109,7 +187,7 @@ public class BookedWeekRecordModel extends BaseModel{
 	private Date saturday;
 	private Date sunday;
 	
-	private Map<String, BookedLimitModel> limits;
+	private Map<String, BookedLimitModel> limits=new HashMap<String, BookedLimitModel>();
 	
 	public Object generalPK() throws NullPointerException {
 		// TODO Auto-generated method stub
@@ -129,6 +207,14 @@ public class BookedWeekRecordModel extends BaseModel{
 		this.friday=lWeekDays.get(DateTimeUtil.FRIDAY);
 		this.saturday=lWeekDays.get(DateTimeUtil.SATURDAY);
 		this.sunday=lWeekDays.get(DateTimeUtil.SUNDAY);
+		
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+		String weekRange=MessageFormat.format("{0}至{1}",
+		      sdf.format(this.monday)
+		      ,sdf.format(this.sunday)
+		);
+		this.setCWeekRange(weekRange);
+		
 	}
 
 
