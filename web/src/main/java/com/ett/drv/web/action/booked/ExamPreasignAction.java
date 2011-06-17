@@ -34,7 +34,7 @@ public class ExamPreasignAction extends BaseAction implements ModelDriven<Booked
 	private BookedLimitModel limit;
 	private BookedOrderInfoModel orderInfo;
 
-	private int Id;
+	private int limitId;
 	
 	
 	public BookedWeekRecordModel getWeekRecord() {
@@ -47,8 +47,18 @@ public class ExamPreasignAction extends BaseAction implements ModelDriven<Booked
 	
 
 
-	public void setId(int id) {
-		Id = id;
+
+
+	public void setLimit(BookedLimitModel limit) {
+		this.limit = limit;
+	}
+
+	public int getLimitId() {
+		return limitId;
+	}
+
+	public void setLimitId(int limitId) {
+		this.limitId = limitId;
 	}
 
 	@Override
@@ -118,7 +128,7 @@ public class ExamPreasignAction extends BaseAction implements ModelDriven<Booked
 	}
 	
 	public void datagrid_passOrderInfo(){
-		List<BookedOrderInfoModel> listOrderInfo=getOrderInfo(Id);
+		List<BookedOrderInfoModel> listOrderInfo=getOrderInfo(limitId);
 		List listPass=new ArrayList();
 		for(BookedOrderInfoModel boModel : listOrderInfo){
 			if(ObjectUtil.isNotEquals(2, boModel.getIChecked())){
@@ -130,7 +140,7 @@ public class ExamPreasignAction extends BaseAction implements ModelDriven<Booked
 	}
 	
 	public void datagrid_failOrderInfo(){
-		List<BookedOrderInfoModel> listOrderInfo=getOrderInfo(Id);
+		List<BookedOrderInfoModel> listOrderInfo=getOrderInfo(limitId);
 		List listPass=new ArrayList();
 		for(BookedOrderInfoModel boModel : listOrderInfo){
 			if(ObjectUtil.isEquals(2, boModel.getIChecked())){
@@ -185,7 +195,8 @@ public class ExamPreasignAction extends BaseAction implements ModelDriven<Booked
 	}
 	
 	public void do_preasign(){
-		ResultModel reModel=this.bookedBiz.tranExamPreasgin(orderInfo);
+		orderInfo.setCCheckOperator(this.getAuthUser().getCFullName());
+		ResultModel reModel=this.bookedBiz.tranExamPreasgin(orderInfo,limit);
 		this.writePlainText(reModel.toJson().toString());
 	}
 

@@ -85,12 +85,12 @@ public class WeekPbAction extends BaseAction implements ModelDriven<BookedWeekRe
 			if(StringUtil.isNotBlank(req.getParameter("weekNum")))
 			{
 				int weekNum=ObjectUtil.formatInt(req.getParameter("weekNum"));
-				this.bookedWeekRecordModel=bookedBiz.getWeekRecord(weekNum);
+				Calendar cal=Calendar.getInstance();
+				int year=cal.get(Calendar.YEAR);
+				this.bookedWeekRecordModel=bookedBiz.getWeekRecord(year,weekNum);
 			    if(this.bookedWeekRecordModel!=null){
 			    	this.bookedWeekRecordModel.setLimits(bookedBiz.getLimits(this.bookedWeekRecordModel.getIWeekNum()));
 			    }else{
-			    	Calendar cal=Calendar.getInstance();
-			    	int year=cal.get(Calendar.YEAR);
 			    	this.bookedWeekRecordModel=new BookedWeekRecordModel(year, weekNum);
 			    	this.bookedWeekRecordModel.setCCheckOperator(userModel.getCFullName());
 			    }
@@ -104,12 +104,13 @@ public class WeekPbAction extends BaseAction implements ModelDriven<BookedWeekRe
 			{
 				Date createDate=DateTimeUtil.parse(req.getParameter("createDate"));
 				Calendar cal=Calendar.getInstance();
+				cal.setTime(createDate);
 				int weekNum=cal.get(Calendar.WEEK_OF_YEAR);
-				this.bookedWeekRecordModel=bookedBiz.getWeekRecord(weekNum);
+				int year=cal.get(Calendar.YEAR);
+				this.bookedWeekRecordModel=bookedBiz.getWeekRecord(year,weekNum);
 			    if(this.bookedWeekRecordModel!=null){
 			    	this.bookedWeekRecordModel.setLimits(bookedBiz.getLimits(this.bookedWeekRecordModel.getIWeekNum()));
 			    }else{
-			    	int year=cal.get(Calendar.YEAR);
 			    	this.bookedWeekRecordModel=new BookedWeekRecordModel(year, weekNum);
 			    	this.bookedWeekRecordModel.setCCheckOperator(userModel.getCFullName());
 			    }

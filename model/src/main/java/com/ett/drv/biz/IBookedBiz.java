@@ -14,12 +14,12 @@ import com.ett.drv.model.booked.BookedWeekRecordModel;
 public interface IBookedBiz extends IBaseCrudBiz{
 
 	//public BookedWeekRecordModel getWeekRecord(Date pDate);
-	public BookedWeekRecordModel getWeekRecord(int weekNum);
+	public BookedWeekRecordModel getWeekRecord(int year,int weekNum);
 	
 	public Map<String,BookedLimitModel> getLimits(int weekNum) throws Exception;
 	
 	
-	public ResultModel tranExamPreasgin(BookedOrderInfoModel orderInfoModel);
+	public ResultModel tranExamPreasgin(BookedOrderInfoModel orderInfoModel,BookedLimitModel limitModel);
 	
 	public ResultModel tranSaveWeekPb(BookedWeekRecordModel weekPb);
 	
