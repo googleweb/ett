@@ -1,60 +1,62 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2011-06-16 03:42:37
+	Create Date:2011-06-17 10:22:45
 	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
 	Model:com.ett.drv.model.preinput.StudentApplyInfoModel 
 
 
  public static enum F { 
-  Id,CLsh,Sfzmhm,Sfzmmc,IHmcd,IXb,CCsrq,CGj,CDjzsxzqh,CDjzsxxdz,CLxzsxzqh,
-CLxzsxxdz,CLxzsyzbm,CLy,CXzqh,CLxdh,CZzzm,CZkzmbh,CDabh,CZkcx,CDzyx,
+  Id,Sfzmhm,Sfzmmc,IHmcd,IXb,CCsrq,CGj,CDjzsxzqh,CDjzsxxdz,CLxzsxzqh,CLxzsxxdz,
+CLxzsyzbm,CLy,CXzqh,CLxdh,CZzzm,CZkzmbh,CDabh,CZkcx,CJxmc,CDzyx,
 CSjhm,CSg,IZsl,IYsl,IBsl,ITl,ISz,IZxz,IYxz,IQgjb,
-CTjrq,CTjyymc,CPhotoSrc,IPhotoSyn,CCheckDate,CJxdm,IChecked,CCheckResult,CCheckOperator,CXm,
-CJxmc  
+CTjrq,CTjyymc,CPhotoSrc,BlobPhoto,IPhotoSyn,CJxdm,CLsh,CXm,CCheckResult,CCheckOperator,
+CCheckDate,IChecked,CPhotoSyn  
  } 
 
 private Integer Id;         //ID  NUMBER 38
-private String CLsh;         //C_LSH  VARCHAR2 100
-private String Sfzmhm;         //SFZMHM  VARCHAR2 50
-private String Sfzmmc;         //SFZMMC  VARCHAR2 50
+private String Sfzmhm;         //SFZMHM  VARCHAR2 18
+private String Sfzmmc;         //SFZMMC  VARCHAR2 6
 private Integer IHmcd;         //I_HMCD  NUMBER 38
 private Integer IXb;         //I_XB  NUMBER 38
-private String CCsrq;         //C_CSRQ  VARCHAR2 50
-private String CGj;         //C_GJ  VARCHAR2 50
-private String CDjzsxzqh;         //C_DJZSXZQH  VARCHAR2 50
-private String CDjzsxxdz;         //C_DJZSXXDZ  VARCHAR2 50
-private String CLxzsxzqh;         //C_LXZSXZQH  VARCHAR2 50
-private String CLxzsxxdz;         //C_LXZSXXDZ  VARCHAR2 50
-private String CLxzsyzbm;         //C_LXZSYZBM  VARCHAR2 50
-private String CLy;         //C_LY  VARCHAR2 50
-private String CXzqh;         //C_XZQH  VARCHAR2 50
-private String CLxdh;         //C_LXDH  VARCHAR2 50
-private String CZzzm;         //C_ZZZM  VARCHAR2 50
-private String CZkzmbh;         //C_ZKZMBH  VARCHAR2 50
-private String CDabh;         //C_DABH  VARCHAR2 50
-private String CZkcx;         //C_ZKCX  VARCHAR2 50
-private String CDzyx;         //C_DZYX  VARCHAR2 50
-private String CSjhm;         //C_SJHM  VARCHAR2 50
-private Float CSg;         //C_SG  NUMBER 126
-private Float IZsl;         //I_ZSL  NUMBER 126
-private Float IYsl;         //I_YSL  NUMBER 126
-private Float IBsl;         //I_BSL  NUMBER 126
-private Float ITl;         //I_TL  NUMBER 126
-private Float ISz;         //I_SZ  NUMBER 126
-private Float IZxz;         //I_ZXZ  NUMBER 126
-private Float IYxz;         //I_YXZ  NUMBER 126
-private Float IQgjb;         //I_QGJB  NUMBER 126
-private String CTjrq;         //C_TJRQ  VARCHAR2 20
-private String CTjyymc;         //C_TJYYMC  VARCHAR2 20
-private String CPhotoSrc;         //C_PHOTO_SRC  VARCHAR2 20
+private String CCsrq;         //C_CSRQ  VARCHAR2 10
+private String CGj;         //C_GJ  VARCHAR2 20
+private String CDjzsxzqh;         //C_DJZSXZQH  VARCHAR2 20
+private String CDjzsxxdz;         //C_DJZSXXDZ  VARCHAR2 200
+private String CLxzsxzqh;         //C_LXZSXZQH  VARCHAR2 20
+private String CLxzsxxdz;         //C_LXZSXXDZ  VARCHAR2 200
+private String CLxzsyzbm;         //C_LXZSYZBM  VARCHAR2 20
+private String CLy;         //C_LY  VARCHAR2 20
+private String CXzqh;         //C_XZQH  VARCHAR2 20
+private String CLxdh;         //C_LXDH  VARCHAR2 20
+private String CZzzm;         //C_ZZZM  VARCHAR2 20
+private String CZkzmbh;         //C_ZKZMBH  VARCHAR2 20
+private String CDabh;         //C_DABH  VARCHAR2 20
+private String CZkcx;         //C_ZKCX  VARCHAR2 20
+private String CJxmc;         //C_JXMC  VARCHAR2 200
+private String CDzyx;         //C_DZYX  VARCHAR2 60
+private String CSjhm;         //C_SJHM  VARCHAR2 20
+private String CSg;         //C_SG  VARCHAR2 20
+private String IZsl;         //I_ZSL  VARCHAR2 20
+private String IYsl;         //I_YSL  VARCHAR2 20
+private Integer IBsl;         //I_BSL  NUMBER 38
+private Integer ITl;         //I_TL  NUMBER 38
+private Integer ISz;         //I_SZ  NUMBER 38
+private Integer IZxz;         //I_ZXZ  NUMBER 38
+private Integer IYxz;         //I_YXZ  NUMBER 38
+private Integer IQgjb;         //I_QGJB  NUMBER 38
+private String CTjrq;         //C_TJRQ  VARCHAR2 10
+private String CTjyymc;         //C_TJYYMC  VARCHAR2 200
+private String CPhotoSrc;         //C_PHOTO_SRC  VARCHAR2 200
+private byte[] BlobPhoto;         //BLOB_PHOTO  BLOB 100
 private Integer IPhotoSyn;         //I_PHOTO_SYN  NUMBER 38
-private String CCheckDate;         //C_CHECK_DATE  VARCHAR2 20
-private String CJxdm;         //C_JXDM  VARCHAR2 20
+private String CJxdm;         //C_JXDM  VARCHAR2 30
+private String CLsh;         //C_LSH  VARCHAR2 100
+private String CXm;         //C_XM  VARCHAR2 30
+private String CCheckResult;         //C_CHECK_RESULT  VARCHAR2 4,000
+private String CCheckOperator;         //C_CHECK_OPERATOR  VARCHAR2 30
+private String CCheckDate;         //C_CHECK_DATE  VARCHAR2 30
 private Integer IChecked;         //I_CHECKED  NUMBER 38
-private String CCheckResult;         //C_CHECK_RESULT  VARCHAR2 2,000
-private String CCheckOperator;         //C_CHECK_OPERATOR  VARCHAR2 1,000
-private String CXm;         //C_XM  VARCHAR2 20
-private String CJxmc;         //C_JXMC  VARCHAR2 100
+private Integer CPhotoSyn;         //C_PHOTO_SYN  NUMBER 38
  -->
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
@@ -68,16 +70,15 @@ private String CJxmc;         //C_JXMC  VARCHAR2 100
 <sql id="pk">ID</sql>
 
 <sql id="colums">
-ID,C_LSH,SFZMHM,SFZMMC,I_HMCD,I_XB,C_CSRQ,C_GJ,C_DJZSXZQH,C_DJZSXXDZ,C_LXZSXZQH,
-C_LXZSXXDZ,C_LXZSYZBM,C_LY,C_XZQH,C_LXDH,C_ZZZM,C_ZKZMBH,C_DABH,C_ZKCX,C_DZYX,
+ID,SFZMHM,SFZMMC,I_HMCD,I_XB,C_CSRQ,C_GJ,C_DJZSXZQH,C_DJZSXXDZ,C_LXZSXZQH,C_LXZSXXDZ,
+C_LXZSYZBM,C_LY,C_XZQH,C_LXDH,C_ZZZM,C_ZKZMBH,C_DABH,C_ZKCX,C_JXMC,C_DZYX,
 C_SJHM,C_SG,I_ZSL,I_YSL,I_BSL,I_TL,I_SZ,I_ZXZ,I_YXZ,I_QGJB,
-C_TJRQ,C_TJYYMC,C_PHOTO_SRC,I_PHOTO_SYN,C_CHECK_DATE,C_JXDM,I_CHECKED,C_CHECK_RESULT,C_CHECK_OPERATOR,C_XM,
-C_JXMC 
+C_TJRQ,C_TJYYMC,C_PHOTO_SRC,BLOB_PHOTO,I_PHOTO_SYN,C_JXDM,C_LSH,C_XM,C_CHECK_RESULT,C_CHECK_OPERATOR,
+C_CHECK_DATE,I_CHECKED,C_PHOTO_SYN 
 </sql>
 
 <sql id="insertCols">
 SEQ_STUDENT_APPLY_INFO.nextval,
-#{CLsh,jdbcType=VARCHAR,javaType=String},
 #{Sfzmhm,jdbcType=VARCHAR,javaType=String},
 #{Sfzmmc,jdbcType=VARCHAR,javaType=String},
 #{IHmcd,jdbcType=INTEGER,javaType=Integer},
@@ -96,34 +97,36 @@ SEQ_STUDENT_APPLY_INFO.nextval,
 #{CZkzmbh,jdbcType=VARCHAR,javaType=String},
 #{CDabh,jdbcType=VARCHAR,javaType=String},
 #{CZkcx,jdbcType=VARCHAR,javaType=String},
+#{CJxmc,jdbcType=VARCHAR,javaType=String},
 #{CDzyx,jdbcType=VARCHAR,javaType=String},
 #{CSjhm,jdbcType=VARCHAR,javaType=String},
-#{CSg,jdbcType=FLOAT,javaType=Float},
-#{IZsl,jdbcType=FLOAT,javaType=Float},
-#{IYsl,jdbcType=FLOAT,javaType=Float},
-#{IBsl,jdbcType=FLOAT,javaType=Float},
-#{ITl,jdbcType=FLOAT,javaType=Float},
-#{ISz,jdbcType=FLOAT,javaType=Float},
-#{IZxz,jdbcType=FLOAT,javaType=Float},
-#{IYxz,jdbcType=FLOAT,javaType=Float},
-#{IQgjb,jdbcType=FLOAT,javaType=Float},
+#{CSg,jdbcType=VARCHAR,javaType=String},
+#{IZsl,jdbcType=VARCHAR,javaType=String},
+#{IYsl,jdbcType=VARCHAR,javaType=String},
+#{IBsl,jdbcType=INTEGER,javaType=Integer},
+#{ITl,jdbcType=INTEGER,javaType=Integer},
+#{ISz,jdbcType=INTEGER,javaType=Integer},
+#{IZxz,jdbcType=INTEGER,javaType=Integer},
+#{IYxz,jdbcType=INTEGER,javaType=Integer},
+#{IQgjb,jdbcType=INTEGER,javaType=Integer},
 #{CTjrq,jdbcType=VARCHAR,javaType=String},
 #{CTjyymc,jdbcType=VARCHAR,javaType=String},
 #{CPhotoSrc,jdbcType=VARCHAR,javaType=String},
+#{BlobPhoto,jdbcType=BLOB},
 #{IPhotoSyn,jdbcType=INTEGER,javaType=Integer},
-#{CCheckDate,jdbcType=VARCHAR,javaType=String},
 #{CJxdm,jdbcType=VARCHAR,javaType=String},
-#{IChecked,jdbcType=INTEGER,javaType=Integer},
+#{CLsh,jdbcType=VARCHAR,javaType=String},
+#{CXm,jdbcType=VARCHAR,javaType=String},
 #{CCheckResult,jdbcType=VARCHAR,javaType=String},
 #{CCheckOperator,jdbcType=VARCHAR,javaType=String},
-#{CXm,jdbcType=VARCHAR,javaType=String},
-#{CJxmc,jdbcType=VARCHAR,javaType=String},
+#{CCheckDate,jdbcType=VARCHAR,javaType=String},
+#{IChecked,jdbcType=INTEGER,javaType=Integer},
+#{CPhotoSyn,jdbcType=INTEGER,javaType=Integer},
 
 </sql>
 
 <sql id="updateCols">
 <if test="pk neq null">ID=#{pk},</if>
-C_LSH=#{model.CLsh,jdbcType=VARCHAR,javaType=String},
 SFZMHM=#{model.Sfzmhm,jdbcType=VARCHAR,javaType=String},
 SFZMMC=#{model.Sfzmmc,jdbcType=VARCHAR,javaType=String},
 I_HMCD=#{model.IHmcd,jdbcType=INTEGER,javaType=Integer},
@@ -142,28 +145,31 @@ C_ZZZM=#{model.CZzzm,jdbcType=VARCHAR,javaType=String},
 C_ZKZMBH=#{model.CZkzmbh,jdbcType=VARCHAR,javaType=String},
 C_DABH=#{model.CDabh,jdbcType=VARCHAR,javaType=String},
 C_ZKCX=#{model.CZkcx,jdbcType=VARCHAR,javaType=String},
+C_JXMC=#{model.CJxmc,jdbcType=VARCHAR,javaType=String},
 C_DZYX=#{model.CDzyx,jdbcType=VARCHAR,javaType=String},
 C_SJHM=#{model.CSjhm,jdbcType=VARCHAR,javaType=String},
-C_SG=#{model.CSg,jdbcType=FLOAT,javaType=Float},
-I_ZSL=#{model.IZsl,jdbcType=FLOAT,javaType=Float},
-I_YSL=#{model.IYsl,jdbcType=FLOAT,javaType=Float},
-I_BSL=#{model.IBsl,jdbcType=FLOAT,javaType=Float},
-I_TL=#{model.ITl,jdbcType=FLOAT,javaType=Float},
-I_SZ=#{model.ISz,jdbcType=FLOAT,javaType=Float},
-I_ZXZ=#{model.IZxz,jdbcType=FLOAT,javaType=Float},
-I_YXZ=#{model.IYxz,jdbcType=FLOAT,javaType=Float},
-I_QGJB=#{model.IQgjb,jdbcType=FLOAT,javaType=Float},
+C_SG=#{model.CSg,jdbcType=VARCHAR,javaType=String},
+I_ZSL=#{model.IZsl,jdbcType=VARCHAR,javaType=String},
+I_YSL=#{model.IYsl,jdbcType=VARCHAR,javaType=String},
+I_BSL=#{model.IBsl,jdbcType=INTEGER,javaType=Integer},
+I_TL=#{model.ITl,jdbcType=INTEGER,javaType=Integer},
+I_SZ=#{model.ISz,jdbcType=INTEGER,javaType=Integer},
+I_ZXZ=#{model.IZxz,jdbcType=INTEGER,javaType=Integer},
+I_YXZ=#{model.IYxz,jdbcType=INTEGER,javaType=Integer},
+I_QGJB=#{model.IQgjb,jdbcType=INTEGER,javaType=Integer},
 C_TJRQ=#{model.CTjrq,jdbcType=VARCHAR,javaType=String},
 C_TJYYMC=#{model.CTjyymc,jdbcType=VARCHAR,javaType=String},
 C_PHOTO_SRC=#{model.CPhotoSrc,jdbcType=VARCHAR,javaType=String},
+BLOB_PHOTO=#{model.BlobPhoto,jdbcType=BLOB},
 I_PHOTO_SYN=#{model.IPhotoSyn,jdbcType=INTEGER,javaType=Integer},
-C_CHECK_DATE=#{model.CCheckDate,jdbcType=VARCHAR,javaType=String},
 C_JXDM=#{model.CJxdm,jdbcType=VARCHAR,javaType=String},
-I_CHECKED=#{model.IChecked,jdbcType=INTEGER,javaType=Integer},
+C_LSH=#{model.CLsh,jdbcType=VARCHAR,javaType=String},
+C_XM=#{model.CXm,jdbcType=VARCHAR,javaType=String},
 C_CHECK_RESULT=#{model.CCheckResult,jdbcType=VARCHAR,javaType=String},
 C_CHECK_OPERATOR=#{model.CCheckOperator,jdbcType=VARCHAR,javaType=String},
-C_XM=#{model.CXm,jdbcType=VARCHAR,javaType=String},
-C_JXMC=#{model.CJxmc,jdbcType=VARCHAR,javaType=String},
+C_CHECK_DATE=#{model.CCheckDate,jdbcType=VARCHAR,javaType=String},
+I_CHECKED=#{model.IChecked,jdbcType=INTEGER,javaType=Integer},
+C_PHOTO_SYN=#{model.CPhotoSyn,jdbcType=INTEGER,javaType=Integer},
 
 </sql>
 
@@ -175,7 +181,6 @@ C_JXMC=#{model.CJxmc,jdbcType=VARCHAR,javaType=String},
 
 <resultMap type="com.ett.drv.model.preinput.StudentApplyInfoModel" id="resultMap">
  <id column="ID"  property="Id" jdbcType="INTEGER" javaType="Integer"/>
-<result column="C_LSH"  property="CLsh" jdbcType="VARCHAR" javaType="String"/>
 <result column="SFZMHM"  property="Sfzmhm" jdbcType="VARCHAR" javaType="String"/>
 <result column="SFZMMC"  property="Sfzmmc" jdbcType="VARCHAR" javaType="String"/>
 <result column="I_HMCD"  property="IHmcd" jdbcType="INTEGER" javaType="Integer"/>
@@ -194,35 +199,37 @@ C_JXMC=#{model.CJxmc,jdbcType=VARCHAR,javaType=String},
 <result column="C_ZKZMBH"  property="CZkzmbh" jdbcType="VARCHAR" javaType="String"/>
 <result column="C_DABH"  property="CDabh" jdbcType="VARCHAR" javaType="String"/>
 <result column="C_ZKCX"  property="CZkcx" jdbcType="VARCHAR" javaType="String"/>
+<result column="C_JXMC"  property="CJxmc" jdbcType="VARCHAR" javaType="String"/>
 <result column="C_DZYX"  property="CDzyx" jdbcType="VARCHAR" javaType="String"/>
 <result column="C_SJHM"  property="CSjhm" jdbcType="VARCHAR" javaType="String"/>
-<result column="C_SG"  property="CSg" jdbcType="FLOAT" javaType="Float"/>
-<result column="I_ZSL"  property="IZsl" jdbcType="FLOAT" javaType="Float"/>
-<result column="I_YSL"  property="IYsl" jdbcType="FLOAT" javaType="Float"/>
-<result column="I_BSL"  property="IBsl" jdbcType="FLOAT" javaType="Float"/>
-<result column="I_TL"  property="ITl" jdbcType="FLOAT" javaType="Float"/>
-<result column="I_SZ"  property="ISz" jdbcType="FLOAT" javaType="Float"/>
-<result column="I_ZXZ"  property="IZxz" jdbcType="FLOAT" javaType="Float"/>
-<result column="I_YXZ"  property="IYxz" jdbcType="FLOAT" javaType="Float"/>
-<result column="I_QGJB"  property="IQgjb" jdbcType="FLOAT" javaType="Float"/>
+<result column="C_SG"  property="CSg" jdbcType="VARCHAR" javaType="String"/>
+<result column="I_ZSL"  property="IZsl" jdbcType="VARCHAR" javaType="String"/>
+<result column="I_YSL"  property="IYsl" jdbcType="VARCHAR" javaType="String"/>
+<result column="I_BSL"  property="IBsl" jdbcType="INTEGER" javaType="Integer"/>
+<result column="I_TL"  property="ITl" jdbcType="INTEGER" javaType="Integer"/>
+<result column="I_SZ"  property="ISz" jdbcType="INTEGER" javaType="Integer"/>
+<result column="I_ZXZ"  property="IZxz" jdbcType="INTEGER" javaType="Integer"/>
+<result column="I_YXZ"  property="IYxz" jdbcType="INTEGER" javaType="Integer"/>
+<result column="I_QGJB"  property="IQgjb" jdbcType="INTEGER" javaType="Integer"/>
 <result column="C_TJRQ"  property="CTjrq" jdbcType="VARCHAR" javaType="String"/>
 <result column="C_TJYYMC"  property="CTjyymc" jdbcType="VARCHAR" javaType="String"/>
 <result column="C_PHOTO_SRC"  property="CPhotoSrc" jdbcType="VARCHAR" javaType="String"/>
+<result column="BLOB_PHOTO"  property="BlobPhoto" jdbcType="BLOB" />
 <result column="I_PHOTO_SYN"  property="IPhotoSyn" jdbcType="INTEGER" javaType="Integer"/>
-<result column="C_CHECK_DATE"  property="CCheckDate" jdbcType="VARCHAR" javaType="String"/>
 <result column="C_JXDM"  property="CJxdm" jdbcType="VARCHAR" javaType="String"/>
-<result column="I_CHECKED"  property="IChecked" jdbcType="INTEGER" javaType="Integer"/>
+<result column="C_LSH"  property="CLsh" jdbcType="VARCHAR" javaType="String"/>
+<result column="C_XM"  property="CXm" jdbcType="VARCHAR" javaType="String"/>
 <result column="C_CHECK_RESULT"  property="CCheckResult" jdbcType="VARCHAR" javaType="String"/>
 <result column="C_CHECK_OPERATOR"  property="CCheckOperator" jdbcType="VARCHAR" javaType="String"/>
-<result column="C_XM"  property="CXm" jdbcType="VARCHAR" javaType="String"/>
-<result column="C_JXMC"  property="CJxmc" jdbcType="VARCHAR" javaType="String"/>
+<result column="C_CHECK_DATE"  property="CCheckDate" jdbcType="VARCHAR" javaType="String"/>
+<result column="I_CHECKED"  property="IChecked" jdbcType="INTEGER" javaType="Integer"/>
+<result column="C_PHOTO_SYN"  property="CPhotoSyn" jdbcType="INTEGER" javaType="Integer"/>
 
  </resultMap>
 
 
 <sql id="selectCondition">
 <if test="model.Id neq null">and m.ID = #{model.Id,jdbcType=INTEGER, javaType=Integer } </if> 
-<if test="model.CLsh neq null">and m.C_LSH like #{model.CLsh,jdbcType=VARCHAR ,javaType=String } </if> 
 <if test="model.Sfzmhm neq null">and m.SFZMHM like #{model.Sfzmhm,jdbcType=VARCHAR ,javaType=String } </if> 
 <if test="model.Sfzmmc neq null">and m.SFZMMC like #{model.Sfzmmc,jdbcType=VARCHAR ,javaType=String } </if> 
 <if test="model.IHmcd neq null">and m.I_HMCD = #{model.IHmcd,jdbcType=INTEGER, javaType=Integer } </if> 
@@ -241,28 +248,31 @@ C_JXMC=#{model.CJxmc,jdbcType=VARCHAR,javaType=String},
 <if test="model.CZkzmbh neq null">and m.C_ZKZMBH like #{model.CZkzmbh,jdbcType=VARCHAR ,javaType=String } </if> 
 <if test="model.CDabh neq null">and m.C_DABH like #{model.CDabh,jdbcType=VARCHAR ,javaType=String } </if> 
 <if test="model.CZkcx neq null">and m.C_ZKCX like #{model.CZkcx,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model.CJxmc neq null">and m.C_JXMC like #{model.CJxmc,jdbcType=VARCHAR ,javaType=String } </if> 
 <if test="model.CDzyx neq null">and m.C_DZYX like #{model.CDzyx,jdbcType=VARCHAR ,javaType=String } </if> 
 <if test="model.CSjhm neq null">and m.C_SJHM like #{model.CSjhm,jdbcType=VARCHAR ,javaType=String } </if> 
-<if test="model.CSg neq null">and m.C_SG = #{model.CSg,jdbcType=FLOAT, javaType=Float } </if> 
-<if test="model.IZsl neq null">and m.I_ZSL = #{model.IZsl,jdbcType=FLOAT, javaType=Float } </if> 
-<if test="model.IYsl neq null">and m.I_YSL = #{model.IYsl,jdbcType=FLOAT, javaType=Float } </if> 
-<if test="model.IBsl neq null">and m.I_BSL = #{model.IBsl,jdbcType=FLOAT, javaType=Float } </if> 
-<if test="model.ITl neq null">and m.I_TL = #{model.ITl,jdbcType=FLOAT, javaType=Float } </if> 
-<if test="model.ISz neq null">and m.I_SZ = #{model.ISz,jdbcType=FLOAT, javaType=Float } </if> 
-<if test="model.IZxz neq null">and m.I_ZXZ = #{model.IZxz,jdbcType=FLOAT, javaType=Float } </if> 
-<if test="model.IYxz neq null">and m.I_YXZ = #{model.IYxz,jdbcType=FLOAT, javaType=Float } </if> 
-<if test="model.IQgjb neq null">and m.I_QGJB = #{model.IQgjb,jdbcType=FLOAT, javaType=Float } </if> 
+<if test="model.CSg neq null">and m.C_SG like #{model.CSg,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model.IZsl neq null">and m.I_ZSL like #{model.IZsl,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model.IYsl neq null">and m.I_YSL like #{model.IYsl,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model.IBsl neq null">and m.I_BSL = #{model.IBsl,jdbcType=INTEGER, javaType=Integer } </if> 
+<if test="model.ITl neq null">and m.I_TL = #{model.ITl,jdbcType=INTEGER, javaType=Integer } </if> 
+<if test="model.ISz neq null">and m.I_SZ = #{model.ISz,jdbcType=INTEGER, javaType=Integer } </if> 
+<if test="model.IZxz neq null">and m.I_ZXZ = #{model.IZxz,jdbcType=INTEGER, javaType=Integer } </if> 
+<if test="model.IYxz neq null">and m.I_YXZ = #{model.IYxz,jdbcType=INTEGER, javaType=Integer } </if> 
+<if test="model.IQgjb neq null">and m.I_QGJB = #{model.IQgjb,jdbcType=INTEGER, javaType=Integer } </if> 
 <if test="model.CTjrq neq null">and m.C_TJRQ like #{model.CTjrq,jdbcType=VARCHAR ,javaType=String } </if> 
 <if test="model.CTjyymc neq null">and m.C_TJYYMC like #{model.CTjyymc,jdbcType=VARCHAR ,javaType=String } </if> 
 <if test="model.CPhotoSrc neq null">and m.C_PHOTO_SRC like #{model.CPhotoSrc,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model.BlobPhoto neq null">and m.BLOB_PHOTO = #{model.BlobPhoto,jdbcType=BLOB, javaType=Byte } </if> 
 <if test="model.IPhotoSyn neq null">and m.I_PHOTO_SYN = #{model.IPhotoSyn,jdbcType=INTEGER, javaType=Integer } </if> 
-<if test="model.CCheckDate neq null">and m.C_CHECK_DATE like #{model.CCheckDate,jdbcType=VARCHAR ,javaType=String } </if> 
 <if test="model.CJxdm neq null">and m.C_JXDM like #{model.CJxdm,jdbcType=VARCHAR ,javaType=String } </if> 
-<if test="model.IChecked neq null">and m.I_CHECKED = #{model.IChecked,jdbcType=INTEGER, javaType=Integer } </if> 
+<if test="model.CLsh neq null">and m.C_LSH like #{model.CLsh,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model.CXm neq null">and m.C_XM like #{model.CXm,jdbcType=VARCHAR ,javaType=String } </if> 
 <if test="model.CCheckResult neq null">and m.C_CHECK_RESULT like #{model.CCheckResult,jdbcType=VARCHAR ,javaType=String } </if> 
 <if test="model.CCheckOperator neq null">and m.C_CHECK_OPERATOR like #{model.CCheckOperator,jdbcType=VARCHAR ,javaType=String } </if> 
-<if test="model.CXm neq null">and m.C_XM like #{model.CXm,jdbcType=VARCHAR ,javaType=String } </if> 
-<if test="model.CJxmc neq null">and m.C_JXMC like #{model.CJxmc,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model.CCheckDate neq null">and m.C_CHECK_DATE like #{model.CCheckDate,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model.IChecked neq null">and m.I_CHECKED = #{model.IChecked,jdbcType=INTEGER, javaType=Integer } </if> 
+<if test="model.CPhotoSyn neq null">and m.C_PHOTO_SYN = #{model.CPhotoSyn,jdbcType=INTEGER, javaType=Integer } </if> 
 
 </sql>
 

@@ -3,67 +3,63 @@ package com.ett.drv.model.preinput;
 public class StudentApplyInfoModel {
 
 	
-	 public static enum F { 
-		  Id,CLsh,Sfzmhm,Sfzmmc,IHmcd,IXb,CCsrq,CGj,CDjzsxzqh,CDjzsxxdz,CLxzsxzqh,
-		CLxzsxxdz,CLxzsyzbm,CLy,CXzqh,CLxdh,CZzzm,CZkzmbh,CDabh,CZkcx,CDzyx,
+	public static enum F { 
+		  Id,Sfzmhm,Sfzmmc,IHmcd,IXb,CCsrq,CGj,CDjzsxzqh,CDjzsxxdz,CLxzsxzqh,CLxzsxxdz,
+		CLxzsyzbm,CLy,CXzqh,CLxdh,CZzzm,CZkzmbh,CDabh,CZkcx,CJxmc,CDzyx,
 		CSjhm,CSg,IZsl,IYsl,IBsl,ITl,ISz,IZxz,IYxz,IQgjb,
-		CTjrq,CTjyymc,CPhotoSrc,IPhotoSyn,CCheckDate,CJxdm,IChecked,CCheckResult,CCheckOperator,CXm,
-		CJxmc  
+		CTjrq,CTjyymc,CPhotoSrc,BlobPhoto,IPhotoSyn,CJxdm,CLsh,CXm,CCheckResult,CCheckOperator,
+		CCheckDate,IChecked,CPhotoSyn  
 		 } 
 
 		private Integer Id;         //ID  NUMBER 38
-		private String CLsh;         //C_LSH  VARCHAR2 100
-		private String Sfzmhm;         //SFZMHM  VARCHAR2 50
-		private String Sfzmmc;         //SFZMMC  VARCHAR2 50
+		private String Sfzmhm;         //SFZMHM  VARCHAR2 18
+		private String Sfzmmc;         //SFZMMC  VARCHAR2 6
 		private Integer IHmcd;         //I_HMCD  NUMBER 38
 		private Integer IXb;         //I_XB  NUMBER 38
-		private String CCsrq;         //C_CSRQ  VARCHAR2 50
-		private String CGj;         //C_GJ  VARCHAR2 50
-		private String CDjzsxzqh;         //C_DJZSXZQH  VARCHAR2 50
-		private String CDjzsxxdz;         //C_DJZSXXDZ  VARCHAR2 50
-		private String CLxzsxzqh;         //C_LXZSXZQH  VARCHAR2 50
-		private String CLxzsxxdz;         //C_LXZSXXDZ  VARCHAR2 50
-		private String CLxzsyzbm;         //C_LXZSYZBM  VARCHAR2 50
-		private String CLy;         //C_LY  VARCHAR2 50
-		private String CXzqh;         //C_XZQH  VARCHAR2 50
-		private String CLxdh;         //C_LXDH  VARCHAR2 50
-		private String CZzzm;         //C_ZZZM  VARCHAR2 50
-		private String CZkzmbh;         //C_ZKZMBH  VARCHAR2 50
-		private String CDabh;         //C_DABH  VARCHAR2 50
-		private String CZkcx;         //C_ZKCX  VARCHAR2 50
-		private String CDzyx;         //C_DZYX  VARCHAR2 50
-		private String CSjhm;         //C_SJHM  VARCHAR2 50
-		private Float CSg;         //C_SG  NUMBER 126
-		private Float IZsl;         //I_ZSL  NUMBER 126
-		private Float IYsl;         //I_YSL  NUMBER 126
-		private Float IBsl;         //I_BSL  NUMBER 126
-		private Float ITl;         //I_TL  NUMBER 126
-		private Float ISz;         //I_SZ  NUMBER 126
-		private Float IZxz;         //I_ZXZ  NUMBER 126
-		private Float IYxz;         //I_YXZ  NUMBER 126
-		private Float IQgjb;         //I_QGJB  NUMBER 126
-		private String CTjrq;         //C_TJRQ  VARCHAR2 20
-		private String CTjyymc;         //C_TJYYMC  VARCHAR2 20
-		private String CPhotoSrc;         //C_PHOTO_SRC  VARCHAR2 20
+		private String CCsrq;         //C_CSRQ  VARCHAR2 10
+		private String CGj;         //C_GJ  VARCHAR2 20
+		private String CDjzsxzqh;         //C_DJZSXZQH  VARCHAR2 20
+		private String CDjzsxxdz;         //C_DJZSXXDZ  VARCHAR2 200
+		private String CLxzsxzqh;         //C_LXZSXZQH  VARCHAR2 20
+		private String CLxzsxxdz;         //C_LXZSXXDZ  VARCHAR2 200
+		private String CLxzsyzbm;         //C_LXZSYZBM  VARCHAR2 20
+		private String CLy;         //C_LY  VARCHAR2 20
+		private String CXzqh;         //C_XZQH  VARCHAR2 20
+		private String CLxdh;         //C_LXDH  VARCHAR2 20
+		private String CZzzm;         //C_ZZZM  VARCHAR2 20
+		private String CZkzmbh;         //C_ZKZMBH  VARCHAR2 20
+		private String CDabh;         //C_DABH  VARCHAR2 20
+		private String CZkcx;         //C_ZKCX  VARCHAR2 20
+		private String CJxmc;         //C_JXMC  VARCHAR2 200
+		private String CDzyx;         //C_DZYX  VARCHAR2 60
+		private String CSjhm;         //C_SJHM  VARCHAR2 20
+		private String CSg;         //C_SG  VARCHAR2 20
+		private String IZsl;         //I_ZSL  VARCHAR2 20
+		private String IYsl;         //I_YSL  VARCHAR2 20
+		private Integer IBsl;         //I_BSL  NUMBER 38
+		private Integer ITl;         //I_TL  NUMBER 38
+		private Integer ISz;         //I_SZ  NUMBER 38
+		private Integer IZxz;         //I_ZXZ  NUMBER 38
+		private Integer IYxz;         //I_YXZ  NUMBER 38
+		private Integer IQgjb;         //I_QGJB  NUMBER 38
+		private String CTjrq;         //C_TJRQ  VARCHAR2 10
+		private String CTjyymc;         //C_TJYYMC  VARCHAR2 200
+		private String CPhotoSrc;         //C_PHOTO_SRC  VARCHAR2 200
+		private byte[] BlobPhoto;         //BLOB_PHOTO  BLOB 100
 		private Integer IPhotoSyn;         //I_PHOTO_SYN  NUMBER 38
-		private String CCheckDate;         //C_CHECK_DATE  VARCHAR2 20
-		private String CJxdm;         //C_JXDM  VARCHAR2 20
+		private String CJxdm;         //C_JXDM  VARCHAR2 30
+		private String CLsh;         //C_LSH  VARCHAR2 100
+		private String CXm;         //C_XM  VARCHAR2 30
+		private String CCheckResult;         //C_CHECK_RESULT  VARCHAR2 4,000
+		private String CCheckOperator;         //C_CHECK_OPERATOR  VARCHAR2 30
+		private String CCheckDate;         //C_CHECK_DATE  VARCHAR2 30
 		private Integer IChecked;         //I_CHECKED  NUMBER 38
-		private String CCheckResult;         //C_CHECK_RESULT  VARCHAR2 2,000
-		private String CCheckOperator;         //C_CHECK_OPERATOR  VARCHAR2 1,000
-		private String CXm;         //C_XM  VARCHAR2 20
-		private String CJxmc;         //C_JXMC  VARCHAR2 100
+		private Integer CPhotoSyn;         //C_PHOTO_SYN  NUMBER 38
 		public Integer getId() {
 			return Id;
 		}
 		public void setId(Integer id) {
 			Id = id;
-		}
-		public String getCLsh() {
-			return CLsh;
-		}
-		public void setCLsh(String cLsh) {
-			CLsh = cLsh;
 		}
 		public String getSfzmhm() {
 			return Sfzmhm;
@@ -173,6 +169,12 @@ public class StudentApplyInfoModel {
 		public void setCZkcx(String cZkcx) {
 			CZkcx = cZkcx;
 		}
+		public String getCJxmc() {
+			return CJxmc;
+		}
+		public void setCJxmc(String cJxmc) {
+			CJxmc = cJxmc;
+		}
 		public String getCDzyx() {
 			return CDzyx;
 		}
@@ -185,58 +187,58 @@ public class StudentApplyInfoModel {
 		public void setCSjhm(String cSjhm) {
 			CSjhm = cSjhm;
 		}
-		public Float getCSg() {
+		public String getCSg() {
 			return CSg;
 		}
-		public void setCSg(Float cSg) {
+		public void setCSg(String cSg) {
 			CSg = cSg;
 		}
-		public Float getIZsl() {
+		public String getIZsl() {
 			return IZsl;
 		}
-		public void setIZsl(Float iZsl) {
+		public void setIZsl(String iZsl) {
 			IZsl = iZsl;
 		}
-		public Float getIYsl() {
+		public String getIYsl() {
 			return IYsl;
 		}
-		public void setIYsl(Float iYsl) {
+		public void setIYsl(String iYsl) {
 			IYsl = iYsl;
 		}
-		public Float getIBsl() {
+		public Integer getIBsl() {
 			return IBsl;
 		}
-		public void setIBsl(Float iBsl) {
+		public void setIBsl(Integer iBsl) {
 			IBsl = iBsl;
 		}
-		public Float getITl() {
+		public Integer getITl() {
 			return ITl;
 		}
-		public void setITl(Float iTl) {
+		public void setITl(Integer iTl) {
 			ITl = iTl;
 		}
-		public Float getISz() {
+		public Integer getISz() {
 			return ISz;
 		}
-		public void setISz(Float iSz) {
+		public void setISz(Integer iSz) {
 			ISz = iSz;
 		}
-		public Float getIZxz() {
+		public Integer getIZxz() {
 			return IZxz;
 		}
-		public void setIZxz(Float iZxz) {
+		public void setIZxz(Integer iZxz) {
 			IZxz = iZxz;
 		}
-		public Float getIYxz() {
+		public Integer getIYxz() {
 			return IYxz;
 		}
-		public void setIYxz(Float iYxz) {
+		public void setIYxz(Integer iYxz) {
 			IYxz = iYxz;
 		}
-		public Float getIQgjb() {
+		public Integer getIQgjb() {
 			return IQgjb;
 		}
-		public void setIQgjb(Float iQgjb) {
+		public void setIQgjb(Integer iQgjb) {
 			IQgjb = iQgjb;
 		}
 		public String getCTjrq() {
@@ -257,17 +259,17 @@ public class StudentApplyInfoModel {
 		public void setCPhotoSrc(String cPhotoSrc) {
 			CPhotoSrc = cPhotoSrc;
 		}
+		public byte[] getBlobPhoto() {
+			return BlobPhoto;
+		}
+		public void setBlobPhoto(byte[] blobPhoto) {
+			BlobPhoto = blobPhoto;
+		}
 		public Integer getIPhotoSyn() {
 			return IPhotoSyn;
 		}
 		public void setIPhotoSyn(Integer iPhotoSyn) {
 			IPhotoSyn = iPhotoSyn;
-		}
-		public String getCCheckDate() {
-			return CCheckDate;
-		}
-		public void setCCheckDate(String cCheckDate) {
-			CCheckDate = cCheckDate;
 		}
 		public String getCJxdm() {
 			return CJxdm;
@@ -275,11 +277,17 @@ public class StudentApplyInfoModel {
 		public void setCJxdm(String cJxdm) {
 			CJxdm = cJxdm;
 		}
-		public Integer getIChecked() {
-			return IChecked;
+		public String getCLsh() {
+			return CLsh;
 		}
-		public void setIChecked(Integer iChecked) {
-			IChecked = iChecked;
+		public void setCLsh(String cLsh) {
+			CLsh = cLsh;
+		}
+		public String getCXm() {
+			return CXm;
+		}
+		public void setCXm(String cXm) {
+			CXm = cXm;
 		}
 		public String getCCheckResult() {
 			return CCheckResult;
@@ -293,17 +301,23 @@ public class StudentApplyInfoModel {
 		public void setCCheckOperator(String cCheckOperator) {
 			CCheckOperator = cCheckOperator;
 		}
-		public String getCXm() {
-			return CXm;
+		public String getCCheckDate() {
+			return CCheckDate;
 		}
-		public void setCXm(String cXm) {
-			CXm = cXm;
+		public void setCCheckDate(String cCheckDate) {
+			CCheckDate = cCheckDate;
 		}
-		public String getCJxmc() {
-			return CJxmc;
+		public Integer getIChecked() {
+			return IChecked;
 		}
-		public void setCJxmc(String cJxmc) {
-			CJxmc = cJxmc;
+		public void setIChecked(Integer iChecked) {
+			IChecked = iChecked;
+		}
+		public Integer getCPhotoSyn() {
+			return CPhotoSyn;
+		}
+		public void setCPhotoSyn(Integer cPhotoSyn) {
+			CPhotoSyn = cPhotoSyn;
 		}
 		
 		
