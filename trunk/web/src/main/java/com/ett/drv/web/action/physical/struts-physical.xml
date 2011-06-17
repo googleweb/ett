@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+
+<package name="physical"  extends="base-package" namespace="/physical" >
+   <action name="*/*/*" 
+     class="com.ett.drv.web.action.physical.{1}Action" method="{2}_{3}">
+      <result name="jsp">/jsp/physical/{3}.jsp</result>
+   </action> 
+</package>
+</struts>
