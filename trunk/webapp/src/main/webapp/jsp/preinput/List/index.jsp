@@ -178,7 +178,7 @@ $(document).ready(function(){
 	pagination:true,
 	onDblClickRow:dblClickRowHandler
 	,
-	url:'<%=basePath%>'+"admin/User/datagrid/users.action"} 
+	url:'<%=basePath%>'+"preinput/List/datagrid/list.action"} 
 );    //   end:$("#tableDG").datagrid
 	
 }); //$(document).ready
