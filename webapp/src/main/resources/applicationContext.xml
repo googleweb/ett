@@ -228,6 +228,11 @@
 </bean>
 
 
+
+<bean id="studentApplyInfoMapper" parent="baseMapper">
+  <property name="mapperInterface" value="com.ett.drv.mapper.preinput.IStudentApplyInfoMapper"></property>
+</bean>
+
 <bean id="baseDrvBiz" abstract="true" class="com.ett.drv.biz.impl.BaseDrvBiz">
     <property name="weekRecordMapper" ref="weekReocrdMapper"></property>
    <property name="limitMapper" ref="limitMapper"></property>
@@ -255,6 +260,7 @@
    <property name="personChangeMapper" ref="personChangeMapper"></property>
    <property name="dictTypeMapper"     ref="dictTypeMapper"></property>
    <property name="schoolCarMapper" ref="schoolCarMapper"></property>
+   <property name="studentApplyInfoMapper" ref="studentApplyInfoMapper"></property>
 </bean>
 
 <bean id="baseBookedBiz" abstract="true" class="com.ett.drv.biz.impl.BookedBiz"  parent="baseDrvBiz" ></bean>
@@ -263,7 +269,7 @@
 
 <bean id="baseSelfBiz" abstract="true" class="com.ett.drv.biz.impl.SelfBiz" parent="baseDrvBiz"></bean>
 
-
+<bean id="basePreBiz" abstract="true" class="com.ett.drv.biz.impl.PreBiz" parent="baseDrvBiz"></bean>
 
 
 </beans>

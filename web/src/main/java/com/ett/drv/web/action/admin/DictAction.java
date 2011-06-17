@@ -8,8 +8,6 @@ import org.json.JSONObject;
 
 import com.ett.drv.model.admin.DictModel;
 import com.ett.drv.model.admin.DictTypeModel;
-import com.ett.drv.model.admin.UserModel;
-import com.ett.drv.model.booked.BookedDayLimitModel;
 import com.ett.drv.web.action.BaseAction;
 import com.opensymphony.xwork2.ModelDriven;
 import com.smartken.kia.core.model.impl.ResultModel;

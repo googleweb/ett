@@ -9,6 +9,7 @@
 <bean id="actionBookedBiz" parent="baseBookedBiz"></bean>
 <bean id="actionAdminBiz" parent="baseAdminBiz"></bean>
 <bean id="actionSelfBiz" parent="baseSelfBiz" ></bean>
+<bean id="actionPreBiz" parent="basePreBiz"></bean>
 
 <bean id="baseAction"  abstract="true"
    class="com.ett.drv.web.action.BaseAction"  
@@ -16,6 +17,7 @@
    <property name="adminBiz" ref="actionAdminBiz"></property>
    <property name="selfBiz" ref="actionSelfBiz"></property>
    <property name="bookedBiz" ref="actionBookedBiz"></property>
+   <property name="preBiz" ref="actionPreBiz"></property>
 </bean>
 
 <bean class="com.ett.drv.web.action.booked.WeekPbAction"  parent="baseAction"
@@ -26,6 +28,10 @@
 <bean class="com.ett.drv.web.action.booked.YuyueDayLimitAction"  parent="baseAction"
  id="com.ett.drv.web.action.booked.YuyueDayLimitAction"
 >
+</bean>
+
+<bean class="com.ett.drv.web.action.preinput.ListAction" parent="baseAction"
+id="com.ett.drv.web.action.preinput.ListAction">
 </bean>
 
 <bean class="com.ett.drv.web.action.booked.InfoChangeAction"  parent="baseAction"

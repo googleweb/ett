@@ -26,6 +26,7 @@ import com.opensymphony.xwork2.Preparable;
 import com.opensymphony.xwork2.interceptor.Interceptor;
 import com.ett.drv.biz.IAdminBiz;
 import com.ett.drv.biz.IBookedBiz;
+import com.ett.drv.biz.IPreBiz;
 import com.ett.drv.biz.ISelfBiz;
 import com.ett.drv.model.admin.UserModel;
 import com.ett.drv.web.filter.AuthFilter;
@@ -50,6 +51,7 @@ implements Preparable,IBaseAction
     protected ISelfBiz selfBiz;
     protected IAdminBiz adminBiz;
     protected IBookedBiz bookedBiz;
+    protected IPreBiz preBiz;
     
 
 	public abstract void clear();
@@ -204,6 +206,10 @@ implements Preparable,IBaseAction
 
 	public void setBookedBiz(IBookedBiz bookedBiz) {
 		this.bookedBiz = bookedBiz;
+	}
+	
+	public void setPreBiz(IPreBiz preBiz){
+		this.preBiz=preBiz;
 	}
 
 	public boolean isGet() {
