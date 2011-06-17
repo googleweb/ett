@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@page import="com.ett.drv.model.admin.UserModel"%>
+<%@page import="com.ett.drv.model.preinput.StudentApplyInfoModel"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@page import="com.smartken.kia.core.util.EasyUiUtil"%>
 <%@page import="com.smartken.kia.core.model.impl.*"%>
@@ -32,11 +32,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <jsp:include page="/js/index.jsp"></jsp:include>  
   </head>
 <script type="text/javascript">
-function showdialog(href){
-    $("#divEditUser").dialog({
+function showdialog(id){
+	var href='<%=basePath%>'+"preinput/List/to/detail.action?id="+id;
+    $("#edit").dialog({
   			title:"详细信息:",
-			height:400,
-			width:600,
+			height:450,
+			width:850,
 			onClose:function(){ $('#test').datagrid('reload'); },
 	    	modal:true,
 			onOpen:function(){$(this).kiaIframe(href);}} 
@@ -46,17 +47,9 @@ function showdialog(href){
 
 function operaFormatter(value,rowData,rowIndex){
 	var id=rowData["Id"];
-    var href="preinput/List/to/detail.action?id="+id;
-    return "<a class='kia-icon edit' onclick='return showdialog("+href+")' href="+href+"></a>";
-    $("#divEditUser").dialog({
-  			title:"修改用户:",
-			height:400,
-			width:600,
-			onClose:function(){ $('#test').datagrid('reload'); },
-	    	modal:true,
-			onOpen:function(){$(this).kiaIframe(href);}} 
-		);//   end:$("#divEdit").dialog
-		return false;
+    
+    return "<a class='kia-icon edit' onclick=\"showdialog("+id+")\" ></a>";
+    
 }
 
 function fuweiMiMa(){
@@ -96,11 +89,11 @@ function searchUser(){
 }
 
 function clickAddHandler(){ 
-  		var href="preinput/List/to/detail.action?id="+id;
-  		$("#divEditUser").dialog({
-  			title:"新增用户",
-			height:400,
-			width:600,
+  		var href='<%=basePath%>'+"preinput/List/to/detail.action?id=0";
+  		$("#edit").dialog({
+  			title:"新增",
+			height:450,
+			width:850,
 			onClose:function(){ $('#test').datagrid('reload'); },
 	    	modal:true,
 			onOpen:function(){$(this).kiaIframe(href);}} 
@@ -109,7 +102,7 @@ function clickAddHandler(){
  }
 function dblClickRowHandler(rowIndex,rowData){ 
 	    var id=rowData["Id"];
-	    var fullname=rowData["<%=UserModel.F.CFullName%>"];
+	    var fullname=rowData["<%=StudentApplyInfoModel.F.CLsh%>"];
   		var href='<%=basePath%>'+"admin/User/to/editUser.action?id="+id;
   		$("#divEditUser").dialog({
   			title:"修改用户:"+fullname,
@@ -164,13 +157,13 @@ $(document).ready(function(){
 	columns:[ 
 	[ 
 	{field:"Id",checkbox:true},
-	{field:"<%=UserModel.F.CLoginName%>",title:"流水号",width:150},
-	{field:"<%=UserModel.F.CWorkid%>",title:"身份证明号码",width:150},
-	{field:"<%=UserModel.V.RoleName%>",title:"姓名",width:150},
-	{field:"<%=UserModel.F.CState%>",title:"驾校名称",width:150},
-	{field:"<%=UserModel.F.CIdcard%>",title:"审核结果",width:150},
-	{field:"<%=UserModel.V.DepName%>",title:"审核信息",width:150},
-	{field:"<%=UserModel.F.CFullName%>",title:"经办人",width:150},
+	{field:"<%=StudentApplyInfoModel.F.CLsh%>",title:"流水号",width:150},
+	{field:"<%=StudentApplyInfoModel.F.Sfzmhm%>",title:"身份证明号码",width:150},
+	{field:"<%=StudentApplyInfoModel.F.CXm%>",title:"姓名",width:150},
+	{field:"<%=StudentApplyInfoModel.F.CJxmc%>",title:"驾校名称",width:150},
+	{field:"<%=StudentApplyInfoModel.F.IChecked%>",title:"审核结果",width:150},
+	{field:"<%=StudentApplyInfoModel.F.CCheckResult%>",title:"审核结果描述",width:150},
+	{field:"<%=StudentApplyInfoModel.F.CCheckOperator%>",title:"经办人",width:150},
 	{field:"xxx",title:"详细",formatter:operaFormatter,width:150,}	
 	]
 	] 
@@ -204,6 +197,6 @@ $(document).ready(function(){
       <div style="height: 80%">
 	<table id="test" ></table>
 	</div>
-	
+	<div id="edit"></div>
  </body>
 </html>

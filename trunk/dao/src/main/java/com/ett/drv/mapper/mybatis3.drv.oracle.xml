@@ -71,6 +71,7 @@
 <mapper resource="com/ett/drv/mapper/self/oracle/IDeviceSnMapper.xml"/>
 <mapper resource="com/ett/drv/mapper/self/oracle/IHardwareMapper.xml"/>
 
+<mapper resource="com/ett/drv/mapper/preinput/oracle/IStudentApplyInfoMapper.xml"/>
 </mappers>
 
 </configuration>

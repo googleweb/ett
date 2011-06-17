@@ -1,6 +1,8 @@
 package com.ett.drv.model.preinput;
 
-public class StudentApplyInfoModel {
+import com.smartken.kia.core.model.impl.BaseModel;
+
+public class StudentApplyInfoModel extends BaseModel {
 
 	
 	public static enum F { 

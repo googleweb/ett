@@ -59,15 +59,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <td style="width: 120px">证件名称</td>
 <td style="width: 120px">
 <select name="cardname">
-<option value="volvo">Volvo</option>
-<option value="saab">Saab</option>
-<option value="fiat" selected="selected">Fiat</option>
-<option value="audi">Audi</option>
+<option value="volvo">A:居民身份证</option>
+<option value="saab">B:军官证</option>
+<option value="fiat" selected="selected">C:士兵证</option>
+<option value="saab">D:军官离退休证</option>
+<option value="saab">E:境外人员身份证</option>
+<option value="audi">F:外交人员身份证</option>
 </select>
 </td>
 <td style="width: 120px">证件号码</td>
 <td style="width: 120px">
-<input type="text" name="cardNo"/>
+<input type="text" name="Sfzmhm" value="${Sfzmhm}"/>
 </td>
 <td style="width: 120px">国籍</td>
 <td style="width: 120px">
