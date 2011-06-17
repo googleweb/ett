@@ -213,7 +213,7 @@ public class BookedWeekRecordModel extends BaseModel{
 		      sdf.format(this.monday)
 		      ,sdf.format(this.sunday)
 		);
-		this.setCWeekRange(weekRange);
+		this.CWeekRange=weekRange;
 		
 	}
 
@@ -1225,6 +1225,7 @@ public class BookedWeekRecordModel extends BaseModel{
 		CWeekRange = cWeekRange;
 		if(StringUtil.isBlank(cWeekRange))return;
 		String[] strs=cWeekRange.split("至");
+		if(strs.length<2) return;
 		String str=strs[0];
 		Date d=DateTimeUtil.parse(str);
 	    Calendar cal=Calendar.getInstance();

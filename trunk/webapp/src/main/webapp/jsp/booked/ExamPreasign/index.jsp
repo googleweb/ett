@@ -1,6 +1,10 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@page import="com.smartken.kia.core.model.impl.EasyUiModel"%>
 <%@page import="com.smartken.kia.core.model.impl.JQueryModel"%>
+<%@page import="com.ett.drv.model.admin.UserModel"%>
+<%@page import="com.ett.drv.web.filter.AuthFilter"%>
+<%@page import="com.ett.drv.model.admin.RoleModel"%>
+<%@page import="com.ett.drv.model.admin.DepartmentModel"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%
 String path = request.getContextPath();
@@ -28,12 +32,15 @@ String bookedExamPreasgin=basePath+"booked/ExamPreasign";
     </jsp:include>
     <jsp:include page="/css/index.jsp"></jsp:include>
     <jsp:include page="/js/index.jsp"></jsp:include>
+    <%
+      UserModel user=(UserModel)session.getAttribute(AuthFilter.AUTH_USER);
+      DepartmentModel depModel=user.getDepartmentModel();
+    %>
   
    <script type="text/javascript">
      <%=JQueryModel.DOC_READY_START %>
-     
+     var depCode="<%=depModel.getCDepcode()%>";
       $(".spanFp").each(function(index){
-    	  var depCode="4405B";
     	  var newContext="";
     	  var context=$(this).html();
     	  var limits=context.split("<br>");

@@ -34,7 +34,14 @@ public class BookedLimitModel extends BaseModel{
 		private String COperator;         //C_OPERATOR  VARCHAR2 30
 
 	
-		
+		public void init(){
+			this.IUsedNum=0;
+			this.ICheckedNum=0;
+			this.ITptotal=0;
+			this.ITpcheckedNum=0;
+			this.ITotal=0;
+			this.ITpusedNum=0;
+		}
 		
 
 	public Integer getId() {

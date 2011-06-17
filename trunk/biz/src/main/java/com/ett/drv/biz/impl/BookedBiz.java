@@ -1,6 +1,7 @@
 package com.ett.drv.biz.impl;
 
 import java.text.MessageFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -19,6 +20,7 @@ import com.ett.drv.biz.IBookedBiz;
 import com.ett.drv.mapper.booked.ILimitMapper;
 import com.ett.drv.mapper.booked.IOrderInfoMapper;
 import com.ett.drv.mapper.booked.IWeekRecordMapper;
+import com.ett.drv.model.booked.BookedDayLimitModel;
 import com.ett.drv.model.booked.BookedLimitModel;
 import com.ett.drv.model.booked.BookedOrderInfoModel;
 import com.ett.drv.model.booked.BookedWeekRecordModel;
@@ -28,25 +30,25 @@ public class BookedBiz extends BaseDrvBiz implements IBookedBiz {
 
 
 	
-	public BookedWeekRecordModel getWeekRecord(int weekNum) {
+	public BookedWeekRecordModel getWeekRecord(int year,int weekNum) {
 		// TODO Auto-generated method stub
 		
 		//int lIntWeek=DateTimeUtil.getWeekOfYear(pDate);
-		BookedWeekRecordModel lWeekReurn=new BookedWeekRecordModel();
-		lWeekReurn.setIWeekNum(weekNum);
+		String strYear=String.valueOf(year);
+		BookedWeekRecordModel weekRecordModel=null;
+		BookedWeekRecordModel q=new BookedWeekRecordModel();
+		q.setIWeekNum(weekNum);
+		q.setCWeekRange("%"+strYear+"%");
 		try {
-		List<BookedWeekRecordModel> lListWeek= weekRecordMapper.select(lWeekReurn);
+		List<BookedWeekRecordModel> lListWeek= weekRecordMapper.select(q);
 		if(lListWeek.size()>0){
-			lWeekReurn=lListWeek.get(0);
-		}else{
-			Calendar cal=Calendar.getInstance();
-			lWeekReurn.setYear(cal.get(Calendar.YEAR));
+			weekRecordModel=lListWeek.get(0);
 		}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		return lWeekReurn;
+		} 
+		return weekRecordModel;
 	}
 	
 	
@@ -62,12 +64,87 @@ public class BookedBiz extends BaseDrvBiz implements IBookedBiz {
 	}
 
 
-	public ResultModel tranExamPreasgin(BookedOrderInfoModel orderInfoModel) {
+	public ResultModel tranExamPreasgin(BookedOrderInfoModel orderInfoModel,BookedLimitModel limitModel) {
 		// TODO Auto-generated method stub
 		ResultModel reModel=new ResultModel();
+		Calendar cal=Calendar.getInstance();
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 		int re=0;
 		try {
+			Date dateKsrq=DateTimeUtil.parse(limitModel.getDateKsrq()) ;
+			Date dateNow=new Date();
+			int intAfterDays=-1;
+			int intKm=orderInfoModel.getIKm();
+			String carType=limitModel.getCCarType();
+			
+			BookedDayLimitModel q=new BookedDayLimitModel();
+			q.setIKm(intKm);
+			q.setCCartype("%"+carType+"%");
+			
+			List<BookedDayLimitModel> listDayLimit=this.bookedDayLimitMapper.select(q);
+			if(listDayLimit.size()>0){
+				intAfterDays=ObjectUtil.formatInt(listDayLimit.get(0).getIDays(),-1);
+			}
+			
+			String idCard=orderInfoModel.getCIdcard();
+			
+			cal.setTime(dateNow);
+			cal.add(Calendar.DATE, intAfterDays);
+			if(intAfterDays!=-1&& cal.after(dateKsrq)){
+				reModel.setAction(ResultModel.ACTION_ALERT);
+				reModel.setTitle("预约失败");
+				reModel.setMsg("只能预约{0}天之后的排班！",intAfterDays);
+				return reModel;
+			}
+			
+			BookedOrderInfoModel q1=new BookedOrderInfoModel();
+			q1.setIKm(intKm);
+			q1.setCIdcard(idCard);
+			List<BookedOrderInfoModel> listOrderInfoModels=this.orderInfoMapper.select(q1);
+			
+			if(listOrderInfoModels.size()>0 && intKm==1){
+				reModel.setAction(ResultModel.ACTION_ALERT);
+				reModel.setTitle("预约失败");
+				reModel.setMsg("科目一预约只能在本系统预约一次，补考预约请到业务大厅！");
+				return reModel;
+			}else if(listOrderInfoModels.size()==1){
+				BookedOrderInfoModel tempOrderInfoModel=listOrderInfoModels.get(0);
+				int checked=tempOrderInfoModel.getIChecked();
+				if(checked==0){
+					reModel.setAction(ResultModel.ACTION_ALERT);
+					reModel.setTitle("预约失败");
+					reModel.setMsg("科目二、三预约身份证明号码{0}已经预约过考试日期为：{1},处于待审核中！"
+					             ,idCard
+					             ,sdf.format(dateKsrq)
+					);
+					return reModel;
+				}
+
+			}else if(listOrderInfoModels.size()==2){
+				reModel.setAction(ResultModel.ACTION_ALERT);
+				reModel.setTitle("预约失败");
+				reModel.setMsg("科目二、三预约只能在本系统预约二次，补考预约请到业务大厅！");
+				return reModel;
+			}
+			
+			
+			if(limitModel.getIUsedNum()<limitModel.getITotal()){
+				limitModel.setIUsedNum(limitModel.getIUsedNum()+1);
+			}else if(limitModel.getITpusedNum()<limitModel.getITptotal()){
+				limitModel.setITpusedNum(limitModel.getITpusedNum()+1);
+				orderInfoModel.setCDlrCode("social");
+			}else {
+				reModel.setAction(ResultModel.ACTION_ALERT);
+				reModel.setTitle("预约失败");
+				reModel.setMsg("预约人满");
+				return reModel;
+			}
+			
+			orderInfoModel.setIChecked(0);
 			re+= this.orderInfoMapper.insertOne(orderInfoModel);
+			re+=this.limitMapper.updateOne(limitModel);
+			reModel.setTitle("操作成功");
+			reModel.setMsg("预约成功！");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -145,6 +222,7 @@ public class BookedBiz extends BaseDrvBiz implements IBookedBiz {
 		}
 		return reModel;
 	}
+	
 
 
 }
