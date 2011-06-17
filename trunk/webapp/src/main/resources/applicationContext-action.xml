@@ -129,7 +129,10 @@
  class="com.ett.drv.web.action.common.DatagridAction"
 >
 </bean>
-
+<bean id=" com.ett.drv.web.action.physical.HospitalMessageAction"  parent="baseAction"
+ class=" com.ett.drv.web.action.physical.HospitalMessageAction"
+>
+</bean>
 
 
 </beans>
