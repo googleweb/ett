@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@page import="com.ett.drv.model.admin.BusAllInfoModel"%>
+<%@page import="com.smartken.kia.core.model.impl.*"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -129,13 +130,17 @@ function searchform(){
 				体检日期起：
 				</td>
 					<td>
-					<input type="text" name="Regdate"/>
+					<input type="text" name="Regdate"
+					class="<%=EasyUiModel.ValidateBox.CLASS%>"   
+					/>
 				</td>
 				<td style="background-color: rgb(208,227,248);">
 				体检日期止：
 				</td>
 				<td>
-					<input type="text" name="Checkdate"/>
+					<input type="text" name="Checkdate"
+					class="<%=EasyUiModel.ValidateBox.CLASS%>"   
+					/>
 				</td>
 			</tr>
 				<tr>

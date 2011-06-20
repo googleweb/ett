@@ -58,7 +58,7 @@ function searchform(){
 
 				<tr>
 					<td>
-					<form id="searchform" method="post">
+					<form id="searchform" method="post" action="#" >
 						<table style="width: 100%">
 						
 							<tr>
@@ -96,7 +96,7 @@ function searchform(){
 							</tr>
 							<tr>
 								<td colspan="4" style="text-align: right;" >
-									<input type="button" value="提交" onclick="searchform()">
+									<input type="submit" value="提交" >
 								</td>
 							</tr>
 							
@@ -123,7 +123,7 @@ function searchform(){
 								</td>
 								<td>
 									&nbsp;
-									<input type="text" name="" value="${busAllInfoModel.C_IDCARDTYPE}"/>
+									<input type="text" name="" value="${busAllInfoModel.CIdcardtype}"/>
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									证件号码
@@ -137,7 +137,7 @@ function searchform(){
 								</td>
 								<td>
 									&nbsp;
-									<input type="text" name="${busAllInfoModel.C_DABH}" />
+									<input type="text" name="${busAllInfoModel.CDabh}" />
 								</td>
 								<td rowspan="4" style="border-bottom: none">
 									<img id="imgPerson" src=""
@@ -150,7 +150,7 @@ function searchform(){
 								</td>
 								<td>
 									&nbsp;
-									<input type="text" name="${busAllInfoModel.C_XM}" />
+									<input type="text" name="${busAllInfoModel.CXm}" />
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									性别
