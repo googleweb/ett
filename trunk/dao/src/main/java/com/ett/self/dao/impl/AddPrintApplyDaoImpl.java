@@ -10,6 +10,6 @@ import com.ett.self.print.model.AddPrintApplyObject;
  * @author austin
  *
  */
-public class AddPrintApplyDaoImpl extends GenericHibernateDaoImpl<AddPrintApplyObject> {
+public class AddPrintApplyDaoImpl  extends GenericHibernateDaoImpl<AddPrintApplyObject> {
 
 }

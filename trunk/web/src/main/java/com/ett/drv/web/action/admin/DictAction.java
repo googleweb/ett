@@ -8,14 +8,14 @@ import org.json.JSONObject;
 
 import com.ett.drv.model.admin.DictModel;
 import com.ett.drv.model.admin.DictTypeModel;
-import com.ett.drv.web.action.BaseAction;
+import com.ett.drv.web.action.BaseDrvAction;
 import com.opensymphony.xwork2.ModelDriven;
 import com.smartken.kia.core.model.impl.ResultModel;
 import com.smartken.kia.core.util.EasyUiUtil;
 import com.smartken.kia.core.util.ObjectUtil;
 import com.smartken.kia.core.util.StringUtil;
 
-public class DictAction extends BaseAction implements ModelDriven<DictModel>{
+public class DictAction extends BaseDrvAction implements ModelDriven<DictModel>{
 	private DictModel _dictModel;
 
 	@Override

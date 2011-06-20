@@ -24,9 +24,9 @@ import com.smartken.kia.core.enums.DataFormatEnum;
 import com.smartken.kia.core.enums.ResultEnum;
 import com.smartken.kia.core.pager.PageArrayList;
 import com.smartken.kia.core.pager.PageBounds;
-import com.ett.drv.web.action.BaseAction;
+import com.ett.drv.web.action.BaseDrvAction;
 
-public class MenuAction extends BaseAction 
+public class MenuAction extends BaseDrvAction 
  implements ModelDriven<MenuModel>{
 
 	private String menuid;

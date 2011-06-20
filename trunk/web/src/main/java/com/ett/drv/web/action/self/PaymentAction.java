@@ -14,7 +14,6 @@ import com.ett.drv.model.self.TransactDriverModel;
 import com.ett.drv.model.self.TransactVehicleModel;
 import com.ett.drv.model.self.VehFlowModel;
 import com.ett.drv.model.self.VehicleModel;
-import com.ett.drv.web.action.BaseAction;
 import com.smartken.kia.core.enums.ResultEnum;
 
 public class PaymentAction extends BaseSelfAction implements ModelDriven<BaseTransactModel>{

@@ -5,7 +5,7 @@ import java.util.List;
 import org.json.JSONObject;
 
 
-import com.ett.drv.web.action.BaseAction;
+import com.ett.drv.web.action.BaseDrvAction;
 import com.opensymphony.xwork2.ModelDriven;
 import com.smartken.kia.core.model.IFormatterModel;
 import com.smartken.kia.core.util.EasyUiUtil;
@@ -13,7 +13,7 @@ import com.smartken.kia.core.util.ObjectUtil;
 import com.ett.drv.model.admin.UserModel;
 import com.ett.drv.model.preinput.*;
 
-public class ListAction extends BaseAction implements ModelDriven<StudentApplyInfoModel>{
+public class ListAction extends BaseDrvAction implements ModelDriven<StudentApplyInfoModel>{
 	
 	private StudentApplyInfoModel studentApplyInfoModel;
 	
@@ -51,6 +51,11 @@ public class ListAction extends BaseAction implements ModelDriven<StudentApplyIn
 		List<IFormatterModel> list=this.preBiz.getModel(this.getPager());
 		JSONObject jsonDG=EasyUiUtil.toJsonDataGrid(list,this.preBiz.count());
 		this.writePlainText(jsonDG.toString());		
+	}
+
+	public void prepare() throws Exception {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

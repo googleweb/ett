@@ -7,7 +7,7 @@ import com.opensymphony.xwork2.ModelDriven;
 import com.ett.drv.model.self.BaseTransactModel;
 import com.ett.drv.model.self.TransactDriverModel;
 import com.ett.drv.model.self.TransactVehicleModel;
-import com.ett.drv.web.action.BaseAction;
+
 
 import com.smartken.kia.core.util.ObjectUtil;
 

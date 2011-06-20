@@ -9,12 +9,12 @@ import org.json.JSONObject;
 import com.ett.drv.biz.ISelfBiz;
 import com.ett.drv.model.self.DeviceModel;
 import com.ett.drv.model.self.TerminalModel;
-import com.ett.drv.web.action.BaseAction;
+import com.ett.drv.web.action.BaseDrvAction;
 import com.smartken.kia.core.enums.ResultEnum;
 import com.smartken.kia.core.util.EasyUiUtil;
 import com.smartken.kia.core.util.ObjectUtil;
 
-public class SysAction extends BaseAction {
+public class SysAction extends BaseDrvAction {
 
 	private ISelfBiz selfBiz;
 	

@@ -12,7 +12,7 @@
 <bean id="actionPreBiz" parent="basePreBiz"></bean>
 
 <bean id="baseAction"  abstract="true"
-   class="com.ett.drv.web.action.BaseAction"  
+   class="com.ett.drv.web.action.BaseDrvAction"  
 >
    <property name="adminBiz" ref="actionAdminBiz"></property>
    <property name="selfBiz" ref="actionSelfBiz"></property>

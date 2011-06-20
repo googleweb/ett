@@ -11,14 +11,14 @@ import com.opensymphony.xwork2.ModelDriven;
 import com.ett.drv.model.self.FeeLogModel;
 import com.ett.drv.model.self.FeeReconModel;
 import com.ett.drv.model.self.Km1PreasignRecordModel;
-import com.ett.drv.web.action.BaseAction;
+import com.ett.drv.web.action.BaseDrvAction;
 import com.smartken.kia.core.enums.ResultEnum;
 import com.smartken.kia.core.util.DateTimeUtil;
 import com.smartken.kia.core.util.EasyUiUtil;
 import com.smartken.kia.core.util.ObjectUtil;
 import com.smartken.kia.core.util.StringUtil;
 
-public class SelfTransactFeeAction extends BaseAction implements ModelDriven<FeeLogModel> {
+public class SelfTransactFeeAction extends BaseDrvAction implements ModelDriven<FeeLogModel> {
 
 	private FeeLogModel _feeLogModel;
 	

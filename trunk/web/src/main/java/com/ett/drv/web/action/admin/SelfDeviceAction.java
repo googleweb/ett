@@ -10,7 +10,7 @@ import com.ett.drv.model.booked.BookedDayLimitModel;
 import com.ett.drv.model.self.DeviceModel;
 import com.ett.drv.model.self.DeviceSnModel;
 import com.ett.drv.model.self.HardwareModel;
-import com.ett.drv.web.action.BaseAction;
+import com.ett.drv.web.action.BaseDrvAction;
 import com.opensymphony.xwork2.ModelDriven;
 import com.smartken.kia.core.enums.ResultEnum;
 import com.smartken.kia.core.model.impl.ResultModel;
@@ -19,7 +19,7 @@ import com.smartken.kia.core.util.EasyUiUtil;
 import com.smartken.kia.core.util.ObjectUtil;
 import com.smartken.kia.core.util.StringUtil;
 
-public class SelfDeviceAction extends BaseAction implements ModelDriven<HardwareModel>{
+public class SelfDeviceAction extends BaseDrvAction implements ModelDriven<HardwareModel>{
 
 	private HardwareModel hardware;
 	private DeviceModel device;

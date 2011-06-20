@@ -5,7 +5,7 @@ import java.util.Iterator;
 
 
 import com.ett.drv.biz.IAdminBiz;
-import com.ett.drv.web.action.BaseAction;
+import com.ett.drv.web.action.BaseDrvAction;
 import com.smartken.kia.core.model.IBaseCrudBiz;
 import com.smartken.kia.core.model.IFormatterModel;
 import com.smartken.kia.core.model.IMapper;
@@ -14,7 +14,7 @@ import com.smartken.kia.core.model.impl.ResultModel;
 import com.smartken.kia.core.util.ObjectUtil;
 import com.smartken.kia.core.util.StringUtil;
 
-public class DatagridAction extends BaseAction {
+public class DatagridAction extends BaseDrvAction {
 
 	private Class modelClass;
 	private String ids;

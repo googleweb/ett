@@ -8,13 +8,13 @@ import org.json.JSONArray;
 import com.ett.drv.model.admin.DictModel;
 import com.ett.drv.model.booked.CarOwnerChangeModel;
 import com.ett.drv.model.booked.PersonChangeModel;
-import com.ett.drv.web.action.BaseAction;
+import com.ett.drv.web.action.BaseDrvAction;
 import com.smartken.kia.core.enums.ResultEnum;
 import com.smartken.kia.core.model.impl.ResultModel;
 import com.smartken.kia.core.util.ObjectUtil;
 
 
-public class InfoChangeAction extends BaseAction {
+public class InfoChangeAction extends BaseDrvAction {
 
 	private PersonChangeModel personChange;
 	private CarOwnerChangeModel cardOwnerChange;

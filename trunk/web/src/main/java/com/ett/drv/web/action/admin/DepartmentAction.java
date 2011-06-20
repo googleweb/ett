@@ -7,7 +7,7 @@ import org.json.JSONObject;
 import com.ett.drv.model.admin.DepartmentModel;
 import com.ett.drv.model.admin.DictModel;
 import com.ett.drv.model.admin.UserModel;
-import com.ett.drv.web.action.BaseAction;
+import com.ett.drv.web.action.BaseDrvAction;
 import com.opensymphony.xwork2.ModelDriven;
 import com.smartken.kia.core.model.IFormatterModel;
 import com.smartken.kia.core.model.impl.ResultModel;
@@ -15,7 +15,7 @@ import com.smartken.kia.core.util.EasyUiUtil;
 import com.smartken.kia.core.util.ObjectUtil;
 import com.smartken.kia.core.util.StringUtil;
 
-public class DepartmentAction extends BaseAction implements ModelDriven<DepartmentModel>{
+public class DepartmentAction extends BaseDrvAction implements ModelDriven<DepartmentModel>{
 	/**
 	 * 
 	 */
