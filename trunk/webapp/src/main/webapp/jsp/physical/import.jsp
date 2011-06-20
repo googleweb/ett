@@ -137,7 +137,7 @@ function searchform(){
 								</td>
 								<td>
 									&nbsp;
-									<input type="text" name="${busAllInfoModel.CDabh}" />
+									<input type="text" name="" value="${busAllInfoModel.CDabh}" />
 								</td>
 								<td rowspan="4" style="border-bottom: none">
 									<img id="imgPerson" src=""
@@ -150,21 +150,21 @@ function searchform(){
 								</td>
 								<td>
 									&nbsp;
-									<input type="text" name="${busAllInfoModel.CXm}" />
+									<input type="text" name="" value="${busAllInfoModel.CXm}" />
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									性别
 								</td>
 								<td>
 									&nbsp;
-									<input type="text" name="" />
+									<input type="text" name="" value="${busAllInfoModel.CSex}" />
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									出生日期
 								</td>
 								<td>
 									&nbsp;
-									<input type="text" name="" />
+									<input type="text" name="" value="${busAllInfoModel.CBirthday}" />
 								</td>
 							</tr>
 							<tr>
@@ -173,21 +173,21 @@ function searchform(){
 								</td>
 								<td>
 									&nbsp;
-									<input type="text" name="" />
+									<input type="text" name="" value="${busAllInfoModel.CNation}" />
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									准驾车型
 								</td>
 								<td>
 									&nbsp;
-									<input type="text" name="" />
+									<input type="text" name="" value="${busAllInfoModel.CCarType}" />
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									体检日期
 								</td>
 								<td>
 									&nbsp;
-									<input type="text" name="" />
+									<input type="text" name="" value="${busAllInfoModel.Regdate}" />
 								</td>
 							</tr>
 							<tr>
@@ -195,7 +195,7 @@ function searchform(){
 									登记住处
 								</td>
 								<td colspan="2">
-									<input type="text" name="">    <input type="text" name="">
+									<input type="text" name="" value="${busAllInfoModel.CRegareaCode}">    <input type="text" name="" value="${busAllInfoModel.CRegarea}" >
 								</td>
 							</tr>
 							<tr>
@@ -203,13 +203,13 @@ function searchform(){
 									邮政编码
 								</td>
 								<td>
-									<input type="text" name="">
+									<input type="text" name="" value="${busAllInfoModel.CPostcode}" >
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									联系电话
 								</td>
 								<td>
-									<input type="text" name="">
+									<input type="text" name="" value="${busAllInfoModel.CPhone}" >
 								</td>
 							</tr>
 							<tr>
@@ -231,16 +231,16 @@ function searchform(){
 									身高(cm)
 								</td>
 								<td>
-									<input name="" type="text" />
+									<input name="" type="text" value="${busAllInfoModel.CHeight}" />
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									视力
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									左
-									<input name="" type="text" />
+									<input name="" type="text" value="${busAllInfoModel.CZsl}" />
 									右
-									<input name="" type="text" />
+									<input name="" type="text" value="${busAllInfoModel.CYsl}" />
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									辨色力
@@ -333,13 +333,13 @@ function searchform(){
 									体检日期
 								</td>
 								<td colspan="2">
-									<input name="" type="text" id="" />
+									<input name="" type="text" id=""  value="" />
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									体检医院
 								</td>
 								<td colspan="4">
-									<input name="" type="text" value="" />
+									<input name="" type="text" value="" value="${busAllInfoModel.CHospital}" />
 								</td>
 							</tr>
 							<tr>
