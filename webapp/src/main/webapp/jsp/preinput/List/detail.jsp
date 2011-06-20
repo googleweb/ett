@@ -38,6 +38,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     width:80%;
     }
     
+    td,th{
+      padding: 0px auto 0px auto;
+    }
+    
     </style>
     
   
@@ -47,18 +51,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
   
   
- 
 
-
-
-<p><h3>驾驶人详细信息:<h3/></p>
-<table  cellspacing="0" cellpadding="1" style="width:100%;table-layout:auto;" class="editTable" >
+<table  cellspacing="0" cellpadding="0" style="width:100%;table-layout:auto;font-size: 0.85em;" class="editTable" >
 <tbody>
 
 <tr >
 <td style="width: 120px">证件名称</td>
 <td style="width: 120px">
-<select name="cardname">
+<select name="cardname" class="<%=EasyUiModel.ComboBox.CLASS %>">
 <option value="volvo">A:居民身份证</option>
 <option value="saab">B:军官证</option>
 <option value="fiat" selected="selected">C:士兵证</option>
@@ -68,16 +68,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </select>
 </td>
 <td style="width: 120px">证件号码</td>
-<td style="width: 120px">
+<td style="width: 250px">
 <input type="text" name="Sfzmhm" value="${Sfzmhm}"/>
 </td>
-<td style="width: 120px">国籍</td>
-<td style="width: 120px">
-<select name="country">
-<option value="volvo">Volvo</option>
-<option value="saab">Saab</option>
-<option value="fiat" selected="selected">Fiat</option>
-<option value="audi">Audi</option>
+<td style="width: 100px">国籍</td>
+<td style="width: 150px">
+<select name="CGj" class="<%=EasyUiModel.ComboBox.CLASS %>">
+<option value="1">中国</option>
+<option value="2">美国</option>
+<option value="3" selected="selected">沙特阿拉伯</option>
+<option value="4">阿富汗</option>
 </select>
 </td>
 <td colspan="2" rowspan="6">
@@ -87,30 +87,30 @@ haha
 <tr >
 <td >姓名</td>
 <td >
-<input type="text" name="cardNo"/>
+<input type="text" name="CXm" value="${CXm}"/>
 </td>
 <td >性别</td>
 <td >
-<select name="cardname">
-<option value="volvo">男</option>
-<option value="saab" selected="selected">女</option>
+<select name="IXb" class="<%=EasyUiModel.ComboBox.CLASS %>" style="width:50px">
+<option value="1">男</option>
+<option value="2" selected="selected">女</option>
 
 </select>
 </td>
 <td>出生年月</td>
 <td>
-<input type="text" name="cardNo"/>
+<input type="text" name="CCsrq" value="${CCsrq}"/>
 </td>
 </tr>
 <tr>
 </td>
 <td>登记住所</td>
 <td>
-<select name="country">
-<option value="volvo">Volvo</option>
-<option value="saab">Saab</option>
-<option value="fiat" selected="selected">Fiat</option>
-<option value="audi">Audi</option>
+<select name="CDjzsxzqh" class="<%=EasyUiModel.ComboBox.CLASS %>">
+<option value="1">广州</option>
+<option value="2">深圳</option>
+<option value="3" selected="selected">山东</option>
+<option value="4">北京</option>
 </select>
 </td>
 <td colspan="4"><a>查询</a><input type="text" style="width: 80%" /></td>
@@ -119,11 +119,11 @@ haha
 </td>
 <td>联系住所</td>
 <td>
-<select name="country">
-<option value="volvo">Volvo</option>
-<option value="saab">Saab</option>
-<option value="fiat" selected="selected">Fiat</option>
-<option value="audi">Audi</option>
+<select name="CLxzsxzqh" class="<%=EasyUiModel.ComboBox.CLASS %>">
+<option value="1">广州</option>
+<option value="2">北京</option>
+<option value="3" selected="selected">上海</option>
+<option value="4">深圳</option>
 </select>
 </td>
 <td colspan="4"><input type="text" style="width: 100%"/></td>
@@ -132,74 +132,81 @@ haha
 
 <td>邮政编码</td>
 <td>
-<input type="text"/>
+<input type="text" name="CLxzsyzbm"/ value="${CLxzsyzbm }">
 </td>
 <td>联系电话</td>
-<td ><input type="text"/></td>
+<td ><input type="text" name="CLxdh" value="${CLxdh }"/></td>
 <td>行政区划</td>
 <td >
-<select name="country">
-<option value="volvo">Volvo</option>
-<option value="saab">Saab</option>
-<option value="fiat" selected="selected">Fiat</option>
-<option value="audi">Audi</option>
+<select name="CXzqh" class="<%=EasyUiModel.ComboBox.CLASS %>">
+<option value="1">北京</option>
+<option value="2">上海</option>
+<option value="3" selected="selected">深圳</option>
+<option value="4">广州</option>
 </select>
 </td>
 </tr>
 <tr >
 <td >申请车型</td>
 <td >
-<select name="cardname">
+<select name="CZkcx" class="<%=EasyUiModel.ComboBox.CLASS %>">
 <option value="volvo">小车</option>
 <option value="saab" selected="selected">客车</option>
 </select>
 </td>
 <td >驾驶人来源</td>
 <td >
-<select name="cardname">
-<option value="volvo">本地</option>
-<option value="saab" selected="selected">外地</option>
+<select name="CLy" class="<%=EasyUiModel.ComboBox.CLASS %>">
+<option value="1">本地</option>
+<option value="2" selected="selected">外地</option>
 </select>
 </td>
 <td>暂住证号</td>
 <td>
-<input type="text" name="cardNo"/>
+<input type="text" name="CZzzm" value="${CZzzm}"/>
 </td>
 </tr>
 <tr >
 <td>准考证编号</td>
 <td>
-&nbsp;
+${CZkzmbh}
 </td>
 <td>驾校名称</td>
 <td colspan="5">
-&nbsp;
+${CJxmc}
 </td>
 </tr>
 <tr >
 <td>身高</td>
 <td>
-<input type="text" style="width: 50%">CM
+<input type="text" style="width: 50%" name="CSg" value="${CSg}">CM
 </td>
 <td>视力</td>
 <td>
 左
-<input type="text" style="width: 20%">
+<input type="text" style="width: 50px" class="<%=EasyUiModel.NumberSpinner.CLASS%>" 
+  <%=EasyUiModel.NumberBox.Properties.PRECISION(1) %>
+  increment="0.1"
+  <%=EasyUiModel.NumberBox.Properties.MIN(0) %>
+name="IZsl" value="${IZsl}">
 右
-<input type="text" style="width: 20%">
+<input type="text" style="width: 50px" class="<%=EasyUiModel.NumberSpinner.CLASS%>" 
+  <%=EasyUiModel.NumberBox.Properties.PRECISION(1) %>
+  <%=EasyUiModel.Spinner.Properties.INCREMENT(1) %>
+  <%=EasyUiModel.NumberBox.Properties.MIN(0) %> name="IYsl" value="${IYsl}">
 </td>
 <td>辨色力</td>
 <td>
-<select name="cardname">
-<option value="volvo">合格</option>
-<option value="saab" selected="selected">不合格</option>
+<select name="IBsl" class="<%=EasyUiModel.ComboBox.CLASS %>">
+<option value="1">合格</option>
+<option value="2" selected="selected">不合格</option>
 </select>
 </td>
 <td style="width: 120px">听力</td>
 <td>
-<select name="cardname">
-<option value="volvo">合格</option>
-<option value="saab" selected="selected">不合格</option>
+<select name="ITl" class="<%=EasyUiModel.ComboBox.CLASS %>">
+<option value="1">合格</option>
+<option value="2" selected="selected">不合格</option>
 </select>
 </td>
 </tr>
@@ -208,36 +215,36 @@ haha
 上肢
 </td>
 <td>
-<select name="cardname">
-<option value="volvo">合格</option>
-<option value="saab" selected="selected">不合格</option>
+<select name="ISz" class="<%=EasyUiModel.ComboBox.CLASS %>">
+<option value="1">合格</option>
+<option value="2" selected="selected">不合格</option>
 </select>
 </td>
 <td>
 左下肢
 </td>
 <td>
-<select name="cardname">
-<option value="volvo">合格</option>
-<option value="saab" selected="selected">不合格</option>
+<select name="IZxz" class="<%=EasyUiModel.ComboBox.CLASS %>">
+<option value="1">合格</option>
+<option value="2" selected="selected">不合格</option>
 </select>
 </td>
 <td>
 右下肢
 </td>
 <td>
-<select name="cardname">
-<option value="volvo">合格</option>
-<option value="saab" selected="selected">不合格</option>
+<select name="IYxz" class="<%=EasyUiModel.ComboBox.CLASS %>">
+<option value="1">合格</option>
+<option value="2" selected="selected">不合格</option>
 </select>
 </td>
 <td>
 躯干颈部
 </td>
 <td>
-<select name="cardname">
-<option value="volvo">合格</option>
-<option value="saab" selected="selected">不合格</option>
+<select name="IQgjb" class="<%=EasyUiModel.ComboBox.CLASS %>">
+<option value="1">合格</option>
+<option value="2" selected="selected">不合格</option>
 </select>
 </td>
 </tr>
@@ -246,9 +253,9 @@ haha
 体检医院
 </td>
 <td colspan="2">
-<select name="cardname">
-<option value="volvo">湛江</option>
-<option value="saab" selected="selected">深圳医院</option>
+<select name="CTjyymc">
+<option value="1">湛江</option>
+<option value="2" selected="selected">深圳医院</option>
 </select>
 </td>
 <td colspan="3" >
@@ -258,7 +265,7 @@ haha
 体检日期
 </td>
 <td  style="width: 120px">
-<input class="<%=EasyUiModel.DateBox.CLASS %>" style="width: 100%"/>
+<input class="<%=EasyUiModel.DateBox.CLASS %>" style="width: 100%" name="CTjrq"/>
 </td>
 </tr>
 <tr>

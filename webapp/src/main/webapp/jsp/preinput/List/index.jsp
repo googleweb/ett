@@ -36,8 +36,7 @@ function showdialog(id){
 	var href='<%=basePath%>'+"preinput/List/to/detail.action?id="+id;
     $("#edit").dialog({
   			title:"详细信息:",
-			height:450,
-			width:850,
+			fit:true,
 			onClose:function(){ $('#test').datagrid('reload'); },
 	    	modal:true,
 			onOpen:function(){$(this).kiaIframe(href);}} 
@@ -93,7 +92,7 @@ function clickAddHandler(){
   		$("#edit").dialog({
   			title:"新增",
 			height:450,
-			width:850,
+			width:900,
 			onClose:function(){ $('#test').datagrid('reload'); },
 	    	modal:true,
 			onOpen:function(){$(this).kiaIframe(href);}} 
