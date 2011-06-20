@@ -38,9 +38,10 @@ $(document).ready(function(){
 	$("#test").datagrid({fit:true,
 	columns:[ 
 	[ 
+		
 	{field:"Id",checkbox:true},
+	{field:"<%=BusAllInfoModel.F.CXm%>",title:"姓名",width:150},
 	{field:"<%=BusAllInfoModel.F.CBirthday%>",title:"出生日期",width:150},
-	{field:"<%=BusAllInfoModel.F.CBsl%>",title:"辨色力",width:150},
 	{field:"<%=BusAllInfoModel.F.CCarType%>",title:"车辆类型",width:150},
 	{field:"<%=BusAllInfoModel.F.CDabh%>",title:"档案编号",width:150},
 	{field:"<%=BusAllInfoModel.F.Checkdate%>",title:"审核日期",width:150},
@@ -60,7 +61,7 @@ $(document).ready(function(){
 	{field:"<%=BusAllInfoModel.F.CSex%>",title:"性别",width:150},
 	{field:"<%=BusAllInfoModel.F.CSz%>",title:"身高",width:150},
 	{field:"<%=BusAllInfoModel.F.CTl%>",title:"听力",width:150},
-	{field:"<%=BusAllInfoModel.F.CXm%>",title:"姓名",width:150},
+	{field:"<%=BusAllInfoModel.F.CBsl%>",title:"辨色力",width:150},
 	{field:"<%=BusAllInfoModel.F.CYsl%>",title:"右视力",width:150},
 	{field:"<%=BusAllInfoModel.F.CYxz%>",title:"左视力",width:150},
 	{field:"<%=BusAllInfoModel.F.CZsl%>",title:"左下肢",width:150},
@@ -81,7 +82,9 @@ function searchform(){
 	  			var json=Kia.util.strToJson(str); 
 	   			$("#test").datagrid("loadData",json); 
 	   			}
-	);
+	
+	});
+	
 }		
 </script>
 	</head>
@@ -146,19 +149,8 @@ function searchform(){
 					<input type="checkbox" name=""/>包含受理信息
 				</td>
 				<td style="background-color: rgb(208,227,248);">
-					<input type="button" value="查询" onclick="searchform()"/>
+					<input type="button" value="查询" onclick="searchform()" />
 					<input type="button" value="打印体检信息"/>
-				</td>
-			</tr>
-				<tr>
-				<td colspan="4" style="background-color: rgb(208,227,248);">
-					当前页1/1,共0条记录 &nbsp;&nbsp;
-					<a href="">首页</a>
-					|<a href="">尾页</a>
-					|<a href="">上一页</a>
-					|<a href="">下一页</a>
-					<input type="text" name="">
-					<a href="">跳到</a>
 				</td>
 			</tr>
 		</table>

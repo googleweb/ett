@@ -34,11 +34,22 @@ td {
 }
 </style>
 		<script type="text/javascript">
+function searchform(){
+	$("#searchform").form("submit",{
+	  	url:'<%=basePath%>'+"physical/HospitalMessage/do/search.action",
+	   	success:function(str){
+		  		alert(str);
+	   			}
+	
+	});
+}
 </script>
 	</head>
 	<body>
 		<div style="width: height :">
+		
 			<table style="width: 100%" border="1">
+			
 				<tr>
 					<td style="background-color: rgb(208,227,248);">
 						体检录入
@@ -47,21 +58,23 @@ td {
 
 				<tr>
 					<td>
+					<form id="searchform" method="post">
 						<table style="width: 100%">
+						
 							<tr>
 								<td style="background-color: rgb(208,227,248);">
 									证件名称：
 								</td>
 								<td>
 									&nbsp;
-									<input type="text" name="" />
+									<input type="text" name="C_IDCARDTYPE"  />
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									证件号码
 								</td>
 								<td>
 									&nbsp;
-									<input type="text" name="" />
+									<input type="text" name="CIdcard" />
 								</td>
 							</tr>
 							<tr>
@@ -71,7 +84,7 @@ td {
 								<td>
 									&nbsp;
 									<input type="text" value="4404">
-									<input type="text" name="" />
+									<input type="text" name="C_DABH" />
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									业务类型：
@@ -83,13 +96,17 @@ td {
 							</tr>
 							<tr>
 								<td colspan="4" style="text-align: right;" >
-									<input type="button" value="提交">
+									<input type="button" value="提交" onclick="searchform()">
 								</td>
 							</tr>
-
+							
 						</table>
+					
+					</form>
 					</td>
+				
 				</tr>
+				
 				<tr>
 					<td style="background-color: rgb(208,227,248);">
 						体检详细信息
@@ -106,21 +123,21 @@ td {
 								</td>
 								<td>
 									&nbsp;
-									<input type="text" name="" />
+									<input type="text" name="" value="${busAllInfoModel.C_IDCARDTYPE}"/>
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									证件号码
 								</td>
 								<td>
 									&nbsp;
-									<input type="text" name="" />
+									<input type="text" name="" value="${busAllInfoModel.CIdcard}"/>
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									档案编号
 								</td>
 								<td>
 									&nbsp;
-									<input type="text" name="" />
+									<input type="text" name="${busAllInfoModel.C_DABH}" />
 								</td>
 								<td rowspan="4" style="border-bottom: none">
 									<img id="imgPerson" src=""
@@ -133,7 +150,7 @@ td {
 								</td>
 								<td>
 									&nbsp;
-									<input type="text" name="" />
+									<input type="text" name="${busAllInfoModel.C_XM}" />
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									性别

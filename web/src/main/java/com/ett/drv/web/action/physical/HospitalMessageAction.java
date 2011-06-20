@@ -33,6 +33,7 @@ public class HospitalMessageAction extends BaseDrvAction implements ModelDriven<
 		return  "jsp";
 	}
 	public BusAllInfoModel getModel() {
+		busAllInfoModel=new BusAllInfoModel();
 		return busAllInfoModel;
 	}
 	/**
