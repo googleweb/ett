@@ -26,6 +26,7 @@ import com.opensymphony.xwork2.Preparable;
 import com.opensymphony.xwork2.interceptor.Interceptor;
 import com.ett.drv.biz.IAdminBiz;
 import com.ett.drv.biz.IBookedBiz;
+import com.ett.drv.biz.IHospitalBiz;
 import com.ett.drv.biz.IPreBiz;
 import com.ett.drv.biz.ISelfBiz;
 import com.ett.drv.model.admin.UserModel;
@@ -53,8 +54,13 @@ implements Preparable
     protected IAdminBiz adminBiz;
     protected IBookedBiz bookedBiz;
     protected IPreBiz preBiz;
+    protected IHospitalBiz hospitalBiz;
     
     
+
+	public void setHospitalBiz(IHospitalBiz hospitalBiz) {
+		this.hospitalBiz = hospitalBiz;
+	}
 
 	public abstract void clear();
 	

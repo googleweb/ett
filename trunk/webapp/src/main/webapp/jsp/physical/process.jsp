@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@page import="com.smartken.kia.core.util.EasyUiUtil"%>
+<%@page import="com.smartken.kia.core.model.impl.*"%>
+<%@page import="com.ett.model.*" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -34,6 +37,15 @@ td {
 }
 </style>
 		<script type="text/javascript">
+function searchform(){
+	$("#searchform").form("submit",{
+	  	url:'<%=basePath%>'+"physical/HospitalMessage/do/add.action",
+	   	success:function(str){
+		  		alert(str);
+	   			}
+	
+	});
+}
 </script>
 	</head>
 	<body>
@@ -98,6 +110,7 @@ td {
 				</tr>
 				<tr>
 					<td>
+					<form id="searchform" method="post">
 						<table style="width: 100%" class="" cellspacing="1">
 
 							<tr>
@@ -106,21 +119,21 @@ td {
 								</td>
 								<td>
 									&nbsp;
-									<input type="text" name="" />
+									<input type="text" name="CIdcardtype" />
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									证件号码
 								</td>
 								<td>
 									&nbsp;
-									<input type="text" name="" />
+									<input type="text" name="CIdcard" />
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									档案编号
 								</td>
 								<td>
 									&nbsp;
-									<input type="text" name="" />
+									<input type="text" name="CDabh" />
 								</td>
 								<td rowspan="4" style="border-bottom: none">
 									<img id="imgPerson" src=""
@@ -133,21 +146,23 @@ td {
 								</td>
 								<td>
 									&nbsp;
-									<input type="text" name="" />
+									<input type="text" name="CXm" />
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									性别
 								</td>
 								<td>
 									&nbsp;
-									<input type="text" name="" />
+									<input type="text" name="CSex" />
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									出生日期
 								</td>
 								<td>
 									&nbsp;
-									<input type="text" name="" />
+									<input type="text" name="CBirthday" 
+									 class="<%=EasyUiModel.ValidateBox.CLASS%>"    
+									/>
 								</td>
 							</tr>
 							<tr>
@@ -156,7 +171,7 @@ td {
 								</td>
 								<td>
 									&nbsp;
-									<input type="text" name="" />
+									<input type="text" name="CNation" />
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									准驾车型
@@ -170,7 +185,9 @@ td {
 								</td>
 								<td>
 									&nbsp;
-									<input type="text" name="" />
+									<input type="text" name="Checkdate" 
+									class="<%=EasyUiModel.ValidateBox.CLASS%>"   
+									/>
 								</td>
 							</tr>
 							<tr>
@@ -178,7 +195,7 @@ td {
 									登记住处
 								</td>
 								<td colspan="2">
-									<input type="text" name="">    <input type="text" name="">
+									<input type="text" name="">    <input type="text" name="CRegareaCode">
 								</td>
 							</tr>
 							<tr>
@@ -186,13 +203,13 @@ td {
 									邮政编码
 								</td>
 								<td>
-									<input type="text" name="">
+									<input type="text" name="CPostcode">
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									联系电话
 								</td>
 								<td>
-									<input type="text" name="">
+									<input type="text" name="CPhone">
 								</td>
 							</tr>
 							<tr>
@@ -202,8 +219,12 @@ td {
 								<td>
 									<input type="text" name="">
 								</td>
+								<td>
+								<input type="button" value="提交"  onclick="searchform()" />
+								</td>
 							</tr>
 						</table>
+					</form>	
 					</td>
 				</tr>
 				<tr>

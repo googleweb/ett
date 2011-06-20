@@ -17,7 +17,13 @@ public class HospitalMessageAction extends BaseDrvAction implements ModelDriven<
 	public String to_process(){
 		return  "jsp";
 	}
+	@SuppressWarnings("unchecked")
 	public String to_import() {
+		if(isPost()){
+			this.hospitalBiz.loadCrudMapper(BusAllInfoModel.class);
+			List list=this.hospitalBiz.getModel(busAllInfoModel);
+			this.getRequest().setAttribute("busAllInfoModel", list.get(0));
+		}
 		return "jsp";
 	}
 	public String to_checkRecord() {
@@ -40,17 +46,14 @@ public class HospitalMessageAction extends BaseDrvAction implements ModelDriven<
 	 * 增加体检受理
 	 */
 	public void do_add(){
-	//	this.hospitalBiz.loadCrudMapper(BusAllInfoModel.class);
-	//	this.hospitalBiz.modifyOrAddModel(busAllInfoModel);
+		this.hospitalBiz.loadCrudMapper(BusAllInfoModel.class);
+		this.hospitalBiz.modifyOrAddModel(busAllInfoModel);
 	}
 	/**
 	 * 根据证件号查询
 	 */
-	@SuppressWarnings("unchecked")
 	public void do_search(){
-	//	this.hospitalBiz.loadCrudMapper(BusAllInfoModel.class);
-	//	List list=this.hospitalBiz.getModel(busAllInfoModel);
-	//	this.getRequest().setAttribute("busAllInfoModel", list.get(0));
+
 		
 	}
 	/**
@@ -58,10 +61,10 @@ public class HospitalMessageAction extends BaseDrvAction implements ModelDriven<
 	 */
 	@SuppressWarnings("unchecked")
 	public void do_bizsearch(){
-	//	this.hospitalBiz.loadCrudMapper(BusAllInfoModel.class);
-	//	List list=this.hospitalBiz.getModel(busAllInfoModel);
-	//	JSONObject json=EasyUiUtil.toJsonDataGrid(list,this.adminBiz.count());
-	//	this.writePlainText(json.toString());
+		this.hospitalBiz.loadCrudMapper(BusAllInfoModel.class);
+		List list=this.hospitalBiz.getModel(busAllInfoModel);
+		JSONObject json=EasyUiUtil.toJsonDataGrid(list,this.adminBiz.count());
+		this.writePlainText(json.toString());
 	}
 	public void clear() {
 	}
