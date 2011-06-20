@@ -131,11 +131,12 @@ $.extend($.fn.validatebox.defaults.rules, {
  
  $.fn.window.defaults.shadow=false;
 
- $.fn.form.defaults.success=function(str){str.messager(null);}
- $.fn.form.defaults.onSubmit=function(){ return $(this).form("validate"); }
+ $.fn.form.defaults.success=function(str){str.messager(null);};
+ $.fn.form.defaults.onSubmit=function(){ return $(this).form("validate"); };
  $.fn.form.defaults.onLoadError=function(){
 	 $.messager.alert("Error","Can't access to the remote site.","error");
- }
+ };
+ 
  
   $.fn.datagrid.defaults.fit=true;
  $.fn.datagrid.defaults.pagination=true;
