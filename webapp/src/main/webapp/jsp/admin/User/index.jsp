@@ -64,7 +64,7 @@ function searchUser(){
 	  			var json=Kia.util.strToJson(str); 
 	   			$("#test").datagrid("loadData",json); 
 	   			}
-  		}
+  	}
   );
 }
 

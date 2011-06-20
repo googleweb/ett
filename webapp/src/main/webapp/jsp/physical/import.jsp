@@ -24,8 +24,8 @@
 		<jsp:include page="/js/index.jsp"></jsp:include>
 		<style type="text/css">
 table {
+	border-style: solid;
 	border-width: 1px;
-	border-color: rgb(208,227,248);
 }
 
 td {
@@ -207,13 +207,134 @@ td {
 					</td>
 				</tr>
 				<tr>
+					<td>
+						<table style="width:100% ">
+							<tr>
+								<td style="background-color: rgb(208,227,248);">
+									身高(cm)
+								</td>
+								<td>
+									<input name="" type="text" />
+								</td>
+								<td style="background-color: rgb(208,227,248);">
+									视力
+								</td>
+								<td style="background-color: rgb(208,227,248);">
+									左
+									<input name="" type="text" />
+									右
+									<input name="" type="text" />
+								</td>
+								<td style="background-color: rgb(208,227,248);">
+									辨色力
+								</td>
+								<td>
+									<select name="" id="">
+										<option value="1">
+											合格
+										</option>
+										<option value="0">
+											不合 格
+										</option>
+									</select>
+								</td>
+								<td style="background-color: rgb(208,227,248);">
+									听力
+								</td>
+								<td>
+									<select name="" id="">
+										<option value="1">
+											合格
+										</option>
+										<option value="0">
+											不合 格
+										</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td style="background-color: rgb(208,227,248);">
+									上肢
+								</td>
+								<td>
+									<select name="" id="">
+										<option value="1">
+											合格
+										</option>
+										<option value="0">
+											不合 格
+										</option>
+
+									</select>
+								</td>
+								<td>
+									左下肢
+								</td>
+								<td>
+									<select name="" id="">
+										<option value="1">
+											合格
+										</option>
+										<option value="0">
+											不合 格
+										</option>
+
+									</select>
+								</td>
+								<td style="background-color: rgb(208,227,248);">
+									右下肢
+								</td>
+								<td>
+									<select name="" id="">
+										<option value="1">
+											合格
+										</option>
+										<option value="0">
+											不合 格
+										</option>
+
+									</select>
+								</td>
+								<td style="background-color: rgb(208,227,248);">
+									躯干颈部
+								</td>
+								<td>
+									<select name="" id="">
+										<option value="1">
+											合格
+										</option>
+										<option value="0">
+											不合 格
+										</option>
+
+									</select>
+								</td>
+							</tr>
+
+							<tr class="">
+								<td style="background-color: rgb(208,227,248);">
+									体检日期
+								</td>
+								<td colspan="2">
+									<input name="" type="text" id="" />
+								</td>
+								<td style="background-color: rgb(208,227,248);">
+									体检医院
+								</td>
+								<td colspan="4">
+									<input name="" type="text" value="" />
+								</td>
+							</tr>
+							<tr>
 								<td colspan="8" style="text-align: right">
 									&nbsp;
 									<input type="button" name="" value="打印" />
 									&nbsp;
 									<input type="button" name="" value="退办" />
 								</td>
-					
+							</tr>
+						</table>
+					</td>
 				</tr>
 
 			</table>

@@ -30,7 +30,7 @@ table {
 }
 
 td {
-	border-style: solid;
+	
 	border-width: 1px;
 }
 </style>
