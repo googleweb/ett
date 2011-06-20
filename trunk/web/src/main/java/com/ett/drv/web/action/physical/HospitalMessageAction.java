@@ -5,11 +5,11 @@ import java.util.List;
 import org.json.JSONObject;
 
 import com.ett.drv.model.admin.BusAllInfoModel;
-import com.ett.drv.web.action.BaseAction;
+import com.ett.drv.web.action.BaseDrvAction;
 import com.opensymphony.xwork2.ModelDriven;
 import com.smartken.kia.core.util.EasyUiUtil;
 
-public class HospitalMessageAction extends BaseAction implements ModelDriven<BusAllInfoModel>{
+public class HospitalMessageAction extends BaseDrvAction implements ModelDriven<BusAllInfoModel>{
 
 	private static final long serialVersionUID = 1L;
 	private BusAllInfoModel busAllInfoModel;
@@ -39,17 +39,17 @@ public class HospitalMessageAction extends BaseAction implements ModelDriven<Bus
 	 * 增加体检受理
 	 */
 	public void do_add(){
-		this.hospitalBiz.loadCrudMapper(BusAllInfoModel.class);
-		this.hospitalBiz.modifyOrAddModel(busAllInfoModel);
+	//	this.hospitalBiz.loadCrudMapper(BusAllInfoModel.class);
+	//	this.hospitalBiz.modifyOrAddModel(busAllInfoModel);
 	}
 	/**
 	 * 根据证件号查询
 	 */
 	@SuppressWarnings("unchecked")
 	public void do_search(){
-		this.hospitalBiz.loadCrudMapper(BusAllInfoModel.class);
-		List list=this.hospitalBiz.getModel(busAllInfoModel);
-		this.getRequest().setAttribute("busAllInfoModel", list.get(0));
+	//	this.hospitalBiz.loadCrudMapper(BusAllInfoModel.class);
+	//	List list=this.hospitalBiz.getModel(busAllInfoModel);
+	//	this.getRequest().setAttribute("busAllInfoModel", list.get(0));
 		
 	}
 	/**
@@ -57,10 +57,10 @@ public class HospitalMessageAction extends BaseAction implements ModelDriven<Bus
 	 */
 	@SuppressWarnings("unchecked")
 	public void do_bizsearch(){
-		this.hospitalBiz.loadCrudMapper(BusAllInfoModel.class);
-		List list=this.hospitalBiz.getModel(busAllInfoModel);
-		JSONObject json=EasyUiUtil.toJsonDataGrid(list,this.adminBiz.count());
-		this.writePlainText(json.toString());
+	//	this.hospitalBiz.loadCrudMapper(BusAllInfoModel.class);
+	//	List list=this.hospitalBiz.getModel(busAllInfoModel);
+	//	JSONObject json=EasyUiUtil.toJsonDataGrid(list,this.adminBiz.count());
+	//	this.writePlainText(json.toString());
 	}
 	public void clear() {
 	}
