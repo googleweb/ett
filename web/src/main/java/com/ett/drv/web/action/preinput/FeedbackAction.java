@@ -1,8 +1,8 @@
 package com.ett.drv.web.action.preinput;
 
-import com.ett.drv.web.action.BaseAction;
+import com.ett.drv.web.action.BaseDrvAction;
 
-public class FeedbackAction extends BaseAction{
+public class FeedbackAction extends BaseDrvAction{
 
 	@Override
 	public void clear() {

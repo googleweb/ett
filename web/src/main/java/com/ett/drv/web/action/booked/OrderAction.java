@@ -4,9 +4,9 @@ import com.opensymphony.xwork2.ModelDriven;
 import com.smartken.kia.core.enums.ResultEnum;
 import com.ett.drv.model.booked.CarOwnerChangeModel;
 import com.ett.drv.model.booked.PersonChangeModel;
-import com.ett.drv.web.action.BaseAction;
+import com.ett.drv.web.action.BaseDrvAction;
 
-public class OrderAction extends BaseAction {
+public class OrderAction extends BaseDrvAction {
 
 
 

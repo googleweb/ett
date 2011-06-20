@@ -19,7 +19,7 @@ public class VehicleModel extends BaseModel {
 		Pzbh2,Xsdw,Xsjg,Xsrq,Jkpz,Jkpzhm,Hgzbh,Nszm,Nszmbh,Gxrq,
 		Xgzl,Qmbh,Hmbh,Bz,Jyw,Yxh  
 		 } 
-
+ 
 		private String Xh;         //XH  CHAR 14
 		private String Hpzl;         //HPZL  VARCHAR2 10
 		private String Hphm;         //HPHM  VARCHAR2 15

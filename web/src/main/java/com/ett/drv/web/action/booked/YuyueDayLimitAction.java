@@ -13,7 +13,7 @@ import com.ett.drv.model.admin.DictModel;
 import com.ett.drv.model.admin.DictTypeModel;
 import com.ett.drv.model.booked.BookedDayLimitModel;
 
-import com.ett.drv.web.action.BaseAction;
+import com.ett.drv.web.action.BaseDrvAction;
 
 
 import com.opensymphony.xwork2.ModelDriven;
@@ -23,7 +23,7 @@ import com.smartken.kia.core.util.ObjectUtil;
 import com.smartken.kia.core.util.StringUtil;
 
 
-public class YuyueDayLimitAction extends BaseAction implements ModelDriven<BookedDayLimitModel>{
+public class YuyueDayLimitAction extends BaseDrvAction implements ModelDriven<BookedDayLimitModel>{
 	private BookedDayLimitModel BookedDayLimitModel;
 
 	public BookedDayLimitModel getBookedDayLimitModel() {

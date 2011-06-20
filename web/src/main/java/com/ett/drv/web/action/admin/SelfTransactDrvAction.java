@@ -16,14 +16,14 @@ import com.ett.drv.model.self.DrivingLicenseModel;
 import com.ett.drv.model.self.TransactDriverModel;
 import com.ett.drv.model.self.TransactResourceModel;
 import com.ett.drv.model.self.TransactVehicleModel;
-import com.ett.drv.web.action.BaseAction;
+import com.ett.drv.web.action.BaseDrvAction;
 import com.smartken.kia.core.enums.ResultEnum;
 import com.smartken.kia.core.model.impl.ResultModel;
 import com.smartken.kia.core.util.EasyUiUtil;
 import com.smartken.kia.core.util.ObjectUtil;
 import com.smartken.kia.core.util.StringUtil;
 
-public class SelfTransactDrvAction extends BaseAction implements ModelDriven<TransactDriverModel> {
+public class SelfTransactDrvAction extends BaseDrvAction implements ModelDriven<TransactDriverModel> {
 
 	private ISelfBiz selfBiz;
 	private TransactDriverModel _trDrvModel;

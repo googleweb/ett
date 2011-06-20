@@ -8,6 +8,8 @@
   <name>webapp Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <dependencies>
+  
+
   	<dependency>
   		<groupId>org.springframework</groupId>
   		<artifactId>spring-context</artifactId>
@@ -325,6 +327,8 @@
   	 	<type>jar</type>
   	 	<scope>compile</scope>
   	 </dependency>
+  	 
+  	 
   </dependencies>
   <build>
     <finalName>webapp</finalName>

@@ -20,7 +20,7 @@ import com.smartken.kia.core.util.ObjectUtil;
 import com.smartken.kia.core.util.StringUtil;
 
 import com.smartken.kia.core.enums.ResultEnum;
-import com.ett.drv.web.action.BaseAction;
+import com.ett.drv.web.action.BaseDrvAction;
 import com.ett.drv.biz.IBookedBiz;
 import com.ett.drv.model.admin.DepartmentModel;
 import com.ett.drv.model.admin.DictModel;
@@ -32,7 +32,7 @@ import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class WeekPbAction extends BaseAction implements ModelDriven<BookedWeekRecordModel>{
+public class WeekPbAction extends BaseDrvAction implements ModelDriven<BookedWeekRecordModel>{
 
 
 	private BookedWeekRecordModel bookedWeekRecordModel;

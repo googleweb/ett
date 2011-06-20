@@ -11,7 +11,6 @@ import com.ett.drv.biz.ISelfBiz;
 import com.ett.drv.model.self.BaseTransactModel;
 import com.ett.drv.model.self.TransactVehicleModel;
 import com.ett.drv.model.self.VehicleModel;
-import com.ett.drv.web.action.BaseAction;
 import com.smartken.kia.core.enums.ResultEnum;
 import com.smartken.kia.core.util.ObjectUtil;
 import com.smartken.kia.core.util.StringUtil;

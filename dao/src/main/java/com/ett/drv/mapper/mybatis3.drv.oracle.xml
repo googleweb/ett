@@ -26,19 +26,16 @@
 	</plugin>
 </plugins>
 
-<!--  
+  
 <environments default="development">
 <environment id="development">
-<transactionManager type="JDBC"/>
-<dataSource type="POOLED">
-<property name="driver" value="${driver}"/>
-<property name="url" value="${url}"/>
-<property name="username" value="${username}"/>
-<property name="password" value="${password}"/>
-</dataSource>
+<transactionManager type="MANAGED">
+  <property name="closeConnection" value="false"/>
+</transactionManager>
+ <dataSource type="POOLED"></dataSource>
 </environment>
 </environments>
- -->
+ 
 <mappers>
 <mapper resource="com/ett/drv/mapper/booked/oracle/IWeekRecordMapper.xml"/>
 <mapper resource="com/ett/drv/mapper/booked/oracle/ILimitMapper.xml"/>

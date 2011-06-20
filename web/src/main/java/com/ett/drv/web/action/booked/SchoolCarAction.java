@@ -7,14 +7,14 @@ import org.json.JSONObject;
 
 import com.ett.drv.model.admin.DepartmentModel;
 import com.ett.drv.model.booked.SchoolCarModel;
-import com.ett.drv.web.action.BaseAction;
+import com.ett.drv.web.action.BaseDrvAction;
 import com.opensymphony.xwork2.ModelDriven;
 import com.smartken.kia.core.model.impl.ResultModel;
 import com.smartken.kia.core.util.EasyUiUtil;
 import com.smartken.kia.core.util.ObjectUtil;
 import com.smartken.kia.core.util.StringUtil;
 
-public class SchoolCarAction extends BaseAction implements ModelDriven<SchoolCarModel> {
+public class SchoolCarAction extends BaseDrvAction implements ModelDriven<SchoolCarModel> {
 
 	private SchoolCarModel schoolCarModel;
 	

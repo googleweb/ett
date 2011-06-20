@@ -8,7 +8,7 @@ import org.json.JSONObject;
 
 import com.ett.drv.model.admin.MenuModel;
 import com.ett.drv.model.admin.RoleModel;
-import com.ett.drv.web.action.BaseAction;
+import com.ett.drv.web.action.BaseDrvAction;
 import com.opensymphony.xwork2.ModelDriven;
 import com.smartken.kia.core.model.IFormatterModel;
 import com.smartken.kia.core.model.impl.ResultModel;
@@ -16,7 +16,7 @@ import com.smartken.kia.core.util.EasyUiUtil;
 import com.smartken.kia.core.util.ObjectUtil;
 import com.smartken.kia.core.util.StringUtil;
 
-public class RoleAction extends BaseAction implements ModelDriven<RoleModel> {
+public class RoleAction extends BaseDrvAction implements ModelDriven<RoleModel> {
 	private RoleModel roleModel;
 
 	public RoleModel getRoleModel() {

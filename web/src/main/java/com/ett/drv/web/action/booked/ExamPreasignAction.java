@@ -18,7 +18,7 @@ import com.ett.drv.model.booked.BookedDayLimitModel;
 import com.ett.drv.model.booked.BookedLimitModel;
 import com.ett.drv.model.booked.BookedOrderInfoModel;
 import com.ett.drv.model.booked.BookedWeekRecordModel;
-import com.ett.drv.web.action.BaseAction;
+import com.ett.drv.web.action.BaseDrvAction;
 import com.opensymphony.xwork2.ModelDriven;
 import com.smartken.kia.core.enums.ResultEnum;
 import com.smartken.kia.core.model.impl.ResultModel;
@@ -27,7 +27,7 @@ import com.smartken.kia.core.util.EasyUiUtil;
 import com.smartken.kia.core.util.ObjectUtil;
 import com.smartken.kia.core.util.StringUtil;
 
-public class ExamPreasignAction extends BaseAction implements ModelDriven<BookedOrderInfoModel>  {
+public class ExamPreasignAction extends BaseDrvAction implements ModelDriven<BookedOrderInfoModel>  {
 
 	
 	private BookedWeekRecordModel weekRecord;
