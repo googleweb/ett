@@ -258,6 +258,7 @@ IS_PRINT_RETURN=#{model.IsPrintReturn,jdbcType=INTEGER,javaType=Integer},
 	select m.* from  <include refid="table" /> m
 	<include refid="orderby"/>
 </select>
+<select id=""></select>
 
 <select id="count" resultType="int">
 	select count(*) from <include refid="table"/>

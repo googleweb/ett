@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+	<%@page import="com.ett.drv.model.admin.BusLogModel"%>
+<%@page import="com.smartken.kia.core.model.impl.*"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -35,9 +37,44 @@ td {
 }
 </style>
 		<script type="text/javascript">
+		$(document).ready(function(){   
+	$("#test").datagrid({fit:true,
+	columns:[ 
+	[ 
+		
+	{field:"Id",checkbox:true},
+	{field:"<%=BusLogModel.F.CBustype%>",title:"车型",width:150},
+	{field:"<%=BusLogModel.F.CContent%>",title:"",width:150},
+	{field:"<%=BusLogModel.F.CDes1%>",title:"描述1",width:150},
+	{field:"<%=BusLogModel.F.CDes2%>",title:"描述2",width:150},
+	{field:"<%=BusLogModel.F.CDes3%>",title:"描述3",width:150},
+	{field:"<%=BusLogModel.F.COperator%>",title:"操作者",width:150},
+	{field:"<%=BusLogModel.F.IDepid%>",title:"标题",width:150},
+	{field:"<%=BusLogModel.F.Regdate%>",title:"体检日期",width:150}
+	]
+	] 
+	,
+	pagination:true,
+	url:'<%=basePath%>'+"physical/HospitalMessage/do/bizsearch.action"
+	} 
+);
+	
+}); //$(document).ready
+function searchform(){
+	$("#searchform").form("submit",{
+	  	url:'<%=basePath%>'+"physical/HospitalMessage/do/searchLog.action",
+	   	success:function(str){
+	  			var json=Kia.util.strToJson(str); 
+	   			$("#test").datagrid("loadData",json); 
+	   			}
+	
+	});
+	
+}		
 </script>
 	</head>
 	<body>
+	<form id="searchform" action="post">
 		<table style="text-align: center ;">
 			<tr>
 				<td style="background-color: rgb(208,227,248);" colspan="4">
@@ -83,21 +120,11 @@ td {
 					<input type="checkbox" name=""/>包含受理信息
 				</td>
 				<td style="background-color: rgb(208,227,248);">
-					<input type="button" value="查询"/>
+					<input type="button" value="查询"  onclick="searchform()"/>
 					<input type="button" value="打印体检信息"/>
 				</td>
 			</tr>
-				<tr>
-				<td colspan="4" style="background-color: rgb(208,227,248);">
-					当前页1/1,共0条记录 &nbsp;&nbsp;
-					<a href="">首页</a>
-					|<a href="">尾页</a>
-					|<a href="">上一页</a>
-					|<a href="">下一页</a>
-					<input type="text" name="">
-					<a href="">跳到</a>
-				</td>
-			</tr>
 		</table>
+		</form>
 	</body>
 </html>

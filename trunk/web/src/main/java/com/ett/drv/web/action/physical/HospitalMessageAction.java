@@ -5,6 +5,7 @@ import java.util.List;
 import org.json.JSONObject;
 
 import com.ett.drv.model.admin.BusAllInfoModel;
+import com.ett.drv.model.admin.BusLogModel;
 import com.ett.drv.web.action.BaseDrvAction;
 import com.opensymphony.xwork2.ModelDriven;
 import com.smartken.kia.core.util.EasyUiUtil;
@@ -20,6 +21,9 @@ public class HospitalMessageAction extends BaseDrvAction implements ModelDriven<
 	@SuppressWarnings("unchecked")
 	public String to_import() {
 		if(isPost()){
+			/**
+			 * 根据证件号等查询
+			 */
 			this.hospitalBiz.loadCrudMapper(BusAllInfoModel.class);
 			List list=this.hospitalBiz.getModel(busAllInfoModel);
 			this.getRequest().setAttribute("busAllInfoModel", list.get(0));
@@ -50,7 +54,7 @@ public class HospitalMessageAction extends BaseDrvAction implements ModelDriven<
 		this.hospitalBiz.modifyOrAddModel(busAllInfoModel);
 	}
 	/**
-	 * 根据证件号查询
+	 * 根据证件号等查询
 	 */
 	public void do_search(){
 
@@ -63,6 +67,16 @@ public class HospitalMessageAction extends BaseDrvAction implements ModelDriven<
 	public void do_bizsearch(){
 		this.hospitalBiz.loadCrudMapper(BusAllInfoModel.class);
 		List list=this.hospitalBiz.getModel(busAllInfoModel);
+		JSONObject json=EasyUiUtil.toJsonDataGrid(list,this.adminBiz.count());
+		this.writePlainText(json.toString());
+	}
+	/**
+	 *根据日志表查询信息 
+	 */
+	@SuppressWarnings("unchecked")
+	public void do_searchLog(){
+		this.hospitalBiz.loadCrudMapper(BusLogModel.class);
+		List list=this.hospitalBiz.getModel();
 		JSONObject json=EasyUiUtil.toJsonDataGrid(list,this.adminBiz.count());
 		this.writePlainText(json.toString());
 	}
