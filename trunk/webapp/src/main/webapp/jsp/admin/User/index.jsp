@@ -101,7 +101,7 @@ function clickRemoveHandler(){
 	var obj=selectsRows.length;
 	//alert(obj);
 	if(obj!=0){
- 		 $.messager.confirm('操作提示','确认删除用户?',function(yes){		 		
+ 		 $.messager.confirm('操作提示','确认删除?',function(yes){		 		
 					var ids="";
 					$.each(selectsRows,function(index,row){
 							ids+=','+row['Id'];  
