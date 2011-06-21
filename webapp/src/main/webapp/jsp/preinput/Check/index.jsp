@@ -4,6 +4,7 @@
 <%@page import="com.smartken.kia.core.util.EasyUiUtil"%>
 <%@page import="com.smartken.kia.core.model.impl.*"%>
 <%@page import="com.ett.model.*" %>
+<%@page import="com.ett.drv.model.preinput.StudentApplyInfoModel"%>
 
 <%
 String path = request.getContextPath();
@@ -154,13 +155,13 @@ $(document).ready(function(){
 	columns:[ 
 	[ 
 	{field:"Id",checkbox:true},
-	{field:"<%=UserModel.F.CLoginName%>",title:"流水号",width:150},
-	{field:"<%=UserModel.F.CWorkid%>",title:"身份证明号码",width:150},
-	{field:"<%=UserModel.V.RoleName%>",title:"姓名",width:150},
-	{field:"<%=UserModel.F.CState%>",title:"驾校名称",width:150},
-	{field:"<%=UserModel.F.CIdcard%>",title:"审核结果",width:150},
-	{field:"<%=UserModel.V.DepName%>",title:"审核信息",width:150},
-	{field:"<%=UserModel.F.CFullName%>",title:"经办人",width:150},
+	{field:"<%=StudentApplyInfoModel.F.CLsh%>",title:"流水号",width:150},
+	{field:"<%=StudentApplyInfoModel.F.Sfzmhm%>",title:"身份证明号码",width:150},
+	{field:"<%=StudentApplyInfoModel.F.CXm%>",title:"姓名",width:150},
+	{field:"<%=StudentApplyInfoModel.F.CJxmc%>",title:"驾校名称",width:150},
+	{field:"<%=StudentApplyInfoModel.F.IChecked%>",title:"审核结果",width:150},
+	{field:"<%=StudentApplyInfoModel.F.CCheckResult%>",title:"审核结果描述",width:150},
+	{field:"<%=StudentApplyInfoModel.F.CCheckOperator%>",title:"经办人",width:150},
 	{field:"xxx",title:"详细",formatter:operaFormatter,width:150,}	
 	]
 	] 
@@ -168,13 +169,14 @@ $(document).ready(function(){
 	pagination:true,
 	onDblClickRow:dblClickRowHandler
 	,
-	url:'<%=basePath%>'+"admin/User/datagrid/users.action"} 
+	url:'<%=basePath%>'+"preinput/List/datagrid/list.action"} 
 );    //   end:$("#tableDG").datagrid
 	
 }); //$(document).ready
 </script>
-  <body>
-    <div  style="height: 20%">
+  <body class="<%=EasyUiModel.Layout.CLASS %>">
+    <div  <%=EasyUiModel.Layout.Properties.REGION(EasyUiModel.REGION_NORTH) %>  
+       style="height: 100px">
     <p style="text-align: center"><h3>初学+增驾审核名单列表</h3></p>
     <form method="post" id="formSearch">
          <table class="editTable" cellspacing="0" align="right">
@@ -204,7 +206,7 @@ $(document).ready(function(){
          </table>
       </form>
       </div>
-      <div style="height: 80%">
+      <div  <%=EasyUiModel.Layout.Properties.REGION(EasyUiModel.REGION_CENTER) %>>
 	<table id="test" ></table>
 	</div>
 	

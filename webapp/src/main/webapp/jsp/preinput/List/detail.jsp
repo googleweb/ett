@@ -1,6 +1,8 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@page import="com.smartken.kia.core.model.impl.EasyUiModel"%>
 <%@page import="com.smartken.kia.core.model.impl.JQueryModel"%>
+<%@page import="com.ett.drv.model.preinput.*"%>
+<%@page import="com.ett.drv.model.admin.*"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%
 String path = request.getContextPath();
@@ -45,27 +47,47 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </style>
     
   
-  
+  <script type="text/javascript">
+  function clicksave(){
+ 			 $.messager.confirm('操作提示','确认保存',function(yes){
+		   if(yes){
+			   $("#detail").form('submit',{
+				   url:"<%=basePath%>preinput/List/do/save.action"
+				   ,onSubmit:function(){ return $(this).form("validate"); }
+				   ,success:function(str){
+				    $(this).form("clear");
+				     str.messager();
+				   }
+			   });
+		   }
+	     });
+	     
+   }
+  </script>
   </head>
   
   <body>
   
   
-
+<form id="detail" method="post">
+<input type="hidden" name="Id" value="${id}" />
 <table  cellspacing="0" cellpadding="0" style="width:100%;table-layout:auto;font-size: 0.85em;" class="editTable" >
 <tbody>
 
 <tr >
 <td style="width: 120px">证件名称</td>
 <td style="width: 120px">
-<select name="cardname" class="<%=EasyUiModel.ComboBox.CLASS %>">
-<option value="volvo">A:居民身份证</option>
-<option value="saab">B:军官证</option>
-<option value="fiat" selected="selected">C:士兵证</option>
-<option value="saab">D:军官离退休证</option>
-<option value="saab">E:境外人员身份证</option>
-<option value="audi">F:外交人员身份证</option>
-</select>
+<input name="Sfzmmc" type="text"  value="${Sfzmmc}"
+                     class="<%=EasyUiModel.ComboBox.CLASS %>"
+				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+				    <%=EasyUiModel.ComboBox.Properties.URL(basePath+"preinput/List/combobox/sfzm.action") %>
+				    <%=EasyUiModel.ComboBox.Properties.EDITABLE(false)%>
+				    <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
+				    <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %>
+				
+				  
+				  
+				    />
 </td>
 <td style="width: 120px">证件号码</td>
 <td style="width: 250px">
@@ -73,12 +95,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </td>
 <td style="width: 100px">国籍</td>
 <td style="width: 150px">
-<select name="CGj" class="<%=EasyUiModel.ComboBox.CLASS %>">
-<option value="1">中国</option>
-<option value="2">美国</option>
-<option value="3" selected="selected">沙特阿拉伯</option>
-<option value="4">阿富汗</option>
-</select>
+<input name="CGj" type="text"  value="${CGj}"
+                     class="<%=EasyUiModel.ComboBox.CLASS %>"
+				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+				    <%=EasyUiModel.ComboBox.Properties.URL(basePath+"preinput/List/combobox/gj.action") %>
+				    <%=EasyUiModel.ComboBox.Properties.EDITABLE(false)%>
+				    <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
+				    <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %>
+				
+				  
+				  
+				    />
 </td>
 <td colspan="2" rowspan="6">
 haha
@@ -91,40 +118,45 @@ haha
 </td>
 <td >性别</td>
 <td >
-<select name="IXb" class="<%=EasyUiModel.ComboBox.CLASS %>" style="width:50px">
-<option value="1">男</option>
-<option value="2" selected="selected">女</option>
-
-</select>
+<input name="IXb" type="text"  value="${IXb}" style="width:50px"
+                     class="<%=EasyUiModel.ComboBox.CLASS %>"
+				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+				    <%=EasyUiModel.ComboBox.Properties.URL(basePath+"preinput/List/combobox/xb.action") %>
+				    <%=EasyUiModel.ComboBox.Properties.EDITABLE(false)%>
+				    <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
+				    <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %>
+  />
 </td>
 <td>出生年月</td>
 <td>
-<input type="text" name="CCsrq" value="${CCsrq}"/>
+<input type="text" class="<%=EasyUiModel.DateBox.CLASS %>" name="CCsrq" value="${CCsrq}"/>
 </td>
 </tr>
 <tr>
 </td>
 <td>登记住所</td>
 <td>
-<select name="CDjzsxzqh" class="<%=EasyUiModel.ComboBox.CLASS %>">
-<option value="1">广州</option>
-<option value="2">深圳</option>
-<option value="3" selected="selected">山东</option>
-<option value="4">北京</option>
-</select>
-</td>
+<input name="CDjzsxzqh" type="text"  value="${CDjzsxzqh}" 
+                     class="<%=EasyUiModel.ComboBox.CLASS %>"
+				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+				    <%=EasyUiModel.ComboBox.Properties.URL(basePath+"preinput/List/combobox/djzs.action") %>
+				    <%=EasyUiModel.ComboBox.Properties.EDITABLE(false)%>
+				    <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
+				    <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %>
+  />
 <td colspan="4"><a>查询</a><input type="text" style="width: 80%" /></td>
 </tr>
 <tr>
-</td>
 <td>联系住所</td>
 <td>
-<select name="CLxzsxzqh" class="<%=EasyUiModel.ComboBox.CLASS %>">
-<option value="1">广州</option>
-<option value="2">北京</option>
-<option value="3" selected="selected">上海</option>
-<option value="4">深圳</option>
-</select>
+<input name="CLxzsxzqh" type="text"  value="${CLxzsxzqh}" 
+                     class="<%=EasyUiModel.ComboBox.CLASS %>"
+				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+				    <%=EasyUiModel.ComboBox.Properties.URL(basePath+"preinput/List/combobox/djzs.action") %>
+				    <%=EasyUiModel.ComboBox.Properties.EDITABLE(false)%>
+				    <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
+				    <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %>
+  />
 </td>
 <td colspan="4"><input type="text" style="width: 100%"/></td>
 </tr>
@@ -138,28 +170,38 @@ haha
 <td ><input type="text" name="CLxdh" value="${CLxdh }"/></td>
 <td>行政区划</td>
 <td >
-<select name="CXzqh" class="<%=EasyUiModel.ComboBox.CLASS %>">
-<option value="1">北京</option>
-<option value="2">上海</option>
-<option value="3" selected="selected">深圳</option>
-<option value="4">广州</option>
-</select>
+<input name="CXzqh" type="text"  value="${CXzqh}" 
+                     class="<%=EasyUiModel.ComboBox.CLASS %>"
+				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+				    <%=EasyUiModel.ComboBox.Properties.URL(basePath+"preinput/List/combobox/djzs.action") %>
+				    <%=EasyUiModel.ComboBox.Properties.EDITABLE(false)%>
+				    <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
+				    <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %>
+  />
 </td>
 </tr>
 <tr >
 <td >申请车型</td>
 <td >
-<select name="CZkcx" class="<%=EasyUiModel.ComboBox.CLASS %>">
-<option value="volvo">小车</option>
-<option value="saab" selected="selected">客车</option>
-</select>
+<input name="CZkcx" type="text"  value="${CZkcx}" 
+                     class="<%=EasyUiModel.ComboBox.CLASS %>"
+				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+				    <%=EasyUiModel.ComboBox.Properties.URL(basePath+"preinput/List/combobox/cartype.action") %>
+				    <%=EasyUiModel.ComboBox.Properties.EDITABLE(false)%>
+				    <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
+				    <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %>
+  />
 </td>
 <td >驾驶人来源</td>
 <td >
-<select name="CLy" class="<%=EasyUiModel.ComboBox.CLASS %>">
-<option value="1">本地</option>
-<option value="2" selected="selected">外地</option>
-</select>
+<input name="CLy" type="text"  value="${CLy}" 
+                     class="<%=EasyUiModel.ComboBox.CLASS %>"
+				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+				    <%=EasyUiModel.ComboBox.Properties.URL(basePath+"preinput/List/combobox/driverfrom.action") %>
+				    <%=EasyUiModel.ComboBox.Properties.EDITABLE(false)%>
+				    <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
+				    <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %>
+  />
 </td>
 <td>暂住证号</td>
 <td>
@@ -186,28 +228,36 @@ ${CJxmc}
 左
 <input type="text" style="width: 50px" class="<%=EasyUiModel.NumberSpinner.CLASS%>" 
   <%=EasyUiModel.NumberBox.Properties.PRECISION(1) %>
-  increment="0.1"
+  <%=EasyUiModel.Spinner.Properties.INCREMENT(0.1) %>
   <%=EasyUiModel.NumberBox.Properties.MIN(0) %>
 name="IZsl" value="${IZsl}">
 右
 <input type="text" style="width: 50px" class="<%=EasyUiModel.NumberSpinner.CLASS%>" 
   <%=EasyUiModel.NumberBox.Properties.PRECISION(1) %>
-  <%=EasyUiModel.Spinner.Properties.INCREMENT(1) %>
+  <%=EasyUiModel.Spinner.Properties.INCREMENT(0.1) %>
   <%=EasyUiModel.NumberBox.Properties.MIN(0) %> name="IYsl" value="${IYsl}">
 </td>
 <td>辨色力</td>
 <td>
-<select name="IBsl" class="<%=EasyUiModel.ComboBox.CLASS %>">
-<option value="1">合格</option>
-<option value="2" selected="selected">不合格</option>
-</select>
+<input name="IBsl" type="text"  value="${IBsl}" 
+                     class="<%=EasyUiModel.ComboBox.CLASS %>"
+				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+				    <%=EasyUiModel.ComboBox.Properties.URL(basePath+"preinput/List/combobox/ifok.action") %>
+				    <%=EasyUiModel.ComboBox.Properties.EDITABLE(false)%>
+				    <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
+				    <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %>
+  />
 </td>
 <td style="width: 120px">听力</td>
 <td>
-<select name="ITl" class="<%=EasyUiModel.ComboBox.CLASS %>">
-<option value="1">合格</option>
-<option value="2" selected="selected">不合格</option>
-</select>
+<input name="ITl" type="text"  value="${ITl}" 
+                     class="<%=EasyUiModel.ComboBox.CLASS %>"
+				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+				    <%=EasyUiModel.ComboBox.Properties.URL(basePath+"preinput/List/combobox/ifok.action") %>
+				    <%=EasyUiModel.ComboBox.Properties.EDITABLE(false)%>
+				    <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
+				    <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %>
+  />
 </td>
 </tr>
 <tr>
@@ -215,37 +265,53 @@ name="IZsl" value="${IZsl}">
 上肢
 </td>
 <td>
-<select name="ISz" class="<%=EasyUiModel.ComboBox.CLASS %>">
-<option value="1">合格</option>
-<option value="2" selected="selected">不合格</option>
-</select>
+<input name="ISz" type="text"  value="${ISz}" 
+                     class="<%=EasyUiModel.ComboBox.CLASS %>"
+				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+				    <%=EasyUiModel.ComboBox.Properties.URL(basePath+"preinput/List/combobox/ifok.action") %>
+				    <%=EasyUiModel.ComboBox.Properties.EDITABLE(false)%>
+				    <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
+				    <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %>
+  />
 </td>
 <td>
 左下肢
 </td>
 <td>
-<select name="IZxz" class="<%=EasyUiModel.ComboBox.CLASS %>">
-<option value="1">合格</option>
-<option value="2" selected="selected">不合格</option>
-</select>
+<input name="IZxz" type="text"  value="${IZxz}" 
+                     class="<%=EasyUiModel.ComboBox.CLASS %>"
+				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+				    <%=EasyUiModel.ComboBox.Properties.URL(basePath+"preinput/List/combobox/ifok.action") %>
+				    <%=EasyUiModel.ComboBox.Properties.EDITABLE(false)%>
+				    <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
+				    <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %>
+  />
 </td>
 <td>
 右下肢
 </td>
 <td>
-<select name="IYxz" class="<%=EasyUiModel.ComboBox.CLASS %>">
-<option value="1">合格</option>
-<option value="2" selected="selected">不合格</option>
-</select>
+<input name="IYxz" type="text"  value="${IYxz}" 
+                     class="<%=EasyUiModel.ComboBox.CLASS %>"
+				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+				    <%=EasyUiModel.ComboBox.Properties.URL(basePath+"preinput/List/combobox/ifok.action") %>
+				    <%=EasyUiModel.ComboBox.Properties.EDITABLE(false)%>
+				    <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
+				    <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %>
+  />
 </td>
 <td>
 躯干颈部
 </td>
 <td>
-<select name="IQgjb" class="<%=EasyUiModel.ComboBox.CLASS %>">
-<option value="1">合格</option>
-<option value="2" selected="selected">不合格</option>
-</select>
+<input name="IQgjb" type="text"  value="${IQgjb}" 
+                     class="<%=EasyUiModel.ComboBox.CLASS %>"
+				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+				    <%=EasyUiModel.ComboBox.Properties.URL(basePath+"preinput/List/combobox/ifok.action") %>
+				    <%=EasyUiModel.ComboBox.Properties.EDITABLE(false)%>
+				    <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
+				    <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %>
+  />
 </td>
 </tr>
 <tr>
@@ -253,10 +319,14 @@ name="IZsl" value="${IZsl}">
 体检医院
 </td>
 <td colspan="2">
-<select name="CTjyymc">
-<option value="1">湛江</option>
-<option value="2" selected="selected">深圳医院</option>
-</select>
+<input name="CTjyymc" type="text"  value="${CTjyymc}" 
+                     class="<%=EasyUiModel.ComboBox.CLASS %>"
+				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+				    <%=EasyUiModel.ComboBox.Properties.URL(basePath+"preinput/List/combobox/hospital.action") %>
+				    <%=EasyUiModel.ComboBox.Properties.EDITABLE(false)%>
+				    <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
+				    <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %>
+  />
 </td>
 <td colspan="3" >
 <input type="text" style="width: 80%"/>
@@ -265,17 +335,17 @@ name="IZsl" value="${IZsl}">
 体检日期
 </td>
 <td  style="width: 120px">
-<input class="<%=EasyUiModel.DateBox.CLASS %>" style="width: 100%" name="CTjrq"/>
+<input class="<%=EasyUiModel.DateBox.CLASS %>" style="width: 100%" name="CTjrq" value="${CTjrq}"/>
 </td>
 </tr>
 <tr>
 <td style="text-align: center;" colspan="8">
-<input type="button" value="保存" style="width:10%"/>
+<input type="button" value="保存" style="width:10%" onclick="clicksave() "/>
 <input type="button" value="打印申请表" style="width:10%"/>
-<input type="button" value="关闭" style="width:10%"/>
 </td>
 </tr>
 </tbody>
 </table>
+</form>
   </body>
 </html>

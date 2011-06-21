@@ -77,14 +77,13 @@ function fuweiMiMa(){
 		}
 }
 function searchUser(){
-	$("#formSearch").form("submit",{
-	  	url:'<%=basePath%>'+"admin/User/search/User.action",
-	   	success:function(str){
-	  			var json=Kia.util.strToJson(str); 
-	   			$("#test").datagrid("loadData",json); 
-	   			}
-  		}
-  );
+     var qIDCard=$("#qIDCard").val()||"";
+     if(qIDCard==""){
+       $.messager.alert("","身份证不能为空","error");
+     }else{
+       $("#test").datagrid("reload",{qIDCard:qIDCard});
+     }
+     
 }
 
 function clickAddHandler(){ 
@@ -123,7 +122,7 @@ function clickRemoveHandler(){
 					$.each(selectsRows,function(index,row){
 							ids+=','+row['Id'];  
 							});
-					var action="<%=basePath%>"+"admin/User/do/deleteUser.action";
+					var action="<%=basePath%>"+"preinput/List/do/delete.action";
 					$.post(action,{ids:ids},
 							function(str){
 									var json=Kia.util.strToJson(str);
@@ -175,25 +174,26 @@ $(document).ready(function(){
 	
 }); //$(document).ready
 </script>
-  <body>
-    <div  style="height: 20%">
+  <body  class="<%=EasyUiModel.Layout.CLASS %>" >
+    <div   <%=EasyUiModel.Layout.Properties.REGION(EasyUiModel.REGION_NORTH) %>  
+       style="height: 100px">
     <p style="text-align: center"><h3>初学+增驾申请名单列表</h3></p>
     <form method="post" id="formSearch">
          <table class="editTable" cellspacing="0" align="right">
          <tr>   
               <td style="width: 300px;">
-              		身份证明号码:<input name="Username" class="easyui-validatebox" />
+              		身份证明号码:<input name="qIDCard" id="qIDCard" class="easyui-validatebox" />
               </td>
               <td>
                  <a class="easyui-linkbutton"  id="aSearch"
-                    onclick="searchIdcardNo()"
+                    onclick="searchUser()"
                  >查询</a>
               </td>         
             </tr>
          </table>
       </form>
-      </div>
-      <div style="height: 80%">
+    </div>
+    <div <%=EasyUiModel.Layout.Properties.REGION(EasyUiModel.REGION_CENTER) %> >
 	<table id="test" ></table>
 	</div>
 	<div id="edit"></div>

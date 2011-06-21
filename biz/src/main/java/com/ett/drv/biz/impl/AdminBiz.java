@@ -199,6 +199,82 @@ public class AdminBiz extends BaseDrvBiz implements IAdminBiz {
 	}
 
 
+	public List<DictModel> listDetail() throws Exception {
+		// TODO Auto-generated method stub
+		String typeName=IAdminBiz.SMZ_TYPE;
+		DictModel query=new DictModel();
+		query.setCTypename(typeName);
+		List<DictModel> listDict=this.dictMapper.select(query);
+		return listDict;
+	}
+
+
+	public List<DictModel> listgj() throws Exception {
+		// TODO Auto-generated method stub
+		String typeName=IAdminBiz.DICT_GJ;
+		DictModel query=new DictModel();
+		query.setCTypename(typeName);
+		List<DictModel> listDict=this.dictMapper.select(query);
+		return listDict;
+	}
+	
+	public List<DictModel> listxb() throws Exception{
+		String typeName=IAdminBiz.DICT_XB;
+		DictModel query=new DictModel();
+		query.setCTypename(typeName);
+		List<DictModel> listDict=this.dictMapper.select(query);
+		return listDict;
+	}
+	
+	public List<DictModel> listdjzs() throws Exception{
+		String typeName=IAdminBiz.DICT_LXZS;
+		DictModel query=new DictModel();
+		query.setCTypename(typeName);
+		List<DictModel> listDict=this.dictMapper.select(query);
+		return listDict;
+	}
+
+
+	public List<DictModel> listcartype() throws Exception {
+		// TODO Auto-generated method stub
+		String typeName=IAdminBiz.CAR_TYPE;
+		DictModel query=new DictModel();
+		query.setCTypename(typeName);
+		List<DictModel> listDict=this.dictMapper.select(query);
+		return listDict;
+	}
+
+
+	public List<DictModel> listdriverfrom() throws Exception {
+		// TODO Auto-generated method stub
+		String typeName=IAdminBiz.DRIVER_FROM;
+		DictModel query=new DictModel();
+		query.setCTypename(typeName);
+		List<DictModel> listDict=this.dictMapper.select(query);
+		return listDict;
+	}
+
+
+	public List<DictModel> listifok() throws Exception {
+		// TODO Auto-generated method stub
+		String typeName=IAdminBiz.IF_OK;
+		DictModel query=new DictModel();
+		query.setCTypename(typeName);
+		List<DictModel> listDict=this.dictMapper.select(query);
+		return listDict;
+	}
+
+
+	public List<DictModel> listhospital() throws Exception {
+		// TODO Auto-generated method stub
+		String typeName=IAdminBiz.DICT_HOSPITAL;
+		DictModel query=new DictModel();
+		query.setCTypename(typeName);
+		List<DictModel> listDict=this.dictMapper.select(query);
+		return listDict;
+	}
+
+
 	
 	
 	
