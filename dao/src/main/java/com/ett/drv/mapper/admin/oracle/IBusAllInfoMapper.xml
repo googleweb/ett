@@ -211,6 +211,7 @@ IS_PRINT_RETURN=#{model.IsPrintReturn,jdbcType=INTEGER,javaType=Integer},
 <if test="model.IPrintReturn neq null">and m.I_PRINT_RETURN = #{model.IPrintReturn,jdbcType=INTEGER javaType=Integer } </if> 
 <if test="model.IsPrintAdd neq null">and m.IS_PRINT_ADD = #{model.IsPrintAdd,jdbcType=INTEGER javaType=Integer } </if> 
 <if test="model.IsPrintReturn neq null">and m.IS_PRINT_RETURN = #{model.IsPrintReturn,jdbcType=INTEGER javaType=Integer } </if> 
+<if test="model.endDate neq null and model.beginDate neq null">and to_char(m.REGDATE,'YYYY-MM-DD') between to_char(#{model.beginDate,jdbcType=DATE javaType=Date },'YYYY-MM-DD') and to_char(#{model.endDate,jdbcType=DATE javaType=Date },'YYYY-MM-DD')</if> 
 
 </sql>
 

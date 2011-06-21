@@ -32,7 +32,7 @@ table {
 }
 
 td {
-	
+	text-align:left;
 	border-width: 1px;
 }
 </style>
@@ -161,7 +161,7 @@ function searchform(){
 								<td>
 									&nbsp;
 									<input type="text" name="CBirthday" 
-									 class="<%=EasyUiModel.ValidateBox.CLASS%>"    
+									 class="<%=EasyUiModel.DateBox.CLASS%>"     
 									/>
 								</td>
 							</tr>
@@ -186,7 +186,7 @@ function searchform(){
 								<td>
 									&nbsp;
 									<input type="text" name="Checkdate" 
-									class="<%=EasyUiModel.ValidateBox.CLASS%>"   
+									class="<%=EasyUiModel.DateBox.CLASS%>"  
 									/>
 								</td>
 							</tr>

@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@page import="com.ett.drv.model.admin.BusAllInfoModel"%>
+<%@page import="com.smartken.kia.core.model.impl.*"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
-	String adminMenuPath = basePath + "admin/Menu";
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -22,48 +23,133 @@
 		</jsp:include>
 		<jsp:include page="/css/index.jsp"></jsp:include>
 		<jsp:include page="/js/index.jsp"></jsp:include>
-		<style type="text/css">
+<style type="text/css">
 table {
-	
 	border-style: solid;
 	border-width: 1px;
 }
 
 td {
-	
+	text-align:left;
 	border-width: 1px;
 }
 </style>
-		<script type="text/javascript">
+<script type="text/javascript">
+$(document).ready(function(){   
+	$("#test").datagrid({fit:true,
+	columns:[ 
+	[ 
+		
+	{field:"Id",checkbox:true},
+	{field:"<%=BusAllInfoModel.F.CXm%>",title:"姓名",width:150},
+	{field:"<%=BusAllInfoModel.F.CBirthday%>",title:"出生日期",width:150},
+	{field:"<%=BusAllInfoModel.F.CCarType%>",title:"车辆类型",width:150},
+	{field:"<%=BusAllInfoModel.F.CDabh%>",title:"档案编号",width:150},
+	{field:"<%=BusAllInfoModel.F.Checkdate%>",title:"审核日期",width:150},
+	{field:"<%=BusAllInfoModel.F.Regdate%>",title:"受理日期",width:150 },
+	{field:"<%=BusAllInfoModel.F.CHeight%>",title:"体重",width:150},
+	{field:"<%=BusAllInfoModel.F.CHospital%>",title:"医院",width:150},
+	{field:"<%=BusAllInfoModel.F.CIdcard%>",title:"身份证明号码",width:150},
+	{field:"<%=BusAllInfoModel.F.CIdcardtype%>",title:"身份证明名称",width:150},
+	{field:"<%=BusAllInfoModel.F.CLsh%>",title:"流水号",width:150},
+	{field:"<%=BusAllInfoModel.F.CPhone%>",title:"联系电话",width:150},
+	{field:"<%=BusAllInfoModel.F.CNation%>",title:"国籍",width:150},
+	{field:"<%=BusAllInfoModel.F.COperator%>",title:"操作者",width:150},
+	{field:"<%=BusAllInfoModel.F.CPostcode%>",title:"邮政编码",width:150},
+	{field:"<%=BusAllInfoModel.F.CQgjb%>",title:"躯干颈部",width:150},
+	{field:"<%=BusAllInfoModel.F.CRegarea%>",title:"登记住所",width:150},
+	{field:"<%=BusAllInfoModel.F.CRegareaCode%>",title:"登记住所代码",width:150},
+	{field:"<%=BusAllInfoModel.F.CSex%>",title:"性别",width:150},
+	{field:"<%=BusAllInfoModel.F.CSz%>",title:"身高",width:150},
+	{field:"<%=BusAllInfoModel.F.CTl%>",title:"听力",width:150},
+	{field:"<%=BusAllInfoModel.F.CBsl%>",title:"辨色力",width:150},
+	{field:"<%=BusAllInfoModel.F.CYsl%>",title:"右视力",width:150},
+	{field:"<%=BusAllInfoModel.F.CYxz%>",title:"左视力",width:150},
+	{field:"<%=BusAllInfoModel.F.CZsl%>",title:"左下肢",width:150},
+	{field:"<%=BusAllInfoModel.F.CZxz%>",title:"右下肢",width:150}
+	]
+	] 
+	,
+	pagination:true,
+	url:'<%=basePath%>'+"physical/HospitalMessage/datagrid/busAllLog.action"
+	} 
+);
+	
+}); //$(document).ready
+function searchform(){
+	$("#searchform").form("submit",{
+	  	url:'<%=basePath%>'+"physical/HospitalMessage/datagrid/busAllLog.action",
+	   	success:function(str){
+	  			var json=Kia.util.strToJson(str); 
+	   			$("#test").datagrid("loadData",json); 
+	   			}
+	
+	});
+	
+	//var CIdcard=$("#CIdcard").val()||"";
+	//$("#test").datagrid("reload",{qCIdcard:CIdcard});
+	//var CDabh=$("#CDabh").val()||"";
+	//$("#test").datagrid("reload",{qCDabh:CDabh});
+		//var CXm=$("#CXm").val()||"";
+	//$("#test").datagrid("reload",{qCXm:CXm});
+		//var CCarType=$("#CCarType").val()||"";
+	///	var beginDate=$("#beginDate").val()||"";
+	//$("#test").datagrid("reload",{qbeginDate:beginDate});
+		//var endDate=$("#endDate").val()||"";
+	//$("#test").datagrid("reload",{qendDate:endDate});
+		//var COperator=$("#COperator").val()||"";
+	//$("#test").datagrid("reload",{qCIdcard:CIdcard,qCOperator:COperator});
+	
+	
+}		
 </script>
 	</head>
 	<body>
-		<table style="text-align: center ;">
-			<tr>
-				<td style="background-color: rgb(208,227,248);" colspan="4">
-						各医院体检工作统计 
-				</td>
-			</tr>
-		
+	 <div class="innerDiv">
+	<form method="post" id="searchform">
+		<table style="text-align: center ;width: 100%">
 				<tr>
 				<td style="background-color: rgb(208,227,248);">
 				体检日期起：
 				</td>
-					<td>
-					<input type="text" name=""/>
+					<td style="text-align: left;width: 40%">
+					<input type="text" name="beginDate"
+					id="beginDate"
+					class="<%=EasyUiModel.DateBox.CLASS%>"   
+					
+					/>
 				</td>
 				<td style="background-color: rgb(208,227,248);">
 				体检日期止：
 				</td>
-				<td>
-					<input type="text" name=""/>
+				<td style="text-align: left;width: 40%;">
+					<input type="text" name="endDate"
+					id="endDate"
+					class="<%=EasyUiModel.DateBox.CLASS%>"   
+					style="width: 80%"
+					/>
 				</td>
 			</tr>
 				<tr>
-				<td colspan="4" style="background-color: rgb(208,227,248);">
-					<input type="button" value="统计">
+				<td style="background-color: rgb(208,227,248);">
+				 统计方式：
+				</td>
+				 <td style="text-align: left;">
+                 	<select name="statistics_type" id=""  style="width: 40% ;">
+						<option selected="selected" value="按医院名称">按医院名称</option>
+						<option value="按医院用户">按医院用户</option>
+					</select>
+                </td>
+				<td style="background-color: rgb(208,227,248);">
+				</td>
+				<td style="text-align: left;">
+					<input type="button" value="统计" onclick="searchform()" />
 				</td>
 			</tr>
 		</table>
+		</form>
+		<table id="test" width="90%"></table>
+		
+		</div>
 	</body>
 </html>
