@@ -9,6 +9,7 @@
 			+ path + "/";
 %>
 
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -25,15 +26,16 @@
 		<jsp:include page="/js/index.jsp"></jsp:include>
 		<style type="text/css">
 table {
-	
-	border-style: solid;
 	border-width: 1px;
+	border-color: rgb(208,227,248);
 }
 
 td {
+	text-align:left;
 	border-width: 1px;
 }
 </style>
+
 <script type="text/javascript">
 $(document).ready(function(){   
 	$("#test").datagrid({fit:true,
@@ -71,14 +73,14 @@ $(document).ready(function(){
 	] 
 	,
 	pagination:true,
-	url:'<%=basePath%>'+"physical/HospitalMessage/do/bizsearch.action"
+	url:'<%=basePath%>'+"physical/HospitalMessage/datagrid/busAllLog.action"
 	} 
 );
 	
 }); //$(document).ready
 function searchform(){
 	$("#searchform").form("submit",{
-	  	url:'<%=basePath%>'+"physical/HospitalMessage/do/bizsearch.action",
+	  	url:'<%=basePath%>'+"physical/HospitalMessage/datagrid/busAllLog.action",
 	   	success:function(str){
 	  			var json=Kia.util.strToJson(str); 
 	   			$("#test").datagrid("loadData",json); 
@@ -86,60 +88,80 @@ function searchform(){
 	
 	});
 	
+	//var CIdcard=$("#CIdcard").val()||"";
+	//$("#test").datagrid("reload",{qCIdcard:CIdcard});
+	//var CDabh=$("#CDabh").val()||"";
+	//$("#test").datagrid("reload",{qCDabh:CDabh});
+		//var CXm=$("#CXm").val()||"";
+	//$("#test").datagrid("reload",{qCXm:CXm});
+		//var CCarType=$("#CCarType").val()||"";
+	//$("#test").datagrid("reload",{qCCarType:CCarType});
+		//var beginDate=$("#beginDate").val()||"";
+	//$("#test").datagrid("reload",{qbeginDate:beginDate});
+		//var endDate=$("#endDate").val()||"";
+	//$("#test").datagrid("reload",{qendDate:endDate});
+		//var COperator=$("#COperator").val()||"";
+	//$("#test").datagrid("reload",{qCOperator:COperator});
+	
+	
 }		
 </script>
 	</head>
 	<body>
 	<form method="post" id="searchform">
-		<table style="text-align: center ;">
+		<table style="text-align: center ;width: 100%">
 			<tr>
 				<td style="background-color: rgb(208,227,248);" colspan="4">
 					业务流水查询
 				</td>
 			</tr>
 			<tr>
-				<td style="background-color: rgb(208,227,248);">
+				<td style="background-color: rgb(208,227,248);width: 100px;text-align: right;">
 				证件号码：
 				</td>
-				<td>
-					<input type="text" name="CIdcard"/>
+				<td style="text-align: left;">
+					<input type="text" name="CIdcard" id="CIdcard" style="width: 80%" />
 				</td>
-				<td style="background-color: rgb(208,227,248);">
+				<td style="background-color: rgb(208,227,248);width: 100px;">
 				档案编号：
 				</td>
-				<td>
-					<input type="text" name="CDabh"/>
+				<td style="text-align: left">
+					<input type="text" name="CDabh"  id="CDabh"  style="width: 80%"/>
 				</td>
 			</tr>
 				<tr>
 				<td style="background-color: rgb(208,227,248);">
 				姓名：
 				</td>
-				<td>
-					<input type="text" name="CXm"/>
+				<td style="text-align: left">
+					<input type="text" name="CXm" id="CXm"  style="width: 80%"/>
 				</td>
 				<td style="background-color: rgb(208,227,248);">
 				车型:
 				</td>
-				<td>
-					<input type="text" name="CCarType"/>
+				<td style="text-align: left">
+					<input type="text" name="CCarType" id="CCarType" style="width: 80%"/>
 				</td>
 			</tr>
 				<tr>
 				<td style="background-color: rgb(208,227,248);">
 				体检日期起：
 				</td>
-					<td>
-					<input type="text" name="Regdate"
-					class="<%=EasyUiModel.ValidateBox.CLASS%>"   
+					<td style="text-align: left">
+					<input type="text" name="beginDate"
+					id="beginDate"
+					class="<%=EasyUiModel.DateBox.CLASS%>"   
+					style="width: 80%"
 					/>
 				</td>
 				<td style="background-color: rgb(208,227,248);">
 				体检日期止：
 				</td>
-				<td>
-					<input type="text" name="Checkdate"
-					class="<%=EasyUiModel.ValidateBox.CLASS%>"   
+				<td style="text-align: left">
+					<input type="text" name="endDate"
+					id="endDate"
+					class="<%=EasyUiModel.DateBox.CLASS%>"   
+					style="width: 80%"
 					/>
 				</td>
 			</tr>
@@ -147,8 +169,8 @@ function searchform(){
 				<td style="background-color: rgb(208,227,248);">
 				操  作  者：
 				</td>
-					<td>
-					<input type="text" name="COperator"/>
+					<td style="text-align: left">
+					<input type="text" name="COperator" id="COperator" style="width:80%"/>
 				</td>
 				<td style="background-color: rgb(208,227,248);">
 					<input type="checkbox" name=""/>包含受理信息

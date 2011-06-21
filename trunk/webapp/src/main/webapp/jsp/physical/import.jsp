@@ -29,7 +29,7 @@ table {
 }
 
 td {
-	
+	text-align:left;
 	border-width: 1px;
 }
 </style>
@@ -345,9 +345,9 @@ function searchform(){
 							<tr>
 								<td colspan="8" style="text-align: right">
 									&nbsp;
-									<input type="button" name="" value="打印" />
+									<input type="button" name="" value="保存" />
 									&nbsp;
-									<input type="button" name="" value="退办" />
+									<input type="button" name="" value="打印回执单" />
 								</td>
 							</tr>
 						</table>

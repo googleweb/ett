@@ -6,7 +6,11 @@ import com.smartken.kia.core.model.impl.BaseModel;
 
 public class BusAllInfoModel extends BaseModel {
 
-	 public static enum F { 
+	 /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public static enum F { 
 		  Id,CLsh,CDabh,CXm,CIdcardtype,CIdcard,CSex,CBirthday,CNation,CCarType,IState,
 		COperator,Checkdate,Regdate,CRegareaCode,CRegarea,CPostcode,CPhone,CHeight,CZsl,CYsl,
 		CBsl,CTl,CSz,CZxz,CYxz,CQgjb,CHospital,IPrintAdd,IPrintReturn,IsPrintAdd,
@@ -45,6 +49,20 @@ public class BusAllInfoModel extends BaseModel {
 		private Integer IPrintReturn;         //I_PRINT_RETURN  NUMBER 38
 		private Integer IsPrintAdd;         //IS_PRINT_ADD  NUMBER 38
 		private Integer IsPrintReturn;         //IS_PRINT_RETURN  NUMBER 38
+		private Date    beginDate;
+		public Date getBeginDate() {
+			return beginDate;
+		}
+		public void setBeginDate(Date beginDate) {
+			this.beginDate = beginDate;
+		}
+		public Date getEndDate() {
+			return endDate;
+		}
+		public void setEndDate(Date endDate) {
+			this.endDate = endDate;
+		}
+		private Date    endDate;
 		public Integer getId() {
 			return Id;
 		}
