@@ -152,6 +152,9 @@
 <bean id="dictTypeMapper" parent="baseMapper">
   <property name="mapperInterface" value="com.ett.drv.mapper.admin.IDictTypeMapper"></property>
 </bean>
+<bean id="busAllInfoMapper" parent="baseMapper">
+  <property name="mapperInterface" value="com.ett.drv.mapper.admin.IBusAllInfoMapper"></property>
+</bean>
 <bean id="departmentMapper" parent="baseMapper">
   <property name="mapperInterface" value="com.ett.drv.mapper.admin.IDepartmentMapper"></property>
 </bean>
@@ -261,6 +264,8 @@
    <property name="dictTypeMapper"     ref="dictTypeMapper"></property>
    <property name="schoolCarMapper" ref="schoolCarMapper"></property>
    <property name="studentApplyInfoMapper" ref="studentApplyInfoMapper"></property>
+    <property name="busAllInfoMapper" ref="busAllInfoMapper"></property>
+   
 </bean>
 
 <bean id="baseBookedBiz" abstract="true" class="com.ett.drv.biz.impl.BookedBiz"  parent="baseDrvBiz" ></bean>
@@ -270,6 +275,11 @@
 <bean id="baseSelfBiz" abstract="true" class="com.ett.drv.biz.impl.SelfBiz" parent="baseDrvBiz"></bean>
 
 <bean id="basePreBiz" abstract="true" class="com.ett.drv.biz.impl.PreBiz" parent="baseDrvBiz"></bean>
+
+<bean id="baseHospitalBiz" abstract="true" class="com.ett.drv.biz.impl.HospitalBiz" parent="baseDrvBiz"></bean>
+
+
+
 
 
 </beans>
