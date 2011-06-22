@@ -102,6 +102,43 @@ public class ListAction extends BaseDrvAction implements ModelDriven<StudentAppl
 		this.writePlainText(resultModel.toJson().toString());
 	}
 	
+	public void do_check(){
+		int re=0;
+		if(this.isPost()){
+			this.preBiz.loadCrudMapper(StudentApplyInfoModel.class);
+			studentApplyInfoModel.setIChecked(1);
+			re+=this.preBiz.modifyOrAddModel(studentApplyInfoModel).getRe();
+		}
+		ResultModel resultModel=new ResultModel();
+		if(re==1){
+			resultModel.setTitle("操作成功");
+			String pattern="";
+			if(studentApplyInfoModel.getId()==null){
+				pattern="预录入管理:{0}保存成功,再添加一个用户？";
+				resultModel.setAction(ResultModel.ACTION_CONFIRM);
+				//hardware=new HardwareModel();
+			}else {
+				pattern="预录入管理:{0}审核成功";
+			}
+			resultModel.setMsg(pattern,re);;
+			
+		}else {
+			resultModel.setAction(ResultModel.ACTION_ALERT);
+			resultModel.setTitle("操作失败");
+		}
+		this.writePlainText(resultModel.toJson().toString());
+	}
+	
+	public void combobox_check(){
+		List listcheckstatus=new ArrayList<DictModel>();
+		JSONArray jarr=new JSONArray();
+		try{
+			listcheckstatus=this.adminBiz.listcheck(); 
+			jarr=ObjectUtil.toJsonArray(listcheckstatus);
+		}catch(Exception e){e.printStackTrace();}
+		this.writePlainText(jarr.toString());
+	}
+	
 	public void combobox_sfzm(){
 		List listdetail=new ArrayList<DictModel>();
 		JSONArray jarr=new JSONArray();
@@ -206,5 +243,38 @@ public class ListAction extends BaseDrvAction implements ModelDriven<StudentAppl
 		}
 		this.writePlainText(resultModel.toJson().toString());   	
     }
+	
+	public void do_buntchcheck(){
+		ArrayList a=new ArrayList();
+		String ids=this.getParameter("ids");
+		int re=0;
+		if(ids!=null)
+		{
+             a=StringUtil.splitToList(ids,",");
+             this.preBiz.loadCrudMapper(StudentApplyInfoModel.class);
+             ArrayList<StudentApplyInfoModel> b=new ArrayList<StudentApplyInfoModel>();
+             b=(ArrayList<StudentApplyInfoModel>)this.preBiz.getModelInPk(a);
+            if(b.size()>0){
+            	for(int i=0;i<b.size();i++){
+            	StudentApplyInfoModel c=b.get(i);
+            	c.setIChecked(1);
+            	re+=this.preBiz.modifyOrAddModel(c).getRe();
+            	}
+            }
+            
+		}
+		ResultModel resultModel=new ResultModel();
+		if(re>0){
+			resultModel.setTitle("操作成功");
+			//resultModel.setAction(ResultModel.ACTION_CONFIRM);
+			resultModel.setMsg("成功审核{0}个",re);
+	
+		}else {
+			resultModel.setAction(ResultModel.ACTION_ALERT);
+			resultModel.setTitle("操作失败");
+			resultModel.setMsg("没有字典被删除");
+		}
+		this.writePlainText(resultModel.toJson().toString());   	
+	}
 
 }

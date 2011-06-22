@@ -90,8 +90,7 @@ function clickAddHandler(){
   		var href='<%=basePath%>'+"preinput/List/to/detail.action?id=0";
   		$("#edit").dialog({
   			title:"新增",
-			height:450,
-			width:900,
+			fit:true,
 			onClose:function(){ $('#test').datagrid('reload'); },
 	    	modal:true,
 			onOpen:function(){$(this).kiaIframe(href);}} 
