@@ -238,7 +238,11 @@ IS_PRINT_RETURN=#{model.IsPrintReturn,jdbcType=INTEGER,javaType=Integer},
 	</trim>
    ) m <include refid="orderby"/>
 </select>
-
+<select id="selectGroupByOperaction" resultType="ArrayList" resultMap="resultMap">
+	select C_HOSPITAL,cout(*) from <include refid="table" /> where REGDATE  between to_char(#{beginDate,jdbcType=DATE javaType=Date },'YYYY-MM-DD') 
+																				and to_char(#{endDate,jdbcType=DATE javaType=Date },'YYYY-MM-DD') 
+															group by C_OPERATOR 
+</select>
 <select id="selectEqPk"  resultMap="resultMap">
 	select m.* from <include refid="table" /> m  where m.<include refid="pk" /> = #{Id,jdbcType=INTEGER,javaType=Integer}
 </select>

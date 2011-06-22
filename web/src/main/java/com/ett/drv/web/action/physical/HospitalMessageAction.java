@@ -119,7 +119,7 @@ public class HospitalMessageAction extends BaseDrvAction implements ModelDriven<
 	public void datagrid_hospital(){
 		String statistics_type=this.getParameter("statistics_type");
 		if(statistics_type.equals("按医院名称")){
-			
+			//this.hospitalBiz.
 		}
 	}
 	public void clear() {
