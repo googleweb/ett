@@ -41,7 +41,6 @@ function searchform(){
 	$("#searchform").form("submit",{
 	  	url:'<%=basePath%>'+"physical/HospitalMessage/do/add.action",
 	   	success:function(str){
-		  		alert(str);
 	   			}
 	
 	});
@@ -185,7 +184,7 @@ function searchform(){
 								</td>
 								<td>
 									&nbsp;
-									<input type="text" name="Checkdate" 
+									<input type="text" name="Regdate" 
 									class="<%=EasyUiModel.DateBox.CLASS%>"  
 									/>
 								</td>

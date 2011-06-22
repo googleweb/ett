@@ -69,7 +69,7 @@ public class HospitalMessageAction extends BaseDrvAction implements ModelDriven<
 	 * 根据证件号等查询
 	 */
 	public void do_search(){
-
+		
 		
 	}
 	/**

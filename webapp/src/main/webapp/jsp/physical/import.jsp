@@ -36,9 +36,8 @@ td {
 		<script type="text/javascript">
 function searchform(){
 	$("#searchform").form("submit",{
-	  	url:'<%=basePath%>'+"physical/HospitalMessage/do/search.action",
+	  	url:'<%=basePath%>'+"physical/HospitalMessage/to/import.action",
 	   	success:function(str){
-		  		alert(str);
 	   			}
 	
 	});
@@ -55,12 +54,10 @@ function searchform(){
 						体检录入
 					</td>
 				</tr>
-
 				<tr>
 					<td>
 					<form id="searchform" method="post" action="#" >
 						<table style="width: 100%">
-						
 							<tr>
 								<td style="background-color: rgb(208,227,248);">
 									证件名称：
@@ -101,7 +98,6 @@ function searchform(){
 							</tr>
 							
 						</table>
-					
 					</form>
 					</td>
 				
