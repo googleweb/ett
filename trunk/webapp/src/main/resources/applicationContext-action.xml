@@ -10,6 +10,8 @@
 <bean id="actionAdminBiz" parent="baseAdminBiz"></bean>
 <bean id="actionSelfBiz" parent="baseSelfBiz" ></bean>
 <bean id="actionPreBiz" parent="basePreBiz"></bean>
+<bean id="actionHospitalBiz" parent="baseHospitalBiz"></bean>
+
 
 <bean id="baseAction"  abstract="true"
    class="com.ett.drv.web.action.BaseDrvAction"  
@@ -18,6 +20,7 @@
    <property name="selfBiz" ref="actionSelfBiz"></property>
    <property name="bookedBiz" ref="actionBookedBiz"></property>
    <property name="preBiz" ref="actionPreBiz"></property>
+   <property name="hospitalBiz" ref="actionHospitalBiz"></property>
 </bean>
 
 <bean class="com.ett.drv.web.action.booked.WeekPbAction"  parent="baseAction"

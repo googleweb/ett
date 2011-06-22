@@ -10,12 +10,15 @@ import org.apache.poi.hssf.record.CalcCountRecord;
 import org.json.JSONObject;
 
 import com.ett.common.util.DateUtil;
+import com.ett.drv.biz.IHospitalBiz;
 import com.ett.drv.model.admin.BusAllInfoModel;
 import com.ett.drv.model.admin.BusLogModel;
 import com.ett.drv.web.action.BaseDrvAction;
 import com.opensymphony.xwork2.ModelDriven;
 import com.smartken.kia.core.pager.PageArrayList;
+import com.smartken.kia.core.util.DateTimeUtil;
 import com.smartken.kia.core.util.EasyUiUtil;
+import com.smartken.kia.core.util.ObjectUtil;
 import com.smartken.kia.core.util.StringUtil;
 
 public class HospitalMessageAction extends BaseDrvAction implements ModelDriven<BusAllInfoModel>{
@@ -74,17 +77,54 @@ public class HospitalMessageAction extends BaseDrvAction implements ModelDriven<
 	 */
 	@SuppressWarnings("unchecked")
 	public void datagrid_busAllLog(){
-        if(StringUtil.isBlank(busAllInfoModel.getCIdcard())){
-        	busAllInfoModel.setCIdcard(null);
+		BusAllInfoModel busAllInfoModel=new BusAllInfoModel();
+		String qCIdcard=this.getParameter("qCIdcard");
+        if(StringUtil.isBlank(qCIdcard)){
+        	qCIdcard=null;
         }
-        if(StringUtil.isBlank(busAllInfoModel.getCDabh())){
-        	busAllInfoModel.setCDabh(null);
+        String qCOperator=this.getParameter("qCOperator");
+        if(StringUtil.isBlank(qCOperator)){
+        	qCOperator=null;
         }
-        if(StringUtil.isBlank(busAllInfoModel.getCXm())){
-        	busAllInfoModel.setCXm(null);
+        String qCDabh=this.getParameter("qCDabh");
+        if(StringUtil.isBlank(qCDabh)){
+        	qCDabh=null;
         }
-        if(StringUtil.isBlank(busAllInfoModel.getCCarType())){
-        	busAllInfoModel.setCCarType(null);
+        String qCXm=this.getParameter("qCXm");
+        if(StringUtil.isBlank(qCXm)){
+        	qCXm=null;
+        }
+        String qCCarType=this.getParameter("qCCarType");
+        if(StringUtil.isBlank(qCCarType)){
+        	qCCarType=null;
+        }
+        String qbeginDate=this.getParameter("qbeginDate");
+        if(StringUtil.isBlank(qbeginDate)){
+        	qbeginDate=null;
+        	Calendar cal=Calendar.getInstance();
+    		cal.setTimeInMillis(0);
+			busAllInfoModel.setBeginDate(cal.getTime());
+        }else{
+        	busAllInfoModel.setBeginDate(DateTimeUtil.parse(qbeginDate));
+        }
+        String qendDate=this.getParameter("qendDate");
+        if(StringUtil.isBlank(qendDate)){
+        	qendDate=null;
+        	 busAllInfoModel.setEndDate(new Date());
+        }else{
+        	busAllInfoModel.setEndDate(DateTimeUtil.parse(qendDate));
+        }
+        busAllInfoModel.setCIdcard(qCIdcard);
+        busAllInfoModel.setCOperator(qCOperator);
+        busAllInfoModel.setCDabh(qCDabh);
+        busAllInfoModel.setCXm(qCXm);
+
+		
+		
+
+       /* String qbeginDate=this.getParameter("qbeginDate");
+        if(StringUtil.isBlank(qbeginDate)){
+        	qbeginDate=null;
         }
         if(busAllInfoModel.getBeginDate()==null){
         		Calendar cal=Calendar.getInstance();
@@ -97,7 +137,7 @@ public class HospitalMessageAction extends BaseDrvAction implements ModelDriven<
         }
         if(StringUtil.isBlank(busAllInfoModel.getCOperator())){
         	busAllInfoModel.setCOperator(null);
-        }
+        }*/
 		this.hospitalBiz.loadCrudMapper(BusAllInfoModel.class);
 		PageArrayList list=this.hospitalBiz.getModel(busAllInfoModel,this.getPager());
 		JSONObject json=EasyUiUtil.toJsonDataGrid(list,list.getCount());
@@ -116,11 +156,19 @@ public class HospitalMessageAction extends BaseDrvAction implements ModelDriven<
 	/**
 	 *根据医院，或成员查询 
 	 */
+	@SuppressWarnings("unchecked")
 	public void datagrid_hospital(){
-		String statistics_type=this.getParameter("statistics_type");
-		if(statistics_type.equals("按医院名称")){
-			//this.hospitalBiz.
+		String qbeginDate=this.getParameter("qbeginDate");
+        String qendDate=this.getParameter("qendDate");
+		int type=ObjectUtil.formatInt(this.getParameter("type"));
+		List list = null;
+		try {
+			list = this.hospitalBiz.getViewGroupByHospital(type, DateUtil.parseDate(qbeginDate), DateUtil.parseDate(qendDate));
+		} catch (ParseException e) {
+			e.printStackTrace();
 		}
+		JSONObject json=EasyUiUtil.toJsonDataGrid(list);
+		this.writePlainText(json.toString());
 	}
 	public void clear() {
 	}

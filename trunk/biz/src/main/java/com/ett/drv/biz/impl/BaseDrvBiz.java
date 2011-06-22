@@ -103,7 +103,9 @@ public abstract class BaseDrvBiz extends BaseCurdBiz {
 
 	public void setBusAllInfoMapper(
 			IBusAllInfoMapper<BusAllInfoModel> busAllInfoMapper) {
+		this.addCrudMapper(BusAllInfoModel.class, busAllInfoMapper);
 		this.busAllInfoMapper = busAllInfoMapper;
+		
 	}
 
 
@@ -287,5 +289,7 @@ public abstract class BaseDrvBiz extends BaseCurdBiz {
 		this.studentApplyInfoMapper=studentApplyInfoMapper;
 		this.addCrudMapper(StudentApplyInfoModel.class, studentApplyInfoMapper);
 	}
+	
+	
 	
 }

@@ -2,6 +2,7 @@
 	pageEncoding="utf-8"%>
 <%@page import="com.ett.drv.model.admin.BusAllInfoModel"%>
 <%@page import="com.smartken.kia.core.model.impl.*"%>
+<%@page import="com.ett.drv.biz.IHospitalBiz"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -23,17 +24,7 @@
 		</jsp:include>
 		<jsp:include page="/css/index.jsp"></jsp:include>
 		<jsp:include page="/js/index.jsp"></jsp:include>
-<style type="text/css">
-table {
-	border-style: solid;
-	border-width: 1px;
-}
 
-td {
-	text-align:left;
-	border-width: 1px;
-}
-</style>
 <script type="text/javascript">
 $(document).ready(function(){   
 	$("#test").datagrid({fit:true,
@@ -77,38 +68,32 @@ $(document).ready(function(){
 	
 }); //$(document).ready
 function searchform(){
-	$("#searchform").form("submit",{
-	  	url:'<%=basePath%>'+"physical/HospitalMessage/datagrid/busAllLog.action",
-	   	success:function(str){
-	  			var json=Kia.util.strToJson(str); 
-	   			$("#test").datagrid("loadData",json); 
-	   			}
+	//$("#searchform").form("submit",{
+	//  	url:'<%=basePath%>'+"physical/HospitalMessage/datagrid/busAllLog.action",
+	 //  	success:function(str){
+	 // 			var json=Kia.util.strToJson(str); 
+	 //  			$("#test").datagrid("loadData",json); 
+	   	//	}
 	
-	});
+	//});
 	
-	//var CIdcard=$("#CIdcard").val()||"";
-	//$("#test").datagrid("reload",{qCIdcard:CIdcard});
-	//var CDabh=$("#CDabh").val()||"";
-	//$("#test").datagrid("reload",{qCDabh:CDabh});
-		//var CXm=$("#CXm").val()||"";
-	//$("#test").datagrid("reload",{qCXm:CXm});
-		//var CCarType=$("#CCarType").val()||"";
-	///	var beginDate=$("#beginDate").val()||"";
+    var beginDate=$("#beginDate").datebox("getValue");
 	//$("#test").datagrid("reload",{qbeginDate:beginDate});
-		//var endDate=$("#endDate").val()||"";
+	var endDate=$("#endDate").datebox("getValue");
 	//$("#test").datagrid("reload",{qendDate:endDate});
-		//var COperator=$("#COperator").val()||"";
-	//$("#test").datagrid("reload",{qCIdcard:CIdcard,qCOperator:COperator});
+	$("#test").datagrid("reload",{
+	 qbeginDate:beginDate
+	 ,qendDate:endDate
+	});
 	
 	
 }		
 </script>
 	</head>
-	<body>
-	 <div class="innerDiv">
+	<body  class="<%=EasyUiModel.Layout.CLASS %>" >
+	 <div    <%=EasyUiModel.Layout.Properties.REGION(EasyUiModel.REGION_NORTH) %> style="padding: 10px;overflow: hidden;">
 	<form method="post" id="searchform">
 		<table style="text-align: center ;width: 100%">
-		
 				<tr>
 				<td style="background-color: rgb(208,227,248);">
 				体检日期起：
@@ -136,6 +121,7 @@ function searchform(){
 				 统计方式：
 				</td>
 				 <td style="text-align: left;">
+                 	
                 </td>
 				<td style="background-color: rgb(208,227,248);">
 				</td>
@@ -145,7 +131,10 @@ function searchform(){
 			</tr>
 		</table>
 		</form>
-		<table id="test" width="90%"></table>
+		</div>
+		
+		<div   <%=EasyUiModel.Layout.Properties.REGION(EasyUiModel.REGION_CENTER) %> >
+		<table id="test"></table>
 		
 		</div>
 	</body>

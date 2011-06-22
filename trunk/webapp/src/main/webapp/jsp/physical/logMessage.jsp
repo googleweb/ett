@@ -78,28 +78,33 @@ $(document).ready(function(){
 	
 }); //$(document).ready
 function searchform(){
-	$("#searchform").form("submit",{
-	  	url:'<%=basePath%>'+"physical/HospitalMessage/datagrid/busAllLog.action",
-	   	success:function(str){
-	  			var json=Kia.util.strToJson(str); 
-	   			$("#test").datagrid("loadData",json); 
-	   			}
+	//$("#searchform").form("submit",{
+	//  	url:'<%=basePath%>'+"physical/HospitalMessage/datagrid/busAllLog.action",
+	 //  	success:function(str){
+	 // 			var json=Kia.util.strToJson(str); 
+	 //  			$("#test").datagrid("loadData",json); 
+	   	//	}
 	
+	//});
+	
+	var CIdcard=$("#CIdcard").val()||"";
+	//$("#test").datagrid("reload",{qCIdcard:CIdcard});
+	var CDabh=$("#CDabh").val()||"";
+	//$("#test").datagrid("reload",{qCDabh:CDabh});
+	//$("#test").datagrid("reload",{qCCarType:CCarType});
+    var beginDate=$("#beginDate").datebox("getValue");
+	//$("#test").datagrid("reload",{qbeginDate:beginDate});
+	var endDate=$("#endDate").datebox("getValue");
+	//$("#test").datagrid("reload",{qendDate:endDate});
+	var COperator=$("#COperator").val()||"";
+	$("#test").datagrid("reload",{
+	 qCIdcard:CIdcard
+	 ,qCOperator:COperator
+	 ,qCDabh:CDabh
+	 ,qbeginDate:beginDate
+	 ,qendDate:endDate
 	});
 	
-	//var CIdcard=$("#CIdcard").val()||"";
-	//$("#test").datagrid("reload",{qCIdcard:CIdcard});
-	//var CDabh=$("#CDabh").val()||"";
-	//$("#test").datagrid("reload",{qCDabh:CDabh});
-		//var CXm=$("#CXm").val()||"";
-	//$("#test").datagrid("reload",{qCXm:CXm});
-		//var CCarType=$("#CCarType").val()||"";
-	///	var beginDate=$("#beginDate").val()||"";
-	//$("#test").datagrid("reload",{qbeginDate:beginDate});
-		//var endDate=$("#endDate").val()||"";
-	//$("#test").datagrid("reload",{qendDate:endDate});
-		//var COperator=$("#COperator").val()||"";
-	//$("#test").datagrid("reload",{qCIdcard:CIdcard,qCOperator:COperator});
 	
 	
 }		
