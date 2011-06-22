@@ -1,5 +1,6 @@
 package com.ett.drv.biz.impl;
 
+import com.ett.drv.mapper.admin.IBusAllInfoMapper;
 import com.ett.drv.mapper.admin.IDepartmentMapper;
 import com.ett.drv.mapper.admin.IDictMapper;
 import com.ett.drv.mapper.admin.IDictTypeMapper;
@@ -28,6 +29,7 @@ import com.ett.drv.mapper.self.ITransactResourceMapper;
 import com.ett.drv.mapper.self.ITransactVehicleMapper;
 import com.ett.drv.mapper.self.IVehFlowMapper;
 import com.ett.drv.mapper.self.IVehicleMapper;
+import com.ett.drv.model.admin.BusAllInfoModel;
 import com.ett.drv.model.admin.DepartmentModel;
 import com.ett.drv.model.admin.DictModel;
 import com.ett.drv.model.admin.DictTypeModel;
@@ -90,6 +92,20 @@ public abstract class BaseDrvBiz extends BaseCurdBiz {
     protected IBookedDayLimitMapper<BookedDayLimitModel> bookedDayLimitMapper;
     protected ISchoolCarMapper<SchoolCarModel>  schoolCarMapper;
     protected IStudentApplyInfoMapper<StudentApplyInfoModel> studentApplyInfoMapper;
+    protected IBusAllInfoMapper<BusAllInfoModel> busAllInfoMapper;
+
+
+	public IBusAllInfoMapper<BusAllInfoModel> getBusAllInfoMapper() {
+		return busAllInfoMapper;
+	}
+
+
+
+	public void setBusAllInfoMapper(
+			IBusAllInfoMapper<BusAllInfoModel> busAllInfoMapper) {
+		this.busAllInfoMapper = busAllInfoMapper;
+	}
+
 
 
 	public void setDictMapper(IDictMapper<DictModel> dictMapper) {
