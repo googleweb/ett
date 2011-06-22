@@ -26,6 +26,7 @@ public interface IAdminBiz extends IBaseCrudBiz {
 	public static String DRIVER_FROM="驾驶人来源";
 	public static String IF_OK="是否合格";
 	public static String DICT_HOSPITAL="体检医院";
+	public static String DICT_CHECK="审核结果";
 	
 	public List<DictModel> listKscc(String code) throws Exception;
 	
@@ -64,4 +65,6 @@ public interface IAdminBiz extends IBaseCrudBiz {
 	public List<DictModel> listifok() throws Exception;
 	
 	public List<DictModel> listhospital() throws Exception;
+	
+	public List<DictModel> listcheck()throws Exception;
 }

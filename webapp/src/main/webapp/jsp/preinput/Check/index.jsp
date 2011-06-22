@@ -5,6 +5,7 @@
 <%@page import="com.smartken.kia.core.model.impl.*"%>
 <%@page import="com.ett.model.*" %>
 <%@page import="com.ett.drv.model.preinput.StudentApplyInfoModel"%>
+<%@page import="com.ett.drv.model.admin.DictModel"%>
 
 <%
 String path = request.getContextPath();
@@ -33,11 +34,39 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <jsp:include page="/js/index.jsp"></jsp:include>  
   </head>
 <script type="text/javascript">
-function showdialog(href){
-    $("#divEditUser").dialog({
+  function buntchchecked(){ 
+	var selectsRows=$("#test").datagrid("getSelections");
+	var obj=selectsRows.length;
+	//alert(obj);
+	if(obj!=0){
+ 		 $.messager.confirm('操作提示','确认审核?',function(yes){		 		
+					var ids="";
+					$.each(selectsRows,function(index,row){
+							ids+=','+row['Id'];  
+							});
+					var action="<%=basePath%>"+"preinput/List/do/buntchcheck.action";
+					$.post(action,{ids:ids},
+							function(str){
+									var json=Kia.util.strToJson(str);
+									Kia.util.handleJsonResult(json);
+									$("#test").datagrid("reload");
+									$("#test").datagrid("clearSelections");
+									
+									
+					});
+		});  //$.messager
+	}
+	else
+		{
+		$.messager.alert('操作提示','请选择要删除的记录！');
+		}
+}
+
+function showdialog(id){
+	var href='<%=basePath%>'+"preinput/Check/to/detail.action?id="+id;
+    $("#edit").dialog({
   			title:"详细信息:",
-			height:400,
-			width:600,
+			fit:true,
 			onClose:function(){ $('#test').datagrid('reload'); },
 	    	modal:true,
 			onOpen:function(){$(this).kiaIframe(href);}} 
@@ -45,19 +74,13 @@ function showdialog(href){
 		return false;
 }
 
+
+
 function operaFormatter(value,rowData,rowIndex){
 	var id=rowData["Id"];
-    var href="preinput/Check/to/detail.action?id="+id;
-    return "<a class='kia-icon edit' onclick='return showdialog("+href+")' href="+href+"></a>";
-    $("#divEditUser").dialog({
-  			title:"修改用户:",
-			height:400,
-			width:600,
-			onClose:function(){ $('#test').datagrid('reload'); },
-	    	modal:true,
-			onOpen:function(){$(this).kiaIframe(href);}} 
-		);//   end:$("#divEdit").dialog
-		return false;
+    
+    return "<a class='kia-icon edit' onclick=\"showdialog("+id+")\" ></a>";
+    
 }
 
 function fuweiMiMa(){
@@ -185,12 +208,16 @@ $(document).ready(function(){
               		身份证明号码:<input name="Username" class="easyui-validatebox" />
               </td>
               <td>
-              <select>
-              <option value="volvo">已审核</option>
-              <option value="saab">未审核</option>
-              <option value="fiat" selected="selected">审核失败</option>
-              <option value="audi">全部</option>
-              </select>
+              <input name="IChecked" type="text"  
+                     class="<%=EasyUiModel.ComboBox.CLASS %>"
+				    <%=EasyUiModel.ComboBox.Properties.URL(basePath+"preinput/List/combobox/check.action") %>
+				    <%=EasyUiModel.ComboBox.Properties.EDITABLE(false)%>
+				    <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
+				    <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %>
+				
+				  
+				  
+				    />
               </td> 
               <td>
                  <a class="easyui-linkbutton"  id="aSearch"
@@ -199,7 +226,7 @@ $(document).ready(function(){
               </td>
               <td>
                  <a class="easyui-linkbutton"  id="aSearch"
-                    onclick="searchIdcardNo()"
+                    onclick="buntchchecked()"
                  >审核</a>
               </td>        
             </tr>
@@ -209,6 +236,6 @@ $(document).ready(function(){
       <div  <%=EasyUiModel.Layout.Properties.REGION(EasyUiModel.REGION_CENTER) %>>
 	<table id="test" ></table>
 	</div>
-	
+	<div id="edit"></div>
  </body>
 </html>

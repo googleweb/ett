@@ -45,6 +45,15 @@ function showdialog(href){
 		return false;
 }
 
+function searchUser(){
+     var qIDCard=$("#qIDCard").val()||"";
+     if(qIDCard==""){
+       $.messager.alert("","身份证不能为空","error");
+     }else{
+       $("#test").datagrid("reload",{qIDCard:qIDCard});
+     }
+}
+
 function operaFormatter(value,rowData,rowIndex){
 	var id=rowData["Id"];
     var href="preinput/List/to/detail.action?id="+id;
@@ -86,14 +95,13 @@ function fuweiMiMa(){
 		}
 }
 function searchUser(){
-	$("#formSearch").form("submit",{
-	  	url:'<%=basePath%>'+"admin/User/search/User.action",
-	   	success:function(str){
-	  			var json=Kia.util.strToJson(str); 
-	   			$("#test").datagrid("loadData",json); 
-	   			}
-  		}
-  );
+     var qIDCard=$("#qIDCard").val()||"";
+     if(qIDCard==""){
+       $.messager.alert("","身份证不能为空","error");
+     }else{
+       $("#test").datagrid("reload",{qIDCard:qIDCard});
+     }
+     
 }
 
 function clickAddHandler(){ 
@@ -181,11 +189,11 @@ $(document).ready(function(){
          <table class="editTable" cellspacing="0" align="right">
          <tr>   
               <td style="width: 300px;">
-              		身份证明号码:<input name="Username" class="easyui-validatebox" />
+              		身份证明号码:<input name="qIDCard" id="qIDCard" class="easyui-validatebox" />
               </td>
               <td>
                  <a class="easyui-linkbutton"  id="aSearch"
-                    onclick="searchIdcardNo()"
+                    onclick="searchUser()"
                  >查询</a>
               </td>         
             </tr>
