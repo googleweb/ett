@@ -56,12 +56,13 @@ function searchform(){
 	
     var beginDate=$("#beginDate").datebox("getValue");
 	var endDate=$("#endDate").datebox("getValue");
+	var statistics_type=$("#statistics_type").val();
+	//alert("");
 	$("#test").datagrid("reload",{
 	 qbeginDate:beginDate
 	 ,qendDate:endDate
+	 ,type:statistics_type
 	});
-	
-	
 }		
 </script>
 	</head>
@@ -96,7 +97,7 @@ function searchform(){
 				 统计方式：
 				</td>
 				 <td style="text-align: left;">
-                 	<select name="statistics_type" id=""  style="width: 40% ;">
+                 	<select name="statistics_type" id="statistics_type"  style="width: 40% ;">
 						<option selected="selected" value="<%=IHospitalBiz.TYPE_HOSPITAL %>">按医院名称</option>
 						<option value="<%=IHospitalBiz.TYPE_HOSPITAL %>">按医院用户</option>
 					</select>
