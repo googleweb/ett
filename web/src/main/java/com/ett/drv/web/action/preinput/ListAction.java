@@ -276,5 +276,25 @@ public class ListAction extends BaseDrvAction implements ModelDriven<StudentAppl
 		}
 		this.writePlainText(resultModel.toJson().toString());   	
 	}
+	
+	public void to_search(){
+		StudentApplyInfoModel query=new StudentApplyInfoModel();
+		String idcardNo=this.getParameter("idcardNo");
+		if(StringUtil.isNotBlank(idcardNo)){
+			idcardNo="%"+idcardNo+"%";
+			query.setSfzmhm(idcardNo);
+		}
+		String IChecked=this.getParameter("IChecked");
+		if(StringUtil.isNotBlank(IChecked)&&(3!=Integer.valueOf(IChecked))){
+			query.setIChecked(Integer.valueOf(IChecked));
+		}
+		
+        this.preBiz.loadCrudMapper(StudentApplyInfoModel.class);
+        List list=this.preBiz.getView(query,this.getPager());
+    
+		JSONObject jsonDg=EasyUiUtil.toJsonDataGrid(list);
+		this.writePlainText(jsonDg.toString());
+	
+	}
 
 }
