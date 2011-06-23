@@ -268,7 +268,10 @@
    
 </bean>
 
-<bean id="baseBookedBiz" abstract="true" class="com.ett.drv.biz.impl.BookedBiz"  parent="baseDrvBiz" ></bean>
+<bean id="baseBookedBiz" abstract="true" class="com.ett.drv.biz.impl.BookedBiz"  parent="baseDrvBiz" >
+    <property name="drvUrl" value="${wsdl.drv.url}"></property>
+    <property name="drvTimeout" value="${wsdl.timeout}"></property>
+</bean>
 
 <bean id="baseAdminBiz" abstract="true" class="com.ett.drv.biz.impl.AdminBiz" parent="baseDrvBiz"></bean>
 

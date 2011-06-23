@@ -212,7 +212,7 @@ String excelTemplatePath=basePath+"js/print/机动车牌证申请表.xls";
           
           <tr>
             <th>备注</th>
-            <td colspan="3"><textarea name="remark"  cols="5" rows="100" >备注</textarea></td>
+            <td colspan="3"><textarea name="remark"  cols="60" rows="5" >备注</textarea></td>
           </tr>
           
           <tr>
@@ -225,6 +225,9 @@ String excelTemplatePath=basePath+"js/print/机动车牌证申请表.xls";
                 onclick="<%=clickVerifyHandler.getFunName() %>('N');">审核不通过</a>
                 <a class="<%=EasyUiModel.LinkButton.CLASS %>"   <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_OK) %>
                 onclick="<%=clickVerifyHandler.getFunName() %>('Y');">审核通过</a>
+                <a class="<%=EasyUiModel.LinkButton.CLASS %>"   <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_BACK) %>
+                  href="<%=baseActionPath %>/to/index.action"
+                >返回</a>
             </th>
           </tr>
        </table> 

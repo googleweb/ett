@@ -322,5 +322,12 @@
   	  		<type>jar</type>
   	  		<scope>compile</scope>
   	  	</dependency>
+  	  	<dependency>
+  	  		<groupId>com.google.sitebricks</groupId>
+  	  		<artifactId>slf4j</artifactId>
+  	  		<version>0.8.3</version>
+  	  		<type>jar</type>
+  	  		<scope>compile</scope>
+  	  	</dependency>
   </dependencies>
 </project>
