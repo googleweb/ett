@@ -34,6 +34,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <jsp:include page="/js/index.jsp"></jsp:include>  
   </head>
 <script type="text/javascript">
+  function searchCheck(){
+  $("#formSearch").form("submit",{
+	  	url:'<%=basePath%>'+"preinput/List/to/search.action",
+	   	success:function(str){
+	  			var json=Kia.util.strToJson(str); 
+	   			$("#test").datagrid("loadData",json); 
+	   			}
+  	}
+  );
+  }
+
   function buntchchecked(){ 
 	var selectsRows=$("#test").datagrid("getSelections");
 	var obj=selectsRows.length;
@@ -205,7 +216,7 @@ $(document).ready(function(){
          <table class="editTable" cellspacing="0" align="right">
          <tr>   
               <td style="width: 300px;">
-              		身份证明号码:<input name="Username" class="easyui-validatebox" />
+              		身份证明号码:<input name="idcardNo" class="easyui-validatebox" />
               </td>
               <td>
               <input name="IChecked" type="text"  
@@ -221,7 +232,7 @@ $(document).ready(function(){
               </td> 
               <td>
                  <a class="easyui-linkbutton"  id="aSearch"
-                    onclick="searchIdcardNo()"
+                    onclick="searchCheck()"
                  >查询</a>
               </td>
               <td>

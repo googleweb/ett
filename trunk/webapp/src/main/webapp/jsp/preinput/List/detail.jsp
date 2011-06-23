@@ -211,11 +211,11 @@ haha
 <tr >
 <td>准考证编号</td>
 <td>
-${CZkzmbh}
+<input type="text" name="CZkzmbh" value="${CZkzmbh}"/>
 </td>
 <td>驾校名称</td>
 <td colspan="5">
-${CJxmc}
+<input type="text" name="CJxmc" value="${CJxmc}"/>
 </td>
 </tr>
 <tr >
