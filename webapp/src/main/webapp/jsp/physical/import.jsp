@@ -63,8 +63,14 @@ function searchform(){
 									证件名称：
 								</td>
 								<td>
-									&nbsp;
-									<input type="text" name="C_IDCARDTYPE"  />
+									<select name="CIdcardtype">
+											<option value="C">军官证</option>
+											<option value="D">士兵证</option>
+											<option value="E">军官离退休证</option>
+											<option value="F">境外人员身份证明</option>
+											<option value="G">外交人员身份证明</option>
+											<option value="A">居民身份证</option>
+									</select>
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									证件号码
@@ -88,7 +94,11 @@ function searchform(){
 								</td>
 								<td>
 									&nbsp;
-									<input type="text" name="" />
+									<select name="CCarType" id="CCarType" style="font-size:15pt;width:170px;">
+											<option value="A">年度检查</option>
+											<option value="B">初学</option>
+											<option value="C">增驾</option>
+									</select>
 								</td>
 							</tr>
 							<tr>
