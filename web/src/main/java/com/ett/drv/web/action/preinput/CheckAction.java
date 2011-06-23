@@ -20,18 +20,29 @@ public class CheckAction extends BaseDrvAction implements ModelDriven<StudentApp
 	}
 
 	public StudentApplyInfoModel getModel() {
-		// TODO Auto-generated method stub
+		
 		if(isGet()){
-			int id=ObjectUtil.formatInt(this.getParameter("id"));
+			int id=ObjectUtil.formatInt(this.getParameter("id"),-1);
 			if(id==0)
 			{
 				studentApplyInfoModel=new StudentApplyInfoModel();
-			}else{
+			}
+			else if(id!=-1){
 				this.preBiz.loadCrudMapper(StudentApplyInfoModel.class);
 				studentApplyInfoModel=(StudentApplyInfoModel) this.preBiz.getModelEqPk(id);
 			}
+		}else if(isPost()){
+			
 		}
 		return studentApplyInfoModel;
-	}
-
+	
+	
+}
+	public void stream_photo(){
+		byte[] bs=studentApplyInfoModel.getBlobPhoto();
+		if(bs!=null){
+			this.writeStream(bs);
+		}
+				
+  }
 }
