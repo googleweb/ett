@@ -1,6 +1,7 @@
 package com.ett.drv.biz.impl;
 
 import java.text.MessageFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -16,6 +17,7 @@ import com.smartken.kia.core.model.impl.ResultModel;
 import com.smartken.kia.core.util.DateTimeUtil;
 import com.smartken.kia.core.util.ObjectUtil;
 
+import com.ett.common.util.DateUtil;
 import com.ett.drv.biz.IBookedBiz;
 import com.ett.drv.mapper.booked.ILimitMapper;
 import com.ett.drv.mapper.booked.IOrderInfoMapper;
@@ -24,12 +26,33 @@ import com.ett.drv.model.booked.BookedDayLimitModel;
 import com.ett.drv.model.booked.BookedLimitModel;
 import com.ett.drv.model.booked.BookedOrderInfoModel;
 import com.ett.drv.model.booked.BookedWeekRecordModel;
+import com.ett.drv.model.self.DrivingLicenseModel;
+import com.ett.drvinterface.IDrvInterface;
+import com.ett.drvinterface.entity.BaseDrvResponse;
+import com.ett.drvinterface.entity.DrvPreasignRequest;
+import com.ett.model.DrvUser;
+import com.ett.self.model.SelfDeviceObject;
+import com.ett.self.model.SelfDeviceSnObject;
+import com.ett.self.preasign.model.Km1PreasignRecord;
 
 public class BookedBiz extends BaseDrvBiz implements IBookedBiz {
 
-
+	private String drvUrl;
+	private int drvTimeout;
+	
+	private IDrvInterface iDrvInterface;
 
 	
+	public void setDrvUrl(String drvUrl) {
+		this.drvUrl = drvUrl;
+	}
+
+
+	public void setDrvTimeout(int drvTimeout) {
+		this.drvTimeout = drvTimeout;
+	}
+
+
 	public BookedWeekRecordModel getWeekRecord(int year,int weekNum) {
 		// TODO Auto-generated method stub
 		
@@ -143,6 +166,7 @@ public class BookedBiz extends BaseDrvBiz implements IBookedBiz {
 			orderInfoModel.setIChecked(0);
 			re+= this.orderInfoMapper.insertOne(orderInfoModel);
 			re+=this.limitMapper.updateOne(limitModel);
+			this.createPreasign(orderInfoModel);
 			reModel.setTitle("操作成功");
 			reModel.setMsg("预约成功！");
 		} catch (Exception e) {
@@ -221,6 +245,62 @@ public class BookedBiz extends BaseDrvBiz implements IBookedBiz {
 			e.printStackTrace();
 		}
 		return reModel;
+	}
+	
+	
+	private void createPreasign(BookedOrderInfoModel orderInfoModel) throws ParseException {
+		   
+		//DrvUser tmpUser=this.iDrvQueryHelper.getUserWithLicense(user);
+	    DrivingLicenseModel qModel=new DrivingLicenseModel();
+	    qModel.setSfzmhm(orderInfoModel.getCIdcard());
+	    List<DrivingLicenseModel> listDrvlice;
+	    DrivingLicenseModel drivingLicenseModel=null;
+		try {
+			listDrvlice = this.drivingLicenseMapper.select(qModel);
+		   
+		    if(listDrvlice.size()>0){
+		    	drivingLicenseModel=listDrvlice.get(0);
+		    }else {
+		    	return;
+		    }
+			DrvPreasignRequest request=new DrvPreasignRequest();
+			//SelfDeviceSnObject snObject=iSelfDeviceSnDao.getSelfDeviceSn(device.getIp1(), SelfDeviceSnObject.Preasign);
+			//snObject.CopyToBaseDrvRequest(request);
+			//request.setLsh(tmpUser.getLsh());
+			request.setKskm(orderInfoModel.getIKm().toString());
+			request.setJbr(drivingLicenseModel.getXm());
+			request.setYkrq(orderInfoModel.getDateKsrq());
+			request.setKscc(orderInfoModel.getCKsccCode());
+			request.setKsdd(orderInfoModel.getCKsdd());
+			//request.setDlr(orderInfoModel.get.getJxdm());
+			this.iDrvInterface.setTimeout(drvTimeout);
+			this.iDrvInterface.setUrl(drvUrl);
+			BaseDrvResponse response= this.iDrvInterface.preasign(request);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	    
+
+		
+//		Km1PreasignRecord record=new Km1PreasignRecord();
+//		record.setCreateIp(device.getIp1());
+//		record.setCreateTime(new Date());
+//		//record.setJxdm(tmpUser.getJxdm());
+//		//record.setJxmc(tmpUser.getJxmc());
+//		record.setKsccCode(device.getDefaulKsccCode());
+//		record.setKsccName(device.getDefaultKsccName());
+//		record.setKsddCode(ksddCode);
+//		record.setKsddName("");
+//		record.setKsrq(date);
+//		record.setLsh(user.getLsh());
+//		record.setSfzmhm(user.getSfzmhm());
+//		record.setXm(user.getXm());
+		//this.getBaseDao().save(record);
+		
+		
+		
 	}
 	
 

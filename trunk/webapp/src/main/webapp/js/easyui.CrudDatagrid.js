@@ -12,6 +12,7 @@ var CrudDatagrid=function(opts){
 	this._urlAdd=opts["urlAdd"]||"";
 	this._urlRemove=opts["urlRemove"]||"";
 	this._urlUpdate=opts["urlUpdate"]||"";
+	this._urlExportExcel=opts["urlExportExcel"]||"";
 	this._regexp=opts["regexp"]||"";
     this._id=opts["id"]||"Id";
     this._initRow=opts["initRow"]||function(){return {};};
@@ -28,6 +29,7 @@ CrudDatagrid.prototype.getToolbar=function(opts){
 	        var urlRemove=this._urlRemove;
 	        var urlAdd=this._urlAdd;
 	        var urlUpdate=this._urlUpdate;
+	        var urlExportExcel=this._urlExportExcel;
 	        var formOpts={};
     	    formOpts["editors"]=this._editors;
     	    formOpts["prefix"]=opts["prefix"]||"";
@@ -96,30 +98,84 @@ CrudDatagrid.prototype.getToolbar=function(opts){
             	$(regexp).datagrid("reload");
 	        }
            };
-            var btnSearch={iconCls:"icon-search"
-            	,text:"搜索"
-                ,handler:function(){
-            	    $.messager.alert("","功能开发中....","info");
-                }
-            };
-            
-            var btnImportExcel={iconCls:"icon-help"
-            	,text:"导入Excel"
-                ,handler:function(){
-            	    $.messager.alert("","功能开发中....","info");
-                }
-            	
-            };
-            
-            var btnExportExcel={iconCls:"icon-help"
-            	,text:"导出Excel"
-                ,handler:function(){
-            	    $.messager.alert("","功能开发中....","info");
-                }
-            	
+            var btnExportExcel={
+            	iconCls:"icon-help"
+            	,text:"导出excel"
+            	,handler:function(){
+            	   if(urlExportExcel.length<1){
+            		   $.messager.alert("操作错误","没有配置excel路径","error");
+            		   return;
+            	   }
+            	   var div=$("<div></div>");
+            	   var table=$("<table></table>");
+            	   table.css("padding","10px");
+            	   var tr;
+            	   var th;
+            	   var td;
+                   var td2;
+            	   var a;
+            	   
+            	   //导出全部记录
+            	   tr=$("<tr></tr>");
+            	   th=$("<th></th>");
+            	   td=$("<td></td>");
+            	   td2=$("<td></td>");
+            	   a=$("<a></a>");
+            	   var countAll=$(regexp).datagrid("getData")["total"]||0;
+            	   th.html("全部记录数:");
+            	   td.html(countAll).css("width","100px");
+            	   td2.css("width","120px");
+            	   a.attr("href",urlExportExcel);
+            	   td2.append(a);
+            	   a.linkbutton({
+            		   text:"导出"
+            	   });
+            	   tr.append(th).append(td).append(td2);
+            	   table.append(tr);
+            	   
+            	   //导出已选记录
+            	   tr=$("<tr></tr>");
+            	   th=$("<th></th>");
+            	   td=$("<td></td>");
+            	   td2=$("<td></td>");
+            	   a=$("<a></a>");
+            	   var countSelect=$(regexp).datagrid("getSelections").length||0;
+            	   th.html("已选记录数:");
+            	   td.html(countSelect);
+            	   a.attr("href",urlExportExcel);
+            	   td2.append(a);
+            	   a.linkbutton({
+            		   text:"导出"
+            	   });
+            	   tr.append(th).append(td).append(td2);
+            	   table.append(tr);
+            	   
+            	   //导出当前页记录
+            	   tr=$("<tr></tr>");
+            	   th=$("<th></th>");
+            	   td=$("<td></td>");
+            	   td2=$("<td></td>");
+            	   a=$("<a></a>");
+            	   var countPage=$(regexp).datagrid("getRows").length||0;
+            	   th.html("当前页记录数:");
+            	   td.html(countPage);
+            	   a.attr("href",urlExportExcel);
+            	   td2.append(a);
+            	   a.linkbutton({
+            		   text:"导出"
+            	   });
+            	   tr.append(th).append(td).append(td2);
+            	   table.append(tr);
+            	   
+            	   div.append(table);
+            	   
+            	   div.dialog({
+            		   title:"导出excel"
+            	   });
+            	}
             };
 
-            var toolbar=[btnAdd,btnUpdate,btnRemove,btnRefresh,btnSearch,btnImportExcel,btnExportExcel];
+            var toolbar=[btnAdd,btnUpdate,btnRemove,btnRefresh,btnExportExcel];
             return toolbar;
 };
 
