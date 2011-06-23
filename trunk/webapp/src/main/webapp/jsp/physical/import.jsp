@@ -23,15 +23,6 @@
 		<jsp:include page="/css/index.jsp"></jsp:include>
 		<jsp:include page="/js/index.jsp"></jsp:include>
 		<style type="text/css">
-table {
-	border-style: solid;
-	border-width: 1px;
-}
-
-td {
-	text-align:left;
-	border-width: 1px;
-}
 </style>
 		<script type="text/javascript">
 function searchform(){
@@ -39,7 +30,6 @@ function searchform(){
 	  	url:'<%=basePath%>'+"physical/HospitalMessage/to/import.action",
 	   	success:function(str){
 	   			}
-	
 	});
 }
 </script>
@@ -47,7 +37,7 @@ function searchform(){
 	<body>
 		<div style="width: height :">
 		
-			<table style="width: 100%" border="1">
+			<table style="width: 100%">
 			
 				<tr>
 					<td style="background-color: rgb(208,227,248);">
@@ -63,13 +53,13 @@ function searchform(){
 									证件名称：
 								</td>
 								<td>
-									<select name="CIdcardtype">
+									<select name="">
 											<option value="C">军官证</option>
 											<option value="D">士兵证</option>
 											<option value="E">军官离退休证</option>
 											<option value="F">境外人员身份证明</option>
 											<option value="G">外交人员身份证明</option>
-											<option value="A">居民身份证</option>
+											<option value="居民身份证" selected="selected">居民身份证</option>
 									</select>
 								</td>
 								<td style="background-color: rgb(208,227,248);">
@@ -87,14 +77,14 @@ function searchform(){
 								<td>
 									&nbsp;
 									<input type="text" value="4404">
-									<input type="text" name="C_DABH" />
+									<input type="text" name="" />
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									业务类型：
 								</td>
 								<td>
 									&nbsp;
-									<select name="CCarType" id="CCarType" style="font-size:15pt;width:170px;">
+									<select name="" id="">
 											<option value="A">年度检查</option>
 											<option value="B">初学</option>
 											<option value="C">增驾</option>
@@ -193,7 +183,7 @@ function searchform(){
 								</td>
 								<td>
 									&nbsp;
-									<input type="text" name="" value="${busAllInfoModel.Regdate}" />
+									<input type="text" name="" value="" />
 								</td>
 							</tr>
 							<tr>

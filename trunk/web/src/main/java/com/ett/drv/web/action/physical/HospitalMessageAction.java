@@ -1,6 +1,7 @@
 package com.ett.drv.web.action.physical;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -160,14 +161,14 @@ public class HospitalMessageAction extends BaseDrvAction implements ModelDriven<
 	public void datagrid_hospital(){
 		String qbeginDate=this.getParameter("qbeginDate");
         String qendDate=this.getParameter("qendDate");
+        SimpleDateFormat sf=new SimpleDateFormat("yyyy-MM-dd");
         if(StringUtil.isBlank(qbeginDate)){
         	qbeginDate="2000-1-1";
         }
         if(StringUtil.isBlank(qendDate)){
-        	qendDate="2014-1-1";
+        	qendDate=sf.format(new Date());
         }
-		//int type=ObjectUtil.formatInt(this.getParameter("type"));
-        int type=1;
+		int type=ObjectUtil.formatInt(this.getParameter("type"));
 		List list = null;
 		try {
 			list = this.hospitalBiz.getViewGroupByHospital(type, DateUtil.parseDate(qbeginDate), DateUtil.parseDate(qendDate));

@@ -252,10 +252,20 @@ IS_PRINT_RETURN=#{model.IsPrintReturn,jdbcType=INTEGER,javaType=Integer},
 	       ,0 as sum3
 	       ,sum(decode(i_state,2,1,0)) as sum4 
 	from <include refid="table" /> 
-	
+	where REGDATE between #{startDate,jdbcType=DATE javaType=Date } and #{endDates,jdbcType=DATE javaType=Date}
 	group by C_HOSPITAL 
 </select>
 
+<select id="selectGroupByOperaction" resultType="ArrayList" resultMap="resultMapview">
+	select C_OPERATOR as hospital
+	       ,sum(decode(i_state,0,1,0)) as sum1
+	       ,sum(decode(i_state,1,1,0)) as sum2
+	       ,0 as sum3
+	       ,sum(decode(i_state,2,1,0)) as sum4 
+	from <include refid="table" /> 
+	where REGDATE between #{startDate,jdbcType=DATE javaType=Date } and #{endDates,jdbcType=DATE javaType=Date}
+	group by C_OPERATOR 
+</select>
 <select id="selectEqPk"  resultMap="resultMap">
 	select m.* from <include refid="table" /> m  where m.<include refid="pk" /> = #{Id,jdbcType=INTEGER,javaType=Integer}
 </select>
