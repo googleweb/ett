@@ -160,7 +160,14 @@ public class HospitalMessageAction extends BaseDrvAction implements ModelDriven<
 	public void datagrid_hospital(){
 		String qbeginDate=this.getParameter("qbeginDate");
         String qendDate=this.getParameter("qendDate");
-		int type=ObjectUtil.formatInt(this.getParameter("type"));
+        if(StringUtil.isBlank(qbeginDate)){
+        	qbeginDate="2000-1-1";
+        }
+        if(StringUtil.isBlank(qendDate)){
+        	qendDate="2014-1-1";
+        }
+		//int type=ObjectUtil.formatInt(this.getParameter("type"));
+        int type=1;
 		List list = null;
 		try {
 			list = this.hospitalBiz.getViewGroupByHospital(type, DateUtil.parseDate(qbeginDate), DateUtil.parseDate(qendDate));

@@ -245,16 +245,15 @@ IS_PRINT_RETURN=#{model.IsPrintReturn,jdbcType=INTEGER,javaType=Integer},
 	</trim>
    ) m <include refid="orderby"/>
 </select>
-<select id="selectGroupByOperaction" resultType="ArrayList" resultMap="resultMapview">
-	select C_OPERATOR as hospital
+<select id="selectGroupByHospital" resultType="ArrayList" resultMap="resultMapview">
+	select C_HOSPITAL as hospital
 	       ,sum(decode(i_state,0,1,0)) as sum1
 	       ,sum(decode(i_state,1,1,0)) as sum2
 	       ,0 as sum3
 	       ,sum(decode(i_state,2,1,0)) as sum4 
 	from <include refid="table" /> 
-	where REGDATE  between to_char(#{beginDate,jdbcType=DATE javaType=Date },'YYYY-MM-DD') 
-	and to_char(#{endDate,jdbcType=DATE javaType=Date },'YYYY-MM-DD') 
-	group by C_OPERATOR 
+	
+	group by C_HOSPITAL 
 </select>
 
 <select id="selectEqPk"  resultMap="resultMap">
