@@ -6,16 +6,14 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.commons.lang.time.DateUtils;
-import org.apache.poi.hssf.record.CalcCountRecord;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.ett.common.util.DateUtil;
-import com.ett.drv.biz.IHospitalBiz;
 import com.ett.drv.model.admin.BusAllInfoModel;
-import com.ett.drv.model.admin.BusLogModel;
 import com.ett.drv.web.action.BaseDrvAction;
 import com.opensymphony.xwork2.ModelDriven;
+import com.smartken.kia.core.model.impl.ResultModel;
 import com.smartken.kia.core.pager.PageArrayList;
 import com.smartken.kia.core.util.DateTimeUtil;
 import com.smartken.kia.core.util.EasyUiUtil;
@@ -31,16 +29,21 @@ public class HospitalMessageAction extends BaseDrvAction implements ModelDriven<
 	
 		return  "jsp";
 	}
-	@SuppressWarnings("unchecked")
 	public String to_import() {
-		if(isPost()){
-			/**
+		/*if(isPost()){
+			*//**
 			 * 根据证件号等查询
-			 */
+			 *//*
 			this.hospitalBiz.loadCrudMapper(BusAllInfoModel.class);
 			List list=this.hospitalBiz.getModel(busAllInfoModel);
-			this.getRequest().setAttribute("busAllInfoModel", list.get(0));
-		}
+			if(list!=null){
+					this.getRequest().setAttribute("busAllInfoModel", list.get(0));
+			}else{
+				ResultModel resultModel=new ResultModel();
+				resultModel.setMsg("没有符合条件的信息");
+			}
+		}*/
+		//this.writePlainText(resultModell.)
 		return "jsp";
 	}
 	public String to_checkRecord() {
@@ -69,10 +72,25 @@ public class HospitalMessageAction extends BaseDrvAction implements ModelDriven<
 	/**
 	 * 根据证件号等查询
 	 */
+	@SuppressWarnings("unchecked")
 	public void do_search(){
 		
+		this.hospitalBiz.loadCrudMapper(BusAllInfoModel.class);
+		BusAllInfoModel busAllInfoModel=new BusAllInfoModel();
+		String qCIdcard=this.getParameter("CIdcard1");
 		
+		busAllInfoModel.setCIdcard(qCIdcard);
+		List list=this.hospitalBiz.getModel(busAllInfoModel);
+		ResultModel resultModel=new ResultModel();
+		if(list==null){
+			resultModel.setMsg("不存在这样的用户");
+			this.writePlainText(resultModel.toJson().toString());
+		}else{
+			JSONArray jsonlist=ObjectUtil.toJsonArray(list);
+			this.writePlainText(jsonlist.toString());
+		}
 	}
+		
 	/**
 	 *查询出业务查询 
 	 */
@@ -119,41 +137,11 @@ public class HospitalMessageAction extends BaseDrvAction implements ModelDriven<
         busAllInfoModel.setCOperator(qCOperator);
         busAllInfoModel.setCDabh(qCDabh);
         busAllInfoModel.setCXm(qCXm);
-
-		
-		
-
-       /* String qbeginDate=this.getParameter("qbeginDate");
-        if(StringUtil.isBlank(qbeginDate)){
-        	qbeginDate=null;
-        }
-        if(busAllInfoModel.getBeginDate()==null){
-        		Calendar cal=Calendar.getInstance();
-        		cal.setTimeInMillis(0);
-				busAllInfoModel.setBeginDate(cal.getTime());
-
-        }
-        if(busAllInfoModel.getEndDate()==null){
-    	   busAllInfoModel.setEndDate(new Date());
-        }
-        if(StringUtil.isBlank(busAllInfoModel.getCOperator())){
-        	busAllInfoModel.setCOperator(null);
-        }*/
 		this.hospitalBiz.loadCrudMapper(BusAllInfoModel.class);
 		PageArrayList list=this.hospitalBiz.getModel(busAllInfoModel,this.getPager());
 		JSONObject json=EasyUiUtil.toJsonDataGrid(list,list.getCount());
 		this.writePlainText(json.toString());
 	}
-	/**
-	 *根据日志表查询信息 
-	 */
-	/*@SuppressWarnings("unchecked")
-	public void do_searchLog(){
-		this.hospitalBiz.loadCrudMapper(BusLogModel.class);
-		List list=this.hospitalBiz.getModel();
-		JSONObject json=EasyUiUtil.toJsonDataGrid(list,this.adminBiz.count());
-		this.writePlainText(json.toString());
-	}*/
 	/**
 	 *根据医院，或成员查询 
 	 */
