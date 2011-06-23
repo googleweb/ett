@@ -26,30 +26,21 @@
 		<jsp:include page="/css/index.jsp"></jsp:include>
 		<jsp:include page="/js/index.jsp"></jsp:include>
 		<style type="text/css">
-table {
-	border-width: 1px;
-	border-color: rgb(208,227,248);
-}
-
-td {
-	text-align:left;
-	border-width: 1px;
-}
 </style>
 		<script type="text/javascript">
-function searchform(){
-	$("#searchform").form("submit",{
+function addform(){
+	$("#addform").form("submit",{
 	  	url:'<%=basePath%>'+"physical/HospitalMessage/do/add.action",
 	   	success:function(str){
-	   			}
-	
+	   				
+	  	}
 	});
 }
 </script>
 	</head>
 	<body>
 		<div style="width: height :">
-			<table style="width: 100%" border="1">
+			<table style="width: 100%" >
 				<tr>
 					<td style="background-color: rgb(208,227,248);">
 						体检录入
@@ -58,14 +49,21 @@ function searchform(){
 
 				<tr>
 					<td>
+						<form id="searchform" method="post">
 						<table style="width: 100%">
 							<tr>
 								<td style="background-color: rgb(208,227,248);">
 									证件名称：
 								</td>
 								<td>
-									&nbsp;
-									<input type="text" name="" />
+									<select name="CIdcardtype">
+											<option value="C">军官证</option>
+											<option value="D">士兵证</option>
+											<option value="E">军官离退休证</option>
+											<option value="F">境外人员身份证明</option>
+											<option value="G">外交人员身份证明</option>
+											<option value="A">居民身份证</option>
+									</select>
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									证件号码
@@ -89,16 +87,21 @@ function searchform(){
 								</td>
 								<td>
 									&nbsp;
-									<input type="text" name="" />
+									<select name="CCarType" id="CCarType" >
+											<option value="A">年度检查</option>
+											<option value="B">初学</option>
+											<option value="C">增驾</option>
+									</select>
 								</td>
 							</tr>
 							<tr>
 								<td colspan="4" style="text-align: right;" >
-									<input type="button" value="提交">
+									<input type="button" value="提交" >
 								</td>
 							</tr>
 
 						</table>
+						</form>
 					</td>
 				</tr>
 				<tr>
@@ -109,7 +112,7 @@ function searchform(){
 				</tr>
 				<tr>
 					<td>
-					<form id="searchform" method="post">
+					<form id="addform" method="post">
 						<table style="width: 100%" class="" cellspacing="1">
 
 							<tr>
@@ -118,7 +121,7 @@ function searchform(){
 								</td>
 								<td>
 									&nbsp;
-									<input type="text" name="CIdcardtype" />
+									<input type="text" name="CIdcardtype"  value=""/>
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									证件号码
@@ -218,8 +221,8 @@ function searchform(){
 								<td>
 									<input type="text" name="">
 								</td>
-								<td>
-								<input type="button" value="提交"  onclick="searchform()" />
+								<td  style="text-align: right" colspan="10">
+								<input type="button" value="提交"  onclick="addform()" />
 								</td>
 							</tr>
 						</table>

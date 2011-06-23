@@ -30,7 +30,7 @@ $(document).ready(function(){
 	$("#test").datagrid({fit:true,
 	columns:[ 
 	[ 
-	{field:"<%=HospitalGroupView.F.Hospital%>",title:"医院名称",width:150},
+	{field:"<%=HospitalGroupView.F.Hospital%>",title:"医院名称/操作者",width:150},
 	{field:"<%=HospitalGroupView.F.Sum1%>",title:"已受理未体检",width:150},
 	{field:"<%=HospitalGroupView.F.Sum2%>",title:"已年度体检",width:150},
 	{field:"<%=HospitalGroupView.F.Sum3%>",title:"车管所已核对",width:150},
