@@ -25,13 +25,16 @@
 		<style type="text/css">
 </style>
 		<script type="text/javascript">
-function searchform(){
-	$("#searchform").form("submit",{
-	  	url:'<%=basePath%>'+"physical/HospitalMessage/to/import.action",
-	   	success:function(str){
-	   			}
+$(document).ready(function(){	
+	$("#commit").click(function(){
+		   var CIdcard1=$("#CIdcard1").val();
+  			$.getJSON("<%=basePath%>/physical/HospitalMessage/do/search.action",{CIdcard1:CIdcard1},function(result){
+    			$.each(result, function(i, field){
+      					alert(field);
+    			});
+  		});
 	});
-}
+});
 </script>
 	</head>
 	<body>
@@ -46,7 +49,6 @@ function searchform(){
 				</tr>
 				<tr>
 					<td>
-					<form id="searchform" method="post" action="#" >
 						<table style="width: 100%">
 							<tr>
 								<td style="background-color: rgb(208,227,248);">
@@ -67,7 +69,7 @@ function searchform(){
 								</td>
 								<td>
 									&nbsp;
-									<input type="text" name="CIdcard" />
+									<input type="text" name="CIdcard" id="CIdcard1"/>
 								</td>
 							</tr>
 							<tr>
@@ -93,12 +95,11 @@ function searchform(){
 							</tr>
 							<tr>
 								<td colspan="4" style="text-align: right;" >
-									<input type="submit" value="提交" >
+									<input type="button" value="提交" id="commit">
 								</td>
 							</tr>
 							
 						</table>
-					</form>
 					</td>
 				
 				</tr>
@@ -119,14 +120,14 @@ function searchform(){
 								</td>
 								<td>
 									&nbsp;
-									<input type="text" name="" value="${busAllInfoModel.CIdcardtype}"/>
+									<input type="text" name="" value="${busAllInfoModel.CIdcardtype}"  />
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									证件号码
 								</td>
 								<td>
 									&nbsp;
-									<input type="text" name="" value="${busAllInfoModel.CIdcard}"/>
+									<input type="text" name="" id="CIdcard2" />
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									档案编号
