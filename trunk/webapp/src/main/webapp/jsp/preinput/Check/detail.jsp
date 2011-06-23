@@ -125,7 +125,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				    />
 </td>
 <td colspan="2" rowspan="6">
-haha
+<img   src="<%=basePath%>preinput/Check/stream/photo.action"  alt="审核人照片" />
 </td>
 </tr>
 <tr >
