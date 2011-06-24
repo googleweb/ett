@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@page import="com.smartken.kia.core.model.impl.EasyUiModel"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -29,12 +30,15 @@ $(document).ready(function(){
 	$("#commit").click(function(){
 		try{
 		   var CIdcard1=$("#CIdcard1").val()||"";
-		   // var CIdcardtype1=$("#CIdcardtype1").val();
-		     //var CDabh1=$("#CDabh1").val();
+		   var CIdcardtype1=$("#CIdcardtype1 option:selected").val()||"";
+		   var CDabh1=$("#CDabh1").val()||"";
+		   //$("#CIdcardtype1 option[vaule='士兵证']").attr("selected","selected");  
+		  //$("#CIdcardtype1").combobox("setValue","士兵证");
   			$.getJSON("<%=basePath%>/physical/HospitalMessage/do/search.action",
-  				{CIdcard1:CIdcard1},
-  				//{CIdcardtype1:CIdcardtype1},
-  				//{CDabh1:CDabh1},
+  				{CIdcard1:CIdcard1
+  				//,CIdcardtype1:CIdcardtype1
+  				,CDabh1:CDabh1
+  				},
   				function(result){
               		for(var key in result){
               						$("#"+key).val(result[key]);
@@ -64,7 +68,7 @@ $(document).ready(function(){
 									证件名称：
 								</td>
 								<td>
-									<select name="" id="CIdcardtype1">
+									<select name="" id="CIdcardtype1" class="<%=EasyUiModel.ComboBox.CLASS %>" >
 											<option value="军官证">军官证</option>
 											<option value="士兵证">士兵证</option>
 											<option value="军官离退休证">军官离退休证</option>

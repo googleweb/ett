@@ -79,10 +79,16 @@ public class HospitalMessageAction extends BaseDrvAction implements ModelDriven<
 		this.hospitalBiz.loadCrudMapper(BusAllInfoModel.class);
 		BusAllInfoModel busAllInfoModel=new BusAllInfoModel();
 		String qCIdcard=this.getParameter("CIdcard1");
-		//String qCDabh=this.getParameter("CDabh1");
+		String qCDabh=this.getParameter("CDabh1");
+		if(StringUtil.isBlank(qCIdcard)){
+			qCIdcard=null;
+		}
+		if(StringUtil.isBlank(qCDabh)){
+			qCDabh=null;
+		}
 		//String qCIdcardtype=this.getParameter("CIdcardtype1");
 		busAllInfoModel.setCIdcard(qCIdcard);
-		//busAllInfoModel.setCDabh(qCDabh);
+		busAllInfoModel.setCDabh(qCDabh);
 		//busAllInfoModel.setCIdcardtype(qCIdcardtype);
 		List<IFormatterModel> list=this.hospitalBiz.getModel(busAllInfoModel);
 		if(list.size()==0){
