@@ -1,8 +1,16 @@
 package com.ett.drv.web.action.preinput;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
+import org.apache.commons.fileupload.DiskFileUpload;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUpload;
+import org.apache.commons.fileupload.RequestContext;
+import org.apache.commons.fileupload.servlet.ServletRequestContext;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -13,6 +21,7 @@ import com.smartken.kia.core.model.IFormatterModel;
 import com.smartken.kia.core.model.impl.ResultModel;
 import com.smartken.kia.core.pager.PageArrayList;
 import com.smartken.kia.core.util.EasyUiUtil;
+import com.smartken.kia.core.util.FileUtil;
 import com.smartken.kia.core.util.ObjectUtil;
 import com.smartken.kia.core.util.StringUtil;
 import com.ett.drv.model.admin.DictModel;
@@ -22,7 +31,18 @@ import com.ett.drv.model.preinput.*;
 public class ListAction extends BaseDrvAction implements ModelDriven<StudentApplyInfoModel>{
 	
 	private StudentApplyInfoModel studentApplyInfoModel;
+
+	private File photo;
 	
+	
+
+	public File getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(File photo) {
+		this.photo = photo;
+	}
 
 	@Override
 	public void clear() {
@@ -43,6 +63,7 @@ public class ListAction extends BaseDrvAction implements ModelDriven<StudentAppl
 					studentApplyInfoModel=new StudentApplyInfoModel();
 				}
 				else if(id!=-1){
+					
 					this.preBiz.loadCrudMapper(StudentApplyInfoModel.class);
 					studentApplyInfoModel=(StudentApplyInfoModel) this.preBiz.getModelEqPk(id);
 				}
@@ -306,6 +327,25 @@ public class ListAction extends BaseDrvAction implements ModelDriven<StudentAppl
 				this.writeStream(bs);
 			}
 					
+	}
+	
+	public void upload_photo(){
+
+	 if(this.photo!=null){
+		 try {
+			byte[] bs=FileUtil.toBytes(photo);
+			this.studentApplyInfoModel.setBlobPhoto(bs);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 
+	 }
+		
+	}
+	
+	public String to_upload(){
+		return "jsp";
 	}
 
 }

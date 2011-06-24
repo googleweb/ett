@@ -48,8 +48,46 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
   
   <script type="text/javascript">
+  function uploadphoto(){
+  var href='<%=basePath%>'+"preinput/List/to/upload.action";
+  $("#edit").dialog( 
+      {
+			title:"上传照片:",
+//			resizable:true,
+			height:110,
+			width:250,
+//			onClose:function(){ $('#detail').datagrid('reload'); },
+//	    	modal:true,
+           
+			onOpen:function(){$(this).kiaIframe(href);}
+			,onClose:function(){document.location.href="<%=basePath%>preinput/List/to/detail.action";}
+       }      
+        );
+        	return false;
+  }
+  
+  function test(){
+  var f=$("#f").val();
+  $.messager.confirm('操作提示','确认上传',function(yes){
+  		if(yes){
+  		$("#detail").form('submit',{
+  		url:"<%=basePath%>preinput/List/upload/photo.action",
+  		onsubmit:function(){return $(this).form("validate");},
+  		success:function(str){
+  		$(this).form("clear");
+		str.messager();
+  		}
+  		
+  		});
+  		}
+  
+  });
+  
+  
+  }
+  
   function clicksave(){
- 			 $.messager.confirm('操作提示','确认保存',function(yes){
+   $.messager.confirm('操作提示','确认保存',function(yes){
 		   if(yes){
 			   $("#detail").form('submit',{
 				   url:"<%=basePath%>preinput/List/do/save.action"
@@ -61,6 +99,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			   });
 		   }
 	     });
+ 			 
 	     
    }
   </script>
@@ -107,8 +146,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				  
 				    />
 </td>
+
 <td colspan="2" rowspan="6">
-<img   src="<%=basePath%>preinput/List/stream/photo.action"  alt="审核人照片" />
+
+<img style="width:300px" style="height:300px"  src="<%=basePath%>preinput/List/stream/photo.action"  alt="审核人照片" />
+<input type="button" value="上传照片" onclick="uploadphoto()"/>
+
+
 </td>
 </tr>
 <tr >
@@ -347,5 +391,6 @@ name="IZsl" value="${IZsl}">
 </tbody>
 </table>
 </form>
+<div id="edit"></div>
   </body>
 </html>
