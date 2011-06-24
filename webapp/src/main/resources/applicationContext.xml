@@ -152,6 +152,11 @@
 <bean id="dictTypeMapper" parent="baseMapper">
   <property name="mapperInterface" value="com.ett.drv.mapper.admin.IDictTypeMapper"></property>
 </bean>
+
+<bean id="busLogMapper" parent="baseMapper">
+  <property name="mapperInterface" value="com.ett.drv.mapper.admin.IBusLogMapper"></property>
+</bean>
+
 <bean id="busAllInfoMapper" parent="baseMapper">
   <property name="mapperInterface" value="com.ett.drv.mapper.admin.IBusAllInfoMapper"></property>
 </bean>
@@ -265,6 +270,7 @@
    <property name="schoolCarMapper" ref="schoolCarMapper"></property>
    <property name="studentApplyInfoMapper" ref="studentApplyInfoMapper"></property>
     <property name="busAllInfoMapper" ref="busAllInfoMapper"></property>
+    <property name="busLogMapper" ref="busLogMapper"></property>
    
 </bean>
 

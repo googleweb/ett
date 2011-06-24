@@ -20,6 +20,10 @@ public class BusLogModel extends BaseModel{
 		private String CDes2;         //C_DES2  VARCHAR2 60
 		private String CDes3;         //C_DES3  VARCHAR2 60
 		private Integer IDepid;         //I_DEPID  NUMBER 38
+		
+		private Date qStartRegDate;
+		private Date qEndRegDate;
+		
 		public Integer getId() {
 			return Id;
 		}
@@ -73,6 +77,18 @@ public class BusLogModel extends BaseModel{
 		}
 		public void setIDepid(Integer iDepid) {
 			IDepid = iDepid;
+		}
+		public Date getqStartRegDate() {
+			return qStartRegDate;
+		}
+		public void setqStartRegDate(Date qStartRegDate) {
+			this.qStartRegDate = qStartRegDate;
+		}
+		public Date getqEndRegDate() {
+			return qEndRegDate;
+		}
+		public void setqEndRegDate(Date qEndRegDate) {
+			this.qEndRegDate = qEndRegDate;
 		}
 		
 		

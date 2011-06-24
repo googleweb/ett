@@ -82,6 +82,11 @@ id="com.ett.drv.web.action.preinput.CheckAction">
 >
 </bean>
 
+<bean class="com.ett.drv.web.action.admin.BuslogAction" parent="baseAction"
+ id="com.ett.drv.web.action.admin.BuslogAction"
+>
+</bean>
+
 <bean class="com.ett.drv.web.action.self.SysAction"
   id="com.ett.drv.web.action.self.SysAction"
 >

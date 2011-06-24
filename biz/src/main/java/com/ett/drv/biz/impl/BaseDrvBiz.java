@@ -1,6 +1,7 @@
 package com.ett.drv.biz.impl;
 
 import com.ett.drv.mapper.admin.IBusAllInfoMapper;
+import com.ett.drv.mapper.admin.IBusLogMapper;
 import com.ett.drv.mapper.admin.IDepartmentMapper;
 import com.ett.drv.mapper.admin.IDictMapper;
 import com.ett.drv.mapper.admin.IDictTypeMapper;
@@ -30,6 +31,7 @@ import com.ett.drv.mapper.self.ITransactVehicleMapper;
 import com.ett.drv.mapper.self.IVehFlowMapper;
 import com.ett.drv.mapper.self.IVehicleMapper;
 import com.ett.drv.model.admin.BusAllInfoModel;
+import com.ett.drv.model.admin.BusLogModel;
 import com.ett.drv.model.admin.DepartmentModel;
 import com.ett.drv.model.admin.DictModel;
 import com.ett.drv.model.admin.DictTypeModel;
@@ -93,6 +95,7 @@ public abstract class BaseDrvBiz extends BaseCurdBiz {
     protected ISchoolCarMapper<SchoolCarModel>  schoolCarMapper;
     protected IStudentApplyInfoMapper<StudentApplyInfoModel> studentApplyInfoMapper;
     protected IBusAllInfoMapper<BusAllInfoModel> busAllInfoMapper;
+    protected IBusLogMapper<BusLogModel> busLogMapper;
 
 
 	public IBusAllInfoMapper<BusAllInfoModel> getBusAllInfoMapper() {
@@ -288,6 +291,13 @@ public abstract class BaseDrvBiz extends BaseCurdBiz {
 	public void setStudentApplyInfoMapper(IStudentApplyInfoMapper<StudentApplyInfoModel> studentApplyInfoMapper){
 		this.studentApplyInfoMapper=studentApplyInfoMapper;
 		this.addCrudMapper(StudentApplyInfoModel.class, studentApplyInfoMapper);
+	}
+
+
+
+	public void setBusLogMapper(IBusLogMapper<BusLogModel> busLogMapper) {
+		this.busLogMapper = busLogMapper;
+		this.addCrudMapper(BusLogModel.class, busLogMapper);
 	}
 	
 	
