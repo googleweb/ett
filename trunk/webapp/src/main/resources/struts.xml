@@ -12,16 +12,23 @@
 	<constant name="struts.multipart.saveDir" value="/upload-temp" />
 	<constant name="struts.custom.i18n.resources" value="system-config"/>
 	<constant name="struts.enable.SlashesInActionNames" value="true" />
+	<constant name="struts.multipart.saveDir" value="c:/temp"/>
 	<include file="com/ett/struts2/config/struts-*.xml"></include>
 	<include file="com/ett/drv/web/action/*/struts-*.xml"></include>
 	<include file="struts-*.xml"></include>
-	<package name="base-package" extends="struts-default" abstract="true">
-   		<default-interceptor-ref name="paramsPrepareParamsStack"></default-interceptor-ref>
+	 <package name="base-package" extends="struts-default" abstract="true">  	 
+   		<interceptors>
+   		   <interceptor-stack name="ss">
+   		     <interceptor-ref name="paramsPrepareParamsStack"></interceptor-ref>
+   		     <interceptor-ref name="fileUploadStack"></interceptor-ref>
+   		   </interceptor-stack>
+   		</interceptors>
    	    <global-results>
 
        <result name="error">/jsp/error.jsp</result>
    </global-results>
 </package>
+
 	<package name="root" namespace="/root" extends="struts-default">
 		<default-action-ref name="page404"/>	
 		<global-results>

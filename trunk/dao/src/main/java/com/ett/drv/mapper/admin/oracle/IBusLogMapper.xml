@@ -90,7 +90,8 @@ I_DEPID=#{model.IDepid,jdbcType=INTEGER,javaType=Integer},
 <if test="model.CDes2 neq null">and m.C_DES2 like #{model.CDes2,jdbcType=VARCHAR javaType=String } </if> 
 <if test="model.CDes3 neq null">and m.C_DES3 like #{model.CDes3,jdbcType=VARCHAR javaType=String } </if> 
 <if test="model.IDepid neq null">and m.I_DEPID = #{model.IDepid,jdbcType=INTEGER javaType=Integer } </if> 
-
+<if test="model.qStartRegDate neq null and model.qEndRegDate neq null">
+  and (m.REGDATE between #{model.qStartRegDate,jdbcType=DATE javaType=Date }  and  #{model.qEndRegDate,jdbcType=DATE javaType=Date } ) </if> 
 </sql>
 
 
