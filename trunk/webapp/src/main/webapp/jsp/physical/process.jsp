@@ -69,7 +69,7 @@ function addform(){
 									证件号码
 								</td>
 								<td>
-									&nbsp;
+									
 									<input type="text" name="" />
 								</td>
 							</tr>
@@ -78,7 +78,7 @@ function addform(){
 									档案编号
 								</td>
 								<td>
-									&nbsp;
+									
 									<input type="text" value="4404">
 									<input type="text" name="" />
 								</td>
@@ -86,7 +86,7 @@ function addform(){
 									业务类型：
 								</td>
 								<td>
-									&nbsp;
+									
 									<select name="CCarType" id="CCarType" >
 											<option value="A">年度检查</option>
 											<option value="B">初学</option>
@@ -120,21 +120,21 @@ function addform(){
 									证件名称：
 								</td>
 								<td>
-									&nbsp;
+									
 									<input type="text" name="CIdcardtype"  value=""/>
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									证件号码
 								</td>
 								<td>
-									&nbsp;
+									
 									<input type="text" name="CIdcard" />
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									档案编号
 								</td>
 								<td>
-									&nbsp;
+									
 									<input type="text" name="CDabh" />
 								</td>
 								<td rowspan="4" style="border-bottom: none">
@@ -147,21 +147,21 @@ function addform(){
 									姓名
 								</td>
 								<td>
-									&nbsp;
+									
 									<input type="text" name="CXm" />
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									性别
 								</td>
 								<td>
-									&nbsp;
+									
 									<input type="text" name="CSex" />
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									出生日期
 								</td>
 								<td>
-									&nbsp;
+									
 									<input type="text" name="CBirthday" 
 									 class="<%=EasyUiModel.DateBox.CLASS%>"     
 									/>
@@ -172,21 +172,21 @@ function addform(){
 									国籍
 								</td>
 								<td>
-									&nbsp;
+									
 									<input type="text" name="CNation" />
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									准驾车型
 								</td>
 								<td>
-									&nbsp;
+									
 									<input type="text" name="" />
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									体检日期
 								</td>
 								<td>
-									&nbsp;
+									
 									<input type="text" name="Regdate" 
 									class="<%=EasyUiModel.DateBox.CLASS%>"  
 									/>
@@ -231,9 +231,9 @@ function addform(){
 				</tr>
 				<tr>
 								<td colspan="8" style="text-align: right">
-									&nbsp;
+									
 									<input type="button" name="" value="打印" />
-									&nbsp;
+									
 									<input type="button" name="" value="退办" />
 								</td>
 					

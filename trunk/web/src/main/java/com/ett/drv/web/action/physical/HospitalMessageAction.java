@@ -13,6 +13,7 @@ import com.ett.common.util.DateUtil;
 import com.ett.drv.model.admin.BusAllInfoModel;
 import com.ett.drv.web.action.BaseDrvAction;
 import com.opensymphony.xwork2.ModelDriven;
+import com.smartken.kia.core.model.IFormatterModel;
 import com.smartken.kia.core.model.impl.ResultModel;
 import com.smartken.kia.core.pager.PageArrayList;
 import com.smartken.kia.core.util.DateTimeUtil;
@@ -78,16 +79,17 @@ public class HospitalMessageAction extends BaseDrvAction implements ModelDriven<
 		this.hospitalBiz.loadCrudMapper(BusAllInfoModel.class);
 		BusAllInfoModel busAllInfoModel=new BusAllInfoModel();
 		String qCIdcard=this.getParameter("CIdcard1");
-		
+		//String qCDabh=this.getParameter("CDabh1");
+		//String qCIdcardtype=this.getParameter("CIdcardtype1");
 		busAllInfoModel.setCIdcard(qCIdcard);
-		List list=this.hospitalBiz.getModel(busAllInfoModel);
-		ResultModel resultModel=new ResultModel();
-		if(list==null){
-			resultModel.setMsg("不存在这样的用户");
-			this.writePlainText(resultModel.toJson().toString());
+		//busAllInfoModel.setCDabh(qCDabh);
+		//busAllInfoModel.setCIdcardtype(qCIdcardtype);
+		List<IFormatterModel> list=this.hospitalBiz.getModel(busAllInfoModel);
+		if(list.size()==0){
+			//resultModel.setMsg("不存在这样的用户");
+			//this.writePlainText(resultModel.toJson().toString());
 		}else{
-			JSONArray jsonlist=ObjectUtil.toJsonArray(list);
-			this.writePlainText(jsonlist.toString());
+			this.writePlainText(list.get(0).toJson().toString());
 		}
 	}
 		
