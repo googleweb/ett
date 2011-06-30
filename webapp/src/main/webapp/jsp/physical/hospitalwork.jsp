@@ -126,7 +126,9 @@ function searchform(){
 				<td style="background-color: rgb(208,227,248);">
 				</td>
 				<td style="text-align: left;">
-					<input type="button" value="统计" onclick="searchform()" />
+					<%--<input type="button" value="统计" onclick="searchform()" />
+				--%>
+				<a class="easyui-linkbutton"   <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_SEARCH) %>  onclick="searchform()" >统计</a>
 				</td>
 			</tr>
 		</table>

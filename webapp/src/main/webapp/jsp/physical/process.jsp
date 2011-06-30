@@ -96,7 +96,7 @@ function addform(){
 							</tr>
 							<tr>
 								<td colspan="4" style="text-align: right;" >
-									<input type="button" value="提交" >
+									<a class="easyui-linkbutton"   <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_SEARCH) %>>提交</a>
 								</td>
 							</tr>
 
@@ -222,7 +222,9 @@ function addform(){
 									<input type="text" name="">
 								</td>
 								<td  style="text-align: right" colspan="10">
-								<input type="button" value="提交"  onclick="addform()" />
+								<%--<input type="button" value="提交"  onclick="addform()" />
+								--%>
+									<a class="easyui-linkbutton"   <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_SEARCH) %>  onclick="addform()">提交</a>
 								</td>
 							</tr>
 						</table>
@@ -232,9 +234,9 @@ function addform(){
 				<tr>
 								<td colspan="8" style="text-align: right">
 									
-									<input type="button" name="" value="打印" />
+										<a class="easyui-linkbutton"   <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_SEARCH) %>>打印</a>
 									
-									<input type="button" name="" value="退办" />
+										<a class="easyui-linkbutton"   <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_SEARCH) %>>退办</a>
 								</td>
 					
 				</tr>

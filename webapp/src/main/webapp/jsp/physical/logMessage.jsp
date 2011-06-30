@@ -110,7 +110,8 @@ function searchform(){
 }		
 </script>
 	</head>
-	<body>
+	<body  class="<%=EasyUiModel.Layout.CLASS %>" >
+	 <div    <%=EasyUiModel.Layout.Properties.REGION(EasyUiModel.REGION_NORTH) %> style="overflow: hidden;">
 	<form method="post" id="searchform">
 		<table style="text-align: center ;width: 100%">
 			<tr>
@@ -119,7 +120,7 @@ function searchform(){
 				</td>
 			</tr>
 			<tr>
-				<td style="background-color: rgb(208,227,248);width: 100px;text-align: right;">
+				<td style="background-color: rgb(208,227,248);">
 				证件号码：
 				</td>
 				<td style="text-align: left;">
@@ -166,12 +167,18 @@ function searchform(){
 					<input type="checkbox" name=""/>包含受理信息
 				</td>
 				<td style="background-color: rgb(208,227,248);">
-					<input type="button" value="查询" onclick="searchform()" />
-					<input type="button" value="打印体检信息"/>
-				</td>
+					<!-- <input type="button" value="查询"  /> -->
+					<a class="easyui-linkbutton"   <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_SEARCH) %>  onclick="searchform()" >查询</a>
+					<a class="easyui-linkbutton"   <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_SEARCH) %> >打印体检信息</a>
+					<%--<input type="button" value="打印体检信息"/>--%>
+					</td>
 			</tr>
 		</table>
+				</form>
+				</div>		
+		<div   <%=EasyUiModel.Layout.Properties.REGION(EasyUiModel.REGION_CENTER) %> >
 		<table id="test"></table>
-		</form>
+		
+		</div>
 	</body>
 </html>
