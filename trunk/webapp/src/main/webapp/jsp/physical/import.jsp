@@ -33,7 +33,7 @@ $(document).ready(function(){
 		   var CIdcardtype1=$("#CIdcardtype1 option:selected").val()||"";
 		   var CDabh1=$("#CDabh1").val()||"";
 		   //$("#CIdcardtype1 option[vaule='士兵证']").attr("selected","selected");  
-		  //$("#CIdcardtype1").combobox("setValue","士兵证");
+		   //$("#CIdcardtype1").combobox("setValue","士兵证");
   			$.getJSON("<%=basePath%>/physical/HospitalMessage/do/search.action",
   				{CIdcard1:CIdcard1
   				//,CIdcardtype1:CIdcardtype1
@@ -43,11 +43,26 @@ $(document).ready(function(){
               		for(var key in result){
               						$("#"+key).val(result[key]);
               		}
-               	
+              		alert(result['CBsl']);
+              		$("#CBsl").combobox("setValue",result['CBsl']);
+              		$("#CTl").combobox("setValue",result['CTl']);
+              		$("#CSz").combobox("setValue",result['CSz']);
+              		$("#CZxz").combobox("setValue",result['CZxz']);
+              		$("#CYxz").combobox("setValue",result['CYxz']);
+              		$("#CQgjb").combobox("setValue",result['CQgjb']);
   		});
        }catch(ex){alert(ex);}
 	});
 });
+function addform(){
+	alert('11');
+	$("#addfrom").form("submit",{
+			url:"<%=basePath%>physical/HospitalMessage/do/add.action",
+	   	success:function(str){
+	   				
+	  	}	
+	});
+}
 </script>
 	</head>
 	<body>
@@ -104,7 +119,9 @@ $(document).ready(function(){
 							</tr>
 							<tr>
 								<td colspan="4" style="text-align: right;" >
-									<input type="button" value="提交" id="commit">
+									<%--<input type="button" value="提交" id="commit">
+								--%>
+								<a class="easyui-linkbutton"   <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_SEARCH) %>  id="commit" >提交</a>
 								</td>
 							</tr>
 							
@@ -119,8 +136,10 @@ $(document).ready(function(){
 					</td>
 
 				</tr>
+				<form method="post"  id="addform">
 				<tr>
-					<td>
+					<td> 
+					
 						<table style="width: 100%" class="" cellspacing="1">
 
 							<tr>
@@ -262,7 +281,7 @@ $(document).ready(function(){
 									听力
 								</td>
 								<td>
-									<select name="" id="">
+									<select name="CTl" id="CTl">
 										<option value="1">
 											合格
 										</option>
@@ -277,7 +296,7 @@ $(document).ready(function(){
 									上肢
 								</td>
 								<td>
-									<select name="" id="">
+									<select name="CSz" id="CSz">
 										<option value="1">
 											合格
 										</option>
@@ -291,7 +310,7 @@ $(document).ready(function(){
 									左下肢
 								</td>
 								<td>
-									<select name="" id="">
+									<select name="CZxz" id="CZxz">
 										<option value="1">
 											合格
 										</option>
@@ -305,7 +324,7 @@ $(document).ready(function(){
 									右下肢
 								</td>
 								<td>
-									<select name="" id="">
+									<select name="CYxz" id="CYxz">
 										<option value="1">
 											合格
 										</option>
@@ -319,7 +338,7 @@ $(document).ready(function(){
 									躯干颈部
 								</td>
 								<td>
-									<select name="" id="">
+									<select name="" id="CQgjb">
 										<option value="1">
 											合格
 										</option>
@@ -342,16 +361,23 @@ $(document).ready(function(){
 							<tr>
 								<td colspan="8" style="text-align: right">
 									
-									<input type="button" name="" value="保存" />
+									<%--<input type="button" name="" value="保存" />
 									
 									<input type="button" name="" value="打印回执单" />
+								--%>
+								<a class="easyui-linkbutton"   <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_SEARCH) %>  onclick="addform()">提交</a>
+								<a class="easyui-linkbutton"   <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_SEARCH) %>>打印回执单</a>
 								</td>
 							</tr>
+							
 						</table>
+						
 					</td>
+					
 				</tr>
-
+				</form>
 			</table>
+			
 		</div>
 	</body>
 </html>

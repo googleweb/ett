@@ -87,9 +87,12 @@ public class HospitalMessageAction extends BaseDrvAction implements ModelDriven<
 			qCDabh=null;
 		}
 		//String qCIdcardtype=this.getParameter("CIdcardtype1");
+		//if(StringUtil.isBlank(qCIdcardtype)){
+		//	qCIdcardtype=null;
+		//}
+		//busAllInfoModel.setCIdcardtype(qCIdcardtype);
 		busAllInfoModel.setCIdcard(qCIdcard);
 		busAllInfoModel.setCDabh(qCDabh);
-		//busAllInfoModel.setCIdcardtype(qCIdcardtype);
 		List<IFormatterModel> list=this.hospitalBiz.getModel(busAllInfoModel);
 		if(list.size()==0){
 			//resultModel.setMsg("不存在这样的用户");
