@@ -43,23 +43,29 @@ $(document).ready(function(){
               		for(var key in result){
               						$("#"+key).val(result[key]);
               		}
-              		alert(result['CBsl']);
-              		$("#CBsl").combobox("setValue",result['CBsl']);
-              		$("#CTl").combobox("setValue",result['CTl']);
-              		$("#CSz").combobox("setValue",result['CSz']);
-              		$("#CZxz").combobox("setValue",result['CZxz']);
-              		$("#CYxz").combobox("setValue",result['CYxz']);
-              		$("#CQgjb").combobox("setValue",result['CQgjb']);
+              		$("#CBsl").val(result['CBsl']);
+              		$("#CTl").val(result['CTl']);
+              		$("#CSz").val(result['CSz']);
+              		$("#CZxz").val(result['CZxz']);
+              		$("#CYxz").val(result['CYxz']);
+              		$("#CQgjb").val(result['CQgjb']);
+              		$("#CCarType").val(result['CCarType']);
+              		$("#CSex").val(result['CSex']);
+              		alert(result['Regdate']);
+              		$("#Regdate").val(result['Regdate']);
+              		
+              	
+              		
+              		
+              		
   		});
        }catch(ex){alert(ex);}
 	});
 });
 function addform(){
-	alert('11');
-	$("#addfrom").form("submit",{
+	$("#addform").form("submit",{
 			url:"<%=basePath%>physical/HospitalMessage/do/add.action",
 	   	success:function(str){
-	   				
 	  	}	
 	});
 }
@@ -147,6 +153,7 @@ function addform(){
 									证件名称：
 								</td>
 								<td>
+									<input type="hidden" name="Id" id="Id">
 									<input type="text" name="CIdcardtype"   id="CIdcardtype" />
 								</td>
 								<td style="background-color: rgb(208,227,248);">
@@ -181,14 +188,22 @@ function addform(){
 								</td>
 								<td>
 									
-									<input type="text" name="CSex"  id="CSex" />
+									<%--<input type="text" name="CSex"  id="CSex" />
+								--%>
+									<select name="CSex" id="CSex">
+										<option value="男">男</option>
+										<option value="女">女</option>
+									</select>
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									出生日期
 								</td>
 								<td>
 									
-									<input type="text" name="CBirthday"  id="CBirthday" />
+									<input type="text" 
+										   name="CBirthday"  
+										   id="CBirthday" 
+										   class="<%=EasyUiModel.DateBox.CLASS%>" />
 								</td>
 							</tr>
 							<tr>
@@ -202,14 +217,36 @@ function addform(){
 									准驾车型
 								</td>
 								<td>
-									<input type="text" name="CCarType"  id="CCarType" />
+									<%--<input type="text" name="CCarType"  id="CCarType" />
+								--%>
+								<select name="CCarType" id="CCarType">
+									<option value="全部车型">全部车型</option>
+									<option value="A1">A1</option>
+									<option value="A2">A2</option>
+									<option value="A3">A3</option>
+									<option value="B1">B1</option>
+									<option value="B2">B2</option>
+									<option value="C1">C1</option>
+									<option value="C2">C2</option>
+									<option value="C3">C3</option>
+									<option value="C4">C4</option>
+									<option value="D">D</option>
+									<option value="E">E</option>
+									<option value="F">F</option>
+									<option value="M">M</option>
+									<option value="N">N</option>
+									<option value="P">P</option>
+								</select>
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									体检日期
 								</td>
 								<td>
 									
-									<input type="text" name="Regdate"  id="Regdate" />
+									<input type="text" 
+										   name="Regdate"  
+										   id="Regdate" 
+										   class="<%=EasyUiModel.DateBox.CLASS%>" />
 								</td>
 							</tr>
 							<tr>
@@ -260,15 +297,21 @@ function addform(){
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									左
-									<input type="text" name="CZsl"  id="CZsl" />
+									<input type="text" name="CZsl"  id="CZsl"  class="<%=EasyUiModel.NumberSpinner.CLASS%>" 
+																							  <%=EasyUiModel.NumberBox.Properties.PRECISION(1) %>
+																							  <%=EasyUiModel.Spinner.Properties.INCREMENT(0.1) %>
+																							  <%=EasyUiModel.NumberBox.Properties.MIN(0) %>/>
 									右
-									<input type="text" name="CYsl"  id="CYsl" />
+									<input type="text" name="CYsl"  id="CYsl" class="<%=EasyUiModel.NumberSpinner.CLASS%>" 
+																							  <%=EasyUiModel.NumberBox.Properties.PRECISION(1) %>
+																							  <%=EasyUiModel.Spinner.Properties.INCREMENT(0.1) %>
+																							  <%=EasyUiModel.NumberBox.Properties.MIN(0) %>/>
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									辨色力
 								</td>
 								<td>
-									<select name="CBsl" id="CBsl">
+									<select  name="CBsl" id="CBsl">
 										<option value="1">
 											合格
 										</option>
