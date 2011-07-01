@@ -51,13 +51,8 @@ $(document).ready(function(){
               		$("#CQgjb").val(result['CQgjb']);
               		$("#CCarType").val(result['CCarType']);
               		$("#CSex").val(result['CSex']);
-              		alert(result['Regdate']);
+              		//alert(result['Regdate']);
               		$("#Regdate").val(result['Regdate']);
-              		
-              	
-              		
-              		
-              		
   		});
        }catch(ex){alert(ex);}
 	});
