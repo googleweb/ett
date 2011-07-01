@@ -86,11 +86,11 @@ public class HospitalMessageAction extends BaseDrvAction implements ModelDriven<
 		if(StringUtil.isBlank(qCDabh)){
 			qCDabh=null;
 		}
-		//String qCIdcardtype=this.getParameter("CIdcardtype1");
-		//if(StringUtil.isBlank(qCIdcardtype)){
-		//	qCIdcardtype=null;
-		//}
-		//busAllInfoModel.setCIdcardtype(qCIdcardtype);
+		String qCIdcardtype=this.getParameter("CIdcardtype1");
+		if(StringUtil.isBlank(qCIdcardtype)){
+			qCIdcardtype=null;
+		}
+		busAllInfoModel.setCIdcardtype(qCIdcardtype);
 		busAllInfoModel.setCIdcard(qCIdcard);
 		busAllInfoModel.setCDabh(qCDabh);
 		List<IFormatterModel> list=this.hospitalBiz.getModel(busAllInfoModel);
