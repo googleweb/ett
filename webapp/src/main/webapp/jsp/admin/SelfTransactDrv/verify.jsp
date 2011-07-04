@@ -9,7 +9,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 String baseActionPath=basePath+"admin/SelfTransactDrv";
-String excelTemplatePath=basePath+"js/print/驾驶证申请表-初学.xlt";
+String excelTemplatePath=basePath+"js/print/excel.tranDrv.xlt";
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -29,7 +29,7 @@ String excelTemplatePath=basePath+"js/print/驾驶证申请表-初学.xlt";
 	</jsp:include>
     <jsp:include page="/css/index.jsp"></jsp:include>
     <jsp:include page="/js/index.jsp"></jsp:include>
-    <script type="text/javascript" src="<%=basePath+"js/print/excel-tranDrv.js" %>"></script>
+    <script type="text/javascript" src="<%=basePath+"js/print/excel.tranDrv.js" %>"></script>
     <%
       String divShowImg="divShowImg";
       String imgShow="imgShow";
