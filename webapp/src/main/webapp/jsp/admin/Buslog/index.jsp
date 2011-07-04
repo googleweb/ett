@@ -7,6 +7,7 @@
 <%@page import="com.smartken.kia.core.util.EasyUiUtil"%>
 <%@page import="com.ett.drv.model.admin.BusLogModel"%>
 <%@page import="com.smartken.kia.core.model.impl.JsFunctionModel"%>
+<%@page import="com.ett.drv.model.admin.RoleModel"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -131,7 +132,11 @@ String buslogActionPath=basePath+"admin/Buslog";
          </tr>
          <tr>
            <td style="text-align: right;">
-                                 操作者    <input class="<%=EasyUiModel.ComboBox.CLASS %>"  id="<%=inputOperator %>" />
+                                 操作者    <input class="<%=EasyUiModel.ComboBox.CLASS %>"  id="<%=inputOperator %>" 
+                       <%=EasyUiModel.ComboBox.Properties.URL(buslogActionPath+"/combobox/roles.action") %>  
+                       <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(RoleModel.F.CName.name()) %>    
+                       <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(RoleModel.F.CName.name()) %>      
+                                 />
             <a class="<%=EasyUiModel.LinkButton.CLASS %>"
                 <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_SEARCH) %>
                 onclick="<%=clickSearchHandler.getFunName() %>()"
