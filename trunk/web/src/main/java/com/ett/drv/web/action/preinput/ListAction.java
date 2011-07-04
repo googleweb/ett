@@ -88,6 +88,9 @@ public class ListAction extends BaseDrvAction implements ModelDriven<StudentAppl
 		
 		this.preBiz.loadCrudMapper(StudentApplyInfoModel.class);
 		PageArrayList list=this.preBiz.getModel(qModel,this.getPager());
+		for(Object obj :list){
+		     ((StudentApplyInfoModel)obj).setBlobPhoto(null);
+		}
 		JSONObject jsonDG=EasyUiUtil.toJsonDataGrid(list,list.getCount());
 		this.writePlainText(jsonDG.toString());		
 	}
