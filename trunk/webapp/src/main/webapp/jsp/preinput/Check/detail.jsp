@@ -101,9 +101,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				    <%=EasyUiModel.ComboBox.Properties.EDITABLE(false)%>
 				    <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
 				    <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %>
-				
-				  
-				  
 				    />
 </td>
 <td style="width: 120px">证件号码</td>
@@ -118,10 +115,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				    <%=EasyUiModel.ComboBox.Properties.URL(basePath+"preinput/List/combobox/gj.action") %>
 				    <%=EasyUiModel.ComboBox.Properties.EDITABLE(false)%>
 				    <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
-				    <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %>
-				
-				  
-				  
+				    <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %>			  
 				    />
 </td>
 <td colspan="2" rowspan="6">
