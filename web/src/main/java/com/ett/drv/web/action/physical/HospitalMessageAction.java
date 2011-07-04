@@ -67,6 +67,7 @@ public class HospitalMessageAction extends BaseDrvAction implements ModelDriven<
 	 * 增加体检受理
 	 */
 	public void do_add(){
+		
 		this.hospitalBiz.loadCrudMapper(BusAllInfoModel.class);
 		this.hospitalBiz.modifyOrAddModel(busAllInfoModel);
 	}

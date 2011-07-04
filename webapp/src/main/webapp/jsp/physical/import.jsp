@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@page import="com.smartken.kia.core.model.impl.EasyUiModel"%>
+<%@page import="com.ett.drv.model.admin.DictModel" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -32,8 +33,6 @@ $(document).ready(function(){
 		   var CIdcard1=$("#CIdcard1").val()||"";
 		   var CIdcardtype1=$("#CIdcardtype1 option:selected").val()||"";
 		   var CDabh1=$("#CDabh1").val()||"";
-		   //$("#CIdcardtype1 option[vaule='士兵证']").attr("selected","selected");  
-		   //$("#CIdcardtype1").combobox("setValue","士兵证");
   			$.getJSON("<%=basePath%>/physical/HospitalMessage/do/search.action",
   				{CIdcard1:CIdcard1
   				//,CIdcardtype1:CIdcardtype1
@@ -49,10 +48,17 @@ $(document).ready(function(){
               		$("#CZxz").val(result['CZxz']);
               		$("#CYxz").val(result['CYxz']);
               		$("#CQgjb").val(result['CQgjb']);
-              		$("#CCarType").val(result['CCarType']);
-              		$("#CSex").val(result['CSex']);
-              		//alert(result['Regdate']);
-              		$("#Regdate").val(result['Regdate']);
+              		//$("#CCarType").val(result['CCarType']);
+              		//$("#CSex").val(result['CSex']);
+              		
+              		$("#CNation").combobox("setValue",result['CNation']);
+              		$("#CSex").combobox("setValue",result['CSex']);
+              		$("#CCarType").combobox("setValue",result['CCarType']);
+              		$("#CHospital").combobox("setValue",result['CHospital']);
+              		
+              		
+              		$("#Regdate").datebox("setValue",result['Regdate']);
+              		$("#CBirthday").datebox("setValue",result['CBirthday']);
   		});
        }catch(ex){alert(ex);}
 	});
@@ -84,14 +90,13 @@ function addform(){
 									证件名称：
 								</td>
 								<td>
-									<select name="" id="CIdcardtype1" class="<%=EasyUiModel.ComboBox.CLASS %>" >
-											<option value="军官证">军官证</option>
-											<option value="士兵证">士兵证</option>
-											<option value="军官离退休证">军官离退休证</option>
-											<option value="境外人员身份证明">境外人员身份证明</option>
-											<option value="外交人员身份证明">外交人员身份证明</option>
-											<option value="居民身份证" selected="selected">居民身份证</option>
-									</select>
+									<input name="" type="text"  value=""
+                     					class="<%=EasyUiModel.ComboBox.CLASS %>"
+				    					
+				    					<%=EasyUiModel.ComboBox.Properties.URL(basePath+"preinput/List/combobox/sfzm.action") %>
+				    					<%=EasyUiModel.ComboBox.Properties.EDITABLE(false)%>
+				   						 <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
+				   						 <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %> />
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									证件号码
@@ -149,21 +154,31 @@ function addform(){
 								</td>
 								<td>
 									<input type="hidden" name="Id" id="Id">
-									<input type="text" name="CIdcardtype"   id="CIdcardtype" />
+									<input type="text" name="CIdcardtype"   id="CIdcardtype" 
+									 class="<%=EasyUiModel.ValidateBox.CLASS %>"
+                 <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("证件名称必须输入") %>
+                  <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+									/>
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									证件号码
 								</td>
 								<td>
 									
-									<input type="text" name="CIdcard" id="CIdcard" />
+									<input type="text" name="CIdcard" id="CIdcard" 
+									 class="<%=EasyUiModel.ValidateBox.CLASS %>"
+                 <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("证件号码必须输入") %>
+                  <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>/>
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									档案编号
 								</td>
 								<td>
 									
-									<input type="text" name="CDabh"  id="CDabh" />
+									<input type="text" name="CDabh"  id="CDabh" 
+									 class="<%=EasyUiModel.ValidateBox.CLASS %>"
+                 <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("档案编号必须输入") %>
+                  <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>/>
 								</td>
 								<td rowspan="4" style="border-bottom: none">
 									<img id="imgPerson" src=""
@@ -176,7 +191,10 @@ function addform(){
 								</td>
 								<td>
 									
-									<input type="text" name="CXm"  id="CXm" />
+									<input type="text" name="CXm"  id="CXm" 
+									 class="<%=EasyUiModel.ValidateBox.CLASS %>"
+                 <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("姓名必须输入") %>
+                  <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>/>
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									性别
@@ -185,10 +203,15 @@ function addform(){
 									
 									<%--<input type="text" name="CSex"  id="CSex" />
 								--%>
-									<select name="CSex" id="CSex">
-										<option value="男">男</option>
-										<option value="女">女</option>
-									</select>
+									<input name="CSex" type="text"  id="CSex" 
+                     class="<%=EasyUiModel.ComboBox.CLASS %>"
+				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+				    <%=EasyUiModel.ComboBox.Properties.URL(basePath+"preinput/List/combobox/xb.action") %>
+				   <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("性别必须输入 ！ ") %>
+				    <%=EasyUiModel.ComboBox.Properties.EDITABLE(false)%>
+				    <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
+				    <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %>
+  />
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									出生日期
@@ -206,7 +229,14 @@ function addform(){
 									国籍
 								</td>
 								<td>
-									<input type="text" name="CNation"  id="CNation" />
+									<input name="CNation" type="text" id="CNation"
+                     						class="<%=EasyUiModel.ComboBox.CLASS %>"
+				   							 <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+				  							  <%=EasyUiModel.ComboBox.Properties.URL(basePath+"preinput/List/combobox/gj.action") %>
+				  							   <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("国籍输入") %>
+				    							<%=EasyUiModel.ComboBox.Properties.EDITABLE(false)%>
+				   								 <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
+				    							<%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %> />
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									准驾车型
@@ -214,24 +244,14 @@ function addform(){
 								<td>
 									<%--<input type="text" name="CCarType"  id="CCarType" />
 								--%>
-								<select name="CCarType" id="CCarType">
-									<option value="全部车型">全部车型</option>
-									<option value="A1">A1</option>
-									<option value="A2">A2</option>
-									<option value="A3">A3</option>
-									<option value="B1">B1</option>
-									<option value="B2">B2</option>
-									<option value="C1">C1</option>
-									<option value="C2">C2</option>
-									<option value="C3">C3</option>
-									<option value="C4">C4</option>
-									<option value="D">D</option>
-									<option value="E">E</option>
-									<option value="F">F</option>
-									<option value="M">M</option>
-									<option value="N">N</option>
-									<option value="P">P</option>
-								</select>
+									<input name="CCarType"  id="CCarType" type="text"   
+                     class="<%=EasyUiModel.ComboBox.CLASS %>"
+				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+				    <%=EasyUiModel.ComboBox.Properties.URL(basePath+"preinput/List/combobox/cartype.action") %>
+				     <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("准驾车型必须输入 ") %>
+				    <%=EasyUiModel.ComboBox.Properties.EDITABLE(false)%>
+				    <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
+				    <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %> />
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									体检日期
@@ -393,7 +413,18 @@ function addform(){
 									体检医院
 								</td>
 								<td colspan="4">
-									<input type="text" name="CHospital"  id="CHospital" />
+									<%--<input type="text" name="CHospital"  id="CHospital" />
+								--%>
+								<input name="CHospital"  id="CHospital"  
+                     class="<%=EasyUiModel.ComboBox.CLASS %>"
+				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+				      <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("体检医院必须输入  ") %>
+				    <%=EasyUiModel.ComboBox.Properties.URL(basePath+"preinput/List/combobox/hospital.action") %>
+				    <%=EasyUiModel.ComboBox.Properties.EDITABLE(false)%>
+				    <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
+				    <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %>
+  />
+								
 								</td>
 							</tr>
 							<tr>
