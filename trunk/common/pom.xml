@@ -335,6 +335,6 @@
   	  		<version>2.6.1</version>
   	  		<type>jar</type>
   	  		<scope>compile</scope>
-  	  	</dependency>
+  	  	</dependency> 
   </dependencies>
 </project>
