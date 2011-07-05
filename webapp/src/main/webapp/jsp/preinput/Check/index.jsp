@@ -183,7 +183,9 @@ function clickRemoveHandler(){
 		$.messager.alert('操作提示','请选择要删除的记录！');
 		}
 }
-$(document).ready(function(){   
+$(document).ready(function(){ 
+ 
+  
 	$("#test").datagrid({fit:true,
 	
 	columns:[ 

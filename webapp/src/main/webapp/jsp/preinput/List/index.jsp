@@ -51,6 +51,9 @@ function operaFormatter(value,rowData,rowIndex){
     
 }
 
+
+
+
 function fuweiMiMa(){
 	var selectsRows=$("#test").datagrid("getSelections");
 	var obj=selectsRows.length;
@@ -138,7 +141,10 @@ function clickRemoveHandler(){
 		$.messager.alert('操作提示','请选择要删除的记录！');
 		}
 }
-$(document).ready(function(){   
+$(document).ready(function(){
+
+
+   
 	$("#test").datagrid({fit:true,
 	toolbar:[ 
 			{text:"新增",
@@ -166,9 +172,7 @@ $(document).ready(function(){
 	] 
 	,
 	pagination:true,
-	onDblClickRow:dblClickRowHandler
-	,
-	url:'<%=basePath%>'+"preinput/List/datagrid/list.action"} 
+	url:"<%=basePath%>"+"preinput/List/datagrid/list.action"} 
 );    //   end:$("#tableDG").datagrid
 	
 }); //$(document).ready
@@ -191,10 +195,11 @@ $(document).ready(function(){
             </tr>
          </table>
       </form>
+      
     </div>
     <div <%=EasyUiModel.Layout.Properties.REGION(EasyUiModel.REGION_CENTER) %> >
 	<table id="test" ></table>
 	</div>
-	<div id="edit"></div>
+	<div  id="edit"></div>
  </body>
 </html>
