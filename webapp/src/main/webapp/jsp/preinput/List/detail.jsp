@@ -35,10 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     {
     width:100%;
     }
-    input
-    {
-    width:80%;
-    }
+    
     
     td,th{
       padding: 0px auto 0px auto;
