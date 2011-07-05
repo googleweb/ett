@@ -19,10 +19,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
+	<jsp:include page="/plugin/index.jsp">
+	  <jsp:param value="jquery,easyui" name="plugin"/>
+	</jsp:include>
+	<jsp:include page="/css/index.jsp"></jsp:include>
+	<jsp:include page="/js/index.jsp"></jsp:include>
   </head>
   
   <body>
-    <h1>信息中心</h1>
+
   </body>
 </html>

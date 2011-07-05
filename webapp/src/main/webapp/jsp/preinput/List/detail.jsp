@@ -49,21 +49,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <script type="text/javascript">
   function uploadphoto(){
-  var href='<%=basePath%>'+"preinput/List/to/upload.action";
-  $("#edit").dialog( 
-      {
-			title:"上传照片:",
-//			resizable:true,
-			height:110,
-			width:250,
-//			onClose:function(){ $('#detail').datagrid('reload'); },
-//	    	modal:true,
-           
-			onOpen:function(){$(this).kiaIframe(href);}
-			,onClose:function(){document.location.href="<%=basePath%>preinput/List/to/detail.action";}
-       }      
-        );
-        	return false;
+  var href='<%=basePath%>'+"preinput/List/upload/photo.action";
+  var opts={};
+  opts["muti"]=true;
+  opts["inputName"]="photo";
+  opts["uploadUrl"]=href;
+  var div=$("<div></div>");
+  div.kiaUploadForm(opts);
+  div.dialog({
+	  title:"上传照片:"
+	  ,width:380
+	  ,onClose:function(){document.location.href="<%=basePath%>preinput/List/to/detail.action";}
+  });
+      return false;
   }
   
   function test(){
@@ -149,7 +147,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <td colspan="2" rowspan="6">
 
-<img style="width:300px" style="height:300px"  src="<%=basePath%>preinput/List/stream/photo.action"  alt="审核人照片" />
+<img style="max-width: 280px;max-height:350px "  src="<%=basePath%>preinput/List/stream/photo.action"  alt="审核人照片" />
 <input type="button" value="上传照片" onclick="uploadphoto()"/>
 
 

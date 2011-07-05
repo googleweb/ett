@@ -198,7 +198,7 @@ $(document).ready(function(){
 	{field:"<%=StudentApplyInfoModel.F.IChecked%>",title:"审核结果",width:150},
 	{field:"<%=StudentApplyInfoModel.F.CCheckResult%>",title:"审核结果描述",width:150},
 	{field:"<%=StudentApplyInfoModel.F.CCheckOperator%>",title:"经办人",width:150},
-	{field:"xxx",title:"详细",formatter:operaFormatter,width:150,}	
+	{field:"xxx",title:"详细",formatter:operaFormatter,width:150}	
 	]
 	] 
 	,
