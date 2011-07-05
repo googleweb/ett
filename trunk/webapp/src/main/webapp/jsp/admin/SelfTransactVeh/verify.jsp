@@ -160,9 +160,9 @@ String excelTemplatePath=basePath+"js/print/excel.tranVeh.xls";
           
           <tr>
             <th>车主身份证号码</th>
-            <td>&nbsp;${CriverIdNo}</td>
+            <td>&nbsp;${DriverIdNo}</td>
             <th>车主姓名</th>
-            <td>&nbsp;${CriverIdName }</td>
+            <td>&nbsp;${DriverIdName }</td>
           </tr>
           
           <% if(isAgent){ %>
@@ -176,7 +176,7 @@ String excelTemplatePath=basePath+"js/print/excel.tranVeh.xls";
           
           <tr>
             <th>联系电话</th>
-            <td colspan="3">&nbsp;${phone }</td>
+            <td colspan="3">&nbsp;${Phone }</td>
           </tr>
           
           <tr>
