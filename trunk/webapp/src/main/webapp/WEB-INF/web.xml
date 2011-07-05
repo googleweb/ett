@@ -114,10 +114,12 @@ hbm配置的过滤器
   <url-pattern>/*</url-pattern>
  </filter-mapping>
  
+ <!--  
  <filter-mapping>
    <filter-name>authFilter</filter-name>
    <url-pattern>/jsp/*</url-pattern>
  </filter-mapping>
+-->
 
  <!-- <listener> <listener-class>com.ft.drv.DrvCountListener</listener-class> 
 		</listener> 

@@ -1,6 +1,11 @@
 package com.ett.drv.model.preinput;
 
+import java.io.IOException;
+
+import org.json.JSONObject;
+
 import com.smartken.kia.core.model.impl.BaseModel;
+import com.smartken.kia.core.util.FileUtil;
 
 public class StudentApplyInfoModel extends BaseModel {
 
@@ -324,5 +329,6 @@ public class StudentApplyInfoModel extends BaseModel {
 		
 		
 		
+
 	
 }

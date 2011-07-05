@@ -334,16 +334,21 @@ public class ListAction extends BaseDrvAction implements ModelDriven<StudentAppl
 	
 	public void upload_photo(){
 
+	 ResultModel reModel=new ResultModel();	
 	 if(this.photo!=null){
 		 try {
 			byte[] bs=FileUtil.toBytes(photo);
 			this.studentApplyInfoModel.setBlobPhoto(bs);
+			reModel.setMsg("上传成功");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		 
+	 }else{
+		 reModel.setMsg("上传失败");
 	 }
+	 this.writePlainText(reModel.toJson().toString());
 		
 	}
 	
