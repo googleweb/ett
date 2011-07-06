@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ett.drv.mapper.statis.IStatisDriverMapper">
+
+<cache flushInterval="30000" readOnly="true"></cache>
+
+<select id="selectViewAddreesRepeatGt" resultMap="viewMap1" resultType="ArrayList">
+   select m.* from ( select d.lxzsxxdz ,count(*) num
+    from drv_admin.person p, drv_admin.drivinglicense d  where p.sfzmhm=d.sfzmhm  and d.cclzrq
+  between #{beginDate} and #{endDate}
+  and d.ly in ('B') and d.fzjg=#{fzjg} group by fzjg,d.lxzsxxdz having count(*)>#{gtTimes}) m order by total num
+</select>
+
+
+<select id="selectViewYdsl" resultMap="viewMap2" resultType="ArrayList">
+   select  fzjg,count(*) num from 
+    drv_admin.drivinglicense t where cclzrq between between #{beginDate} and #{endDate} and t.ly in ('B') and 
+    zjcx like 'C%' and glbm like #{glbm} and fzjg=#{fzjg} group by fzjg order by fzjg
+</select>
+
+
+<select id="selectViewYdKsqkGt" resultMap="viewMap3" resultType="ArrayList">
+   select m.* from ( select to_char(km3ksrq,'yyyy-MM-dd')"
+    km3ksrq,to_char(km3ksrq,'DY') wk,count(*) num from  drv_admin.drv_grade t,drv_admin.person p,
+     drv_admin.drivinglicense d  where p.sfzmhm=t.sfzmhm and p.sfzmhm=d.sfzmhm  and d.cclzrq
+     between #{beginDate} and #{endDate}
+     and kscx like 'C%' and d.ly='B' and d.fzjg=#{fzjg}  group by d.fzjg, km3ksrq,to_char(km3ksrq,'DY') 
+      having count(*)>#{gtTimes} Order By num Desc ) m order by num desc
+</select>
+
+<select id="selectViewZzzRepeatGt" resultMap="viewMap4" resultType="ArrayList">
+select p.zzzm,count(*) num from drv_admin.person p, drv_admin.drivinglicense
+  d where p.sfzmhm=d.sfzmhm and d.ly in ('B') and d.fzjg=#{fzjg}
+    and d.cclzrq between #{beginDate} and #{endDate} group by p.zzzm having count(*)>#{gtTimes}
+</select>
+
+
+<resultMap type="com.ett.drv.view.StatisDriverView" id="viewMap">
+    <result column="num" property="Num" />
+</resultMap>
+
+<resultMap type="com.ett.drv.view.StatisDriverView" extends="viewMap" id="viewMap1">
+    <result column="lxzsxxdz" property="Lxzsxxdz" />
+</resultMap>
+
+<resultMap type="com.ett.drv.view.StatisDriverView" extends="viewMap" id="viewMap2">
+    <result column="fzjg" property="Fzjg" />
+</resultMap>
+
+<resultMap type="com.ett.drv.view.StatisDriverView" extends="viewMap" id="viewMap3">
+    <result column="km3ksrq" property="Km3ksrq" />
+</resultMap>
+
+<resultMap type="com.ett.drv.view.StatisDriverView" extends="viewMap" id="viewMap4">
+    <result column="zzzm" property="Zzzm" />
+</resultMap>
+
+</mapper>

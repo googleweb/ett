@@ -30,6 +30,7 @@ import com.ett.drv.mapper.self.ITransactResourceMapper;
 import com.ett.drv.mapper.self.ITransactVehicleMapper;
 import com.ett.drv.mapper.self.IVehFlowMapper;
 import com.ett.drv.mapper.self.IVehicleMapper;
+import com.ett.drv.mapper.statis.*;
 import com.ett.drv.model.admin.BusAllInfoModel;
 import com.ett.drv.model.admin.BusLogModel;
 import com.ett.drv.model.admin.DepartmentModel;
@@ -96,6 +97,10 @@ public abstract class BaseDrvBiz extends BaseCurdBiz {
     protected IStudentApplyInfoMapper<StudentApplyInfoModel> studentApplyInfoMapper;
     protected IBusAllInfoMapper<BusAllInfoModel> busAllInfoMapper;
     protected IBusLogMapper<BusLogModel> busLogMapper;
+    protected IStatisCoachCarMapper statisCoachCarMapper;
+    protected IStatisDriverMapper statisDriverMapper;
+    protected IStatisKmMapper statisKmMapper;
+    protected IStatisSchoolMapper statisSchoolMapper;
 
 
 	public IBusAllInfoMapper<BusAllInfoModel> getBusAllInfoMapper() {
@@ -298,6 +303,30 @@ public abstract class BaseDrvBiz extends BaseCurdBiz {
 	public void setBusLogMapper(IBusLogMapper<BusLogModel> busLogMapper) {
 		this.busLogMapper = busLogMapper;
 		this.addCrudMapper(BusLogModel.class, busLogMapper);
+	}
+
+
+
+	public void setStatisCoachCarMapper(IStatisCoachCarMapper statisCoachCarMapper) {
+		this.statisCoachCarMapper = statisCoachCarMapper;
+	}
+
+
+
+	public void setStatisDriverMapper(IStatisDriverMapper statisDriverMapper) {
+		this.statisDriverMapper = statisDriverMapper;
+	}
+
+
+
+	public void setStatisKmMapper(IStatisKmMapper statisKmMapper) {
+		this.statisKmMapper = statisKmMapper;
+	}
+
+
+
+	public void setStatisSchoolMapper(IStatisSchoolMapper statisSchoolMapper) {
+		this.statisSchoolMapper = statisSchoolMapper;
 	}
 	
 	
