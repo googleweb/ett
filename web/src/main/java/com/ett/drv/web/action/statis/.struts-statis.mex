@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="statis" location="0,0" size="0,0">
+    <action name="*/*/*" location="0,0" size="0,0">
+      <result name="jsp">
+        <resourceEdge source="jsp" routing="0" target="{3}.jsp" />
+      </result>
+    </action>
+  </package>
+  <webResource name="{3}.jsp" path="/jsp/physical/{3}.jsp" location="71,205" size="150,55" />
+  <webResource name="{3}.jsp" path="/jsp/statis/{3}.jsp" location="0,0" size="0,0" />
+</Struts2Diagram>
+

@@ -23,10 +23,14 @@
    		     <interceptor-ref name="fileUploadStack"></interceptor-ref>
    		   </interceptor-stack>
    		</interceptors>
+   	
+   	<!-- 
    	    <global-results>
 
        <result name="error">/jsp/error.jsp</result>
+       
    </global-results>
+    -->
 </package>
 
 	<package name="root" namespace="/root" extends="struts-default">
