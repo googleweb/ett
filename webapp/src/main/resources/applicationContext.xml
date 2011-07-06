@@ -241,6 +241,24 @@
   <property name="mapperInterface" value="com.ett.drv.mapper.preinput.IStudentApplyInfoMapper"></property>
 </bean>
 
+
+<bean id="statisCoachCarMapper"  parent="baseDrvMapper" >
+   <property name="mapperInterface" value="com.ett.drv.mapper.statis.IStatisCoachCarMapper"></property>
+</bean>
+
+<bean id="statisDriverMapper"  parent="baseDrvMapper" >
+   <property name="mapperInterface" value="com.ett.drv.mapper.statis.IStatisDriverMapper"></property>
+</bean>
+
+<bean id="statisKmMapper"  parent="baseDrvMapper" >
+   <property name="mapperInterface" value="com.ett.drv.mapper.statis.IStatisKmMapper"></property>
+</bean>
+
+<bean id="statisSchoolMapper"  parent="baseDrvMapper" >
+   <property name="mapperInterface" value="com.ett.drv.mapper.statis.IStatisSchoolMapper"></property>
+</bean>
+
+
 <bean id="baseDrvBiz" abstract="true" class="com.ett.drv.biz.impl.BaseDrvBiz">
     <property name="weekRecordMapper" ref="weekReocrdMapper"></property>
    <property name="limitMapper" ref="limitMapper"></property>
@@ -271,7 +289,10 @@
    <property name="studentApplyInfoMapper" ref="studentApplyInfoMapper"></property>
     <property name="busAllInfoMapper" ref="busAllInfoMapper"></property>
     <property name="busLogMapper" ref="busLogMapper"></property>
-   
+    <property name="statisCoachCarMapper" ref="statisCoachCarMapper"></property>
+    <property name="statisDriverMapper" ref="statisDriverMapper"></property>
+    <property name="statisKmMapper" ref="statisKmMapper"></property>
+    <property name="statisSchoolMapper" ref="statisSchoolMapper"></property>
 </bean>
 
 <bean id="baseBookedBiz" abstract="true" class="com.ett.drv.biz.impl.BookedBiz"  parent="baseDrvBiz" >
