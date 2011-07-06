@@ -1,4 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@page import="com.smartken.kia.core.util.EasyUiUtil"%>
+<%@page import="com.smartken.kia.core.model.impl.*"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -19,10 +21,54 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
+<jsp:include page="/plugin/index.jsp">
+	 	<jsp:param value="jquery,easyui" name="plugin"/>
+	</jsp:include>
+   <jsp:include page="/css/index.jsp"></jsp:include>
+   <jsp:include page="/js/index.jsp"></jsp:include>  
   </head>
   
-  <body>
+  <script type="text/javascript">
+  $(document).ready(
+  function(){
+  $("#test").datagrid({
+  fit:true,
+  columns:[[
+  {field:"Id",checkbox:true},
+  {field:"",title:"考试日期",width:150},
+  {field:"",title:"星期几",width:150},
+  {field:"",title:"人数",width:150}
+  ]],
+  pagination:true
+  }
+  );
+  }
+  );
+  </script>
+  
+ <body  class="<%=EasyUiModel.Layout.CLASS %>" >
+ <div   <%=EasyUiModel.Layout.Properties.REGION(EasyUiModel.REGION_NORTH) %>  
+  style="height: 100px">
+  <p style="text-align: center"><h3>异地驾驶人考试情况超过100</h3></p>
+  <form method="post" id="formSearch">
+  <table class="editTable" cellspacing="0" align="right">
+  <tr>
+  <td>
+  操作时间起：<input type="text" value="" id="begindate"/>
+  </td>
+   <td>
+ 操作时间止：<input type="text" value="" id="enddate"/> 
+ </td>
+ <td>
+ <a  class="easyui-linkbutton"/>查询</a>
+ </td>
+ </tr>
+ </table>
+</form>
+  </div>
+<div <%=EasyUiModel.Layout.Properties.REGION(EasyUiModel.REGION_CENTER) %> >
+<table id="test" ></table>
+</div>
     <!-- 
                        操作时间起：<input onclick="setday(this)" id="txtBeginDate" runat="server" />
                     &nbsp; 
