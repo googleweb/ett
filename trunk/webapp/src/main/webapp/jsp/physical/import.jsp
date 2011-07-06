@@ -30,6 +30,7 @@
 $(document).ready(function(){	
 	$("#commit").click(function(){
 		try{
+		   $("#searchform").form("validate");
 		   var CIdcard1=$("#CIdcard1").val()||"";
 		   var CIdcardtype1=$("#CIdcardtype1 option:selected").val()||"";
 		   var CDabh1=$("#CDabh1").val()||"";
@@ -102,7 +103,11 @@ function addform(){
 									证件号码
 								</td>
 								<td>
-									<input type="text" name="" id="CIdcard1"/>
+									<input type="text" name="" id="CIdcard1"
+									 class="<%=EasyUiModel.ValidateBox.CLASS %>"
+                 <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("证件号码必须输入 ") %>
+                  <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+									/>
 								</td>
 							</tr>
 							<tr>
@@ -110,7 +115,11 @@ function addform(){
 									档案编号
 								</td>
 								<td>
-									<input type="text" name="" id="CDabh1"/>
+									<input type="text" name="" id="CDabh1"
+									class="<%=EasyUiModel.ValidateBox.CLASS %>"
+                 <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("档案编号必须输入 ") %>
+                  <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+									/>
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									业务类型：
@@ -422,31 +431,23 @@ function addform(){
 				    <%=EasyUiModel.ComboBox.Properties.URL(basePath+"preinput/List/combobox/hospital.action") %>
 				    <%=EasyUiModel.ComboBox.Properties.EDITABLE(false)%>
 				    <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
-				    <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %>
-  />
-								
+				    <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %>/>			
 								</td>
 							</tr>
 							<tr>
-								<td colspan="8" style="text-align: right">
-									
-									<%--<input type="button" name="" value="保存" />
-									
+								<td colspan="8" style="text-align: right">				
+									<%--<input type="button" name="" value="保存" />									
 									<input type="button" name="" value="打印回执单" />
 								--%>
 								<a class="easyui-linkbutton"   <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_SEARCH) %>  onclick="addform()">提交</a>
 								<a class="easyui-linkbutton"   <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_SEARCH) %>>打印回执单</a>
 								</td>
 							</tr>
-							
 						</table>
-						
 					</td>
-					
 				</tr>
 				</form>
 			</table>
-			
 		</div>
 	</body>
 </html>
