@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@page import="com.smartken.kia.core.model.impl.*"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -11,46 +12,91 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
     <title>教练车查询</title>
     
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="pragma" content="no-cache">
+		<meta http-equiv="cache-control" content="no-cache">
+		<meta http-equiv="expires" content="0">
+		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+		<meta http-equiv="description" content="This is my page">
+		<jsp:include page="/plugin/index.jsp">
+			<jsp:param value="jquery,easyui" name="plugin" />
+		</jsp:include>
+		<jsp:include page="/css/index.jsp"></jsp:include>
+		<jsp:include page="/js/index.jsp"></jsp:include>
+		<style type="text/css">
+</style>
+<script type="text/javascript"><%--
+$(document).ready(function(){   
+	$("#test").datagrid({fit:true,
+	columns:[ 
+	[ 
+		
+	{field:"Id",checkbox:true},
+	{field:"<%=%>",title:"驾校名称",width:150},
+	{field:"<%=%>",title:"教练证号",width:150},
+	{field:"<%=%>",title:"身份证明名称",width:150},
+	{field:"<%=%>",title:"姓名",width:150},
+	{field:"<%=%>",title:"车辆品牌",width:150},
+	{field:"<%=%>",title:"号牌号码",width:150},
+	{field:"<%=%>",title:"入场日期",width:150},
+	{field:"<%=%>",title:"联系手机",width:150}
+	]
+	] 
+	,
+	pagination:true,
+	url:'<%=basePath%>'+""
+	} 
+);
+	
+}); //$(document).ready
+function searchform(){
+	
+	var =$("#").val()||"";
+	
+	var =$("#").val()||"";
+	
+    
+	$("#test").datagrid("reload",{
+			:
+	 ,      :
+	});
+	
+	
+}		
+--%></script>
   </head>
-  
-  <body>
-   <!--                   
-           身份证明号码：<asp:textbox ID="txtIdCard" runat="server"></asp:textbox>
-                    &nbsp; 
-                  号码号牌
-                    &nbsp;&nbsp;&nbsp;
-        <asp:textbox ID="txtHmhp" runat="server">
-        </asp:textbox>
-                    &nbsp;&nbsp;<asp:Button ID="btnSearch" runat="server" OnClick="btnSearch_Click" Text="查询" />
-    </div>
-    <div>
-    <asp:DataGrid ID="DataGrid1" runat="server" AutoGenerateColumns="False"
-                        BorderWidth="0px" CellPadding="1" CellSpacing="1" CssClass="table-border" 
-                        Width="100%" >
-                        <Columns>
-                            <asp:BoundColumn DataField="jxmc" HeaderText="驾校名称"></asp:BoundColumn>
-                            <asp:BoundColumn DataField="jlzh" HeaderText="教练证号"></asp:BoundColumn>
-                             <asp:BoundColumn DataField="sfzmhm" HeaderText="身份证明名称"></asp:BoundColumn>
-                            <asp:BoundColumn DataField="xm" HeaderText="姓名"></asp:BoundColumn>
-                             <asp:BoundColumn DataField="clpp" HeaderText="车辆品牌"></asp:BoundColumn>
-                            <asp:BoundColumn DataField="hphm" HeaderText="号牌号码"></asp:BoundColumn>
-                              <asp:BoundColumn DataField="regdate" HeaderText="入场日期"></asp:BoundColumn>
-                            <asp:BoundColumn DataField="sj" HeaderText="联系手机"></asp:BoundColumn>
-                            
-                        </Columns>
-                        <HeaderStyle CssClass="table-title" />
-                        <ItemStyle CssClass="table-content" />
-                        <EditItemStyle CssClass="table-content" />
-                    </asp:DataGrid> 
-    -->
-  </body>
+    <body  class="<%=EasyUiModel.Layout.CLASS %>" >
+	 <div    <%=EasyUiModel.Layout.Properties.REGION(EasyUiModel.REGION_NORTH) %> style="overflow: hidden;">
+	<form method="post" id="searchform">
+		<table style="text-align: center ;width: 100%">
+			<tr>
+				<td style="background-color: rgb(208,227,248);" colspan="5">
+					教练车查询
+				</td>
+			</tr>
+			<tr>
+				<td style="background-color: rgb(208,227,248)">
+				身份证明号码：
+				</td>
+				<td style="text-align: left;">
+					<input type="text" name="" id=""  />
+				</td>
+				<td style="background-color: rgb(208,227,248);">
+				号码号牌：
+				</td>
+				<td style="text-align: left">
+					<input type="text" name=""  id=""  />
+				</td>
+				<td style="background-color: rgb(208,227,248);text-align:center;">
+					<a class="easyui-linkbutton"   <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_SEARCH) %>  onclick="searchform()" >查询</a>
+					</td>
+			</tr>				
+		</table>
+		</form>
+		</div>
+		<div   <%=EasyUiModel.Layout.Properties.REGION(EasyUiModel.REGION_CENTER) %> >
+		<table id="test"></table>
+		</div>		
+	</body>
+ 
 </html>

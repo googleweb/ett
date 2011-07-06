@@ -32,6 +32,7 @@
 $(document).ready(function(){	
 	$("#commit").click(function(){
 		try{
+		   $("#searchform").form("validate");
 		   var CIdcard1=$("#CIdcard1").val()||"";
 		   var CIdcardtype1=$("#CIdcardtype1 option:selected").val()||"";
 		   var CDabh1=$("#CDabh1").val()||"";
@@ -93,8 +94,7 @@ function addform(){
 								--%>
 								
 								<input name="" type="text"  value=""
-                     					class="<%=EasyUiModel.ComboBox.CLASS %>"
-				    					
+                     					class="<%=EasyUiModel.ComboBox.CLASS %>"    					
 				    					<%=EasyUiModel.ComboBox.Properties.URL(basePath+"preinput/List/combobox/sfzm.action") %>
 				    					<%=EasyUiModel.ComboBox.Properties.EDITABLE(false)%>
 				   						 <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
@@ -105,7 +105,11 @@ function addform(){
 								</td>
 								<td>
 									
-									<input type="text" name="" id="CIdcard1"/>
+									<input type="text" name="" id="CIdcard1"
+									 class="<%=EasyUiModel.ValidateBox.CLASS %>"
+                 <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("证件号码必须输入 ") %>
+                  <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+									/>
 								</td>
 							</tr>
 							<tr>
@@ -115,7 +119,11 @@ function addform(){
 								<td>
 									
 									<input type="text" value="4404">
-									<input type="text" name="" id="CDabh1"/>
+									<input type="text" name="" id="CDabh1"
+									class="<%=EasyUiModel.ValidateBox.CLASS %>"
+                 <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("档案编号必须输入 ") %>
+                  <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+									/>
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									业务类型：
@@ -197,8 +205,9 @@ function addform(){
 									
 									<input type="text" name="CXm" id="CXm"
 									 class="<%=EasyUiModel.ValidateBox.CLASS %>"
+									  <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
                  <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("姓名必须输入！ ") %>
-                  <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+                 
 									/>
 								</td>
 								<td style="background-color: rgb(208,227,248);">
