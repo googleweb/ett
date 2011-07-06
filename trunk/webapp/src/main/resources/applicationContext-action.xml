@@ -147,10 +147,26 @@ id="com.ett.drv.web.action.preinput.CheckAction">
  class="com.ett.drv.web.action.common.DatagridAction"
 >
 </bean>
-<bean id=" com.ett.drv.web.action.physical.HospitalMessageAction"  parent="baseAction"
- class=" com.ett.drv.web.action.physical.HospitalMessageAction"
+<bean id="com.ett.drv.web.action.physical.HospitalMessageAction"  parent="baseAction"
+ class="com.ett.drv.web.action.physical.HospitalMessageAction"
 >
 </bean>
+
+<bean  id="com.ett.drv.web.action.statis.CoachCarAction"  parent="baseAction"
+  class="com.ett.drv.web.action.statis.CoachCarAction"
+></bean>
+
+<bean  id="com.ett.drv.web.action.statis.SchoolAction"  parent="baseAction"
+  class="com.ett.drv.web.action.statis.SchoolAction"
+></bean>
+
+<bean  id="com.ett.drv.web.action.statis.DriverAction"  parent="baseAction"
+  class="com.ett.drv.web.action.statis.DriverAction"
+></bean>
+
+<bean  id="com.ett.drv.web.action.statis.KmAction"  parent="baseAction"
+  class="com.ett.drv.web.action.statis.KmAction"
+></bean>
 
 
 </beans>
