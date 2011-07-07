@@ -10,7 +10,7 @@
   select distinct  c.hphm,c.clpp ,c.jxmc ,d.jlzh ,d.sj ,d.xm ,d.sfzmhm,d.jlcxh,d.zjcx ,c.cjsj as regdate
    from (select a.cjsj,b.jxmc,b.xh,a.jlcxh,a.hphm,a.clpp from drv_learner_vehicle a
           left join drv_schoolinfo b on  a.jxxh=b.xh where a.fzjg=#{fzjg}  ) c 
-   left join drv_instructor d on d.jxxh=c.xh and d.jlcxh=c.jlcxh  where d.sfzmhm like #{idCard} or c.hphm like #{hmhp}
+   left join drv_instructor d on d.jxxh=c.xh and d.jlcxh=c.jlcxh  where d.sfzmhm like #{idCard} or c.hphm like #{hphm}
 </select>
 
 

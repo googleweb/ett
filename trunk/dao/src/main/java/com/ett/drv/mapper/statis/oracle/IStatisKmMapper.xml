@@ -8,8 +8,8 @@
 
    <select id="selectViewKm3KscsGt"  resultMap="viewMap" resultType="ArrayList">
      select m.* from (select fzjg,km3ksy1 ,count(*) num 
-     from drv_admin.drv_grade t where  km3ksrq between #{beginDate} and #{endDate} and 
-    kscx like 'C%'   and fzjg=#{fzjg} group by fzjg,km3ksy1 having count(*)>#{gtTimes} ) m order by num desc
+     from drv_admin.drv_grade t where  km3ksrq between #{startDate} and #{endDate} and 
+    kscx like 'C%'   and fzjg=#{fzjg} group by fzjg,km3ksy1 having count(*) &gt;  #{gtTimes} ) m order by num desc
    </select>
 
   <resultMap type="com.ett.drv.view.StatisKmView" id="viewMap">
