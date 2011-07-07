@@ -14,6 +14,10 @@ import com.smartken.kia.core.util.EasyUiUtil;
 @SuppressWarnings("serial")
 public class KmAction extends BaseDrvAction {
 
+	/*
+	 * 接受页面传递的二个参数
+	 * 向页面输出json数据
+	 * */
 	@SuppressWarnings("unchecked")
 	public void datagrid_km3kscc() {
 		String fzjg = "11";

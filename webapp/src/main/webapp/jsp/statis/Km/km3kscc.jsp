@@ -29,8 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 $(document).ready(function(){   
 	$("#test").datagrid({fit:true,
 	columns:[ 
-	[ 
-		
+	[ 	
 	//{field:"Id",checkbox:true},
 	{field:"Km3ksy1",title:"考试员",width:150},
 	{field:"Num",title:"人数",width:150}
@@ -40,8 +39,7 @@ $(document).ready(function(){
 	pagination:true,
 	url:<%=basePath%>statis/CoachCarAction/datagrid/km3kscc
 	} 
-);
-	
+);	
 }); //$(document).ready
 function searchform(){
 $("#searchform").form("validate");

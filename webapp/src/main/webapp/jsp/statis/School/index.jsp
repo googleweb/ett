@@ -31,33 +31,33 @@ $(document).ready(function(){
 	columns:[ 
 	[ 	
 	{field:"Id",checkbox:true},
-	{field:"",title:"驾校名称",width:150},
-	{field:"",title:"年受理数",width:150},
-	{field:"",title:"科目一合格",width:150},
-	{field:"",title:"科目一不合格",width:150},
-	{field:"",title:"科目一合格率",width:150},
-	{field:"",title:"科目一C1待考",width:150},
-	{field:"",title:"科目一非C1待考",width:150},
+	{field:"Jxmc",title:"驾校名称",width:150},
+	{field:"CountDate",title:"年受理数",width:150},
+	{field:"Km1hg",title:"科目一合格",width:150},
+	{field:"Km1bhg",title:"科目一不合格",width:150},
+	{field:"Km1hgl",title:"科目一合格率",width:150},
+	{field:"Km1c1dk",title:"科目一C1待考",width:150},
+	{field:"Km1nc1dk",title:"科目一非C1待考",width:150},
 	
-	{field:"",title:"桩考合格",width:150},
-	{field:"",title:"桩考不合格",width:150},
-	{field:"",title:"桩考合格率",width:150},
-	{field:"",title:"桩考C1待考",width:150},
-	{field:"",title:"桩考非C1待考",width:150},
+	{field:"Zkhg",title:"桩考合格",width:150},
+	{field:"Zkbhg",title:"桩考不合格",width:150},
+	{field:"Zkhgl",title:"桩考合格率",width:150},
+	{field:"Zkc1dk",title:"桩考C1待考",width:150},
+	{field:"Zknc1dk",title:"桩考非C1待考",width:150},
 	
-	{field:"",title:"场地合格",width:150},
-	{field:"",title:"场地不合格",width:150},
-	{field:"",title:"场地合格率",width:150},
-	{field:"",title:"场地C1待考",width:150},
-	{field:"",title:"场地非C1待考",width:150},
+	{field:"Cdhg",title:"场地合格",width:150},
+	{field:"Cdbhg",title:"场地不合格",width:150},
+	{field:"Cdhgl",title:"场地合格率",width:150},
+	{field:"Cdc1dk",title:"场地C1待考",width:150},
+	{field:"Cdnc1dk",title:"场地非C1待考",width:150},
 	
-	{field:"",title:"科目三合格",width:150},
-	{field:"",title:"科目三不合格",width:150},
-	{field:"",title:"科目三合格率",width:150},
-	{field:"",title:"科目三C1待考",width:150},
-	{field:"",title:"科目三非C1待考",width:150},
+	{field:"Km3hg",title:"科目三合格",width:150},
+	{field:"Km3bhg",title:"科目三不合格",width:150},
+	{field:"Km3hgl",title:"科目三合格率",width:150},
+	{field:"Km3c1dk",title:"科目三C1待考",width:150},
+	{field:"Km3nc1dk",title:"科目三非C1待考",width:150},
 	
-	{field:"",title:"总合格率",width:150}
+	{field:"Zhgl",title:"总合格率",width:150}
 	
 	]
 	] 
@@ -66,22 +66,17 @@ $(document).ready(function(){
 	url:<%=basePath%>statis/CoachCarAction/datagrid/CoachCar
 	});	
 }); //$(document).ready
-<%--
-function searchform(){
-	
-//$("#searchform").form("validate");
-//	var =$("#begindate").val()||"";
-//	var =$("#enddate").val()||"";
-//	$("#test").datagrid("reload",{
-//			begindate:begindate
-//	 ,      enddate:enddate
-//	});	
-
-}	
---%>	
+function searchform(){	
+$("#searchform").form("validate");
+	var =$("#begindate").val()||"";
+	var =$("#enddate").val()||"";
+	$("#test").datagrid("reload",{
+			begindate:begindate
+	 ,      enddate:enddate
+	});	
+}		
 </script>
-  </head>
-  
+  </head> 
   <body  class="<%=EasyUiModel.Layout.CLASS %>" >
 	 <div    <%=EasyUiModel.Layout.Properties.REGION(EasyUiModel.REGION_NORTH) %> style="overflow: hidden;">
 	<form method="post" id="searchform">
