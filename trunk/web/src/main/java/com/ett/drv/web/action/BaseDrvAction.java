@@ -29,6 +29,7 @@ import com.ett.drv.biz.IBookedBiz;
 import com.ett.drv.biz.IHospitalBiz;
 import com.ett.drv.biz.IPreBiz;
 import com.ett.drv.biz.ISelfBiz;
+import com.ett.drv.biz.IStatisBiz;
 import com.ett.drv.model.admin.UserModel;
 import com.ett.drv.web.filter.AuthFilter;
 import com.smartken.kia.core.enums.DataFormatEnum;
@@ -55,6 +56,7 @@ implements Preparable
     protected IBookedBiz bookedBiz;
     protected IPreBiz preBiz;
     protected IHospitalBiz hospitalBiz;
+    protected IStatisBiz statisBiz;
     
     
 
@@ -179,6 +181,10 @@ implements Preparable
 	public void prepare() throws Exception {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public void setStatisBiz(IStatisBiz statisBiz) {
+		this.statisBiz = statisBiz;
 	}
 
 

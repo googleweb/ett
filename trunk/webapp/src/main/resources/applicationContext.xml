@@ -308,7 +308,7 @@
 
 <bean id="baseHospitalBiz" abstract="true" class="com.ett.drv.biz.impl.HospitalBiz" parent="baseDrvBiz"></bean>
 
-
+<bean id="baseStatisBiz" abstract="true" class="com.ett.drv.biz.impl.StatisBiz" parent="baseDrvBiz"></bean>
 
 
 

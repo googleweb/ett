@@ -9,7 +9,7 @@
    select m.* from ( select d.lxzsxxdz ,count(*) num
     from drv_admin.person p, drv_admin.drivinglicense d  where p.sfzmhm=d.sfzmhm  and d.cclzrq
   between #{beginDate} and #{endDate}
-  and d.ly in ('B') and d.fzjg=#{fzjg} group by fzjg,d.lxzsxxdz having count(*)>#{gtTimes}) m order by total num
+  and d.ly in ('B') and d.fzjg=#{fzjg} group by fzjg,d.lxzsxxdz having count(*) &gt; #{gtTimes}) m order by total num
 </select>
 
 
@@ -21,18 +21,18 @@
 
 
 <select id="selectViewYdKsqkGt" resultMap="viewMap3" resultType="ArrayList">
-   select m.* from ( select to_char(km3ksrq,'yyyy-MM-dd')"
+   select m.* from ( select to_char(km3ksrq,'yyyy-MM-dd')
     km3ksrq,to_char(km3ksrq,'DY') wk,count(*) num from  drv_admin.drv_grade t,drv_admin.person p,
      drv_admin.drivinglicense d  where p.sfzmhm=t.sfzmhm and p.sfzmhm=d.sfzmhm  and d.cclzrq
      between #{beginDate} and #{endDate}
      and kscx like 'C%' and d.ly='B' and d.fzjg=#{fzjg}  group by d.fzjg, km3ksrq,to_char(km3ksrq,'DY') 
-      having count(*)>#{gtTimes} Order By num Desc ) m order by num desc
+      having count(*) &gt; #{gtTimes} Order By num Desc ) m order by num desc
 </select>
 
 <select id="selectViewZzzRepeatGt" resultMap="viewMap4" resultType="ArrayList">
 select p.zzzm,count(*) num from drv_admin.person p, drv_admin.drivinglicense
   d where p.sfzmhm=d.sfzmhm and d.ly in ('B') and d.fzjg=#{fzjg}
-    and d.cclzrq between #{beginDate} and #{endDate} group by p.zzzm having count(*)>#{gtTimes}
+    and d.cclzrq between #{beginDate} and #{endDate} group by p.zzzm having count(*) &gt; #{gtTimes}
 </select>
 
 
