@@ -63,6 +63,14 @@ public class TestBytes {
 			statisDriverMapper.selectViewZzzRepeatGt(fzjg, startDate, endDate, gtTimes);
 			statisKmMapper.selectViewKm3KscsGt(fzjg, startDate, endDate, gtTimes);
 			
+			statisSchoolMapper.selectViewFirstQuery(glbm, startDate, endDate);
+			statisSchoolMapper.selectViewSecondQuery(glbm, startDate, endDate);
+			statisSchoolMapper.selectViewCdDkQuery(glbm, startDate, endDate);
+			statisSchoolMapper.selectViewKm1DkQuery(glbm, startDate, endDate);
+			statisSchoolMapper.selectViewKm3DkQuery(glbm, startDate, endDate);
+			statisSchoolMapper.selectViewOnStudyQuery(glbm, startDate, endDate);
+			statisSchoolMapper.selectViewZkDkQuery(glbm, startDate, endDate);
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

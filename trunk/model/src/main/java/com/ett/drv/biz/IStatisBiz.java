@@ -35,7 +35,7 @@ public interface IStatisBiz {
 	public List<StatisKmView> selectViewKm3KscsGt50(String fzjg,Date startDate,Date endDate);
 	
 	//驾校状况统计(未能使用)
-	public List<StatisSchoolView> selectViewSchool(String glbm);
+	public List<StatisSchoolView> selectViewSchool(String glbm,Date startDate,Date endDate);
 
 
 }
