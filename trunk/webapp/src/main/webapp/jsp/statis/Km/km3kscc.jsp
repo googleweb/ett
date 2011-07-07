@@ -25,69 +25,59 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<jsp:include page="/js/index.jsp"></jsp:include>
 		<style type="text/css">
 </style>
-<script type="text/javascript"><%--
+<script type="text/javascript">
 $(document).ready(function(){   
 	$("#test").datagrid({fit:true,
 	columns:[ 
 	[ 
 		
 	{field:"Id",checkbox:true},
-	{field:"<%=%>",title:"考试员",width:150},
-	{field:"<%=%>",title:"人数",width:150}
+	{field:"",title:"考试员",width:150},
+	{field:"",title:"人数",width:150}
 	]
 	] 
 	,
-	pagination:true,
-	url:'<%=basePath%>'+""
+	pagination:true
+	//url:'<%=basePath%>'+""
 	} 
 );
 	
 }); //$(document).ready
 function searchform(){
 	
-	var =$("#").val()||"";
+//	var =$("#").val()||"";
 	
-	var =$("#").val()||"";
+//	var =$("#").val()||"";
 	
     
-	$("#test").datagrid("reload",{
-			:
-	 ,      :
-	});
+//	$("#test").datagrid("reload",{
+//			:
+//	 ,      :
+//	});
 	
 	
 }		
---%></script>
+</script>
   </head>
   
    <body  class="<%=EasyUiModel.Layout.CLASS %>" >
 	 <div    <%=EasyUiModel.Layout.Properties.REGION(EasyUiModel.REGION_NORTH) %> style="overflow: hidden;">
 	<form method="post" id="searchform">
-		<table style="text-align: center ;width: 100%">
+		<table class="editTable" cellspacing="0" align="right">
 			<tr>
-				<td style="background-color: rgb(208,227,248);" colspan="5">
-					考试情况
-				</td>
-			</tr>
-			<tr>
-				<td style="background-color: rgb(208,227,248)">
+				<td>
 				操作时间起：
 				</td>
-				<td style="text-align: left;">
-					<input type="text" name=""
-					id=""
-					class="<%=EasyUiModel.DateBox.CLASS%>"   
-					/>
+				<td>
+					<input type="text" name="" id=""  class="<%=EasyUiModel.DateBox.CLASS%>"  />
 				</td>
-				<td style="background-color: rgb(208,227,248);">
+				<td>
 				操作时间止：
 				</td>
-				<td style="text-align: left">
-					<input type="text" name=""  id=""  
-					class="<%=EasyUiModel.DateBox.CLASS%>"   
-					/>
+				<td>
+					<input type="text" name=""  id=""  class="<%=EasyUiModel.DateBox.CLASS%>"  />
 				</td>
-				<td style="background-color: rgb(208,227,248);text-align:center;">
+				<td>
 					<a class="easyui-linkbutton"   <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_SEARCH) %>  onclick="searchform()" >查询</a>
 					</td>
 			</tr>				

@@ -25,69 +25,65 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<jsp:include page="/js/index.jsp"></jsp:include>
 		<style type="text/css">
 </style>
-<script type="text/javascript"><%--
+<script type="text/javascript">
 $(document).ready(function(){   
 	$("#test").datagrid({fit:true,
 	columns:[ 
 	[ 
 		
 	{field:"Id",checkbox:true},
-	{field:"<%=%>",title:"驾校名称",width:150},
-	{field:"<%=%>",title:"教练证号",width:150},
-	{field:"<%=%>",title:"身份证明名称",width:150},
-	{field:"<%=%>",title:"姓名",width:150},
-	{field:"<%=%>",title:"车辆品牌",width:150},
-	{field:"<%=%>",title:"号牌号码",width:150},
-	{field:"<%=%>",title:"入场日期",width:150},
-	{field:"<%=%>",title:"联系手机",width:150}
+	{field:"",title:"驾校名称",width:150},
+	{field:"",title:"教练证号",width:150},
+	{field:"",title:"身份证明名称",width:150},
+	{field:"",title:"姓名",width:150},
+	{field:"",title:"车辆品牌",width:150},
+	{field:"",title:"号牌号码",width:150},
+	{field:"",title:"入场日期",width:150},
+	{field:"",title:"联系手机",width:150}
 	]
 	] 
 	,
-	pagination:true,
-	url:'<%=basePath%>'+""
+	pagination:true
+	//url:'<%=basePath%>'+""
 	} 
 );
 	
 }); //$(document).ready
+  
 function searchform(){
 	
-	var =$("#").val()||"";
+	//var =$("#").val()||"";
 	
-	var =$("#").val()||"";
+	//var =$("#").val()||"";
 	
     
-	$("#test").datagrid("reload",{
-			:
-	 ,      :
-	});
+	//$("#test").datagrid("reload",{
+	//		:
+	 //,      :
+	//});
 	
 	
 }		
---%></script>
+</script>
   </head>
     <body  class="<%=EasyUiModel.Layout.CLASS %>" >
 	 <div    <%=EasyUiModel.Layout.Properties.REGION(EasyUiModel.REGION_NORTH) %> style="overflow: hidden;">
 	<form method="post" id="searchform">
-		<table style="text-align: center ;width: 100%">
+		<table class="editTable" cellspacing="0" align="right">
 			<tr>
-				<td style="background-color: rgb(208,227,248);" colspan="5">
-					教练车查询
-				</td>
-			</tr>
-			<tr>
-				<td style="background-color: rgb(208,227,248)">
+				<td>
 				身份证明号码：
 				</td>
-				<td style="text-align: left;">
+				<td>
 					<input type="text" name="" id=""  />
 				</td>
-				<td style="background-color: rgb(208,227,248);">
+				<td>
 				号码号牌：
 				</td>
-				<td style="text-align: left">
+				<td>
 					<input type="text" name=""  id=""  />
 				</td>
-				<td style="background-color: rgb(208,227,248);text-align:center;">
+				<td>
 					<a class="easyui-linkbutton"   <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_SEARCH) %>  onclick="searchform()" >查询</a>
 					</td>
 			</tr>				
