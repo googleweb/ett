@@ -29,6 +29,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <script type="text/javascript">
+  function searchAddressRepeat(){
+  $("#formSearch").form("submit",{
+  url:'<%=basePath%>'+"statis/Driver/search/address.action",
+  success:function(str){
+  var json=Kia.util.strToJson(str); 
+  $("#test").datagrid("loadData",json); 
+  }
+  }
+  );
+  }
+  
   $(document).ready(
   function(){
   $("#test").datagrid({
@@ -57,13 +68,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <table class="editTable" cellspacing="0" align="right">
   <tr>
   <td>
-  操作时间起：<input type="text" value="" id="begindate" class="<%=EasyUiModel.DateBox.CLASS%>" />
+  操作时间起：<input type="text" name="begindate" id="begindate" class="<%=EasyUiModel.DateBox.CLASS%>" />
   </td>
    <td>
- 操作时间止：<input type="text" value="" id="enddate" class="<%=EasyUiModel.DateBox.CLASS%>" /> 
+ 操作时间止：<input type="text" name="enddate" id="enddate" class="<%=EasyUiModel.DateBox.CLASS%>" /> 
  </td>
  <td>
- <a  class="easyui-linkbutton"/>查询</a>
+ <a  class="easyui-linkbutton" onclick="searchAddressRepeat()"/>查询</a>
  </td>
  </tr>
  </table>
