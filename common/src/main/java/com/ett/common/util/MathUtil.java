@@ -11,6 +11,8 @@ import java.math.BigDecimal;
  */
 public class MathUtil {
 	
+	
+	
 	public   static  String percent( double  a,  double  b)
 	{
 		if(b==0.0D)
@@ -29,15 +31,15 @@ public class MathUtil {
 		 }
 
 		 /**
-		  * 提供（相?）精?的除泄1�7算�1�7�当?生除不尽的情冄1�7，由scale参数挄1�7 定精度，以后的数字四舍五入�1�7�1�7
+		  * 提供（相?）精?的除泄1�7算�1�7�当?生除不尽的情冄1�7，由scale参数挄1�7 定精度，以后的数字四舍五入�1�7�1�7
 		  * 
 		  * @param v1
-		  *            被除敄1�7
+		  *            被除敄1�7
 		  * @param v2
 		  *            除数
 		  * @param scale
-		  *            表示表示霄1�7要精?到小数点以后几位〄1�7
-		  * @return ?个参数的啄1�7
+		  *            表示表示霄1�7要精?到小数点以后几位〄1�7
+		  * @return ?个参数的啄1�7
 		  */
 		 public static double div(double v1, double v2, int scale) {
 		  if (scale < 0) {
@@ -50,13 +52,13 @@ public class MathUtil {
 		 }
 
 		 /**
-		  * 提供粄1�7的小数位四舍五入?理�1�7�1�7
+		  * 提供粄1�7的小数位四舍五入?理�1�7�1�7
 		  * 
 		  * @param v
-		  *            霄1�7要四舍五入的数字
+		  *            霄1�7要四舍五入的数字
 		  * @param scale
 		  *            小数点后保留几位
-		  * @return 四舍五入后的?构1�7
+		  * @return 四舍五入后的?构1�7
 		  */
 		 public static double round(double v, int scale) {
 		  if (scale < 0) {
