@@ -29,8 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 $(document).ready(function(){   
 	$("#test").datagrid({fit:true,
 	columns:[ 
-	[ 
-		
+	[ 	
 	{field:"Id",checkbox:true},
 	{field:"",title:"驾校名称",width:150},
 	{field:"",title:"年受理数",width:150},
@@ -63,26 +62,23 @@ $(document).ready(function(){
 	]
 	] 
 	,
-	pagination:true
-	//url:'<%=basePath%>'+""
-	} 
-);
-	
+	pagination:true,
+	url:<%=basePath%>statis/CoachCarAction/datagrid/CoachCar
+	});	
 }); //$(document).ready
+<%--
 function searchform(){
 	
-//	var =$("#").val()||"";
-	
-//	var =$("#").val()||"";
-	
-    
+//$("#searchform").form("validate");
+//	var =$("#begindate").val()||"";
+//	var =$("#enddate").val()||"";
 //	$("#test").datagrid("reload",{
-//			:
-//	 ,      :
-//	});
-	
-	
-}		
+//			begindate:begindate
+//	 ,      enddate:enddate
+//	});	
+
+}	
+--%>	
 </script>
   </head>
   
@@ -95,13 +91,21 @@ function searchform(){
 				开始日期：
 				</td>
 				<td>
-					<input type="text" name="" id=""  class="<%=EasyUiModel.DateBox.CLASS%>"  />
+					<input type="text" name="" id="begindate"  
+				     class="<%=EasyUiModel.DateBox.CLASS%>"  
+					 <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+					 <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("请输入开始日期 ") %>
+					/>
 				</td>
 				<td>
 				结束日期：
 				</td>
 				<td>
-					<input type="text" name=""  id=""  class="<%=EasyUiModel.DateBox.CLASS%>"  />
+					<input type="text" name=""  id="enddate"  
+					class="<%=EasyUiModel.DateBox.CLASS%>"
+					 <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+					 <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("请输入结束日期 ") %>
+					  />
 				</td>
 				<td>
 					<a class="easyui-linkbutton"   <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_SEARCH) %>  onclick="searchform()" >查询</a>
