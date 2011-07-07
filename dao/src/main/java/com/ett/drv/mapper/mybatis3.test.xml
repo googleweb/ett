@@ -26,7 +26,10 @@
 <mappers>
 <mapper resource="com/ett/drv/mapper/booked/oracle/ILimitMapper.xml"/>
 <mapper resource="com/ett/drv/mapper/self/oracle/ITransactResourceMapper.xml"/>
-
+<mapper resource="com/ett/drv/mapper/statis/oracle/IStatisCoachCarMapper.xml"/>
+<mapper resource="com/ett/drv/mapper/statis/oracle/IStatisDriverMapper.xml"/>
+<mapper resource="com/ett/drv/mapper/statis/oracle/IStatisKmMapper.xml"/>
+<mapper resource="com/ett/drv/mapper/statis/oracle/IStatisSchoolMapper.xml"/>
 </mappers>
 
 </configuration>
