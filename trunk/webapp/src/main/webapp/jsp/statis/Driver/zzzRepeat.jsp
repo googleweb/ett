@@ -54,13 +54,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <table class="editTable" cellspacing="0" align="right">
   <tr>
   <td>
-  操作时间起：<input type="text" value="" id="begindate" class="<%=EasyUiModel.DateBox.CLASS%>" />
+  操作时间起：<input type="text" value="" id="begindate" 
+  class="<%=EasyUiModel.DateBox.CLASS%>"
+   <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+  <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("请输入开始日期 ") %>
+   />
   </td>
    <td>
- 操作时间止：<input type="text" value="" id="enddate" class="<%=EasyUiModel.DateBox.CLASS%>" /> 
+ 操作时间止：<input type="text" value="" id="enddate" 
+ class="<%=EasyUiModel.DateBox.CLASS%>" 
+  <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+  <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("请输入结束日期 ") %>
+ /> 
  </td>
  <td>
- <a  class="easyui-linkbutton"/>查询</a>
+ <a  class="easyui-linkbutton" <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_SEARCH) %>/>查询</a>
  </td>
  </tr>
  </table>
