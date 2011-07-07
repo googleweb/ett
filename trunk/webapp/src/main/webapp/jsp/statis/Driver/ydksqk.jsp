@@ -48,16 +48,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
  <body  class="<%=EasyUiModel.Layout.CLASS %>" >
  <div   <%=EasyUiModel.Layout.Properties.REGION(EasyUiModel.REGION_NORTH) %>  
-  style="height: 100px">
+ style="height: 50px">
+ <!-- style="height: 100px">
+  
   <p style="text-align: center"><h3>异地驾驶人考试情况超过100</h3></p>
+-->
   <form method="post" id="formSearch">
   <table class="editTable" cellspacing="0" align="right">
   <tr>
   <td>
-  操作时间起：<input type="text" value="" id="begindate"/>
+  操作时间起：<input type="text" value="" id="begindate" class="<%=EasyUiModel.DateBox.CLASS%>" />
   </td>
    <td>
- 操作时间止：<input type="text" value="" id="enddate"/> 
+ 操作时间止：<input type="text" value="" id="enddate" class="<%=EasyUiModel.DateBox.CLASS%>" /> 
  </td>
  <td>
  <a  class="easyui-linkbutton"/>查询</a>
