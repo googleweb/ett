@@ -121,9 +121,10 @@ function clickRemoveHandler(){
 	if(obj!=0){
  		 $.messager.confirm('操作提示','确认删除用户?',function(yes){		 		
 					var ids="";
-					$.each(selectsRows,function(index,row){
-							ids+=','+row['Id'];  
-							});
+					//$.each(selectsRows,function(index,row){
+					//		ids+=','+row['Id'];  
+					//		});
+					ids=selectsRows.getUnionStr("Id");
 					var action="<%=basePath%>"+"preinput/List/do/delete.action";
 					$.post(action,{ids:ids},
 							function(str){
@@ -141,6 +142,17 @@ function clickRemoveHandler(){
 		$.messager.alert('操作提示','请选择要删除的记录！');
 		}
 }
+
+function checkedFormatter(value,rowIndex,rowData){
+    if(value==1){
+      return "已审核";
+    }else if(value==0){
+      return "未审核";
+    }else{
+      return "";
+    }
+}
+
 $(document).ready(function(){
 
 
@@ -164,7 +176,7 @@ $(document).ready(function(){
 	{field:"<%=StudentApplyInfoModel.F.Sfzmhm%>",title:"身份证明号码",width:150},
 	{field:"<%=StudentApplyInfoModel.F.CXm%>",title:"姓名",width:150},
 	{field:"<%=StudentApplyInfoModel.F.CJxmc%>",title:"驾校名称",width:150},
-	{field:"<%=StudentApplyInfoModel.F.IChecked%>",title:"审核结果",width:150},
+	{field:"<%=StudentApplyInfoModel.F.IChecked%>",title:"审核结果",width:150,formatter:checkedFormatter},
 	{field:"<%=StudentApplyInfoModel.F.CCheckResult%>",title:"审核结果描述",width:150},
 	{field:"<%=StudentApplyInfoModel.F.CCheckOperator%>",title:"经办人",width:150},
 	{field:"xxx",title:"详细",formatter:operaFormatter,width:150}	
