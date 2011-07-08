@@ -66,7 +66,7 @@ function searchform(){
 }		
 </script>
 	</head>
-	<body  class="<%=EasyUiModel.Layout.CLASS %>" >
+	<body  class="<%=EasyUiModel.Layout.CLASS %>" ><%--
 	 <div    <%=EasyUiModel.Layout.Properties.REGION(EasyUiModel.REGION_NORTH) %> style="padding: 10px;overflow: hidden;">
 	<form method="post" id="searchform">
 		<table style="text-align: center ;width: 100%">
@@ -105,13 +105,50 @@ function searchform(){
 				<td style="background-color: rgb(208,227,248);">
 				</td>
 				<td style="text-align: left;">
-					<%--<input type="button" value="统计" onclick="searchform()" />
-				--%>
+					<input type="button" value="统计" onclick="searchform()" />
+				
 				<a class="easyui-linkbutton"   <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_SEARCH) %> onclick="searchform()" >统计</a>
 				</td>
 			</tr>
 		</table>
 		</form>
+		</div>
+		
+		--%>
+		<div    <%=EasyUiModel.Layout.Properties.REGION(EasyUiModel.REGION_NORTH) %> style="overflow: hidden;">
+	<form method="post" id="searchform">
+		<table class="editTable" cellspacing="0" align="right">
+			<tr>
+				<td>
+				体检日期起：
+				</td>
+				<td>
+					<input type="text" name="" id="beginDate"  
+				     class="<%=EasyUiModel.DateBox.CLASS%>"  
+					/>
+				</td>
+				<td>
+				体检日期止：
+				</td>
+				<td>
+					<input type="text" name=""  id="endDate"  
+					class="<%=EasyUiModel.DateBox.CLASS%>"
+					  />
+				</td>
+				<td>
+				 统计方式：
+				</td>
+				 <td>
+                 	<select name="statistics_type" id="statistics_type">
+						<option selected="selected" value="<%=IHospitalBiz.TYPE_HOSPITAL %>">按医院名称</option>
+						<option value="<%=IHospitalBiz.TYPE_HOSPITAL %>">按医院用户</option>
+					</select>
+                </td>
+				<td>
+					<a class="easyui-linkbutton"   <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_SEARCH) %>  onclick="searchform()" >查询</a>
+				</td>
+			</tr>				
+		</table></form>
 		</div>
 		
 		<div   <%=EasyUiModel.Layout.Properties.REGION(EasyUiModel.REGION_CENTER) %> >

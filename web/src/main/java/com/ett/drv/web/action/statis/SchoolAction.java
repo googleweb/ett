@@ -9,6 +9,7 @@ import org.json.JSONObject;
 
 import com.ett.drv.web.action.BaseDrvAction;
 import com.smartken.kia.core.util.EasyUiUtil;
+import com.smartken.kia.core.util.StringUtil;
 
 public class SchoolAction extends BaseDrvAction {
 
@@ -21,17 +22,19 @@ public class SchoolAction extends BaseDrvAction {
 		String glbm = "11";
 		String begindate = this.getParameter("begindate");
 		String enddate = this.getParameter("enddate");
-		SimpleDateFormat parseTime = new SimpleDateFormat("yyyy-MM-dd ");
+		SimpleDateFormat parseTime = new SimpleDateFormat("yyyy-MM-dd");
 		Date begindate1;
 		Date enddate1;
 		try {
-			begindate1 = parseTime.parse(begindate);
-			enddate1 = parseTime.parse(enddate);
-			if (begindate != "" && enddate != "" && glbm != "") {
+			if (StringUtil.isNotBlank(begindate)&&StringUtil.isNotBlank(enddate)&&StringUtil.isNotBlank(glbm)) {
+				begindate1 = parseTime.parse(begindate);
+				enddate1 = parseTime.parse(enddate);
 				List list = this.statisBiz.selectViewSchool(glbm, begindate1, enddate1);
 				JSONObject jsonDG = EasyUiUtil.toJsonDataGrid(list,
 						this.adminBiz.count());
 				this.writePlainText(jsonDG.toString());
+			}else{
+				//this.write
 			}
 		} catch (ParseException e) {
 			e.printStackTrace();

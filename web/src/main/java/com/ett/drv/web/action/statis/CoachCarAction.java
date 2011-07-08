@@ -6,6 +6,7 @@ import org.json.JSONObject;
 
 import com.ett.drv.web.action.BaseDrvAction;
 import com.smartken.kia.core.util.EasyUiUtil;
+import com.smartken.kia.core.util.StringUtil;
 
 
 
@@ -20,7 +21,7 @@ public class CoachCarAction extends BaseDrvAction {
 		String fzjg="111";
 		String idCard=this.getParameter("cardnum");
 		String hphm=this.getParameter("carnum");
-		if(fzjg!=""&&idCard!=""&&hphm!=""){
+		if(StringUtil.isNotBlank(idCard)&&StringUtil.isNotBlank(hphm)&&StringUtil.isNotBlank(fzjg)){
 			@SuppressWarnings("unused")
 			List list=this.statisBiz.getViewCoachCar(fzjg, idCard, hphm);
 			JSONObject jsonDG=EasyUiUtil.toJsonDataGrid(list,this.adminBiz.count());

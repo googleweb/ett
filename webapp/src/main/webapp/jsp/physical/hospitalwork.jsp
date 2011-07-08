@@ -35,6 +35,7 @@ $(document).ready(function(){
 	{field:"<%=BusAllInfoModel.F.CXm%>",title:"姓名",width:150},
 	{field:"<%=BusAllInfoModel.F.CBirthday%>",title:"出生日期",width:150},
 	{field:"<%=BusAllInfoModel.F.CCarType%>",title:"车辆类型",width:150},
+	{field:"<%=BusAllInfoModel.F.IState%>",title:"状态",width：150},
 	{field:"<%=BusAllInfoModel.F.CDabh%>",title:"档案编号",width:150},
 	{field:"<%=BusAllInfoModel.F.Checkdate%>",title:"审核日期",width:150},
 	{field:"<%=BusAllInfoModel.F.Regdate%>",title:"受理日期",width:150 },
@@ -91,50 +92,32 @@ function searchform(){
 </script>
 	</head>
 	<body  class="<%=EasyUiModel.Layout.CLASS %>" >
-	 <div    <%=EasyUiModel.Layout.Properties.REGION(EasyUiModel.REGION_NORTH) %> style="padding: 10px;overflow: hidden;">
+		<div    <%=EasyUiModel.Layout.Properties.REGION(EasyUiModel.REGION_NORTH) %> style="overflow: hidden;">
 	<form method="post" id="searchform">
-		<table style="text-align: center ;width: 100%">
-				<tr>
-				<td style="background-color: rgb(208,227,248);">
+		<table class="editTable" cellspacing="0" align="right">
+			<tr>
+				<td>
 				体检日期起：
 				</td>
-					<td style="text-align: left;width: 40%">
-					<input type="text" name="beginDate"
-					id="beginDate"
-					class="<%=EasyUiModel.DateBox.CLASS%>"   
-					
+				<td>
+					<input type="text" name="" id="beginDate"  
+				     class="<%=EasyUiModel.DateBox.CLASS%>"  
 					/>
 				</td>
-				<td style="background-color: rgb(208,227,248);">
+				<td>
 				体检日期止：
 				</td>
-				<td style="text-align: left;width: 40%;">
-					<input type="text" name="endDate"
-					id="endDate"
-					class="<%=EasyUiModel.DateBox.CLASS%>"   
-					style="width: 80%"
-					/>
+				<td>
+					<input type="text" name=""  id="endDate"  
+					class="<%=EasyUiModel.DateBox.CLASS%>"
+					  />
 				</td>
-			</tr>
-				<tr>
-				<td style="background-color: rgb(208,227,248);">
-				 统计方式：
-				</td>
-				 <td style="text-align: left;">
-                 	
-                </td>
-				<td style="background-color: rgb(208,227,248);">
-				</td>
-				<td style="text-align: left;">
-					<%--<input type="button" value="统计" onclick="searchform()" />
-				--%>
-				<a class="easyui-linkbutton"   <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_SEARCH) %>  onclick="searchform()" >统计</a>
-				</td>
-			</tr>
-		</table>
-		</form>
+				<td>
+					<a class="easyui-linkbutton"   <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_SEARCH) %>  onclick="searchform()" >查询</a>
+					</td>
+			</tr>				
+		</table></form>
 		</div>
-		
 		<div   <%=EasyUiModel.Layout.Properties.REGION(EasyUiModel.REGION_CENTER) %> >
 		<table id="test"></table>
 		
