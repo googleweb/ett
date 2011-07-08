@@ -248,20 +248,33 @@ public class ListAction extends BaseDrvAction implements ModelDriven<StudentAppl
 	
 	public void do_delete(){
     	//根据id删除User，，并输出json格式的保存结果
-    	ArrayList lListIds=new ArrayList();
+    	ArrayList<String> lListIds=new ArrayList<String>();
 		String ids=this.getParameter("ids");
 		int re=0;
+		int x=0;
+		this.adminBiz.loadCrudMapper(StudentApplyInfoModel.class);
 	    if(ids!=null)
 		{
              lListIds=StringUtil.splitToList(ids,",");
-             this.adminBiz.loadCrudMapper(StudentApplyInfoModel.class);
+             for(String a: lListIds){
+            	 int i=ObjectUtil.formatInt(a,-1);
+            	 Object obj=this.adminBiz.getModelEqPk(i);
+            	 if(obj==null)continue;
+            	 StudentApplyInfoModel m=(StudentApplyInfoModel)obj;
+            	if(ObjectUtil.isEquals(1, m.getIChecked())){
+            		lListIds.remove(a);
+            		x++;
+            	}
+               
+             }
+             //this.adminBiz.loadCrudMapper(StudentApplyInfoModel.class);
              re+=this.adminBiz.removeModelInPk(lListIds).getRe();
 		}
 		ResultModel resultModel=new ResultModel();
 		if(re>0){
 			resultModel.setTitle("操作成功");
 			//resultModel.setAction(ResultModel.ACTION_CONFIRM);
-			resultModel.setMsg("成功删除{0}个",re);
+			resultModel.setMsg("成功删除未审核{0}个，未删除{1}个已审核",re,x);
 	
 		}else {
 			resultModel.setAction(ResultModel.ACTION_ALERT);
