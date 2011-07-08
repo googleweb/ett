@@ -45,7 +45,7 @@ $(document).ready(function(){
 	] 
 	,
 	pagination:true,
-	url:"<%=basePath%>statis/CoachCarAction/datagrid/CoachCar"
+	url:"<%=basePath%>statis/CoachCar/datagrid/CoachCar"
 	} 
 );
 	
@@ -53,8 +53,8 @@ $(document).ready(function(){
   
 function searchform(){
 	$("#searchform").form("validate");
-	var =$("#cardnum").val()||"";
-	var =$("#carnum").val()||"";
+	var cardnum=$("#cardnum").val()||"";
+	var carnum=$("#carnum").val()||"";
 	$("#test").datagrid("reload",{
 			cardnum:cardnum
 	 ,      carnum:carnum

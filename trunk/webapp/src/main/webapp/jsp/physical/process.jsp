@@ -37,6 +37,7 @@ $(document).ready(function(){
 		   var CIdcardtype1=$("#CIdcardtype1 option:selected").val()||"";
 		   var CDabh1=$("#CDabh1").val()||"";
 		   $("#CIdcardtype1 option[vaule='士兵证']").attr("selected","selected");  
+		   if(CIdcard1.length>0||CDabh1.length>0){
   			$.getJSON("<%=basePath%>/physical/HospitalMessage/do/search.action",
   				{CIdcard1:CIdcard1
   				//,CIdcardtype1:CIdcardtype1
@@ -50,10 +51,13 @@ $(document).ready(function(){
               		$("#CSex").combobox("setValue",result['CSex']);
               		$("#CCarType").combobox("setValue",result['CCarType']);
               		$("#Regdate").datebox("setValue",result['Regdate']);
-              		$("#CBirthday").datebox("setValue",result['CBirthday']);
-              		
-  		});
-       }catch(ex){alert(ex);}
+              		$("#CBirthday").datebox("setValue",result['CBirthday']);	
+  			});
+  			}else{
+  				$.messager.alert('操作提示','请输入查询条件');
+  			}
+       	}
+		catch(ex){alert(ex);}
 	});
 });
 function addform(){
@@ -62,6 +66,18 @@ function addform(){
 	   	success:function(str){
 	  	}
 	});
+}
+function cancel(){
+	var CIdcard=$("#CIdcard").val()||"";
+	if(CIdcard.length==""){
+		$.messager.alert('操作提示','请输入要退办的详细信息');		
+	}else{
+		alert("11");
+		$.ajax({
+            url:"<%=basePath%>/physical/HospitalMessage/do/cancel.action?CIdcard="+CIdcard
+           // {CIdcard:CIdcard}
+        });
+	}
 }
 </script>
 	</head>
@@ -73,7 +89,6 @@ function addform(){
 						体检录入
 					</td>
 				</tr>
-
 				<tr>
 					<td>
 						<form id="searchform" method="post">
@@ -91,8 +106,7 @@ function addform(){
 											<option value="G">外交人员身份证明</option>
 											<option value="A">居民身份证</option>
 									</select>
-								--%>
-								
+								--%>								
 								<input name="" type="text"  value=""
                      					class="<%=EasyUiModel.ComboBox.CLASS %>"    					
 				    					<%=EasyUiModel.ComboBox.Properties.URL(basePath+"preinput/List/combobox/sfzm.action") %>
@@ -104,11 +118,7 @@ function addform(){
 									证件号码
 								</td>
 								<td>
-									
-									<input type="text" name="" id="CIdcard1"
-									 class="<%=EasyUiModel.ValidateBox.CLASS %>"
-                 <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("证件号码必须输入 ") %>
-                  <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+									<input type="text" name="" id="CIdcard1"	
 									/>
 								</td>
 							</tr>
@@ -121,8 +131,6 @@ function addform(){
 									<input type="text" value="4404">
 									<input type="text" name="" id="CDabh1"
 									class="<%=EasyUiModel.ValidateBox.CLASS %>"
-                 <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("档案编号必须输入 ") %>
-                  <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
 									/>
 								</td>
 								<td style="background-color: rgb(208,227,248);">
@@ -142,7 +150,6 @@ function addform(){
 									<a class="easyui-linkbutton"   <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_SEARCH) %> id="commit">提交</a>
 								</td>
 							</tr>
-
 						</table>
 						</form>
 					</td>
@@ -151,13 +158,11 @@ function addform(){
 					<td style="background-color: rgb(208,227,248);">
 						体检详细信息
 					</td>
-
 				</tr>
 				<tr>
 					<td>
 					<form id="addform" method="post">
 						<table style="width: 100%" class="" cellspacing="1">
-
 							<tr>
 								<td style="background-color: rgb(208,227,248);">
 									证件名称：
@@ -174,7 +179,6 @@ function addform(){
 									证件号码
 								</td>
 								<td>
-									
 									<input type="text" name="CIdcard" id="CIdcard"
 									 class="<%=EasyUiModel.ValidateBox.CLASS %>"
                  <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("证件号码必须输入 ") %>
@@ -185,7 +189,6 @@ function addform(){
 									档案编号
 								</td>
 								<td>
-									
 									<input type="text" name="CDabh" id="CDabh"
 									 class="<%=EasyUiModel.ValidateBox.CLASS %>"
                  <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("档案编号必须输入") %>
@@ -202,7 +205,6 @@ function addform(){
 									姓名
 								</td>
 								<td>
-									
 									<input type="text" name="CXm" id="CXm"
 									 class="<%=EasyUiModel.ValidateBox.CLASS %>"
 									  <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
@@ -214,7 +216,6 @@ function addform(){
 									性别
 								</td>
 								<td>
-									
 									<%--<input type="text" name="CSex" id="CSex"/>
 								--%>
 								<input name="CSex" type="text"  id="CSex" 
@@ -224,8 +225,7 @@ function addform(){
 				   <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("性别必须输入 ！ ") %>
 				    <%=EasyUiModel.ComboBox.Properties.EDITABLE(false)%>
 				    <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
-				    <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %>
-  />
+				    <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %>/>
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									出生日期
@@ -243,7 +243,6 @@ function addform(){
 									国籍
 								</td>
 								<td>
-									
 									<%--<input type="text" name="CNation" id="CNation"/>
 								--%>
 									<input name="CNation" type="text" id="CNation"
@@ -259,7 +258,6 @@ function addform(){
 									准驾车型
 								</td>
 								<td>
-									
 									<input name="CCarType"  id="CCarType" type="text"   
                      class="<%=EasyUiModel.ComboBox.CLASS %>"
 				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
@@ -318,7 +316,7 @@ function addform(){
 								<td  style="text-align: right" colspan="10">
 								<%--<input type="button" value="提交"  onclick="addform()" />
 								--%>
-									<a class="easyui-linkbutton"   <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_SEARCH) %>  onclick="addform()">提交</a>
+									<a class="easyui-linkbutton"   <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_ADD) %>  onclick="addform()">提交</a>
 								</td>
 							</tr>
 						</table>
@@ -326,11 +324,9 @@ function addform(){
 					</td>
 				</tr>
 				<tr>
-								<td colspan="8" style="text-align: right">
-									
-										<a class="easyui-linkbutton"   <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_SEARCH) %>>打印</a>
-									
-										<a class="easyui-linkbutton"   <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_SEARCH) %>>退办</a>
+								<td colspan="8" style="text-align: right">								
+										<a class="easyui-linkbutton"   <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_PRINT) %>>打印</a>
+										<a class="easyui-linkbutton"   <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_CANCEL)%> onclick="cancel()">退办</a>
 								</td>
 				</tr>
 			</table>

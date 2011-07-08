@@ -29,8 +29,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 $(document).ready(function(){   
 	$("#test").datagrid({fit:true,
 	columns:[ 
-	[ 	
-	{field:"Id",checkbox:true},
+	[ 
+		
+	//{field:"Id",checkbox:true},
 	{field:"Jxmc",title:"驾校名称",width:150},
 	{field:"CountDate",title:"年受理数",width:150},
 	{field:"Km1hg",title:"科目一合格",width:150},
@@ -58,22 +59,25 @@ $(document).ready(function(){
 	{field:"Km3nc1dk",title:"科目三非C1待考",width:150},
 	
 	{field:"Zhgl",title:"总合格率",width:150}
-	
 	]
 	] 
 	,
 	pagination:true,
-	url:<%=basePath%>statis/CoachCarAction/datagrid/CoachCar
-	});	
-}); //$(document).ready
+	url:"<%=basePath%>statis/School/datagrid/School"
+	} 
+);
+	
+});
+
 function searchform(){	
+	
 $("#searchform").form("validate");
-	var =$("#begindate").val()||"";
-	var =$("#enddate").val()||"";
+	 var begindate=$("#begindate").datebox("getValue");
+	  var enddate=$("#enddate").datebox("getValue");
 	$("#test").datagrid("reload",{
-			begindate:begindate
-	 ,      enddate:enddate
-	});	
+	 begindate:begindate
+	 ,enddate:enddate
+	});
 }		
 </script>
   </head> 

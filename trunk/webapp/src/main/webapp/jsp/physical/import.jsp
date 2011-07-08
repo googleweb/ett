@@ -34,6 +34,7 @@ $(document).ready(function(){
 		   var CIdcard1=$("#CIdcard1").val()||"";
 		   var CIdcardtype1=$("#CIdcardtype1 option:selected").val()||"";
 		   var CDabh1=$("#CDabh1").val()||"";
+		   if(CIdcard1.length>0||CDabh1.length>0){
   			$.getJSON("<%=basePath%>/physical/HospitalMessage/do/search.action",
   				{CIdcard1:CIdcard1
   				//,CIdcardtype1:CIdcardtype1
@@ -60,7 +61,10 @@ $(document).ready(function(){
               		
               		$("#Regdate").datebox("setValue",result['Regdate']);
               		$("#CBirthday").datebox("setValue",result['CBirthday']);
-  		});
+  			});
+  		  }else{
+  			  $.messager.alert('操作提示','请输入查询条件');
+  		  }
        }catch(ex){alert(ex);}
 	});
 });
@@ -103,11 +107,7 @@ function addform(){
 									证件号码
 								</td>
 								<td>
-									<input type="text" name="" id="CIdcard1"
-									 class="<%=EasyUiModel.ValidateBox.CLASS %>"
-                 <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("证件号码必须输入 ") %>
-                  <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
-									/>
+									<input type="text" name="" id="CIdcard1"/>
 								</td>
 							</tr>
 							<tr>
@@ -115,11 +115,7 @@ function addform(){
 									档案编号
 								</td>
 								<td>
-									<input type="text" name="" id="CDabh1"
-									class="<%=EasyUiModel.ValidateBox.CLASS %>"
-                 <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("档案编号必须输入 ") %>
-                  <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
-									/>
+									<input type="text" name="" id="CDabh1"/>
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									业务类型：
@@ -340,7 +336,7 @@ function addform(){
 											合格
 										</option>
 										<option value="0">
-											不合 格
+											不合格
 										</option>
 									</select>
 								</td>
@@ -353,7 +349,7 @@ function addform(){
 											合格
 										</option>
 										<option value="0">
-											不合 格
+											不合格
 										</option>
 									</select>
 								</td>
@@ -368,7 +364,7 @@ function addform(){
 											合格
 										</option>
 										<option value="0">
-											不合 格
+											不合格
 										</option>
 
 									</select>
@@ -382,7 +378,7 @@ function addform(){
 											合格
 										</option>
 										<option value="0">
-											不合 格
+											不合格
 										</option>
 
 									</select>
@@ -396,7 +392,7 @@ function addform(){
 											合格
 										</option>
 										<option value="0">
-											不合 格
+											不合格
 										</option>
 
 									</select>
@@ -410,7 +406,7 @@ function addform(){
 											合格
 										</option>
 										<option value="0">
-											不合 格
+											不合格
 										</option>
 
 									</select>
@@ -439,8 +435,8 @@ function addform(){
 									<%--<input type="button" name="" value="保存" />									
 									<input type="button" name="" value="打印回执单" />
 								--%>
-								<a class="easyui-linkbutton"   <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_SEARCH) %>  onclick="addform()">提交</a>
-								<a class="easyui-linkbutton"   <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_SEARCH) %>>打印回执单</a>
+								<a class="easyui-linkbutton"   <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_ADD) %>  onclick="addform()">提交</a>
+								<a class="easyui-linkbutton"   <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_PRINT) %>>打印回执单</a>
 								</td>
 							</tr>
 						</table>

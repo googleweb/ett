@@ -37,14 +37,14 @@ $(document).ready(function(){
 	] 
 	,
 	pagination:true,
-	url:<%=basePath%>statis/CoachCarAction/datagrid/km3kscc
+	url:"<%=basePath%>statis/Km/datagrid/km3kscc"
 	} 
 );	
 }); //$(document).ready
 function searchform(){
 $("#searchform").form("validate");
-	var =$("#begindate").val()||"";
-	var =$("#enddate").val()||"";
+	 var begindate=$("#begindate").datebox("getValue");
+	  var enddate=$("#enddate").datebox("getValue");
 	$("#test").datagrid("reload",{
 			begindate:begindate
 	 ,      enddate:enddate

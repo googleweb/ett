@@ -69,6 +69,7 @@ public class HospitalMessageAction extends BaseDrvAction implements ModelDriven<
 	public void do_add(){
 		
 		this.hospitalBiz.loadCrudMapper(BusAllInfoModel.class);
+		busAllInfoModel.setIState(1);
 		this.hospitalBiz.modifyOrAddModel(busAllInfoModel);
 	}
 	/**
@@ -141,7 +142,7 @@ public class HospitalMessageAction extends BaseDrvAction implements ModelDriven<
         String qendDate=this.getParameter("qendDate");
         if(StringUtil.isBlank(qendDate)){
         	qendDate=null;
-        	 busAllInfoModel.setEndDate(new Date());
+        	 busAllInfoModel.setEndDate(DateTimeUtil.parse("2050-01-01"));
         }else{
         	busAllInfoModel.setEndDate(DateTimeUtil.parse(qendDate));
         }
@@ -177,6 +178,13 @@ public class HospitalMessageAction extends BaseDrvAction implements ModelDriven<
 		}
 		JSONObject json=EasyUiUtil.toJsonDataGrid(list);
 		this.writePlainText(json.toString());
+	}
+	/*
+	 * 退办受理，把I_State变成0
+	 * */
+	public void do_cancel(){
+		String CIdcard=this.getParameter("CIdcard");
+		System.out.println(CIdcard);
 	}
 	public void clear() {
 	}
