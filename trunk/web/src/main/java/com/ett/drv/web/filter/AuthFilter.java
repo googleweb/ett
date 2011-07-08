@@ -17,6 +17,8 @@ public class AuthFilter implements Filter {
 
 	public static String AUTH_USER="authUser";
 	
+	
+	
 	public void destroy() {
 		// TODO Auto-generated method stub
 
