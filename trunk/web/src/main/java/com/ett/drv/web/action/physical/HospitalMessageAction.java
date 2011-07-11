@@ -6,11 +6,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.ett.common.util.DateUtil;
 import com.ett.drv.model.admin.BusAllInfoModel;
+import com.ett.drv.model.admin.UserModel;
 import com.ett.drv.web.action.BaseDrvAction;
 import com.opensymphony.xwork2.ModelDriven;
 import com.smartken.kia.core.model.IFormatterModel;
@@ -183,8 +183,27 @@ public class HospitalMessageAction extends BaseDrvAction implements ModelDriven<
 	 * 退办受理，把I_State变成0
 	 * */
 	public void do_cancel(){
-		String CIdcard=this.getParameter("CIdcard");
-		System.out.println(CIdcard);
+		//String CIdcard=this.getParameter("CIdcard");
+		//System.out.println(CIdcard);
+		this.hospitalBiz.loadCrudMapper(BusAllInfoModel.class);
+		this.busAllInfoModel.setIState(0);
+		this.hospitalBiz.addOrModifyModel(busAllInfoModel);
+		ResultModel resultModel=new ResultModel();
+		resultModel.setTitle("受理回执信息");
+		resultModel.setMsg("成功退办业务");
+		this.writePlainText(resultModel.toJson().toString());
+	}
+	/**
+	 * 得到当前用户对应的部门名字
+	 * */
+	@SuppressWarnings("unchecked")
+	public void get_departmentName(){
+		UserModel userModel=(UserModel)this.getSessionAttribute("authUser");
+		try {
+			List list=this.adminBiz.listDepartmentName(userModel.getId());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	public void clear() {
 	}

@@ -283,18 +283,14 @@ public class AdminBiz extends BaseDrvBiz implements IAdminBiz {
 		List<DictModel> listDict=this.dictMapper.select(query);
 		return listDict;
 	}
-
-
+	/**
+	 * 根据用户的id，把该用户对应的部门编号取出来
+	 * */
+	public List<UserModel> listDepartmentName(Integer id) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
-	
-	
-
-
-
-
-
-
-
 }
 
 

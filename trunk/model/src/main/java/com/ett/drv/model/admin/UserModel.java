@@ -7,7 +7,11 @@ import com.smartken.kia.core.model.impl.BaseModel;
 
 
 public class UserModel extends BaseModel {	
-	 public static enum F { 
+	 /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public static enum F { 
 		  Id,CLoginName,CFullName,CPwd,IRoleid,IDepid,CIdcard,CWorkid,CBeginip,CEndip,CState  
 		 } 
 	 
