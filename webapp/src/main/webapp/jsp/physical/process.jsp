@@ -72,10 +72,13 @@ function cancel(){
 	if(CIdcard.length==""){
 		$.messager.alert('操作提示','请输入要退办的详细信息');		
 	}else{
-		alert("11");
+		//alert("11");
 		$.ajax({
-            url:"<%=basePath%>/physical/HospitalMessage/do/cancel.action?CIdcard="+CIdcard
+            url:"<%=basePath%>/physical/HospitalMessage/do/cancel.action?CIdcard="+CIdcard  ,
            // {CIdcard:CIdcard}
+            success:function(str){
+	  			str.messager();
+            }
         });
 	}
 }
@@ -128,7 +131,7 @@ function cancel(){
 								</td>
 								<td>
 									
-									<input type="text" value="4404">
+									<input type="text" value="${authUser.departmentModel.CParentcode}">
 									<input type="text" name="" id="CDabh1"
 									class="<%=EasyUiModel.ValidateBox.CLASS %>"
 									/>
