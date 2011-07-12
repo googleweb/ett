@@ -31,7 +31,7 @@ import com.ett.drv.biz.IPreBiz;
 import com.ett.drv.biz.ISelfBiz;
 import com.ett.drv.biz.IStatisBiz;
 import com.ett.drv.model.admin.UserModel;
-import com.ett.drv.web.filter.AuthFilter;
+import com.ett.drv.web.rule.AuthUserRule;
 import com.smartken.kia.core.enums.DataFormatEnum;
 import com.smartken.kia.core.enums.ResultEnum;
 import com.smartken.kia.core.model.IBaseAction;
@@ -74,7 +74,7 @@ implements Preparable
 	}
 	
 	public UserModel getAuthUser(){
-		UserModel userModel=(UserModel) this.getSessionAttribute(AuthFilter.AUTH_USER);
+		UserModel userModel=(UserModel) this.getSessionAttribute(AuthUserRule.AUTH_USER);
 		return userModel;
 	}
 	

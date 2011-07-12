@@ -68,11 +68,11 @@
  </filter>
  <!-- 结束DWR配置 -->
  <filter>
-  <filter-name>SessionRequiredFilter</filter-name>
-  <filter-class>com.smartken.kia.core.filter.SessionRequiredFilter</filter-class>
+  <filter-name>VerifyFilter</filter-name>
+  <filter-class>com.smartken.kia.core.filter.VerifyFilter</filter-class>
   <init-param>
-    <param-name>requiredKeys</param-name>
-    <param-value>authUser</param-value>
+    <param-name>rules</param-name>
+    <param-value>com.ett.drv.web.rule.AuthUserRule</param-value>
   </init-param>
   <init-param>
     <param-name>includeRegexps</param-name>
@@ -132,7 +132,7 @@ hbm配置的过滤器
  
  
  <filter-mapping>
-   <filter-name>SessionRequiredFilter</filter-name>
+   <filter-name>VerifyFilter</filter-name>
    <url-pattern>/*</url-pattern>
  </filter-mapping>
 
