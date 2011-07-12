@@ -10,6 +10,7 @@
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 	String adminMenuPath = basePath + "admin/Menu";
+	String excelTemplatePath=basePath+"js/print/excel.physical.xls";
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -26,6 +27,7 @@
 		</jsp:include>
 		<jsp:include page="/css/index.jsp"></jsp:include>
 		<jsp:include page="/js/index.jsp"></jsp:include>
+		<script type="text/javascript" src="<%=basePath+"js/print/excel.tranVeh.js" %>"></script>
 		<style type="text/css">
 </style>
 		<script type="text/javascript">
@@ -81,6 +83,28 @@ function cancel(){
             }
         });
 	}
+}
+function printMessage(){
+	
+	//alert('111');
+	var excelTemplatePath="<%=basePath%>js/print/excel.physical.xls";
+	var Id=$("#Id").val()||"";
+	
+	if(Id.length==""){
+		$.messager.alert('操作提示','请输入要打印的详细信息');
+	}	
+	else{
+		var str={"Xm":"陈必武"};
+		printExcel(excelTemplatePath,str);
+		<%--$.ajax({
+			url:"<%=basePath%>/physical/HospitalMessage/do/print.action?Id="+Id,
+			success:function(str){
+				printExcel(excelTemplatePath,str);
+			}
+		});--%>
+	}
+	
+	
 }
 </script>
 	</head>
@@ -328,7 +352,7 @@ function cancel(){
 				</tr>
 				<tr>
 								<td colspan="8" style="text-align: right">								
-										<a class="easyui-linkbutton"   <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_PRINT) %>>打印</a>
+										<a class="easyui-linkbutton"   <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_PRINT) %> onclick="printMessage()">打印</a>
 										<a class="easyui-linkbutton"   <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_CANCEL)%> onclick="cancel()">退办</a>
 								</td>
 				</tr>
