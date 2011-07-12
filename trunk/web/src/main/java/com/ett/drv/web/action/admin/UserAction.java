@@ -11,7 +11,8 @@ import com.ett.drv.model.admin.DictModel;
 import com.ett.drv.model.admin.RoleModel;
 import com.ett.drv.model.admin.UserModel;
 import com.ett.drv.web.action.BaseDrvAction;
-import com.ett.drv.web.filter.AuthFilter;
+
+import com.ett.drv.web.rule.AuthUserRule;
 import com.opensymphony.xwork2.ModelDriven;
 import com.smartken.kia.core.model.IFormatterModel;
 import com.smartken.kia.core.model.impl.ResultModel;
@@ -39,7 +40,7 @@ public class UserAction extends BaseDrvAction implements ModelDriven<UserModel> 
 			e.printStackTrace();
 		}
 		if(_userModel!=null){
-		   this.setSessionAttribute(AuthFilter.AUTH_USER, _userModel);
+		   this.setSessionAttribute(AuthUserRule.AUTH_USER, _userModel);
 		   return "login_success";
 		}else {
 		   return "login_fail";
