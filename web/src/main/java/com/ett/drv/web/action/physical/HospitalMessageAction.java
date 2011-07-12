@@ -205,6 +205,16 @@ public class HospitalMessageAction extends BaseDrvAction implements ModelDriven<
 			e.printStackTrace();
 		}
 	}
+	/**
+	 * 打印出受理的信息成EXCEL表格
+	 * */
+	public void do_print(){
+		this.hospitalBiz.loadCrudMapper(BusAllInfoModel.class);
+		BusAllInfoModel busAllInfoModelprint=(BusAllInfoModel)this.hospitalBiz.getModel(busAllInfoModel);
+		System.out.println("1223");
+		this.writePlainText(busAllInfoModelprint.toJson().toString());
+		
+	}
 	public void clear() {
 	}
 }
