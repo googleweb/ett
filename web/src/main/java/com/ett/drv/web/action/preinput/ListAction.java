@@ -3,14 +3,10 @@ package com.ett.drv.web.action.preinput;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
+
 import java.util.List;
 
-import org.apache.commons.fileupload.DiskFileUpload;
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileUpload;
-import org.apache.commons.fileupload.RequestContext;
-import org.apache.commons.fileupload.servlet.ServletRequestContext;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -79,7 +75,8 @@ public class ListAction extends BaseDrvAction implements ModelDriven<StudentAppl
 		//查处所以User，输出json格式的datagrid    User/datagrid/users.action
 		String qIDCard=this.getParameter("qIDCard");
 		if(StringUtil.isBlank(qIDCard)){
-			qIDCard=null;
+			//qIDCard="0";//不显示任何数据
+			qIDCard=null;//显示所有数据
 		}else{
 			qIDCard=qIDCard.trim();
 		}

@@ -177,14 +177,14 @@ $(document).ready(function(){
 	pagination:true,
 	onDblClickRow:dblClickRowHandler
 	,
-	url:'<%=basePath%>'+"preinput/List/datagrid/list.action"} 
+	url:'<%=basePath%>'+"preinput/Feedback/datagrid/list.action"} 
 );    //   end:$("#tableDG").datagrid
 	
 }); //$(document).ready
 </script>
   <body class="<%=EasyUiModel.Layout.CLASS %>">
-    <div <%=EasyUiModel.Layout.Properties.REGION(EasyUiModel.REGION_NORTH) %>  style="height: 100px" >
-    <p style="text-align: center"><h3>初学+增驾结果结果反馈</h3></p>
+    <div <%=EasyUiModel.Layout.Properties.REGION(EasyUiModel.REGION_NORTH) %>  style="height: 50px" >
+    
     <form method="post" id="formSearch">
          <table class="editTable" cellspacing="0" align="right">
          <tr>   
