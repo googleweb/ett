@@ -37,20 +37,12 @@ import com.ett.self.preasign.model.Km1PreasignRecord;
 
 public class BookedBiz extends BaseDrvBiz implements IBookedBiz {
 
-	private String drvUrl;
-	private int drvTimeout;
+
 	
 	private IDrvInterface iDrvInterface;
 
 	
-	public void setDrvUrl(String drvUrl) {
-		this.drvUrl = drvUrl;
-	}
 
-
-	public void setDrvTimeout(int drvTimeout) {
-		this.drvTimeout = drvTimeout;
-	}
 
 
 	public BookedWeekRecordModel getWeekRecord(int year,int weekNum) {

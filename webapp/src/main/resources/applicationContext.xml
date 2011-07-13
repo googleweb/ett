@@ -293,11 +293,16 @@
     <property name="statisDriverMapper" ref="statisDriverMapper"></property>
     <property name="statisKmMapper" ref="statisKmMapper"></property>
     <property name="statisSchoolMapper" ref="statisSchoolMapper"></property>
+    
+    <property name="drvUrl" value="${wsdl.drv.url}"></property>
+    <property name="drvTimeout" value="${wsdl.timeout}"></property>
+    <property name="vioUrl" value="${wsdl.vio.url}"></property>
+    <property name="vioTimeout" value="${wsdl.timeout}"></property>
+    <property name="vehUrl" value="${wsdl.veh.url}"></property>
+    <property name="vehTimeout" value="${wsdl.timeout}"></property>
 </bean>
 
 <bean id="baseBookedBiz" abstract="true" class="com.ett.drv.biz.impl.BookedBiz"  parent="baseDrvBiz" >
-    <property name="drvUrl" value="${wsdl.drv.url}"></property>
-    <property name="drvTimeout" value="${wsdl.timeout}"></property>
 </bean>
 
 <bean id="baseAdminBiz" abstract="true" class="com.ett.drv.biz.impl.AdminBiz" parent="baseDrvBiz"></bean>
