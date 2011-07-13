@@ -11,7 +11,7 @@ import org.dom4j.DocumentException;
  */
 public class DrvPreasignRequest extends BaseDrvRequest {
 	
-	private String kskm;
+	private String kskm;//
 	
 	private String xxsj="0";
 

@@ -191,8 +191,8 @@ $(document).ready(function(){
 </script>
   <body  class="<%=EasyUiModel.Layout.CLASS %>" >
     <div   <%=EasyUiModel.Layout.Properties.REGION(EasyUiModel.REGION_NORTH) %>  
-       style="height: 100px">
-    <p style="text-align: center"><h3>初学+增驾申请名单列表</h3></p>
+       style="height: 50px">
+   
     <form method="post" id="formSearch">
          <table class="editTable" cellspacing="0" align="right">
          <tr>   

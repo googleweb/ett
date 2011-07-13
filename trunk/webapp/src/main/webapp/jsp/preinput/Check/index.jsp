@@ -185,6 +185,14 @@ function clickRemoveHandler(){
 }
 $(document).ready(function(){ 
  
+ function checkedFormatter(value,rowIndex,rowData){
+ if(value==1){
+ return "已审核";
+ }
+ if(value==0){
+ return "未审核";
+ }
+ }
   
 	$("#test").datagrid({fit:true,
 	
@@ -195,7 +203,7 @@ $(document).ready(function(){
 	{field:"<%=StudentApplyInfoModel.F.Sfzmhm%>",title:"身份证明号码",width:150},
 	{field:"<%=StudentApplyInfoModel.F.CXm%>",title:"姓名",width:150},
 	{field:"<%=StudentApplyInfoModel.F.CJxmc%>",title:"驾校名称",width:150},
-	{field:"<%=StudentApplyInfoModel.F.IChecked%>",title:"审核结果",width:150},
+	{field:"<%=StudentApplyInfoModel.F.IChecked%>",title:"审核结果",formatter:checkedFormatter,width:150},
 	{field:"<%=StudentApplyInfoModel.F.CCheckResult%>",title:"审核结果描述",width:150},
 	{field:"<%=StudentApplyInfoModel.F.CCheckOperator%>",title:"经办人",width:150},
 	{field:"xxx",title:"详细",formatter:operaFormatter,width:150}	
@@ -212,8 +220,8 @@ $(document).ready(function(){
 </script>
   <body class="<%=EasyUiModel.Layout.CLASS %>">
     <div  <%=EasyUiModel.Layout.Properties.REGION(EasyUiModel.REGION_NORTH) %>  
-       style="height: 100px">
-    <p style="text-align: center"><h3>初学+增驾审核名单列表</h3></p>
+       style="height: 50px">
+    
     <form method="post" id="formSearch">
          <table class="editTable" cellspacing="0" align="right">
          <tr>   

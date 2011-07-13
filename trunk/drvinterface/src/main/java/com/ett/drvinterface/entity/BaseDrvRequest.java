@@ -15,12 +15,12 @@ import org.dom4j.io.SAXReader;
  *  基本的请求公有元素
  */
 public abstract class BaseDrvRequest {
-	protected String dabh;
-	protected String lsh;
-	protected String sfzmmc;
-	protected String sfzmhm;
-	protected String xm;
-	protected String glbm;
+	protected String dabh;//档案编号
+	protected String lsh;//流水号
+	protected String sfzmmc;//身份证明名称
+	protected String sfzmhm;//身份证明号码
+	protected String xm;//姓名
+	protected String glbm;//
 	protected String xh;
 	protected String fzjg;
 	
