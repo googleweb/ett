@@ -61,10 +61,20 @@ import com.ett.drv.model.self.TransactResourceModel;
 import com.ett.drv.model.self.TransactVehicleModel;
 import com.ett.drv.model.self.VehFlowModel;
 import com.ett.drv.model.self.VehicleModel;
+import com.ett.drvinterface.IDrvInterface;
+import com.ett.drvinterface.IVehicleInterface;
+import com.ett.drvinterface.IVioInterface;
 import com.smartken.kia.core.model.impl.BaseCurdBiz;
 
 public abstract class BaseDrvBiz extends BaseCurdBiz {
 
+	protected String drvUrl;
+	protected int drvTimeout;
+	protected String vioUrl;
+	protected int vioTimeout;
+	protected String vehUrl;
+	protected int vehTimeout;
+	
 	protected IDictMapper<DictModel> dictMapper;
 	protected IDictTypeMapper<DictTypeModel> dictTypeMapper;
 
@@ -101,6 +111,8 @@ public abstract class BaseDrvBiz extends BaseCurdBiz {
     protected IStatisDriverMapper statisDriverMapper;
     protected IStatisKmMapper statisKmMapper;
     protected IStatisSchoolMapper statisSchoolMapper;
+    
+
 
 
 	public IBusAllInfoMapper<BusAllInfoModel> getBusAllInfoMapper() {
@@ -328,6 +340,46 @@ public abstract class BaseDrvBiz extends BaseCurdBiz {
 	public void setStatisSchoolMapper(IStatisSchoolMapper statisSchoolMapper) {
 		this.statisSchoolMapper = statisSchoolMapper;
 	}
+
+
+
+	public void setDrvUrl(String drvUrl) {
+		this.drvUrl = drvUrl;
+	}
+
+
+
+	public void setDrvTimeout(int drvTimeout) {
+		this.drvTimeout = drvTimeout;
+	}
+
+
+
+	public void setVioUrl(String vioUrl) {
+		this.vioUrl = vioUrl;
+	}
+
+
+
+	public void setVioTimeout(int vioTimeout) {
+		this.vioTimeout = vioTimeout;
+	}
+
+
+
+	public void setVehUrl(String vehUrl) {
+		this.vehUrl = vehUrl;
+	}
+
+
+
+	public void setVehTimeout(int vehTimeout) {
+		this.vehTimeout = vehTimeout;
+	}
+
+
+
+
 	
 	
 	

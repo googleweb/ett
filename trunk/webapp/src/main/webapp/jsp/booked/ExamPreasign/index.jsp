@@ -2,9 +2,9 @@
 <%@page import="com.smartken.kia.core.model.impl.EasyUiModel"%>
 <%@page import="com.smartken.kia.core.model.impl.JQueryModel"%>
 <%@page import="com.ett.drv.model.admin.UserModel"%>
-<%@page import="com.ett.drv.web.filter.AuthFilter"%>
 <%@page import="com.ett.drv.model.admin.RoleModel"%>
 <%@page import="com.ett.drv.model.admin.DepartmentModel"%>
+<%@page import="com.ett.drv.web.rule.AuthUserRule"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%
 String path = request.getContextPath();
@@ -33,7 +33,7 @@ String bookedExamPreasgin=basePath+"booked/ExamPreasign";
     <jsp:include page="/css/index.jsp"></jsp:include>
     <jsp:include page="/js/index.jsp"></jsp:include>
     <%
-      UserModel user=(UserModel)session.getAttribute(AuthFilter.AUTH_USER);
+      UserModel user=(UserModel)session.getAttribute(AuthUserRule.AUTH_USER);
       DepartmentModel depModel=user.getDepartmentModel();
     %>
   
