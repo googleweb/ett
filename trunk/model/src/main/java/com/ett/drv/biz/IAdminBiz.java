@@ -67,6 +67,8 @@ public interface IAdminBiz extends IBaseCrudBiz {
 	public List<DictModel> listhospital() throws Exception;
 	
 	public List<DictModel> listcheck()throws Exception;
+	
+	public List<DepartmentModel> listdepartment()throws Exception;
 
 	public List<UserModel> listDepartmentName(Integer id) throws Exception;
 }

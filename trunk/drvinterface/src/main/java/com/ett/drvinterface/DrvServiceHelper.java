@@ -2,6 +2,7 @@ package com.ett.drvinterface;
 
 import com.ett.drvinterface.entity.BaseDrvResponse;
 import com.ett.drvinterface.entity.DrvPreasignRequest;
+import com.ett.drvinterface.entity.DrvtempMidRequest;
 
 /**
  * @author austin
@@ -12,6 +13,11 @@ public class DrvServiceHelper extends BaseServiceHelper implements
 
 	public BaseDrvResponse preasign(DrvPreasignRequest request) {
 		
+		return this.write(request);
+	}
+
+	public BaseDrvResponse preinput(DrvtempMidRequest request) {
+		// TODO Auto-generated method stub
 		return this.write(request);
 	}
 

@@ -2,16 +2,20 @@ package com.ett.drv.web.action.preinput;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
 import java.util.List;
 
 
+import org.apache.axis.AxisFault;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 
 import com.ett.drv.web.action.BaseDrvAction;
+import com.ett.drv.web.rule.AuthUserRule;
 import com.opensymphony.xwork2.ModelDriven;
 import com.smartken.kia.core.model.IFormatterModel;
 import com.smartken.kia.core.model.impl.ResultModel;
@@ -20,6 +24,7 @@ import com.smartken.kia.core.util.EasyUiUtil;
 import com.smartken.kia.core.util.FileUtil;
 import com.smartken.kia.core.util.ObjectUtil;
 import com.smartken.kia.core.util.StringUtil;
+import com.ett.drv.model.admin.DepartmentModel;
 import com.ett.drv.model.admin.DictModel;
 import com.ett.drv.model.admin.UserModel;
 import com.ett.drv.model.preinput.*;
@@ -74,6 +79,14 @@ public class ListAction extends BaseDrvAction implements ModelDriven<StudentAppl
 	public void datagrid_list(){
 		//查处所以User，输出json格式的datagrid    User/datagrid/users.action
 		String qIDCard=this.getParameter("qIDCard");
+		DepartmentModel department=null;
+		Object o=this.getSessionAttribute(AuthUserRule.AUTH_USER);
+		if(o!=null)
+		{
+		UserModel user=(UserModel)o;
+		department=user.getDepartmentModel();
+		}
+		
 		if(StringUtil.isBlank(qIDCard)){
 			//qIDCard="0";//不显示任何数据
 			qIDCard=null;//显示所有数据
@@ -82,6 +95,9 @@ public class ListAction extends BaseDrvAction implements ModelDriven<StudentAppl
 		}
 		StudentApplyInfoModel qModel=new StudentApplyInfoModel();
 		qModel.setSfzmhm(qIDCard);
+		if(department!=null){
+			if(!department.getCDepnickname().equals("车管所"))
+		qModel.setCJxmc(department.getCDepnickname());}
 		
 		this.preBiz.loadCrudMapper(StudentApplyInfoModel.class);
 		PageArrayList list=this.preBiz.getModel(qModel,this.getPager());
@@ -129,6 +145,7 @@ public class ListAction extends BaseDrvAction implements ModelDriven<StudentAppl
 	public void do_check(){
 		int re=0;
 		if(this.isPost()){
+//			this.writePreinput(studentApplyInfoModel);
 			this.preBiz.loadCrudMapper(StudentApplyInfoModel.class);
 			studentApplyInfoModel.setIChecked(1);
 			re+=this.preBiz.modifyOrAddModel(studentApplyInfoModel).getRe();
@@ -241,6 +258,17 @@ public class ListAction extends BaseDrvAction implements ModelDriven<StudentAppl
 			jarr=ObjectUtil.toJsonArray(l);
 		}catch(Exception e){e.printStackTrace();}
 		this.writePlainText(jarr.toString());
+	}
+	
+	public void combobox_school(){
+		List l=new ArrayList<DepartmentModel>();
+		JSONArray jarr=new JSONArray();
+		try{
+			l=this.adminBiz.listdepartment();
+			jarr=ObjectUtil.toJsonArray(l);
+		}catch(Exception e){e.printStackTrace();}
+		this.writePlainText(jarr.toString());
+		
 	}
 	
 	public void do_delete(){
@@ -364,5 +392,20 @@ public class ListAction extends BaseDrvAction implements ModelDriven<StudentAppl
 	public String to_upload(){
 		return "jsp";
 	}
+	
+//	public String writePreinput(StudentApplyInfoModel s)throws Exception{
+//		this.ensureStub();
+//	}
+////	public static String url="http://localhost:9999/trffweb/services/TmriOutAcess";
+////	private TmriOutAccessSoapBindingStub stub=null;
+////	private void ensureStub()throws MalformedURLException,AxisFault{
+////		if(stub==null){
+////			String webserviceURL=url;
+////			URL url=new URL(webserviceURL);
+////			Service service=new Service();
+////			stub=new TmriOutAcessSoapBindingStub(url,service);
+////		}
+//		
+//	}
 
 }

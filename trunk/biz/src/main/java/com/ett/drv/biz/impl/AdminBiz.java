@@ -290,6 +290,13 @@ public class AdminBiz extends BaseDrvBiz implements IAdminBiz {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+	public List<DepartmentModel> listdepartment() throws Exception {
+		// TODO Auto-generated method stub
+		List<DepartmentModel> listdepartment=this.departmentMapper.selectAll();
+		return listdepartment;
+	}
 	
 }
 
