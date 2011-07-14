@@ -365,7 +365,7 @@ public abstract class BaseDrvBiz extends BaseCurdBiz {
 
 
     //根据接口名从本地数据表TABLE_SELF_DEVICE_SN中获取基本请求对象
-    public BaseDrvRequest getLocalRequest(String jkName){
+    public void getLocalRequest(String jkName,BaseDrvRequest request){
     	BaseDrvRequest baseDrvRequest=new BaseDrvRequest() {			
 			@Override
 			public String toXml() {
@@ -381,20 +381,20 @@ public abstract class BaseDrvBiz extends BaseCurdBiz {
 		try {
 			listSnModels = this.deviceSnMapper.select(q);
 			if(listSnModels.size()!=1){
-				return baseDrvRequest;
+				//return baseDrvRequest;
 			}else{
 				DeviceSnModel deviceSnModel=listSnModels.get(0);
-				baseDrvRequest.setJkid(deviceSnModel.getCJkid());
-				baseDrvRequest.setJkxlh(deviceSnModel.getCJkxlh());
-				baseDrvRequest.setSn(deviceSnModel.getCSn());
-				baseDrvRequest.setXtlb(deviceSnModel.getCXtlb());
+				request.setJkid(deviceSnModel.getCJkid());
+				request.setJkxlh(deviceSnModel.getCJkxlh());
+				request.setSn(deviceSnModel.getCSn());
+				request.setXtlb(deviceSnModel.getCXtlb());
 			}
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally{
-			return baseDrvRequest;
+			//return baseDrvRequest;
 		}
 
     	

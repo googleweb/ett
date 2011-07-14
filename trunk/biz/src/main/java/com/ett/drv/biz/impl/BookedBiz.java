@@ -253,13 +253,13 @@ public class BookedBiz extends BaseDrvBiz implements IBookedBiz {
 		    }else {
 		    	return;
 		    }
-			BaseDrvRequest request=this.getLocalRequest(DrvPreasignRequest.class.getName());
+		    DrvPreasignRequest drvPreasignRequest=new DrvPreasignRequest();
+			this.getLocalRequest(DrvPreasignRequest.class.getName(),drvPreasignRequest);
            
-			if(request==null){
+			if(drvPreasignRequest==null){
 				throw new Exception("本机没有正确配置接口");
 			}
 			
-			DrvPreasignRequest drvPreasignRequest=(DrvPreasignRequest)request;
 
 			drvPreasignRequest.setKskm(orderInfoModel.getIKm().toString());
 			drvPreasignRequest.setJbr(drivingLicenseModel.getXm());
