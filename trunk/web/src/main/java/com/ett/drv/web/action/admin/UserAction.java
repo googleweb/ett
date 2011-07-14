@@ -7,6 +7,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.ett.common.security.MD5Encrypt;
+import com.ett.drv.model.admin.DepartmentModel;
 import com.ett.drv.model.admin.DictModel;
 import com.ett.drv.model.admin.RoleModel;
 import com.ett.drv.model.admin.UserModel;
@@ -35,7 +36,7 @@ public class UserAction extends BaseDrvAction implements ModelDriven<UserModel> 
 		String pwd=this.getParameter(UserModel.F.CPwd);
 		MD5Encrypt mD5=new MD5Encrypt();
 		try {
-			_userModel=adminBiz.login(loginName, mD5.encrypt(pwd));
+			_userModel=adminBiz.login(loginName, mD5.encrypt(pwd)); 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -185,21 +186,17 @@ public class UserAction extends BaseDrvAction implements ModelDriven<UserModel> 
     }
     @SuppressWarnings("unchecked")
 	public void combobox_deptid(){
-    	List lListShool = null;
-		try {
-			lListShool = adminBiz.listSchool(null);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+    	List lListShool =new ArrayList();
+    	this.adminBiz.loadCrudMapper(DepartmentModel.class);
+    	lListShool=this.adminBiz.getModel();
 		JSONArray lJsonKscc= ObjectUtil.toJsonArray(lListShool);
 		this.writePlainText(lJsonKscc.toString());
     }
-    public void combobox_roleid(){
+    @SuppressWarnings("unchecked")
+	public void combobox_roleid(){
     	List lListRole = new ArrayList();
     	this.adminBiz.loadCrudMapper(RoleModel.class);
     	lListRole=this.adminBiz.getModel();
-    	RoleModel roleModel=new RoleModel();
-    	lListRole.add(roleModel);
 		JSONArray lJsonKscc= ObjectUtil.toJsonArray(lListRole);
 		this.writePlainText(lJsonKscc.toString());
     }

@@ -27,7 +27,7 @@
 		</jsp:include>
 		<jsp:include page="/css/index.jsp"></jsp:include>
 		<jsp:include page="/js/index.jsp"></jsp:include>
-		<script type="text/javascript" src="<%=basePath+"js/print/excel.tranVeh.js" %>"></script>
+		<script type="text/javascript" src="<%=basePath+"js/print/excel.physical.js" %>"></script>
 		<style type="text/css">
 </style>
 		<script type="text/javascript">
@@ -74,7 +74,6 @@ function cancel(){
 	if(CIdcard.length==""){
 		$.messager.alert('操作提示','请输入要退办的详细信息');		
 	}else{
-		//alert("11");
 		$.ajax({
             url:"<%=basePath%>/physical/HospitalMessage/do/cancel.action?CIdcard="+CIdcard  ,
            // {CIdcard:CIdcard}
@@ -86,7 +85,6 @@ function cancel(){
 }
 function printMessage(){
 	
-	//alert('111');
 	var excelTemplatePath="<%=basePath%>js/print/excel.physical.xls";
 	var Id=$("#Id").val()||"";
 	
@@ -94,17 +92,17 @@ function printMessage(){
 		$.messager.alert('操作提示','请输入要打印的详细信息');
 	}	
 	else{
-		var str={"Xm":"陈必武"};
-		printExcel(excelTemplatePath,str);
-		<%--$.ajax({
+		$.ajax({
 			url:"<%=basePath%>/physical/HospitalMessage/do/print.action?Id="+Id,
 			success:function(str){
-				printExcel(excelTemplatePath,str);
+				var json=str.toJson();
+				printExcel(excelTemplatePath,json);
 			}
-		});--%>
-	}
-	
-	
+		});
+	}	
+}
+function uploadPhotos(){
+   
 }
 </script>
 	</head>
@@ -225,6 +223,9 @@ function printMessage(){
 								<td rowspan="4" style="border-bottom: none">
 									<img id="imgPerson" src=""
 										style="border-width: 1px; border-style: Solid; height: 160px; width: 133px;" />
+									<br>
+									<br>
+									<a class="easyui-linkbutton"   <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_RELOAD) %> onclick="uploadPhotos()">上传</a>
 								</td>
 							</tr>
 							<tr>
