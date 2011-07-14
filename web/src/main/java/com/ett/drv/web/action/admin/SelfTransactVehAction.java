@@ -19,7 +19,7 @@ import com.ett.drv.model.self.TransactDriverModel;
 import com.ett.drv.model.self.TransactResourceModel;
 import com.ett.drv.model.self.TransactVehicleModel;
 import com.ett.drv.web.action.BaseDrvAction;
-import com.smartken.kia.core.enums.ResultEnum;
+import com.smartken.kia.core.enums.EResult;
 import com.smartken.kia.core.model.impl.ResultModel;
 import com.smartken.kia.core.util.EasyUiUtil;
 import com.smartken.kia.core.util.ObjectUtil;
@@ -37,7 +37,7 @@ public class SelfTransactVehAction extends BaseDrvAction implements ModelDriven<
 	}
 	
 	public String to_index(){
-		return ResultEnum.jsp.name();
+		return EResult.jsp.name();
 	}
 	
 	public void datagrid_all(){
@@ -73,7 +73,7 @@ public class SelfTransactVehAction extends BaseDrvAction implements ModelDriven<
     		drvLinModel=(DrivingLicenseModel) listDrvLince.get(0);
     	}
     	this.setRequestAttribute("drivingLicense", drvLinModel.toJson().toString());
-		return ResultEnum.jsp.name();
+		return EResult.jsp.name();
 	}
 	
 

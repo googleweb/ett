@@ -9,7 +9,7 @@ import com.ett.drv.model.admin.DictModel;
 import com.ett.drv.model.booked.CarOwnerChangeModel;
 import com.ett.drv.model.booked.PersonChangeModel;
 import com.ett.drv.web.action.BaseDrvAction;
-import com.smartken.kia.core.enums.ResultEnum;
+import com.smartken.kia.core.enums.EResult;
 import com.smartken.kia.core.model.impl.ResultModel;
 import com.smartken.kia.core.util.ObjectUtil;
 
@@ -41,11 +41,11 @@ public class InfoChangeAction extends BaseDrvAction {
 	
 	
 	public String to_carOwnerChange() throws Exception{
-		return ResultEnum.jsp.name();
+		return EResult.jsp.name();
 	}
 	
 	public String to_personChange() throws Exception{
-		return ResultEnum.jsp.name();
+		return EResult.jsp.name();
 	}
 	
 	public void do_savePersonChange(){

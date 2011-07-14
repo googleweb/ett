@@ -20,8 +20,8 @@ import com.ett.drv.model.admin.UserModel;
 import com.smartken.kia.core.util.EasyUiUtil;
 import com.smartken.kia.core.util.ObjectUtil;
 import com.smartken.kia.core.util.StringUtil;
-import com.smartken.kia.core.enums.DataFormatEnum;
-import com.smartken.kia.core.enums.ResultEnum;
+import com.smartken.kia.core.enums.EDataFormat;
+import com.smartken.kia.core.enums.EResult;
 import com.smartken.kia.core.pager.PageArrayList;
 import com.smartken.kia.core.pager.PageBounds;
 import com.ett.drv.web.action.BaseDrvAction;
@@ -138,11 +138,11 @@ public class MenuAction extends BaseDrvAction
 		//System.out.println("list:"+lArrJson.toString());
 		JSONArray jarrMenu=ObjectUtil.toJsonArray(listMenu);
 		 JSONObject lJsonDg=EasyUiUtil.toJsonDataGrid(jarrMenu,adminBiz.count());
-		if(ObjectUtil.isEquals(this.getDataFormat(), DataFormatEnum.json.toString()))
+		if(ObjectUtil.isEquals(this.getDataFormat(), EDataFormat.json.toString()))
 		{
 		  this.writeHTML(lJsonDg.toString());
 
-		}else if(ObjectUtil.isEquals(this.getDataFormat(), DataFormatEnum.json.toString()))
+		}else if(ObjectUtil.isEquals(this.getDataFormat(), EDataFormat.json.toString()))
 		{
 		
 		}else {
@@ -214,19 +214,19 @@ public class MenuAction extends BaseDrvAction
 	
 	public String to_edit() throws Exception {
 		// TODO Auto-generated method stub
-		return ResultEnum.jsp.name();
+		return EResult.jsp.name();
 	}
 	
 	public String to_add() throws Exception {
 		// TODO Auto-generated method stub
-		return ResultEnum.jsp.name();
+		return EResult.jsp.name();
 	}
 
 
 	public String fn_add() throws Exception {
 		// TODO Auto-generated method stub
 		int re=adminBiz.addModel(menu).getRe();
-		return ResultEnum.jsp.name();
+		return EResult.jsp.name();
 	}
 
 }

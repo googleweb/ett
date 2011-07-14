@@ -13,7 +13,7 @@ import org.json.JSONObject;
 import com.ett.drv.model.self.Km1CheckRecordModel;
 import com.ett.drv.model.self.Km1PreasignRecordModel;
 import com.ett.drv.web.action.BaseDrvAction;
-import com.smartken.kia.core.enums.ResultEnum;
+import com.smartken.kia.core.enums.EResult;
 import com.smartken.kia.core.util.DateTimeUtil;
 import com.smartken.kia.core.util.EasyUiUtil;
 import com.smartken.kia.core.util.ObjectUtil;
@@ -28,12 +28,12 @@ public class SelfTransactKm1Action extends BaseDrvAction {
 	}
 
 	public String to_checkRecord(){
-		return ResultEnum.jsp.name();
+		return EResult.jsp.name();
 	}
 	
 	
 	public String to_preasignRecord(){
-		return ResultEnum.jsp.name();
+		return EResult.jsp.name();
 	}
 	
 	

@@ -12,7 +12,7 @@ import com.ett.drv.model.self.FeeLogModel;
 import com.ett.drv.model.self.FeeReconModel;
 import com.ett.drv.model.self.Km1PreasignRecordModel;
 import com.ett.drv.web.action.BaseDrvAction;
-import com.smartken.kia.core.enums.ResultEnum;
+import com.smartken.kia.core.enums.EResult;
 import com.smartken.kia.core.util.DateTimeUtil;
 import com.smartken.kia.core.util.EasyUiUtil;
 import com.smartken.kia.core.util.ObjectUtil;
@@ -30,7 +30,7 @@ public class SelfTransactFeeAction extends BaseDrvAction implements ModelDriven<
 	
 	
 	public String to_feeLog(){
-		return ResultEnum.jsp.name();
+		return EResult.jsp.name();
 	}
 	
 	public String to_feeRecon(){
@@ -54,7 +54,7 @@ public class SelfTransactFeeAction extends BaseDrvAction implements ModelDriven<
 		this.setRequestAttribute("datagridFeeLog",jsonDg.toString());
 		this.setRequestAttribute("feeRecon",feeReconModel);
 		this.setRequestAttribute("cTime", DateTimeUtil.format(createDate, "yyyy-MM-dd"));
-		return ResultEnum.jsp.name();
+		return EResult.jsp.name();
 	}
 	
 	public String do_feeRecon(){

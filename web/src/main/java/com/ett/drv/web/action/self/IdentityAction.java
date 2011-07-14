@@ -17,7 +17,7 @@ import com.ett.drv.model.self.TransactResourceModel;
 import com.ett.drv.model.self.TransactVehicleModel;
 import com.ett.drv.model.self.VehFlowModel;
 import com.ett.drv.model.self.VehicleModel;
-import com.smartken.kia.core.enums.ResultEnum;
+import com.smartken.kia.core.enums.EResult;
 import com.smartken.kia.core.util.FileUtil;
 import com.smartken.kia.core.util.ObjectUtil;
 

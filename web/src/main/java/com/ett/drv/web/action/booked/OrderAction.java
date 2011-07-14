@@ -1,7 +1,7 @@
 package com.ett.drv.web.action.booked;
 
 import com.opensymphony.xwork2.ModelDriven;
-import com.smartken.kia.core.enums.ResultEnum;
+import com.smartken.kia.core.enums.EResult;
 import com.ett.drv.model.booked.CarOwnerChangeModel;
 import com.ett.drv.model.booked.PersonChangeModel;
 import com.ett.drv.web.action.BaseDrvAction;

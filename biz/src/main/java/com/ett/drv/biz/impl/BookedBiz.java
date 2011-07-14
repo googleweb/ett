@@ -11,7 +11,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import com.smartken.kia.core.enums.ResultEnum;
+
 import com.smartken.kia.core.model.impl.BaseCurdBiz;
 import com.smartken.kia.core.model.impl.ResultModel;
 import com.smartken.kia.core.util.DateTimeUtil;
@@ -26,8 +26,12 @@ import com.ett.drv.model.booked.BookedDayLimitModel;
 import com.ett.drv.model.booked.BookedLimitModel;
 import com.ett.drv.model.booked.BookedOrderInfoModel;
 import com.ett.drv.model.booked.BookedWeekRecordModel;
+import com.ett.drv.model.self.DeviceSnModel;
 import com.ett.drv.model.self.DrivingLicenseModel;
+import com.ett.drvinterface.BaseServiceHelper;
+import com.ett.drvinterface.DrvServiceHelper;
 import com.ett.drvinterface.IDrvInterface;
+import com.ett.drvinterface.entity.BaseDrvRequest;
 import com.ett.drvinterface.entity.BaseDrvResponse;
 import com.ett.drvinterface.entity.DrvPreasignRequest;
 import com.ett.model.DrvUser;
@@ -36,12 +40,6 @@ import com.ett.self.model.SelfDeviceSnObject;
 import com.ett.self.preasign.model.Km1PreasignRecord;
 
 public class BookedBiz extends BaseDrvBiz implements IBookedBiz {
-
-
-	
-	private IDrvInterface iDrvInterface;
-
-	
 
 
 
@@ -255,19 +253,22 @@ public class BookedBiz extends BaseDrvBiz implements IBookedBiz {
 		    }else {
 		    	return;
 		    }
-			DrvPreasignRequest request=new DrvPreasignRequest();
-			//SelfDeviceSnObject snObject=iSelfDeviceSnDao.getSelfDeviceSn(device.getIp1(), SelfDeviceSnObject.Preasign);
-			//snObject.CopyToBaseDrvRequest(request);
-			//request.setLsh(tmpUser.getLsh());
-			request.setKskm(orderInfoModel.getIKm().toString());
-			request.setJbr(drivingLicenseModel.getXm());
-			request.setYkrq(orderInfoModel.getDateKsrq());
-			request.setKscc(orderInfoModel.getCKsccCode());
-			request.setKsdd(orderInfoModel.getCKsdd());
+			BaseDrvRequest request=this.getLocalRequest(DrvPreasignRequest.class.getName());
+           
+			if(request==null){
+				throw new Exception("本机没有正确配置接口");
+			}
+			
+			DrvPreasignRequest drvPreasignRequest=(DrvPreasignRequest)request;
+
+			drvPreasignRequest.setKskm(orderInfoModel.getIKm().toString());
+			drvPreasignRequest.setJbr(drivingLicenseModel.getXm());
+			drvPreasignRequest.setYkrq(orderInfoModel.getDateKsrq());
+			drvPreasignRequest.setKscc(orderInfoModel.getCKsccCode());
+			drvPreasignRequest.setKsdd(orderInfoModel.getCKsdd());
 			//request.setDlr(orderInfoModel.get.getJxdm());
-			this.iDrvInterface.setTimeout(drvTimeout);
-			this.iDrvInterface.setUrl(drvUrl);
-			BaseDrvResponse response= this.iDrvInterface.preasign(request);
+			BaseDrvResponse response= this.drvInterface.preasign(drvPreasignRequest);
+		
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

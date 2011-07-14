@@ -28,7 +28,7 @@ import com.ett.drv.model.admin.BusLogModel;
 import com.ett.drv.model.admin.RoleModel;
 import com.ett.drv.model.admin.UserModel;
 import com.ett.drv.web.action.BaseDrvAction;
-import com.smartken.kia.core.enums.ResultEnum;
+import com.smartken.kia.core.enums.EResult;
 import com.smartken.kia.core.pager.PageArrayList;
 import com.smartken.kia.core.util.EasyUiUtil;
 import com.smartken.kia.core.util.FileUtil;
@@ -67,7 +67,7 @@ public class BuslogAction extends BaseDrvAction {
 	}
 
 	public String to_count(){
-		return ResultEnum.jsp.name();
+		return EResult.jsp.name();
 	}
 	
      

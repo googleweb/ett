@@ -19,7 +19,7 @@ import com.smartken.kia.core.util.EasyUiUtil;
 import com.smartken.kia.core.util.ObjectUtil;
 import com.smartken.kia.core.util.StringUtil;
 
-import com.smartken.kia.core.enums.ResultEnum;
+import com.smartken.kia.core.enums.EResult;
 import com.ett.drv.web.action.BaseDrvAction;
 import com.ett.drv.biz.IBookedBiz;
 import com.ett.drv.model.admin.DepartmentModel;
@@ -136,11 +136,11 @@ public class WeekPbAction extends BaseDrvAction implements ModelDriven<BookedWee
 
 	public String to_assign() throws Exception{
 
-		return ResultEnum.jsp.toString();
+		return EResult.jsp.toString();
 	}
 	
 	public String reload_assign() throws Exception{
-		return ResultEnum.jsp.toString();
+		return EResult.jsp.toString();
 	}
 
 	
@@ -180,7 +180,7 @@ public class WeekPbAction extends BaseDrvAction implements ModelDriven<BookedWee
 	{
 		tempLimit=this.bookedWeekRecordModel.getLimits().get(this.limitKey);
 		this.bookedWeekRecordModel.calLimitAssgined();
-		return ResultEnum.jsp.toString();
+		return EResult.jsp.toString();
 	}
 	
 	
@@ -193,7 +193,7 @@ public class WeekPbAction extends BaseDrvAction implements ModelDriven<BookedWee
 		tempLimit.setIWeekNum(bookedWeekRecordModel.getIWeekNum());
 		tempLimit.setDateKsrq(ObjectUtil.formatString(req.getParameter("ksrq")));
 		this.bookedWeekRecordModel.calLimitAssgined();
-		return ResultEnum.jsp.toString();
+		return EResult.jsp.toString();
 	}
 
     public void do_editLimit() throws Exception
@@ -261,7 +261,7 @@ public class WeekPbAction extends BaseDrvAction implements ModelDriven<BookedWee
     }
     
     public String reload_assgin(){
-    	return ResultEnum.jsp.toString();
+    	return EResult.jsp.toString();
     }
 
 	public void prepare() throws Exception {
@@ -270,7 +270,7 @@ public class WeekPbAction extends BaseDrvAction implements ModelDriven<BookedWee
 	}
 	
 	public String to_verify(){
-		return ResultEnum.jsp.toString();
+		return EResult.jsp.toString();
 	}
 	
 	public void do_verifyWeekPb() throws Exception{
@@ -302,7 +302,7 @@ public class WeekPbAction extends BaseDrvAction implements ModelDriven<BookedWee
 	}
 	
 	public String to_listLimits(){
-		return ResultEnum.jsp.name();
+		return EResult.jsp.name();
 	}
 	
 	public void datagrid_limits(){

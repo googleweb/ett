@@ -32,8 +32,8 @@ import com.ett.drv.biz.ISelfBiz;
 import com.ett.drv.biz.IStatisBiz;
 import com.ett.drv.model.admin.UserModel;
 import com.ett.drv.web.rule.AuthUserRule;
-import com.smartken.kia.core.enums.DataFormatEnum;
-import com.smartken.kia.core.enums.ResultEnum;
+import com.smartken.kia.core.enums.EDataFormat;
+import com.smartken.kia.core.enums.EResult;
 import com.smartken.kia.core.model.IBaseAction;
 import com.smartken.kia.core.model.impl.BaseAction;
 import com.smartken.kia.core.pager.PageBounds;
@@ -69,7 +69,7 @@ implements Preparable
 	public String to_index() throws Exception
 	{
 	    
-		return ResultEnum.jsp.name();
+		return EResult.jsp.name();
 	    
 	}
 	
@@ -155,7 +155,7 @@ implements Preparable
 
 	public void setDataFormat(String format) {
 		// TODO Auto-generated method stub
-		this.dataFormat = ObjectUtil.formatString(dataFormat,DataFormatEnum.json.toString());
+		this.dataFormat = ObjectUtil.formatString(dataFormat,EDataFormat.json.toString());
 	}
 	
 

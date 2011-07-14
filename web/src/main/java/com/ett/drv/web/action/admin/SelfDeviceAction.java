@@ -12,7 +12,7 @@ import com.ett.drv.model.self.DeviceSnModel;
 import com.ett.drv.model.self.HardwareModel;
 import com.ett.drv.web.action.BaseDrvAction;
 import com.opensymphony.xwork2.ModelDriven;
-import com.smartken.kia.core.enums.ResultEnum;
+import com.smartken.kia.core.enums.EResult;
 import com.smartken.kia.core.model.impl.ResultModel;
 import com.smartken.kia.core.pager.PageArrayList;
 import com.smartken.kia.core.util.EasyUiUtil;
@@ -39,15 +39,15 @@ public class SelfDeviceAction extends BaseDrvAction implements ModelDriven<Hardw
 
 	
 	public String to_device(){
-		return ResultEnum.jsp.name();
+		return EResult.jsp.name();
 	}
 	
 	public String to_deviceSn(){
-		return ResultEnum.jsp.name();
+		return EResult.jsp.name();
 	}
 	
 	public String to_hardware(){
-		return ResultEnum.jsp.name();
+		return EResult.jsp.name();
 	}
 	public HardwareModel getModel() {
 		// TODO Auto-generated method stub
@@ -119,7 +119,7 @@ public class SelfDeviceAction extends BaseDrvAction implements ModelDriven<Hardw
 			}
 		}
 		//this.setRequestAttribute("hardware", hardwareModel);
-		return ResultEnum.jsp.name();
+		return EResult.jsp.name();
 	}
 	
 	public String to_editDeviceSn(){
@@ -132,7 +132,7 @@ public class SelfDeviceAction extends BaseDrvAction implements ModelDriven<Hardw
 			}
 		}
 		//this.setRequestAttribute("hardware", hardwareModel);
-		return ResultEnum.jsp.name();
+		return EResult.jsp.name();
 	}
 	
 	public void do_editHardware(){
