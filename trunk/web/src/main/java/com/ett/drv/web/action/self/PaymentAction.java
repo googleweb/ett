@@ -14,7 +14,7 @@ import com.ett.drv.model.self.TransactDriverModel;
 import com.ett.drv.model.self.TransactVehicleModel;
 import com.ett.drv.model.self.VehFlowModel;
 import com.ett.drv.model.self.VehicleModel;
-import com.smartken.kia.core.enums.ResultEnum;
+import com.smartken.kia.core.enums.EResult;
 
 public class PaymentAction extends BaseSelfAction implements ModelDriven<BaseTransactModel>{
 
@@ -43,14 +43,14 @@ public class PaymentAction extends BaseSelfAction implements ModelDriven<BaseTra
     public String to_payment_cash(){
     	_trModel.setPayment(BaseTransactModel.Payments.CASH);
     	this.setHttpSession(ESessionKey.transact.name(), _trModel);
-    	return ResultEnum.jsp.name();
+    	return EResult.jsp.name();
     }
 	
     //记录支付方式为银行pos支付，直接跳转到银行pos支付页面
     public String to_payment_pos(){
     	_trModel.setPayment(BaseTransactModel.Payments.POS);
     	this.setHttpSession(ESessionKey.transact.name(), _trModel);
-    	return ResultEnum.jsp.name();
+    	return EResult.jsp.name();
     }
     
     //现金支付后，跳转到选择获取方式页面

@@ -20,7 +20,7 @@ import com.ett.drv.model.booked.BookedOrderInfoModel;
 import com.ett.drv.model.booked.BookedWeekRecordModel;
 import com.ett.drv.web.action.BaseDrvAction;
 import com.opensymphony.xwork2.ModelDriven;
-import com.smartken.kia.core.enums.ResultEnum;
+import com.smartken.kia.core.enums.EResult;
 import com.smartken.kia.core.model.impl.ResultModel;
 import com.smartken.kia.core.util.DateTimeUtil;
 import com.smartken.kia.core.util.EasyUiUtil;
@@ -114,7 +114,7 @@ public class ExamPreasignAction extends BaseDrvAction implements ModelDriven<Boo
 		}else{
 			return to_index();
 		}
-		return ResultEnum.jsp.name();
+		return EResult.jsp.name();
 	}
 	
 	private List<BookedOrderInfoModel> getOrderInfo(int id){
@@ -209,7 +209,7 @@ public class ExamPreasignAction extends BaseDrvAction implements ModelDriven<Boo
 	}
 	
 	public String to_verify(){
-		return ResultEnum.jsp.name();
+		return EResult.jsp.name();
 	}
 	
 	public void datagrid_orderInfo(){
@@ -242,7 +242,7 @@ public class ExamPreasignAction extends BaseDrvAction implements ModelDriven<Boo
 	
 	
 	public String to_extraAssign(){
-		return ResultEnum.jsp.name();
+		return EResult.jsp.name();
 	}
 	
 

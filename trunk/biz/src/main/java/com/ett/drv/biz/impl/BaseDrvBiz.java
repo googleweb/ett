@@ -1,5 +1,9 @@
 package com.ett.drv.biz.impl;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import com.ett.drv.mapper.admin.IBusAllInfoMapper;
 import com.ett.drv.mapper.admin.IBusLogMapper;
 import com.ett.drv.mapper.admin.IDepartmentMapper;
@@ -64,16 +68,13 @@ import com.ett.drv.model.self.VehicleModel;
 import com.ett.drvinterface.IDrvInterface;
 import com.ett.drvinterface.IVehicleInterface;
 import com.ett.drvinterface.IVioInterface;
+import com.ett.drvinterface.entity.BaseDrvRequest;
+import com.ett.drvinterface.entity.DrvPreasignRequest;
 import com.smartken.kia.core.model.impl.BaseCurdBiz;
 
 public abstract class BaseDrvBiz extends BaseCurdBiz {
 
-	protected String drvUrl;
-	protected int drvTimeout;
-	protected String vioUrl;
-	protected int vioTimeout;
-	protected String vehUrl;
-	protected int vehTimeout;
+    
 	
 	protected IDictMapper<DictModel> dictMapper;
 	protected IDictTypeMapper<DictTypeModel> dictTypeMapper;
@@ -113,6 +114,9 @@ public abstract class BaseDrvBiz extends BaseCurdBiz {
     protected IStatisSchoolMapper statisSchoolMapper;
     
 
+    protected IDrvInterface drvInterface;
+    protected IVehicleInterface vehicleInterface;
+    protected IVioInterface vioInterface;
 
 
 	public IBusAllInfoMapper<BusAllInfoModel> getBusAllInfoMapper() {
@@ -343,42 +347,60 @@ public abstract class BaseDrvBiz extends BaseCurdBiz {
 
 
 
-	public void setDrvUrl(String drvUrl) {
-		this.drvUrl = drvUrl;
+	public void setDrvInterface(IDrvInterface drvInterface) {
+		this.drvInterface = drvInterface;
 	}
 
 
 
-	public void setDrvTimeout(int drvTimeout) {
-		this.drvTimeout = drvTimeout;
+	public void setVehicleInterface(IVehicleInterface vehicleInterface) {
+		this.vehicleInterface = vehicleInterface;
 	}
 
 
 
-	public void setVioUrl(String vioUrl) {
-		this.vioUrl = vioUrl;
+	public void setVioInterface(IVioInterface vioInterface) {
+		this.vioInterface = vioInterface;
 	}
 
 
+    //根据接口名从本地数据表TABLE_SELF_DEVICE_SN中获取基本请求对象
+    public BaseDrvRequest getLocalRequest(String jkName){
+    	BaseDrvRequest baseDrvRequest=new BaseDrvRequest() {			
+			@Override
+			public String toXml() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+		};
+    	
+		DeviceSnModel q=new DeviceSnModel();
+		q.setCCreateip("127.0.0.1");
+		q.setCJkname(jkName);
+		List<DeviceSnModel> listSnModels;
+		try {
+			listSnModels = this.deviceSnMapper.select(q);
+			if(listSnModels.size()!=1){
+				return baseDrvRequest;
+			}else{
+				DeviceSnModel deviceSnModel=listSnModels.get(0);
+				baseDrvRequest.setJkid(deviceSnModel.getCJkid());
+				baseDrvRequest.setJkxlh(deviceSnModel.getCJkxlh());
+				baseDrvRequest.setSn(deviceSnModel.getCSn());
+				baseDrvRequest.setXtlb(deviceSnModel.getCXtlb());
+			}
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			return baseDrvRequest;
+		}
 
-	public void setVioTimeout(int vioTimeout) {
-		this.vioTimeout = vioTimeout;
-	}
+    	
+    }
 
-
-
-	public void setVehUrl(String vehUrl) {
-		this.vehUrl = vehUrl;
-	}
-
-
-
-	public void setVehTimeout(int vehTimeout) {
-		this.vehTimeout = vehTimeout;
-	}
-
-
-
+    
 
 	
 	

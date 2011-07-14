@@ -259,6 +259,21 @@
 </bean>
 
 
+<bean class="com.ett.drvinterface.DrvServiceHelper"  id="drvServiceHelper">
+    <property name="url" value="${wsdl.drv.url}"></property>
+    <property name="timeout" value="${wsdl.timeout}"></property>
+</bean>
+
+<bean class="com.ett.drvinterface.VehicleServiceHelper" id="vehicleServiceHelper">
+    <property name="url" value="${wsdl.veh.url}"></property>
+    <property name="timeout" value="${wsdl.timeout}"></property>
+</bean>
+
+<bean class="com.ett.drvinterface.VioServiceHelper"  id="vioServiceHelper" >
+   <property name="url" value="${wsdl.vio.url}" ></property>
+   <property name="timeout" value="${wsdl.timeout}" ></property>
+</bean>
+
 <bean id="baseDrvBiz" abstract="true" class="com.ett.drv.biz.impl.BaseDrvBiz">
     <property name="weekRecordMapper" ref="weekReocrdMapper"></property>
    <property name="limitMapper" ref="limitMapper"></property>
@@ -294,12 +309,9 @@
     <property name="statisKmMapper" ref="statisKmMapper"></property>
     <property name="statisSchoolMapper" ref="statisSchoolMapper"></property>
     
-    <property name="drvUrl" value="${wsdl.drv.url}"></property>
-    <property name="drvTimeout" value="${wsdl.timeout}"></property>
-    <property name="vioUrl" value="${wsdl.vio.url}"></property>
-    <property name="vioTimeout" value="${wsdl.timeout}"></property>
-    <property name="vehUrl" value="${wsdl.veh.url}"></property>
-    <property name="vehTimeout" value="${wsdl.timeout}"></property>
+    <property name="drvInterface"  ref="drvServiceHelper"></property>
+    <property name="vehicleInterface" ref="vehicleServiceHelper"></property>
+    <property name="vioInterface" ref="vioServiceHelper"></property>
 </bean>
 
 <bean id="baseBookedBiz" abstract="true" class="com.ett.drv.biz.impl.BookedBiz"  parent="baseDrvBiz" >

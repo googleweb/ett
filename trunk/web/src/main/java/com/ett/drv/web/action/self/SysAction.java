@@ -10,7 +10,7 @@ import com.ett.drv.biz.ISelfBiz;
 import com.ett.drv.model.self.DeviceModel;
 import com.ett.drv.model.self.TerminalModel;
 import com.ett.drv.web.action.BaseDrvAction;
-import com.smartken.kia.core.enums.ResultEnum;
+import com.smartken.kia.core.enums.EResult;
 import com.smartken.kia.core.util.EasyUiUtil;
 import com.smartken.kia.core.util.ObjectUtil;
 
@@ -37,11 +37,11 @@ public class SysAction extends BaseDrvAction {
 	
 	
 	public String to_device() throws Exception{
-		return ResultEnum.jsp.name();
+		return EResult.jsp.name();
 	}
 
 	public String to_terminal() throws Exception{
-		return ResultEnum.jsp.name();
+		return EResult.jsp.name();
 	}
 	
 	public void list_device() throws Exception{

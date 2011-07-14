@@ -8,7 +8,7 @@ import java.util.List;
 import org.json.JSONObject;
 
 import com.ett.drv.web.action.BaseDrvAction;
-import com.smartken.kia.core.enums.ResultEnum;
+import com.smartken.kia.core.enums.EResult;
 import com.smartken.kia.core.util.EasyUiUtil;
 import com.smartken.kia.core.util.StringUtil;
 
@@ -47,6 +47,6 @@ public class KmAction extends BaseDrvAction {
 	}
 
 	public String to_km3kscc() {
-		return ResultEnum.jsp.name();
+		return EResult.jsp.name();
 	}
 }
