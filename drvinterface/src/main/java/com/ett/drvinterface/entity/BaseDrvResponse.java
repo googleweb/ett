@@ -15,7 +15,36 @@ import org.dom4j.io.SAXReader;
  */
 public class BaseDrvResponse {
 	
+	final public static int CODE_SUCCESS=1;
+	
 	private int code;
+	private int retcode;
+	private String retdesc;
+	
+	public int getCode() {
+		return code;
+	}
+
+
+
+	public String getMessage() {
+		return message;
+	}
+
+
+
+	public String getRetdesc() {
+		return retdesc;
+	}
+
+
+
+	public int getRetcode() {
+		return retcode;
+	}
+
+
+
 	private String message;
 	
 	protected Document doc;
@@ -27,10 +56,12 @@ public class BaseDrvResponse {
 	{
 		this.buildDocument(xml);
 		//this.code=this.selectNode("");
-		this.message=this.selectNode("//message");
+		
 		try
 		{
+	    this.message=this.selectNode("//message");
 		this.code=Integer.parseInt(this.selectNode("//code"));
+		this.retcode=Integer.parseInt(this.selectNode("//retcode"));
 		}catch(Exception ex)
 		{
 			

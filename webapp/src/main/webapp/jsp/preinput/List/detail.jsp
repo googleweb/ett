@@ -254,7 +254,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </td>
 <td>驾校名称</td>
 <td colspan="5">
-<input type="text" name="CJxmc" value="${CJxmc}"/>
+<input name="CJxmc" type="text"  value="${CJxmc}" 
+   class="<%=EasyUiModel.ComboBox.CLASS %>"
+	<%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+	<%=EasyUiModel.ComboBox.Properties.URL(basePath+"preinput/List/combobox/school.action") %>
+	<%=EasyUiModel.ComboBox.Properties.EDITABLE(false)%>
+	<%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DepartmentModel.F.CDepnickname.name()) %>
+	<%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DepartmentModel.F.CDepnickname.name()) %>                 
+  />
 </td>
 </tr>
 <tr >

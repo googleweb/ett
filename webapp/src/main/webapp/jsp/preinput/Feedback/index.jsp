@@ -157,7 +157,17 @@ function clickRemoveHandler(){
 		$.messager.alert('操作提示','请选择要删除的记录！');
 		}
 }
-$(document).ready(function(){   
+$(document).ready(function(){ 
+
+	function checkedFormatter(value,rowIndex,rowData){
+ if(value==1){
+ return "已审核";
+ }
+ if(value==0){
+ return "未审核";
+ }
+ }
+  
 	$("#test").datagrid({fit:true,
 	
 	columns:[ 
@@ -167,7 +177,7 @@ $(document).ready(function(){
 	{field:"<%=StudentApplyInfoModel.F.Sfzmhm%>",title:"身份证明号码",width:150},
 	{field:"<%=StudentApplyInfoModel.F.CXm%>",title:"姓名",width:150},
 	{field:"<%=StudentApplyInfoModel.F.CJxmc%>",title:"驾校名称",width:150},
-	{field:"<%=StudentApplyInfoModel.F.IChecked%>",title:"审核结果",width:150},
+	{field:"<%=StudentApplyInfoModel.F.IChecked%>",title:"审核结果",formatter:checkedFormatter,width:150},
 	{field:"<%=StudentApplyInfoModel.F.CCheckResult%>",title:"审核结果描述",width:150},
 	{field:"<%=StudentApplyInfoModel.F.CCheckOperator%>",title:"经办人",width:150}
 	
