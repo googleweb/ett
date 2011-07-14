@@ -210,8 +210,7 @@ public class HospitalMessageAction extends BaseDrvAction implements ModelDriven<
 	 * */
 	public void do_print(){
 		this.hospitalBiz.loadCrudMapper(BusAllInfoModel.class);
-		BusAllInfoModel busAllInfoModelprint=(BusAllInfoModel)this.hospitalBiz.getModel(busAllInfoModel);
-		System.out.println("1223");
+		BusAllInfoModel busAllInfoModelprint=(BusAllInfoModel)this.hospitalBiz.getModel(busAllInfoModel).get(0);
 		this.writePlainText(busAllInfoModelprint.toJson().toString());
 		
 	}

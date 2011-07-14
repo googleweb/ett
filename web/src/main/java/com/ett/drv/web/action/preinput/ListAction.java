@@ -338,8 +338,7 @@ public class ListAction extends BaseDrvAction implements ModelDriven<StudentAppl
 			byte[] bs=studentApplyInfoModel.getBlobPhoto();
 			if(bs!=null){
 				this.writeStream(bs);
-			}
-					
+			}				
 	}
 	
 	public void upload_photo(){
