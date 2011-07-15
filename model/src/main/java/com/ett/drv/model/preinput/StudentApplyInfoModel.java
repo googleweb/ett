@@ -18,8 +18,8 @@ public class StudentApplyInfoModel extends BaseModel {
 		CCheckDate,IChecked,CPhotoSyn  
 		 } 
 
-		private Integer Id;         //ID  NUMBER 38
-		private String Sfzmhm;         //SFZMHM  VARCHAR2 18
+		private Integer Id;         //ID  NUMBER 38ID
+		private String Sfzmhm;         //SFZMHM  VARCHAR2 18身份证明号码
 		private String Sfzmmc;         //SFZMMC  VARCHAR2 6
 		private Integer IHmcd;         //I_HMCD  NUMBER 38
 		private Integer IXb;         //I_XB  NUMBER 38

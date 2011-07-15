@@ -7,7 +7,13 @@ import java.io.FileInputStream;
 public class drvphotoRequest extends BaseDrvRequest{
 	
 	private String sfzhm;
-	private File zp;
+	private byte[] zp;
+	
+	
+
+	public void setZp(byte[] zp) {
+		this.zp = zp;
+	}
 
 	@Override
 	public String toXml() {
@@ -17,7 +23,7 @@ public class drvphotoRequest extends BaseDrvRequest{
 		this.appendTag(sb, "sfzhm", this.sfzhm);
 		String photo="";
 		try {
-			photo = this.encodeBase64File(zp);
+			photo = this.encodeBase64(zp);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -28,7 +34,7 @@ public class drvphotoRequest extends BaseDrvRequest{
 		return sb.toString();
 	}
 	
-	public static String encodeBase64File(File file) {
+	public static String encodeBase64(File file) {
 //		   FileInputStream inputFile = new FileInputStream(file);
 //	       byte[] buffer = new byte[(int)file.length()];
 //	       inputFile.read(buffer);
@@ -36,5 +42,9 @@ public class drvphotoRequest extends BaseDrvRequest{
 //     	   return new BASE64Encoder().encode(buffer);
 		return null;
 		    }
+	public static String encodeBase64(byte[] bytes){
+		return null;
+		
+	}
 
 }
