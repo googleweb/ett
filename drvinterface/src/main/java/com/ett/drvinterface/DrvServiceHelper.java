@@ -3,6 +3,8 @@ package com.ett.drvinterface;
 import com.ett.drvinterface.entity.BaseDrvResponse;
 import com.ett.drvinterface.entity.DrvPreasignRequest;
 import com.ett.drvinterface.entity.DrvtempMidRequest;
+import com.ett.drvinterface.entity.HealthBeanRequest;
+import com.ett.drvinterface.entity.drvphotoRequest;
 
 /**
  * @author austin
@@ -17,7 +19,14 @@ public class DrvServiceHelper extends BaseServiceHelper implements
 	}
 
 	public BaseDrvResponse preinput(DrvtempMidRequest request) {
-		// TODO Auto-generated method stub
+		return this.write(request);
+	}
+	
+	public BaseDrvResponse healthBean(HealthBeanRequest request) {
+		return this.write(request);
+	}
+
+	public BaseDrvResponse drvphoto(drvphotoRequest request) {
 		return this.write(request);
 	}
 

@@ -1,6 +1,5 @@
 package com.ett.drvinterface.entity;
 
-import java.util.Date;
 
 public class DrvtempMidRequest extends BaseDrvRequest{
 	
