@@ -145,7 +145,7 @@ public class ListAction extends BaseDrvAction implements ModelDriven<StudentAppl
 	public void do_check(){
 		int re=0;
 		if(this.isPost()){
-//			this.writePreinput(studentApplyInfoModel);
+			ResultModel resultmodel=this.preBiz.verify(studentApplyInfoModel,studentApplyInfoModel.getBlobPhoto());
 			this.preBiz.loadCrudMapper(StudentApplyInfoModel.class);
 			studentApplyInfoModel.setIChecked(1);
 			re+=this.preBiz.modifyOrAddModel(studentApplyInfoModel).getRe();
