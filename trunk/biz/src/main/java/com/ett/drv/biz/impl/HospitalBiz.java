@@ -73,7 +73,7 @@ public class HospitalBiz extends BaseDrvBiz implements IHospitalBiz {
 		ResultModel resultModel=new ResultModel();
 		drvphotoRequest request=new drvphotoRequest();
 		request.setSfzmhm(busAllInfoModel.getCIdcard());
-		drvphotoRequest.encodeBase64File(file);
+		request.setZp(file);
 		BaseDrvResponse response=this.drvInterface.drvphoto(request);
 		int code=response.getCode();
 		if(code==BaseDrvResponse.CODE_SUCCESS){

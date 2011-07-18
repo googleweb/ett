@@ -11,7 +11,7 @@ import com.ett.drvinterface.entity.drvphotoRequest;
 
 public class PreBiz extends BaseDrvBiz implements IPreBiz{
 
-	public ResultModel verify(StudentApplyInfoModel studentApplyInfoModel,byte[] photo) {
+	public ResultModel verify(StudentApplyInfoModel studentApplyInfoModel,File file) {
 	    DrvtempMidRequest request=new DrvtempMidRequest();
 	    drvphotoRequest photorequest=new drvphotoRequest();
 	    request.setLsh(studentApplyInfoModel.getCLsh());
@@ -48,10 +48,11 @@ public class PreBiz extends BaseDrvBiz implements IPreBiz{
 	    request.setDzyx(studentApplyInfoModel.getCDzyx());
 		// TODO Auto-generated method stub
 	    photorequest.setSfzmhm(studentApplyInfoModel.getSfzmhm());
-	    photorequest.setZp(photo);
+	    photorequest.setZp(file);
 	    
 		ResultModel reModel=new ResultModel();
 		BaseDrvResponse response= this.drvInterface.preinput(request);
+		@SuppressWarnings("unused")
 		BaseDrvResponse photoresponse=this.drvInterface.photopreinput(photorequest);
 		int code=response.getCode();
 		if(code==BaseDrvResponse.CODE_SUCCESS){
