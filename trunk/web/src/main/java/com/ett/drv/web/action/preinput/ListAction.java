@@ -50,6 +50,9 @@ public class ListAction extends BaseDrvAction implements ModelDriven<StudentAppl
 		// TODO Auto-generated method stub
 		
 	}
+	public String to_searcharea(){
+		return "jsp";
+	}
 	
 	public String to_detail(){
 	    return "jsp";
@@ -119,6 +122,7 @@ public class ListAction extends BaseDrvAction implements ModelDriven<StudentAppl
 		if(this.isPost()){
 			
 			this.preBiz.loadCrudMapper(StudentApplyInfoModel.class);
+			studentApplyInfoModel.setIChecked(0);
 			re+=this.preBiz.modifyOrAddModel(studentApplyInfoModel).getRe();
 			
 		}
@@ -145,7 +149,7 @@ public class ListAction extends BaseDrvAction implements ModelDriven<StudentAppl
 	public void do_check(){
 		int re=0;
 		if(this.isPost()){
-			ResultModel resultmodel=this.preBiz.verify(studentApplyInfoModel,studentApplyInfoModel.getBlobPhoto());
+		//	ResultModel resultmodel=this.preBiz.verify(studentApplyInfoModel,studentApplyInfoModel.getBlobPhoto());
 			this.preBiz.loadCrudMapper(StudentApplyInfoModel.class);
 			studentApplyInfoModel.setIChecked(1);
 			re+=this.preBiz.modifyOrAddModel(studentApplyInfoModel).getRe();

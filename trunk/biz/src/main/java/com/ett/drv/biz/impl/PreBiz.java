@@ -19,7 +19,7 @@ public class PreBiz extends BaseDrvBiz implements IPreBiz{
 	    request.setSfzmmc(studentApplyInfoModel.getSfzmmc());
 	    request.setHmcd(Integer.toString(studentApplyInfoModel.getIHmcd()));
 	    request.setXm(studentApplyInfoModel.getCXm());
-	    request.setXb((studentApplyInfoModel.getIXb()==1)?"男":"女");
+	    request.setXb(studentApplyInfoModel.getIXb().toString());
 	    request.setCsrq(studentApplyInfoModel.getCCsrq());
 	    request.setGj(studentApplyInfoModel.getCGj());
 	    request.setDjzsxzqh(studentApplyInfoModel.getCDjzsxzqh());
@@ -36,12 +36,12 @@ public class PreBiz extends BaseDrvBiz implements IPreBiz{
 	    request.setSg(studentApplyInfoModel.getCSg());
 	    request.setZsl(studentApplyInfoModel.getIZsl());
 	    request.setYsl(studentApplyInfoModel.getIYsl());
-	    request.setTl((studentApplyInfoModel.getITl()==1?"合格":"不合格"));
-	    request.setBsl((studentApplyInfoModel.getIBsl()==1?"合格":"不合格"));
-	    request.setSz(studentApplyInfoModel.getISz()==1?"合格":"不合格");
-	    request.setZxz(studentApplyInfoModel.getIZxz()==1?"合格":"不合格");
-	    request.setYxz(studentApplyInfoModel.getIYxz()==1?"合格":"不合格");
-	    request.setQgjb(studentApplyInfoModel.getIQgjb()==1?"合格":"不合格");
+	    request.setTl(studentApplyInfoModel.getITl().toString());
+	    request.setBsl(studentApplyInfoModel.getIBsl().toString());
+	    request.setSz(studentApplyInfoModel.getISz().toString());
+	    request.setZxz(studentApplyInfoModel.getIZxz().toString());
+	    request.setYxz(studentApplyInfoModel.getIYxz().toString());
+	    request.setQgjb(studentApplyInfoModel.getIQgjb().toString());
 	    request.setTjrq(studentApplyInfoModel.getCTjrq());
 	    request.setTjyymc(studentApplyInfoModel.getCTjyymc());
 	    request.setSjhm(studentApplyInfoModel.getCSjhm());
