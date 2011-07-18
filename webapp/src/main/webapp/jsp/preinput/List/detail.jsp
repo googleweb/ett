@@ -45,6 +45,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
   
   <script type="text/javascript">
+  function searcharea(){
+  
+  var href='<%=basePath%>'+"preinput/List/to/searcharea.action";
+       //alert(href);
+        $("#edit").dialog(
+           {
+  	 	    title:"查询区域地址:",
+  	 //	    width:380,
+  	 //	    height:200,
+		    fit:true,
+	//		onClose:function(){ $('#test').datagrid('reload'); },
+	//    	modal:true,
+			onOpen:function(){$(this).kiaIframe(href);}} 
+		);//   end:$("#divEdit").dialog
+		return false;
+  }
+  
   function uploadphoto(){
   var href='<%=basePath%>'+"preinput/List/upload/photo.action";
   var opts={};
@@ -183,7 +200,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				    <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
 				    <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %>
   />
-<td colspan="4"><a>查询</a><input type="text" style="width: 80%" /></td>
+<td colspan="4"><a onclick="searcharea()">查询</a><input type="text" style="width: 80%" /></td>
 </tr>
 <tr>
 <td>联系住所</td>

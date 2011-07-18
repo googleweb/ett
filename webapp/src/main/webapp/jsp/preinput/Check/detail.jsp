@@ -49,7 +49,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  			 $.messager.confirm('操作提示','确认保存',function(yes){
 		   if(yes){
 			   $("#detail").form('submit',{
-				   url:"<%=basePath%>preinput/List/do/save.action"
+				   url:"<%=basePath%>preinput/Check/do/save.action"
 				   ,onSubmit:function(){ return $(this).form("validate"); }
 				   ,success:function(str){
 				    $(this).form("clear");
@@ -65,7 +65,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	  $.messager.confirm('操作提示','确认审核',function(yes){
 		   if(yes){
 			   $("#detail").form('submit',{
-				   url:"<%=basePath%>preinput/List/do/check.action"
+				   url:"<%=basePath%>preinput/Check/do/check.action"
 				   ,onSubmit:function(){ return $(this).form("validate"); }
 				   ,success:function(str){
 				    $(this).form("clear");
