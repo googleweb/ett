@@ -7,13 +7,13 @@ import com.ett.drv.model.preinput.StudentApplyInfoModel;
 import com.ett.drvinterface.entity.BaseDrvResponse;
 import com.smartken.kia.core.model.impl.ResultModel;
 import com.ett.drvinterface.entity.DrvtempMidRequest;
-import com.ett.drvinterface.entity.drvphotoRequest;
+import com.ett.drvinterface.entity.DrvphotoRequest;
 
 public class PreBiz extends BaseDrvBiz implements IPreBiz{
 
 	public ResultModel verify(StudentApplyInfoModel studentApplyInfoModel, byte[] bt) {
 	    DrvtempMidRequest request=new DrvtempMidRequest();
-	    drvphotoRequest photorequest=new drvphotoRequest();
+	    DrvphotoRequest photorequest=new DrvphotoRequest();
 	    request.setLsh(studentApplyInfoModel.getCLsh());
 	    request.setSfzmhm(studentApplyInfoModel.getSfzmhm());
 	    request.setSfzmmc(studentApplyInfoModel.getSfzmmc());

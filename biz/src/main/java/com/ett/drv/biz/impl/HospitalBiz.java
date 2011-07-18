@@ -10,7 +10,7 @@ import com.ett.drv.model.admin.BusAllInfoModel;
 import com.ett.drvinterface.IDrvInterface;
 import com.ett.drvinterface.entity.BaseDrvResponse;
 import com.ett.drvinterface.entity.HealthBeanRequest;
-import com.ett.drvinterface.entity.drvphotoRequest;
+import com.ett.drvinterface.entity.DrvphotoRequest;
 import com.smartken.kia.core.model.impl.ResultModel;
 
 public class HospitalBiz extends BaseDrvBiz implements IHospitalBiz {
@@ -71,7 +71,7 @@ public class HospitalBiz extends BaseDrvBiz implements IHospitalBiz {
 	 */
 	public ResultModel addPhotoMessage(BusAllInfoModel busAllInfoModel,File file){
 		ResultModel resultModel=new ResultModel();
-		drvphotoRequest request=new drvphotoRequest();
+		DrvphotoRequest request=new DrvphotoRequest();
 		request.setSfzmhm(busAllInfoModel.getCIdcard());
 		request.setZp(file);
 		BaseDrvResponse response=this.drvInterface.drvphoto(request);
