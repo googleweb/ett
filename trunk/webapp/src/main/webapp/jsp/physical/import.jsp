@@ -35,12 +35,14 @@ $(document).ready(function(){
 		   var CIdcardtype1=$("#CIdcardtype1 option:selected").val()||"";
 		   var CDabh1=$("#CDabh1").val()||"";
 		   if(CIdcard1.length>0||CDabh1.length>0){
-  			$.getJSON("<%=basePath%>/physical/HospitalMessage/do/search.action",
-  				{CIdcard1:CIdcard1
-  				//,CIdcardtype1:CIdcardtype1
-  				,CDabh1:CDabh1
-  				},
-  				function(result){
+  			$("#searchform").form("submit",{
+         		url:"<%=basePath%>/physical/HospitalMessage/do/search.action",
+	    		success:function(result1){ 
+         			var result=Kia.util.strToJson(result1); 
+         			//alert(result['CIdcard']);
+	   				if(result['CIdcard'].length<=0){
+  						$.messager.alert('操作提示','没有符合条件的查询结果');
+  					}
               		for(var key in result){
               						$("#"+key).val(result[key]);
               		}
@@ -50,18 +52,16 @@ $(document).ready(function(){
               		$("#CZxz").val(result['CZxz']);
               		$("#CYxz").val(result['CYxz']);
               		$("#CQgjb").val(result['CQgjb']);
-              		//$("#CCarType").val(result['CCarType']);
-              		//$("#CSex").val(result['CSex']);
-              		
+              		$("#CIdcardtype").combobox("setValue",result['CIdcardtype']);
+              		$("#CRegareaCode").combobox("setValue",result['CRegareaCode']);
               		$("#CNation").combobox("setValue",result['CNation']);
               		$("#CSex").combobox("setValue",result['CSex']);
               		$("#CCarType").combobox("setValue",result['CCarType']);
-              		$("#CHospital").combobox("setValue",result['CHospital']);
-              		
-              		
               		$("#Regdate").datebox("setValue",result['Regdate']);
               		$("#CBirthday").datebox("setValue",result['CBirthday']);
-  			});
+              		$("#CHospital").combobox("setValue",result['CHospital']);
+	   			}
+			});
   		  }else{
   			  $.messager.alert('操作提示','请输入查询条件');
   		  }
@@ -89,25 +89,27 @@ function addform(){
 				</tr>
 				<tr>
 					<td>
+					<form id="searchform" method="post" >
 						<table style="width: 100%">
 							<tr>
 								<td style="background-color: rgb(208,227,248);">
 									证件名称：
 								</td>
 								<td>
-									<input name="" type="text"  value=""
+									<input name="CIdcardtype1" type="text"  value=""
                      					class="<%=EasyUiModel.ComboBox.CLASS %>"
-				    					
-				    					<%=EasyUiModel.ComboBox.Properties.URL(basePath+"preinput/List/combobox/sfzm.action") %>
-				    					<%=EasyUiModel.ComboBox.Properties.EDITABLE(false)%>
-				   						 <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
-				   						 <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %> />
+				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+				    <%=EasyUiModel.ComboBox.Properties.URL(basePath+"preinput/List/combobox/sfzm.action") %>
+				    <%=EasyUiModel.ComboBox.Properties.EDITABLE(false)%>
+				    <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("证件名称必须输入 ") %>
+				    <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
+				    <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %> />
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									证件号码
 								</td>
 								<td>
-									<input type="text" name="" id="CIdcard1"/>
+									<input type="text" name="CIdcard1" id="CIdcard1"/>
 								</td>
 							</tr>
 							<tr>
@@ -115,7 +117,7 @@ function addform(){
 									档案编号
 								</td>
 								<td>
-									<input type="text" name="" id="CDabh1"/>
+									<input type="text" name="CDabh1" id="CDabh1"/>
 								</td>
 								<td style="background-color: rgb(208,227,248);">
 									业务类型：
@@ -137,10 +139,11 @@ function addform(){
 							</tr>
 							
 						</table>
+						</form>
 					</td>
 				
 				</tr>
-				
+				</form>
 				<tr>
 					<td style="background-color: rgb(208,227,248);">
 						体检详细信息
@@ -160,9 +163,13 @@ function addform(){
 								<td>
 									<input type="hidden" name="Id" id="Id">
 									<input type="text" name="CIdcardtype"   id="CIdcardtype" 
-									 class="<%=EasyUiModel.ValidateBox.CLASS %>"
-                 <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("证件名称必须输入") %>
-                  <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+									class="<%=EasyUiModel.ComboBox.CLASS %>"
+				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+				    <%=EasyUiModel.ComboBox.Properties.URL(basePath+"preinput/List/combobox/sfzm.action") %>
+				    <%=EasyUiModel.ComboBox.Properties.EDITABLE(false)%>
+				    <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("证件名称必须输入 ") %>
+				    <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
+				    <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %>
 									/>
 								</td>
 								<td style="background-color: rgb(208,227,248);">

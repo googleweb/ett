@@ -97,8 +97,7 @@ public class HospitalMessageAction extends BaseDrvAction implements ModelDriven<
 		busAllInfoModel.setCDabh(qCDabh);
 		List<IFormatterModel> list=this.hospitalBiz.getModel(busAllInfoModel);
 		if(list.size()==0){
-			//resultModel.setMsg("不存在这样的用户");
-			//this.writePlainText(resultModel.toJson().toString());
+			this.writePlainText(new BusAllInfoModel().toJson().toString());
 		}else{
 			this.writePlainText(list.get(0).toJson().toString());
 		}
