@@ -34,6 +34,8 @@ function printExcel(excelTempatePath, data) {
 		//alert(data["CIdcard"].charAt(j));
 		xlsheet2.Cells(5, 11 + j).Value = data["CIdcard"].charAt(j);
 	}
+	
+	xlsheet2.Cells(5, 11).Value="21";
 	xlsheet2.Cells(6, 14).Value = data["CDabh"] || "";
 
 	xlsheet2 = null;
