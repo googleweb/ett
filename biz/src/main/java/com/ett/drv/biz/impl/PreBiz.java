@@ -11,7 +11,7 @@ import com.ett.drvinterface.entity.drvphotoRequest;
 
 public class PreBiz extends BaseDrvBiz implements IPreBiz{
 
-	public ResultModel verify(StudentApplyInfoModel studentApplyInfoModel, Byte[] bt) {
+	public ResultModel verify(StudentApplyInfoModel studentApplyInfoModel, byte[] bt) {
 	    DrvtempMidRequest request=new DrvtempMidRequest();
 	    drvphotoRequest photorequest=new drvphotoRequest();
 	    request.setLsh(studentApplyInfoModel.getCLsh());
