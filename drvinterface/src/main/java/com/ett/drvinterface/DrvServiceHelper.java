@@ -4,7 +4,7 @@ import com.ett.drvinterface.entity.BaseDrvResponse;
 import com.ett.drvinterface.entity.DrvPreasignRequest;
 import com.ett.drvinterface.entity.DrvtempMidRequest;
 import com.ett.drvinterface.entity.HealthBeanRequest;
-import com.ett.drvinterface.entity.drvphotoRequest;
+import com.ett.drvinterface.entity.DrvphotoRequest;
 
 /**
  * @author austin
@@ -23,12 +23,12 @@ public class DrvServiceHelper extends BaseServiceHelper implements
 		return this.write(request);
 	}
 
-	public BaseDrvResponse photopreinput(drvphotoRequest request) {
+	public BaseDrvResponse photopreinput(DrvphotoRequest request) {
 		// TODO Auto-generated method stub
 		return this.write(request);
 	}
 
-	public BaseDrvResponse drvphoto(drvphotoRequest request) {
+	public BaseDrvResponse drvphoto(DrvphotoRequest request) {
 		// TODO Auto-generated method stub
 		return this.write(request);
 	}

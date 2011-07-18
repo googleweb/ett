@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 
 
-public class drvphotoRequest extends BaseDrvRequest{
+public class DrvphotoRequest extends BaseDrvRequest{
 	
 	private String sfzhm;
 	private File zp;
