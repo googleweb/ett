@@ -317,6 +317,10 @@ public class BookedWeekRecordModel extends BaseModel{
 	}
 	
 	public void updateFpContext(List<BookedLimitModel> limits){
+		  this.updateFpContext(limits,null);
+	}
+	
+	public void updateFpContext(List<BookedLimitModel> limits,String depcode){
 		for(int w=1;w<8;w++){
 			for(int k=1;k<4;k++){
 				String fpName=MessageFormat.format("IWeek{0}Km{1}Fp", w,k);
@@ -334,16 +338,36 @@ public class BookedWeekRecordModel extends BaseModel{
 			int km=bolModel.getIKm();
 			String fpName=MessageFormat.format("IWeek{0}Km{1}Fp", dow,km);
 			String pattern="<br/>{0};{1};{2};{3};{4};{5};{6}";
+			String newPattern="<br/>{0}({1})";
 			try {
-				String  newContext=MessageFormat.format(pattern
-				   ,bolModel.getCKsddCode()
-				   ,bolModel.getCKsdd()
-				   ,bolModel.getCKsccCode()
-				   ,bolModel.getCKscc()
-				   ,bolModel.getCSchoolCode()
-				   ,bolModel.getCSchoolName()
-				   ,bolModel.getId()
-				);
+				String newContext="";
+//			    newContext=MessageFormat.format(pattern
+//				   ,bolModel.getCKsddCode()
+//				   ,bolModel.getCKsdd()
+//				   ,bolModel.getCKsccCode()
+//				   ,bolModel.getCKscc()
+//				   ,bolModel.getCSchoolCode()
+//				   ,bolModel.getCSchoolName()
+//				   ,bolModel.getId()
+//				);
+				
+				String formatDep="";
+				if(ObjectUtil.isEquals(depcode, bolModel.getCSchoolCode()))  {
+					String depPattern="<a href=\"booked/ExamPreasign/to/preasign.action?limitId={0}\" >{1}</a>";
+					formatDep=MessageFormat.format(depPattern,
+					 bolModel.getId()
+					 ,bolModel.getCSchoolName()
+					);
+				}else{
+					formatDep=bolModel.getCSchoolName();
+				}
+				
+				newContext=MessageFormat.format(newPattern
+						,formatDep
+						,ObjectUtil.formatInt(bolModel.getITotal())
+						)
+				;
+				
 				String context=(String) this.eval(fpName);
 				context+=newContext;
 				this.eval(fpName,context);

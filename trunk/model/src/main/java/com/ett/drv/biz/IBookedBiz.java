@@ -16,7 +16,7 @@ public interface IBookedBiz extends IBaseCrudBiz{
 	//public BookedWeekRecordModel getWeekRecord(Date pDate);
 	public BookedWeekRecordModel getWeekRecord(int year,int weekNum);
 	
-	public Map<String,BookedLimitModel> getLimits(int weekNum) throws Exception;
+	public Map<String,BookedLimitModel> getLimits(int year,int weekNum) throws Exception;
 	
 	
 	public ResultModel tranExamPreasgin(BookedOrderInfoModel orderInfoModel,BookedLimitModel limitModel);

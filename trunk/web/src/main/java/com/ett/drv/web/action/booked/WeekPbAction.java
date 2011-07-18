@@ -89,7 +89,7 @@ public class WeekPbAction extends BaseDrvAction implements ModelDriven<BookedWee
 				int year=cal.get(Calendar.YEAR);
 				this.bookedWeekRecordModel=bookedBiz.getWeekRecord(year,weekNum);
 			    if(this.bookedWeekRecordModel!=null){
-			    	this.bookedWeekRecordModel.setLimits(bookedBiz.getLimits(this.bookedWeekRecordModel.getIWeekNum()));
+			    	this.bookedWeekRecordModel.setLimits(bookedBiz.getLimits(year,weekNum));
 			    }else{
 			    	this.bookedWeekRecordModel=new BookedWeekRecordModel(year, weekNum);
 			    	this.bookedWeekRecordModel.setCCheckOperator(userModel.getCFullName());
@@ -109,7 +109,7 @@ public class WeekPbAction extends BaseDrvAction implements ModelDriven<BookedWee
 				int year=cal.get(Calendar.YEAR);
 				this.bookedWeekRecordModel=bookedBiz.getWeekRecord(year,weekNum);
 			    if(this.bookedWeekRecordModel!=null){
-			    	this.bookedWeekRecordModel.setLimits(bookedBiz.getLimits(this.bookedWeekRecordModel.getIWeekNum()));
+			    	this.bookedWeekRecordModel.setLimits(bookedBiz.getLimits(year,weekNum));
 			    }else{
 			    	this.bookedWeekRecordModel=new BookedWeekRecordModel(year, weekNum);
 			    	this.bookedWeekRecordModel.setCCheckOperator(userModel.getCFullName());

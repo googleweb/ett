@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.poi.hssf.record.formula.functions.Fpos;
 import org.json.JSONArray;
@@ -89,13 +90,17 @@ public class ExamPreasignAction extends BaseDrvAction implements ModelDriven<Boo
 		if(StringUtil.isNotBlank(searchDate)){
 			d=DateTimeUtil.parse(searchDate);
 		}
+		Calendar cal=Calendar.getInstance();
+		cal.setTime(d);
 		this.bookedBiz.loadCrudMapper(BookedWeekRecordModel.class);
 		int weekNum=DateTimeUtil.getWeekOfYear(d);
-		BookedWeekRecordModel q=new BookedWeekRecordModel();
-		q.setIWeekNum(weekNum);
-		List listWeekRecord=bookedBiz.getModel(q);
-		if(listWeekRecord.size()>0){
-			weekRecord=(BookedWeekRecordModel) listWeekRecord.get(0);
+		int year=cal.get(Calendar.YEAR);
+        weekRecord=this.bookedBiz.getWeekRecord(year, weekNum);
+		if(weekRecord!=null){
+			String depcode=this.getAuthUser().getDepartmentModel().getCDepcode();
+			Map<String,BookedLimitModel> maplimits=this.bookedBiz.getLimits(year,weekNum);
+			List<BookedLimitModel> limits=ObjectUtil.toList(maplimits);
+			weekRecord.updateFpContext(limits,depcode);
 		}else{
 			weekRecord=new BookedWeekRecordModel();
 			weekRecord.setIWeekNum(weekNum);
