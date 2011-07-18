@@ -9,6 +9,6 @@ import com.smartken.kia.core.model.impl.ResultModel;
 public interface IPreBiz extends IBaseCrudBiz {
 	
 	
-	public ResultModel verify(StudentApplyInfoModel studentApplyInfoModel,byte[] photo) ;
+	public ResultModel verify(StudentApplyInfoModel studentApplyInfoModel,File file) ;
 
 }
