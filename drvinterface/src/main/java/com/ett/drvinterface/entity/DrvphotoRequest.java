@@ -8,6 +8,7 @@ public class DrvphotoRequest extends BaseDrvRequest{
 	
 	private String sfzhm;
 	private File zp;
+	private byte[] zpbyte;
 
 	public File getZp() {
 		return zp;
@@ -17,7 +18,7 @@ public class DrvphotoRequest extends BaseDrvRequest{
 		this.zp = zp;
 	}
 	public void setZp(byte[] zp){
-		this.zp=zp;
+		this.zpbyte=zp;
 	}
 
 	@Override
