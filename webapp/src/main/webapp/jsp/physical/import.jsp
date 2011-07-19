@@ -36,7 +36,7 @@ $(document).ready(function(){
 		   var CDabh1=$("#CDabh1").val()||"";
 		   if(CIdcard1.length>0||CDabh1.length>0){
   			$("#searchform").form("submit",{
-         		url:"<%=basePath%>/physical/HospitalMessage/do/search.action",
+         		url:"<%=basePath%>/physical/HospitalMessage/do/searchimport.action",
 	    		success:function(result1){ 
          			var result=Kia.util.strToJson(result1); 
          			//alert(result['CIdcard']);
@@ -98,10 +98,9 @@ function addform(){
 								<td>
 									<input name="CIdcardtype1" type="text"  value=""
                      					class="<%=EasyUiModel.ComboBox.CLASS %>"
-				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+				    
 				    <%=EasyUiModel.ComboBox.Properties.URL(basePath+"preinput/List/combobox/sfzm.action") %>
 				    <%=EasyUiModel.ComboBox.Properties.EDITABLE(false)%>
-				    <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("证件名称必须输入 ") %>
 				    <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
 				    <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %> />
 								</td>
@@ -280,7 +279,15 @@ function addform(){
 								<td style="background-color: rgb(208,227,248);">
 									登记住处
 								</td>
+								
 								<td colspan="2">
+									<input name="CRegareaCode" type="text"  id="CRegareaCode"
+                     class="<%=EasyUiModel.ComboBox.CLASS %>"
+				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+				    <%=EasyUiModel.ComboBox.Properties.URL(basePath+"preinput/List/combobox/djzs.action") %>
+				    <%=EasyUiModel.ComboBox.Properties.EDITABLE(false)%>
+				    <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
+				    <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %> />  
 									<input type="text" name="CRegarea"  id="CRegarea" />
 								</td>
 							</tr>

@@ -11,6 +11,7 @@
 			+ path + "/";
 	String adminMenuPath = basePath + "admin/Menu";
 	String excelTemplatePath=basePath+"js/print/excel.physical.xls";
+	String excelTemplatePathother=basePath+"js/print/excel.physical.other.xls";
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -28,6 +29,7 @@
 		<jsp:include page="/css/index.jsp"></jsp:include>
 		<jsp:include page="/js/index.jsp"></jsp:include>
 		<script type="text/javascript" src="<%=basePath+"js/print/excel.physical.js" %>"></script>
+		<script type="text/javascript" src="<%=basePath+"js/print/excel.physical.other.js" %>"></script>
 		<style type="text/css">
 </style>
 		<script type="text/javascript">
@@ -71,6 +73,7 @@ function addform(){
 	$("#addform").form("submit",{
 	  	url:'<%=basePath%>'+"physical/HospitalMessage/do/add.action",
 	   	success:function(str){
+	  		str.messager();
 	  	}
 	});
 }
@@ -79,9 +82,16 @@ function cancel(){
 	if(CIdcard.length==""){
 		$.messager.alert('操作提示','请输入要退办的详细信息');		
 	}else{
+		var url="<%=basePath%>/physical/HospitalMessage/do/cancel.action?CIdcard="+CIdcard ;
+		var timstamp = (new Date()).valueOf();   
+   		if (url.indexOf("?") >= 0) {   
+        	url = url + "&t=" + timstamp;   
+    	}else {   
+         url = url + "?t=" + timstamp;   
+    	}   
 		$.ajax({
-            url:"<%=basePath%>/physical/HospitalMessage/do/cancel.action?CIdcard="+CIdcard  ,
-           // {CIdcard:CIdcard}
+			
+            url:url,             
             success:function(str){
 	  			str.messager();
             }
@@ -89,19 +99,51 @@ function cancel(){
 	}
 }
 function printMessage(){
-	
 	var excelTemplatePath="<%=basePath%>js/print/excel.physical.xls";
+	var Id=$("#Id").val()||"";
+	if(Id.length==""){
+		$.messager.alert('操作提示','请输入要打印的详细信息');
+	}	
+	else{
+		var url="<%=basePath%>/physical/HospitalMessage/do/print.action?Id="+Id ;
+		var timstamp = (new Date()).valueOf();  
+		if (url.indexOf("?") >= 0) {   
+        	url = url + "&t=" + timstamp;   
+    	}else {   
+         url = url + "?t=" + timstamp;   
+    	}   
+		$.ajax({		
+            url:url,  
+			success:function(str){
+				var json=str.toJson();
+				printExcel(excelTemplatePath,json);
+			}
+		});
+	}	
+}
+function printMessageother(){
+	
+	var excelTemplatePathother="<%=basePath%>js/print/excel.physical.other.xls";
 	var Id=$("#Id").val()||"";
 	
 	if(Id.length==""){
 		$.messager.alert('操作提示','请输入要打印的详细信息');
 	}	
 	else{
-		$.ajax({
-			url:"<%=basePath%>/physical/HospitalMessage/do/print.action?Id="+Id,
+		var url="<%=basePath%>/physical/HospitalMessage/do/print.action?Id="+Id ;
+		var timstamp = (new Date()).valueOf();  
+		if (url.indexOf("?") >= 0) {   
+        	url = url + "&t=" + timstamp;   
+    	}else {   
+         url = url + "?t=" + timstamp;   
+    	}   
+		$.ajax({		
+            url:url,  
 			success:function(str){
 				var json=str.toJson();
-				printExcel(excelTemplatePath,json);
+				//alert(json['CIdcardtype']);
+				//alert(json);
+				printExcelother(excelTemplatePathother,json);
 			}
 		});
 	}	
@@ -363,7 +405,7 @@ function uploadPhotos(){
 				</tr>
 				<tr>
 								<td colspan="8" style="text-align: right">								
-										<a class="easyui-linkbutton"   <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_PRINT) %> onclick="printMessage()">打印</a>
+										<a class="easyui-linkbutton"   <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_PRINT) %> onclick="printMessageother()">打印</a>
 										<a class="easyui-linkbutton"   <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_CANCEL)%> onclick="cancel()">退办</a>
 								</td>
 				</tr>
