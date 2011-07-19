@@ -1,11 +1,14 @@
 package com.ett.drv.biz.impl;
 
 import java.io.File;
+import java.io.IOException;
+
 
 import com.ett.drv.biz.IPreBiz;
 import com.ett.drv.model.preinput.StudentApplyInfoModel;
 import com.ett.drvinterface.entity.BaseDrvResponse;
 import com.smartken.kia.core.model.impl.ResultModel;
+import com.smartken.kia.core.util.FileUtil;
 import com.ett.drvinterface.entity.DrvphotoRequest;
 import com.ett.drvinterface.entity.DrvtempMidRequest;
 
@@ -49,7 +52,8 @@ public class PreBiz extends BaseDrvBiz implements IPreBiz{
 	    request.setDzyx(studentApplyInfoModel.getCDzyx());
 		// TODO Auto-generated method stub
 	    photorequest.setSfzmhm(studentApplyInfoModel.getSfzmhm());
-	    photorequest.setZp(bt);
+	    photorequest.setZp(studentApplyInfoModel.getBlobPhoto());
+
 	    
 		ResultModel reModel=new ResultModel();
 		BaseDrvResponse response= this.drvInterface.preinput(request);
