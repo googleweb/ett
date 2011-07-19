@@ -2,23 +2,27 @@ package com.ett.drvinterface.entity;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
+import biz.source_code.base64Coder.Base64Coder;
 
 
 public class DrvphotoRequest extends BaseDrvRequest{
 	
 	private String sfzhm;
-	private File zp;
-	private byte[] zpbyte;
+	private String zp;
 
-	public File getZp() {
+	public String getZp() {
 		return zp;
 	}
 
 	public void setZp(File zp) {
-		this.zp = zp;
 	}
-	public void setZp(byte[] zp){
-		this.zpbyte=zp;
+	
+	public void setZp(byte[] bytes){
+		this.zp=this.encodeBase64(bytes);
 	}
 
 	@Override
@@ -27,26 +31,34 @@ public class DrvphotoRequest extends BaseDrvRequest{
 		sb.append("<root>");
 		sb.append("<drvphoto>");
 		this.appendTag(sb, "sfzhm", this.sfzhm);
-		String photo="";
 		try {
-			photo = this.encodeBase64File(zp);
-		} catch (Exception e) {
+			this.appendTag(sb, "zp", URLEncoder.encode(this.zp,"UTF-8") );
+		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		this.appendTag(sb, "zp", photo);
 		sb.append("</drvphoto>");
 		sb.append("</root>");
 		return sb.toString();
 	}
 	
-	public static String encodeBase64File(File file) {
-//		   FileInputStream inputFile = new FileInputStream(file);
-//	       byte[] buffer = new byte[(int)file.length()];
+	public static String encodeBase64(File file) {
+		   try {
+			FileInputStream inputFile = new FileInputStream(file);
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	       byte[] buffer = new byte[(int)file.length()];
 //	       inputFile.read(buffer);
 //		   inputFile.close();
 //     	   return new BASE64Encoder().encode(buffer);
-		return null;
-		    }
+		 return encodeBase64(buffer);
+   }
+	
+    public static String encodeBase64(byte[] bytes){
+    	return Base64Coder.encodeLines(bytes);
+    }
 
 }
