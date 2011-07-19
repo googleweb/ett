@@ -16,6 +16,9 @@ public class DrvphotoRequest extends BaseDrvRequest{
 	public void setZp(File zp) {
 		this.zp = zp;
 	}
+	public void setZp(byte[] zp){
+		this.zp=zp;
+	}
 
 	@Override
 	public String toXml() {

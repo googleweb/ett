@@ -6,8 +6,9 @@ import com.ett.drv.biz.IPreBiz;
 import com.ett.drv.model.preinput.StudentApplyInfoModel;
 import com.ett.drvinterface.entity.BaseDrvResponse;
 import com.smartken.kia.core.model.impl.ResultModel;
-import com.ett.drvinterface.entity.DrvtempMidRequest;
 import com.ett.drvinterface.entity.DrvphotoRequest;
+import com.ett.drvinterface.entity.DrvtempMidRequest;
+
 
 public class PreBiz extends BaseDrvBiz implements IPreBiz{
 
