@@ -10,6 +10,7 @@ import org.json.JSONObject;
 
 import com.ett.common.util.DateUtil;
 import com.ett.drv.model.admin.BusAllInfoModel;
+import com.ett.drv.model.admin.DictModel;
 import com.ett.drv.model.admin.UserModel;
 import com.ett.drv.web.action.BaseDrvAction;
 import com.opensymphony.xwork2.ModelDriven;
@@ -70,10 +71,11 @@ public class HospitalMessageAction extends BaseDrvAction implements ModelDriven<
 		
 		this.hospitalBiz.loadCrudMapper(BusAllInfoModel.class);
 		busAllInfoModel.setIState(1);
-		this.hospitalBiz.modifyOrAddModel(busAllInfoModel);
+		ResultModel resultModel=this.hospitalBiz.modifyOrAddModel(busAllInfoModel);
+		this.writePlainText(resultModel.toJson().toString());
 	}
 	/**
-	 * 根据证件号等查询
+	 * 根据证件号等查询到受理页面
 	 */
 	@SuppressWarnings("unchecked")
 	public void do_search(){
@@ -102,7 +104,36 @@ public class HospitalMessageAction extends BaseDrvAction implements ModelDriven<
 			this.writePlainText(list.get(0).toJson().toString());
 		}
 	}
+	/**
+	 * 根据证件号等查询到页面
+	 */
+	@SuppressWarnings("unchecked")
+	public void do_searchimport(){
 		
+		this.hospitalBiz.loadCrudMapper(BusAllInfoModel.class);
+		BusAllInfoModel busAllInfoModel=new BusAllInfoModel();
+		String qCIdcard=this.getParameter("CIdcard1");
+		String qCDabh=this.getParameter("CDabh1");
+		if(StringUtil.isBlank(qCIdcard)){
+			qCIdcard=null;
+		}
+		if(StringUtil.isBlank(qCDabh)){
+			qCDabh=null;
+		}
+		String qCIdcardtype=this.getParameter("CIdcardtype1");
+		if(StringUtil.isBlank(qCIdcardtype)){
+			qCIdcardtype=null;
+		}
+		busAllInfoModel.setCIdcardtype(qCIdcardtype);
+		busAllInfoModel.setCIdcard(qCIdcard);
+		busAllInfoModel.setCDabh(qCDabh);
+		List<IFormatterModel> list=this.hospitalBiz.getModel(busAllInfoModel);
+		if(list.size()==0){
+			this.writePlainText(new BusAllInfoModel().toJson().toString());
+		}else{
+			this.writePlainText(list.get(0).toJson().toString());
+		}
+	}
 	/**
 	 *查询出业务查询 
 	 */
@@ -151,8 +182,53 @@ public class HospitalMessageAction extends BaseDrvAction implements ModelDriven<
         busAllInfoModel.setCXm(qCXm);
 		this.hospitalBiz.loadCrudMapper(BusAllInfoModel.class);
 		PageArrayList list=this.hospitalBiz.getModel(busAllInfoModel,this.getPager());
+		/*
+		 * 根据数据字典中的值，替换字母
+		 * */
+		for(int tu=0;tu<list.size();tu++){
+			BusAllInfoModel busAllInfoModel2=(BusAllInfoModel) list.get(tu);
+			String Sex=busAllInfoModel2.getCSex();
+			String CarType=busAllInfoModel2.getCCarType();
+			String Nation=busAllInfoModel2.getCNation();
+			String Hospital=formatNull(busAllInfoModel2.getCHospital());
+			String RegareaCode=busAllInfoModel2.getCRegareaCode();
+			String IdCardType=busAllInfoModel2.getCIdcardtype();
+			busAllInfoModel2.setCIdcardtype(Dictschange(IdCardType, "证件类型"));
+			busAllInfoModel2.setCRegareaCode(Dictschange(RegareaCode, "联系住所"));
+			busAllInfoModel2.setCHospital(Dictschange(Hospital, "体检医院"));
+			busAllInfoModel2.setCNation(Dictschange(Nation, "国籍"));
+			busAllInfoModel2.setCCarType(Dictschange(CarType, "车辆类型"));
+			busAllInfoModel2.setCSex(Dictschange(Sex,"性别"));
+		}
 		JSONObject json=EasyUiUtil.toJsonDataGrid(list,list.getCount());
 		this.writePlainText(json.toString());
+	}
+	/*
+	 * 把空的字符串变成""
+	 */
+	private String formatNull(String str){
+		if(StringUtil.isBlank(str)){
+			return "";
+		}
+		return str;
+	}
+	/**
+	 *@param 字典类型的代码
+	 *@return 字典类型的具体数据 
+	 */
+	@SuppressWarnings("unchecked")
+	private String Dictschange(String value,String type){
+		this.adminBiz.loadCrudMapper(DictModel.class);
+		DictModel dictModel=new DictModel();
+		dictModel.setCDictValue(value);	
+		dictModel.setCTypename(type);	
+			List list=this.adminBiz.getModel(dictModel);
+			if(list.size()==0){
+				return "未填写";
+			}else{
+				DictModel  dictModel1=(DictModel)list.get(0);
+				return dictModel1.getCDictText();
+			}		
 	}
 	/**
 	 *根据医院，或成员查询 
@@ -210,8 +286,13 @@ public class HospitalMessageAction extends BaseDrvAction implements ModelDriven<
 	public void do_print(){
 		this.hospitalBiz.loadCrudMapper(BusAllInfoModel.class);
 		BusAllInfoModel busAllInfoModelprint=(BusAllInfoModel)this.hospitalBiz.getModel(busAllInfoModel).get(0);
-		this.writePlainText(busAllInfoModelprint.toJson().toString());
-		
+		this.adminBiz.loadCrudMapper(DictModel.class);
+		DictModel dictModel=new DictModel();
+		dictModel.setCDictValue(busAllInfoModelprint.getCIdcardtype());
+		dictModel.setCTypename("证件类型");
+		DictModel dicModelprint=(DictModel)this.adminBiz.getModel(dictModel).get(0);
+		busAllInfoModelprint.setCIdcardtype(dicModelprint.getCDictText());
+		this.writePlainText(busAllInfoModelprint.toJson().toString());		
 	}
 	public void clear() {
 	}
