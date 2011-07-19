@@ -52,9 +52,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         $("#edit").dialog(
            {
   	 	    title:"查询区域地址:",
-  	 //	    width:380,
-  	 //	    height:200,
-		    fit:true,
+  	 	    width:400,
+  	 	    height:200,
+	//	    fit:true,
 	//		onClose:function(){ $('#test').datagrid('reload'); },
 	//    	modal:true,
 			onOpen:function(){$(this).kiaIframe(href);}} 
