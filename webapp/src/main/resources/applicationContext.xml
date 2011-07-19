@@ -133,6 +133,8 @@
   <property name="mapperInterface" value="com.ett.drv.mapper.booked.ICarOwnerChangeMapper"></property>
 </bean>
 
+
+
 <bean id="bookedDayLimitMapper" parent="baseMapper">
   <property name="mapperInterface" value="com.ett.drv.mapper.booked.IBookedDayLimitMapper"></property>
 </bean>
@@ -193,6 +195,10 @@
 
 <bean id="transactResourceMapper" parent="baseMapper">
   <property name="mapperInterface" value="com.ett.drv.mapper.self.ITransactResourceMapper"></property>
+</bean>
+
+<bean id="drvCodeMapper" parent="baseDrvMapper">
+<property name="mapperInterface" value="com.ett.drv.mapper.dict.IDrvCodeMapper"></property>
 </bean>
 
 <bean id="drivingLicenseMapper" parent="baseDrvMapper">
@@ -298,6 +304,7 @@
    <property name="deviceSnMapper" ref="deviceSnMapper"></property>
    <property name="hardwareMapper" ref="hardwareMapper"></property>
    <property name="carOwnerChangeMapper" ref="carOwnerChangeMapper"></property>
+   <property name="drvCodeMapper" ref="drvCodeMapper"></property>
    <property name="personChangeMapper" ref="personChangeMapper"></property>
    <property name="dictTypeMapper"     ref="dictTypeMapper"></property>
    <property name="schoolCarMapper" ref="schoolCarMapper"></property>

@@ -19,6 +19,7 @@ import com.ett.drv.mapper.booked.IOrderInfoMapper;
 import com.ett.drv.mapper.booked.IPersonChangeMapper;
 import com.ett.drv.mapper.booked.ISchoolCarMapper;
 import com.ett.drv.mapper.booked.IWeekRecordMapper;
+import com.ett.drv.mapper.dict.IDrvCodeMapper;
 import com.ett.drv.mapper.preinput.IStudentApplyInfoMapper;
 import com.ett.drv.mapper.self.IDeviceMapper;
 import com.ett.drv.mapper.self.IDeviceSnMapper;
@@ -50,6 +51,7 @@ import com.ett.drv.model.booked.BookedWeekRecordModel;
 import com.ett.drv.model.booked.CarOwnerChangeModel;
 import com.ett.drv.model.booked.PersonChangeModel;
 import com.ett.drv.model.booked.SchoolCarModel;
+import com.ett.drv.model.dict.DrvCodeModel;
 import com.ett.drv.model.preinput.StudentApplyInfoModel;
 import com.ett.drv.model.self.DeviceModel;
 import com.ett.drv.model.self.DeviceSnModel;
@@ -112,11 +114,14 @@ public abstract class BaseDrvBiz extends BaseCurdBiz {
     protected IStatisDriverMapper statisDriverMapper;
     protected IStatisKmMapper statisKmMapper;
     protected IStatisSchoolMapper statisSchoolMapper;
+    protected IDrvCodeMapper<DrvCodeModel> drvCodeMapper;
     
 
     protected IDrvInterface drvInterface;
     protected IVehicleInterface vehicleInterface;
     protected IVioInterface vioInterface;
+    
+    
 
 
 	public IBusAllInfoMapper<BusAllInfoModel> getBusAllInfoMapper() {
@@ -362,9 +367,18 @@ public abstract class BaseDrvBiz extends BaseCurdBiz {
 	public void setVioInterface(IVioInterface vioInterface) {
 		this.vioInterface = vioInterface;
 	}
+	
+	
 
 
-    //根据接口名从本地数据表TABLE_SELF_DEVICE_SN中获取基本请求对象
+    public void setDrvCodeMapper(IDrvCodeMapper<DrvCodeModel> drvCodeMapper) {
+		this.drvCodeMapper = drvCodeMapper;
+		this.addCrudMapper(DrvCodeModel.class, drvCodeMapper);
+	}
+
+
+
+	//根据接口名从本地数据表TABLE_SELF_DEVICE_SN中获取基本请求对象
     public void getLocalRequest(String jkName,BaseDrvRequest request){
     	BaseDrvRequest baseDrvRequest=new BaseDrvRequest() {			
 			@Override

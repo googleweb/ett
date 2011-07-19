@@ -27,6 +27,7 @@ import com.smartken.kia.core.util.StringUtil;
 import com.ett.drv.model.admin.DepartmentModel;
 import com.ett.drv.model.admin.DictModel;
 import com.ett.drv.model.admin.UserModel;
+import com.ett.drv.model.dict.DrvCodeModel;
 import com.ett.drv.model.preinput.*;
 
 public class ListAction extends BaseDrvAction implements ModelDriven<StudentApplyInfoModel>{
@@ -397,19 +398,15 @@ public class ListAction extends BaseDrvAction implements ModelDriven<StudentAppl
 		return "jsp";
 	}
 	
-//	public String writePreinput(StudentApplyInfoModel s)throws Exception{
-//		this.ensureStub();
-//	}
-////	public static String url="http://localhost:9999/trffweb/services/TmriOutAcess";
-////	private TmriOutAccessSoapBindingStub stub=null;
-////	private void ensureStub()throws MalformedURLException,AxisFault{
-////		if(stub==null){
-////			String webserviceURL=url;
-////			URL url=new URL(webserviceURL);
-////			Service service=new Service();
-////			stub=new TmriOutAcessSoapBindingStub(url,service);
-////		}
-//		
-//	}
+	public void search_area(){
+		DrvCodeModel qModel=new DrvCodeModel();
+		this.preBiz.loadCrudMapper(DrvCodeModel.class);
+		PageArrayList list=this.preBiz.getModel(qModel,this.getPager());
+		JSONObject jsonDG=EasyUiUtil.toJsonDataGrid(list,list.getCount());
+		this.writePlainText(jsonDG.toString());		
+		
+		
+	}
+
 
 }

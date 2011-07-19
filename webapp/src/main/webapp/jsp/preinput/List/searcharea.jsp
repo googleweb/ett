@@ -47,7 +47,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 		
 	]
-	] 
+	],
+	pagination:true,
+	url:"<%=basePath%>"+"preinput/List/search/area.action"
+	
 	
 	
 	} 
