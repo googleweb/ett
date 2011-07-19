@@ -136,6 +136,8 @@ public class WeekPbAction extends BaseDrvAction implements ModelDriven<BookedWee
 
 	public String to_assign() throws Exception{
 
+		String hidmode=ObjectUtil.formatString(this.getParameter("hidmode"),"");
+		this.setRequestAttribute("hidmode", hidmode);
 		return EResult.jsp.toString();
 	}
 	
@@ -310,6 +312,21 @@ public class WeekPbAction extends BaseDrvAction implements ModelDriven<BookedWee
 		List listLimits=this.bookedBiz.getModel(this.getPager());
 		JSONObject datagrid=EasyUiUtil.toJsonDataGrid(listLimits);
 		this.writePlainText(datagrid.toString());
+	}
+	
+	public String to_preview(){
+		if(bookedWeekRecordModel!=null){
+			
+			String depcode=this.getAuthUser().getDepartmentModel().getCDepcode();
+			Map<String,BookedLimitModel> maplimits=this.bookedWeekRecordModel.getLimits();
+			List<BookedLimitModel> limits=ObjectUtil.toList(maplimits);
+			bookedWeekRecordModel.updateFpContext(limits,depcode);
+		}else{
+			bookedWeekRecordModel=new BookedWeekRecordModel();
+			bookedWeekRecordModel.setIWeekNum(DateTimeUtil.getWeekOfYear(new Date()));
+			bookedWeekRecordModel.setYear(Calendar.getInstance().get(Calendar.YEAR));
+		}
+		return EResult.jsp.name();
 	}
 	
 }

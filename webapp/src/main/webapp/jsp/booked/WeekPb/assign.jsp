@@ -10,6 +10,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 String bookedWeekPbPath=basePath+"booked/WeekPb";
+boolean isVerify=request.getAttribute("hidmode").equals("verify")?true:false;
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -176,6 +177,11 @@ String bookedWeekPbPath=basePath+"booked/WeekPb";
 	  	    <td style="width: 200px">排班日期： </td>
 	  	    <td><input id="<%=txtSearchDate %>" name="createDate" />
 	  	    <button type="submit"><div class="kia-icon search"></div>查询</button>
+	  	    <a class="<%=EasyUiModel.LinkButton.CLASS %>"
+	  	      <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_PRINT) %>
+	  	      href="<%=bookedWeekPbPath %>/to/preview.action" target="_blank"
+	  	    >打印预览
+	  	    </a>
 	  	    </td>
 	  	  </tr>
 	  	</table>
@@ -185,10 +191,10 @@ String bookedWeekPbPath=basePath+"booked/WeekPb";
   	   <table  class="editTable" cellpadding="1" cellspacing="0" style="width:100%">
   	     <thead>
   	        <tr>
-  	          <td  style="width:180px" >星期</td>
-  	          <td style="width:100px">科目</td>
-  	          <td style="width:250px">分配总数</td>
-  	          <td style="width:150px">已分配/剩余</td>
+  	          <td  style="width:120px" >星期</td>
+  	          <td style="width:80px">科目</td>
+  	          <td style="width:200px">分配总数</td>
+  	          <td style="width:300px">已分配/剩余</td>
   	          <td style="width:500px">分配明细</td>
   	        </tr>
   	        
@@ -202,7 +208,7 @@ String bookedWeekPbPath=basePath+"booked/WeekPb";
   	           
   	           <s:iterator value="#{'一':1,'二':2,'三':3}" id="km" >
   	           <s:if test="#km.value eq 1">
-  	           <td rowspan="3">星期<s:property value="#dw.key"/> <br/>
+  	           <td rowspan="3">星期<s:property value="#dw.key"/> <br/>(
   	             <s:if test="#dw.value eq 1"><s:date name="monday" format="yyyy-MM-dd"/></s:if>
   	             <s:elseif test="#dw.value eq 2"><s:date name="tuesday" format="yyyy-MM-dd"/></s:elseif>
   	             <s:elseif test="#dw.value eq 3"><s:date name="wednesday" format="yyyy-MM-dd"/></s:elseif>
@@ -210,32 +216,34 @@ String bookedWeekPbPath=basePath+"booked/WeekPb";
   	             <s:elseif test="#dw.value eq 5"><s:date name="friday" format="yyyy-MM-dd"/></s:elseif>
   	             <s:elseif test="#dw.value eq 6"><s:date name="saturday" format="yyyy-MM-dd"/></s:elseif>
   	             <s:elseif test="#dw.value eq 7"><s:date name="sunday" format="yyyy-MM-dd"/></s:elseif>
+  	             )
   	           </td>
   	           </s:if>
   	           <td>科目<s:property value="#km.key"/></td>
-               <td>&nbsp;
+               <td style="vertical-align: top">&nbsp;
                <form action="<%=basePath %>booked/WeekPb/reload/assign.action" method="post">
                <input name="<s:property value="%{'IWeek'+#dw.value+'Km'+#km.value+'Num'}" />" 
                       value="<s:property value="#request['IWeek'+#dw.value+'Km'+#km.value+'Num']" />" class="<%=txtLimitNum %>" />
                   &nbsp;<button type="submit">修改</button>
                </form>
                </td>  
-               <td>&nbsp;
+               <td style="text-align: left;">&nbsp;
+                  <a class="<%=EasyUiModel.LinkButton.CLASS %> <%=aAddLimit %>"  <%=EasyUiModel.Layout.Properties.ICON_CLS(EasyUiModel.ICON_ADD) %>
+                     id="<s:property value="#dw.value"/>,<s:property value="#km.value"/>,<s:if test="#dw.value eq 1"><s:date name="monday" format="yyyy-MM-dd"/></s:if><s:elseif test="#dw.value eq 2"><s:date name="tuesday" format="yyyy-MM-dd"/></s:elseif><s:elseif test="#dw.value eq 3"><s:date name="wednesday" format="yyyy-MM-dd"/></s:elseif><s:elseif test="#dw.value eq 4"><s:date name="thursday" format="yyyy-MM-dd"/></s:elseif><s:elseif test="#dw.value eq 5"><s:date name="friday" format="yyyy-MM-dd"/></s:elseif><s:elseif test="#dw.value eq 6"><s:date name="saturday" format="yyyy-MM-dd"/></s:elseif><s:elseif test="#dw.value eq 7"><s:date name="sunday" format="yyyy-MM-dd"/></s:elseif>" >
+                                                        新增排班
+                   </a>
+                   &nbsp;&nbsp;
                   <s:if test="#request['IWeek'+#dw.value+'Km'+#km.value+'Num'] gte #request['week'+#dw.value+'Km'+#km.value+'Assgined'] ">
                      <s:property value="#request['week'+#dw.value+'Km'+#km.value+'Assgined']" />/
                      <s:property value="%{#request['IWeek'+#dw.value+'Km'+#km.value+'Num'] - #request['week'+#dw.value+'Km'+#km.value+'Assgined']}" />
                   </s:if>
                   <s:else>
                      <span style="color:red;">
-                     <s:property value="#request['week'+#dw.value+'Km'+#km.value+'Assgined']" /><br/>
-                     分配数已超过总数
+                     <s:property value="#request['week'+#dw.value+'Km'+#km.value+'Assgined']" />&nbsp; &nbsp;分配数已超过总数
                      </span>
                   </s:else>
-                  <p/>
-                   <a class="<%=EasyUiModel.LinkButton.CLASS %> <%=aAddLimit %>"  <%=EasyUiModel.Layout.Properties.ICON_CLS(EasyUiModel.ICON_ADD) %>
-                     id="<s:property value="#dw.value"/>,<s:property value="#km.value"/>,<s:if test="#dw.value eq 1"><s:date name="monday" format="yyyy-MM-dd"/></s:if><s:elseif test="#dw.value eq 2"><s:date name="tuesday" format="yyyy-MM-dd"/></s:elseif><s:elseif test="#dw.value eq 3"><s:date name="wednesday" format="yyyy-MM-dd"/></s:elseif><s:elseif test="#dw.value eq 4"><s:date name="thursday" format="yyyy-MM-dd"/></s:elseif><s:elseif test="#dw.value eq 5"><s:date name="friday" format="yyyy-MM-dd"/></s:elseif><s:elseif test="#dw.value eq 6"><s:date name="saturday" format="yyyy-MM-dd"/></s:elseif><s:elseif test="#dw.value eq 7"><s:date name="sunday" format="yyyy-MM-dd"/></s:elseif>" >
-                                                        新增排班
-                   </a>
+                  
+
                </td>
                <td>
                  <table class="editTable" style="width: 80%" cellspacing="0">
@@ -267,8 +275,13 @@ String bookedWeekPbPath=basePath+"booked/WeekPb";
   	          <td colspan="20">
   	            <a id="<%=aSaveWeek %>"
 	            onclick="$.get('<%=bookedWeekPbPath %>/do/saveWeekPb.action',function(str){str.messager();});">保存</a>
-	            <a id="<%=aBack %>"
-	            href="booked/WeekPb/to/index.action" >返回</a>
+	            <%
+	              if(!isVerify){
+	            %>
+	            <a id="<%=aBack %>" href="<%=bookedWeekPbPath %>/to/index.action"  >返回到周排班</a>
+	            <%}else{ %>
+	             <a id="<%=aBack %>" href="<%=bookedWeekPbPath %>/to/verify.action"  >返回到周排班审核</a>
+	            <%} %>
   	          </td>
   	        </tr>
   	     </tfoot>

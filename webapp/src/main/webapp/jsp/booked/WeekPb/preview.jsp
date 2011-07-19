@@ -38,6 +38,16 @@ String bookedExamPreasgin=basePath+"booked/ExamPreasign";
     %>
   
    <script type="text/javascript">
+   function printviewex()
+{
+
+var obj=document.getElementById("wb");
+obj.ExecWB(7,1);
+
+//alert('2');
+
+}
+   
      <%=JQueryModel.DOC_READY_START %>
      /**
      var depCode="<%=depModel.getCDepcode()%>";
@@ -56,6 +66,8 @@ String bookedExamPreasgin=basePath+"booked/ExamPreasign";
     	  $(this).html(newContext);
       });
       **/
+      
+      printviewex();
      <%=JQueryModel.DOC_READY_END%>
    </script>
 
@@ -63,33 +75,15 @@ String bookedExamPreasgin=basePath+"booked/ExamPreasign";
   </head>
   
   <body>
-  
-  
-   <div style=" width:100%;padding-left: 200px">
-<br>
-
-<form id="formDate" action="<%=bookedExamPreasgin %>/to/index.action" method="post">
-<span>
-查看日期&nbsp;&nbsp;&nbsp;&nbsp;<input id="inputDate"   name="inputDate"  
-  class="<%=EasyUiModel.DateBox.CLASS %>"
->
-  <a  class="<%=EasyUiModel.LinkButton.CLASS %>"
-    <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_SEARCH) %>
-    onclick="document.getElementById('formDate').submit();"
->查看</a>
-</span>
-
-
-</form>
-
-
-(输入想预约的日期，并点击查看按钮，查看相应的排班，然后根据排班分配给本驾校
-<br>
-的预约数量点击进入到预约界面，在预约界面输入身份证明号码，并点击预约，预约的结果可在1-2个工作日在预约反馈中查看)
-<br>
-<br>
-</div>
-<table id="Table1" class="editTable" cellspacing="0" cellpadding="4"  >
+  <object id="wb" height="0" width="0"  
+      classid="CLSID:8856F961-340A-11D0-A96B-00C04FD705A2" name="wb">
+     </object>
+  <a class="<%=EasyUiModel.LinkButton.CLASS %>"
+     <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_PRINT) %> 
+     onclick="printviewex()"
+   >打印</a>
+  <br/>
+<table id="Table1"  class="editTable" cellspacing="0" cellpadding="4"  >
 <tbody>
 <tr >
 <td rowspan="2">星期\科目</td>
