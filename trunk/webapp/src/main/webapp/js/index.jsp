@@ -30,25 +30,29 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path;
 
      String lStrTheme=request.getParameter("js")==null?"":request.getParameter("js").toString();
-  
+     
+     String runMode="run";
+     
      PrintWriter _PW= response.getWriter();
      StringBuffer lSbrScript=new StringBuffer("");
      String lStrPlugFloder=basePath+"/js";
      
      String lStrCommon=request.getParameter("common")==null?"":request.getParameter("common");
-     if(lStrTheme.length()<1)
+     if(runMode.equals("dev"))
      {
         //lSbrScript.append(getCssLinkTag(lStrPlugFloder+"/kia-icon.css"));
         lSbrScript.append(getScriptTag(lStrPlugFloder+"/core.js"));
         lSbrScript.append(getScriptTag(lStrPlugFloder+"/setting.js"));
         lSbrScript.append(getScriptTag(lStrPlugFloder+"/prototype.Array.js"));
         lSbrScript.append(getScriptTag(lStrPlugFloder+"/prototype.String.js"));
-        lSbrScript.append(getScriptTag(lStrPlugFloder+"/prototype.date.js"));
+        lSbrScript.append(getScriptTag(lStrPlugFloder+"/prototype.Date.js"));
         lSbrScript.append(getScriptTag(lStrPlugFloder+"/extends.jquery.js"));
         lSbrScript.append(getScriptTag(lStrPlugFloder+"/extends.easyui.js"));
         //lSbrScript.append(getScriptTag(lStrPlugFloder+"/common/util.js"));
         lSbrScript.append(getScriptTag(lStrPlugFloder+"/easyui.CrudDatagrid.js"));
       
+     }else if(runMode.equals("run")){
+    	 lSbrScript.append(getScriptTag(lStrPlugFloder+"/package.min.js")); 
      }     
      if(lStrCommon.length()>0){    	 
      }
