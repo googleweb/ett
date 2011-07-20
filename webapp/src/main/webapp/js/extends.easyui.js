@@ -1,26 +1,3 @@
-Class.forName("Kia.easyui.datebox");
-
-Kia.easyui.datebox={
-	onChangeHandler:function(nv,ov){
-	  if(ov.length>nv.length)return;
-	  var newValue="";
-	  var checkpoints=[0,4,7,10];
-      for(var i=1;i<checkpoints.length;i++){
-    	  var cp=checkpoints[i];
-    	  if(nv.length!=cp)continue;
-    	  var pattern=Kia.custom.setting.dbDateFormat.substr(0,cp);
-    	  if(Kia.util.isDateFormat(pattern,nv)){
-    		  if(cp!=10){newValue=nv+"-";} 
-    	  }else{
-    		  var precp=checkpoints[i-1];
-    		  newValue=nv.substr(0,precp+1);
-    	  }
-    	  $(this).datebox("setValue",newValue);
-    	  break;
-      } //alert(newValue);
-
-	}
-}
 
 $.extend($.fn.validatebox.defaults.rules, {
 

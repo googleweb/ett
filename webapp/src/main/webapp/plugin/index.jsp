@@ -47,7 +47,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	 .append(getScriptTag(lStrPlugFloder+"/jquery-easyui-datagridview/datagrid-detailview.js"))
       ;
      }else{
-    	 lSbrScript.append(getScriptTag(basePath+"/package.min.js"));
+    	 lSbrScript.append(getScriptTag(basePath+"/package.js"));
      }
      
      lStrPlugFloder=basePath+"/jquery-easyui-1.2.3"; 

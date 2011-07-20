@@ -2,7 +2,7 @@ core.js
 setting.js
 prototype.Array.js
 prototype.String.js
-prototype.date.js
+prototype.Date.js
 extends.jquery.js
 extends.easyui.js
 easyui.CrudDatagrid.js
