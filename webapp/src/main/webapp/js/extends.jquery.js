@@ -44,7 +44,7 @@ kiaLoadFields:function(){
  
 
  
- ,kiaCombogrid:function(){
+ ,kiaCombogrid:function(opts){
 	   
 		              var thisObj=$(this);
 		              var thisName=thisObj.attr('name');
@@ -52,9 +52,19 @@ kiaLoadFields:function(){
 		              var thisTextField=thisObj.attr("textField")||"Name";
 		              var thisUrl=thisObj.attr("url")||"";
 		              var thisRequired=thisObj.attr("required")||true; 
-		              var selecterWidth=thisObj.attr("selecterWidth")||60; 
+		              var selecterWidth=thisObj.attr("selecterWidth")||80; 
 		              var thisDisabled=thisObj.attr("disabled");
 		              var thisDataEval=thisObj.attr("dataEval")||"";
+		              
+		              if(opts){
+		                  thisValueField=opts["valueField"]||"Id";
+		                  thisTextField=opts["textField"]||"Name";
+		                  thisUrl=opts["url"]||"";
+		                  thisRequired=opts["required"]||true; 
+		                  selecterWidth=opts["selecterWidth"]||80; 
+		                  thisDisabled=opts["disabled"];
+		                  thisDataEval=opts["dataEval"]||"";
+		              }
 		              var thisWidth=thisObj.width();
 		              var thisHeight=thisObj.height();
 		              thisObj.width(thisWidth-selecterWidth);
