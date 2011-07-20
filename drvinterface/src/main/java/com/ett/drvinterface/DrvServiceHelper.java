@@ -19,8 +19,9 @@ public class DrvServiceHelper extends BaseServiceHelper implements
 	}
 
 	public BaseDrvResponse preinput(DrvtempMidRequest request) {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated methodthodthod stub
 		return this.write(request);
+		
 	}
 
 	public BaseDrvResponse photopreinput(DrvphotoRequest request) {
@@ -35,6 +36,7 @@ public class DrvServiceHelper extends BaseServiceHelper implements
 
 	public BaseDrvResponse healthBean(HealthBeanRequest request) {
 		// TODO Auto-generated method stub
+		//this.write(request)
 		return this.write(request);
 	}
 

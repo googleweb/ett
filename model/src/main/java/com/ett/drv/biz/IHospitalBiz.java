@@ -15,4 +15,5 @@ public interface IHospitalBiz extends IBaseCrudBiz{
 	public List getViewGroupByHospital(int type,Date qbeginDate, Date qendDate);
 	public ResultModel addHealthMessage(BusAllInfoModel busAllInfoModel);
 	public ResultModel addPhotoMessage(BusAllInfoModel busAllInfoModel,File file);
+	public byte[] getphotoByCIdcard(String sfzmmc,String sfzmhm);
 }
