@@ -59,7 +59,15 @@ $(document).ready(function(){
               		$("#CSex").combobox("setValue",result['CSex']);
               		$("#CCarType").combobox("setValue",result['CCarType']);
               		$("#Regdate").datebox("setValue",result['Regdate']);
-              		$("#CBirthday").datebox("setValue",result['CBirthday']);	
+              		$("#CBirthday").datebox("setValue",result['CBirthday']);
+              		
+              		//设置驾驶人照片
+              		 var CIdcard=result['CIdcard'];
+              		 var CIdcardtype=result['CIdcardtype'];
+              		 var url="<%=basePath%>physical/HospitalMessage/get/photo.action";
+              		 url+="?CIdcard="+CIdcard;
+              		 url+="&CIdcardtype="+CIdcardtype;
+		   			 $("#imgPerson").attr("src",url);
 	   			}
 			});
   			}else{
@@ -74,6 +82,21 @@ function addform(){
 	  	url:'<%=basePath%>'+"physical/HospitalMessage/do/add.action",
 	   	success:function(str){
 	  		str.messager();
+	  			$("#Id").val("");
+	  		 	$("#CIdcard").val("");
+	  		 	$("#CDabh").val("");
+	  		 	$("#CIdcardtype").val("");
+	  		 	$("#CXm").val("");
+	  		 	$("#CSex").val("");
+	  		 	$("#CBirthday").val("");
+	  		 	$("#CNation").val("");
+	  		 	$("#CCarType").val("");
+	  		 	$("#Regdate").val("");
+	  		 	$("#CRegarea").val("");
+	  		 	$("#CPostcode").val("");
+	  		 	$("#CPhone").val("");
+	  		 	$("#CRegareaCode").val("");
+	  		
 	  	}
 	});
 }
@@ -85,12 +108,11 @@ function cancel(){
 		var url="<%=basePath%>/physical/HospitalMessage/do/cancel.action?CIdcard="+CIdcard ;
 		var timstamp = (new Date()).valueOf();   
    		if (url.indexOf("?") >= 0) {   
-        	url = url + "&t=" + timstamp;   
+        	url= url+"&t="+timstamp;   
     	}else {   
-         url = url + "?t=" + timstamp;   
+         url=url+"?t="+timstamp;   
     	}   
-		$.ajax({
-			
+		$.ajax({	
             url:url,             
             success:function(str){
 	  			str.messager();
@@ -108,9 +130,9 @@ function printMessage(){
 		var url="<%=basePath%>/physical/HospitalMessage/do/print.action?Id="+Id ;
 		var timstamp = (new Date()).valueOf();  
 		if (url.indexOf("?") >= 0) {   
-        	url = url + "&t=" + timstamp;   
+        	url=url+"&t="+timstamp;   
     	}else {   
-         url = url + "?t=" + timstamp;   
+         url=url+"?t="+timstamp;   
     	}   
 		$.ajax({		
             url:url,  
@@ -272,11 +294,8 @@ function uploadPhotos(){
 									/>
 								</td>
 								<td rowspan="4" style="border-bottom: none">
-									<img id="imgPerson" src=""
+									<img id="imgPerson" 
 										style="border-width: 1px; border-style: Solid; height: 160px; width: 133px;" />
-									<br>
-									<br>
-									<a class="easyui-linkbutton"   <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_RELOAD) %> onclick="uploadPhotos()">上传</a>
 								</td>
 							</tr>
 							<tr>
@@ -313,6 +332,7 @@ function uploadPhotos(){
 									
 									<input type="text" name="CBirthday"  id="CBirthday"
 									 class="<%=EasyUiModel.DateBox.CLASS%>"
+									  <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
 									  <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("出生日期必须输入") %>     
 									/>
 								</td>
@@ -353,6 +373,7 @@ function uploadPhotos(){
 									
 									<input type="text" name="Regdate"  id="Regdate"
 									class="<%=EasyUiModel.DateBox.CLASS%>"
+									 <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
 									 <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("体检日期必须输入") %>  
 									/>
 								</td>

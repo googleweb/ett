@@ -70,8 +70,34 @@ $(document).ready(function(){
 });
 function addform(){
 	$("#addform").form("submit",{
-			url:"<%=basePath%>physical/HospitalMessage/do/add.action",
+			url:"<%=basePath%>physical/HospitalMessage/do/addimport.action",
 	   	success:function(str){
+				str.messager(str);
+				$("#Id").val("");
+	  		 	$("#CIdcard").val("");
+	  		 	$("#CDabh").val("");
+	  		 	$("#CIdcardtype").val("");
+	  		 	$("#CXm").val("");
+	  		 	$("#CSex").val("");
+	  		 	$("#CBirthday").val("");
+	  		 	$("#CNation").val("");
+	  		 	$("#CCarType").val("");
+	  		 	$("#Regdate").val("");
+	  		 	$("#CRegarea").val("");
+	  		 	$("#CPostcode").val("");
+	  		 	$("#CPhone").val("");
+	  		 	$("#CRegareaCode").val("");
+	  		 	
+	  		 	$("#CHeight").val("");
+	  		 	$("#CZsl").val("");
+	  		 	$("#CYsl").val("");
+	  		 	$("#CBsl").val("");
+	  		 	$("#CTl").val("");
+	  		 	$("#CSz").val("");
+	  		 	$("#CZxz").val("");
+	  		 	$("#CYxz").val("");
+	  		 	$("#CQgjb").val("");
+	  		 	$("#CHospital").val("");
 	  	}	
 	});
 }
@@ -232,7 +258,10 @@ function addform(){
 									<input type="text" 
 										   name="CBirthday"  
 										   id="CBirthday" 
-										   class="<%=EasyUiModel.DateBox.CLASS%>" />
+										   class="<%=EasyUiModel.DateBox.CLASS%>" 
+										    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+									 <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("体检日期必须输入") %>  
+										   />
 								</td>
 							</tr>
 							<tr>
@@ -272,7 +301,10 @@ function addform(){
 									<input type="text" 
 										   name="Regdate"  
 										   id="Regdate" 
-										   class="<%=EasyUiModel.DateBox.CLASS%>" />
+										   class="<%=EasyUiModel.DateBox.CLASS%>" 
+										    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+									 <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("体检日期必须输入") %>  
+										   />
 								</td>
 							</tr>
 							<tr>

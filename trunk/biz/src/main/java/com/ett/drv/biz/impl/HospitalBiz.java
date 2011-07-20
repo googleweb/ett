@@ -1,16 +1,20 @@
 package com.ett.drv.biz.impl;
 
 import java.io.File;
+import java.net.MalformedURLException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import biz.source_code.base64Coder.Base64Coder;
+
 import com.ett.drv.biz.IHospitalBiz;
 import com.ett.drv.model.admin.BusAllInfoModel;
-import com.ett.drvinterface.IDrvInterface;
 import com.ett.drvinterface.entity.BaseDrvResponse;
-import com.ett.drvinterface.entity.HealthBeanRequest;
 import com.ett.drvinterface.entity.DrvphotoRequest;
+import com.ett.drvinterface.entity.HealthBeanRequest;
+import com.ett.drvinterface.first.DrvServiceHelper;
 import com.smartken.kia.core.model.impl.ResultModel;
 
 public class HospitalBiz extends BaseDrvBiz implements IHospitalBiz {
@@ -84,5 +88,22 @@ public class HospitalBiz extends BaseDrvBiz implements IHospitalBiz {
 			resultModel.setTitle(response.getRetdesc());
 		}	
 		return resultModel;
+	}
+
+	public byte[] getphotoByCIdcard(String sfzmmc,String sfzmhm){
+		DrvServiceHelper drvServiceHelper=new DrvServiceHelper();
+		String  photoString="";
+		try {
+			String sn="11111";
+		    photoString=drvServiceHelper.getPersonPhoto(sfzmmc, sfzmhm, sn);
+		   
+		    
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}	
+	    byte[] bz=Base64Coder.decode(photoString);
+		return bz;
 	}
 }

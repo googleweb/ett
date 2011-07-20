@@ -69,10 +69,75 @@ public class HospitalMessageAction extends BaseDrvAction implements ModelDriven<
 	 */
 	public void do_add(){
 		
-		this.hospitalBiz.loadCrudMapper(BusAllInfoModel.class);
-		busAllInfoModel.setIState(1);
-		ResultModel resultModel=this.hospitalBiz.modifyOrAddModel(busAllInfoModel);
-		this.writePlainText(resultModel.toJson().toString());
+		//先根据把数据从数据库中取出
+			BusAllInfoModel busAllInfoModel2=new BusAllInfoModel();
+			try{
+				 this.hospitalBiz.loadCrudMapper(BusAllInfoModel.class);
+				 busAllInfoModel2=(BusAllInfoModel)this.hospitalBiz.getModel(busAllInfoModel).get(0);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+			busAllInfoModel2.setId(busAllInfoModel.getId());
+			busAllInfoModel2.setCIdcardtype(busAllInfoModel.getCIdcardtype());
+			busAllInfoModel2.setCIdcard(busAllInfoModel.getCIdcard());
+			busAllInfoModel2.setCDabh(busAllInfoModel.getCDabh());
+			busAllInfoModel2.setCXm(busAllInfoModel.getCXm());
+			busAllInfoModel2.setCSex(busAllInfoModel.getCSex());
+			busAllInfoModel2.setRegdate(busAllInfoModel.getRegdate());
+			busAllInfoModel2.setCBirthday(busAllInfoModel.getCBirthday());
+			busAllInfoModel2.setCNation(busAllInfoModel.getCNation());
+			busAllInfoModel2.setCCarType(busAllInfoModel.getCCarType());
+			busAllInfoModel2.setCRegareaCode(busAllInfoModel.getCRegareaCode());
+			busAllInfoModel2.setCRegarea(busAllInfoModel.getCRegarea());
+			busAllInfoModel2.setCPhone(busAllInfoModel.getCPhone());
+			busAllInfoModel2.setCPostcode(busAllInfoModel.getCPostcode());
+			busAllInfoModel2.setIState(1);
+			this.hospitalBiz.loadCrudMapper(BusAllInfoModel.class);
+			ResultModel resultModel=this.hospitalBiz.modifyOrAddModel(busAllInfoModel2);
+			this.writePlainText(resultModel.toJson().toString());
+		}
+	/**
+	 * 增加体检受理
+	 */
+	public void do_addimport(){
+		
+		//先根据把数据从数据库中取出
+			BusAllInfoModel busAllInfoModel2=new BusAllInfoModel();
+			try{
+				 this.hospitalBiz.loadCrudMapper(BusAllInfoModel.class);
+				 busAllInfoModel2=(BusAllInfoModel)this.hospitalBiz.getModel(busAllInfoModel).get(0);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+			busAllInfoModel2.setId(busAllInfoModel.getId());
+			busAllInfoModel2.setCIdcardtype(busAllInfoModel.getCIdcardtype());
+			busAllInfoModel2.setCIdcard(busAllInfoModel.getCIdcard());
+			busAllInfoModel2.setCDabh(busAllInfoModel.getCDabh());
+			busAllInfoModel2.setCXm(busAllInfoModel.getCXm());
+			busAllInfoModel2.setCSex(busAllInfoModel.getCSex());
+			busAllInfoModel2.setRegdate(busAllInfoModel.getRegdate());
+			busAllInfoModel2.setCBirthday(busAllInfoModel.getCBirthday());
+			busAllInfoModel2.setCNation(busAllInfoModel.getCNation());
+			busAllInfoModel2.setCCarType(busAllInfoModel.getCCarType());
+			busAllInfoModel2.setCRegareaCode(busAllInfoModel.getCRegareaCode());
+			busAllInfoModel2.setCRegarea(busAllInfoModel.getCRegarea());
+			busAllInfoModel2.setCPhone(busAllInfoModel.getCPhone());
+			busAllInfoModel2.setCPostcode(busAllInfoModel.getCPostcode());
+			
+			busAllInfoModel2.setCHeight(busAllInfoModel.getCHeight());
+			busAllInfoModel2.setCZsl(busAllInfoModel.getCZsl());
+			busAllInfoModel2.setCYsl(busAllInfoModel.getCYsl());
+			busAllInfoModel2.setCBsl(busAllInfoModel.getCBsl());
+			busAllInfoModel2.setCTl(busAllInfoModel.getCTl());
+			busAllInfoModel2.setCSz(busAllInfoModel.getCSz());
+			busAllInfoModel2.setCZxz(busAllInfoModel.getCZxz());
+			busAllInfoModel2.setCYxz(busAllInfoModel.getCYxz());
+			busAllInfoModel2.setCQgjb(busAllInfoModel.getCQgjb());
+			busAllInfoModel2.setCHospital(busAllInfoModel.getCHospital());
+			
+			
+			ResultModel resultModel=this.hospitalBiz.modifyOrAddModel(busAllInfoModel2);
+			this.writePlainText(resultModel.toJson().toString());
 	}
 	/**
 	 * 根据证件号等查询到受理页面
@@ -293,6 +358,15 @@ public class HospitalMessageAction extends BaseDrvAction implements ModelDriven<
 		DictModel dicModelprint=(DictModel)this.adminBiz.getModel(dictModel).get(0);
 		busAllInfoModelprint.setCIdcardtype(dicModelprint.getCDictText());
 		this.writePlainText(busAllInfoModelprint.toJson().toString());		
+	}
+	/**
+	 * 根据身份证号码调用biz取出图片
+	 * */
+	public void get_photo(){
+		String sfzmmc=this.getParameter("CIdcard");
+		String sfzmhm=this.getParameter("CIdcardtype");
+		byte[] bt=this.hospitalBiz.getphotoByCIdcard(sfzmmc, sfzmhm);
+		this.writeStream(bt);
 	}
 	public void clear() {
 	}

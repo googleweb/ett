@@ -114,6 +114,33 @@ public class BaseServiceHelper implements IBaseDrvInterface {
 		}
 		return response;
 	}
+	
+	/**
+	 * @param request 请求实体bean
+	 * @return 返回的xml字符串
+	 */
+	public String writeReturnString(BaseDrvRequest request)
+	{
+		String result="";
+		try{
+			this.ensureStub();
+			logger.debug("请求的service的url为:"+this.url);
+			logger.debug("请求的service的timeout为:"+this.timeout);
+			logger.debug("请求的service的xtlb为:"+request.getXtlb());
+			logger.debug("请求的service的jkxlh为:"+request.getJkxlh());
+			logger.debug("请求的service的jkid为:"+request.getJkid());
+			logger.debug("请求的request对象toXml为:"+request.toXml());
+			result=stub.writeObject(request.getXtlb(),request.getJkxlh(),request.getJkid(),request.toXml());
+			
+			
+			}
+			catch(Exception ex)
+			{
+				logger.info(ex.toString());
+				throw new NetworkException("网络异常，无法进行业务办理！");
+			}
+			return result;
+	}
 
 	public BaseDrvResponse write(BaseDrvRequest request) {
 		BaseDrvResponse response=new BaseDrvResponse();
