@@ -40,17 +40,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       lStrPlugFloder=basePath+"/jquery";
       lSbrScript.append(getScriptTag(lStrPlugFloder+"/jquery-1.6.1.min.js"));
          
-      lStrPlugFloder=basePath+"/jquery-easyui-1.2.3"; 
-      lSbrScript.append(getScriptTag(lStrPlugFloder+"/jquery.easyui.min.js"))
-         .append(getScriptTag(lStrPlugFloder+"/jquery-easyui-datagridview/datagrid-defaultview.js"))
-         .append(getScriptTag(lStrPlugFloder+"/jquery-easyui-datagridview/datagrid-groupview.js"))
-    	 .append(getScriptTag(lStrPlugFloder+"/jquery-easyui-datagridview/datagrid-detailview.js"))
+      lStrPlugFloder=basePath+"/jquery-easyui-1.2.4"; 
+      lSbrScript.append(getScriptTag(lStrPlugFloder+"/jquery.easyui.min.js"));
+      
+      lSbrScript.append(getScriptTag("/jquery-easyui-datagridview/datagrid-defaultview.js"))
+         .append(getScriptTag("/jquery-easyui-datagridview/datagrid-groupview.js"))
+    	 .append(getScriptTag("/jquery-easyui-datagridview/datagrid-detailview.js"))
       ;
      }else{
     	 lSbrScript.append(getScriptTag(basePath+"/package.js"));
      }
      
-     lStrPlugFloder=basePath+"/jquery-easyui-1.2.3"; 
+     lStrPlugFloder=basePath+"/jquery-easyui-1.2.4"; 
      lSbrScript
 	 .append(getCssLinkTag(lStrPlugFloder+"/themes/default/easyui.css"))
 	 .append(getCssLinkTag(lStrPlugFloder+"/themes/icon.css"))
