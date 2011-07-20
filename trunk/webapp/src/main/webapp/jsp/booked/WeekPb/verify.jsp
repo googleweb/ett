@@ -30,6 +30,21 @@ String bookedWeekPbPath=basePath+"booked/WeekPb";
     <jsp:include page="/js/index.jsp"></jsp:include>
     
     <script type="text/javascript">
+    
+        function operaFormatter(value,rowData,rowIndex){
+    	var weekNum=rowData['IWeekNum'];
+    	var href="<%=bookedWeekPbPath%>/to/assign.action?weekNum="+weekNum;
+    	var a="<a class='kia-icon edit' href='"+href+"' target='_blank' ></a>";
+    	return a;
+    }
+    
+    function checkedFormatter(value,rowData,rowIndex){
+    	if(value==1) 
+    	{return '已审核';} 
+    	else { return '未审核'; }
+    }
+    
+    
     <%= JQueryModel.DOC_READY_START %>
            var innerHeight=$("#innerDiv").outerHeight(false);
 	       var innerWidth=$("#innerDiv").width();
@@ -39,7 +54,11 @@ String bookedWeekPbPath=basePath+"booked/WeekPb";
         weekPbDG.appendAttrs(DataGrid.Properties.TITLE,StringUtil.quota("周排班列表"))
         .appendAttrs(DataGrid.Properties.URL,"booked/WeekPb/datagrid/weekRecords.action",true)
         .appendAttrs(EasyUiModel.DataGrid.Properties.ID_FIELD,"Id",true)
-        .appendAttrs(EasyUiModel.DataGrid.Events.ON_DBL_CLICK_ROW,new JsFunctionModel(new String[]{"index,data"}).appendContext("document.location.href=\"booked/WeekPb/to/assign.action?hidmode=verify&weekNum=\"+data.IWeekNum;"));
+        .appendAttrs(EasyUiModel.DataGrid.Events.ON_DBL_CLICK_ROW,new JsFunctionModel(new String[]{"index,data"}).appendContext("document.location.href=\"booked/WeekPb/to/assign.action?hidmode=verify&weekNum=\"+data.IWeekNum;"))
+        .appendAttrs(EasyUiModel.DataGrid.Properties.VIEW,EasyUiModel.VIEW_GROUP)
+        .appendAttrs(EasyUiModel.DataGrid.Properties.GROUP_FIELD,BookedWeekRecordModel.F.IChecked,true)
+        ;
+        
         List weekPbColumns=new JsListModel();
         List weekPbR1=new JsListModel();
         JsMapModel<String,Object> weekPbR1C1=new JsMapModel<String,Object>();
@@ -57,17 +76,25 @@ String bookedWeekPbPath=basePath+"booked/WeekPb";
         JsMapModel<String,Object> weekPbR1C4=new JsMapModel<String,Object>();
         weekPbR1C4.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"提交人/审核人",true);
         weekPbR1C4.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,BookedWeekRecordModel.F.CCheckOperator,true);
-        weekPbR1C4.put(EasyUiModel.DataGrid.ColumnProperties.WIDTH,100);
+        weekPbR1C4.put(EasyUiModel.DataGrid.ColumnProperties.WIDTH,180);
         JsMapModel<String,Object> weekPbR1C5=new JsMapModel<String,Object>();
         weekPbR1C5.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"审核结果",true);
         weekPbR1C5.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,BookedWeekRecordModel.F.IChecked,true);
-        weekPbR1C5.put(EasyUiModel.DataGrid.ColumnProperties.WIDTH,80);              
+        weekPbR1C5.put(EasyUiModel.DataGrid.ColumnProperties.WIDTH,80);
+        weekPbR1C5.put(EasyUiModel.DataGrid.ColumnProperties.FORMATTER,"checkedFormatter");
                  
+        JsMapModel<String,Object> weekPbR1C6=new JsMapModel<String,Object>();
+        weekPbR1C6.put(EasyUiModel.DataGrid.ColumnProperties.WIDTH,80);
+        weekPbR1C6.put(EasyUiModel.DataGrid.ColumnProperties.TITLE,"操作",true);
+        weekPbR1C6.put(EasyUiModel.DataGrid.ColumnProperties.FIELD,"xxx",true);
+        weekPbR1C6.put(EasyUiModel.DataGrid.ColumnProperties.FORMATTER,"operaFormatter");
+        
         weekPbR1.add(weekPbR1C1);
         weekPbR1.add(weekPbR1C2);
         weekPbR1.add(weekPbR1C3);
         weekPbR1.add(weekPbR1C4);
         weekPbR1.add(weekPbR1C5);
+        weekPbR1.add(weekPbR1C6);
         weekPbColumns.add(weekPbR1);
         weekPbDG.appendAttrs(EasyUiModel.DataGrid.Properties.COLUMNS,weekPbColumns);
         JsListModel weekPbToolbars=new JsListModel();
@@ -83,8 +110,8 @@ String bookedWeekPbPath=basePath+"booked/WeekPb";
                         		    ,EasyUiModel.DataGrid.Methods.GET_SELECTIONS
                         		    )
                            .appendContext("$.each(rows,function(index,row){ ids +=','+row['Id'];});")
-                           .appendContext("$.getJSON(\"{0}\",'{'ids:ids'}',function(jsonRe)'{'",bookedWeekPbPath+"/do/verifyWeekPb.action")
-                           .appendContext(new EasyUiMessager().setTitle("jsonRe['title']").setMsg("jsonRe['msg']").alert())
+                           .appendContext("$.get(\"{0}\",'{'ids:ids'}',function(str)'{'",bookedWeekPbPath+"/do/verifyWeekPb.action")
+                           .appendContext("str.messager();{0}.datagrid(\"reload\");",JQueryModel.id(tableWeekPb))
                            .appendContext("});")
         );
         weekPbToolbars.add(tbVerify);

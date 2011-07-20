@@ -52,7 +52,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         lSbrScript.append(getScriptTag(lStrPlugFloder+"/easyui.CrudDatagrid.js"));
       
      }else if(runMode.equals("run")){
-    	 lSbrScript.append(getScriptTag(lStrPlugFloder+"/package.min.js")); 
+    	 lSbrScript.append(getScriptTag(lStrPlugFloder+"/package.js")); 
      }     
      if(lStrCommon.length()>0){    	 
      }
