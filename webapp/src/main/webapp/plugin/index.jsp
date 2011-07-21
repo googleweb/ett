@@ -30,7 +30,7 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/plugin";
 
      String lStrPlugins=request.getParameter("plugin")==null?"":request.getParameter("plugin").toString();
-     String mode="run";
+     String mode="dev";
      String[] lArrPlugins=URLDecoder.decode(lStrPlugins).split(",");
      PrintWriter _PW= response.getWriter();
      StringBuffer lSbrScript=new StringBuffer("");
@@ -38,14 +38,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
      if(mode.equals("dev")){
       lStrPlugFloder=basePath+"/jquery";
-      lSbrScript.append(getScriptTag(lStrPlugFloder+"/jquery-1.6.1.min.js"));
+      lSbrScript.append(getScriptTag(lStrPlugFloder+"/jquery-1.6.2.min.js"));
+      
+      lStrPlugFloder=basePath+"/jquery-pageload";
+      lSbrScript.append(getScriptTag(lStrPlugFloder+"/jquery.pageload.js"));
          
       lStrPlugFloder=basePath+"/jquery-easyui-1.2.4"; 
       lSbrScript.append(getScriptTag(lStrPlugFloder+"/jquery.easyui.min.js"));
       
-      lSbrScript.append(getScriptTag("/jquery-easyui-datagridview/datagrid-defaultview.js"))
-         .append(getScriptTag("/jquery-easyui-datagridview/datagrid-groupview.js"))
-    	 .append(getScriptTag("/jquery-easyui-datagridview/datagrid-detailview.js"))
+      lSbrScript.append(getScriptTag(basePath+"/jquery-easyui-datagridview/datagrid-defaultview.js"))
+         .append(getScriptTag(basePath+"/jquery-easyui-datagridview/datagrid-groupview.js"))
+    	 .append(getScriptTag(basePath+"/jquery-easyui-datagridview/datagrid-detailview.js"))
       ;
      }else{
     	 lSbrScript.append(getScriptTag(basePath+"/package.js"));

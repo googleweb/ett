@@ -31,7 +31,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
      String lStrTheme=request.getParameter("js")==null?"":request.getParameter("js").toString();
      
-     String runMode="run";
+     String runMode="dev";
      
      PrintWriter _PW= response.getWriter();
      StringBuffer lSbrScript=new StringBuffer("");
@@ -50,6 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         lSbrScript.append(getScriptTag(lStrPlugFloder+"/extends.easyui.js"));
         //lSbrScript.append(getScriptTag(lStrPlugFloder+"/common/util.js"));
         lSbrScript.append(getScriptTag(lStrPlugFloder+"/easyui.CrudDatagrid.js"));
+        
       
      }else if(runMode.equals("run")){
     	 lSbrScript.append(getScriptTag(lStrPlugFloder+"/package.js")); 
