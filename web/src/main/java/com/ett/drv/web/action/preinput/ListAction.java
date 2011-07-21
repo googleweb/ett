@@ -27,6 +27,7 @@ import com.smartken.kia.core.util.StringUtil;
 import com.ett.drv.model.admin.DepartmentModel;
 import com.ett.drv.model.admin.DictModel;
 import com.ett.drv.model.admin.UserModel;
+import com.ett.drv.model.dict.AreaModel;
 import com.ett.drv.model.dict.DrvCodeModel;
 import com.ett.drv.model.preinput.*;
 
@@ -216,13 +217,20 @@ public class ListAction extends BaseDrvAction implements ModelDriven<StudentAppl
 	}
 	
 	public void combobox_djzs(){
-		List l=new ArrayList<DictModel>();
-		JSONArray jarr=new JSONArray();
+		List<DictModel> dictModels=new ArrayList<DictModel>();
+		JSONObject datagrid=new JSONObject();
+		List areaModels=new ArrayList();
 		try{
-			l=this.adminBiz.listdjzs();
-			jarr=ObjectUtil.toJsonArray(l);
+			dictModels=this.adminBiz.listdjzs();
+			for(DictModel dict:dictModels){
+				AreaModel areaModel=new AreaModel();
+				areaModel.setDmz(dict.getCDictValue());
+				areaModel.setArea(dict.getCDictText());
+				areaModels.add(areaModel);
+			}
+			datagrid=EasyUiUtil.toJsonDataGrid(areaModels);
 		}catch(Exception e){e.printStackTrace();}
-		this.writePlainText(jarr.toString());
+		this.writePlainText(datagrid.toString());
 	}
 	
 	public void combobox_cartype(){
@@ -399,10 +407,20 @@ public class ListAction extends BaseDrvAction implements ModelDriven<StudentAppl
 	}
 	
 	public void search_area(){
-		DrvCodeModel qModel=new DrvCodeModel();
+		String Area=this.getParameter("qArea");
+		//String Area="长沙";
+		if(StringUtil.isBlank(Area)){
+		Area="@";	
+		}else{
+			Area=Area.trim();
+		}
+		AreaModel qModel=new AreaModel();
+		//qModel.setDmmc1("%"+Area+"%");
 		this.preBiz.loadCrudMapper(DrvCodeModel.class);
-		PageArrayList list=this.preBiz.getModel(qModel,this.getPager());
-		JSONObject jsonDG=EasyUiUtil.toJsonDataGrid(list,list.getCount());
+		//PageArrayList list=this.preBiz.getModel(qModel,this.getPager());
+		List list=this.preBiz.getArea("%"+Area+"%");
+		PageArrayList pageList=new PageArrayList(list, this.getPager());
+		JSONObject jsonDG=EasyUiUtil.toJsonDataGrid(list,pageList.getCount());
 		this.writePlainText(jsonDG.toString());		
 		
 		

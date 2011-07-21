@@ -2,9 +2,11 @@ package com.ett.drv.biz.impl;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 
 import com.ett.drv.biz.IPreBiz;
+import com.ett.drv.model.dict.AreaModel;
 import com.ett.drv.model.preinput.StudentApplyInfoModel;
 import com.ett.drvinterface.entity.BaseDrvResponse;
 import com.smartken.kia.core.model.impl.ResultModel;
@@ -69,6 +71,20 @@ public class PreBiz extends BaseDrvBiz implements IPreBiz{
 		}	
 		return reModel;
 	}
+	
+	public List<AreaModel> getArea(String a){
+		List<AreaModel> list=null;
+		try {
+			list = this.drvCodeMapper.selectArea(a);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+		
+	}
+	
+	 
 
 	
 

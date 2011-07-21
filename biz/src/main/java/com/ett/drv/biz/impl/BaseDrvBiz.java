@@ -371,7 +371,7 @@ public abstract class BaseDrvBiz extends BaseCurdBiz {
 	
 
 
-    public void setDrvCodeMapper(IDrvCodeMapper<DrvCodeModel> drvCodeMapper) {
+	public void setDrvCodeMapper(IDrvCodeMapper<DrvCodeModel> drvCodeMapper) {
 		this.drvCodeMapper = drvCodeMapper;
 		this.addCrudMapper(DrvCodeModel.class, drvCodeMapper);
 	}
