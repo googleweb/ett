@@ -10,7 +10,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 String bookedWeekPbPath=basePath+"booked/WeekPb";
-boolean isVerify=request.getAttribute("hidmode").equals("verify")?true:false;
+boolean isVerify="verify".equals(request.getAttribute("hidmode"))?true:false;
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -275,6 +275,7 @@ boolean isVerify=request.getAttribute("hidmode").equals("verify")?true:false;
   	          <td colspan="20">
   	            <a id="<%=aSaveWeek %>"
 	            onclick="$.get('<%=bookedWeekPbPath %>/do/saveWeekPb.action',function(str){str.messager();});">保存</a>
+	            <!--  
 	            <%
 	              if(!isVerify){
 	            %>
@@ -282,6 +283,7 @@ boolean isVerify=request.getAttribute("hidmode").equals("verify")?true:false;
 	            <%}else{ %>
 	             <a id="<%=aBack %>" href="<%=bookedWeekPbPath %>/to/verify.action"  >返回到周排班审核</a>
 	            <%} %>
+	            -->
   	          </td>
   	        </tr>
   	     </tfoot>

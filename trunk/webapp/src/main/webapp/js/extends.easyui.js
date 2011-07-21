@@ -108,9 +108,16 @@ $.extend($.fn.validatebox.defaults.rules, {
  
  $.fn.window.defaults.shadow=false;
 
- $.fn.form.defaults.success=function(str){str.messager(null);};
- $.fn.form.defaults.onSubmit=function(){ return $(this).form("validate"); };
+ $.fn.form.defaults.success=function(str){$.messager.progress("close");str.messager(null);};
+ $.fn.form.defaults.onSubmit=function(){ 
+	                                    var pass= $(this).form("validate");
+	                                    if(pass){
+	                                    	$.messager.progress({msg:"请求处理中，请稍候",text:""});
+	                                    }
+	                                    return pass;
+                                        };
  $.fn.form.defaults.onLoadError=function(){
+	 $.messager.progress("close");
 	 $.messager.alert("Error","Can't access to the remote site.","error");
  };
  
@@ -122,3 +129,11 @@ $.extend($.fn.validatebox.defaults.rules, {
  $.fn.datagrid.defaults.rownumbers=true;
  $.fn.datagrid.defaults.pageSize=20;
  $.fn.datagrid.defaults.groupFormatter=function(value,rows){return value + ' - 共' + rows.length + ' 条';};
+ 
+ 
+ 
+ $(document).ready(function(){
+	 //$.messager.progress({msg:"页面加载中，请稍候",text:""});
+	// $.messager.progress("close");
+ });   //$(document).ready(function(){
+ 

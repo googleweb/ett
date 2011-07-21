@@ -3,4 +3,5 @@ jquery-easyui-1.2.4\jquery.easyui.min.js
 jquery-easyui-datagridview\datagrid-defaultview.js
 jquery-easyui-datagridview\datagrid-groupview.js
 jquery-easyui-datagridview\datagrid-detailview.js
+jquery-easyui-etree\jquery.etree.js
 jquery-easyui-1.2.4\locale\easyui-lang-zh_CN.js

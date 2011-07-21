@@ -281,5 +281,3 @@ function dateTimeboxFormatter(value,row,index){
 
 
 
-
-
