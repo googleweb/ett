@@ -19,6 +19,7 @@ public class DrvphotoRequest extends BaseDrvRequest{
 	}
 
 	public void setZp(File zp) {
+		this.zp=this.encodeBase64(zp);
 	}
 	
 	public void setZp(byte[] bytes){

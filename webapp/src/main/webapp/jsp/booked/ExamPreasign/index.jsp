@@ -32,15 +32,12 @@ String bookedExamPreasgin=basePath+"booked/ExamPreasign";
     </jsp:include>
     <jsp:include page="/css/index.jsp"></jsp:include>
     <jsp:include page="/js/index.jsp"></jsp:include>
-    <%
-      UserModel user=(UserModel)session.getAttribute(AuthUserRule.AUTH_USER);
-      DepartmentModel depModel=user.getDepartmentModel();
-    %>
+
   
    <script type="text/javascript">
      <%=JQueryModel.DOC_READY_START %>
      /**
-     var depCode="<%=depModel.getCDepcode()%>";
+     
       $(".spanFp").each(function(index){
     	  var newContext="";
     	  var context=$(this).html();

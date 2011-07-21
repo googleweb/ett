@@ -108,8 +108,8 @@ String bookedWeekPbPath=basePath+"booked/WeekPb";
     
   </head>
   
-  <body>
-    <div style="height: 8%">
+  <body class="<%=EasyUiModel.Layout.CLASS %>">
+    <div  <%=EasyUiModel.Layout.Properties.REGION(EasyUiModel.REGION_NORTH) %>  style="overflow: hidden;">
      <form action="<%=bookedWeekPbPath %>/to/assign.action" method="post" id="formWeekPb">
       <table class="editTable" cellspacing="0" style="width: 100%">
            <tr>
@@ -127,7 +127,7 @@ String bookedWeekPbPath=basePath+"booked/WeekPb";
       </table>
       </form>
     </div>
-  	<div style="height: 90%">
+  	<div <%=EasyUiModel.Layout.Properties.REGION(EasyUiModel.REGION_CENTER) %>>
 	<table id="<%=tableWeekPb %>"></table>
 	</div>
   </body>
