@@ -46,17 +46,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <script type="text/javascript">
   function searcharea(){
-    
-    $.messager.prompt("查询行政规划","请输入",function(val){
-       if(val.length<1)return;
-       var url="<%=basePath%>preinput/List/search/area.action";
-       $.post(url,{qArea:val},function(str){
-         var gridData=Kia.util.strToJson(str);
-         var grid= $("#inputCDjzsxzqh").combogrid("grid");
-         grid.datagrid("loadData",gridData);
-       })
-    })
-    
+  
+  var href='<%=basePath%>'+"preinput/List/to/searcharea.action";
+       //alert(href);
+        $("#edit").dialog(
+           {
+  	 	    title:"查询区域地址:",
+  	 	    width:400,
+  	 	    height:300,
+	//	    fit:true,
+	//		onClose:function(){ $('#test').datagrid('reload'); },
+	//    	modal:true,
+			onOpen:function(){$(this).kiaIframe(href);}} 
+		);//   end:$("#divEdit").dialog
+		return false;
   }
   
   function uploadphoto(){
@@ -111,24 +114,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  			 
 	     
    }
-   
-   <%=JQueryModel.DOC_READY_START%>
-    
-     $("#inputCDjzsxzqh").combogrid({
-    // pagination:true
-         panelWidth:550 
-         ,idField:'Dmz'  
-         ,textField:'Area'  
-         ,url:"<%=basePath%>preinput/List/combobox/djzs.action"
-         ,columns:[[  
-        {field:'Dmz',title:'Dmz',width:100},  
-        {field:'Province',title:'Province',width:150},  
-        {field:'District',title:'District',width:120},  
-        {field:'Area',title:'Area',width:150}  
-        ]]
-    
-     });
-   <%=JQueryModel.DOC_READY_END %>
   </script>
   </head>
   
@@ -207,10 +192,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </td>
 <td>登记住所</td>
 <td>
-<input id="inputCDjzsxzqh" name="CDjzsxzqh" type="text"  value="${CDjzsxzqh}" />
-<a onclick="searcharea()">查询</a>
-</td>
-<td colspan="4"><input type="text" style="width: 80%" /></td>
+<input name="CDjzsxzqh" type="text"  value="${CDjzsxzqh}" 
+                     class="<%=EasyUiModel.ComboBox.CLASS %>"
+				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+				    <%=EasyUiModel.ComboBox.Properties.URL(basePath+"preinput/List/combobox/djzs.action") %>
+				    <%=EasyUiModel.ComboBox.Properties.EDITABLE(false)%>
+				    <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
+				    <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %>
+  />
+<td colspan="4"><a onclick="searcharea()">查询</a><input type="text" style="width: 80%" /></td>
 </tr>
 <tr>
 <td>联系住所</td>

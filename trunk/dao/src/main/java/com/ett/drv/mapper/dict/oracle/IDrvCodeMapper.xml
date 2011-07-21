@@ -212,4 +212,17 @@ ZT=#{model.Zt,jdbcType=CHAR,javaType=String},
 	<include refid="orderby"/>
 </select>
 
+
+<resultMap type="com.ett.drv.model.dict.AreaModel" id="area">  
+<result column="DMZ"  property="Dmz" jdbcType="VARCHAR" javaType="String"/>
+<result column="PROVINCE"  property="Province" jdbcType="VARCHAR" javaType="String"/>
+<result column="DISTRICT"  property="District" jdbcType="VARCHAR" javaType="String"/>
+<result column="AREA"  property="Area" jdbcType="VARCHAR" javaType="String"/>
+</resultMap>  
+
+ 
+<select id="selectArea" parameterType="String" resultType="ArrayList" resultMap="area">
+    select distinct b.dmz as DMZ,a.dmmc1 as PROVINCE,c.dmmc1 as DISTRICT,b.dmmc1 as AREA from <include refid="table" /> a,<include refid="table" /> c,<include refid="table" /> b where a.dmz=substr(b.dmz,1,2)||'0000' and c.dmz=substr(b.dmz,1,4)||'00' and length(b.dmz)=6 and b.dmmc1 like #{area}
+</select>
+
 </mapper>

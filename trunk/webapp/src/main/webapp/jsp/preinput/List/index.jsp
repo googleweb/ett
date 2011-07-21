@@ -46,9 +46,10 @@ function showdialog(id){
 
 function operaFormatter(value,rowData,rowIndex){
 	var id=rowData["Id"];
-    
-    return "<a class='kia-icon edit' onclick=\"showdialog("+id+")\" ></a>";
-    
+	var href="<%=basePath%>preinput/List/to/detail.action?id="+id;
+    var a="<a class='kia-icon edit' href='"+href+"' target='_blank' ></a>"
+    //return "<a class='kia-icon edit' onclick=\"showdialog("+id+")\" ></a>";
+    return a;
 }
 
 

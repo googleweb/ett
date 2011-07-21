@@ -33,6 +33,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <jsp:include page="/js/index.jsp"></jsp:include>
   </head>
   <script type="text/javascript">
+  function searchaddress(){
+     var Area=$("#Area").val()||"";
+     if(Area==""){
+       $.messager.alert("","地址不能为空","error");
+     }else{
+       $("#test").datagrid("reload",{Area:Area});
+     }
+     
+}
+  
+  
   $(document).ready(function(){ 
   
 	$("#test").datagrid({fit:true,
@@ -40,10 +51,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	columns:[ 
 	[ 
-	{field:"",title:"Id",width:100},
-	{field:"",title:"省份",width:100},
-	{field:"",title:"行政区划",width:100},
-	{field:"",title:"地点名称",width:100}
+	{field:"Dmz",title:"DMZ",width:100},
+	{field:"Province",title:"省份",width:100},
+	{field:"District",title:"行政区划",width:150},
+	{field:"Area",title:"地点名称",width:100}
 	
 		
 	]
@@ -67,11 +78,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          <table class="editTable" cellspacing="0" >
          <tr>   
               <td style="width: 260px;font-size: small"> 
-              		行政区划名称: <input name="IChecked" type="text"  />
+              		行政区划名称: <input name="Area" type="text" id="Area"  />
               </td>
               <td>
                  <a class="easyui-linkbutton"  id="aSearch"
-                    onclick="searchCheck()"
+                    onclick="searchaddress()"
                  >查询</a>
               </td>      
             </tr>

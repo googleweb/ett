@@ -77,6 +77,8 @@
 <mapper resource="com/ett/drv/mapper/statis/oracle/IStatisKmMapper.xml"/>
 <mapper resource="com/ett/drv/mapper/statis/oracle/IStatisSchoolMapper.xml"/>
 
+<mapper resource="com/ett/drv/mapper/dict/oracle/IDrvCodeMapper.xml"/>
+
 
 </mappers>
 
