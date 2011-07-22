@@ -315,17 +315,18 @@ public class WeekPbAction extends BaseDrvAction implements ModelDriven<BookedWee
 	}
 	
 	public String to_preview(){
+		BookedWeekRecordModel previewWeekRecordModel=null;
 		if(bookedWeekRecordModel!=null){
-			
+			previewWeekRecordModel= this.bookedWeekRecordModel;
 			String depcode=this.getAuthUser().getDepartmentModel().getCDepcode();
 			Map<String,BookedLimitModel> maplimits=this.bookedWeekRecordModel.getLimits();
 			List<BookedLimitModel> limits=ObjectUtil.toList(maplimits);
-			bookedWeekRecordModel.updateFpContext(limits,depcode);
+			previewWeekRecordModel.updateFpContext(limits,depcode);
+			
 		}else{
-			bookedWeekRecordModel=new BookedWeekRecordModel();
-			bookedWeekRecordModel.setIWeekNum(DateTimeUtil.getWeekOfYear(new Date()));
-			bookedWeekRecordModel.setYear(Calendar.getInstance().get(Calendar.YEAR));
+			previewWeekRecordModel=new BookedWeekRecordModel(new Date());
 		}
+		this.setRequestAttribute("weekRecord", previewWeekRecordModel);
 		return EResult.jsp.name();
 	}
 	

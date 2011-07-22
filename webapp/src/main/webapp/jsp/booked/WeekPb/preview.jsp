@@ -32,10 +32,7 @@ String bookedExamPreasgin=basePath+"booked/ExamPreasign";
     </jsp:include>
     <jsp:include page="/css/index.jsp"></jsp:include>
     <jsp:include page="/js/index.jsp"></jsp:include>
-    <%
-      UserModel user=(UserModel)session.getAttribute(AuthUserRule.AUTH_USER);
-      DepartmentModel depModel=user.getDepartmentModel();
-    %>
+
   
    <script type="text/javascript">
    function printviewex()
@@ -48,26 +45,8 @@ obj.ExecWB(7,1);
 
 }
    
-     <%=JQueryModel.DOC_READY_START %>
-     /**
-     var depCode="<%=depModel.getCDepcode()%>";
-      $(".spanFp").each(function(index){
-    	  var newContext="";
-    	  var context=$(this).html();
-    	  var limits=context.split("<br>");
-    	  for(var i=0;i<limits.length;i++){
-    		  var limit=limits[i];
-    		  var id=limit.split(";")[6]||0;
-    		  if(id==0||id==null)continue;
-    		  var href="<%=bookedExamPreasgin %>/to/preasign.action?limitId="+id;
-    		  limit=limit.replace(depCode,"<a href='"+href+"'>"+depCode+"</a>");
-    		  newContext=newContext+limit;
-    	  }
-    	  $(this).html(newContext);
-      });
-      **/
-      
-      printviewex();
+     <%=JQueryModel.DOC_READY_START %>   
+     // printviewex();
      <%=JQueryModel.DOC_READY_END%>
    </script>
 

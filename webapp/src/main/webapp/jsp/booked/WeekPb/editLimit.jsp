@@ -91,7 +91,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
   	      <div class="innerDiv">
   	        <form  id="<%=formEditLimit %>" method="post">
-  	          <table class="editTable">
+  	          <table class="editTable" style="width: 100%" cellspacing="0">
   	            <tr>
   	              <td>考试场次</td>
   	              <td>

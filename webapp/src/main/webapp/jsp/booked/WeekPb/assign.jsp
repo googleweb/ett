@@ -176,7 +176,7 @@ boolean isVerify="verify".equals(request.getAttribute("hidmode"))?true:false;
 	  	  <tr>
 	  	    <td style="width: 200px">排班日期： </td>
 	  	    <td><input id="<%=txtSearchDate %>" name="createDate" />
-	  	    <button type="submit"><div class="kia-icon search"></div>查询</button>
+	  	    <button type="submit" style="width: 100px" ><div class="kia-icon search"></div>查询</button>
 	  	    <a class="<%=EasyUiModel.LinkButton.CLASS %>"
 	  	      <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_PRINT) %>
 	  	      href="<%=bookedWeekPbPath %>/to/preview.action" target="_blank"
@@ -256,6 +256,7 @@ boolean isVerify="verify".equals(request.getAttribute("hidmode"))?true:false;
                      <td><s:property value="value.CSchoolName" /></td>
                      <td><s:property value="value.ITotal" /></td>
                      <td>
+                       
                         <a class="kia-icon edit <%=aEditLimit %>" name="<s:property value="key" />" id="<s:property value="key" />,<s:property value="value.DateKsrq" />" ></a>
                          <a class="kia-icon remove <%=aRemoveLimit %>" id="<s:property value="key" />" ></a>
                      </td>

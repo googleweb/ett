@@ -93,7 +93,7 @@ String bookedWeekPbPath=basePath+"booked/WeekPb";
   	         <input type="hidden" name="tempLimit.IKm" value="${tempLimit.IKm}">
   	         <input type="hidden" name="tempLimit.IDayofweek" value="${tempLimit.IDayofweek}">
   	        <input type="hidden" name="tempLimit.DateKsrq" value="${tempLimit.dateKsrq}">
-  	          <table class="editTable">
+  	          <table class="editTable" style="width: 100%" cellspacing="0">
   	            <tr>
   	              <td>考试场次</td>
   	              <td>
@@ -148,14 +148,17 @@ String bookedWeekPbPath=basePath+"booked/WeekPb";
   	            </tr>
   	            <tr>
   	              <td colspan="2">
+  	              
   	               <a id=<%=StringUtil.formatId(null,"-",formEditLimit,aSaveLimit) %>
   	                  class="<%=EasyUiModel.LinkButton.CLASS %>"
   	                  <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_SAVE) %>
-  	               ">保存</a>
+  	               >保存</a>
+  	               
   	               <a id=<%=StringUtil.formatId(null,"-",formEditLimit,aReset) %>
   	                  class="<%=EasyUiModel.LinkButton.CLASS %>"
   	                  <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_RELOAD) %>
   	               >重置</a>
+  	              
   	              </td>
   	            </tr>
   	          </table>
