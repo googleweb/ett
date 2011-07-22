@@ -24,7 +24,7 @@ public class InitDeviceObject extends DaoTestCase {
 		device.setPlaceAddress("汕头大学路考场内");
 		baseDao.save(device);
 		SelfHardObject hard=new SelfHardObject();
-		hard.setDeviceId(device.getId());
+		//hard.setDeviceId(device.getId());
 		hard.setBaud(9600);
 		hard.setCatalog("CVR-100U");
 		hard.setBrand("二代证阅读器");
@@ -34,7 +34,7 @@ public class InitDeviceObject extends DaoTestCase {
 		
 		
 		hard=new SelfHardObject();
-		hard.setDeviceId(device.getId());
+		//hard.setDeviceId(device.getId());
 		hard.setBaud(9600);
 		hard.setCatalog("EPSON 532");
 		hard.setBrand("热敏打印机");
@@ -43,7 +43,7 @@ public class InitDeviceObject extends DaoTestCase {
 		baseDao.save(hard);
 		
 		hard=new SelfHardObject();
-		hard.setDeviceId(device.getId());
+		//hard.setDeviceId((long)device.getId());
 		hard.setBaud(9600);
 		hard.setCatalog("EPSON 110");
 		hard.setBrand("针式打印机");
@@ -52,7 +52,7 @@ public class InitDeviceObject extends DaoTestCase {
 		baseDao.save(hard);
 		
 		hard=new SelfHardObject();
-		hard.setDeviceId(device.getId());
+		//hard.setDeviceId(device.getId());
 		hard.setBaud(9600);
 		hard.setCatalog("FRONT Camero");
 		hard.setBrand("前置摄像头");
