@@ -228,7 +228,25 @@ public class ListAction extends BaseDrvAction implements ModelDriven<StudentAppl
 				areaModel.setArea(dict.getCDictText());
 				areaModels.add(areaModel);
 			}
+			
+			String dmz=studentApplyInfoModel.getCDjzsxzqh();
+			if(dmz!=null){
+			DrvCodeModel drvCodeModel=new DrvCodeModel();
+			this.preBiz.loadCrudMapper(DrvCodeModel.class);
+			drvCodeModel.setDmz(dmz);
+			List list=preBiz.getView(drvCodeModel);
+			if(list!=null){
+			DrvCodeModel d=(DrvCodeModel)list.get(0);
+			if(d!=null){
+			AreaModel areaModel2=new AreaModel();
+			areaModel2.setArea(d.getDmmc1());
+			areaModel2.setDmz(d.getDmz());
+			areaModels.add(areaModel2);
+			}
+			}
+			}
 			datagrid=EasyUiUtil.toJsonDataGrid(areaModels);
+			
 		}catch(Exception e){e.printStackTrace();}
 		this.writePlainText(datagrid.toString());
 	}

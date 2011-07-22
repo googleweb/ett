@@ -45,6 +45,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
   
   <script type="text/javascript">
+  function onClickRow(rowIndex,rowData){
+  var Province=rowData.Province;
+  var District=rowData.District;
+  var Area=rowData.Area;
+  var xxdz=Province+District+Area
+  //alert(xxdz);
+  document.getElementById("CDjzsxxdz").value=xxdz;
+  }
+  
+  
+  
+  function getSelected(){
+  var selected=$('#inputCDjzsxzqh').combogrid('getSeleted');
+  if(selected){
+  alert(seleted.Dmz+""+selected.Province+""+seleted.District+""+seleted.Area);
+  }
+  
+  }
+  
+  
   function searcharea(){
     
     $.messager.prompt("查询行政规划","请输入",function(val){
@@ -117,8 +137,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      $("#inputCDjzsxzqh").combogrid({
     // pagination:true
          panelWidth:550 
+        // ,value:'Dmz'
          ,idField:'Dmz'  
-         ,textField:'Area'  
+         ,textField:'Area'
+         ,onClickRow:onClickRow  
          ,url:"<%=basePath%>preinput/List/combobox/djzs.action"
          ,columns:[[  
         {field:'Dmz',title:'Dmz',width:100},  
@@ -210,7 +232,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <input id="inputCDjzsxzqh" name="CDjzsxzqh" type="text"  value="${CDjzsxzqh}" />
 <a onclick="searcharea()">查询</a>
 </td>
-<td colspan="4"><input type="text" style="width: 80%" /></td>
+<td colspan="4"><input name="CDjzsxxdz" id="CDjzsxxdz" value="${CDjzsxxdz}" type="text" style="width: 80%" /></td>
 </tr>
 <tr>
 <td>联系住所</td>
