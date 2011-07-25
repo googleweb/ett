@@ -55,7 +55,7 @@ kiaLoadFields:function(){
 		              var selecterWidth=thisObj.attr("selecterWidth")||80; 
 		              var thisDisabled=thisObj.attr("disabled");
 		              var thisDataEval=thisObj.attr("dataEval")||"";
-		              
+
 		              if(opts){
 		                  thisValueField=opts["valueField"]||"Id";
 		                  thisTextField=opts["textField"]||"Name";
@@ -65,6 +65,8 @@ kiaLoadFields:function(){
 		                  thisDisabled=opts["disabled"];
 		                  thisDataEval=opts["dataEval"]||"";
 		              }
+		              
+
 		              var thisWidth=thisObj.width();
 		              var thisHeight=thisObj.height();
 		              thisObj.width(thisWidth-selecterWidth);
@@ -99,13 +101,14 @@ kiaLoadFields:function(){
 				                    }
 				    	  }); 
 				       
-				       var gridData=eval(thisDataEval);
-			
-				       if(gridData){
-					          // alert(gridData["total"]);
-					           var grid=selecterObj.combogrid('grid');
+				       
+			           var grid=selecterObj.combogrid('grid');
+				       if(thisDataEval!=""){
+				    	       var gridData=eval(thisDataEval);
+					           if(gridData){			           
 					    	   grid.datagrid("loadData",gridData);
 					    	   thisObj.combobox('loadData',gridData["rows"]);
+					    	   }
 				       }else if(thisUrl!=""){
 				    	   $.getJSON(thisUrl,function(gridData){
 				    		   grid.datagrid("loadData",gridData);
@@ -309,6 +312,8 @@ kiaLoadFields:function(){
 	}catch(ex){alert(ex);}
  } 
 	
+ 
+ 
  
  ,kiaUploadForm:function(opts){
 	     if(!opts){

@@ -28,6 +28,12 @@
 </style>
 		<script type="text/javascript">
 $(document).ready(function(){	
+	$("#CRegareaCode").kiaCombogrid({
+				    required:true,
+				    url:"http://localhost:8080/webapp/physical/HospitalMessage/combobox/lxdz.action",
+				    textField:"CDictText",
+				    valueField:"CDictValue"
+	});
 	$("#commit").click(function(){
 		try{
 		   $("#searchform").form("validate");
@@ -38,6 +44,7 @@ $(document).ready(function(){
   			$("#searchform").form("submit",{
          		url:"<%=basePath%>/physical/HospitalMessage/do/searchimport.action",
 	    		success:function(result1){ 
+         			$.messager.progress("close");
          			var result=Kia.util.strToJson(result1); 
          			//alert(result['CIdcard']);
 	   				if(result['CIdcard'].length<=0){
@@ -46,12 +53,6 @@ $(document).ready(function(){
               		for(var key in result){
               						$("#"+key).val(result[key]);
               		}
-              		$("#CBsl").val(result['CBsl']);
-              		$("#CTl").val(result['CTl']);
-              		$("#CSz").val(result['CSz']);
-              		$("#CZxz").val(result['CZxz']);
-              		$("#CYxz").val(result['CYxz']);
-              		$("#CQgjb").val(result['CQgjb']);
               		$("#CIdcardtype").combobox("setValue",result['CIdcardtype']);
               		$("#CRegareaCode").combobox("setValue",result['CRegareaCode']);
               		$("#CNation").combobox("setValue",result['CNation']);
@@ -73,31 +74,8 @@ function addform(){
 			url:"<%=basePath%>physical/HospitalMessage/do/addimport.action",
 	   	success:function(str){
 				str.messager(str);
-				$("#Id").val("");
-	  		 	$("#CIdcard").val("");
-	  		 	$("#CDabh").val("");
-	  		 	$("#CIdcardtype").val("");
-	  		 	$("#CXm").val("");
-	  		 	$("#CSex").val("");
-	  		 	$("#CBirthday").val("");
-	  		 	$("#CNation").val("");
-	  		 	$("#CCarType").val("");
-	  		 	$("#Regdate").val("");
-	  		 	$("#CRegarea").val("");
-	  		 	$("#CPostcode").val("");
-	  		 	$("#CPhone").val("");
-	  		 	$("#CRegareaCode").val("");
-	  		 	
-	  		 	$("#CHeight").val("");
-	  		 	$("#CZsl").val("");
-	  		 	$("#CYsl").val("");
-	  		 	$("#CBsl").val("");
-	  		 	$("#CTl").val("");
-	  		 	$("#CSz").val("");
-	  		 	$("#CZxz").val("");
-	  		 	$("#CYxz").val("");
-	  		 	$("#CQgjb").val("");
-	  		 	$("#CHospital").val("");
+				$.messager.progress("close");
+				$(":input").val("");
 	  	}	
 	});
 }
@@ -106,19 +84,19 @@ function addform(){
 	<body>
 		<div style="width: height :">
 		
-			<table style="width: 100%">
+			<table style="width: 100%" class="editTable">
 			
 				<tr>
-					<td style="background-color: rgb(208,227,248);">
+					<td>
 						体检录入
 					</td>
 				</tr>
 				<tr>
 					<td>
 					<form id="searchform" method="post" >
-						<table style="width: 100%">
+						<table  style="width: 100%" class="editTable">
 							<tr>
-								<td style="background-color: rgb(208,227,248);">
+								<td >
 									证件名称：
 								</td>
 								<td>
@@ -130,7 +108,7 @@ function addform(){
 				    <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
 				    <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %> />
 								</td>
-								<td style="background-color: rgb(208,227,248);">
+								<td >
 									证件号码
 								</td>
 								<td>
@@ -138,13 +116,13 @@ function addform(){
 								</td>
 							</tr>
 							<tr>
-								<td style="background-color: rgb(208,227,248);">
+								<td >
 									档案编号
 								</td>
 								<td>
 									<input type="text" name="CDabh1" id="CDabh1"/>
 								</td>
-								<td style="background-color: rgb(208,227,248);">
+								<td >
 									业务类型：
 								</td>
 								<td>
@@ -153,15 +131,10 @@ function addform(){
 											<option value="B">初学</option>
 											<option value="C">增驾</option>
 									</select>
+									<a class="easyui-linkbutton"   <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_SEARCH) %>  id="commit" >提交</a>
 								</td>
 							</tr>
-							<tr>
-								<td colspan="4" style="text-align: right;" >
-									<%--<input type="button" value="提交" id="commit">
-								--%>
-								<a class="easyui-linkbutton"   <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_SEARCH) %>  id="commit" >提交</a>
-								</td>
-							</tr>
+							
 							
 						</table>
 						</form>
@@ -170,7 +143,7 @@ function addform(){
 				</tr>
 				</form>
 				<tr>
-					<td style="background-color: rgb(208,227,248);">
+					<td>
 						体检详细信息
 					</td>
 
@@ -179,10 +152,10 @@ function addform(){
 				<tr>
 					<td> 
 					
-						<table style="width: 100%" class="" cellspacing="1">
+						<table style="width: 100%"  cellspacing="1" class="editTable">
 
 							<tr>
-								<td style="background-color: rgb(208,227,248);">
+								<td >
 									证件名称：
 								</td>
 								<td>
@@ -197,7 +170,7 @@ function addform(){
 				    <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %>
 									/>
 								</td>
-								<td style="background-color: rgb(208,227,248);">
+								<td >
 									证件号码
 								</td>
 								<td>
@@ -207,7 +180,7 @@ function addform(){
                  <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("证件号码必须输入") %>
                   <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>/>
 								</td>
-								<td style="background-color: rgb(208,227,248);">
+								<td >
 									档案编号
 								</td>
 								<td>
@@ -223,7 +196,7 @@ function addform(){
 								</td>
 							</tr>
 							<tr>
-								<td style="background-color: rgb(208,227,248);">
+								<td >
 									姓名
 								</td>
 								<td>
@@ -233,13 +206,10 @@ function addform(){
                  <%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("姓名必须输入") %>
                   <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>/>
 								</td>
-								<td style="background-color: rgb(208,227,248);">
+								<td >
 									性别
 								</td>
 								<td>
-									
-									<%--<input type="text" name="CSex"  id="CSex" />
-								--%>
 									<input name="CSex" type="text"  id="CSex" 
                      class="<%=EasyUiModel.ComboBox.CLASS %>"
 				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
@@ -250,7 +220,7 @@ function addform(){
 				    <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %>
   />
 								</td>
-								<td style="background-color: rgb(208,227,248);">
+								<td >
 									出生日期
 								</td>
 								<td>
@@ -265,7 +235,7 @@ function addform(){
 								</td>
 							</tr>
 							<tr>
-								<td style="background-color: rgb(208,227,248);">
+								<td     >
 									国籍
 								</td>
 								<td>
@@ -278,7 +248,7 @@ function addform(){
 				   								 <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
 				    							<%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %> />
 								</td>
-								<td style="background-color: rgb(208,227,248);">
+								<td     >
 									准驾车型
 								</td>
 								<td>
@@ -293,7 +263,7 @@ function addform(){
 				    <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
 				    <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %> />
 								</td>
-								<td style="background-color: rgb(208,227,248);">
+								<td     >
 									体检日期
 								</td>
 								<td>
@@ -308,60 +278,54 @@ function addform(){
 								</td>
 							</tr>
 							<tr>
-								<td style="background-color: rgb(208,227,248);">
+								<td>
 									登记住处
 								</td>
 								
-								<td colspan="2">
-									<input name="CRegareaCode" type="text"  id="CRegareaCode"
-                     class="<%=EasyUiModel.ComboBox.CLASS %>"
-				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
-				    <%=EasyUiModel.ComboBox.Properties.URL(basePath+"preinput/List/combobox/djzs.action") %>
-				    <%=EasyUiModel.ComboBox.Properties.EDITABLE(false)%>
-				    <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
-				    <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %> />  
-									<input type="text" name="CRegarea"  id="CRegarea" />
+								<td colspan="6">
+									<input name="CRegareaCode" type="text"  id="CRegareaCode" />  
+				     <input type="text" name="CRegarea" id="CRegarea" 
+				      class="<%=EasyUiModel.ValidateBox.CLASS %>"
+							<%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+                 			<%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("姓名必须输入！ ") %>/>
 								</td>
 							</tr>
 							<tr>
-								<td style="background-color: rgb(208,227,248);">
+								<td>
 									邮政编码
 								</td>
 								<td>
 									<input type="text" name="CPostcode"  id="CPostcode" />
 								</td>
-								<td style="background-color: rgb(208,227,248);">
+								<td     >
 									联系电话
 								</td>
+								
 								<td>
 								<input type="text" name="CPhone"  id="CPhone" />
 								</td>
-							</tr>
-							<tr>
-								<td style="background-color: rgb(208,227,248);">
-									备注
-								</td>
-								<td>
-									<input type="text" name="">
+								<td colspan="3">
+								&nbsp;
 								</td>
 							</tr>
+							
 						</table>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<table style="width:100% ">
+						<table style="width:100% " class="editTable">
 							<tr>
-								<td style="background-color: rgb(208,227,248);">
+								<td     >
 									身高(cm)
 								</td>
 								<td>
 									<input type="text" name="CHeight"  id="CHeight" />
 								</td>
-								<td style="background-color: rgb(208,227,248);">
+								<td     >
 									视力
 								</td>
-								<td style="background-color: rgb(208,227,248);">
+								<td     >
 									左
 									<input type="text" name="CZsl"  id="CZsl"  class="<%=EasyUiModel.NumberSpinner.CLASS%>" 
 																							  <%=EasyUiModel.NumberBox.Properties.PRECISION(1) %>
@@ -373,7 +337,7 @@ function addform(){
 																							  <%=EasyUiModel.Spinner.Properties.INCREMENT(0.1) %>
 																							  <%=EasyUiModel.NumberBox.Properties.MIN(0) %>/>
 								</td>
-								<td style="background-color: rgb(208,227,248);">
+								<td     >
 									辨色力
 								</td>
 								<td>
@@ -386,7 +350,7 @@ function addform(){
 										</option>
 									</select>
 								</td>
-								<td style="background-color: rgb(208,227,248);">
+								<td     >
 									听力
 								</td>
 								<td>
@@ -401,7 +365,7 @@ function addform(){
 								</td>
 							</tr>
 							<tr>
-								<td style="background-color: rgb(208,227,248);">
+								<td     >
 									上肢
 								</td>
 								<td>
@@ -415,7 +379,7 @@ function addform(){
 
 									</select>
 								</td>
-								<td style="background-color: rgb(208,227,248);">
+								<td     >
 									左下肢
 								</td>
 								<td>
@@ -429,7 +393,7 @@ function addform(){
 
 									</select>
 								</td>
-								<td style="background-color: rgb(208,227,248);">
+								<td     >
 									右下肢
 								</td>
 								<td>
@@ -443,7 +407,7 @@ function addform(){
 
 									</select>
 								</td>
-								<td style="background-color: rgb(208,227,248);">
+								<td     >
 									躯干颈部
 								</td>
 								<td>
@@ -460,10 +424,10 @@ function addform(){
 							</tr>
 
 							<tr class="">
-								<td style="background-color: rgb(208,227,248);">
+								<td     >
 									体检医院
 								</td>
-								<td colspan="4">
+								<td colspan="7">
 									<%--<input type="text" name="CHospital"  id="CHospital" />
 								--%>
 								<input name="CHospital"  id="CHospital"  

@@ -334,6 +334,4 @@
 
 <bean id="baseStatisBiz" abstract="true" class="com.ett.drv.biz.impl.StatisBiz" parent="baseDrvBiz"></bean>
 
-
-
 </beans>

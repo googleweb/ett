@@ -2,6 +2,7 @@ package com.ett.drv.web.action.physical;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -365,8 +366,20 @@ public class HospitalMessageAction extends BaseDrvAction implements ModelDriven<
 	public void get_photo(){
 		String sfzmmc=this.getParameter("CIdcard");
 		String sfzmhm=this.getParameter("CIdcardtype");
-		byte[] bt=this.hospitalBiz.getphotoByCIdcard(sfzmmc, sfzmhm);
-		this.writeStream(bt);
+		//byte[] bt=this.hospitalBiz.getphotoByCIdcard(sfzmmc, sfzmhm);
+		//this.writeStream(bt);
+	}
+	public void combobox_lxdz(){
+		List list=new ArrayList<DictModel>();
+		try {
+			list=this.adminBiz.listdjzs();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		//JSONObject jsonDG=EasyUiUtil.toJsonDataGrid(list);
+		//this.writePlainText(jsonDG.toString());
+		JSONObject jsonDG=EasyUiUtil.toJsonDataGrid(list);
+		this.writePlainText(jsonDG.toString());
 	}
 	public void clear() {
 	}
