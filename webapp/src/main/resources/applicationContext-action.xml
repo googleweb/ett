@@ -47,6 +47,10 @@ id="com.ett.drv.web.action.preinput.CheckAction">
 id="com.ett.drv.web.action.preinput.FeedbackAction">
 </bean>
 
+<bean class="com.ett.drv.web.action.preinput.ExamAction" parent="baseAction"
+id="com.ett.drv.web.action.preinput.ExamAction">
+</bean>
+
 <bean class="com.ett.drv.web.action.booked.InfoChangeAction"  parent="baseAction"
  id="com.ett.drv.web.action.booked.InfoChangeAction"
 >

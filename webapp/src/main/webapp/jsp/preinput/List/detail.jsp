@@ -73,7 +73,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        $.post(url,{qArea:val},function(str){
          var gridData=Kia.util.strToJson(str);
          var grid= $("#inputCDjzsxzqh").combogrid("grid");
-         grid.datagrid("loadData",gridData);
+        
+         $("#inputCDjzsxzqh").combogrid("showPanel");
+          grid.datagrid("loadData",gridData);
        })
     })
     
@@ -229,8 +231,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </td>
 <td>登记住所</td>
 <td>
+<a onclick="searcharea()" class="easyui-linkbutton" iconCls="icon-search">查询</a>
 <input id="inputCDjzsxzqh" name="CDjzsxzqh" type="text"  value="${CDjzsxzqh}" />
-<a onclick="searcharea()">查询</a>
+
+
 </td>
 <td colspan="4"><input name="CDjzsxxdz" id="CDjzsxxdz" value="${CDjzsxxdz}" type="text" style="width: 80%" /></td>
 </tr>
