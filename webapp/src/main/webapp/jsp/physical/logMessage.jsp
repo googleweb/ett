@@ -113,20 +113,16 @@ function searchform(){
 	<body  class="<%=EasyUiModel.Layout.CLASS %>" >
 	 <div    <%=EasyUiModel.Layout.Properties.REGION(EasyUiModel.REGION_NORTH) %> style="overflow: hidden;">
 	<form method="post" id="searchform">
-		<table style="text-align: center ;width: 100%">
+		<table style="width: 100%;height: 30%" class="editTable">
+			
 			<tr>
-				<td style="background-color: rgb(208,227,248);" colspan="4">
-					业务流水查询
-				</td>
-			</tr>
-			<tr>
-				<td style="background-color: rgb(208,227,248);">
+				<td>
 				证件号码：
 				</td>
 				<td style="text-align: left;">
 					<input type="text" name="CIdcard" id="CIdcard" style="width: 80%" />
 				</td>
-				<td style="background-color: rgb(208,227,248);width: 100px;">
+				<td >
 				档案编号：
 				</td>
 				<td style="text-align: left">
@@ -135,7 +131,7 @@ function searchform(){
 			</tr>
 			
 				<tr>
-				<td style="background-color: rgb(208,227,248);">
+				<td >
 				体检日期起：
 				</td>
 					<td style="text-align: left">
@@ -145,7 +141,7 @@ function searchform(){
 					style="width: 80%"
 					/>
 				</td>
-				<td style="background-color: rgb(208,227,248);">
+				<td >
 				体检日期止：
 				</td>
 				<td style="text-align: left">
@@ -157,16 +153,16 @@ function searchform(){
 				</td>
 			</tr>
 				<tr>
-				<td style="background-color: rgb(208,227,248);">
+				<td >
 				操  作  者：
 				</td>
 					<td style="text-align: left">
 					<input type="text" name="COperator" id="COperator" style="width:80%"/>
 				</td>
-				<td style="background-color: rgb(208,227,248);">
+				<td >
 					<input type="checkbox" name=""/>包含受理信息
 				</td>
-				<td style="background-color: rgb(208,227,248);">
+				<td >
 					<!-- <input type="button" value="查询"  /> -->
 					<a class="easyui-linkbutton"   <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_SEARCH) %>  onclick="searchform()" >查询</a>
 					<a class="easyui-linkbutton"   <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_SEARCH) %> >打印体检信息</a>

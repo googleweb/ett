@@ -93,9 +93,9 @@ public class HospitalBiz extends BaseDrvBiz implements IHospitalBiz {
 	public byte[] getphotoByCIdcard(String sfzmmc,String sfzmhm){
 		DrvServiceHelper drvServiceHelper=new DrvServiceHelper();
 		String  photoString="";
-		try {
+		/*try {
 			String sn="11111";
-		    photoString=drvServiceHelper.getPersonPhoto(sfzmmc, sfzmhm, sn);
+		    //photoString=drvServiceHelper.getPersonPhoto(sfzmmc, sfzmhm, sn);
 		   
 		    
 		} catch (MalformedURLException e) {
@@ -104,6 +104,8 @@ public class HospitalBiz extends BaseDrvBiz implements IHospitalBiz {
 			e.printStackTrace();
 		}	
 	    byte[] bz=Base64Coder.decode(photoString);
-		return bz;
+		return bz;*/
+		return null;
 	}
+	
 }

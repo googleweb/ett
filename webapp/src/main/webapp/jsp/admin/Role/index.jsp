@@ -57,6 +57,7 @@ function dblClickRowHandler(rowIndex,rowData){
   			title:"修改角色:"+fullname+":"+id,
 			height:400,
 			width:600,
+			collapsible:true,
 			onClose:function(){ $('#test').datagrid('reload'); }
 		});//   end:$("#divEdit").dialog
 		return false;

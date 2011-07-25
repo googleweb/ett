@@ -33,7 +33,14 @@
 		<style type="text/css">
 </style>
 		<script type="text/javascript">
-$(document).ready(function(){	
+$(document).ready(function(){
+
+	$("#CRegareaCode").kiaCombogrid({
+				    required:true,
+				    url:"http://localhost:8080/webapp/physical/HospitalMessage/combobox/lxdz.action",
+				    textField:"CDictText",
+				    valueField:"CDictValue"
+	});
 	$("#commit").click(function(){
 		try{
 		   $("#searchform").form("validate");
@@ -44,8 +51,8 @@ $(document).ready(function(){
 		   	$("#searchform").form("submit",{
          		url:"<%=basePath%>/physical/HospitalMessage/do/search.action",
 	    		success:function(result1){ 
+         			$.messager.progress("close");
          			var result=Kia.util.strToJson(result1); 
-         			//alert(result['CIdcard']);
 	   				if(result['CIdcard'].length<=0){
   						$.messager.alert('操作提示','没有符合条件的查询结果');
   					}
@@ -60,6 +67,8 @@ $(document).ready(function(){
               		$("#CCarType").combobox("setValue",result['CCarType']);
               		$("#Regdate").datebox("setValue",result['Regdate']);
               		$("#CBirthday").datebox("setValue",result['CBirthday']);
+              		//$(".easyui-combobox").combobox()
+              		
               		
               		//设置驾驶人照片
               		 var CIdcard=result['CIdcard'];
@@ -67,7 +76,7 @@ $(document).ready(function(){
               		 var url="<%=basePath%>physical/HospitalMessage/get/photo.action";
               		 url+="?CIdcard="+CIdcard;
               		 url+="&CIdcardtype="+CIdcardtype;
-		   			 $("#imgPerson").attr("src",url);
+		   			// $("#imgPerson").attr("src",url);
 	   			}
 			});
   			}else{
@@ -82,20 +91,8 @@ function addform(){
 	  	url:'<%=basePath%>'+"physical/HospitalMessage/do/add.action",
 	   	success:function(str){
 	  		str.messager();
-	  			$("#Id").val("");
-	  		 	$("#CIdcard").val("");
-	  		 	$("#CDabh").val("");
-	  		 	$("#CIdcardtype").val("");
-	  		 	$("#CXm").val("");
-	  		 	$("#CSex").val("");
-	  		 	$("#CBirthday").val("");
-	  		 	$("#CNation").val("");
-	  		 	$("#CCarType").val("");
-	  		 	$("#Regdate").val("");
-	  		 	$("#CRegarea").val("");
-	  		 	$("#CPostcode").val("");
-	  		 	$("#CPhone").val("");
-	  		 	$("#CRegareaCode").val("");
+	  		$.messager.progress("close");
+	  		$(":input").val("");
 	  		
 	  	}
 	});
@@ -176,39 +173,32 @@ function uploadPhotos(){
 </script>
 	</head>
 	<body>
-		<div style="width: height :">
-			<table style="width: 100%" >
+		<div   <%=EasyUiModel.Layout.Properties.REGION(EasyUiModel.REGION_CENTER) %> >
+			<table style="width: 100%" class="editTable">
 				<tr>
-					<td style="background-color: rgb(208,227,248);">
+					<td height="1%">
 						体检录入
 					</td>
 				</tr>
 				<tr>
 					<td>
 						<form id="searchform" method="post" >
-						<table style="width: 100%">
+						<table style="width: 100%" class="editTable">
 							<tr>
-								<td style="background-color: rgb(208,227,248);">
+								<td>
 									证件名称：
 								</td>
 								<td>
-									<%--<select  id="CIdcardtype1">
-											<option value="C">军官证</option>
-											<option value="D">士兵证</option>
-											<option value="E">军官离退休证</option>
-											<option value="F">境外人员身份证明</option>
-											<option value="G">外交人员身份证明</option>
-											<option value="A">居民身份证</option>
-									</select>
-								--%>								
-								<input name="CIdcardtype1" type="text"  value=""
+							<input name="CIdcardtype1" type="text"  value=""
                      					class="<%=EasyUiModel.ComboBox.CLASS %>"    					
 				    					<%=EasyUiModel.ComboBox.Properties.URL(basePath+"preinput/List/combobox/sfzm.action") %>
 				    					<%=EasyUiModel.ComboBox.Properties.EDITABLE(false)%>
 				   						 <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
-				   						 <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %> />
+				   						 <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %> 
+				   						
+				   						 />
 								</td>
-								<td style="background-color: rgb(208,227,248);">
+								<td>
 									证件号码
 								</td>
 								<td>
@@ -217,7 +207,7 @@ function uploadPhotos(){
 								</td>
 							</tr>
 							<tr>
-								<td style="background-color: rgb(208,227,248);">
+								<td >
 									档案编号
 								</td>
 								<td>
@@ -227,7 +217,7 @@ function uploadPhotos(){
 									class="<%=EasyUiModel.ValidateBox.CLASS %>"
 									/>
 								</td>
-								<td style="background-color: rgb(208,227,248);">
+								<td     >
 									业务类型：
 								</td>
 								<td>
@@ -237,10 +227,8 @@ function uploadPhotos(){
 											<option value="B">初学</option>
 											<option value="C">增驾</option>
 									</select>
-								</td>
-							</tr>
-							<tr>
-								<td colspan="4" style="text-align: right;" >
+								
+
 									<a class="easyui-linkbutton"   <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_SEARCH) %> id="commit">提交</a>
 								</td>
 							</tr>
@@ -249,16 +237,16 @@ function uploadPhotos(){
 					</td>
 				</tr>
 				<tr>
-					<td style="background-color: rgb(208,227,248);">
+					<td     >
 						体检详细信息
 					</td>
 				</tr>
 				<tr>
 					<td>
 					<form id="addform" method="post">
-						<table style="width: 100%" class="" cellspacing="1">
+						<table style="width: 100%" class="editTable" >
 							<tr>
-								<td style="background-color: rgb(208,227,248);">
+								<td     >
 									证件名称：
 								</td>
 								<td>
@@ -273,7 +261,7 @@ function uploadPhotos(){
 				    <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %>
 									/>
 								</td>
-								<td style="background-color: rgb(208,227,248);">
+								<td     >
 									证件号码
 								</td>
 								<td>
@@ -283,7 +271,7 @@ function uploadPhotos(){
                   <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
 									/>
 								</td>
-								<td style="background-color: rgb(208,227,248);">
+								<td     >
 									档案编号
 								</td>
 								<td>
@@ -299,7 +287,7 @@ function uploadPhotos(){
 								</td>
 							</tr>
 							<tr>
-								<td style="background-color: rgb(208,227,248);">
+								<td     >
 									姓名
 								</td>
 								<td>
@@ -310,7 +298,7 @@ function uploadPhotos(){
                  
 									/>
 								</td>
-								<td style="background-color: rgb(208,227,248);">
+								<td     >
 									性别
 								</td>
 								<td>
@@ -325,7 +313,7 @@ function uploadPhotos(){
 				    <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
 				    <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %>/>
 								</td>
-								<td style="background-color: rgb(208,227,248);">
+								<td     >
 									出生日期
 								</td>
 								<td>
@@ -338,7 +326,7 @@ function uploadPhotos(){
 								</td>
 							</tr>
 							<tr>
-								<td style="background-color: rgb(208,227,248);">
+								<td     >
 									国籍
 								</td>
 								<td>
@@ -353,7 +341,7 @@ function uploadPhotos(){
 				   								 <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
 				    							<%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %> />
 								</td>
-								<td style="background-color: rgb(208,227,248);">
+								<td     >
 									准驾车型
 								</td>
 								<td>
@@ -366,7 +354,7 @@ function uploadPhotos(){
 				    <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
 				    <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %> />
 								</td>
-								<td style="background-color: rgb(208,227,248);">
+								<td     >
 									体检日期
 								</td>
 								<td>
@@ -379,42 +367,56 @@ function uploadPhotos(){
 								</td>
 							</tr>
 							<tr>
-								<td style="background-color: rgb(208,227,248);">
+								<td>
 									登记住处
 								</td>
-								<td colspan="2">
-									<input name="CRegareaCode" type="text"  id="CRegareaCode"
-                     class="<%=EasyUiModel.ComboBox.CLASS %>"
-				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
-				    <%=EasyUiModel.ComboBox.Properties.URL(basePath+"preinput/List/combobox/djzs.action") %>
-				    <%=EasyUiModel.ComboBox.Properties.EDITABLE(false)%>
-				    <%=EasyUiModel.ComboBox.Properties.TEXT_FIELD(DictModel.F.CDictText.name()) %>
-				    <%=EasyUiModel.ComboBox.Properties.VALUE_FIELD(DictModel.F.CDictValue.name()) %> />  
-				     <input type="text" name="CRegarea" id="CRegarea" />
+								<td colspan="3">
+									<input name="CRegareaCode" type="text"  id="CRegareaCode" />  
+				     <input type="text" name="CRegarea" id="CRegarea" 
+				      class="<%=EasyUiModel.ValidateBox.CLASS %>"
+							<%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
+                 			<%=EasyUiModel.ValidateBox.Properties.MISSING_MESSAGE("姓名必须输入！ ") %>/>
+								</td>
+								<td>
+								&nbsp;
+								</td>
+									<td>
+								&nbsp;
 								</td>
 							</tr>
+							
 							<tr>
-								<td style="background-color: rgb(208,227,248);">
+								<td     >
 									邮政编码
 								</td>
 								<td>
 									<input type="text" name="CPostcode" id="CPostcode">
 								</td>
-								<td style="background-color: rgb(208,227,248);">
+								<td     >
 									联系电话
 								</td>
 								<td>
 									<input type="text" name="CPhone" id="CPhone">
 								</td>
+								<td>
+								&nbsp;
+								</td>
+									<td>
+								&nbsp;
+								</td>
+								<td>
+								&nbsp;
+								</td>
+								
 							</tr>
 							<tr>
-								<td style="background-color: rgb(208,227,248);">
+								<td     >
 									备注
 								</td>
 								<td>
 									<input type="text" name="">
 								</td>
-								<td  style="text-align: right" colspan="10">
+								<td  style="text-align: right" colspan="6">
 								<%--<input type="button" value="提交"  onclick="addform()" />
 								--%>
 									<a class="easyui-linkbutton"   <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_ADD) %>  onclick="addform()">提交</a>
@@ -425,7 +427,7 @@ function uploadPhotos(){
 					</td>
 				</tr>
 				<tr>
-								<td colspan="8" style="text-align: right">								
+								<td  style="text-align: right">								
 										<a class="easyui-linkbutton"   <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_PRINT) %> onclick="printMessageother()">打印</a>
 										<a class="easyui-linkbutton"   <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_CANCEL)%> onclick="cancel()">退办</a>
 								</td>

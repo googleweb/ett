@@ -177,16 +177,7 @@ $(document)
 									});
 
 				}); //$(document).ready
-function searchform() {
-	//$("#searchform").form("submit",{
-	//  	url:'<%=basePath%>'+"physical/HospitalMessage/datagrid/busAllLog.action",
-	//  	success:function(str){
-	// 			var json=Kia.util.strToJson(str); 
-	//  			$("#test").datagrid("loadData",json); 
-	//	}
-
-	//});
-
+function searchform() 
 	var beginDate = $("#beginDate").datebox("getValue");
 	//$("#test").datagrid("reload",{qbeginDate:beginDate});
 	var endDate = $("#endDate").datebox("getValue");
