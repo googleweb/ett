@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+
+<package name="exam"  extends="base-package" namespace="/exam" >
+   <action name="*/*/*" 
+     class="com.ett.drv.web.action.exam.{1}Action" method="{2}_{3}">
+      <result name="input">/jsp/exam/{1}/{3}.jsp</result>
+      <result name="jsp">/jsp/exam/{1}/{3}.jsp</result>
+      <result name="edit">/jsp/exam/{1}/edit/{3}.jsp</result>
+      <result name="login_success">/jsp/exam/index.jsp</result>
+      <result name="login_fail">/login.jsp</result>
+   </action> 
+</package>
+</struts>
