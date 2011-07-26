@@ -14,4 +14,5 @@ public interface IBusAllInfoMapper<T> extends IMapper<T>{
 	
 	public List selectGroupByHospital(@Param("startDate")Date startDate,@Param("endDates")Date endDate) throws Exception;
 	
+	public List selectAllbycondition(@Param("model")T obj) throws Exception;
 }

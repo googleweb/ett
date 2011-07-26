@@ -1,13 +1,9 @@
 package com.ett.drv.biz.impl;
 
 import java.io.File;
-import java.net.MalformedURLException;
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import biz.source_code.base64Coder.Base64Coder;
 
 import com.ett.drv.biz.IHospitalBiz;
 import com.ett.drv.model.admin.BusAllInfoModel;
@@ -16,6 +12,8 @@ import com.ett.drvinterface.entity.DrvphotoRequest;
 import com.ett.drvinterface.entity.HealthBeanRequest;
 import com.ett.drvinterface.first.DrvServiceHelper;
 import com.smartken.kia.core.model.impl.ResultModel;
+import com.smartken.kia.core.pager.PageArrayList;
+import com.smartken.kia.core.pager.PageBounds;
 
 public class HospitalBiz extends BaseDrvBiz implements IHospitalBiz {
 	
@@ -106,6 +104,18 @@ public class HospitalBiz extends BaseDrvBiz implements IHospitalBiz {
 	    byte[] bz=Base64Coder.decode(photoString);
 		return bz;*/
 		return null;
+	}
+
+	public PageArrayList selectAllbycondition(BusAllInfoModel busAllInfoModel,PageBounds pPage) {
+		List list = null;
+		try {
+		 list=this.busAllInfoMapper.selectAllbycondition(busAllInfoModel);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		PageArrayList pageList=new PageArrayList(list,pPage);
+        return pageList;
+		
 	}
 	
 }

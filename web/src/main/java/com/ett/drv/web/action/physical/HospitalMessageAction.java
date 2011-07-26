@@ -13,6 +13,7 @@ import com.ett.common.util.DateUtil;
 import com.ett.drv.model.admin.BusAllInfoModel;
 import com.ett.drv.model.admin.DictModel;
 import com.ett.drv.model.admin.UserModel;
+import com.ett.drv.view.BusAllInfoView;
 import com.ett.drv.web.action.BaseDrvAction;
 import com.opensymphony.xwork2.ModelDriven;
 import com.smartken.kia.core.model.IFormatterModel;
@@ -247,10 +248,58 @@ public class HospitalMessageAction extends BaseDrvAction implements ModelDriven<
         busAllInfoModel.setCDabh(qCDabh);
         busAllInfoModel.setCXm(qCXm);
 		this.hospitalBiz.loadCrudMapper(BusAllInfoModel.class);
+		PageArrayList list=this.hospitalBiz.getView(busAllInfoModel, this.getPager());
+		JSONObject jsonDG=EasyUiUtil.toJsonDataGrid(list,this.hospitalBiz.count());
+		this.writePlainText(jsonDG.toString());
+		
+	}
+	/*public void datagrid_busAllLog(){
+		BusAllInfoModel busAllInfoModel=new BusAllInfoModel();
+		String qCIdcard=this.getParameter("qCIdcard");
+        if(StringUtil.isBlank(qCIdcard)){
+        	qCIdcard=null;
+        }
+        String qCOperator=this.getParameter("qCOperator");
+        if(StringUtil.isBlank(qCOperator)){
+        	qCOperator=null;
+        }
+        String qCDabh=this.getParameter("qCDabh");
+        if(StringUtil.isBlank(qCDabh)){
+        	qCDabh=null;
+        }
+        String qCXm=this.getParameter("qCXm");
+        if(StringUtil.isBlank(qCXm)){
+        	qCXm=null;
+        }
+        String qCCarType=this.getParameter("qCCarType");
+        if(StringUtil.isBlank(qCCarType)){
+        	qCCarType=null;
+        }
+        String qbeginDate=this.getParameter("qbeginDate");
+        if(StringUtil.isBlank(qbeginDate)){
+        	qbeginDate=null;
+        	Calendar cal=Calendar.getInstance();
+    		cal.setTimeInMillis(0);
+			busAllInfoModel.setBeginDate(cal.getTime());
+        }else{
+        	busAllInfoModel.setBeginDate(DateTimeUtil.parse(qbeginDate));
+        }
+        String qendDate=this.getParameter("qendDate");
+        if(StringUtil.isBlank(qendDate)){
+        	qendDate=null;
+        	 busAllInfoModel.setEndDate(DateTimeUtil.parse("2050-01-01"));
+        }else{
+        	busAllInfoModel.setEndDate(DateTimeUtil.parse(qendDate));
+        }
+        busAllInfoModel.setCIdcard(qCIdcard);
+        busAllInfoModel.setCOperator(qCOperator);
+        busAllInfoModel.setCDabh(qCDabh);
+        busAllInfoModel.setCXm(qCXm);
+		this.hospitalBiz.loadCrudMapper(BusAllInfoModel.class);
 		PageArrayList list=this.hospitalBiz.getModel(busAllInfoModel,this.getPager());
-		/*
+		
 		 * 根据数据字典中的值，替换字母
-		 * */
+		 * 
 		for(int tu=0;tu<list.size();tu++){
 			BusAllInfoModel busAllInfoModel2=(BusAllInfoModel) list.get(tu);
 			String Sex=busAllInfoModel2.getCSex();
@@ -268,7 +317,7 @@ public class HospitalMessageAction extends BaseDrvAction implements ModelDriven<
 		}
 		JSONObject json=EasyUiUtil.toJsonDataGrid(list,list.getCount());
 		this.writePlainText(json.toString());
-	}
+	}*/
 	/*
 	 * 把空的字符串变成""
 	 */

@@ -137,9 +137,19 @@ IS_PRINT_RETURN=#{model.IsPrintReturn,jdbcType=INTEGER,javaType=Integer},
 
 <sql id="orderby">order by m.ID desc </sql>
 
-<sql id="joinColums"></sql>
+<sql id="joinColums">
+	,d1.c_dict_text as ZJLX
+	,d2.c_dict_text as GJ
+	,d3.c_dict_text as LLZS
+	,d4.c_dict_text as TJYY
+</sql>
 
 <sql id="join">
+left join table_dicts d1 on d1.c_typename='证件类型' and m.c_idcardtype=d1.c_dict_value
+left join table_dicts d2 on d2.c_typename='国籍'     and m.c_nation=d2.c_dict_value
+left join table_dicts d3 on d3.c_typename='联系住所' and m.c_regarea_code=d3.c_dict_value
+left join table_dicts d4 on d4.c_typename='体检医院' and m.c_hospital=d4.c_dict_value
+
 </sql><!-- 别名m已被主表使用  -->
 <resultMap type="com.ett.drv.view.HospitalGroupView" id="resultMapview">
 	<result column="hospital"  property="Hospital" jdbcType="VARCHAR" javaType="String"/>
@@ -148,6 +158,7 @@ IS_PRINT_RETURN=#{model.IsPrintReturn,jdbcType=INTEGER,javaType=Integer},
 	<result column="sum3"  property="Sum3" jdbcType="INTEGER" javaType="Integer"/>
 	<result column="sum4"  property="Sum4" jdbcType="INTEGER" javaType="Integer"/>
 </resultMap>
+
 
 <resultMap type="com.ett.drv.model.admin.BusAllInfoModel" id="resultMap">
  <id column="ID"  property="Id" jdbcType="INTEGER" javaType="Integer"/>
@@ -267,6 +278,7 @@ IS_PRINT_RETURN=#{model.IsPrintReturn,jdbcType=INTEGER,javaType=Integer},
 	where REGDATE between #{startDate,jdbcType=DATE javaType=Date } and #{endDates,jdbcType=DATE javaType=Date}
 	group by C_OPERATOR 
 </select>
+
 <select id="selectEqPk"  resultMap="resultMap">
 	select m.* from <include refid="table" /> m  where m.<include refid="pk" /> = #{Id,jdbcType=INTEGER,javaType=Integer}
 </select>
@@ -325,12 +337,21 @@ IS_PRINT_RETURN=#{model.IsPrintReturn,jdbcType=INTEGER,javaType=Integer},
 
 
 
-<resultMap type="com.ett.drv.model.admin.BusAllInfoModel" id="viewMap" extends="resultMap" ></resultMap>
+<resultMap type="com.ett.drv.view.BusAllInfoView" id="viewMap" extends="resultMap" >
+<result column="TJYY"  property="tjyy" jdbcType="VARCHAR" javaType="String"/>
+<result column="DZDM"  property="dzdm" jdbcType="VARCHAR" javaType="String"/>
+<result column="GJ"  property="gj" jdbcType="VARCHAR" javaType="String"/>
+<result column="ZJLX"  property="zjlx" jdbcType="VARCHAR" javaType="String"/>
+
+</resultMap>
 
 
 <sql id="selectViewCondition">
 	 <include refid="selectCondition"/>  
-</sql><select id="selectView" resultType="ArrayList" resultMap="viewMap">
+</sql>
+
+
+<select id="selectView" resultType="ArrayList" resultMap="viewMap">
 	select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> 
 		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
 			<include refid="selectViewCondition"/>
