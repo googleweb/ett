@@ -6,6 +6,7 @@
 <%@page import="com.ett.drv.model.admin.DepartmentModel"%>
 <%@page import="com.ett.drv.web.rule.AuthUserRule"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
+<jsp:useBean id="weekRecord" class="com.ett.drv.model.booked.BookedWeekRecordModel"></jsp:useBean>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";

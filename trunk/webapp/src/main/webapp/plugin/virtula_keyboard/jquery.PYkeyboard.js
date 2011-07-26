@@ -94,13 +94,29 @@ KeyboardPinyin.prototype.create_word_list=function(start, index, str){
 	var cnt = 1;
 	var same_code_words =this.code_table[start].replace(/[a-z';]+/, '').split(',');
 	this.candidates = "";
-	var wordSelects="";
+	var wordSelects=$("<div></div>");
 	while (cnt <= 10) {
 		this.candidates += (cnt % 10) + '.' + same_code_words[index] + ' ';
 		//增加选择按钮
-		var btnSelect="<button type='button' value='"+same_code_words[index]+"'>"
-		                +same_code_words[index]+"</button>";
-		wordSelects+=btnSelect;
+		//var btnSelect="<button type='button' value='"+same_code_words[index]+"'>"
+		//                +same_code_words[index]+"</button>";
+		var btnSelect=$("<button type='button'></button>");
+		btnSelect
+		.css("width","auto")
+		.val(same_code_words[index])
+		.html(same_code_words[index])
+		;
+		var target=this.inputObj;
+		var pykeyboard=this;
+		btnSelect.click(function(){
+		   var val= $(this).val();
+		   var tVal=$(target).val();
+		   var newVal=tVal+val;
+		   $(target).val(newVal);
+		   pykeyboard.clear_all();
+		});
+		
+		wordSelects.append(btnSelect);
 		this.word_list[cnt-1] = same_code_words[index];
 		++index;
 		if (index >= same_code_words.length) {
@@ -128,8 +144,8 @@ KeyboardPinyin.prototype.create_word_list=function(start, index, str){
 	}
 	this.start_mem = start;
 	this.index_mem = index;
-	this.divListArea.innerHTML = this.candidates + "　"; 
-	this.divSelectWord.innerHTML=wordSelects;
+	$(this.divListArea).html(this.candidates + "　"); 
+	$(this.divSelectWord).html(wordSelects);
 }
 
 
@@ -146,10 +162,10 @@ KeyboardPinyin.prototype.on_code_change=function(str){
 		this.index_stack.push(0);
 		if (start >= 0) this.create_word_list(start, 0, str);
 	}
-	this.divCode.innerHTML =  str;
-    this.divListArea.innerHTML =  this.candidates + "　";
+	$(this.divCode).html(str);
+    $(this.divListArea).html(this.candidates + "　");
     if(this.candidates==""){
-    	this.divSelectWord.innerHTML="";
+    	$(this.divSelectWord).empty();
     }
 }
 
@@ -268,9 +284,9 @@ KeyboardPinyin.prototype.key_down=function(e){
 			if (this.code_field != "") {
 				this.insert_char(this.word_list[0]);
 				this.code_field = "";
-				this.divCode.innerHTML = "　";
+				$(this.divCode).empty();
 				this.candidates = "";
-				this.divListArea.innerHTML = "　";
+				$(this.divListArea).empty();
 				this.cancel_key_event = true;
 				return false;
 			} /*else if (getEl("iFrame").num != undefined) {
@@ -329,10 +345,10 @@ KeyboardPinyin.prototype.key_down=function(e){
 				if (this.lang=="ch") {
 					this.insert_char(this.word_list[(9+parseInt(key_char))%10]);
 					this.code_field = "";
-					this.divCode.innerHTML = "　";
+					$(this.divCode).empty();
 					this.candidates = "";
-					this.divListArea.innerHTML = "　";
-					this.divSelectWord.innerHTML="";
+					$(this.divListArea).empty();
+					$(this.divSelectWord).empty();
 					this.cancel_key_event = true;
 					return false;
 				}
@@ -502,10 +518,10 @@ KeyboardPinyin.prototype.highlight_copy=function(){
 
 KeyboardPinyin.prototype.clear_all=function(){
 	this.code_field = "";
-	this.divCode.innerHTML = "　";
+	$(this.divCode).empty();
 	this.candidates = "";
-	this.divListArea.innerHTML = "　";
-	this.divSelectWord.innerHTML="";
+	$(this.divListArea).empty();
+	$(this.divSelectWord).empty();
 }
 
 
