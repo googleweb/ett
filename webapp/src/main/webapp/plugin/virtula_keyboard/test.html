@@ -6,12 +6,21 @@
     <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
     <meta http-equiv="description" content="this is my page">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    
+    <script type="text/javascript" src="../jquery/jquery-1.6.2.min.js"></script>
     <script type="text/javascript" src="keyboard.js"></script>
     <script type="text/javascript" src="../justinput/pinyin-jianti-table.js"></script>
-    <script type="text/javascript" src="keyboard.pinyin.js"></script>
+    <script type="text/javascript" src="jquery.PYkeyboard.js"></script>
     <link rel="stylesheet" type="text/css" href="keyboard.css">
     <link rel="stylesheet" type="text/css" href="../justinput/justinput.css">
+  
+    <style type="text/css">
+      button{
+         width: 80px;
+         height:80px;
+         font-size: 1.8em;
+         font-weight: bolder;
+      }
+    </style>
 
     <script type="text/javascript">
     
@@ -19,14 +28,20 @@
     
      function on_load(){
        var myInput = document.getElementById('keyboard');
-       if (!myInput.VKI_attached) VKI_attach(myInput);
+      // if (!myInput.VKI_attached) VKI_attach(myInput);
       
        var divListArea=document.getElementById('list_area');
        var divCode=document.getElementById('divPinyin');
+       var divSelectWord=document.getElementById("divSelectWord");
        var opts={};
-       opts["inputObj"]=myInput;
-       opts["divListArea"]=divListArea;
-       opts["divCode"]=divCode;
+       //opts["inputObj"]=myInput;
+       //opts["divListArea"]=divListArea;
+       //opts["divCode"]=divCode;
+       //opts["divSelectWord"]=divSelectWord;
+       opts["inputObj"]="#keyboard";
+       opts["divListArea"]="#list_area";
+       opts["divCode"]="#divPinyin";
+       opts["divSelectWord"]="#divSelectWord";
        pinyin=new KeyboardPinyin(opts);
      }
      
@@ -41,17 +56,95 @@
      function on_keypress(event){
         return pinyin.key_press(event);
      }
+     
+     $(document).ready(function(){
+     
+
+     
+        $("button.char").each(function(index){
+            var val=$(this).val();
+            $(this).click(function(){
+               //var v=$("#keyboard").val();
+               var code=$.trim($("#divPinyin").html());
+               code+=$(this).val().toString().toLowerCase();
+               pinyin.on_code_change(code);
+            });
+        });
+
+         $("button.bck").each(function(index){
+              $(this).click(function(){
+	              var code=$.trim($("#divPinyin").html());
+	              code=code.substr(0,code.length-1);
+	              pinyin.on_code_change(code);
+	              }
+              );
+         });     
+         
+        $("button.clr").each(function(index){
+              $(this).click(function(){
+	              pinyin.on_code_change("");
+	              }
+              );
+         });     
+
+     });
         
     </script>
 
   </head>
   
   <body onload="on_load()">
-    <div id="divPinyin" style="font-size:110%;padding:2px;background-color:#F0EFF1;">　</div>
-    <div id="list_area" style="font-size:110%;padding:2px;background-color:#F0EFF1;">　</div>
-      <p><input type="text" id="keyboard"
-     onkeydown="return on_keydown(event);" onkeypress="return on_keypress(event);" onkeyup="return on_keyup(event);"
-     
+ 
+      <p><input type="text" id="keyboard"  
     />
+    <p/>
+    <div id="divPinyin" style="font-size:110%;padding:2px;background-color:#F0EFF1;"></div>
+    <div id="list_area" style="font-size:110%;padding:2px;background-color:#F0EFF1;display: none;"></div>
+    <div id="divSelectWord" style="font-size:110%;padding:2px;background-color:#F0EFF1;"></div>
+    <div id="keypad">
+      <button type="button" class="num" value="1">1</button>
+      <button type="button" class="num" value="2">2</button>
+      <button type="button" class="num" value="3">3</button>
+      <button type="button" class="num" value="4">4</button>
+      <button type="button" class="num" value="5">5</button>
+      <button type="button" class="num" value="6">6</button>
+      <button type="button" class="num" value="7">7</button>
+      <button type="button" class="num" value="8">8</button>
+      <button type="button" class="num" value="9">9</button>
+      <button type="button" class="num" value="0">0</button>
+      <button type="button" class="bck" value="">BCK</button>
+      <br/>
+      <button type="button" class="char" value="Q">Q</button>
+      <button type="button" class="char" value="W">W</button>
+      <button type="button" class="char" value="E">E</button>
+      <button type="button" class="char" value="R">R</button>
+      <button type="button" class="char" value="T">T</button>
+      <button type="button" class="char" value="Y">Y</button>
+      <button type="button" class="char" value="U">U</button>
+      <button type="button" class="char" value="I">I</button>
+      <button type="button" class="char" value="O">O</button>
+      <button type="button" class="char" value="P">P</button>
+      <br/>
+      <button type="button" class="char" value="A">A</button>
+      <button type="button" class="char" value="S">S</button>
+      <button type="button" class="char" value="D">D</button>
+      <button type="button" class="char" value="F">F</button>
+      <button type="button" class="char" value="G">G</button>
+      <button type="button" class="char" value="H">H</button>
+      <button type="button" class="char" value="J">J</button>
+      <button type="button" class="char" value="K">K</button>
+      <button type="button" class="char" value="L">L</button>
+      
+      <br/>
+      <button type="button" class="char" value="Z">Z</button>
+      <button type="button" class="char" value="X">X</button>
+      <button type="button" class="char" value="C">C</button>
+      <button type="button" class="char" value="V">V</button>
+      <button type="button" class="char" value="B">B</button>
+      <button type="button" class="char" value="N">N</button>
+      <button type="button" class="char" value="M">M</button>
+      <button type="button" class="char" value=" ">SPC</button>
+      <button type="button" class="clr" value="">CLR</button>
+    </div>
   </body>
 </html>
