@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="gbk" ?>
 <!--
 	Create Date:2011-05-26 11:06:52
 	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
@@ -140,17 +140,17 @@ IS_PRINT_RETURN=#{model.IsPrintReturn,jdbcType=INTEGER,javaType=Integer},
 <sql id="joinColums">
 	,d1.c_dict_text as ZJLX
 	,d2.c_dict_text as GJ
-	,d3.c_dict_text as LLZS
+	,d3.c_dict_text as DZDM
 	,d4.c_dict_text as TJYY 
 </sql>
 
 <sql id="join">
-left join table_dicts d1 on d1.c_typename='璇佷欢绫诲瀷' and m.c_idcardtype=d1.c_dict_value
-left join table_dicts d2 on d2.c_typename='鍥界睄'     and m.c_nation=d2.c_dict_value
-left join table_dicts d3 on d3.c_typename='鑱旂郴浣忔墍' and m.c_regarea_code=d3.c_dict_value
-left join table_dicts d4 on d4.c_typename='浣撴鍖婚櫌' and m.c_hospital=d4.c_dict_value
+left join table_dicts d1 on d1.c_typename='证件类型' and m.c_idcardtype=d1.c_dict_value
+left join table_dicts d2 on d2.c_typename='国籍'     and m.c_nation=d2.c_dict_value
+left join table_dicts d3 on d3.c_typename='联系住所' and m.c_regarea_code=d3.c_dict_value
+left join table_dicts d4 on d4.c_typename='体检医院' and m.c_hospital=d4.c_dict_value
 
-</sql><!-- 鍒悕m宸茶涓昏〃浣跨敤  -->
+</sql><!-- 别名m已被主表使用  -->
 <resultMap type="com.ett.drv.view.HospitalGroupView" id="resultMapview">
 	<result column="hospital"  property="Hospital" jdbcType="VARCHAR" javaType="String"/>
 	<result column="sum1"  property="Sum1" jdbcType="INTEGER" javaType="Integer"/>
