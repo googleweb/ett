@@ -50,6 +50,15 @@ public class BusAllInfoModel extends BaseModel {
 		private Integer IsPrintAdd;         //IS_PRINT_ADD  NUMBER 38
 		private Integer IsPrintReturn;         //IS_PRINT_RETURN  NUMBER 38
 		private Date    beginDate;
+		
+		
+		private String tjyy;
+		private String dzdm;
+		private String gj;
+		private String zjlx;
+		
+		
+		
 		public Date getBeginDate() {
 			return beginDate;
 		}
@@ -254,6 +263,30 @@ public class BusAllInfoModel extends BaseModel {
 		}
 		public void setIsPrintReturn(Integer isPrintReturn) {
 			IsPrintReturn = isPrintReturn;
+		}
+		public String getTjyy() {
+			return tjyy;
+		}
+		public void setTjyy(String tjyy) {
+			this.tjyy = tjyy;
+		}
+		public String getDzdm() {
+			return dzdm;
+		}
+		public void setDzdm(String dzdm) {
+			this.dzdm = dzdm;
+		}
+		public String getGj() {
+			return gj;
+		}
+		public void setGj(String gj) {
+			this.gj = gj;
+		}
+		public String getZjlx() {
+			return zjlx;
+		}
+		public void setZjlx(String zjlx) {
+			this.zjlx = zjlx;
 		}
 	
  
