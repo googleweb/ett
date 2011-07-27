@@ -13,5 +13,10 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/dao"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/biz"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/web"/>
+	<classpathentry kind="lib" path="C:/Documents and Settings/Administrator/桌面/web-0.0.1-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="C:/Documents and Settings/Administrator/桌面/biz-0.0.1-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="C:/Documents and Settings/Administrator/桌面/dao-0.0.1-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="C:/Documents and Settings/Administrator/桌面/drvinterface-0.0.1-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="C:/Documents and Settings/Administrator/桌面/model-0.0.1-SNAPSHOT.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

@@ -36,6 +36,24 @@ td {
 </style>
 
 <script type="text/javascript">
+function checkedsex(value,rowIndex,rowData){
+    if(value==1){
+      return "男";
+    }else if(value==2){
+      return "女";
+    }else{
+      return "";
+    }
+}
+function checkstate(value,rowIndex,rowData){
+    if(value==0){
+      return "无效";
+    }else if(value==1){
+      return "有效";
+    }else{
+      return "";
+    }
+}
 $(document).ready(function(){   
 	$("#test").datagrid({fit:true,
 	columns:[ 
@@ -49,25 +67,26 @@ $(document).ready(function(){
 	{field:"<%=BusAllInfoModel.F.Checkdate%>",title:"审核日期",width:150},
 	{field:"<%=BusAllInfoModel.F.Regdate%>",title:"受理日期",width:150 },
 	{field:"<%=BusAllInfoModel.F.CHeight%>",title:"体重",width:150},
-	{field:"<%=BusAllInfoModel.F.CHospital%>",title:"医院",width:150},
-	{field:"<%=BusAllInfoModel.F.CIdcard%>",title:"身份证明号码",width:150},
-	{field:"<%=BusAllInfoModel.F.CIdcardtype%>",title:"身份证明名称",width:150},
+	{field:"tjyy",title:"医院",width:150},
+	{field:"<%=BusAllInfoModel.F.CIdcard%>",title:"证件号码",width:150},
+	{field:"zjlx",title:"证件类型",width:150},
 	{field:"<%=BusAllInfoModel.F.CLsh%>",title:"流水号",width:150},
 	{field:"<%=BusAllInfoModel.F.CPhone%>",title:"联系电话",width:150},
-	{field:"<%=BusAllInfoModel.F.CNation%>",title:"国籍",width:150},
+	{field:"gj",title:"国籍",width:150},
 	{field:"<%=BusAllInfoModel.F.COperator%>",title:"操作者",width:150},
 	{field:"<%=BusAllInfoModel.F.CPostcode%>",title:"邮政编码",width:150},
 	{field:"<%=BusAllInfoModel.F.CQgjb%>",title:"躯干颈部",width:150},
 	{field:"<%=BusAllInfoModel.F.CRegarea%>",title:"登记住所",width:150},
-	{field:"<%=BusAllInfoModel.F.CRegareaCode%>",title:"登记住所代码",width:150},
-	{field:"<%=BusAllInfoModel.F.CSex%>",title:"性别",width:150},
+	{field:"dzdm",title:"登记住所代码",width:150},
+	{field:"<%=BusAllInfoModel.F.CSex%>",title:"性别",width:150,formatter:checkedsex},
+	{field:"<%=BusAllInfoModel.F.IState%>",title:"状态",width:150,formatter:checkstate},
 	{field:"<%=BusAllInfoModel.F.CSz%>",title:"身高",width:150},
 	{field:"<%=BusAllInfoModel.F.CTl%>",title:"听力",width:150},
 	{field:"<%=BusAllInfoModel.F.CBsl%>",title:"辨色力",width:150},
 	{field:"<%=BusAllInfoModel.F.CYsl%>",title:"右视力",width:150},
 	{field:"<%=BusAllInfoModel.F.CYxz%>",title:"左视力",width:150},
 	{field:"<%=BusAllInfoModel.F.CZsl%>",title:"左下肢",width:150},
-	{field:"<%=BusAllInfoModel.F.CZxz%>",title:"右下肢",width:150}
+	{field:"<%=BusAllInfoModel.F.CZxz%>",title:"右下肢",width:150}	
 	]
 	] 
 	,
