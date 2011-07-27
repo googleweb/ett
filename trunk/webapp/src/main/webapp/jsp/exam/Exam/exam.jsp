@@ -29,23 +29,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </jsp:include>
     <jsp:include page="/css/index.jsp"></jsp:include>
     <jsp:include page="/js/index.jsp"></jsp:include>
+   
   </head>
   
   <script type="text/javascript">
   function beginexam(){
    	  var qIDCard=$("#idcard").val()||"";
-   	  alert(qIDCard);
      if(qIDCard==""){
        $.messager.alert("","身份证不能为空","error");
      }else{
-       $("#exam").post();
+       $.post("<%=basePath%>exam/Exam/check/idcard.action",{idcard:qIDCard},
+       function(data){
+       //alert(data);
+      	if(data=="0"){
+      	$.messager.alert("","您的身份证信息不存在","error");
+      	}
+      	else{
+      	var cartype=$("#cartype").combobox("getValue")||"";
+      	//alert(cartype);
+      	if(cartype==""){
+      	$.messager.alert("","车类型不能为空","error");
+      	}
+      	else{
+      	document.getElementById("exam").submit();
+      	//$.post("<%=basePath%>exam/Exam/to/topic.action",{cartype:cartype}
+      	//);
+      	}
+      	}
+       }
+       );
      }
   
   }
   </script>
   
   <body>
-  <form id="exam" >
+  <form id="exam" action="<%=basePath%>exam/Exam/to/topic.action">
   <table cellspacing="0" cellpadding="0" style="width:100%;table-layout:auto;" class="editTable">
   <tr> 
   <td >请输入您的身份证号码：
@@ -54,7 +73,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </tr>
   <tr>
    <td>请输入驾照类型：
-   <input name="CZkcx" type="text"  value="${CZkcx}" 
+   <input name="cartype" id="cartype" type="text"  
                      class="<%=EasyUiModel.ComboBox.CLASS %>"
 				    <%=EasyUiModel.ValidateBox.Properties.REQUIRED(true) %>
 				    <%=EasyUiModel.ComboBox.Properties.URL(basePath+"preinput/List/combobox/cartype.action") %>
