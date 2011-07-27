@@ -22,6 +22,8 @@
 				value="%-5p  %d %-15c{1} [%x]: %m%n" />
 		</layout>
 	</appender>
+	
+	
 	<logger name="debug">
 		<level value="debug" />
 		<appender-ref ref="CONSOLE_LOG" />
