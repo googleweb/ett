@@ -64,7 +64,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </script>
   
   <body>
-  <form id="exam" action="<%=basePath%>exam/Exam/to/topic.action">
+  <form id="exam" action="<%=basePath%>exam/Exam/to/topic.action" target='_blank'>
   <table cellspacing="0" cellpadding="0" style="width:100%;table-layout:auto;" class="editTable">
   <tr> 
   <td >请输入您的身份证号码：

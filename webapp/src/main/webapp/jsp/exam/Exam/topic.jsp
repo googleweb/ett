@@ -61,7 +61,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		
   		}
   		else{
-  		$(this).parent().css("color","red"); 
+  		$(this).parent().css("background-color","#FFE4C4"); 
   		}
   		$(this).next().next().next().html("正确答案："+corectanswer);
   		}
@@ -132,7 +132,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	   <td style="width: 300px">
 	   <input type="hidden" name="answer_<%=i%>" class="inputAnswer" value="T">
 	   <input type="hidden" class="corectanswer" value="A">
-	        答案:<span class="spanAnswer"></span><span class="rightanswer"></span>
+	        答案:<span class="spanAnswer" style="color:red;font-weight:left"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="rightanswer"></span>
 	   </td>
    </tr>
    </table>
@@ -161,7 +161,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	   <td style="width: 300px">
 	   <input type="hidden" name="answer_<%=i%>" class="inputAnswer" value="T">
 	   <input type="hidden" class="corectanswer" value="&radic;">
-	        答案:<span class="spanAnswer"></span><span class="rightanswer"></span>
+	        答案:<span class="spanAnswer" style="color:red;font-weight:left"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="rightanswer"></span>
 	   </td>
    </tr>
    </table>
@@ -176,7 +176,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	   </td>
 		<td style="text-align: left;width:300px" >
 		<button type="button" onclick="computescore()" >计算得分</button>得分：<span id="score" style="color:red"></span>分
-		</td>   
+		</td >   
      </tr>
    </table>
   </body>
