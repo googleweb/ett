@@ -141,7 +141,7 @@ IS_PRINT_RETURN=#{model.IsPrintReturn,jdbcType=INTEGER,javaType=Integer},
 	,d1.c_dict_text as ZJLX
 	,d2.c_dict_text as GJ
 	,d3.c_dict_text as LLZS
-	,d4.c_dict_text as TJYY
+	,d4.c_dict_text as TJYY 
 </sql>
 
 <sql id="join">
@@ -337,7 +337,7 @@ left join table_dicts d4 on d4.c_typename='体检医院' and m.c_hospital=d4.c_d
 
 
 
-<resultMap type="com.ett.drv.view.BusAllInfoView" id="viewMap" extends="resultMap" >
+<resultMap type="com.ett.drv.model.admin.BusAllInfoModel" id="viewMap" extends="resultMap" >
 <result column="TJYY"  property="tjyy" jdbcType="VARCHAR" javaType="String"/>
 <result column="DZDM"  property="dzdm" jdbcType="VARCHAR" javaType="String"/>
 <result column="GJ"  property="gj" jdbcType="VARCHAR" javaType="String"/>
