@@ -309,13 +309,6 @@
   	  		<scope>compile</scope>
   	  	</dependency>
   	  	<dependency>
-  	  		<groupId>com.google.sitebricks</groupId>
-  	  		<artifactId>slf4j</artifactId>
-  	  		<version>0.8.3</version>
-  	  		<type>jar</type>
-  	  		<scope>compile</scope>
-  	  	</dependency>
-  	  	<dependency>
   	  		<groupId>org.mongodb</groupId>
   	  		<artifactId>mongo-java-driver</artifactId>
   	  		<version>2.6.1</version>
@@ -329,6 +322,13 @@
         	<type>jar</type>
         	<scope>compile</scope>
         </dependency>
+  	  	<dependency>
+  	  		<groupId>org.slf4j</groupId>
+  	  		<artifactId>slf4j-log4j12</artifactId>
+  	  		<version>1.6.1</version>
+  	  		<type>jar</type>
+  	  		<scope>compile</scope>
+  	  	</dependency>
   </dependencies>
   
       <build>  
