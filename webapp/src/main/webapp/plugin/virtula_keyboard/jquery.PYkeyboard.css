@@ -1,0 +1,91 @@
+ .clicked{
+       background-color: yellow;
+}
+
+.focus
+{
+	background-color: #CCFFCC;
+}
+
+ button{
+    height:80px;
+    font-size: 1.6em;
+    font-weight: bolder;
+ }
+
+ button.num,button.letter,button.sign{
+         width: 80px;
+         
+
+}
+
+button.selectWord,button[value=next],button[value=pre]
+{
+    width:auto;
+    height:50px;
+    padding-left:5px;
+    padding-right:5px;
+}
+
+div.top
+{
+	height: 60px;
+	background-color: #D4D0C8;
+}
+
+div.selectWords{
+  	
+	width:auto;
+	float:left;
+	text-align:left;	
+}
+
+
+
+div.code
+{
+    
+    padding-top:20%;
+	width: 150px;
+	float: left;
+	background-color: #000000;
+	vertical-align: text-bottom;
+	text-align: right;
+	color: #FFFFFF;
+	font-family: ºÚÌå;
+	font-size: 1.5em;
+}
+
+
+table.top
+{
+	height: 60px;
+	background-color: #D4D0C8;
+	width:100%;
+}
+
+td.selectWords{
+    padding-left:5px;
+}
+
+
+td.selectWords button
+{
+	width:auto;
+    height:50px;
+    padding-left:5px;
+    padding-right:5px;
+}
+
+
+td.code
+{
+	width: 180px;
+	background-color: #000000;
+	color: #FFFFFF;
+	text-align: right;
+	font-size: 1.4em;
+    padding-right:5px;
+	font-weight: bold;
+	font-family: ºÚÌå;
+}
