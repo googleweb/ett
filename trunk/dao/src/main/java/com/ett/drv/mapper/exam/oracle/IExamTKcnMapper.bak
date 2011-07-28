@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+	Create Date:2011-07-28 11:41:07
+	MapperTemplate:com.smartken.kia.core.plugin.mybatis.OracleMapperTemplate
+	Model:com.ett.drv.model.exam.ExamTKcnModel 
+
+
+ public static enum F { 
+  Stxh,Bh,Stlx,Stsx,Sttx,Stnr,Xzdaa,Xzdab,Xzdac,Xzdad,Txlj,
+Stda,Stbj,Sycx,Tk1bh,Tk2bh,Prov,Jyw  
+ } 
+
+private String Stxh;         //STXH  VARCHAR2 4
+private String Bh;         //BH  VARCHAR2 15
+private String Stlx;         //STLX  VARCHAR2 3
+private String Stsx;         //STSX  VARCHAR2 1
+private String Sttx;         //STTX  VARCHAR2 1
+private String Stnr;         //STNR  VARCHAR2 256
+private String Xzdaa;         //XZDAA  VARCHAR2 256
+private String Xzdab;         //XZDAB  VARCHAR2 256
+private String Xzdac;         //XZDAC  VARCHAR2 256
+private String Xzdad;         //XZDAD  VARCHAR2 256
+private String Txlj;         //TXLJ  VARCHAR2 128
+private String Stda;         //STDA  VARCHAR2 1
+private String Stbj;         //STBJ  VARCHAR2 1
+private String Sycx;         //SYCX  VARCHAR2 32
+private String Tk1bh;         //TK1BH  VARCHAR2 10
+private String Tk2bh;         //TK2BH  VARCHAR2 10
+private String Prov;         //PROV  VARCHAR2 2
+private String Jyw;         //JYW  VARCHAR2 4,000
+ -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ett.drv.mapper.exam.IExamTKcnMapper">
+
+<cache flushInterval="30000" readOnly="true"></cache>
+
+
+<sql id="table">EXAM_TK_CN</sql>
+
+<sql id="pk">STXH</sql>
+
+<sql id="colums">
+STXH,BH,STLX,STSX,STTX,STNR,XZDAA,XZDAB,XZDAC,XZDAD,TXLJ,
+STDA,STBJ,SYCX,TK1BH,TK2BH,PROV,JYW 
+</sql>
+
+<sql id="insertCols">
+seq_exam_tk_cn.nextval,
+#{Bh,jdbcType=VARCHAR,javaType=String},
+#{Stlx,jdbcType=VARCHAR,javaType=String},
+#{Stsx,jdbcType=VARCHAR,javaType=String},
+#{Sttx,jdbcType=VARCHAR,javaType=String},
+#{Stnr,jdbcType=VARCHAR,javaType=String},
+#{Xzdaa,jdbcType=VARCHAR,javaType=String},
+#{Xzdab,jdbcType=VARCHAR,javaType=String},
+#{Xzdac,jdbcType=VARCHAR,javaType=String},
+#{Xzdad,jdbcType=VARCHAR,javaType=String},
+#{Txlj,jdbcType=VARCHAR,javaType=String},
+#{Stda,jdbcType=VARCHAR,javaType=String},
+#{Stbj,jdbcType=VARCHAR,javaType=String},
+#{Sycx,jdbcType=VARCHAR,javaType=String},
+#{Tk1bh,jdbcType=VARCHAR,javaType=String},
+#{Tk2bh,jdbcType=VARCHAR,javaType=String},
+#{Prov,jdbcType=VARCHAR,javaType=String},
+#{Jyw,jdbcType=VARCHAR,javaType=String},
+
+</sql>
+
+<sql id="updateCols">
+<if test="pk neq null">STXH=#{pk},</if>
+BH=#{model.Bh,jdbcType=VARCHAR,javaType=String},
+STLX=#{model.Stlx,jdbcType=VARCHAR,javaType=String},
+STSX=#{model.Stsx,jdbcType=VARCHAR,javaType=String},
+STTX=#{model.Sttx,jdbcType=VARCHAR,javaType=String},
+STNR=#{model.Stnr,jdbcType=VARCHAR,javaType=String},
+XZDAA=#{model.Xzdaa,jdbcType=VARCHAR,javaType=String},
+XZDAB=#{model.Xzdab,jdbcType=VARCHAR,javaType=String},
+XZDAC=#{model.Xzdac,jdbcType=VARCHAR,javaType=String},
+XZDAD=#{model.Xzdad,jdbcType=VARCHAR,javaType=String},
+TXLJ=#{model.Txlj,jdbcType=VARCHAR,javaType=String},
+STDA=#{model.Stda,jdbcType=VARCHAR,javaType=String},
+STBJ=#{model.Stbj,jdbcType=VARCHAR,javaType=String},
+SYCX=#{model.Sycx,jdbcType=VARCHAR,javaType=String},
+TK1BH=#{model.Tk1bh,jdbcType=VARCHAR,javaType=String},
+TK2BH=#{model.Tk2bh,jdbcType=VARCHAR,javaType=String},
+PROV=#{model.Prov,jdbcType=VARCHAR,javaType=String},
+JYW=#{model.Jyw,jdbcType=VARCHAR,javaType=String},
+
+</sql>
+
+<sql id="orderby">order by m.STXH desc </sql>
+
+<sql id="joinColums"></sql>
+
+<sql id="join"></sql><!-- 别名m已被主表使用  -->
+
+<resultMap type="com.ett.drv.model.exam.ExamTKcnModel" id="resultMap">
+ <id column="STXH"  property="Stxh" jdbcType="VARCHAR" javaType="String"/>
+<result column="BH"  property="Bh" jdbcType="VARCHAR" javaType="String"/>
+<result column="STLX"  property="Stlx" jdbcType="VARCHAR" javaType="String"/>
+<result column="STSX"  property="Stsx" jdbcType="VARCHAR" javaType="String"/>
+<result column="STTX"  property="Sttx" jdbcType="VARCHAR" javaType="String"/>
+<result column="STNR"  property="Stnr" jdbcType="VARCHAR" javaType="String"/>
+<result column="XZDAA"  property="Xzdaa" jdbcType="VARCHAR" javaType="String"/>
+<result column="XZDAB"  property="Xzdab" jdbcType="VARCHAR" javaType="String"/>
+<result column="XZDAC"  property="Xzdac" jdbcType="VARCHAR" javaType="String"/>
+<result column="XZDAD"  property="Xzdad" jdbcType="VARCHAR" javaType="String"/>
+<result column="TXLJ"  property="Txlj" jdbcType="VARCHAR" javaType="String"/>
+<result column="STDA"  property="Stda" jdbcType="VARCHAR" javaType="String"/>
+<result column="STBJ"  property="Stbj" jdbcType="VARCHAR" javaType="String"/>
+<result column="SYCX"  property="Sycx" jdbcType="VARCHAR" javaType="String"/>
+<result column="TK1BH"  property="Tk1bh" jdbcType="VARCHAR" javaType="String"/>
+<result column="TK2BH"  property="Tk2bh" jdbcType="VARCHAR" javaType="String"/>
+<result column="PROV"  property="Prov" jdbcType="VARCHAR" javaType="String"/>
+<result column="JYW"  property="Jyw" jdbcType="VARCHAR" javaType="String"/>
+
+ </resultMap>
+
+
+<sql id="selectCondition">
+<if test="model.Stxh neq null">and m.STXH like #{model.Stxh,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model.Bh neq null">and m.BH like #{model.Bh,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model.Stlx neq null">and m.STLX like #{model.Stlx,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model.Stsx neq null">and m.STSX like #{model.Stsx,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model.Sttx neq null">and m.STTX like #{model.Sttx,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model.Stnr neq null">and m.STNR like #{model.Stnr,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model.Xzdaa neq null">and m.XZDAA like #{model.Xzdaa,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model.Xzdab neq null">and m.XZDAB like #{model.Xzdab,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model.Xzdac neq null">and m.XZDAC like #{model.Xzdac,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model.Xzdad neq null">and m.XZDAD like #{model.Xzdad,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model.Txlj neq null">and m.TXLJ like #{model.Txlj,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model.Stda neq null">and m.STDA like #{model.Stda,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model.Stbj neq null">and m.STBJ like #{model.Stbj,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model.Sycx neq null">and m.SYCX like #{model.Sycx,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model.Tk1bh neq null">and m.TK1BH like #{model.Tk1bh,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model.Tk2bh neq null">and m.TK2BH like #{model.Tk2bh,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model.Prov neq null">and m.PROV like #{model.Prov,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model.Jyw neq null">and m.JYW like #{model.Jyw,jdbcType=VARCHAR ,javaType=String } </if> 
+
+</sql>
+
+
+<select id="select" resultType="ArrayList" resultMap="resultMap">
+	select m.* from <include refid="table" /> m   
+		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+			<include refid="selectCondition"/>
+		</trim>
+	<include refid="orderby"/>
+</select>
+
+<select id="selectUnion" resultType="ArrayList" resultMap="resultMap">
+  select m.* from (
+	<trim  prefixOverrides="union" suffixOverrides="union">
+		<foreach collection="list" item="model">
+			<if test="model neq null">
+				union select m.* from <include refid="table" /> m 
+					<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+						<include refid="selectCondition"/>
+					</trim>
+			</if>
+		</foreach>
+	</trim>
+   ) m <include refid="orderby"/>
+</select>
+
+<select id="selectEqPk"  resultMap="resultMap">
+	select m.* from <include refid="table" /> m  where m.<include refid="pk" /> = #{Stxh,jdbcType=VARCHAR,javaType=String}
+</select>
+
+<select id="selectInPk" resultType="ArrayList" resultMap="resultMap" >
+	select m.* from <include refid="table" /> m  where m.<include refid="pk" /> in
+		<foreach item="pk" collection="list" open="(" separator="," close=")"> #{pk} </foreach>
+	<include refid="orderby"/>
+</select>
+
+<select id="selectNotInPk" resultType="ArrayList" resultMap="resultMap" >
+	select m.* from <include refid="table" /> m  where m.<include refid="pk" /> not in
+		<foreach item="pk" collection="list" open="(" separator="," close=")"> #{pk} </foreach>
+	<include refid="orderby"/>
+</select>
+
+<select  id="selectAll"  resultType="ArrayList"  resultMap="resultMap">
+	select m.* from  <include refid="table" /> m
+	<include refid="orderby"/>
+</select>
+
+<select id="count" resultType="int">
+	select count(*) from <include refid="table"/>
+</select>
+
+<insert id="insertOne" flushCache="true" >
+	insert into <include refid="table"/> ( <include refid="colums"/> ) values  
+	(
+		<trim  prefixOverrides="," suffixOverrides=",">
+			<include refid="insertCols"/>
+		</trim>
+	)
+</insert>
+
+<update id="updateOne" flushCache="true" >
+	update <include refid="table"/> set 
+		<trim  prefixOverrides="," suffixOverrides=",">
+			<include refid="updateCols"/>
+		</trim>
+	where <include refid="pk" />=#{model.Stxh,jdbcType=VARCHAR,javaType=String}</update>
+
+<delete id="deleteEqPk" flushCache="true">
+	delete from <include refid="table"/> where <include refid="pk" /> =#{Stxh,jdbcType=VARCHAR,javaType=String}
+</delete>
+
+<delete id="deleteInPk" flushCache="true">
+	delete from <include refid="table"/> where <include refid="pk" /> in
+		<foreach item="pk" collection="list" open="(" separator="," close=")">#{pk}</foreach>
+</delete>
+
+<delete id="deleteNotInPk" flushCache="true">
+	delete from <include refid="table"/> where <include refid="pk" /> not in
+		<foreach item="pk" collection="list" open="(" separator="," close=")">#{pk}</foreach>
+</delete>
+
+
+
+<resultMap type="com.ett.drv.model.exam.ExamTKcnModel" id="viewMap" extends="resultMap" ></resultMap>
+
+
+<sql id="selectViewCondition">
+	 <include refid="selectCondition"/>  
+</sql><select id="selectView" resultType="ArrayList" resultMap="viewMap">
+	select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> 
+		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+			<include refid="selectViewCondition"/>
+		</trim>	<include refid="orderby"/>
+</select>
+
+<select id="selectViewUnion" resultType="ArrayList" resultMap="viewMap">
+  select m.* from (
+	<trim  prefixOverrides="union" suffixOverrides="union">
+		<foreach collection="list" item="model">
+			<if test="model neq null">
+				union select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> 
+					<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+						<include refid="selectViewCondition"/>
+					</trim>
+			</if>
+		</foreach>
+	</trim>
+  ) m <include refid="orderby"/>
+</select>
+
+<select id="selectViewEqPk"  resultMap="viewMap">
+	select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> = #{Stxh,jdbcType=VARCHAR,javaType=String}
+</select>
+
+<select id="selectViewInPk" resultType="ArrayList" resultMap="viewMap" >
+	select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> in
+	<foreach item="pk" collection="list" open="(" separator="," close=")"> #{pk} </foreach>
+	<include refid="orderby"/>
+</select>
+
+<select id="selectViewNotInPk" resultType="ArrayList" resultMap="viewMap" >
+	select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> not in
+	<foreach item="pk" collection="list" open="(" separator="," close=")"> #{pk} </foreach>
+	<include refid="orderby"/>
+</select>
+
+<select  id="selectViewAll"  resultType="ArrayList"  resultMap="viewMap">
+	select m.* <include refid="joinColums"/> from  <include refid="table" /> m <include refid="join"/>
+	<include refid="orderby"/>
+</select>
+
+</mapper>

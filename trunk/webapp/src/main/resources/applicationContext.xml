@@ -247,6 +247,10 @@
   <property name="mapperInterface" value="com.ett.drv.mapper.preinput.IStudentApplyInfoMapper"></property>
 </bean>
 
+<bean id="examTKcnMapper" parent="baseDrvMapper">
+<property name="mapperInterface" value="com.ett.drv.mapper.exam.IExamTKcnMapper"></property>
+</bean>
+
 
 <bean id="statisCoachCarMapper"  parent="baseDrvMapper" >
    <property name="mapperInterface" value="com.ett.drv.mapper.statis.IStatisCoachCarMapper"></property>
@@ -315,6 +319,7 @@
     <property name="statisDriverMapper" ref="statisDriverMapper"></property>
     <property name="statisKmMapper" ref="statisKmMapper"></property>
     <property name="statisSchoolMapper" ref="statisSchoolMapper"></property>
+    <property name="examTKcnMapper" ref="examTKcnMapper"></property>
     
     <property name="drvInterface"  ref="drvServiceHelper"></property>
     <property name="vehicleInterface" ref="vehicleServiceHelper"></property>

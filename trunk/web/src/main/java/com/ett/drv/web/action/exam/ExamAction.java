@@ -1,7 +1,10 @@
 package com.ett.drv.web.action.exam;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
+import com.ett.drv.model.exam.ExamTKcnModel;
 import com.ett.drv.model.preinput.StudentApplyInfoModel;
 import com.ett.drv.web.action.BaseDrvAction;
 
@@ -54,7 +57,38 @@ public class ExamAction extends BaseDrvAction{
 	}
 	
 	public String to_topic(){
-		this.setRequestAttribute(cartype, cartype);
+		//this.preBiz.loadCrudMapper(ExamTKcnModel.class);
+		//System.out.println(cartype);
+		List<ExamTKcnModel> list=this.preBiz.getTopic("%"+cartype+"%");
+		List<ExamTKcnModel> judge=new ArrayList<ExamTKcnModel>();
+		List<ExamTKcnModel> choose=new ArrayList<ExamTKcnModel>();
+		for(ExamTKcnModel m:list){
+			if(m.getSttx().equals("1")){
+				judge.add(m);
+			}else if(m.getSttx().equals("2")){
+				choose.add(m);
+			}
+		}
+		int js=judge.size();
+		int cs=choose.size();
+		List<ExamTKcnModel> jtopic=new ArrayList<ExamTKcnModel>();
+		for(int i=0;i<10;i++){
+		Random jrand=new Random(js);
+		int r=jrand.nextInt();
+		jtopic.add(judge.get(r));
+		judge.remove(r);
+		js--;
+		}
+		List<ExamTKcnModel> ctopic=new ArrayList<ExamTKcnModel>();
+		for(int i=0;i<10;i++){
+		Random jrand=new Random(cs);
+		int r=jrand.nextInt();
+		ctopic.add(judge.get(r));
+		choose.remove(r);
+		cs--;
+		}
+		this.setRequestAttribute("judge", jtopic);
+		this.setRequestAttribute("choose", ctopic);
 		return "jsp";
 	}
 	

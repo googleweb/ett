@@ -20,6 +20,7 @@ import com.ett.drv.mapper.booked.IPersonChangeMapper;
 import com.ett.drv.mapper.booked.ISchoolCarMapper;
 import com.ett.drv.mapper.booked.IWeekRecordMapper;
 import com.ett.drv.mapper.dict.IDrvCodeMapper;
+import com.ett.drv.mapper.exam.IExamTKcnMapper;
 import com.ett.drv.mapper.preinput.IStudentApplyInfoMapper;
 import com.ett.drv.mapper.self.IDeviceMapper;
 import com.ett.drv.mapper.self.IDeviceSnMapper;
@@ -52,6 +53,7 @@ import com.ett.drv.model.booked.CarOwnerChangeModel;
 import com.ett.drv.model.booked.PersonChangeModel;
 import com.ett.drv.model.booked.SchoolCarModel;
 import com.ett.drv.model.dict.DrvCodeModel;
+import com.ett.drv.model.exam.ExamTKcnModel;
 import com.ett.drv.model.preinput.StudentApplyInfoModel;
 import com.ett.drv.model.self.DeviceModel;
 import com.ett.drv.model.self.DeviceSnModel;
@@ -115,6 +117,7 @@ public abstract class BaseDrvBiz extends BaseCurdBiz {
     protected IStatisKmMapper statisKmMapper;
     protected IStatisSchoolMapper statisSchoolMapper;
     protected IDrvCodeMapper<DrvCodeModel> drvCodeMapper;
+    protected IExamTKcnMapper<ExamTKcnModel> examTKcnMapper;
     
 
     protected IDrvInterface drvInterface;
@@ -324,6 +327,14 @@ public abstract class BaseDrvBiz extends BaseCurdBiz {
 	public void setBusLogMapper(IBusLogMapper<BusLogModel> busLogMapper) {
 		this.busLogMapper = busLogMapper;
 		this.addCrudMapper(BusLogModel.class, busLogMapper);
+	}
+	
+
+
+
+	public void setExamTKcnMapper(IExamTKcnMapper<ExamTKcnModel> examTKcnMapper) {
+		this.examTKcnMapper = examTKcnMapper;
+		this.addCrudMapper(ExamTKcnModel.class, examTKcnMapper);
 	}
 
 
