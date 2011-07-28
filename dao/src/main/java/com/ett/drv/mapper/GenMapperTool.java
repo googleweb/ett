@@ -31,10 +31,12 @@ import com.ett.drv.mapper.self.ITransactResourceMapper;
 import com.ett.drv.mapper.self.ITransactVehicleMapper;
 import com.ett.drv.mapper.self.IVehFlowMapper;
 import com.ett.drv.mapper.self.IVehicleMapper;
+import com.ett.drv.mapper.exam.IExamTKcnMapper;
 import com.ett.drv.model.admin.*;
 import com.ett.drv.model.booked.*;
 import com.ett.drv.model.dict.DrvCodeModel;
 import com.ett.drv.model.dict.VehCodeModel;
+import com.ett.drv.model.exam.ExamTKcnModel;
 import com.ett.drv.model.preinput.StudentApplyInfoModel;
 import com.ett.drv.model.self.DeviceModel;
 import com.ett.drv.model.self.DeviceSnModel;
@@ -70,12 +72,14 @@ public class GenMapperTool {
 	    ,TABLE_SELF_KM1_CHECK_RECORD,TABLE_SELF_KM1_PREASIGN_RECORD,TABLE_SELF_FEE_LOG
 	    
 	    ,TABLE_SELF_DEVICE,TABLE_SELF_DEVICE_SN,TABLE_SELF_HARD,TABLE_MENUS,TABLE_STUDENT_APPLY_INFO
+	    
+	    ,EXAM_TK_CN
 	}
 	
 	public static enum Seqs{
 		seq_bus_all_info,seq_buslog,seq_car_owner_change_info,seq_department,seq_dict,seq_dicttype,seq_extra_assign,seq_fp_approve,seq_role,seq_school_car_info
 		,seq_self_device,seq_self_devicesn,seq_self_hardware,seq_self_transact_driver,seq_self_transact_vehicle,seq_student,seq_table_person_change_info
-		,seq_user,seq_week_record,seq_yuyue_day_limit,seq_yuyue_info,seq_yuyue_limit,seq_menu,SEQ_STUDENT_APPLY_INFO
+		,seq_user,seq_week_record,seq_yuyue_day_limit,seq_yuyue_info,seq_yuyue_limit,seq_menu,SEQ_STUDENT_APPLY_INFO,seq_exam_tk_cn
 	}
 	
 	public static String NEXTVAL=".nextval";
@@ -122,6 +126,8 @@ public class GenMapperTool {
 		mappers.put(Table.TABLE_SELF_DEVICE_SN,mf.createMapperTemplate(Table.TABLE_SELF_DEVICE_SN.name().toUpperCase(), "id".toUpperCase(),IDeviceSnMapper.class, DeviceSnModel.class,Seqs.seq_self_devicesn+NEXTVAL ));
 		mappers.put(Table.TABLE_SELF_HARD,mf.createMapperTemplate(Table.TABLE_SELF_HARD.name().toUpperCase(), "id".toUpperCase(),IHardwareMapper.class, HardwareModel.class,Seqs.seq_self_hardware+NEXTVAL ));
 		mappers.put(Table.TABLE_STUDENT_APPLY_INFO,mf.createMapperTemplate(Table.TABLE_STUDENT_APPLY_INFO.name().toUpperCase(), "id".toUpperCase(), IStudentApplyInfoMapper.class, StudentApplyInfoModel.class,Seqs.SEQ_STUDENT_APPLY_INFO+NEXTVAL));
+		
+		mappers.put(Table.EXAM_TK_CN, mf.createMapperTemplate(Table.EXAM_TK_CN.name().toUpperCase(), "stxh".toUpperCase(), IExamTKcnMapper.class, ExamTKcnModel.class,Seqs.seq_exam_tk_cn+NEXTVAL));
 		}catch(Exception ex){ex.printStackTrace();}
 		
 		return mappers;
@@ -131,8 +137,8 @@ public class GenMapperTool {
 		Connection c=null;
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
-			//c=  DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:oradrvde", "drv_admin", "stjj117");
-			c=  DriverManager.getConnection("jdbc:oracle:thin:@192.168.1.10:1521:oradrvde", "aspnet", "stjj117");
+			c=  DriverManager.getConnection("jdbc:oracle:thin:@192.168.1.10:1521:oradrvde", "drv_admin", "stjj117");
+			//c=  DriverManager.getConnection("jdbc:oracle:thin:@192.168.1.10:1521:oradrvde", "aspnet", "stjj117");
 			//c=  DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "hrsystem", "ken147");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -149,7 +155,7 @@ public class GenMapperTool {
 		//for (Enum<Table> et : enTables) {
 		//	try{
 		//	MapperTemplate mapper=mappers.get(et);
-		    MapperTemplate mapper=mappers.get(Table.TABLE_STUDENT_APPLY_INFO);
+		    MapperTemplate mapper=mappers.get(Table.EXAM_TK_CN);
 			System.out.println(mapper.generalMapplerXML(srcPath,"oracle"));
 		//	}catch(Exception ex){}
 		//}
