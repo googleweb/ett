@@ -5,8 +5,9 @@
 <%@page import="com.ett.drv.model.admin.RoleModel"%>
 <%@page import="com.ett.drv.model.admin.DepartmentModel"%>
 <%@page import="com.ett.drv.web.rule.AuthUserRule"%>
+<%@page import="com.smartken.kia.core.util.DateTimeUtil"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<jsp:useBean id="weekRecord" class="com.ett.drv.model.booked.BookedWeekRecordModel"></jsp:useBean>
+<jsp:useBean id="weekRecord" class="com.ett.drv.model.booked.BookedWeekRecordModel" scope="request" ></jsp:useBean>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -18,7 +19,7 @@ String bookedExamPreasgin=basePath+"booked/ExamPreasign";
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'index.jsp' starting page</title>
+    <title>周排班  <%=weekRecord.getCweekRange() %></title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -36,18 +37,30 @@ String bookedExamPreasgin=basePath+"booked/ExamPreasign";
 
   
    <script type="text/javascript">
-   function printviewex()
-{
-
-var obj=document.getElementById("wb");
-obj.ExecWB(7,1);
-
-//alert('2');
-
-}
-   
-     <%=JQueryModel.DOC_READY_START %>   
-     // printviewex();
+     <%=JQueryModel.DOC_READY_START %>
+     /**
+     
+      $(".spanFp").each(function(index){
+    	  var newContext="";
+    	  var context=$(this).html();
+    	  var limits=context.split("<br>");
+    	  for(var i=0;i<limits.length;i++){
+    		  var limit=limits[i];
+    		  var id=limit.split(";")[6]||0;
+    		  if(id==0||id==null)continue;
+    		  var href="<%=bookedExamPreasgin %>/to/preasign.action?limitId="+id;
+    		  limit=limit.replace(depCode,"<a href='"+href+"'>"+depCode+"</a>");
+    		  newContext=newContext+limit;
+    	  }
+    	  $(this).html(newContext);
+      });
+      **/
+      //alert("<%=weekRecord.toJson().toString()%>");
+      
+      var obj=document.getElementById("wb");
+//alert("obj:"+obj);
+//alert(wb);
+     obj.ExecWB(7,1);
      <%=JQueryModel.DOC_READY_END%>
    </script>
 
@@ -55,34 +68,33 @@ obj.ExecWB(7,1);
   </head>
   
   <body>
+  
   <object id="wb" height="0" width="0"  
-      classid="CLSID:8856F961-340A-11D0-A96B-00C04FD705A2" name="wb">
+classid="CLSID:8856F961-340A-11D0-A96B-00C04FD705A2" name="wb">
+
      </object>
-  <a class="<%=EasyUiModel.LinkButton.CLASS %>"
-     <%=EasyUiModel.LinkButton.Properties.ICON_CLS(EasyUiModel.ICON_PRINT) %> 
-     onclick="printviewex()"
-   >打印</a>
-  <br/>
-<table id="Table1"  class="editTable" cellspacing="0" cellpadding="4"  >
+   
+<table id="Table1" class="editTable" cellspacing="0" cellpadding="4"  >
 <tbody>
 <tr >
-<td rowspan="2">星期\科目</td>
+<td rowspan="2" style="width: 150px">星期\科目</td>
 <td colspan="2">科目一</td>
 <td colspan="2">科目二</td>
 <td colspan="2">科目三</td>
 </tr>
 <tr >
-<td>总数</td>
-<td>分配</td>
-<td>总数</td>
-<td>分配</td>
-<td>总数</td>
-<td>分配</td>
+<td style="width: 60px" >总数</td>
+<td style="width: 80px">分配</td>
+<td style="width: 60px">总数</td>
+<td style="width: 80px">分配</td>
+<td style="width: 60px">总数</td>
+<td style="width: 80px">分配</td>
 </tr>
 
 
 
 <s:iterator value="#{'一':1,'二':2,'三':3,'四':4,'五':5,'六':6,'日':7}" id="dw" >
+<!--  
 <tr>
 	<th style="width: 200px">星期<s:property value="#dw.key"/>(
 	  	             <s:if test="#dw.value eq 1"><s:date name="weekRecord.monday" format="yyyy-MM-dd"/></s:if>
@@ -106,7 +118,41 @@ obj.ExecWB(7,1);
 	</s:iterator>
 
 </tr>
+-->
 </s:iterator>
+
+<% for(int dw=1;dw<=7;dw++){ %>
+<tr>
+	<th style="text-align: left;">
+	   <% 
+	     Date now=null;
+	     String weekDateCn="";
+	   if(dw==1){ now=weekRecord.getMonday();weekDateCn="一"; }
+	   else if(dw==2){ now=weekRecord.getTuesday(); weekDateCn="二";}
+	   else if(dw==3){ now=weekRecord.getWednesday();weekDateCn="三"; }
+	   else if(dw==4){ now=weekRecord.getThursday();weekDateCn="四"; }
+	   else if(dw==5){ now=weekRecord.getFriday(); weekDateCn="五";}
+	   else if(dw==6){ now=weekRecord.getSaturday();weekDateCn="六";}
+	   else if(dw==7){ now=weekRecord.getSunday(); weekDateCn="日";}
+	   %>
+       星期<%=weekDateCn %><br/>(<%=DateTimeUtil.format(now,DateTimeUtil.DATE_FORMAT_DB) %>)
+	</th>
+	<% for(int km=1;km<=3;km++){ 
+	   String patterNum="IWeek"+dw+"Km"+km+"Num";
+	   String patterFp="IWeek"+dw+"Km"+km+"Fp";
+	%>
+	  <td style="width: 14%">
+	   &nbsp;<%=weekRecord.eval(patterNum) %>
+	 </td>
+	 <td style="width: 14%" >&nbsp;
+	   <span class="spanFp">
+	   <%=weekRecord.eval(patterFp) %>
+	   </span>
+	 </td>
+	<% } %>
+</tr> 
+<% } %>
+
 </tbody>
 </table>
   </body>

@@ -2,6 +2,7 @@
 <%@page import="com.smartken.kia.core.util.StringUtil"%>
 <%@page import="com.smartken.kia.core.model.impl.EasyUiModel.DataGrid"%>
 <%@page import="com.ett.drv.model.booked.BookedWeekRecordModel"%>
+<%@page import="com.ett.drv.model.admin.DictModel"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -39,9 +40,24 @@ String bookedWeekPbPath=basePath+"booked/WeekPb";
     }
     
     function checkedFormatter(value,rowData,rowIndex){
-    	if(value==1) 
-    	{return '已审核';} 
-    	else { return '未审核'; }
+    	var text="";
+    	var dicts=Kia.cache.dict["<%=DictModel.class.getName()%>"];
+        $.each(dicts,function(index,item){
+        	//alert("value:"+value+"   dict[\"CDictValue\"]:"+item["CDictValue"]);
+        	if(item["CTypename"]=="审核结果" && item["CDictValue"]==value.toString()){
+    			text=item["CDictText"];
+    		    return false;
+        	  }
+        	});
+        
+        
+    		//alert("value:"+value+"   dict[\"CDictValue\"]:"+dict["CDictValue"])
+    		//if(dict["CTypename"]=="审核结果" && dict["CDictValue"]==value.toString()){
+    		//	text=dict["CDictText"];
+    		//	break;
+    		//}
+    	
+    	return text;
     }
     
     
@@ -123,8 +139,8 @@ String bookedWeekPbPath=basePath+"booked/WeekPb";
     
   </head>
   
-  <body>
-  	<div class="innerDiv" id="innerDiv">
+  <body class="<%=EasyUiModel.Layout.CLASS %>">
+  	<div <%=EasyUiModel.Layout.Properties.REGION(EasyUiModel.REGION_CENTER) %> >
 	<table id="<%=tableWeekPb %>"></table>
 	</div>
   </body>

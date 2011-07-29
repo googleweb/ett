@@ -667,7 +667,7 @@ KeyboardPinyin.prototype.on_click=function(val,cls){
 	if(!val)return ;
 	switch(cls){
 	 case "num" :{
-		 if(this.mode!="EN" && this.mode!="en" ) {break;}
+		 //if(this.mode!="EN" && this.mode!="en" ) {break;}
 		 var tval=$(this.target).val();
 		 var newVal=tval+val;
 		 $(this.target).val(newVal);
