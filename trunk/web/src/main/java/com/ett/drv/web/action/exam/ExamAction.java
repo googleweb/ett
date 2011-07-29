@@ -62,6 +62,7 @@ public class ExamAction extends BaseDrvAction{
 		List<ExamTKcnModel> list=this.preBiz.getTopic("%"+cartype+"%");
 		List<ExamTKcnModel> judge=new ArrayList<ExamTKcnModel>();
 		List<ExamTKcnModel> choose=new ArrayList<ExamTKcnModel>();
+		if(list.size()!=0){
 		for(ExamTKcnModel m:list){
 			if(m.getSttx().equals("1")){
 				judge.add(m);
@@ -72,24 +73,31 @@ public class ExamAction extends BaseDrvAction{
 		int js=judge.size();
 		int cs=choose.size();
 		List<ExamTKcnModel> jtopic=new ArrayList<ExamTKcnModel>();
-		for(int i=0;i<10;i++){
-		Random jrand=new Random(js);
-		int r=jrand.nextInt();
+		for(int i=0;i<15;i++){
+		//Random jrand=new Random(js);
+		int r=(int)(Math.random()*js);
 		jtopic.add(judge.get(r));
 		judge.remove(r);
 		js--;
 		}
 		List<ExamTKcnModel> ctopic=new ArrayList<ExamTKcnModel>();
-		for(int i=0;i<10;i++){
-		Random jrand=new Random(cs);
-		int r=jrand.nextInt();
-		ctopic.add(judge.get(r));
+		for(int i=0;i<85;i++){
+		//Random jrand=new Random(cs);
+		int r=(int)(Math.random()*cs);
+		ctopic.add(choose.get(r));
 		choose.remove(r);
 		cs--;
 		}
+		//System.out.println(jtopic.size()+":"+ctopic.size());
 		this.setRequestAttribute("judge", jtopic);
 		this.setRequestAttribute("choose", ctopic);
 		return "jsp";
+	}
+		else {
+			this.setRequestAttribute("judge", new ArrayList<ExamTKcnModel>());
+			this.setRequestAttribute("choose", new ArrayList<ExamTKcnModel>());
+		return "jsp";
+		}
 	}
 	
 

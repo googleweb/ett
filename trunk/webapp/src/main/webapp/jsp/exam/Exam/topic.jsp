@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@page import="com.smartken.kia.core.model.impl.EasyUiModel"%>
+<%@page import="com.ett.drv.model.exam.*" %>
 <%@page import="com.smartken.kia.core.model.impl.JQueryModel"%>
 <%@page import="com.ett.drv.model.preinput.*"%>
 <%@page import="com.ett.drv.model.admin.*"%>
@@ -103,18 +104,39 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    
    <%=JQueryModel.DOC_READY_END%>
   </script>
-  
+  <%List<ExamTKcnModel> judge=(List<ExamTKcnModel>)request.getAttribute("judge"); 
+  	List<ExamTKcnModel> choose=(List<ExamTKcnModel>)request.getAttribute("choose");
+  %>
     ${cartype} <br>
+    <%
+    int judgenum=judge.size();
+    int choosenum=choose.size();
+     %><br>
     <%!int k=0; %>
-   <%for(int i=1;i<10;i++){ %>
+   <%for(int i=1;i<choosenum+1;i++){ %>
    <table id="t<%=i%>" cellspacing="0" cellpadding="0" style="width:100%;table-layout:auto;" class="editTable">
    <tr>
    <td style="width:10%">
        题号：<%=i%>
    </td>
-   <td colspan="2">
-       你是不是个代笔？
-   </td>
+   <td >
+      <%out.print(choose.get(i-1).getStnr()); %>
+	   </td>
+	   <td rowspan="5">
+	   <img src="<%=basePath %><%out.print(choose.get(i-1).getTxlj()); %>" alt=" ">
+	   </td>
+   </tr>
+   <tr>
+   <td style="text-align: right">答案A</td><td><%out.print(choose.get(i-1).getXzdaa()); %></td>
+   </tr>
+   <tr>
+   <td style="text-align: right">答案B</td><td><%out.print(choose.get(i-1).getXzdab()); %></td>
+   </tr>
+   <tr>
+   <td style="text-align: right">答案C</td><td><%out.print(choose.get(i-1).getXzdac()); %></td>
+   </tr>
+   <tr>
+   <td style="text-align: right">答案D</td><td><%out.print(choose.get(i-1).getXzdad()); %></td>
    </tr>
    
    <tr>
@@ -131,20 +153,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	   </td>
 	   <td style="width: 300px">
 	   <input type="hidden" name="answer_<%=i%>" class="inputAnswer" value="T">
-	   <input type="hidden" class="corectanswer" value="A">
-	        答案:<span class="spanAnswer" style="color:red;font-weight:left"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="rightanswer"></span>
+	   <input type="hidden" class="corectanswer" value="<%out.print(choose.get(i-1).getStda());%>">
+	        答案:<span class="spanAnswer" style="color:red;font-weight:bold;"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="rightanswer"></span>
 	   </td>
    </tr>
    </table>
    <%k=i;} %>
-    <%for(int i=k+1;i<20;i++){ %>
+    <%for(int i=k+1;i<judgenum+choosenum+1;i++){ %>
    <table id="t<%=i%>" cellspacing="0" cellpadding="0" style="width:100%;table-layout:auto;" class="editTable">
-   <tr>
+   <tr style="height:200px;">
    <td style="width:10%">
        题号：<%=i%>
    </td>
-   <td colspan="2">
-      这是判断题
+   <td colspan="1" >
+      <%out.print(judge.get(i-1-k).getStnr()); %>
+   </td>
+   <td>
+   <img src="<%=basePath %><%out.print(judge.get(i-1-k).getTxlj()); %>" alt=" ">
    </td>
    </tr>
    
@@ -155,13 +180,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	   <td>
 	   
 	       请选答案：
-	       <button type="button" class="selecter"  value="&radic;">&radic;</button>
-	       <button type="button" class="selecter"  value="&Chi;">&Chi;</button>
+	       <button type="button" class="selecter"  value="Y">&radic;</button>
+	       <button type="button" class="selecter"  value="N">&Chi;</button>
 	   </td>
 	   <td style="width: 300px">
 	   <input type="hidden" name="answer_<%=i%>" class="inputAnswer" value="T">
-	   <input type="hidden" class="corectanswer" value="&radic;">
-	        答案:<span class="spanAnswer" style="color:red;font-weight:left"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="rightanswer"></span>
+	   <input type="hidden" class="corectanswer" value="<%out.print(judge.get(i-1-k).getStda()); %>">
+	        答案:<span class="spanAnswer" style="color:red;font-weight:bold;"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="rightanswer"></span>
 	   </td>
    </tr>
    </table>
