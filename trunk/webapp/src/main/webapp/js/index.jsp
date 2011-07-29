@@ -55,8 +55,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      }else if(runMode.equals("run")){
     	 lSbrScript.append(getScriptTag(lStrPlugFloder+"/package.js")); 
      }     
-     if(lStrCommon.length()>0){    	 
-     }
+     
+     lStrPlugFloder=basePath+"/cache";
+     lSbrScript.append(getScriptTag(lStrPlugFloder+"/dict.share.js"));
+     
+     
      _PW.write(lSbrScript.toString());
 %>
 

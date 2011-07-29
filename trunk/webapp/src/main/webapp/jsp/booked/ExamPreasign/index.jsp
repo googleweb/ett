@@ -7,7 +7,6 @@
 <%@page import="com.ett.drv.web.rule.AuthUserRule"%>
 <%@page import="com.smartken.kia.core.util.DateTimeUtil"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<jsp:useBean id="weekRecord" class="com.ett.drv.model.booked.BookedWeekRecordModel"></jsp:useBean>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -55,7 +54,7 @@ String bookedExamPreasgin=basePath+"booked/ExamPreasign";
     	  $(this).html(newContext);
       });
       **/
-      alert("<%=weekRecord.toJson().toString()%>");
+     
      <%=JQueryModel.DOC_READY_END%>
    </script>
 
@@ -109,7 +108,7 @@ String bookedExamPreasgin=basePath+"booked/ExamPreasign";
 
 
 <s:iterator value="#{'一':1,'二':2,'三':3,'四':4,'五':5,'六':6,'日':7}" id="dw" >
-<!--  
+
 <tr>
 	<th style="width: 200px">星期<s:property value="#dw.key"/>(
 	  	             <s:if test="#dw.value eq 1"><s:date name="weekRecord.monday" format="yyyy-MM-dd"/></s:if>
@@ -133,39 +132,10 @@ String bookedExamPreasgin=basePath+"booked/ExamPreasign";
 	</s:iterator>
 
 </tr>
--->
+
 </s:iterator>
 
-<% for(int dw=1;dw<=7;dw++){ %>
-<tr>
-	<th style="width: 200px">星期<s:property value="#dw.key"/>
-	   <% 
-	     Date now=null;
-	   if(dw==1){ now=weekRecord.getMonday(); }
-	   else if(dw==2){ now=weekRecord.getTuesday(); }
-	   else if(dw==3){ now=weekRecord.getWednesday(); }
-	   else if(dw==4){ now=weekRecord.getThursday(); }
-	   else if(dw==5){ now=weekRecord.getFriday(); }
-	   else if(dw==6){ now=weekRecord.getSaturday(); }
-	   else if(dw==7){ now=weekRecord.getSunday(); }
-	   %>
-       (<%=DateTimeUtil.format(now,DateTimeUtil.DATE_FORMAT_DB) %>)
-	</th>
-	<% for(int km=1;km<=3;km++){ 
-	   String patterNum="IWeek"+dw+"Km"+km+"Num";
-	   String patterFp="IWeek"+dw+"Km"+km+"Fp";
-	%>
-	  <td style="width: 14%">
-	   &nbsp;<%=weekRecord.eval(patterNum) %>
-	 </td>
-	 <td style="width: 14%" >
-	   <span class="spanFp">
-	   <%=weekRecord.eval(patterFp) %>
-	   </span>
-	 </td>
-	<% } %>
-</tr>
-<% } %>
+
 
 </tbody>
 </table>

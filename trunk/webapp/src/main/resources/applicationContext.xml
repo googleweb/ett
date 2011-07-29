@@ -324,6 +324,15 @@
     <property name="drvInterface"  ref="drvServiceHelper"></property>
     <property name="vehicleInterface" ref="vehicleServiceHelper"></property>
     <property name="vioInterface" ref="vioServiceHelper"></property>
+    
+   <property name="cachePath" value="${cachePath}"></property>
+   <property name="cacheModels">
+     <list>
+       <value>com.ett.drv.model.admin.DictModel</value>
+       <value>com.ett.drv.model.admin.DictTypeModel</value>
+     </list>
+   </property>
+    
 </bean>
 
 <bean id="baseBookedBiz" abstract="true" class="com.ett.drv.biz.impl.BookedBiz"  parent="baseDrvBiz" >
@@ -338,5 +347,9 @@
 <bean id="baseHospitalBiz" abstract="true" class="com.ett.drv.biz.impl.HospitalBiz" parent="baseDrvBiz"></bean>
 
 <bean id="baseStatisBiz" abstract="true" class="com.ett.drv.biz.impl.StatisBiz" parent="baseDrvBiz"></bean>
+
+<bean id="baseCacheBiz" abstract="true" class="com.ett.drv.biz.impl.CacheBiz" parent="baseDrvBiz">
+</bean>
+
 
 </beans>

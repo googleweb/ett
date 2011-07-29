@@ -1,8 +1,16 @@
 package com.ett.drv.biz.impl;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import com.ett.drv.mapper.admin.IBusAllInfoMapper;
 import com.ett.drv.mapper.admin.IBusLogMapper;
@@ -74,7 +82,12 @@ import com.ett.drvinterface.IVehicleInterface;
 import com.ett.drvinterface.IVioInterface;
 import com.ett.drvinterface.entity.BaseDrvRequest;
 import com.ett.drvinterface.entity.DrvPreasignRequest;
+import com.smartken.kia.core.enums.ECode;
 import com.smartken.kia.core.model.impl.BaseCurdBiz;
+import com.smartken.kia.core.model.impl.JsContextModel;
+import com.smartken.kia.core.util.FileUtil;
+import com.smartken.kia.core.util.ObjectUtil;
+import com.smartken.kia.core.util.StringUtil;
 
 public abstract class BaseDrvBiz extends BaseCurdBiz {
 
@@ -125,12 +138,32 @@ public abstract class BaseDrvBiz extends BaseCurdBiz {
     protected IVioInterface vioInterface;
     
     
+    
+	private String cachePath;
+	
+    private ArrayList<Class> cacheModels=new ArrayList<Class>();
+    
 
-
-	public IBusAllInfoMapper<BusAllInfoModel> getBusAllInfoMapper() {
-		return busAllInfoMapper;
+	public void setCachePath(String cachePath) {
+		this.cachePath = cachePath;
 	}
 
+
+	public void setCacheModels(ArrayList<String> cacheModels) {
+		for(Iterator<String> it=cacheModels.iterator();it.hasNext();){
+			String clsName=it.next();
+			Class c;
+			try {
+				c = Class.forName(clsName);
+				this.cacheModels.add(c);
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+				break;
+			}
+			
+		}
+	}
+    
 
 
 	public void setBusAllInfoMapper(
@@ -426,7 +459,40 @@ public abstract class BaseDrvBiz extends BaseCurdBiz {
     }
 
     
-
+	public void updateCache() {
+		//URL url=FileUtil.getWebRoot(this.getClass()));
+		String path="";
+		File f=null;
+		//FileWriter fw=null;
+	    OutputStreamWriter osw=null;
+		try{
+	    //path=FileUtil.getParentDir(url,2).getPath()+cacheJsonPath;
+		path=FileUtil.getWebRoot(this.getClass())+cachePath;
+	    path=StringUtil.decodeUtf8(path);
+	    ArrayList<Class> clss =this.cacheModels;
+	    JSONObject jsonCacheModel=new JSONObject();
+	    for(Iterator<Class> it=clss.iterator();it.hasNext();){
+	    	Class cls=it.next();
+            if(this.loadCrudMapper(cls)){
+            	List list=this.getModel();
+            	JSONArray jarr=ObjectUtil.toJsonArray(list);
+            	jsonCacheModel.put(cls.getName(), jarr);
+            }
+	    }
+	    f=new File(path+"\\dict.share.js");
+   	    if(f.exists()){
+	       	f.delete();
+	    }
+	    f.createNewFile();
+	    osw=new OutputStreamWriter(new FileOutputStream(f),ECode.utf8.name());
+	    JsContextModel context=new JsContextModel();
+	    context.appendScript("Class.forName(\"Kia.cache\"); ");
+	    context.appendScript("Kia.cache.dict={0};",jsonCacheModel.toString());
+	    osw.write(context.toScirpt());
+	    osw.flush();
+	    osw.close();
+		}catch (Exception e) {e.printStackTrace();}
+	}
 	
 	
 	

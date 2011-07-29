@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+
+<import resource="applicationContext.xml"/>
+
+<bean id="schCacheBiz" parent="baseCacheBiz"></bean>
+
+
+<bean id="schCacheFile" class="com.ett.drv.schedule.CacheFileSchedule">
+    <property name="cacheBiz" ref="schCacheBiz"></property>
+</bean>
+
+
+<bean id="taskCacheFile"    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">   
+    <property name="targetObject" ref="schCacheFile"></property>   
+    <property name="targetMethod" value="updateCache"></property>   
+</bean>   
+  
+ <!--触发器的bean的设置，在这里我们设置了我们要触发的jobDetail是哪个。这里我们定义了要触发的jobDetail是helloworldTask，即触发器去触发哪个bean..并且我们还定义了触发的时间:每天5:17pm-->   
+    <bean id="cronTrigger"  
+       class="org.springframework.scheduling.quartz.CronTriggerBean">   
+       <property name="jobDetail" ref="taskCacheFile"></property>   
+      <property name="cronExpression">   
+                <!-- 关键在配置此表达式 -->   
+          <value>0 17 17 * * ?</value>   
+       </property>   
+    </bean>   
+    
+    <bean id="simpleTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerBean">
+      <property name="jobDetail" ref="taskCacheFile"></property> 
+      <property name="startDelay" value="1"></property>
+      <property name="repeatInterval" value="10000000"></property>
+         
+    </bean>
+ 
+    <!--管理触发器的总设置,管理我们的触发器列表,可以在bean的list中放置多个触发器。    
+30     --> 
+    <bean autowire="no"  
+        class="org.springframework.scheduling.quartz.SchedulerFactoryBean">   
+        <property name="triggers">   
+            <list>   
+                 <ref local="simpleTrigger"/>
+            </list>   
+       </property>   
+    </bean>   
+
+ 
+
+</beans>
