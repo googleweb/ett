@@ -99,10 +99,11 @@ function addform(){
 }
 function cancel(){
 	var CIdcard=$("#CIdcard").val()||"";
+	var Id=$("#Id").val()||"";
 	if(CIdcard.length==""){
 		$.messager.alert('操作提示','请输入要退办的详细信息');		
 	}else{
-		var url="<%=basePath%>/physical/HospitalMessage/do/cancel.action?CIdcard="+CIdcard ;
+		var url="<%=basePath%>/physical/HospitalMessage/do/cancel.action?Id="+Id ;
 		var timstamp = (new Date()).valueOf();   
    		if (url.indexOf("?") >= 0) {   
         	url= url+"&t="+timstamp;   
@@ -212,8 +213,8 @@ function uploadPhotos(){
 								</td>
 								<td>
 									
-									<input type="text" value="${authUser.departmentModel.CParentcode}">
-									<input type="text" name="CDabh1" id="CDabh1"
+									<%--<input type="text" value="${authUser.departmentModel.CParentcode}">
+									--%><input type="text" name="CDabh1" id="CDabh1"
 									class="<%=EasyUiModel.ValidateBox.CLASS %>"
 									/>
 								</td>

@@ -15,6 +15,7 @@ import com.ett.drv.model.admin.DictModel;
 import com.ett.drv.model.admin.UserModel;
 import com.ett.drv.view.BusAllInfoView;
 import com.ett.drv.web.action.BaseDrvAction;
+import com.ett.drv.web.rule.AuthUserRule;
 import com.opensymphony.xwork2.ModelDriven;
 import com.smartken.kia.core.model.IFormatterModel;
 import com.smartken.kia.core.model.impl.ResultModel;
@@ -94,6 +95,7 @@ public class HospitalMessageAction extends BaseDrvAction implements ModelDriven<
 			busAllInfoModel2.setCPhone(busAllInfoModel.getCPhone());
 			busAllInfoModel2.setCPostcode(busAllInfoModel.getCPostcode());
 			busAllInfoModel2.setIState(1);
+			busAllInfoModel2.setCOperator(((UserModel)this.getRequestAttribute(AuthUserRule.AUTH_USER)).getRoleModel().getCName());
 			this.hospitalBiz.loadCrudMapper(BusAllInfoModel.class);
 			ResultModel resultModel=this.hospitalBiz.modifyOrAddModel(busAllInfoModel2);
 			this.writePlainText(resultModel.toJson().toString());
@@ -125,6 +127,7 @@ public class HospitalMessageAction extends BaseDrvAction implements ModelDriven<
 			busAllInfoModel2.setCRegarea(busAllInfoModel.getCRegarea());
 			busAllInfoModel2.setCPhone(busAllInfoModel.getCPhone());
 			busAllInfoModel2.setCPostcode(busAllInfoModel.getCPostcode());
+			busAllInfoModel2.setIState(2);
 			
 			busAllInfoModel2.setCHeight(busAllInfoModel.getCHeight());
 			busAllInfoModel2.setCZsl(busAllInfoModel.getCZsl());
@@ -373,11 +376,14 @@ public class HospitalMessageAction extends BaseDrvAction implements ModelDriven<
 	 * 退办受理，把I_State变成0
 	 * */
 	public void do_cancel(){
-		//String CIdcard=this.getParameter("CIdcard");
-		//System.out.println(CIdcard);
+		String Id=this.getParameter("Id");
+		BusAllInfoModel busAllInfoModel=new BusAllInfoModel();
+		busAllInfoModel.setId(Integer.parseInt(Id));
 		this.hospitalBiz.loadCrudMapper(BusAllInfoModel.class);
-		this.busAllInfoModel.setIState(0);
-		this.hospitalBiz.addOrModifyModel(busAllInfoModel);
+		BusAllInfoModel busAllInfoModel2=(BusAllInfoModel)this.hospitalBiz.getModel(busAllInfoModel).get(0);
+		busAllInfoModel2.setId(Integer.parseInt(Id));
+		busAllInfoModel2.setIState(0);
+		this.hospitalBiz.addOrModifyModel(busAllInfoModel2);
 		ResultModel resultModel=new ResultModel();
 		resultModel.setTitle("受理回执信息");
 		resultModel.setMsg("成功退办业务");
@@ -431,5 +437,6 @@ public class HospitalMessageAction extends BaseDrvAction implements ModelDriven<
 		this.writePlainText(jsonDG.toString());
 	}
 	public void clear() {
+	
 	}
 }

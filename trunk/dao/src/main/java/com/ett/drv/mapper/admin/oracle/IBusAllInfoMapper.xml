@@ -259,10 +259,10 @@ left join table_dicts d4 on d4.c_typename='ÃÂºÏ“Ω‘∫' and m.c_hospital=d4.c_dict_
 </select>
 <select id="selectGroupByHospital" resultType="ArrayList" resultMap="resultMapview">
 	select C_HOSPITAL as hospital
-	       ,sum(decode(i_state,0,1,0)) as sum1
+	       ,sum(decode(i_state,1,1,0)) as sum1
 	       ,sum(decode(i_state,1,1,0)) as sum2
 	       ,0 as sum3
-	       ,sum(decode(i_state,2,1,0)) as sum4 
+	       ,sum(decode(i_state,1,0,0)) as sum4 
 	from <include refid="table" /> 
 	where REGDATE between #{startDate,jdbcType=DATE javaType=Date } and #{endDates,jdbcType=DATE javaType=Date}
 	group by C_HOSPITAL 
