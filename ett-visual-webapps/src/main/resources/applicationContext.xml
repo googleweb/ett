@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+	     http://www.springframework.org/schema/beans 
+	     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	     http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context-3.0.xsd
+         http://www.springframework.org/schema/tx
+         http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+         http://www.springframework.org/schema/jdbc 
+         http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
+         http://www.springframework.org/schema/aop
+         http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+		">
+
+
+   <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"> 
+        <property name="locations"> 
+          <list> 
+            <value>WEB-INF/system.properties</value> 
+            </list> 
+         </property> 
+   </bean>
+   
+   <!--
+   <bean id="baseFpClient" class="com.smartken.kia.util.trustlink.FpClient" abstract="true">
+      <property name="hostName" value="${fp.hostName}"></property>
+      <property name="authenID" value="${fp.authenID}"></property>
+      <property name="authenPwd" value="${fp.authenPwd}"></property>
+      <property name="deviceType" value="${fp.deviceType}"></property>
+      <property name="ocxClassName" value="${fp.ocxClassName}"></property>
+      <property name="ocxEnrollClassID" value="${fp.ocxEnrollClassID}"></property>
+      <property name="ocxVerifyClassID" value="${fp.ocxVerifyClassID}"></property>
+      <property name="port" value="${fp.port}"></property>
+      <property name="productID" value="${fp.productID}"></property>
+   </bean>
+    -->
+
+<!--  
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="${jdbc.driverClassName}" />
+		<property name="jdbcUrl" value="${jdbc.url}" />
+		<property name="user" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<property name="autoCommitOnClose" value="true"/>
+		<property name="checkoutTimeout" value="${cpool.checkoutTimeout}"/>
+		<property name="initialPoolSize" value="${cpool.minPoolSize}"/>
+		<property name="minPoolSize" value="${cpool.minPoolSize}"/>
+		<property name="maxPoolSize" value="${cpool.maxPoolSize}"/>
+		<property name="maxIdleTime" value="${cpool.maxIdleTime}"/>
+		<property name="acquireIncrement" value="${cpool.acquireIncrement}"/>
+		<property name="maxIdleTimeExcessConnections" value="${cpool.maxIdleTimeExcessConnections}"/>
+	</bean>
+
+   
+  <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+   <property name="jndiName" value="${jndi.oradrvde}"></property>
+ 
+ </bean>    
+ 
+   <bean id="dataSourceDrv" class="org.springframework.jndi.JndiObjectFactoryBean">
+   <property name="jndiName" value="${jndi.oradrvde2}"></property>
+ </bean>    
+ 
+ 
+   
+<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory" >
+       <property name="dataSource" ref="dataSource"></property>
+       <property name="configLocation" value="classpath:com/ett/drv/mapper/mybatis3.drv.oracle.xml"></property>
+       
+</bean>
+
+<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactoryDrv">
+       <property name="dataSource" ref="dataSourceDrv"></property>
+       <property name="configLocation" value="classpath:com/ett/drv/mapper/mybatis3.drv.oracle.xml"></property>
+       
+</bean>
+
+
+ 
+
+
+ 
+	<bean id="txDrvManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="defaultTimeout" value="30000"></property>
+	</bean>
+	
+
+	<tx:advice id="txDrvAdvice" transaction-manager="txDrvManager" >
+	
+		<tx:attributes>
+			<tx:method name="tran*" propagation="REQUIRED"/>			
+		</tx:attributes>
+	</tx:advice>
+
+	<aop:config>
+		<aop:pointcut expression="execution(* com.ett.drv.biz.impl.*.*(..))" id="drvMehtod"/>
+		<aop:advisor advice-ref="txDrvAdvice" pointcut-ref="drvMehtod" />
+		
+	</aop:config>
+
+
+
+ <bean id="baseMapper" class="org.mybatis.spring.mapper.MapperFactoryBean" abstract="true" >
+     <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+   </bean>
+ 
+ <bean id="baseDrvMapper" class="org.mybatis.spring.mapper.MapperFactoryBean" abstract="true" >
+     <property name="sqlSessionFactory" ref="sqlSessionFactoryDrv" />
+   </bean>
+   
+
+<bean id="weekReocrdMapper" parent="baseMapper">
+    <property name="mapperInterface" value="com.ett.drv.mapper.booked.IWeekRecordMapper"></property>
+</bean>
+
+<bean id="limitMapper" parent="baseMapper" >
+   <property name="mapperInterface" value="com.ett.drv.mapper.booked.ILimitMapper"></property>
+</bean>
+
+<bean id="orderInfoMapper" parent="baseMapper">
+  <property name="mapperInterface" value="com.ett.drv.mapper.booked.IOrderInfoMapper"></property>
+</bean>
+
+<bean id="carOwnerChangeMapper" parent="baseMapper">
+  <property name="mapperInterface" value="com.ett.drv.mapper.booked.ICarOwnerChangeMapper"></property>
+</bean>
+
+
+
+<bean id="bookedDayLimitMapper" parent="baseMapper">
+  <property name="mapperInterface" value="com.ett.drv.mapper.booked.IBookedDayLimitMapper"></property>
+</bean>
+
+<bean id="personChangeMapper" parent="baseMapper">
+  <property name="mapperInterface" value="com.ett.drv.mapper.booked.IPersonChangeMapper"></property>
+</bean>
+
+<bean id="schoolCarMapper" parent="baseMapper">
+  <property name="mapperInterface" value="com.ett.drv.mapper.booked.ISchoolCarMapper"></property>
+</bean>
+
+
+<bean id="dictMapper" parent="baseMapper">
+  <property name="mapperInterface" value="com.ett.drv.mapper.admin.IDictMapper"></property>
+</bean>
+<bean id="dictTypeMapper" parent="baseMapper">
+  <property name="mapperInterface" value="com.ett.drv.mapper.admin.IDictTypeMapper"></property>
+</bean>
+
+<bean id="busLogMapper" parent="baseMapper">
+  <property name="mapperInterface" value="com.ett.drv.mapper.admin.IBusLogMapper"></property>
+</bean>
+
+<bean id="busAllInfoMapper" parent="baseMapper">
+  <property name="mapperInterface" value="com.ett.drv.mapper.admin.IBusAllInfoMapper"></property>
+</bean>
+<bean id="departmentMapper" parent="baseMapper">
+  <property name="mapperInterface" value="com.ett.drv.mapper.admin.IDepartmentMapper"></property>
+</bean>
+
+<bean id="menuMapper" parent="baseMapper">
+  <property name="mapperInterface" value="com.ett.drv.mapper.admin.IMenuMapper"></property>
+</bean>
+
+<bean id="userMapper" parent="baseMapper">
+  <property name="mapperInterface" value="com.ett.drv.mapper.admin.IUserMapper"></property>
+</bean>
+
+<bean id="roleMapper" parent="baseMapper">
+  <property name="mapperInterface" value="com.ett.drv.mapper.admin.IRoleMapper"></property>
+</bean>
+
+<bean id="terminalMapper" parent="baseMapper">
+  <property name="mapperInterface" value="com.ett.drv.mapper.self.ITerminalMapper"></property>
+</bean>
+
+
+
+
+<bean id="transactDriverMapper" parent="baseMapper">
+  <property name="mapperInterface" value="com.ett.drv.mapper.self.ITransactDriverMapper"></property>
+</bean>
+
+<bean id="transactVehicleMapper" parent="baseMapper">
+  <property name="mapperInterface" value="com.ett.drv.mapper.self.ITransactVehicleMapper"></property>
+</bean>
+
+<bean id="transactResourceMapper" parent="baseMapper">
+  <property name="mapperInterface" value="com.ett.drv.mapper.self.ITransactResourceMapper"></property>
+</bean>
+
+<bean id="drvCodeMapper" parent="baseDrvMapper">
+<property name="mapperInterface" value="com.ett.drv.mapper.dict.IDrvCodeMapper"></property>
+</bean>
+
+<bean id="drivingLicenseMapper" parent="baseDrvMapper">
+  <property name="mapperInterface" value="com.ett.drv.mapper.self.IDrivingLicenseMapper"></property>
+</bean>
+
+<bean id="vehicleMapper" parent="baseDrvMapper">
+  <property name="mapperInterface" value="com.ett.drv.mapper.self.IVehicleMapper"></property>
+</bean>
+
+<bean id="vehFlowMapper" parent="baseDrvMapper">
+  <property name="mapperInterface" value="com.ett.drv.mapper.self.IVehFlowMapper"></property>
+</bean>
+
+<bean id="drvFlowMapper" parent="baseDrvMapper">
+  <property name="mapperInterface" value="com.ett.drv.mapper.self.IDrvFlowMapper"></property>
+</bean>
+
+<bean id="km1CheckRecordMapper" parent="baseMapper">
+  <property name="mapperInterface" value="com.ett.drv.mapper.self.IKm1CheckRecordMapper"></property>
+</bean>
+
+<bean id="km1PreasignRecordMapper" parent="baseMapper">
+  <property name="mapperInterface" value="com.ett.drv.mapper.self.IKm1PreasignRecordMapper"></property>
+</bean>
+
+<bean id="feeLogMapper" parent="baseMapper">
+  <property name="mapperInterface" value="com.ett.drv.mapper.self.IFeeLogMapper"></property>
+</bean>
+
+<bean id="deviceMapper" parent="baseMapper">
+  <property name="mapperInterface" value="com.ett.drv.mapper.self.IDeviceMapper"></property>
+</bean>
+
+<bean id="deviceSnMapper" parent="baseMapper">
+  <property name="mapperInterface" value="com.ett.drv.mapper.self.IDeviceSnMapper"></property>
+</bean>
+
+<bean id="hardwareMapper" parent="baseMapper">
+  <property name="mapperInterface" value="com.ett.drv.mapper.self.IHardwareMapper"></property>
+</bean>
+
+
+
+<bean id="studentApplyInfoMapper" parent="baseMapper">
+  <property name="mapperInterface" value="com.ett.drv.mapper.preinput.IStudentApplyInfoMapper"></property>
+</bean>
+
+<bean id="examTKcnMapper" parent="baseDrvMapper">
+<property name="mapperInterface" value="com.ett.drv.mapper.exam.IExamTKcnMapper"></property>
+</bean>
+
+
+<bean id="statisCoachCarMapper"  parent="baseDrvMapper" >
+   <property name="mapperInterface" value="com.ett.drv.mapper.statis.IStatisCoachCarMapper"></property>
+</bean>
+
+<bean id="statisDriverMapper"  parent="baseDrvMapper" >
+   <property name="mapperInterface" value="com.ett.drv.mapper.statis.IStatisDriverMapper"></property>
+</bean>
+
+<bean id="statisKmMapper"  parent="baseDrvMapper" >
+   <property name="mapperInterface" value="com.ett.drv.mapper.statis.IStatisKmMapper"></property>
+</bean>
+
+<bean id="statisSchoolMapper"  parent="baseDrvMapper" >
+   <property name="mapperInterface" value="com.ett.drv.mapper.statis.IStatisSchoolMapper"></property>
+</bean>
+
+
+<bean class="com.ett.drvinterface.DrvServiceHelper"  id="drvServiceHelper">
+    <property name="url" value="${wsdl.drv.url}"></property>
+    <property name="timeout" value="${wsdl.timeout}"></property>
+</bean>
+
+<bean class="com.ett.drvinterface.VehicleServiceHelper" id="vehicleServiceHelper">
+    <property name="url" value="${wsdl.veh.url}"></property>
+    <property name="timeout" value="${wsdl.timeout}"></property>
+</bean>
+
+<bean class="com.ett.drvinterface.VioServiceHelper"  id="vioServiceHelper" >
+   <property name="url" value="${wsdl.vio.url}" ></property>
+   <property name="timeout" value="${wsdl.timeout}" ></property>
+</bean>
+
+<bean id="baseDrvBiz" abstract="true" class="com.ett.drv.biz.impl.BaseDrvBiz">
+    <property name="weekRecordMapper" ref="weekReocrdMapper"></property>
+   <property name="limitMapper" ref="limitMapper"></property>
+   <property name="orderInfoMapper" ref="orderInfoMapper"></property>
+     <property name="dictMapper" ref="dictMapper"></property>
+  <property name="departmentMapper" ref="departmentMapper"></property>
+  <property name="userMapper" ref="userMapper"></property>
+  <property name="menuMapper" ref="menuMapper"></property>
+  <property name="roleMapper" ref="roleMapper"></property>
+   <property name="terminalMapper"  ref="terminalMapper"></property>
+   <property name="transactDriverMapper" ref="transactDriverMapper"></property>
+   <property name="transactVehicleMapper" ref="transactVehicleMapper"></property>
+   <property name="transactResourceMapper" ref="transactResourceMapper"></property>
+   <property name="drivingLicenseMapper" ref="drivingLicenseMapper"></property>
+   <property name="vehicleMapper" ref="vehicleMapper"></property>
+   <property name="vehFlowMapper" ref="vehFlowMapper"></property>
+   <property name="drvFlowMapper" ref="drvFlowMapper"></property>
+   <property name="km1CheckRecordMapper" ref="km1CheckRecordMapper"></property>
+   <property name="km1PreasignRecordMapper" ref="km1PreasignRecordMapper"></property>
+   <property name="feeLogMapper" ref="feeLogMapper"></property>
+   <property name="deviceMapper" ref="deviceMapper"></property>
+   <property name="deviceSnMapper" ref="deviceSnMapper"></property>
+   <property name="hardwareMapper" ref="hardwareMapper"></property>
+   <property name="carOwnerChangeMapper" ref="carOwnerChangeMapper"></property>
+   <property name="drvCodeMapper" ref="drvCodeMapper"></property>
+   <property name="personChangeMapper" ref="personChangeMapper"></property>
+   <property name="dictTypeMapper"     ref="dictTypeMapper"></property>
+   <property name="schoolCarMapper" ref="schoolCarMapper"></property>
+   <property name="studentApplyInfoMapper" ref="studentApplyInfoMapper"></property>
+    <property name="busAllInfoMapper" ref="busAllInfoMapper"></property>
+    <property name="busLogMapper" ref="busLogMapper"></property>
+    <property name="statisCoachCarMapper" ref="statisCoachCarMapper"></property>
+    <property name="statisDriverMapper" ref="statisDriverMapper"></property>
+    <property name="statisKmMapper" ref="statisKmMapper"></property>
+    <property name="statisSchoolMapper" ref="statisSchoolMapper"></property>
+    <property name="examTKcnMapper" ref="examTKcnMapper"></property>
+    
+    <property name="drvInterface"  ref="drvServiceHelper"></property>
+    <property name="vehicleInterface" ref="vehicleServiceHelper"></property>
+    <property name="vioInterface" ref="vioServiceHelper"></property>
+    
+   <property name="cachePath" value="${cachePath}"></property>
+   <property name="cacheModels">
+     <list>
+       <value>com.ett.drv.model.admin.DictModel</value>
+       <value>com.ett.drv.model.admin.DictTypeModel</value>
+     </list>
+   </property>
+    
+</bean>
+
+<bean id="baseBookedBiz" abstract="true" class="com.ett.drv.biz.impl.BookedBiz"  parent="baseDrvBiz" >
+</bean>
+
+<bean id="baseAdminBiz" abstract="true" class="com.ett.drv.biz.impl.AdminBiz" parent="baseDrvBiz"></bean>
+
+<bean id="baseSelfBiz" abstract="true" class="com.ett.drv.biz.impl.SelfBiz" parent="baseDrvBiz"></bean>
+
+<bean id="basePreBiz" abstract="true" class="com.ett.drv.biz.impl.PreBiz" parent="baseDrvBiz"></bean>
+
+<bean id="baseHospitalBiz" abstract="true" class="com.ett.drv.biz.impl.HospitalBiz" parent="baseDrvBiz"></bean>
+
+<bean id="baseStatisBiz" abstract="true" class="com.ett.drv.biz.impl.StatisBiz" parent="baseDrvBiz"></bean>
+
+<bean id="baseCacheBiz" abstract="true" class="com.ett.drv.biz.impl.CacheBiz" parent="baseDrvBiz">
+</bean>
+-->
+
+</beans>
