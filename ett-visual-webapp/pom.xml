@@ -50,11 +50,13 @@
       </resource>
     </resources>
     <plugins>
+   
       <plugin>
         <artifactId>maven-war-plugin</artifactId>
         <configuration>
           <webappDirectory>${basedir}/WebRoot</webappDirectory>
           <warSourceDirectory>${basedir}/WebRoot</warSourceDirectory>
+         
         </configuration>
       </plugin>
       <plugin>
