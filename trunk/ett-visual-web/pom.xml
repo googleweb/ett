@@ -3,4 +3,16 @@
   <groupId>com.ett.visual</groupId>
   <artifactId>web</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  
+  
+      <dependencies>
+  	<dependency>
+  		<groupId>com.ett.visual</groupId>
+  		<artifactId>model</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	    <type>pom</type>
+  	    <scope>provided</scope>
+  	</dependency>
+  </dependencies>
+  
 </project>
