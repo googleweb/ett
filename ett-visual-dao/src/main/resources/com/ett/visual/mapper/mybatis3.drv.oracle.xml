@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+
+<settings>
+    <setting name="cacheEnabled" value="true"/>
+    <setting name="lazyLoadingEnabled" value="true"/>
+     <setting name="multipleResultSetsEnabled" value="true"/>
+	<setting name="useColumnLabel" value="true"/>
+	<setting name="useGeneratedKeys" value="false"/>
+	<setting name="defaultExecutorType" value="SIMPLE"/>
+	<setting name="defaultStatementTimeout" value="25000"/>
+</settings>
+
+<typeAliases>
+  <typeAlias type="java.sql.Timestamp" alias="Timestamp"/>
+</typeAliases>
+
+
+
+<plugins>
+	<plugin interceptor="com.smartken.toyz4j.mybatis.OffsetLimitInterceptor">
+		<property name="dialectClass" value="com.smartken.toyz4j.jdbc.dialect.OracleDialect"/>
+	</plugin>
+</plugins>
+
+  
+<environments default="development">
+<environment id="development">
+<transactionManager type="MANAGED">
+  <property name="closeConnection" value="false"/>
+</transactionManager>
+ <dataSource type="POOLED"></dataSource>
+</environment>
+</environments>
+ 
+<mappers>
+<mapper resource="com/ett/visual/mapper/admin/oracle/IMenuMapper.xml"/>
+
+<!--  
+<mapper resource="com/ett/visual/mapper/admin/oracle/IDictTypeMapper.xml"/>
+<mapper resource="com/ett/visual/mapper/admin/oracle/IDictMapper.xml"/>
+
+<mapper resource="com/ett/visual/mapper/admin/oracle/IUserMapper.xml"/>
+<mapper resource="com/ett/visual/mapper/admin/oracle/IRoleMapper.xml"/>
+-->
+
+</mappers>
+
+</configuration>

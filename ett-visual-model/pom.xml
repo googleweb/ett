@@ -110,7 +110,18 @@
   	 	<scope>compile</scope>
   	 </dependency>
   	 
-  	 
+  	  	<dependency>
+  		<groupId>aspectj</groupId>
+  		<artifactId>aspectjrt</artifactId>
+  		<version>1.5.4</version>
+  		<scope>compile</scope>
+  	</dependency>
+  	<dependency>
+  		<groupId>aspectj</groupId>
+  		<artifactId>aspectjweaver</artifactId>
+  		<version>1.5.4</version>
+  		<scope>compile</scope>
+  	</dependency>
   	 
   	  	<dependency>
   		<groupId>org.springframework</groupId>
@@ -185,12 +196,16 @@
         	<artifactId>quartz</artifactId>
         	<version>1.5.2</version>
         </dependency>
+        
+         <dependency>
+        	<groupId>dom4j</groupId>
+        	<artifactId>dom4j</artifactId>
+        	<version>1.6.1</version>
+        	<type>jar</type>
+        	
+        </dependency>
 
-  	  	   <dependency>
-  	  	   	<groupId>com.smartken.toyz4j</groupId>
-  	  	   	<artifactId>toyz4j-core</artifactId>
-  	  	   	<version>0.0.1-SNAPSHOT</version>
-  	  	   </dependency>
+  
   </dependencies>
   
    <build>  

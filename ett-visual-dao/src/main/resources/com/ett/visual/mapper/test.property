@@ -1,0 +1,5 @@
+driver=oracle.jdbc.driver.OracleDriver
+url=jdbc:oracle:thin:@192.168.1.10:1521:oradrvde
+#url=jdbc:oracle:oci8:@oradrvde
+username=drv_admin
+password=stjj117
