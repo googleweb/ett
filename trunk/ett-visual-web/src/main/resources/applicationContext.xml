@@ -17,7 +17,7 @@
          http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
          http://www.springframework.org/schema/aop
          http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
-		">
+		"  >
 
 
    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"> 
@@ -40,9 +40,7 @@
       <property name="port" value="${fp.port}"></property>
       <property name="productID" value="${fp.productID}"></property>
    </bean>
-    -->
-
-<!--  
+    
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<property name="driverClass" value="${jdbc.driverClassName}" />
 		<property name="jdbcUrl" value="${jdbc.url}" />
@@ -57,7 +55,7 @@
 		<property name="acquireIncrement" value="${cpool.acquireIncrement}"/>
 		<property name="maxIdleTimeExcessConnections" value="${cpool.maxIdleTimeExcessConnections}"/>
 	</bean>
-
+-->	 
    
   <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
    <property name="jndiName" value="${jndi.oradrvde}"></property>
@@ -72,20 +70,20 @@
    
 <bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory" >
        <property name="dataSource" ref="dataSource"></property>
-       <property name="configLocation" value="classpath:com/ett/drv/mapper/mybatis3.drv.oracle.xml"></property>
+       <property name="configLocation" value="classpath:com/ett/visual/mapper/mybatis3.drv.oracle.xml"></property>
        
 </bean>
 
 <bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactoryDrv">
        <property name="dataSource" ref="dataSourceDrv"></property>
-       <property name="configLocation" value="classpath:com/ett/drv/mapper/mybatis3.drv.oracle.xml"></property>
+       <property name="configLocation" value="classpath:com/ett/visual/mapper/mybatis3.drv.oracle.xml"></property>
        
 </bean>
 
 
  
 
-
+  
  
 	<bean id="txDrvManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource"/>
@@ -116,7 +114,16 @@
      <property name="sqlSessionFactory" ref="sqlSessionFactoryDrv" />
    </bean>
    
-
+   
+   <bean id="menuMapper" parent="baseMapper">
+  <property name="mapperInterface" value="com.ett.visual.mapper.admin.IMenuMapper"></property>
+</bean>
+  <bean id="baseDrvBiz" abstract="true" class="com.ett.visual.biz.BaseVisualBiz">
+       <property name="menuMapper" ref="menuMapper"></property>
+ </bean>
+ 
+ <bean id="baseAdminBiz" abstract="true" class="com.ett.visual.biz.impl.AdminBiz" parent="baseDrvBiz"></bean>
+<!--
 <bean id="weekReocrdMapper" parent="baseMapper">
     <property name="mapperInterface" value="com.ett.drv.mapper.booked.IWeekRecordMapper"></property>
 </bean>
@@ -166,9 +173,7 @@
   <property name="mapperInterface" value="com.ett.drv.mapper.admin.IDepartmentMapper"></property>
 </bean>
 
-<bean id="menuMapper" parent="baseMapper">
-  <property name="mapperInterface" value="com.ett.drv.mapper.admin.IMenuMapper"></property>
-</bean>
+
 
 <bean id="userMapper" parent="baseMapper">
   <property name="mapperInterface" value="com.ett.drv.mapper.admin.IUserMapper"></property>

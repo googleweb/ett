@@ -3,6 +3,7 @@
 	<name>ett-visual-webapps</name>
 	<comment></comment>
 	<projects>
+		<project>ett-visual-web</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
@@ -39,4 +40,36 @@
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 		<nature>org.eclipse.m2e.core.maven2Nature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>biz.src.main.java</name>
+			<type>2</type>
+			<locationURI>WORKSPACE_LOC/ett-visual-biz/src/main/java</locationURI>
+		</link>
+		<link>
+			<name>dao.src.main.java</name>
+			<type>2</type>
+			<locationURI>WORKSPACE_LOC/ett-visual-dao/src/main/java</locationURI>
+		</link>
+		<link>
+			<name>dao.src.main.resources</name>
+			<type>2</type>
+			<locationURI>WORKSPACE_LOC/ett-visual-dao/src/main/resources</locationURI>
+		</link>
+		<link>
+			<name>model.src.main.java</name>
+			<type>2</type>
+			<locationURI>WORKSPACE_LOC/ett-visual-model/src/main/java</locationURI>
+		</link>
+		<link>
+			<name>web.src.main.java</name>
+			<type>2</type>
+			<locationURI>WORKSPACE_LOC/ett-visual-web/src/main/java</locationURI>
+		</link>
+		<link>
+			<name>web.src.main.resources</name>
+			<type>2</type>
+			<locationURI>WORKSPACE_LOC/ett-visual-web/src/main/resources</locationURI>
+		</link>
+	</linkedResources>
 </projectDescription>
