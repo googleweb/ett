@@ -17,7 +17,7 @@
   		<groupId>com.smartken.toyz4j</groupId>
   		<artifactId>toyz4j-core</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
-  		<type>pom</type>
+  		
   		
   	</dependency>
   </dependencies>
