@@ -61,10 +61,10 @@ id="WebApp_ID" version="3.0">
   </init-param>
  </filter>
  
- 
+  
  <filter>
   <filter-name>VerifyFilter</filter-name>
-  <filter-class>com.smartken.toyz4j.core.filter.VerifyFilter</filter-class>
+  <filter-class>com.smartken.toyz4j.filter.VerifyFilter</filter-class>
  
   <init-param>
     <param-name>includeRegexps</param-name>

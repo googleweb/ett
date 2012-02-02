@@ -28,6 +28,11 @@
   		<artifactId>web</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
   	</dependency>
+  	<dependency>
+  		<groupId>com.smartken.toyz4j</groupId>
+  		<artifactId>toyz4j-core</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
   </dependencies>
   
   <build>
