@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 import com.ett.visual.model.admin.MenuModel;
+import com.smartken.toyz4j.util.EasyUiUtil;
 
 public class TestApp {
 
@@ -13,11 +14,8 @@ public class TestApp {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-        Map<String, String> cols=new MenuModel().getEasyuiDatagridColumms();
-        for(Iterator<String> it=cols.keySet().iterator();it.hasNext();){
-        	String key=it.next();
-        	System.out.println(cols.get(key));
-        }
+
+        System.out.println(EasyUiUtil.genDatagirdContext(MenuModel.class, "id").toScirpt());
 	}
 
 }
