@@ -10,7 +10,7 @@ import org.apache.struts2.ServletActionContext;
 import com.ett.visual.biz.IAdminBiz;
 import com.smartken.toyz4j.model.impl.BaseAction;
 
-public abstract class BaseVisualAction extends BaseAction {
+public abstract class BaseVisualAction<M> extends BaseAction<M> {
       
 	
 	private IAdminBiz adminBiz;
@@ -72,5 +72,34 @@ public abstract class BaseVisualAction extends BaseAction {
 		     }
 		     return sbr.toString();
 	}
+
+
+	public M getModel() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public void do_add() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void do_update() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void do_remove() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
 	
 }
