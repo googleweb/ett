@@ -132,4 +132,14 @@ public class UserModel extends BaseModel {
 			}
 			return json;
 		}
+		@Override
+		public Object getPk() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		@Override
+		public void setPk(Object pk) {
+			// TODO Auto-generated method stub
+			
+		}
 }
