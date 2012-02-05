@@ -66,6 +66,16 @@ public class DictModel extends BaseModel {
 		public void setCState(String cState) {
 			CState = cState;
 		}
+		@Override
+		public Object getPk() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		@Override
+		public void setPk(Object pk) {
+			// TODO Auto-generated method stub
+			
+		}
 		
 		
 		

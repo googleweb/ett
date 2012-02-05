@@ -36,6 +36,16 @@ public class RoleModel extends BaseModel {
 		public void setCRolestring(String cRolestring) {
 			CRolestring = cRolestring;
 		}
+		@Override
+		public Object getPk() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		@Override
+		public void setPk(Object pk) {
+			// TODO Auto-generated method stub
+			
+		}
 		
 		
 

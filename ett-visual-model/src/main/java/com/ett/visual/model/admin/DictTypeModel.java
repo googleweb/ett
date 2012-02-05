@@ -30,6 +30,16 @@ public class DictTypeModel extends BaseModel{
 		public void setCDescription(String cDescription) {
 			CDescription = cDescription;
 		}
+		@Override
+		public Object getPk() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		@Override
+		public void setPk(Object pk) {
+			// TODO Auto-generated method stub
+			
+		}
 		
 		
 
