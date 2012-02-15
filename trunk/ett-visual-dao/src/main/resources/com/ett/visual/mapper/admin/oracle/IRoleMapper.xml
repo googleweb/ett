@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2012-02-15 10:57:10
+	Create Date:2012-02-15 01:29:51
 	MapperTemplate:com.smartken.toyz4j.mybatis.OracleMapperTemplate
 	Model:com.ett.visual.model.admin.RoleModel 
 
@@ -52,10 +52,10 @@ TOKEN_ARRAY=#{model.TokenArray,jdbcType=VARCHAR,javaType=String},
 <sql id="join"></sql><!-- 别名m已被主表使用  -->
 
 <resultMap type="com.ett.visual.model.admin.RoleModel" id="resultMap">
- <id column="ID"  property="Id"  javaType="String"/>
-<result column="NAME"  property="Name"  javaType="String"/>
-<result column="DESCP"  property="Descp"  javaType="String"/>
-<result column="TOKEN_ARRAY"  property="TokenArray"  javaType="String"/>
+<id column="ID"  property="Id" jdbcType="VARCHAR"  javaType="String" />
+<result column="NAME"  property="Name" jdbcType="VARCHAR"  javaType="String"/>
+<result column="DESCP"  property="Descp" jdbcType="VARCHAR"  javaType="String"/>
+<result column="TOKEN_ARRAY"  property="TokenArray" jdbcType="VARCHAR"  javaType="String"/>
 
  </resultMap>
 
