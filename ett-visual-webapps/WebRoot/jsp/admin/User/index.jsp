@@ -6,7 +6,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
 
+
+
+
+<body class="easyui-layout">
+    <div region="center">
+      <table id="#tableRoleModel"></table>
+    </div>
 </body>
 </html>

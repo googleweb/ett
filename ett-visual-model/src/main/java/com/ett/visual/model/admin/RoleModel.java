@@ -44,6 +44,11 @@ public class RoleModel extends BaseModel {
 			return this.Id;
 		}
 		@Override
+		public Enum[] enumFields() {
+			// TODO Auto-generated method stub
+			return RoleModel.F.values();
+		}
+		@Override
 		public void setPk(Object pk) {
 			// TODO Auto-generated method stub
 			this.Id=pk.toString();

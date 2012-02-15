@@ -20,10 +20,14 @@
 
 
 <bean class="com.ett.visual.action.admin.MenuAction" parent="baseAction"
- id="menuAction"
+ id="com.ett.visual.action.admin.MenuAction"
 >
 </bean>
 
+<bean class="com.ett.visual.action.admin.RoleAction" parent="baseAction"
+ id="com.ett.visual.action.admin.RoleAction"
+>
+</bean>
 
 
 </beans>

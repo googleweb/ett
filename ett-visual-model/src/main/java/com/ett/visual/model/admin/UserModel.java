@@ -124,7 +124,7 @@ public class UserModel extends BaseModel {
 			// TODO Auto-generated method stub
 			JSONObject json= super.toJson();
 			try {
-				json.put(UserModel.V.RoleName.name(), roleModel.getCName());		
+				//json.put(UserModel.V.RoleName.name(), roleModel.getCName());		
 				json.put(UserModel.V.DepName.name(),departmentModel.getCDepnickname());
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block

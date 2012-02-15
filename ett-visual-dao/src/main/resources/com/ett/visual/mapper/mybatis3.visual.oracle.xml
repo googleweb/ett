@@ -38,13 +38,13 @@
  
 <mappers>
 <mapper resource="com/ett/visual/mapper/admin/oracle/IMenuMapper.xml"/>
-
+<mapper resource="com/ett/visual/mapper/admin/oracle/IRoleMapper.xml"/>
 <!--  
 <mapper resource="com/ett/visual/mapper/admin/oracle/IDictTypeMapper.xml"/>
 <mapper resource="com/ett/visual/mapper/admin/oracle/IDictMapper.xml"/>
 
 <mapper resource="com/ett/visual/mapper/admin/oracle/IUserMapper.xml"/>
-<mapper resource="com/ett/visual/mapper/admin/oracle/IRoleMapper.xml"/>
+
 -->
 
 </mappers>

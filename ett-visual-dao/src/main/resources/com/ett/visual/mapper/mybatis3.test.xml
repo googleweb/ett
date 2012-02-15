@@ -2,12 +2,12 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-<properties resource="com/ett/drv/mapper/test.property"></properties>
+<properties resource="com/ett/visual/mapper/test.property"></properties>
 
 
 <plugins>
-	<plugin interceptor="com.smartken.kia.core.plugin.mybatis.OffsetLimitInterceptor">
-		<property name="dialectClass" value="com.smartken.kia.core.jdbc.dialect.OracleDialect"/>
+	<plugin interceptor="com.smartken.toyz4j.mybatis.OffsetLimitInterceptor">
+		<property name="dialectClass" value="com.smartken.toyz4j.jdbc.dialect.OracleDialect"/>
 	</plugin>
 </plugins>
 
@@ -24,12 +24,8 @@
 </environments>
 
 <mappers>
-<mapper resource="com/ett/drv/mapper/booked/oracle/ILimitMapper.xml"/>
-<mapper resource="com/ett/drv/mapper/self/oracle/ITransactResourceMapper.xml"/>
-<mapper resource="com/ett/drv/mapper/statis/oracle/IStatisCoachCarMapper.xml"/>
-<mapper resource="com/ett/drv/mapper/statis/oracle/IStatisDriverMapper.xml"/>
-<mapper resource="com/ett/drv/mapper/statis/oracle/IStatisKmMapper.xml"/>
-<mapper resource="com/ett/drv/mapper/statis/oracle/IStatisSchoolMapper.xml"/>
+<mapper resource="com/ett/visual/mapper/admin/oracle/IMenuMapper.xml"/>
+<mapper resource="com/ett/visual/mapper/admin/oracle/IRoleMapper.xml"/>
 </mappers>
 
 </configuration>
