@@ -75,10 +75,7 @@ public abstract class BaseVisualAction<M extends BaseModel> extends BaseAction<M
 	}
 
 
-	public M getModel() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 
 	

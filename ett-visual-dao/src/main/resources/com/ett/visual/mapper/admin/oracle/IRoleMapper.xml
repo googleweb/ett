@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+	Create Date:2012-02-15 10:57:10
+	MapperTemplate:com.smartken.toyz4j.mybatis.OracleMapperTemplate
+	Model:com.ett.visual.model.admin.RoleModel 
+
+
+ public static enum F { 
+  Id,Name,Descp,TokenArray  
+ } 
+
+private String Id;         //ID  VARCHAR2 50
+private String Name;         //NAME  VARCHAR2 50
+private String Descp;         //DESCP  VARCHAR2 200
+private String TokenArray;         //TOKEN_ARRAY  VARCHAR2 3,000
+ -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ett.visual.mapper.admin.IRoleMapper">
+
+<cache flushInterval="30000" readOnly="true"></cache>
+
+
+<sql id="table">VIS_ADMIN_ROLE</sql>
+
+<sql id="pk">id</sql>
+
+<sql id="colums">
+ID,NAME,DESCP,TOKEN_ARRAY 
+</sql>
+
+<sql id="insertCols">
+#{Id,jdbcType=VARCHAR,javaType=String},
+#{Name,jdbcType=VARCHAR,javaType=String},
+#{Descp,jdbcType=VARCHAR,javaType=String},
+#{TokenArray,jdbcType=VARCHAR,javaType=String},
+
+</sql>
+
+<sql id="updateCols">
+<if test="pk neq null">id=#{pk},</if>
+NAME=#{model.Name,jdbcType=VARCHAR,javaType=String},
+DESCP=#{model.Descp,jdbcType=VARCHAR,javaType=String},
+TOKEN_ARRAY=#{model.TokenArray,jdbcType=VARCHAR,javaType=String},
+
+</sql>
+
+<sql id="orderby">order by m.id desc </sql>
+
+<sql id="joinColums"></sql>
+
+<sql id="join"></sql><!-- 别名m已被主表使用  -->
+
+<resultMap type="com.ett.visual.model.admin.RoleModel" id="resultMap">
+ <id column="ID"  property="Id"  javaType="String"/>
+<result column="NAME"  property="Name"  javaType="String"/>
+<result column="DESCP"  property="Descp"  javaType="String"/>
+<result column="TOKEN_ARRAY"  property="TokenArray"  javaType="String"/>
+
+ </resultMap>
+
+
+<sql id="selectCondition">
+<if test="model.Id neq null">and m.ID like #{model.Id,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model.Name neq null">and m.NAME like #{model.Name,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model.Descp neq null">and m.DESCP like #{model.Descp,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model.TokenArray neq null">and m.TOKEN_ARRAY like #{model.TokenArray,jdbcType=VARCHAR ,javaType=String } </if> 
+
+</sql>
+
+
+<select id="select" resultType="ArrayList" resultMap="resultMap">
+	select m.* from <include refid="table" /> m   
+		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+			<include refid="selectCondition"/>
+		</trim>
+	<include refid="orderby"/>
+</select>
+
+<select id="selectUnion" resultType="ArrayList" resultMap="resultMap">
+  select m.* from (
+	<trim  prefixOverrides="union" suffixOverrides="union">
+		<foreach collection="list" item="model">
+			<if test="model neq null">
+				union select m.* from <include refid="table" /> m 
+					<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+						<include refid="selectCondition"/>
+					</trim>
+			</if>
+		</foreach>
+	</trim>
+   ) m <include refid="orderby"/>
+</select>
+
+<select id="selectEqPk"  resultMap="resultMap">
+	select m.* from <include refid="table" /> m  where m.<include refid="pk" /> = #{Id,jdbcType=VARCHAR,javaType=String}
+</select>
+
+<select id="selectInPk" resultType="ArrayList" resultMap="resultMap" >
+	select m.* from <include refid="table" /> m  where m.<include refid="pk" /> in
+		<foreach item="pk" collection="list" open="(" separator="," close=")"> #{pk} </foreach>
+	<include refid="orderby"/>
+</select>
+
+<select id="selectNotInPk" resultType="ArrayList" resultMap="resultMap" >
+	select m.* from <include refid="table" /> m  where m.<include refid="pk" /> not in
+		<foreach item="pk" collection="list" open="(" separator="," close=")"> #{pk} </foreach>
+	<include refid="orderby"/>
+</select>
+
+<select  id="selectAll"  resultType="ArrayList"  resultMap="resultMap">
+	select m.* from  <include refid="table" /> m
+	<include refid="orderby"/>
+</select>
+
+<select id="count" resultType="int">
+	select count(*) from <include refid="table"/>
+</select>
+
+<insert id="insertOne" flushCache="true" >
+	insert into <include refid="table"/> ( <include refid="colums"/> ) values  
+	(
+		<trim  prefixOverrides="," suffixOverrides=",">
+			<include refid="insertCols"/>
+		</trim>
+	)
+</insert>
+
+<update id="updateOne" flushCache="true" >
+	update <include refid="table"/> set 
+		<trim  prefixOverrides="," suffixOverrides=",">
+			<include refid="updateCols"/>
+		</trim>
+	where <include refid="pk" />=#{model.Id,jdbcType=VARCHAR,javaType=String}</update>
+
+<delete id="deleteEqPk" flushCache="true">
+	delete from <include refid="table"/> where <include refid="pk" /> =#{Id,jdbcType=VARCHAR,javaType=String}
+</delete>
+
+<delete id="deleteInPk" flushCache="true">
+	delete from <include refid="table"/> where <include refid="pk" /> in
+		<foreach item="pk" collection="list" open="(" separator="," close=")">#{pk}</foreach>
+</delete>
+
+<delete id="deleteNotInPk" flushCache="true">
+	delete from <include refid="table"/> where <include refid="pk" /> not in
+		<foreach item="pk" collection="list" open="(" separator="," close=")">#{pk}</foreach>
+</delete>
+
+
+
+<resultMap type="com.ett.visual.model.admin.RoleModel" id="viewMap" extends="resultMap" ></resultMap>
+
+
+<sql id="selectViewCondition">
+	 <include refid="selectCondition"/>  
+</sql><select id="selectView" resultType="ArrayList" resultMap="viewMap">
+	select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> 
+		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+			<include refid="selectViewCondition"/>
+		</trim>	<include refid="orderby"/>
+</select>
+
+<select id="selectViewUnion" resultType="ArrayList" resultMap="viewMap">
+  select m.* from (
+	<trim  prefixOverrides="union" suffixOverrides="union">
+		<foreach collection="list" item="model">
+			<if test="model neq null">
+				union select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> 
+					<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+						<include refid="selectViewCondition"/>
+					</trim>
+			</if>
+		</foreach>
+	</trim>
+  ) m <include refid="orderby"/>
+</select>
+
+<select id="selectViewEqPk"  resultMap="viewMap">
+	select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> = #{Id,jdbcType=VARCHAR,javaType=String}
+</select>
+
+<select id="selectViewInPk" resultType="ArrayList" resultMap="viewMap" >
+	select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> in
+	<foreach item="pk" collection="list" open="(" separator="," close=")"> #{pk} </foreach>
+	<include refid="orderby"/>
+</select>
+
+<select id="selectViewNotInPk" resultType="ArrayList" resultMap="viewMap" >
+	select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> not in
+	<foreach item="pk" collection="list" open="(" separator="," close=")"> #{pk} </foreach>
+	<include refid="orderby"/>
+</select>
+
+<select  id="selectViewAll"  resultType="ArrayList"  resultMap="viewMap">
+	select m.* <include refid="joinColums"/> from  <include refid="table" /> m <include refid="join"/>
+	<include refid="orderby"/>
+</select>
+
+</mapper>

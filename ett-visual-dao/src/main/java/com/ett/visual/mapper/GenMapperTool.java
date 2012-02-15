@@ -15,9 +15,11 @@ import com.ett.visual.mapper.GenMapperTool.Table;
 import com.ett.visual.mapper.admin.IDepartmentModel;
 import com.ett.visual.mapper.admin.IDictMapper;
 import com.ett.visual.mapper.admin.IDictTypeMapper;
+import com.ett.visual.mapper.admin.IRoleMapper;
 import com.ett.visual.model.admin.DepartmentModel;
 import com.ett.visual.model.admin.DictModel;
 import com.ett.visual.model.admin.DictTypeModel;
+import com.ett.visual.model.admin.RoleModel;
 import com.ett.visual.mapper.admin.IMenuMapper;
 import com.ett.visual.model.admin.MenuModel;
 import com.smartken.toyz4j.mybatis.*;
@@ -36,7 +38,7 @@ public class GenMapperTool {
 	    
 	    ,TABLE_SELF_DEVICE,TABLE_SELF_DEVICE_SN,TABLE_SELF_HARD,TABLE_MENUS,TABLE_STUDENT_APPLY_INFO
 	    
-	    ,EXAM_TK_CN
+	    ,EXAM_TK_CN ,VIS_ADMIN_ROLE
 	}
 	
 	public static enum Seqs{
@@ -52,11 +54,11 @@ public class GenMapperTool {
 		Map<Table,MapperTemplate> mappers=new HashMap<Table, MapperTemplate>();
 		
 		try{
-			mappers.put(Table.TABLE_MENUS,mf.createMapperTemplate(Table.TABLE_MENUS.name().toUpperCase(), "menuid".toUpperCase(),IMenuMapper.class, MenuModel.class,Seqs.seq_menu+NEXTVAL));
-			mappers.put(Table.TABLE_DEPARTMENTS,mf.createMapperTemplate(Table.TABLE_DEPARTMENTS.name().toUpperCase(), "id".toUpperCase(),IDepartmentModel.class, DepartmentModel.class,Seqs.seq_department+NEXTVAL ));
-			mappers.put(Table.TABLE_DICTS,mf.createMapperTemplate(Table.TABLE_DICTS.name().toUpperCase(), "id".toUpperCase(),IDictMapper.class,DictModel.class,Seqs.seq_dict+NEXTVAL ));
-			mappers.put(Table.TABLE_DICTTYPE,mf.createMapperTemplate(Table.TABLE_DICTTYPE.name().toUpperCase(), "id".toUpperCase(),IDictTypeMapper.class, DictTypeModel.class,Seqs.seq_dicttype+NEXTVAL ));
-
+		//	mappers.put(Table.TABLE_MENUS,mf.createMapperTemplate(Table.TABLE_MENUS.name().toUpperCase(), "menuid".toUpperCase(),IMenuMapper.class, MenuModel.class,Seqs.seq_menu+NEXTVAL));
+		//	mappers.put(Table.TABLE_DEPARTMENTS,mf.createMapperTemplate(Table.TABLE_DEPARTMENTS.name().toUpperCase(), "id".toUpperCase(),IDepartmentModel.class, DepartmentModel.class,Seqs.seq_department+NEXTVAL ));
+		//	mappers.put(Table.TABLE_DICTS,mf.createMapperTemplate(Table.TABLE_DICTS.name().toUpperCase(), "id".toUpperCase(),IDictMapper.class,DictModel.class,Seqs.seq_dict+NEXTVAL ));
+		//	mappers.put(Table.TABLE_DICTTYPE,mf.createMapperTemplate(Table.TABLE_DICTTYPE.name().toUpperCase(), "id".toUpperCase(),IDictTypeMapper.class, DictTypeModel.class,Seqs.seq_dicttype+NEXTVAL ));
+            mappers.put(Table.VIS_ADMIN_ROLE,mf.createMapperTemplate(Table.VIS_ADMIN_ROLE.name(), "id", IRoleMapper.class, RoleModel.class));
 			}catch(Exception ex){ex.printStackTrace();}
 		
 		return mappers;
