@@ -5,47 +5,52 @@ import com.smartken.toyz4j.model.impl.BaseModel;
 public class RoleModel extends BaseModel {
 
 	 public static enum F { 
-		  Id,CName,CDescription,CRolestring  
+		  Id,Name,Descp,TokenArray  
 		 } 
 
-		private Integer Id;         //ID  NUMBER 38
-		private String CName;         //C_NAME  VARCHAR2 30
-		private String CDescription;         //C_DESCRIPTION  VARCHAR2 200
-		private String CRolestring;         //C_ROLESTRING  VARCHAR2 200
-		public Integer getId() {
+		private String Id;         //ID  VARCHAR2 50
+		private String Name;         //NAME  VARCHAR2 50
+		private String Descp;         //DESCP  VARCHAR2 200
+		private String TokenArray;         //TOKEN_ARRAY  VARCHAR2 3,000
+		public String getId() {
 			return Id;
 		}
-		public void setId(Integer id) {
+		public void setId(String id) {
 			Id = id;
 		}
-		public String getCName() {
-			return CName;
+		public String getName() {
+			return Name;
 		}
-		public void setCName(String cName) {
-			CName = cName;
+		public void setName(String name) {
+			Name = name;
 		}
-		public String getCDescription() {
-			return CDescription;
+		public String getDescp() {
+			return Descp;
 		}
-		public void setCDescription(String cDescription) {
-			CDescription = cDescription;
+		public void setDescp(String descp) {
+			Descp = descp;
 		}
-		public String getCRolestring() {
-			return CRolestring;
+		public String getTokenArray() {
+			return TokenArray;
 		}
-		public void setCRolestring(String cRolestring) {
-			CRolestring = cRolestring;
+		public void setTokenArray(String tokenArray) {
+			TokenArray = tokenArray;
 		}
+		
+		
 		@Override
 		public Object getPk() {
 			// TODO Auto-generated method stub
-			return null;
+			return this.Id;
 		}
 		@Override
 		public void setPk(Object pk) {
 			// TODO Auto-generated method stub
-			
+			this.Id=pk.toString();
 		}
+		
+		
+		
 		
 		
 
