@@ -121,9 +121,13 @@
 	<bean id="userMapper" parent="baseMapper">
 	<property name="mapperInterface" value="com.ett.visual.mapper.admin.IUserMapper"></property>
 	</bean>
+	<bean id="roleMapper" parent="baseMapper">
+	<property name="mapperInterface" value="com.ett.visual.mapper.admin.IRoleMapper"></property>
+	</bean>
   <bean id="baseVisualBiz" abstract="true" class="com.ett.visual.biz.BaseVisualBiz">
        <property name="menuMapper" ref="menuMapper"></property>
        <property name="userMapper" ref="userMapper"></property>
+       <property name="roleMapper" ref="roleMapper"></property>
  </bean>
  
  <bean id="baseAdminBiz" abstract="true" class="com.ett.visual.biz.impl.AdminBiz" parent="baseVisualBiz"></bean>
