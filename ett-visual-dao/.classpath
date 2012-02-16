@@ -8,5 +8,7 @@
 	<classpathentry kind="con" path="org.maven.ide.eclipse.MAVEN2_CLASSPATH_CONTAINER"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ett-visual-model"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/toyz4j-core"/>
+	<classpathentry kind="lib" path="lib/Oracle_10g_10.2.0.4_JDBC_classes12.jar"/>
+	<classpathentry kind="lib" path="lib/Oracle_10g_10.2.0.4_JDBC_ojdbc14.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
