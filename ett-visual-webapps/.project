@@ -53,14 +53,9 @@
 			<locationURI>WORKSPACE_LOC/ett-visual-biz/src/main/java</locationURI>
 		</link>
 		<link>
-			<name>dao.src.main.java</name>
+			<name>biz.src.main.resources</name>
 			<type>2</type>
-			<locationURI>WORKSPACE_LOC/ett-visual-dao/src/main/java</locationURI>
-		</link>
-		<link>
-			<name>dao.src.main.resources</name>
-			<type>2</type>
-			<locationURI>WORKSPACE_LOC/ett-visual-dao/src/main/resources</locationURI>
+			<locationURI>WORKSPACE_LOC/ett-visual-biz/src/main/resources</locationURI>
 		</link>
 		<link>
 			<name>model.src.main.java</name>
