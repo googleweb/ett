@@ -14,7 +14,7 @@
        <result name="index">/jsp/admin/{1}/index.jsp</result>
        <result name="error">/jsp/common/error.jsp</result>
    </action>
-
+	
  
 </package>
 

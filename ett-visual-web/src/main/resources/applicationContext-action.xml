@@ -29,5 +29,9 @@
 >
 </bean>
 
+<bean class="com.ett.visual.action.admin.UserAction" parent="baseAction"
+ id="com.ett.visual.action.admin.UserAction"
+>
+</bean>
 
 </beans>
