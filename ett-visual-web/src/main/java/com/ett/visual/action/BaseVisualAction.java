@@ -15,9 +15,11 @@ import com.ett.visual.model.admin.RoleModel;
 import com.smartken.toyz4j.model.impl.BaseAction;
 import com.smartken.toyz4j.model.impl.BaseModel;
 import com.smartken.toyz4j.model.impl.ResultModel;
+import com.smartken.toyz4j.pager.PageArrayList;
 import com.smartken.toyz4j.pager.PageList;
 import com.smartken.toyz4j.util.EasyUiUtil;
 import com.smartken.toyz4j.util.ObjectUtil;
+import com.smartken.toyz4j.util.StringUtil;
 
 public abstract class BaseVisualAction<M extends BaseModel> extends BaseAction<M> {
       
@@ -107,10 +109,22 @@ public abstract class BaseVisualAction<M extends BaseModel> extends BaseAction<M
     }
 
     public void do_remove(){
-    	
+    	String ids=this.getParameter("ids");
+    	List<String> listIds=StringUtil.splitToList(ids, ",");
+    	ResultModel re=new ResultModel();
+    	if(listIds.size()==0){
+    		re.setMsg("没有记录被选中!");
+    		re.setCode(ResultModel.CODE_ALERT);
+    	    this.writePlainText(re.toJson().toString());
+    	    return;
+    	}
+    	this.adminBiz.loadCrudMapper(this._model.getClass());
+    	re=this.adminBiz.removeModelInPk(listIds);
+    	this.writePlainText(re.toJson().toString());
     }
     
-    public void datagrid_json(){
+   
+    public void datagrid_list(){
     	this.adminBiz.loadCrudMapper(this._model.getClass());
     	List pageList=this.adminBiz.getModel(this.getPager());
     	int count=this.adminBiz.count();
@@ -118,6 +132,13 @@ public abstract class BaseVisualAction<M extends BaseModel> extends BaseAction<M
     	this.writePlainText(datagrid.toString());
     }
 	
+    public void datagrid_query(){
+    	this.adminBiz.loadCrudMapper(this._model.getClass());
+    	PageArrayList pageList=this.adminBiz.getModel(_model,this.getPager());
+    	JSONObject datagrid= EasyUiUtil.toJsonDataGrid(pageList);
+    	this.writePlainText(datagrid.toString());
+    }
 	
+    
 	
 }

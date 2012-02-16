@@ -30,7 +30,7 @@ optsRoleModel["regexp"] = "#tableRoleModel";
 optsRoleModel["id"] = "Id"; 
 optsRoleModel["urlUpdate"] ="<%=basePath %>/admin/Role/do/update.action" ; 
 optsRoleModel["urlAdd"]="<%=basePath %>/admin/Role/do/add.action"  ; 
-optsRoleModel["urlRemove"]=""; 
+optsRoleModel["urlRemove"]="<%=basePath %>/admin/Role/do/remove.action"; 
 optsRoleModel["editors"] = editorsRoleModel; 
 
 var crudRoleModel = new CrudDatagrid(optsRoleModel); 
@@ -39,7 +39,7 @@ var editRowRoleModel = crudRoleModel.getEditRowHandler();
 
 $(document).ready(function(){ 
 $("#tableRoleModel").datagrid({ 
-url:"<%=basePath %>/admin/Role/datagrid/json.action" 
+url:"<%=basePath %>/admin/Role/datagrid/list.action" 
 , idField:"Id" 
 , columns:[[colName,colDescp,colTokenArray,colId]] 
 , toolbar:toolbarRoleModel 
