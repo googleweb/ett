@@ -16,10 +16,12 @@ import com.ett.visual.mapper.admin.IDepartmentModel;
 import com.ett.visual.mapper.admin.IDictMapper;
 import com.ett.visual.mapper.admin.IDictTypeMapper;
 import com.ett.visual.mapper.admin.IRoleMapper;
+import com.ett.visual.mapper.admin.IUserMapper;
 import com.ett.visual.model.admin.DepartmentModel;
 import com.ett.visual.model.admin.DictModel;
 import com.ett.visual.model.admin.DictTypeModel;
 import com.ett.visual.model.admin.RoleModel;
+import com.ett.visual.model.admin.UserModel;
 import com.ett.visual.mapper.admin.IMenuMapper;
 import com.ett.visual.model.admin.MenuModel;
 import com.smartken.toyz4j.mybatis.*;
@@ -38,13 +40,13 @@ public class GenMapperTool {
 	    
 	    ,TABLE_SELF_DEVICE,TABLE_SELF_DEVICE_SN,TABLE_SELF_HARD,TABLE_MENUS,TABLE_STUDENT_APPLY_INFO
 	    
-	    ,EXAM_TK_CN ,VIS_ADMIN_ROLE
+	    ,EXAM_TK_CN ,VIS_ADMIN_ROLE,VIS_ADMIN_USER
 	}
 	
 	public static enum Seqs{
 		seq_bus_all_info,seq_buslog,seq_car_owner_change_info,seq_department,seq_dict,seq_dicttype,seq_extra_assign,seq_fp_approve,seq_role,seq_school_car_info
 		,seq_self_device,seq_self_devicesn,seq_self_hardware,seq_self_transact_driver,seq_self_transact_vehicle,seq_student,seq_table_person_change_info
-		,seq_user,seq_week_record,seq_yuyue_day_limit,seq_yuyue_info,seq_yuyue_limit,seq_menu,SEQ_STUDENT_APPLY_INFO,seq_exam_tk_cn
+		,seq_user,seq_week_record,seq_yuyue_day_limit,seq_yuyue_info,seq_yuyue_limit,seq_menu,SEQ_STUDENT_APPLY_INFO,seq_exam_tk_cn,seq_vis_admin_user
 	}
 	
 	public static String NEXTVAL=".nextval";
@@ -59,6 +61,7 @@ public class GenMapperTool {
 		//	mappers.put(Table.TABLE_DICTS,mf.createMapperTemplate(Table.TABLE_DICTS.name().toUpperCase(), "id".toUpperCase(),IDictMapper.class,DictModel.class,Seqs.seq_dict+NEXTVAL ));
 		//	mappers.put(Table.TABLE_DICTTYPE,mf.createMapperTemplate(Table.TABLE_DICTTYPE.name().toUpperCase(), "id".toUpperCase(),IDictTypeMapper.class, DictTypeModel.class,Seqs.seq_dicttype+NEXTVAL ));
             mappers.put(Table.VIS_ADMIN_ROLE,mf.createMapperTemplate(Table.VIS_ADMIN_ROLE.name(), "id", IRoleMapper.class, RoleModel.class));
+            mappers.put(Table.VIS_ADMIN_USER,mf.createMapperTemplate(Table.VIS_ADMIN_USER.name(), "id", IUserMapper.class, UserModel.class));
 			}catch(Exception ex){ex.printStackTrace();}
 		
 		return mappers;
@@ -81,7 +84,7 @@ public class GenMapperTool {
 	public static void main(String[] args){
 		Map<Table, MapperTemplate> mappers=getMappers(getConnection(), OracleMapperTemplate.class);
 		//String srcPath="D:/tempProject/ett/dao/src/main/java/";
-		String srcPath="E:/sts/ett-visual-dao/src/main/resources/";
+		String srcPath="D:/sts/ett-visual-dao/src/main/resources/";
 		Table[] enTables=Table.values();
 		for (Enum<Table> et : enTables) {
 			try{
