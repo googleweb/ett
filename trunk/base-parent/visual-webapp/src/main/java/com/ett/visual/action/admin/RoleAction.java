@@ -1,14 +1,28 @@
 package com.ett.visual.action.admin;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.ett.visual.action.BaseVisualAction;
 import com.ett.visual.model.admin.RoleModel;
 import com.smartken.toyz4j.util.EasyUiUtil;
+import com.smartken.toyz4j.util.ObjectUtil;
 
 public class RoleAction extends BaseVisualAction<RoleModel> {
+	
+	
+
+	@Override
+	public String to_index() throws Exception {
+		// TODO Auto-generated method stub
+		
+		System.out.println("111111111111111111111111111111111111");
+		return super.to_index();
+	}
+
 
 	public RoleModel getModel() {
 		// TODO Auto-generated method stub
@@ -19,5 +33,15 @@ public class RoleAction extends BaseVisualAction<RoleModel> {
 		
 	}
 
+	
+	public void combobox_list(){
+		this.adminBiz.loadCrudMapper(RoleModel.class);
+		List list=this.adminBiz.getModel();
+		List<String> fields=new ArrayList<String>();
+		fields.add(RoleModel.F.Id.name());
+		fields.add(RoleModel.F.Name.name());
+		JSONArray jarr= ObjectUtil.toJsonArrayInclude(list, fields);
+		this.writePlainText(jarr.toString());
+	}
 	
 }
