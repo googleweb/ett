@@ -33,7 +33,14 @@ function TakePic(url)
 	var bok = 0;
 	ScanCtrl.SetJpegQuality(jpgval); 
 	if(ScanCtrl.QuickScan(path))
-		alert("Scan OK"); 
+	{
+		var objFile=document.getElementById("tempFile");
+		var WshShell=new ActiveXObject("WScript.Shell"); 
+		objFile.focus(); 
+		objFile.createTextRange().select();
+		WshShell.SendKeys(path); 
+		
+	}
 //	ScanCtrl.Scan(path); 
 }   
 
@@ -282,7 +289,7 @@ function changethresvalue()
      
      <form enctype="multipart/form-data" method="post" action="<%=basePath %>/driver/DriverFile/do/saveScanFile.action">
        <input type="hidden" name="DriverPk" value="<%=driverId %>" />
-       <input type="file" name="tempFile" value="c:\\abc.jpg" />
+       <input type="file" name="tempFile" id="tempFile"  />
        
        <input type="submit" />
      </form>
