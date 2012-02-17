@@ -34,7 +34,7 @@ public class RoleAction extends BaseVisualAction<RoleModel> {
 		List<String> fields=new ArrayList<String>();
 		fields.add(RoleModel.F.Id.name());
 		fields.add(RoleModel.F.Name.name());
-		JSONArray jarr= ObjectUtil.toJsonArrayInclude(list, fields);
+		JSONArray jarr= ObjectUtil.toJsonArrayInclude(list,fields);
 		this.writePlainText(jarr.toString());
 	}
 	

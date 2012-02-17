@@ -34,4 +34,14 @@
 >
 </bean>
 
+<bean class="com.ett.visual.action.driver.DriverFileAction" parent="baseAction"
+ id="com.ett.visual.action.driver.DriverFileAction"
+>
+</bean>
+
+<bean class="com.ett.visual.action.driver.DriverInfoAction" parent="baseAction"
+ id="com.ett.visual.action.driver.DriverInfoAction"
+>
+</bean>
+
 </beans>
