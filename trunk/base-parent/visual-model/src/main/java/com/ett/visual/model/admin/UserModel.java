@@ -10,129 +10,105 @@ public class UserModel extends BaseModel {
 	 /**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
 	public static enum F { 
-		  Id,CLoginName,CFullName,CPwd,IRoleid,IDepid,CIdcard,CWorkid,CBeginip,CEndip,CState  
+		  Id,LoginName,LoginPwd,RoleFk,DepFk,WorkId,BeginIp,EndIp,State,PrivateToken,PublicToken,
+		PersonName,SignName  
 		 } 
-	 
-	 public static enum V{
-		 RoleName,DepName
-	 }
-		private Integer Id;         //ID  NUMBER 38
-		private String CLoginName;         //C_LOGIN_NAME  VARCHAR2 30
-		private String CFullName;         //C_FULL_NAME  VARCHAR2 30
-		private String CPwd;         //C_PWD  VARCHAR2 200
-		private Integer IRoleid;         //I_ROLEID  NUMBER 38
-		private Integer IDepid;         //I_DEPID  NUMBER 38
-		private String CIdcard;         //C_IDCARD  VARCHAR2 20
-		private String CWorkid;         //C_WORKID  VARCHAR2 20
-		private String CBeginip;         //C_BEGINIP  VARCHAR2 30
-		private String CEndip;         //C_ENDIP  VARCHAR2 30
-		private String CState;         //C_STATE  VARCHAR2 8
-		private String CKm;         //C_KM  VARCHAR2 10
+
+		private String Id;         //ID  VARCHAR2 50
+		private String LoginName;         //LOGIN_NAME  VARCHAR2 50
+		private String LoginPwd;         //LOGIN_PWD  VARCHAR2 100
+		private String RoleFk;         //ROLE_FK  VARCHAR2 50
+		private String DepFk;         //DEP_FK  VARCHAR2 50
+		private String WorkId;         //WORK_ID  VARCHAR2 50
+		private String BeginIp;         //BEGIN_IP  VARCHAR2 50
+		private String EndIp;         //END_IP  VARCHAR2 50
+		private String State;         //STATE  VARCHAR2 8
+		private String PrivateToken;         //PRIVATE_TOKEN  VARCHAR2 2,000
+		private String PublicToken;         //PUBLIC_TOKEN  VARCHAR2 2,000
+		private String PersonName;         //PERSON_NAME  VARCHAR2 50
+		private String SignName;         //SIGN_NAME  VARCHAR2 100
 		
-		private RoleModel roleModel=new RoleModel();
 		
-		private DepartmentModel departmentModel=new DepartmentModel();
 		
-		public  DepartmentModel getDepartmentModel(){
-			return departmentModel;  
-		}
-		public void  setDepartmentModel(DepartmentModel departmentModel){
-			this.departmentModel=departmentModel;
-		}		
-		public Integer getId() {
+		public String getId() {
 			return Id;
 		}
-		public void setId(Integer id) {
+		public void setId(String id) {
 			Id = id;
 		}
-		public String getCLoginName() {
-			return CLoginName;
+		public String getLoginName() {
+			return LoginName;
 		}
-		public void setCLoginName(String cLoginName) {
-			CLoginName = cLoginName;
+		public void setLoginName(String loginName) {
+			LoginName = loginName;
 		}
-		public String getCFullName() {
-			return CFullName;
+		public String getLoginPwd() {
+			return LoginPwd;
 		}
-		public void setCFullName(String cFullName) {
-			CFullName = cFullName;
+		public void setLoginPwd(String loginPwd) {
+			LoginPwd = loginPwd;
 		}
-		public String getCPwd() {
-			return CPwd;
+		public String getRoleFk() {
+			return RoleFk;
 		}
-		public void setCPwd(String cPwd) {
-			CPwd = cPwd;
+		public void setRoleFk(String roleFk) {
+			RoleFk = roleFk;
 		}
-		public Integer getIRoleid() {
-			return IRoleid;
+		public String getDepFk() {
+			return DepFk;
 		}
-		public void setIRoleid(Integer iRoleid) {
-			IRoleid = iRoleid;
+		public void setDepFk(String depFk) {
+			DepFk = depFk;
 		}
-		public Integer getIDepid() {
-			return IDepid;
+		public String getWorkId() {
+			return WorkId;
 		}
-		public void setIDepid(Integer iDepid) {
-			IDepid = iDepid;
+		public void setWorkId(String workId) {
+			WorkId = workId;
 		}
-		public String getCIdcard() {
-			return CIdcard;
+		public String getBeginIp() {
+			return BeginIp;
 		}
-		public void setCIdcard(String cIdcard) {
-			CIdcard = cIdcard;
+		public void setBeginIp(String beginIp) {
+			BeginIp = beginIp;
 		}
-		public String getCWorkid() {
-			return CWorkid;
+		public String getEndIp() {
+			return EndIp;
 		}
-		public void setCWorkid(String cWorkid) {
-			CWorkid = cWorkid;
+		public void setEndIp(String endIp) {
+			EndIp = endIp;
 		}
-		public String getCBeginip() {
-			return CBeginip;
+		public String getState() {
+			return State;
 		}
-		public void setCBeginip(String cBeginip) {
-			CBeginip = cBeginip;
+		public void setState(String state) {
+			State = state;
 		}
-		public String getCEndip() {
-			return CEndip;
+		public String getPrivateToken() {
+			return PrivateToken;
 		}
-		public void setCEndip(String cEndip) {
-			CEndip = cEndip;
+		public void setPrivateToken(String privateToken) {
+			PrivateToken = privateToken;
 		}
-		public String getCState() {
-			return CState;
+		public String getPublicToken() {
+			return PublicToken;
 		}
-		public void setCState(String cState) {
-			CState = cState;
+		public void setPublicToken(String publicToken) {
+			PublicToken = publicToken;
 		}
-		public String getCKm() {
-			return CKm;
+		public String getPersonName() {
+			return PersonName;
 		}
-		public void setCKm(String cKm) {
-			CKm = cKm;
+		public void setPersonName(String personName) {
+			PersonName = personName;
 		}
-		public RoleModel getRoleModel() {
-			return roleModel;
+		public String getSignName() {
+			return SignName;
 		}
-		public void setRoleModel(RoleModel roleModel) {
-			this.roleModel = roleModel;
-		}	
-		@Override
-		public JSONObject toJson() {
-			// TODO Auto-generated method stub
-			JSONObject json= super.toJson();
-			try {
-				//json.put(UserModel.V.RoleName.name(), roleModel.getCName());		
-				json.put(UserModel.V.DepName.name(),departmentModel.getCDepnickname());
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			return json;
+		public void setSignName(String signName) {
+			SignName = signName;
 		}
-		@Override
 		public Object getPk() {
 			// TODO Auto-generated method stub
 			return null;

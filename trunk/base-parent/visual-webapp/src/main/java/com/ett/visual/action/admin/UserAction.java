@@ -9,7 +9,7 @@ public class UserAction extends BaseVisualAction<UserModel>{
 	public UserModel getModel() {
 		// TODO Auto-generated method stub
 		if(_model==null){
-			return new UserModel();
+			_model=new UserModel();
 		}
 		return _model;
 	
