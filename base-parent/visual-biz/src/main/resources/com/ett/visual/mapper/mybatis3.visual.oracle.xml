@@ -39,6 +39,7 @@
 <mappers>
 <mapper resource="com/ett/visual/mapper/admin/oracle/IMenuMapper.xml"/>
 <mapper resource="com/ett/visual/mapper/admin/oracle/IRoleMapper.xml"/>
+<mapper resource="com/ett/visual/mapper/admin/oracle/IUserMapper.xml"/>
 
 <mapper resource="com/ett/visual/mapper/driver/oracle/IDriverInfoMapper.xml"/>
 <mapper resource="com/ett/visual/mapper/driver/oracle/IDriverFileMapper.xml"/>

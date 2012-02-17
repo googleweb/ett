@@ -11,5 +11,5 @@ import com.smartken.toyz4j.model.IMapper;
 
 public interface IUserMapper<T> extends IMapper<T> {
 
-	public List<UserModel> selectViewDepartname(int id) throws Exception;
+	
 }
