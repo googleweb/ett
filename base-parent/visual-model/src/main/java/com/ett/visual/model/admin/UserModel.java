@@ -111,11 +111,16 @@ public class UserModel extends BaseModel {
 		}
 		public Object getPk() {
 			// TODO Auto-generated method stub
-			return null;
+			return this.Id;
+		}
+		@Override
+		public Enum[] enumFields() {
+			// TODO Auto-generated method stub
+			return RoleModel.F.values();
 		}
 		@Override
 		public void setPk(Object pk) {
 			// TODO Auto-generated method stub
-			
+			this.Id=pk.toString();
 		}
 }
