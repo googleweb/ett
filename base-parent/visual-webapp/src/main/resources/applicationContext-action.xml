@@ -8,14 +8,16 @@
 
 
 <bean id="actionAdminBiz" parent="baseAdminBiz"></bean>
-
+<bean id="actionVehicleBiz" parent="baseVehicleBiz"></bean>
+<bean id="actionDriverBiz" parent="baseDriverBiz"></bean>
 
 
 <bean id="baseAction"  abstract="true"
    class="com.ett.visual.action.BaseVisualAction"  
 >
    <property name="adminBiz" ref="actionAdminBiz"></property>
- 
+   <property name="driverBiz" ref="actionDriverBiz"></property>
+   <property name="vehicleBiz" ref="actionVehicleBiz"></property>
 </bean>
 
 

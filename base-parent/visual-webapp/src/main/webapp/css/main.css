@@ -4,7 +4,7 @@
 
 body {background: #686868; font-family:Arial, Helvetica, sans-serif; font-size:12px; margin:0px; margin-bottom:2px;border-bottom: 1px #ccc solid;}
 h1 {color: #FFF;}
-a {color: #FFF; text-decoration: none;/*防止滤镜下链接失效*/position:relative;}
+a { text-decoration: none;/*防止滤镜下链接失效*/position:relative; cursor: pointer;}
 ul { list-style:none;}
 #all {width: 100%;}
 #banner {margin-top: 8px; margin-left: 32px;}
@@ -20,3 +20,37 @@ ul { list-style:none;}
 .active {background:url(../image/admin/nav_bg_active2.png) !important;background: none; margin-left: 2px; margin-right:2px;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src=../image/admin/nav_bg_active2.png);}
 .active a {color:#fff;}
 .blankgray {background:#bbb; height:2px; width:100%; margin:0; padding:0; clear:both; font-size:2px;}
+
+
+
+table.simple
+{
+	border-style: solid;
+	border-width: 1px 0px 0px 1px;
+	border-color: #66CCFF;
+	width: auto;
+	background-color: #EDF4FE;
+	table-layout: auto;
+}
+
+table.simple td
+{
+	border-style: solid;
+	border-width: 0px 1px 1px 0px;
+	border-color: #66CCFF;
+	text-align: left;
+	padding:10px;
+	vertical-align: top;
+}
+
+table.simple th
+{
+	text-align: right;
+	vertical-align: top;
+	color: #0033CC;
+	font-size: 0.9em;
+	padding:10px;
+	border-style: solid;
+	border-width: 0px 1px 1px 0px;
+	border-color: #66CCFF;
+}

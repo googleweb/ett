@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2012-02-16 11:34:48
+	Create Date:2012-02-17 03:49:41
 	MapperTemplate:com.smartken.toyz4j.mybatis.OracleMapperTemplate
 	Model:com.ett.visual.model.driver.DriverFileModel 
 
 
  public static enum F { 
-  Id,Title,Remark,DriverPk,CreateDate,LastModifyDate,OperPk  
+  Id,Title,Remark,DriverPk,CreateDate,LastModifyDate,OperPk,Rec  
  } 
 
 private String Id;         //ID  VARCHAR2 50
@@ -16,6 +16,7 @@ private String DriverPk;         //DRIVER_PK  VARCHAR2 50
 private Date CreateDate;         //CREATE_DATE  DATE 0
 private Date LastModifyDate;         //LAST_MODIFY_DATE  DATE 0
 private String OperPk;         //OPER_PK  VARCHAR2 50
+private byte[] Rec;         //REC  BLOB -1
  -->
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
@@ -29,7 +30,7 @@ private String OperPk;         //OPER_PK  VARCHAR2 50
 <sql id="pk">id</sql>
 
 <sql id="colums">
-ID,TITLE,REMARK,DRIVER_PK,CREATE_DATE,LAST_MODIFY_DATE,OPER_PK 
+ID,TITLE,REMARK,DRIVER_PK,CREATE_DATE,LAST_MODIFY_DATE,OPER_PK,REC 
 </sql>
 
 <sql id="insertCols">
@@ -40,6 +41,7 @@ ID,TITLE,REMARK,DRIVER_PK,CREATE_DATE,LAST_MODIFY_DATE,OPER_PK
 #{CreateDate,jdbcType=DATE,javaType=Date},
 #{LastModifyDate,jdbcType=DATE,javaType=Date},
 #{OperPk,jdbcType=VARCHAR,javaType=String},
+#{Rec,jdbcType=BLOB},
 
 </sql>
 
@@ -51,6 +53,7 @@ DRIVER_PK=#{model.DriverPk,jdbcType=VARCHAR,javaType=String},
 CREATE_DATE=#{model.CreateDate,jdbcType=DATE,javaType=Date},
 LAST_MODIFY_DATE=#{model.LastModifyDate,jdbcType=DATE,javaType=Date},
 OPER_PK=#{model.OperPk,jdbcType=VARCHAR,javaType=String},
+REC=#{model.Rec,jdbcType=BLOB},
 
 </sql>
 
@@ -68,6 +71,7 @@ OPER_PK=#{model.OperPk,jdbcType=VARCHAR,javaType=String},
 <result column="CREATE_DATE"  property="CreateDate" jdbcType="DATE"  javaType="Date"/>
 <result column="LAST_MODIFY_DATE"  property="LastModifyDate" jdbcType="DATE"  javaType="Date"/>
 <result column="OPER_PK"  property="OperPk" jdbcType="VARCHAR"  javaType="String"/>
+<result column="REC"  property="Rec"  />
 
  </resultMap>
 
@@ -80,6 +84,7 @@ OPER_PK=#{model.OperPk,jdbcType=VARCHAR,javaType=String},
 <if test="model.CreateDate neq null">and to_char(m.CREATE_DATE,'YYYY-MM-DD') = to_char(#{model.CreateDate,jdbcType=DATE, javaType=Date },'YYYY-MM-DD') </if> 
 <if test="model.LastModifyDate neq null">and to_char(m.LAST_MODIFY_DATE,'YYYY-MM-DD') = to_char(#{model.LastModifyDate,jdbcType=DATE, javaType=Date },'YYYY-MM-DD') </if> 
 <if test="model.OperPk neq null">and m.OPER_PK like #{model.OperPk,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model.Rec neq null">and m.REC = #{model.Rec,jdbcType=BLOB, javaType=Byte } </if> 
 
 </sql>
 

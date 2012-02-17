@@ -219,19 +219,32 @@ function HotelFormatter() {
 function ToyzOperaFormatter(opts) {
 
     opts = opts || {};
-    var iconCls = opts["iconCls"] || "file";
-    var href = opts["href"] || "";
-    var handlerName = opts["handlerName"] || "";
-
+    var type=opts["type"]||"icon";
+    if(type!="icon"&&type!="text"){
+   
+    	type="icon";
+    }
+    
+    var iconClss = opts["iconClss"] || [];
+    var titles = opts["titles"] || [];
+    var handlers = opts["handlers"] || [];
     var operaFomatter = function(value, rowData, rowIndex) {
 
-        var a;
+        var a="";
         var strRowData =Toyz4js.util.jsonToStr(rowData);
-        if (href == "") {
-            a = "<a onclick='" + handlerName + "(" + strRowData + "," + rowIndex + ")' class='toyz-icon " + iconCls + "'></a>";
-        } else {
-            a = "<a href='" + href + "' class='toyz-icon " + iconCls + "'></a>";
+        for(var i=0;i<handlers.length;i++){
+        	var handler=handlers[i];
+        	var iconCls=iconClss[i]||"file";
+        	var title=titles[i]||handler;
+        	if(type=="icon"){
+             a += "<a onclick='" + handler + "(" + strRowData + "," + rowIndex + ")' class='toyz-icon " + iconCls + "' title='"+title+"' ></a>";
+        	}else if(type=="text"){
+             a += "<a onclick='" + handler + "(" + strRowData + "," + rowIndex + ")' title='"+title+"' >"+title+"</a>"; 	
+        	}
+            a +="&nbsp;&nbsp;&nbsp;";
         }
+        
+       
 
         return a;
     }

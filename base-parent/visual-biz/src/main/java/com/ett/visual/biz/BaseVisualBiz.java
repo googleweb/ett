@@ -15,11 +15,11 @@ import com.smartken.toyz4j.model.impl.BaseCurdBiz;
 
 public class BaseVisualBiz extends BaseCurdBiz{
 
-	private IMenuMapper<MenuModel> menuMapper;
-	private IUserMapper<UserModel> userMapper;
-	private IRoleMapper<RoleModel> roleMapper;
-	private IDriverFileMapper<DriverFileModel> driverFileMapper;
-	private IDriverInfoMapper<DriverInfoModel> driverInfoMapper;
+	protected IMenuMapper<MenuModel> menuMapper;
+	protected IUserMapper<UserModel> userMapper;
+	protected IRoleMapper<RoleModel> roleMapper;
+	protected IDriverFileMapper<DriverFileModel> driverFileMapper;
+	protected IDriverInfoMapper<DriverInfoModel> driverInfoMapper;
 
 	public void setMenuMapper(IMenuMapper<MenuModel> menuMapper) {
 		this.addCrudMapper(MenuModel.class, menuMapper);
