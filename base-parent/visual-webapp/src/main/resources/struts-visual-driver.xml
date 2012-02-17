@@ -4,7 +4,7 @@
     "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
 
-<package name="visual_driver_package"  extends="base-package" namespace="/visual" >
+<package name="visual_driver_package"  extends="base-package" namespace="/driver" >
 
    <action name="*/*/*" 
      class="com.ett.visual.action.driver.{1}Action" method="{2}_{3}"
