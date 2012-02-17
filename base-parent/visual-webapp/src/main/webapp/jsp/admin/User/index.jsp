@@ -40,7 +40,7 @@ var colRoleFk = { title:"RoleFk" , field:"RoleFk", width:200,editor:{type:"valid
 	var colWorkId = { title:"WorkId" , field:"WorkId", width:200,editor:{type:"validatebox",options:{ required:false,missingMessage:"",invalidMessage:"" } } } ; 
 
 	
- var editorsUserModel=[ colRoleFk,colPrivateToken,colPersonName,colSignName,colLoginName,colLoginPwd,colBeginIp,colState,colPublicToken,colEndIp,colId,colDepFk,colWorkId ] ; 
+ var editorsUserModel=[ colRoleFk,colPrivateToken,colPersonName,colSignName,colLoginName,colLoginPwd,colBeginIp,colState,colPublicToken,colEndIp,colDepFk,colWorkId ] ; 
 var optsUserModel = { }; 
 optsUserModel["regexp"] = "#tableUserModel"; 
 optsUserModel["id"] = "Id"; 
