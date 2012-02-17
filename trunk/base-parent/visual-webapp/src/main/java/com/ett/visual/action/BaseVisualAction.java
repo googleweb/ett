@@ -10,6 +10,8 @@ import org.apache.struts2.ServletActionContext;
 import org.json.JSONObject;
 
 import com.ett.visual.biz.IAdminBiz;
+import com.ett.visual.biz.IDriverBiz;
+import com.ett.visual.biz.IVehicleBiz;
 import com.ett.visual.model.admin.RoleModel;
 
 import com.smartken.toyz4j.model.impl.BaseAction;
@@ -25,12 +27,27 @@ public abstract class BaseVisualAction<M extends BaseModel> extends BaseAction<M
       
 	
 	protected IAdminBiz adminBiz;
+	protected IDriverBiz driverBiz;
+	protected IVehicleBiz vehicleBiz;
 
 	public void setAdminBiz(IAdminBiz adminBiz) {
 		this.adminBiz = adminBiz;
 	}
 	
 	
+	
+	public void setDriverBiz(IDriverBiz driverBiz) {
+		this.driverBiz = driverBiz;
+	}
+
+
+
+	public void setVehicleBiz(IVehicleBiz vehicleBiz) {
+		this.vehicleBiz = vehicleBiz;
+	}
+
+
+
 	public  static String importPageResourceContext(){
 	
 		HttpServletRequest request=ServletActionContext.getRequest();
@@ -47,6 +64,7 @@ public abstract class BaseVisualAction<M extends BaseModel> extends BaseAction<M
 			 sbr.append(MessageFormat.format(cssTagPatttern, pathPrefix+"/jquery-easyui-1.2.5/themes/icon.css"));
 			 pathPrefix="/css";
 			 sbr.append(MessageFormat.format(cssTagPatttern, pathPrefix+"/main.css"));
+			 sbr.append(MessageFormat.format(cssTagPatttern, pathPrefix+"/toyz-icon.css"));
 		     if(isDebug){
 
 		    	 

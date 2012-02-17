@@ -19,6 +19,7 @@ public class DriverFileModel extends BaseVisualModel {
 		private Date CreateDate;         //CREATE_DATE  DATE 0
 		private Date LastModifyDate;         //LAST_MODIFY_DATE  DATE 0
 		private String OperPk;         //OPER_PK  VARCHAR2 50
+		private byte[] Rec;         //REC  BLOB -1
 	
 	@Override
 	public Object getPk() {
@@ -86,6 +87,14 @@ public class DriverFileModel extends BaseVisualModel {
 
 	public void setOperPk(String operPk) {
 		OperPk = operPk;
+	}
+
+	public byte[] getRec() {
+		return Rec;
+	}
+
+	public void setRec(byte[] rec) {
+		Rec = rec;
 	}
 	
 	

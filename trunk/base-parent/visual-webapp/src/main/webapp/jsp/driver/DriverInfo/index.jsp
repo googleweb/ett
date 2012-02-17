@@ -18,6 +18,16 @@
 
 <script type="text/javascript">
 
+
+  function doScan(rowData,rowIndex){
+	  var name=rowData["Name"];
+	  var id=rowData["Id"];
+	  var div=$("<div></div>");
+	  div.toyzIframe("<%=basePath %>/driver/DriverFile/to/scan.action?driverId="+id);
+	  div.dialog({width:800,height:600,title:"扫描文件:"+name});
+	  
+  }
+
 var colName = { title:"Name" , field:"Name", width:200,editor:{type:"validatebox",options:{ required:false,missingMessage:"",invalidMessage:"" } } } ; 
 
 var colFileNo = { title:"FileNo" , field:"FileNo", width:200,editor:{type:"validatebox",options:{ required:false,missingMessage:"",invalidMessage:"" } } } ; 
@@ -30,6 +40,7 @@ var colId = { title:"Id" , field:"Id", width:200,editor:{type:"validatebox",opti
 
 var colSchoolCode = { title:"SchoolCode" , field:"SchoolCode", width:200,editor:{type:"validatebox",options:{ required:false,missingMessage:"",invalidMessage:"" } } } ; 
 
+var colOpera={ title:"操作",field:"op1",width:100,formatter:ToyzOperaFormatter({handlers:["doScan","doCheckFile"],titles:["扫描","检查文件"]})};
 
 var editorsDriverInfoModel=[ colName,colFileNo,colPhone,colIdcardNo,colId,colSchoolCode ] ; 
 var optsDriverInfoModel = { }; 
@@ -48,7 +59,7 @@ $(document).ready(function(){
 $("#tableDriverInfoModel").datagrid({ 
 url:"<%=basePath %>/driver/DriverInfo/datagrid/list.action" 
 , idField:"Id" 
-, columns:[[colName,colFileNo,colPhone,colIdcardNo,colId,colSchoolCode]] 
+, columns:[[colName,colFileNo,colPhone,colIdcardNo,colId,colSchoolCode,colOpera]] 
 , toolbar:toolbarDriverInfoModel 
 , onDblClickRow:editRowDriverInfoModel 
 }) ;  
@@ -62,5 +73,8 @@ url:"<%=basePath %>/driver/DriverInfo/datagrid/list.action"
   <div region="center" >
     <table id="tableDriverInfoModel"></table>
   </div>
+  
+
+   
 </body>
 </html>
