@@ -9,10 +9,10 @@
 	<constant name="struts.devMode" value="false" />
 	<constant name="struts.ui.theme" value="simple" />
 	<constant name="struts.i18n.encoding" value="UTF-8" />
-	<constant name="struts.multipart.saveDir" value="/upload-temp" />
+	<constant name="struts.multipart.saveDir" value="d:/upload-temp/" />
 	<constant name="struts.custom.i18n.resources" value="system-config"/>
 	<constant name="struts.enable.SlashesInActionNames" value="true" />
-	<constant name="struts.multipart.saveDir" value="c:/temp"/>
+	
 
 
 	<include file="struts-*-*.xml"></include>

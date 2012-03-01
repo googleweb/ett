@@ -39,7 +39,7 @@ function TakePic(url)
 		objFile.focus(); 
 		objFile.createTextRange().select();
 		WshShell.SendKeys(path); 
-		
+		alert(path);
 	}
 //	ScanCtrl.Scan(path); 
 }   
@@ -289,7 +289,7 @@ function changethresvalue()
      
      <form enctype="multipart/form-data" method="post" action="<%=basePath %>/driver/DriverFile/do/saveScanFile.action">
        <input type="hidden" name="DriverPk" value="<%=driverId %>" />
-       <input type="file" name="tempFile" id="tempFile"  />
+       <input type="file" name="tempFile" id="tempFile" style="height: 0.01px"  />
        
        <input type="submit" />
      </form>
