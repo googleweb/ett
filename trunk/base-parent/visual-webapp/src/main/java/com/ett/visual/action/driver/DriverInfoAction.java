@@ -10,7 +10,11 @@ import com.smartken.toyz4j.util.FileUtil;
 
 public class DriverInfoAction extends BaseVisualAction<DriverInfoModel> {
 
+private File tempFile;
 	
+	public void setTempFile(File tempFile) {
+		this.tempFile = tempFile;
+	}
 	
 	public DriverInfoModel getModel() {
 		// TODO Auto-generated method stub

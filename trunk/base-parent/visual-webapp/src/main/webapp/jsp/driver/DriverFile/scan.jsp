@@ -2,6 +2,7 @@
 <%@page import="com.ett.visual.model.BaseVisualModel"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>   
     <%
       String basePath=BaseVisualAction.getRootPath();
       String driverId=request.getParameter("driverId");
@@ -16,6 +17,8 @@
 
 <script language="javascript" type="text/javascript">
  
+var _path= "C:\\test.txt";
+ 
 function start_preview(url)     
 {   
 	ScanCtrl.StartPreview();         
@@ -29,17 +32,22 @@ function stop_preview(url)
 function TakePic(url)     
 {
 	var jpgval= 36;
-	var path= "c:\\abc.jpg";
+	
 	var bok = 0;
 	ScanCtrl.SetJpegQuality(jpgval); 
-	if(ScanCtrl.QuickScan(path))
+	if(ScanCtrl.QuickScan(_path))
 	{
-		var objFile=document.getElementById("tempFile");
-		var WshShell=new ActiveXObject("WScript.Shell"); 
-		objFile.focus(); 
-		objFile.createTextRange().select();
-		WshShell.SendKeys(path); 
-		alert(path);
+	    try{
+		var fso,file,ts;
+		fso=new ActiveXObject("Scripting.FileSystemObject");
+		//file=fso.GetFile(_path);
+		file=fso.OpenTextFile(_path,1);
+		//ts=file.OpenAsTextStream(2,true);
+		ts=file.ReadLine();
+		alert("hhlin:"+ts);
+		file.close();
+	    }catch(ex){alert(ex);}
+		
 	}
 //	ScanCtrl.Scan(path); 
 }   
@@ -138,6 +146,9 @@ function contentLoad()
 
 function opendevice()
 {
+	
+	  
+	
 	try{
 	ScanCtrl.StartPreview();
 	
@@ -260,7 +271,27 @@ function changethresvalue()
 
 
   $(document).ready(function(){
-	 
+	  
+	  try{
+		var objFile=document.getElementById("tempFile");
+		var WshShell=new ActiveXObject("WScript.Shell"); 
+		objFile.focus(); 
+		//objFile.createTextRange().select();
+		//alert(_path);
+		//WshShell.SendKeys("{Tab}");
+        //WshShell.SendKeys("{ }");
+		//WshShell.SendKeys(_path);
+		//WshShell.SendKeys("{Enter}");
+		//alert(objFile.value);
+		//alert(objFile.outerHTML);
+		//var context="";
+		//context=objFile.outerHTML.replace(">"," value=\"C:\\abc.jpg\" >"); 
+		//objFile.outerHTML=context;
+		//alert(objFile.outerHTML);
+		
+ 		
+	  }catch(ex){alert(ex);}
+	
   });
 
 </script>
@@ -285,12 +316,17 @@ function changethresvalue()
      <select id="sel1" name="sel1"  onchange="changescansize()"></select>
      <select id="sel2" name="sel2"  onchange="changerotate()"></select>
      <select id="sel3" name="sel3"  onchange="changecolor()"></select>
-     <select id="sel4" name="sel4"  onchange="changethresvalue()"></select>   
+     <select id="sel4" name="sel4"  onchange="changethresvalue()"></select>  
+     
      
      <form enctype="multipart/form-data" method="post" action="<%=basePath %>/driver/DriverFile/do/saveScanFile.action">
+      
+      
        <input type="hidden" name="DriverPk" value="<%=driverId %>" />
-       <input type="file" name="tempFile" id="tempFile" style="height: 0.01px"  />
        
+      
+       <input id="tempFile" name="tempFile" type="file" value="54">
+  
        <input type="submit" />
      </form>
 </body>
