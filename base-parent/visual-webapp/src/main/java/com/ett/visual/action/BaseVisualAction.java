@@ -54,7 +54,7 @@ public abstract class BaseVisualAction<M extends BaseModel> extends BaseAction<M
 		String path = request.getContextPath();
 		String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path;
 		     boolean isDebug=true;
-		     String jsTagPattern="<script type=\"text/javascript\" language=\"javascript\" src=\""+basePath+"{0}\"></script> \n";
+		     String jsTagPattern="<script type=\"text/javascript\"  src=\""+basePath+"{0}\"></script> \n";
 		     String cssTagPatttern="<link rel=\"stylesheet\" type=\"text/css\" href=\""+basePath+"{0}\"> \n";
 		     StringBuffer sbr=new StringBuffer("");
 		     String pathPrefix="";
