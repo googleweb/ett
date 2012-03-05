@@ -24,8 +24,8 @@ public class DriverBiz  extends BaseVisualBiz implements IDriverBiz{
 		drvFile.setCreateDate(new Date());
 		drvFile.setLastModifyDate(new Date());
 		this.loadCrudMapper(DriverFileModel.class);
-		this.addModel(drvFile);
-		return null;
+	    result= this.addModel(drvFile);
+		return result;
 	}
 
 }

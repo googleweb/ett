@@ -2,7 +2,7 @@
 <%@page import="com.ett.visual.model.BaseVisualModel"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="s" uri="/struts-tags" %>   
+  
     <%
       String basePath=BaseVisualAction.getRootPath();
       String driverId=request.getParameter("driverId");
@@ -17,7 +17,7 @@
 
 <script language="javascript" type="text/javascript">
  
-var _path= "C:\\test.txt";
+var _path= "C:\\abc.jpg";
  
 function start_preview(url)     
 {   
@@ -37,16 +37,7 @@ function TakePic(url)
 	ScanCtrl.SetJpegQuality(jpgval); 
 	if(ScanCtrl.QuickScan(_path))
 	{
-	    try{
-		var fso,file,ts;
-		fso=new ActiveXObject("Scripting.FileSystemObject");
-		//file=fso.GetFile(_path);
-		file=fso.OpenTextFile(_path,1);
-		//ts=file.OpenAsTextStream(2,true);
-		ts=file.ReadLine();
-		alert("hhlin:"+ts);
-		file.close();
-	    }catch(ex){alert(ex);}
+	    
 		
 	}
 //	ScanCtrl.Scan(path); 
@@ -146,7 +137,7 @@ function contentLoad()
 
 function opendevice()
 {
-	
+
 	  
 	
 	try{
@@ -273,14 +264,18 @@ function changethresvalue()
   $(document).ready(function(){
 	  
 	  try{
-		var objFile=document.getElementById("tempFile");
+		var objFile=document.all.tempFile;
+		//alert(_path);
 		var WshShell=new ActiveXObject("WScript.Shell"); 
+		
 		objFile.focus(); 
 		//objFile.createTextRange().select();
 		//alert(_path);
 		//WshShell.SendKeys("{Tab}");
         //WshShell.SendKeys("{ }");
-		//WshShell.SendKeys(_path);
+        
+		WshShell.sendKeys(_path);
+		//alert(objFile.value);
 		//WshShell.SendKeys("{Enter}");
 		//alert(objFile.value);
 		//alert(objFile.outerHTML);
@@ -299,7 +294,7 @@ function changethresvalue()
 
 </head>
 <body  >
- <object classid="clsid:090457CB-DF21-41EB-84BB-39AAFC9E271A" id=ScanCtrl CODEBASE="*.cab#version=1,0,0,1"  width=800 height=480> 
+ <object classid="clsid:090457CB-DF21-41EB-84BB-39AAFC9E271A" id=ScanCtrl CODEBASE="*.cab#version=1,0,0,1"  width=800 height=380> 
      </object>
      
           
@@ -325,7 +320,7 @@ function changethresvalue()
        <input type="hidden" name="DriverPk" value="<%=driverId %>" />
        
       
-       <input id="tempFile" name="tempFile" type="file" value="54">
+       <input id="tempFile" name="tempFile" type="file"  >
   
        <input type="submit" />
      </form>
