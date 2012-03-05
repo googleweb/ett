@@ -104,7 +104,7 @@ public abstract class BaseVisualAction<M extends BaseModel> extends BaseAction<M
 
 
     public void do_add() {
-		this.adminBiz.loadCrudMapper(this._model.getClass());
+		this.adminBiz.loadCrudMapper(ObjectUtil.<M>getClazz());
 		
 		_model.setPk(BaseModel.generalPK());
 		ResultModel re=this.adminBiz.addModel(_model);

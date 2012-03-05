@@ -42,11 +42,9 @@ public class DriverFileAction extends BaseVisualAction<DriverFileModel> {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		String driverId=this.getParameter("driverId");
+		String driverId=this.getParameter("DriverPk");
 		this.driverBiz.loadCrudMapper(DriverInfoModel.class);
-		DriverInfoModel q=new DriverInfoModel();
-		q.setId(driverId);
-		DriverInfoModel drvInfo=(DriverInfoModel) this.driverBiz.getTopModel(q);
+		DriverInfoModel drvInfo=(DriverInfoModel) this.driverBiz.getModelEqPk(driverId);
 		re=this.driverBiz.tranSaveSacnFile(rec, drvInfo);
 		this.writePlainText(re.toJson().toString());
 	}
