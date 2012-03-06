@@ -62,6 +62,7 @@ public abstract class BaseVisualAction<M extends BaseModel> extends BaseAction<M
 			 pathPrefix="/js3rd";
 			 sbr.append(MessageFormat.format(cssTagPatttern, pathPrefix+"/jquery-easyui-1.2.5/themes/gray/easyui.css"));
 			 sbr.append(MessageFormat.format(cssTagPatttern, pathPrefix+"/jquery-easyui-1.2.5/themes/icon.css"));
+			 sbr.append(MessageFormat.format(cssTagPatttern, pathPrefix+"/jquery-jqzoom_ev-2.3/css/jquery.jqzoom.css"));
 			 pathPrefix="/css";
 			 sbr.append(MessageFormat.format(cssTagPatttern, pathPrefix+"/main.css"));
 			 sbr.append(MessageFormat.format(cssTagPatttern, pathPrefix+"/toyz-icon.css"));
@@ -76,6 +77,7 @@ public abstract class BaseVisualAction<M extends BaseModel> extends BaseAction<M
 		    	 .append(MessageFormat.format(jsTagPattern,pathPrefix+ "/jquery-easyui-1.2.5/locale/easyui-lang-zh_CN.js"))
 		    	 .append(MessageFormat.format(jsTagPattern, pathPrefix+"/jquery-easyui-datagridview/datagrid-detailview.js"))
 		    	 .append(MessageFormat.format(jsTagPattern,pathPrefix+ "/jquery-easyui-datagridview/datagrid-groupview.js"))
+		    	 .append(MessageFormat.format(jsTagPattern,pathPrefix+ "/jquery-jqzoom_ev-2.3/js/jquery.jqzoom-core-pack.js"))
 		    	 ;
 		    	 
 		    	 pathPrefix="/js";
