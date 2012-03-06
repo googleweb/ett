@@ -1,17 +1,20 @@
 package com.ett.visual.action;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 
 import org.apache.struts2.ServletActionContext;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.ett.visual.biz.IAdminBiz;
 import com.ett.visual.biz.IDriverBiz;
 import com.ett.visual.biz.IVehicleBiz;
+import com.ett.visual.model.admin.DictTypeModel;
 import com.ett.visual.model.admin.RoleModel;
 
 import com.smartken.toyz4j.model.impl.BaseAction;
@@ -106,7 +109,7 @@ public abstract class BaseVisualAction<M extends BaseModel> extends BaseAction<M
 
 
     public void do_add() {
-		this.adminBiz.loadCrudMapper(ObjectUtil.<M>getClazz());
+		this.adminBiz.loadCrudMapper(this._model.getClass());
 		
 		_model.setPk(BaseModel.generalPK());
 		ResultModel re=this.adminBiz.addModel(_model);
@@ -153,6 +156,11 @@ public abstract class BaseVisualAction<M extends BaseModel> extends BaseAction<M
     	this.writePlainText(datagrid.toString());
     }
 	
-    
+    public void combobox_list(){
+    	this.adminBiz.loadCrudMapper(this._model.getClass());
+    	List list=this.adminBiz.getModel();
+		JSONArray jarr= ObjectUtil.toJsonArray(list);
+		this.writePlainText(jarr.toString());
+    }
 	
 }
