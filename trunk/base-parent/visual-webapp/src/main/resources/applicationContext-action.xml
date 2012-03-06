@@ -26,6 +26,11 @@
 >
 </bean>
 
+<bean class="com.ett.visual.action.admin.DictAction" parent="baseAction"
+ id="com.ett.visual.action.admin.DictAction"
+>
+</bean>
+
 <bean class="com.ett.visual.action.admin.RoleAction" parent="baseAction"
  id="com.ett.visual.action.admin.RoleAction"
 >
