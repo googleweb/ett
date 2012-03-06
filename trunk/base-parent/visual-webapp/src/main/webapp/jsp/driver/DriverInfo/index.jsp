@@ -24,9 +24,10 @@
 	  var id=rowData["Id"];
 	  var div=$("<div></div>");
 	  div.toyzIframe("<%=basePath %>/driver/DriverFile/to/scan.action?driverId="+id);
-	  div.dialog({width:800
+	  div.window({width:1024
 		  ,height:500
 		  ,title:"扫描文件:"+name
+		  ,modal:true
 		  ,onClose:function(){
 			  div.dialog("destroy",true);
 		  } 

@@ -6,6 +6,7 @@
     <%
       String basePath=BaseVisualAction.getRootPath();
       String driverId=request.getParameter("driverId");
+      
     %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -15,10 +16,19 @@
 
 <%=BaseVisualAction.importPageResourceContext() %>
 
+<style type="text/css">
+ 
+ #divPreview{
+    filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale);
+
+ }
+ 
+</style>
+
 <script language="javascript" type="text/javascript">
  
 var _path= "C:\\abc.jpg";
- 
+var WshShell=new ActiveXObject("WScript.Shell"); 
 function start_preview(url)     
 {   
 	ScanCtrl.StartPreview();         
@@ -37,9 +47,10 @@ function TakePic(url)
 	ScanCtrl.SetJpegQuality(jpgval); 
 	if(ScanCtrl.QuickScan(_path))
 	{
-	    
-		
+	    var divPreview = document.getElementById("divPreview");
+	    divPreview.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = _path;
 	}
+
 //	ScanCtrl.Scan(path); 
 }   
 
@@ -264,17 +275,18 @@ function changethresvalue()
   $(document).ready(function(){
 	  
 	  try{
-		var objFile=document.all.tempFile;
-		//alert(_path);
-		var WshShell=new ActiveXObject("WScript.Shell"); 
 		
-		objFile.focus(); 
+		//alert(_path);
+		
+		//alert(WshShell);
+		
+		
 		//objFile.createTextRange().select();
 		//alert(_path);
 		//WshShell.SendKeys("{Tab}");
         //WshShell.SendKeys("{ }");
         
-		WshShell.sendKeys(_path);
+		
 		//alert(objFile.value);
 		//WshShell.SendKeys("{Enter}");
 		//alert(objFile.value);
@@ -284,7 +296,15 @@ function changethresvalue()
 		//objFile.outerHTML=context;
 		//alert(objFile.outerHTML);
 		
- 		
+		
+		//alert(objFile.outerHTML);
+		var ocxContext="<object classid=\"clsid:090457CB-DF21-41EB-84BB-39AAFC9E271A\" id=ScanCtrl   width=400 height=280> </object>";
+		$("#divCollect").append(ocxContext);
+		//var objFile=document.all.tempFile;
+		//objFile.outerHTML=objFile.outerHTML.replace(/(value=\").+\"/i,"$"+_path+"\""); 
+		//objFile.focus(); 
+		//WshShell.sendKeys(_path);
+		document.all.tempFile.value=_path;
 	  }catch(ex){alert(ex);}
 	
   });
@@ -293,19 +313,38 @@ function changethresvalue()
 
 
 </head>
-<body  >
- <object classid="clsid:090457CB-DF21-41EB-84BB-39AAFC9E271A" id=ScanCtrl CODEBASE="*.cab#version=1,0,0,1"  width=800 height=380> 
-     </object>
+<body class="easyui-layout" >
+ 
      
-          
-    
-     <input   TYPE="button"   VALUE="打开设备"   onClick="opendevice()">
+     <div region="west" title="所有图片" style="width: 300px">
+     </div>
+     
+     <div region="east" title="图片预览" style="width:300px">
+        
+        <div id="divPreview" style="max-width: 100%; height: 180px"  ></div>
+          <form   id="formFileUpload" enctype="multipart/form-data" method="post" action="<%=basePath %>/driver/DriverFile/do/saveScanFile.action">
+      
+       <input type="hidden" name="DriverPk" value="<%=driverId %>" />
+       <input id="tempFile" name="tempFile" type="file"   >
+  
+     </form>
+   		  <div>
+         <a class="easyui-linkbutton" iconCls="icon-ok" onclick="$('#formFileUpload').form('submit');">上传文件</a>
+        	</div>
+     </div>
+     
+     <div region="center"  title="影像采集">
+     
+     <div id="divCollect"></div>
+     
+            <input   TYPE="button"   VALUE="打开设备"   onClick="opendevice()">
+     <!--  
      <input   TYPE="button"   VALUE="开始预览"   onClick="start_preview()"> 
      <input   TYPE="button"   VALUE="停止预览"   onClick="stop_preview()"> 
+     -->
      
      
-     
-     <input   TYPE="button"   VALUE="拍照"   onClick="TakePic()">  
+     <input   TYPE="button"   VALUE="拍照"   onClick="TakePic();">  
      <input   TYPE="button"   VALUE="属性"   onClick="Property()">  
      <select id="sel" name="sel"  onchange="changeresolution()"></select>
      <select id="sel1" name="sel1"  onchange="changescansize()"></select>
@@ -314,15 +353,9 @@ function changethresvalue()
      <select id="sel4" name="sel4"  onchange="changethresvalue()"></select>  
      
      
-     <form enctype="multipart/form-data" method="post" action="<%=basePath %>/driver/DriverFile/do/saveScanFile.action">
-      
-      
-       <input type="hidden" name="DriverPk" value="<%=driverId %>" />
-       
-      
-       <input id="tempFile" name="tempFile" type="file"  >
-  
-       <input type="submit" />
-     </form>
+   
+     </div>
+    
+ 
 </body>
 </html>
