@@ -19,7 +19,7 @@ var colText = { title:"Text" , field:"Text", width:200,editor:{type:"validatebox
 
 var colValue = { title:"Value" , field:"Value", width:200,editor:{type:"validatebox",options:{ required:false,missingMessage:"",invalidMessage:"" } } } ; 
 
-var colTypeFk = { title:"TypeFk" , field:"TypeFk", width:200,editor:{type:"validatebox",options:{ required:false,missingMessage:"",invalidMessage:"" } } } ; 
+var colTypeFk = { title:"TypeFk" , field:"TypeFk", width:200,editor:{type:"combobox",options:{ textField:"Text",vauleField:"Id",url:"<%=basePath %>/admin/DictType/combobox/list.action" } } } ; 
 
 var colRemark = { title:"Remark" , field:"Remark", width:200,editor:{type:"validatebox",options:{ required:false,missingMessage:"",invalidMessage:"" } } } ; 
 
