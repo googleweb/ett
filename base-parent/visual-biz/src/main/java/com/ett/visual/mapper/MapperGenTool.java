@@ -6,9 +6,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 
+import com.ett.visual.mapper.admin.IDictMapper;
 import com.ett.visual.mapper.admin.IRoleMapper;
 import com.ett.visual.mapper.driver.IDriverFileMapper;
 import com.ett.visual.mapper.driver.IDriverInfoMapper;
+import com.ett.visual.model.admin.DictModel;
 import com.ett.visual.model.admin.RoleModel;
 import com.ett.visual.model.driver.DriverFileModel;
 import com.ett.visual.model.driver.DriverInfoModel;
@@ -29,7 +31,7 @@ public class MapperGenTool {
 	    
 	    ,TABLE_SELF_DEVICE,TABLE_SELF_DEVICE_SN,TABLE_SELF_HARD,TABLE_MENUS,TABLE_STUDENT_APPLY_INFO
 	    
-	    ,EXAM_TK_CN ,VIS_ADMIN_ROLE,VIS_DRIVER_INFO,VIS_DRIVER_FILE
+	    ,EXAM_TK_CN ,VIS_ADMIN_ROLE,VIS_DRIVER_INFO,VIS_DRIVER_FILE,VIS_ADMIN_DICT
 	}
 	
 	public static enum Seqs{
@@ -50,8 +52,9 @@ public class MapperGenTool {
 		//	mappers.put(Table.TABLE_DICTS,mf.createMapperTemplate(Table.TABLE_DICTS.name().toUpperCase(), "id".toUpperCase(),IDictMapper.class,DictModel.class,Seqs.seq_dict+NEXTVAL ));
 		//	mappers.put(Table.TABLE_DICTTYPE,mf.createMapperTemplate(Table.TABLE_DICTTYPE.name().toUpperCase(), "id".toUpperCase(),IDictTypeMapper.class, DictTypeModel.class,Seqs.seq_dicttype+NEXTVAL ));
         //    mappers.put(Table.VIS_ADMIN_ROLE,mf.createMapperTemplate(Table.VIS_ADMIN_ROLE.name(), "id", IRoleMapper.class, RoleModel.class));
-			mappers.put(Table.VIS_DRIVER_FILE,mf.createMapperTemplate(Table.VIS_DRIVER_FILE.name(), "id", IDriverFileMapper.class, DriverFileModel.class));
+		//	mappers.put(Table.VIS_DRIVER_FILE,mf.createMapperTemplate(Table.VIS_DRIVER_FILE.name(), "id", IDriverFileMapper.class, DriverFileModel.class));
 		//	mappers.put(Table.VIS_DRIVER_INFO,mf.createMapperTemplate(Table.VIS_DRIVER_INFO.name(), "id", IDriverInfoMapper.class, DriverInfoModel.class));
+			mappers.put(Table.VIS_ADMIN_DICT,mf.createMapperTemplate(Table.VIS_ADMIN_DICT.name(), "id", IDictMapper.class, DictModel.class));
 			
 		}catch(Exception ex){ex.printStackTrace();}
 		
@@ -75,7 +78,7 @@ public class MapperGenTool {
 	public static void main(String[] args){
 		Map<Table, MapperTemplate> mappers=getMappers(getConnection(), OracleMapperTemplate.class);
 		//String srcPath="D:/tempProject/ett/dao/src/main/java/";
-		String srcPath="E:/sts/base-parent/visual-biz/src/main/resources/";
+		String srcPath="D:/sts/base-parent/visual-biz/src/main/resources/";
 		Table[] enTables=Table.values();
 		for (Enum<Table> et : enTables) {
 			try{
