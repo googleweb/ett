@@ -7,75 +7,69 @@ public class DictModel extends BaseModel {
 
 
 	 public static enum F { 
-		  Id,CTypename,CDictText,CDictValue,CDes1,CDes2,CDes3,CState  
+		  Id,Text,Value,TypeFk,Remark,State  
 		 } 
 
-		private Integer Id;         //ID  NUMBER 38
-		private String CTypename;         //C_TYPENAME  VARCHAR2 60
-		private String CDictText;         //C_DICT_TEXT  VARCHAR2 30
-		private String CDictValue;         //C_DICT_VALUE  VARCHAR2 30
-		private String CDes1;         //C_DES1  VARCHAR2 30
-		private String CDes2;         //C_DES2  VARCHAR2 30
-		private String CDes3;         //C_DES3  VARCHAR2 30
-		private String CState;         //C_STATE  VARCHAR2 10
-		public Integer getId() {
+		private String Id;         //ID  VARCHAR2 50
+		private String Text;         //TEXT  VARCHAR2 500
+		private String Value;         //VALUE  VARCHAR2 500
+		private String TypeFk;         //TYPE_FK  VARCHAR2 50
+		private String Remark;         //REMARK  VARCHAR2 500
+		private String State;         //STATE  VARCHAR2 10
+		
+		
+		public String getId() {
 			return Id;
 		}
-		public void setId(Integer id) {
+		public void setId(String id) {
 			Id = id;
 		}
-		public String getCTypename() {
-			return CTypename;
+		public String getText() {
+			return Text;
 		}
-		public void setCTypename(String cTypename) {
-			CTypename = cTypename;
+		public void setText(String text) {
+			Text = text;
 		}
-		public String getCDictText() {
-			return CDictText;
+		public String getValue() {
+			return Value;
 		}
-		public void setCDictText(String cDictText) {
-			CDictText = cDictText;
+		public void setValue(String value) {
+			Value = value;
 		}
-		public String getCDictValue() {
-			return CDictValue;
+		public String getTypeFk() {
+			return TypeFk;
 		}
-		public void setCDictValue(String cDictValue) {
-			CDictValue = cDictValue;
+		public void setTypeFk(String typeFk) {
+			TypeFk = typeFk;
 		}
-		public String getCDes1() {
-			return CDes1;
+		public String getRemark() {
+			return Remark;
 		}
-		public void setCDes1(String cDes1) {
-			CDes1 = cDes1;
+		public void setRemark(String remark) {
+			Remark = remark;
 		}
-		public String getCDes2() {
-			return CDes2;
+		public String getState() {
+			return State;
 		}
-		public void setCDes2(String cDes2) {
-			CDes2 = cDes2;
-		}
-		public String getCDes3() {
-			return CDes3;
-		}
-		public void setCDes3(String cDes3) {
-			CDes3 = cDes3;
-		}
-		public String getCState() {
-			return CState;
-		}
-		public void setCState(String cState) {
-			CState = cState;
+		public void setState(String state) {
+			State = state;
 		}
 		@Override
 		public Object getPk() {
 			// TODO Auto-generated method stub
-			return null;
+			return this.Id;
+		}
+		@Override
+		public Enum[] enumFields() {
+			// TODO Auto-generated method stub
+			return DictModel.F.values();
 		}
 		@Override
 		public void setPk(Object pk) {
 			// TODO Auto-generated method stub
-			
+			this.Id=pk.toString();
 		}
+		
 		
 		
 		
