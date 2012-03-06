@@ -7,10 +7,12 @@ import java.util.Map;
 
 
 import com.ett.visual.mapper.admin.IDictMapper;
+import com.ett.visual.mapper.admin.IDictTypeMapper;
 import com.ett.visual.mapper.admin.IRoleMapper;
 import com.ett.visual.mapper.driver.IDriverFileMapper;
 import com.ett.visual.mapper.driver.IDriverInfoMapper;
 import com.ett.visual.model.admin.DictModel;
+import com.ett.visual.model.admin.DictTypeModel;
 import com.ett.visual.model.admin.RoleModel;
 import com.ett.visual.model.driver.DriverFileModel;
 import com.ett.visual.model.driver.DriverInfoModel;
@@ -31,7 +33,7 @@ public class MapperGenTool {
 	    
 	    ,TABLE_SELF_DEVICE,TABLE_SELF_DEVICE_SN,TABLE_SELF_HARD,TABLE_MENUS,TABLE_STUDENT_APPLY_INFO
 	    
-	    ,EXAM_TK_CN ,VIS_ADMIN_ROLE,VIS_DRIVER_INFO,VIS_DRIVER_FILE,VIS_ADMIN_DICT
+	    ,EXAM_TK_CN ,VIS_ADMIN_ROLE,VIS_DRIVER_INFO,VIS_DRIVER_FILE,VIS_ADMIN_DICT,VIS_ADMIN_DICT_TYPE
 	}
 	
 	public static enum Seqs{
@@ -54,7 +56,8 @@ public class MapperGenTool {
         //    mappers.put(Table.VIS_ADMIN_ROLE,mf.createMapperTemplate(Table.VIS_ADMIN_ROLE.name(), "id", IRoleMapper.class, RoleModel.class));
 		//	mappers.put(Table.VIS_DRIVER_FILE,mf.createMapperTemplate(Table.VIS_DRIVER_FILE.name(), "id", IDriverFileMapper.class, DriverFileModel.class));
 		//	mappers.put(Table.VIS_DRIVER_INFO,mf.createMapperTemplate(Table.VIS_DRIVER_INFO.name(), "id", IDriverInfoMapper.class, DriverInfoModel.class));
-			mappers.put(Table.VIS_ADMIN_DICT,mf.createMapperTemplate(Table.VIS_ADMIN_DICT.name(), "id", IDictMapper.class, DictModel.class));
+		//	mappers.put(Table.VIS_ADMIN_DICT,mf.createMapperTemplate(Table.VIS_ADMIN_DICT.name(), "id", IDictMapper.class, DictModel.class));
+			mappers.put(Table.VIS_ADMIN_DICT_TYPE,mf.createMapperTemplate(Table.VIS_ADMIN_DICT_TYPE.name(), "id", IDictTypeMapper.class, DictTypeModel.class));
 			
 		}catch(Exception ex){ex.printStackTrace();}
 		
