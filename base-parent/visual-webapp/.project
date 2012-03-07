@@ -39,4 +39,11 @@
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 		<nature>org.eclipse.m2e.core.maven2Nature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>applet</name>
+			<type>2</type>
+			<locationURI>WORKSPACE_LOC/toyz4j-core/src/main/applet</locationURI>
+		</link>
+	</linkedResources>
 </projectDescription>

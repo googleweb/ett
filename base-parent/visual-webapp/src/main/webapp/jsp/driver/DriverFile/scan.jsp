@@ -328,6 +328,17 @@ function changethresvalue()
        <input id="tempFile" name="tempFile" type="file"   >
   
      </form>
+     
+    
+       <applet codebase="<%=basePath %>/applet/"  id="upload"
+       code="com.ett.visual.applet.JsonFileUploadApplet.class">
+         <param name="btnText" value="文件上传">
+         <param name="fileNames" value="tempFile">
+         <param name="fileSrcs" value="c:\\abc.jpg">
+         <param name="strNames" value="DriverPk">
+         <param name="strValues" value="<%=driverId %>">
+         <param name="action" value="<%=basePath %>/driver/DriverFile/do/saveScanFile.action">
+       </applet>
    		  <div>
          <a class="easyui-linkbutton" iconCls="icon-ok" onclick="$('#formFileUpload').form('submit');">上传文件</a>
         	</div>
