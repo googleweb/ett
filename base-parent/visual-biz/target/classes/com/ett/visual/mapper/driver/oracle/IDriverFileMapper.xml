@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2012-03-08 10:26:48
+	Create Date:2012-02-17 03:49:41
 	MapperTemplate:com.smartken.toyz4j.mybatis.OracleMapperTemplate
 	Model:com.ett.visual.model.driver.DriverFileModel 
 
 
  public static enum F { 
-  Id,Title,Remark,DriverPk,CreateDate,LastModifyDate,OperPk,Rec,Type,Status,CompleteInd,
-CleanInd,IndexInd,LastCheckDate  
+  Id,Title,Remark,DriverPk,CreateDate,LastModifyDate,OperPk,Rec  
  } 
 
 private String Id;         //ID  VARCHAR2 50
@@ -18,12 +17,6 @@ private Date CreateDate;         //CREATE_DATE  DATE 0
 private Date LastModifyDate;         //LAST_MODIFY_DATE  DATE 0
 private String OperPk;         //OPER_PK  VARCHAR2 50
 private byte[] Rec;         //REC  BLOB -1
-private String Type;         //TYPE  VARCHAR2 50
-private String Status;         //STATUS  VARCHAR2 10
-private String CompleteInd;         //COMPLETE_IND  CHAR 1
-private String CleanInd;         //CLEAN_IND  CHAR 1
-private String IndexInd;         //INDEX_IND  CHAR 1
-private Date LastCheckDate;         //LAST_CHECK_DATE  DATE 0
  -->
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
@@ -37,8 +30,7 @@ private Date LastCheckDate;         //LAST_CHECK_DATE  DATE 0
 <sql id="pk">id</sql>
 
 <sql id="colums">
-ID,TITLE,REMARK,DRIVER_PK,CREATE_DATE,LAST_MODIFY_DATE,OPER_PK,REC,TYPE,STATUS,COMPLETE_IND,
-CLEAN_IND,INDEX_IND,LAST_CHECK_DATE 
+ID,TITLE,REMARK,DRIVER_PK,CREATE_DATE,LAST_MODIFY_DATE,OPER_PK,REC 
 </sql>
 
 <sql id="insertCols">
@@ -50,12 +42,6 @@ CLEAN_IND,INDEX_IND,LAST_CHECK_DATE
 #{LastModifyDate,jdbcType=DATE,javaType=Date},
 #{OperPk,jdbcType=VARCHAR,javaType=String},
 #{Rec,jdbcType=BLOB},
-#{Type,jdbcType=VARCHAR,javaType=String},
-#{Status,jdbcType=VARCHAR,javaType=String},
-#{CompleteInd,jdbcType=CHAR,javaType=String},
-#{CleanInd,jdbcType=CHAR,javaType=String},
-#{IndexInd,jdbcType=CHAR,javaType=String},
-#{LastCheckDate,jdbcType=DATE,javaType=Date},
 
 </sql>
 
@@ -68,12 +54,6 @@ CREATE_DATE=#{model.CreateDate,jdbcType=DATE,javaType=Date},
 LAST_MODIFY_DATE=#{model.LastModifyDate,jdbcType=DATE,javaType=Date},
 OPER_PK=#{model.OperPk,jdbcType=VARCHAR,javaType=String},
 REC=#{model.Rec,jdbcType=BLOB},
-TYPE=#{model.Type,jdbcType=VARCHAR,javaType=String},
-STATUS=#{model.Status,jdbcType=VARCHAR,javaType=String},
-COMPLETE_IND=#{model.CompleteInd,jdbcType=CHAR,javaType=String},
-CLEAN_IND=#{model.CleanInd,jdbcType=CHAR,javaType=String},
-INDEX_IND=#{model.IndexInd,jdbcType=CHAR,javaType=String},
-LAST_CHECK_DATE=#{model.LastCheckDate,jdbcType=DATE,javaType=Date},
 
 </sql>
 
@@ -92,12 +72,6 @@ LAST_CHECK_DATE=#{model.LastCheckDate,jdbcType=DATE,javaType=Date},
 <result column="LAST_MODIFY_DATE"  property="LastModifyDate" jdbcType="DATE"  javaType="Date"/>
 <result column="OPER_PK"  property="OperPk" jdbcType="VARCHAR"  javaType="String"/>
 <result column="REC"  property="Rec"  />
-<result column="TYPE"  property="Type" jdbcType="VARCHAR"  javaType="String"/>
-<result column="STATUS"  property="Status" jdbcType="VARCHAR"  javaType="String"/>
-<result column="COMPLETE_IND"  property="CompleteInd" jdbcType="CHAR"  javaType="String"/>
-<result column="CLEAN_IND"  property="CleanInd" jdbcType="CHAR"  javaType="String"/>
-<result column="INDEX_IND"  property="IndexInd" jdbcType="CHAR"  javaType="String"/>
-<result column="LAST_CHECK_DATE"  property="LastCheckDate" jdbcType="DATE"  javaType="Date"/>
 
  </resultMap>
 
@@ -111,12 +85,6 @@ LAST_CHECK_DATE=#{model.LastCheckDate,jdbcType=DATE,javaType=Date},
 <if test="model.LastModifyDate neq null">and to_char(m.LAST_MODIFY_DATE,'YYYY-MM-DD') = to_char(#{model.LastModifyDate,jdbcType=DATE, javaType=Date },'YYYY-MM-DD') </if> 
 <if test="model.OperPk neq null">and m.OPER_PK like #{model.OperPk,jdbcType=VARCHAR ,javaType=String } </if> 
 <if test="model.Rec neq null">and m.REC = #{model.Rec,jdbcType=BLOB, javaType=Byte } </if> 
-<if test="model.Type neq null">and m.TYPE like #{model.Type,jdbcType=VARCHAR ,javaType=String } </if> 
-<if test="model.Status neq null">and m.STATUS like #{model.Status,jdbcType=VARCHAR ,javaType=String } </if> 
-<if test="model.CompleteInd neq null">and m.COMPLETE_IND like #{model.CompleteInd,jdbcType=CHAR ,javaType=String } </if> 
-<if test="model.CleanInd neq null">and m.CLEAN_IND like #{model.CleanInd,jdbcType=CHAR ,javaType=String } </if> 
-<if test="model.IndexInd neq null">and m.INDEX_IND like #{model.IndexInd,jdbcType=CHAR ,javaType=String } </if> 
-<if test="model.LastCheckDate neq null">and to_char(m.LAST_CHECK_DATE,'YYYY-MM-DD') = to_char(#{model.LastCheckDate,jdbcType=DATE, javaType=Date },'YYYY-MM-DD') </if> 
 
 </sql>
 
