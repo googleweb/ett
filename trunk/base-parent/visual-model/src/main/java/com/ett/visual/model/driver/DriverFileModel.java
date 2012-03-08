@@ -1,6 +1,10 @@
 package com.ett.visual.model.driver;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
+import org.json.JSONObject;
 
 import com.ett.visual.model.BaseVisualModel;
 import com.smartken.toyz4j.model.impl.BaseModel;
@@ -8,8 +12,9 @@ import com.smartken.toyz4j.model.impl.BaseModel;
 public class DriverFileModel extends BaseVisualModel {
 
 	
-	public static enum F { 
-		  Id,Title,Remark,DriverPk,CreateDate,LastModifyDate,OperPk  
+	 public static enum F { 
+		  Id,Title,Remark,DriverPk,CreateDate,LastModifyDate,OperPk,Rec,Type,Status,CompleteInd,
+		CleanInd,IndexInd,LastCheckDate  
 		 } 
 
 		private String Id;         //ID  VARCHAR2 50
@@ -20,7 +25,12 @@ public class DriverFileModel extends BaseVisualModel {
 		private Date LastModifyDate;         //LAST_MODIFY_DATE  DATE 0
 		private String OperPk;         //OPER_PK  VARCHAR2 50
 		private byte[] Rec;         //REC  BLOB -1
-	
+		private String Type;         //TYPE  VARCHAR2 50
+		private String Status;         //STATUS  VARCHAR2 10
+		private String CompleteInd;         //COMPLETE_IND  CHAR 1
+		private String CleanInd;         //CLEAN_IND  CHAR 1
+		private String IndexInd;         //INDEX_IND  CHAR 1
+		private Date LastCheckDate;         //LAST_CHECK_DATE  DATE 0
 	@Override
 	public Object getPk() {
 		// TODO Auto-generated method stub
@@ -96,6 +106,56 @@ public class DriverFileModel extends BaseVisualModel {
 	public void setRec(byte[] rec) {
 		Rec = rec;
 	}
+
+	public String getType() {
+		return Type;
+	}
+
+	public void setType(String type) {
+		Type = type;
+	}
+
+	public String getStatus() {
+		return Status;
+	}
+
+	public void setStatus(String status) {
+		Status = status;
+	}
+
+	public String getCompleteInd() {
+		return CompleteInd;
+	}
+
+	public void setCompleteInd(String completeInd) {
+		CompleteInd = completeInd;
+	}
+
+	public String getCleanInd() {
+		return CleanInd;
+	}
+
+	public void setCleanInd(String cleanInd) {
+		CleanInd = cleanInd;
+	}
+
+	public String getIndexInd() {
+		return IndexInd;
+	}
+
+	public void setIndexInd(String indexInd) {
+		IndexInd = indexInd;
+	}
+
+	public Date getLastCheckDate() {
+		return LastCheckDate;
+	}
+
+	public void setLastCheckDate(Date lastCheckDate) {
+		LastCheckDate = lastCheckDate;
+	}
+
+	
 	
 	
 
