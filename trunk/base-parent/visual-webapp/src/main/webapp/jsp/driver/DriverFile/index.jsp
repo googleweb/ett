@@ -3,7 +3,7 @@
     pageEncoding="UTF-8"%>
 
 <%
-   String basePath=BaseVisualAction.getRootPath();
+   String basePath=BaseVisualAction.GetRootPath();
 %>    
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">

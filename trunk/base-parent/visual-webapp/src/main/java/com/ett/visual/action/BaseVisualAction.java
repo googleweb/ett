@@ -132,7 +132,7 @@ public abstract class BaseVisualAction<M extends BaseModel> extends BaseAction<M
     }
 
     public void do_remove(){
-    	String ids=this.getParameter("ids");
+    	String ids=GetParameter("ids");
     	List<String> listIds=StringUtil.splitToList(ids, ",");
     	ResultModel re=new ResultModel();
     	this.adminBiz.loadCrudMapper(this._model.getClass());
