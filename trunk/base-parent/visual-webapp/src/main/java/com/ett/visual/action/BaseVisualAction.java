@@ -19,7 +19,9 @@ import com.ett.visual.model.admin.DictTypeModel;
 import com.ett.visual.model.admin.RoleModel;
 import com.ett.visual.model.driver.DriverFileModel;
 
+import com.smartken.toyz4j.model.IBaseCrudBiz;
 import com.smartken.toyz4j.model.impl.BaseAction;
+import com.smartken.toyz4j.model.impl.BaseCurdBiz;
 import com.smartken.toyz4j.model.impl.BaseModel;
 import com.smartken.toyz4j.model.impl.ResultModel;
 import com.smartken.toyz4j.pager.PageArrayList;
@@ -110,63 +112,18 @@ public abstract class BaseVisualAction<M extends BaseModel> extends BaseAction<M
 	}
 
 
-    public void do_add() {
-		this.adminBiz.loadCrudMapper(this._model.getClass());
-		
-		_model.setPk(BaseModel.generalPK());
-		ResultModel re=this.adminBiz.addModel(_model);
-		WritePlainText(re.toJson().toString());
-	}
- 
-    public void do_update(){
-		this.adminBiz.loadCrudMapper(this._model.getClass());
-		ResultModel re=this.adminBiz.modifyModel(_model);
-		WritePlainText(re.toJson().toString());
-    }
-    
-    public void do_save(){
-		this.adminBiz.loadCrudMapper(this._model.getClass());
-		if(ObjectUtil.isEquals(null, _model.getPk())){
-			_model.setPk(BaseModel.generalPK());
-		}
-		ResultModel re=this.adminBiz.modifyOrAddModel(_model);
-		WritePlainText(re.toJson().toString());
-    }
-
-    public void do_remove(){
-    	String ids=GetParameter("ids");
-    	List<String> listIds=StringUtil.splitToList(ids, ",");
-    	ResultModel re=new ResultModel();
-    	this.adminBiz.loadCrudMapper(this._model.getClass());
-    	re=this.adminBiz.removeModelInPk(listIds);
-    	WritePlainText(re.toJson().toString());
-    }
-    
    
-    public void datagrid_list(){
-    	this.adminBiz.loadCrudMapper(this._model.getClass());
-    	List pageList=this.adminBiz.getModel(this.getPager());
-    	int count=this.adminBiz.count();
-    	JSONObject datagrid= EasyUiUtil.toJsonDataGrid(pageList,count);
-    	WritePlainText(datagrid.toString());
-    }
+
 	
-    public void datagrid_query(){
-    	this.adminBiz.loadCrudMapper(this._model.getClass());
-    	DriverFileModel.SimpleQueryModel q=new DriverFileModel().new SimpleQueryModel();
-    	//q.setMaxCreateDate(new Date());
-    	q.setMinSecretLevel(0);
-    	//q.setSecretLevel(10);
-    	PageArrayList pageList=this.adminBiz.getModel(this._model,this.getPager());
-    	JSONObject datagrid= EasyUiUtil.toJsonDataGrid(pageList);
-    	WritePlainText(datagrid.toString());
-    }
-	
-    public void combobox_list(){
-    	this.adminBiz.loadCrudMapper(this._model.getClass());
-    	List list=this.adminBiz.getModel();
-		JSONArray jarr= ObjectUtil.toJsonArray(list);
-		WritePlainText(jarr.toString());
-    }
+
+
+
+	@Override
+	protected IBaseCrudBiz getCrudBiz() {
+		// TODO Auto-generated method stub
+		return this.adminBiz;
+	}
+    
+    
 	
 }
