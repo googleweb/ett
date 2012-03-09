@@ -54,6 +54,7 @@ url:"<%=basePath %>/admin/Dict/datagrid/list.action"
 </script>
 </head>
 <body class="easyui-layout">
+	
     <div region="center">
       <table id="tableDictModel"></table>
    </div>
