@@ -9,6 +9,10 @@ public class DriverInfoModel extends BaseVisualModel {
 		  Id,Name,IdcardNo,FileNo,Phone,SchoolCode  
 		 } 
 
+	public  class SimpleQueryModel extends com.ett.visual.model.driver.DriverInfoModel { 
+		  
+	 } 
+	
 		private String Id;         //ID  VARCHAR2 50
 		private String Name;         //NAME  VARCHAR2 50
 		private String IdcardNo;         //IDCARD_NO  VARCHAR2 50

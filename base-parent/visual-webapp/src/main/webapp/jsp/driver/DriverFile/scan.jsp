@@ -1,3 +1,4 @@
+<%@page import="com.ett.visual.applet.JsonFileUploadApplet"%>
 <%@page import="com.ett.visual.action.BaseVisualAction"%>
 <%@page import="com.ett.visual.model.BaseVisualModel"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -28,7 +29,7 @@
 <script language="javascript" type="text/javascript">
  
 var _path= "C:\\abc.jpg";
-var WshShell=new ActiveXObject("WScript.Shell"); 
+
 function start_preview(url)     
 {   
 	ScanCtrl.StartPreview();         
@@ -299,12 +300,12 @@ function changethresvalue()
 		
 		//alert(objFile.outerHTML);
 		var ocxContext="<object classid=\"clsid:090457CB-DF21-41EB-84BB-39AAFC9E271A\" id=ScanCtrl   width=400 height=280> </object>";
-		$("#divCollect").append(ocxContext);
+		//$("#divCollect").append(ocxContext);
 		//var objFile=document.all.tempFile;
 		//objFile.outerHTML=objFile.outerHTML.replace(/(value=\").+\"/i,"$"+_path+"\""); 
 		//objFile.focus(); 
 		//WshShell.sendKeys(_path);
-		document.all.tempFile.value=_path;
+		
 	  }catch(ex){alert(ex);}
 	
   });
@@ -322,31 +323,26 @@ function changethresvalue()
      <div region="east" title="图片预览" style="width:300px">
         
         <div id="divPreview" style="max-width: 100%; height: 180px"  ></div>
-          <form   id="formFileUpload" enctype="multipart/form-data" method="post" action="<%=basePath %>/driver/DriverFile/do/saveScanFile.action">
-      
-       <input type="hidden" name="DriverPk" value="<%=driverId %>" />
-       <input id="tempFile" name="tempFile" type="file"   >
-  
-     </form>
+          
      
-    
-       <applet codebase="<%=basePath %>/applet/"  id="upload"
-       code="com.ett.visual.applet.JsonFileUploadApplet.class">
-         <param name="btnText" value="文件上传">
+    <!--  
+       <applet codebase="<%=basePath %>/applet/"  id="upload" height="30" width="100"
+       code="<%=JsonFileUploadApplet.class.getName() %>.class">
+         <param name="btnText" value="上传">
          <param name="fileNames" value="tempFile">
          <param name="fileSrcs" value="c:\\abc.jpg">
          <param name="strNames" value="DriverPk">
          <param name="strValues" value="<%=driverId %>">
          <param name="action" value="<%=basePath %>/driver/DriverFile/do/saveScanFile.action">
        </applet>
-   		  <div>
-         <a class="easyui-linkbutton" iconCls="icon-ok" onclick="$('#formFileUpload').form('submit');">上传文件</a>
-        	</div>
+   		  -->
      </div>
      
      <div region="center"  title="影像采集">
      
-     <div id="divCollect"></div>
+     <div id="divCollect">
+     <object classid="clsid:090457CB-DF21-41EB-84BB-39AAFC9E271A" id=ScanCtrl CODEBASE="*.cab#version=1,0,0,1"  width=400 height=280> </object>
+     </div>
      
             <input   TYPE="button"   VALUE="打开设备"   onClick="opendevice()">
      <!--  

@@ -1,10 +1,13 @@
 package com.ett.visual.model.admin;
 
 
+import java.util.Date;
+
+import com.ett.visual.mapper.admin.IMenuMapper;
 import com.smartken.toyz4j.model.impl.BaseModel;
 
 
-public class MenuModel extends BaseModel {
+public  class MenuModel extends BaseModel {
 
 	 public static enum F { 
 		  Menuid,Menuurl,Menutext,Menuimg,Ordernum,Isparent,Parentid,JavaUrl,IconCls  
@@ -19,6 +22,42 @@ public class MenuModel extends BaseModel {
 		private Integer Parentid;         //PARENTID  NUMBER 38
 		private String JavaUrl;         //JAVA_URL  VARCHAR2 500
 		private String IconCls;         //ICON_CLS  VARCHAR2 100
+		
+		private Date TestDate;
+		
+		public  class SimpleQueryModel extends MenuModel{
+			private Date minTestDate;
+			private Date maxTestDate;
+			private int minOrdernum;
+			private int maxOrdernum;
+			public Date getMinTestDate() {
+				return minTestDate;
+			}
+			public void setMinTestDate(Date minTestDate) {
+				this.minTestDate = minTestDate;
+			}
+			public Date getMaxTestDate() {
+				return maxTestDate;
+			}
+			public void setMaxTestDate(Date maxTestDate) {
+				this.maxTestDate = maxTestDate;
+			}
+			public int getMinOrdernum() {
+				return minOrdernum;
+			}
+			public void setMinOrdernum(int minOrdernum) {
+				this.minOrdernum = minOrdernum;
+			}
+			public int getMaxOrdernum() {
+				return maxOrdernum;
+			}
+			public void setMaxOrdernum(int maxOrdernum) {
+				this.maxOrdernum = maxOrdernum;
+			}
+			
+			
+		}
+		
 		public Integer getMenuid() {
 			return Menuid;
 		}
@@ -84,7 +123,16 @@ public class MenuModel extends BaseModel {
 			
 		}
 		
-		
-		
+	
+		public static void main(String[] args){
+			IMenuMapper<MenuModel> mapper=null;
+			MenuModel.SimpleQueryModel s=new MenuModel().new SimpleQueryModel();
+			try {
+				mapper.select(s);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	
 }
