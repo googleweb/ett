@@ -5,7 +5,7 @@
     pageEncoding="UTF-8"%>
   
     <%
-      String basePath=BaseVisualAction.getRootPath();
+      String basePath=BaseVisualAction.GetRootPath();
       String driverId=request.getParameter("driverId");
       
     %>
