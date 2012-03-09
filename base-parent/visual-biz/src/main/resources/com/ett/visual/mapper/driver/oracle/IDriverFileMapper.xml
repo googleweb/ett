@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2012-03-09 09:52:46
+	Create Date:2012-03-09 02:08:20
 	MapperTemplate:com.smartken.toyz4j.mybatis.OracleMapperTemplate
 	Model:com.ett.visual.model.driver.DriverFileModel 
 
@@ -120,29 +120,29 @@ SECRET_LEVEL=#{model.SecretLevel,jdbcType=INTEGER,javaType=Integer},
 
 
 <sql id="selectCondition">
-<if test="model.Id neq null">and m.ID like #{model.Id,jdbcType=VARCHAR ,javaType=String } </if> 
-<if test="model.Title neq null">and m.TITLE like #{model.Title,jdbcType=VARCHAR ,javaType=String } </if> 
-<if test="model.Remark neq null">and m.REMARK like #{model.Remark,jdbcType=VARCHAR ,javaType=String } </if> 
-<if test="model.DriverPk neq null">and m.DRIVER_PK like #{model.DriverPk,jdbcType=VARCHAR ,javaType=String } </if> 
-<if test="model.CreateDate neq null">and to_char(m.CREATE_DATE,'YYYY-MM-DD') = to_char(#{model.CreateDate,jdbcType=DATE, javaType=Date },'YYYY-MM-DD') </if> 
-<if test="model.minCreateDate neq null">and to_char(m.CREATE_DATE,'YYYY-MM-DD') &gt;= to_char(#{model.CreateDate,jdbcType=DATE, javaType=Date },'YYYY-MM-DD') </if> 
-<if test="model.maxCreateDate neq null">and to_char(m.CREATE_DATE,'YYYY-MM-DD') &lt;= to_char(#{model.CreateDate,jdbcType=DATE, javaType=Date },'YYYY-MM-DD') </if> 
-<if test="model.LastModifyDate neq null">and to_char(m.LAST_MODIFY_DATE,'YYYY-MM-DD') = to_char(#{model.LastModifyDate,jdbcType=DATE, javaType=Date },'YYYY-MM-DD') </if> 
-<if test="model.minLastModifyDate neq null">and to_char(m.LAST_MODIFY_DATE,'YYYY-MM-DD') &gt;= to_char(#{model.LastModifyDate,jdbcType=DATE, javaType=Date },'YYYY-MM-DD') </if> 
-<if test="model.maxLastModifyDate neq null">and to_char(m.LAST_MODIFY_DATE,'YYYY-MM-DD') &lt;= to_char(#{model.LastModifyDate,jdbcType=DATE, javaType=Date },'YYYY-MM-DD') </if> 
-<if test="model.OperPk neq null">and m.OPER_PK like #{model.OperPk,jdbcType=VARCHAR ,javaType=String } </if> 
-<if test="model.Rec neq null">and m.REC = #{model.Rec,jdbcType=BLOB, javaType=Byte } </if> 
-<if test="model.Type neq null">and m.TYPE like #{model.Type,jdbcType=VARCHAR ,javaType=String } </if> 
-<if test="model.Status neq null">and m.STATUS like #{model.Status,jdbcType=VARCHAR ,javaType=String } </if> 
-<if test="model.CompleteInd neq null">and m.COMPLETE_IND like #{model.CompleteInd,jdbcType=CHAR ,javaType=String } </if> 
-<if test="model.CleanInd neq null">and m.CLEAN_IND like #{model.CleanInd,jdbcType=CHAR ,javaType=String } </if> 
-<if test="model.IndexInd neq null">and m.INDEX_IND like #{model.IndexInd,jdbcType=CHAR ,javaType=String } </if> 
-<if test="model.LastCheckDate neq null">and to_char(m.LAST_CHECK_DATE,'YYYY-MM-DD') = to_char(#{model.LastCheckDate,jdbcType=DATE, javaType=Date },'YYYY-MM-DD') </if> 
-<if test="model.minLastCheckDate neq null">and to_char(m.LAST_CHECK_DATE,'YYYY-MM-DD') &gt;= to_char(#{model.LastCheckDate,jdbcType=DATE, javaType=Date },'YYYY-MM-DD') </if> 
-<if test="model.maxLastCheckDate neq null">and to_char(m.LAST_CHECK_DATE,'YYYY-MM-DD') &lt;= to_char(#{model.LastCheckDate,jdbcType=DATE, javaType=Date },'YYYY-MM-DD') </if> 
-<if test="model.SecretLevel neq null">and m.SECRET_LEVEL = #{model.SecretLevel,jdbcType=INTEGER, javaType=Integer } </if> 
-<if test="model.minSecretLevel neq null">and m.SECRET_LEVEL &gt;= #{model.SecretLevel,jdbcType=INTEGER, javaType=Integer } </if> 
-<if test="model.maxSecretLevel neq null">and m.SECRET_LEVEL &lt;= #{model.SecretLevel,jdbcType=INTEGER, javaType=Integer } </if> 
+<if test="model['Id'] and model['Id'] neq null">and m.ID like #{model.Id,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model['Title'] and model['Title'] neq null">and m.TITLE like #{model.Title,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model['Remark'] and model['Remark'] neq null">and m.REMARK like #{model.Remark,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model['DriverPk'] and model['DriverPk'] neq null">and m.DRIVER_PK like #{model.DriverPk,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model['CreateDate'] and model['CreateDate'] neq null">and to_char(m.CREATE_DATE,'YYYY-MM-DD') = to_char(#{model.CreateDate,jdbcType=DATE, javaType=Date },'YYYY-MM-DD') </if> 
+<if test="model['CreateDate'] and model['minCreateDate'] neq null">and to_char(m.CREATE_DATE,'YYYY-MM-DD') &gt;= to_char(#{model.minCreateDate,jdbcType=DATE, javaType=Date },'YYYY-MM-DD') </if> 
+<if test="model['CreateDate'] and model['maxCreateDate'] neq null">and to_char(m.CREATE_DATE,'YYYY-MM-DD') &lt;= to_char(#{model.maxCreateDate,jdbcType=DATE, javaType=Date },'YYYY-MM-DD') </if> 
+<if test="model['LastModifyDate'] and model['LastModifyDate'] neq null">and to_char(m.LAST_MODIFY_DATE,'YYYY-MM-DD') = to_char(#{model.LastModifyDate,jdbcType=DATE, javaType=Date },'YYYY-MM-DD') </if> 
+<if test="model['LastModifyDate'] and model['minLastModifyDate'] neq null">and to_char(m.LAST_MODIFY_DATE,'YYYY-MM-DD') &gt;= to_char(#{model.minLastModifyDate,jdbcType=DATE, javaType=Date },'YYYY-MM-DD') </if> 
+<if test="model['LastModifyDate'] and model['maxLastModifyDate'] neq null">and to_char(m.LAST_MODIFY_DATE,'YYYY-MM-DD') &lt;= to_char(#{model.maxLastModifyDate,jdbcType=DATE, javaType=Date },'YYYY-MM-DD') </if> 
+<if test="model['OperPk'] and model['OperPk'] neq null">and m.OPER_PK like #{model.OperPk,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model['Rec'] and model['Rec'] neq null">and m.REC = #{model.Rec,jdbcType=BLOB, javaType=Byte } </if> 
+<if test="model['Type'] and model['Type'] neq null">and m.TYPE like #{model.Type,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model['Status'] and model['Status'] neq null">and m.STATUS like #{model.Status,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model['CompleteInd'] and model['CompleteInd'] neq null">and m.COMPLETE_IND like #{model.CompleteInd,jdbcType=CHAR ,javaType=String } </if> 
+<if test="model['CleanInd'] and model['CleanInd'] neq null">and m.CLEAN_IND like #{model.CleanInd,jdbcType=CHAR ,javaType=String } </if> 
+<if test="model['IndexInd'] and model['IndexInd'] neq null">and m.INDEX_IND like #{model.IndexInd,jdbcType=CHAR ,javaType=String } </if> 
+<if test="model['LastCheckDate'] and model['LastCheckDate'] neq null">and to_char(m.LAST_CHECK_DATE,'YYYY-MM-DD') = to_char(#{model.LastCheckDate,jdbcType=DATE, javaType=Date },'YYYY-MM-DD') </if> 
+<if test="model['LastCheckDate'] and model['minLastCheckDate'] neq null">and to_char(m.LAST_CHECK_DATE,'YYYY-MM-DD') &gt;= to_char(#{model.minLastCheckDate,jdbcType=DATE, javaType=Date },'YYYY-MM-DD') </if> 
+<if test="model['LastCheckDate'] and model['maxLastCheckDate'] neq null">and to_char(m.LAST_CHECK_DATE,'YYYY-MM-DD') &lt;= to_char(#{model.maxLastCheckDate,jdbcType=DATE, javaType=Date },'YYYY-MM-DD') </if> 
+<if test="model['SecretLevel'] and model['SecretLevel'] neq null">and m.SECRET_LEVEL = #{model.SecretLevel,jdbcType=INTEGER, javaType=Integer } </if> 
+<if test="model['SecretLevel'] and model['minSecretLevel'] neq null">and m.SECRET_LEVEL &gt;= #{model.minSecretLevel,jdbcType=INTEGER, javaType=Integer } </if> 
+<if test="model['SecretLevel'] and model['maxSecretLevel'] neq null">and m.SECRET_LEVEL &lt;= #{model.maxSecretLevel,jdbcType=INTEGER, javaType=Integer } </if> 
 
 </sql>
 
