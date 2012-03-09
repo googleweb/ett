@@ -17,6 +17,9 @@ public class DictModel extends BaseModel {
 		private String Remark;         //REMARK  VARCHAR2 500
 		private String State;         //STATE  VARCHAR2 10
 		
+		public  class SimpleQueryModel extends com.ett.visual.model.admin.DictModel { 
+			  
+		 } 
 		
 		public String getId() {
 			return Id;

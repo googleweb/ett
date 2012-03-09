@@ -8,6 +8,10 @@ public class RoleModel extends BaseModel {
 		  Id,Name,Descp,TokenArray  
 		 } 
 
+	 public  class SimpleQueryModel extends com.ett.visual.model.admin.RoleModel { 
+		  
+	 } 
+	 
 		private String Id;         //ID  VARCHAR2 50
 		private String Name;         //NAME  VARCHAR2 50
 		private String Descp;         //DESCP  VARCHAR2 200

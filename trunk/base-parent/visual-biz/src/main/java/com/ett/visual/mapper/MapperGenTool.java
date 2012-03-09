@@ -53,11 +53,11 @@ public class MapperGenTool {
 		//	mappers.put(Table.TABLE_DEPARTMENTS,mf.createMapperTemplate(Table.TABLE_DEPARTMENTS.name().toUpperCase(), "id".toUpperCase(),IDepartmentModel.class, DepartmentModel.class,Seqs.seq_department+NEXTVAL ));
 		//	mappers.put(Table.TABLE_DICTS,mf.createMapperTemplate(Table.TABLE_DICTS.name().toUpperCase(), "id".toUpperCase(),IDictMapper.class,DictModel.class,Seqs.seq_dict+NEXTVAL ));
 		//	mappers.put(Table.TABLE_DICTTYPE,mf.createMapperTemplate(Table.TABLE_DICTTYPE.name().toUpperCase(), "id".toUpperCase(),IDictTypeMapper.class, DictTypeModel.class,Seqs.seq_dicttype+NEXTVAL ));
-        //    mappers.put(Table.VIS_ADMIN_ROLE,mf.createMapperTemplate(Table.VIS_ADMIN_ROLE.name(), "id", IRoleMapper.class, RoleModel.class));
+            mappers.put(Table.VIS_ADMIN_ROLE,mf.createMapperTemplate(Table.VIS_ADMIN_ROLE.name(), "id", IRoleMapper.class, RoleModel.class));
 			mappers.put(Table.VIS_DRIVER_FILE,mf.createMapperTemplate(Table.VIS_DRIVER_FILE.name(), "id", IDriverFileMapper.class, DriverFileModel.class));
-		//	mappers.put(Table.VIS_DRIVER_INFO,mf.createMapperTemplate(Table.VIS_DRIVER_INFO.name(), "id", IDriverInfoMapper.class, DriverInfoModel.class));
-		//	mappers.put(Table.VIS_ADMIN_DICT,mf.createMapperTemplate(Table.VIS_ADMIN_DICT.name(), "id", IDictMapper.class, DictModel.class));
-		//	mappers.put(Table.VIS_ADMIN_DICT_TYPE,mf.createMapperTemplate(Table.VIS_ADMIN_DICT_TYPE.name(), "id", IDictTypeMapper.class, DictTypeModel.class));
+	    	mappers.put(Table.VIS_DRIVER_INFO,mf.createMapperTemplate(Table.VIS_DRIVER_INFO.name(), "id", IDriverInfoMapper.class, DriverInfoModel.class));
+			mappers.put(Table.VIS_ADMIN_DICT,mf.createMapperTemplate(Table.VIS_ADMIN_DICT.name(), "id", IDictMapper.class, DictModel.class));
+			mappers.put(Table.VIS_ADMIN_DICT_TYPE,mf.createMapperTemplate(Table.VIS_ADMIN_DICT_TYPE.name(), "id", IDictTypeMapper.class, DictTypeModel.class));
 			
 		}catch(Exception ex){ex.printStackTrace();}
 		
@@ -81,7 +81,7 @@ public class MapperGenTool {
 	public static void main(String[] args){
 		Map<Table, MapperTemplate> mappers=getMappers(getConnection(), OracleMapperTemplate.class);
 		//String srcPath="D:/tempProject/ett/dao/src/main/java/";
-		String srcPath="D:/sts/base-parent/visual-biz/src/main/resources/";
+		String srcPath="e:/sts/base-parent/visual-biz/src/main/resources/";
 		Table[] enTables=Table.values();
 		for (Enum<Table> et : enTables) {
 			try{

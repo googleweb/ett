@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2012-03-06 11:50:28
+	Create Date:2012-03-09 09:52:46
 	MapperTemplate:com.smartken.toyz4j.mybatis.OracleMapperTemplate
 	Model:com.ett.visual.model.admin.DictModel 
 
@@ -15,7 +15,12 @@ private String Value;         //VALUE  VARCHAR2 500
 private String TypeFk;         //TYPE_FK  VARCHAR2 50
 private String Remark;         //REMARK  VARCHAR2 500
 private String State;         //STATE  VARCHAR2 10
- -->
+ 
+
+ public  class SimpleQueryModel extends com.ett.visual.model.admin.DictModel { 
+  
+ } 
+--> 
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ett.visual.mapper.admin.IDictMapper">
