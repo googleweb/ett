@@ -122,6 +122,7 @@ public abstract class BaseVisualAction<M extends BaseModel> extends BaseAction<M
 	protected IBaseCrudBiz getCrudBiz() {
 		// TODO Auto-generated method stub
 		return this.adminBiz;
+
 	}
     
     

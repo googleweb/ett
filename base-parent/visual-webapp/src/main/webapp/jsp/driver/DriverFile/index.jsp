@@ -31,8 +31,19 @@ var colCreateDate = { title:"CreateDate" , field:"CreateDate", width:120,editor:
 
 var colTitle = { title:"Title" , field:"Title", width:200,editor:{type:"validatebox",options:{ required:false,missingMessage:"",invalidMessage:"" } } } ; 
 
+var colType = { title:"Type" , field:"Type", width:120,editor:{type:"validatebox",options:{ required:false,missingMessage:"",invalidMessage:"" } }  } ; 
 
-var editorsDriverFileModel=[ colOperPk,colLastModifyDate,colDriverPk,colRemark,colCreateDate,colTitle ] ; 
+var colStatus = { title:"Status" , field:"Status", width:200,editor:{type:"validatebox",options:{ required:false,missingMessage:"",invalidMessage:"" } } } ; 
+
+var colCompleteInd = { title:"CompleteInd" , field:"CompleteInd", width:200,editor:{type:"validatebox",options:{ required:false,missingMessage:"",invalidMessage:"" } } } ; 
+
+var colCleanInd = { title:"CleanInd" , field:"CleanInd", width:200,editor:{type:"validatebox",options:{ required:false,missingMessage:"",invalidMessage:"" } } } ; 
+
+var colIndexInd = { title:"IndexInd" , field:"IndexInd", width:200,editor:{type:"validatebox",options:{ required:false,missingMessage:"",invalidMessage:"" } } } ; 
+
+var colLastCheckDate = { title:"LastCheckDate" , field:"LastCheckDate", width:200,editor:{type:"datebox",options:{  } } } ; 
+
+var editorsDriverFileModel=[ colOperPk,colLastModifyDate,colDriverPk,colRemark,colCreateDate,colTitle,colType,colStatus,colCompleteInd,colCleanInd,colIndexInd,colLastCheckDate ] ; 
 var optsDriverFileModel = { }; 
 optsDriverFileModel["regexp"] = "#tableDriverFileModel"; 
 optsDriverFileModel["id"] = "Id"; 
@@ -49,7 +60,7 @@ $(document).ready(function(){
 $("#tableDriverFileModel").datagrid({ 
 url:"<%=basePath %>/driver/DriverFile/datagrid/list.action" 
 , idField:"Id" 
-, columns:[[colOperPk,colLastModifyDate,colId,colDriverPk,colRemark,colCreateDate,colTitle]] 
+, columns:[[ colOperPk,colLastModifyDate,colDriverPk,colRemark,colCreateDate,colTitle,colType,colStatus,colCompleteInd,colCleanInd,colIndexInd,colLastCheckDate ]] 
 , toolbar:toolbarDriverFileModel 
 , onDblClickRow:editRowDriverFileModel 
 }) ;  
@@ -59,6 +70,15 @@ url:"<%=basePath %>/driver/DriverFile/datagrid/list.action"
 
 </head>
 <body class="easyui-layout">
+	<div region="north">
+	<form action="<%=basePath %>/driver/DriverFile/query/file.action" method="post">
+	档案是否齐全<input type="text" name="CompleteInd">
+	影像是否清晰<input type="text" name="CleanInd">
+	质检状态<input type="text" name="Status">
+	索引是否错误<input type="text" name="IndexInd">
+	<input type="submit" value="查询">
+	</form>
+	</div>
    <div region="center">
       <table id="tableDriverFileModel"></table>
    </div>
