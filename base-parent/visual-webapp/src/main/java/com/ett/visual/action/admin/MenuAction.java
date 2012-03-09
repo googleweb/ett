@@ -3,6 +3,7 @@ package com.ett.visual.action.admin;
 import com.ett.visual.action.BaseVisualAction;
 import com.ett.visual.model.admin.MenuModel;
 import com.opensymphony.xwork2.ModelDriven;
+import com.smartken.toyz4j.model.impl.BaseModel;
 
 public class MenuAction extends BaseVisualAction<MenuModel> {
 
@@ -11,6 +12,14 @@ public class MenuAction extends BaseVisualAction<MenuModel> {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	protected BaseModel newSimpleQueryModel() {
+		// TODO Auto-generated method stub
+		return getModel().new SimpleQueryModel();
+	}
+
+	
 
 	
 

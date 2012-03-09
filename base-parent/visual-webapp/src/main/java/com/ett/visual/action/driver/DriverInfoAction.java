@@ -4,7 +4,9 @@ import java.io.File;
 import java.io.IOException;
 
 import com.ett.visual.action.BaseVisualAction;
+import com.ett.visual.model.admin.MenuModel.SimpleQueryModel;
 import com.ett.visual.model.driver.DriverInfoModel;
+import com.smartken.toyz4j.model.impl.BaseModel;
 import com.smartken.toyz4j.model.impl.ResultModel;
 import com.smartken.toyz4j.util.FileUtil;
 
@@ -22,6 +24,12 @@ private File tempFile;
 			_model=new DriverInfoModel();
 		}
 		return _model;
+	}
+
+	@Override
+	protected BaseModel newSimpleQueryModel() {
+		// TODO Auto-generated method stub
+		return getModel().new SimpleQueryModel();
 	}
 
 

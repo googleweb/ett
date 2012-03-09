@@ -9,6 +9,8 @@ import org.json.JSONObject;
 import com.ett.visual.action.BaseVisualAction;
 import com.ett.visual.model.admin.DictModel;
 import com.ett.visual.model.admin.RoleModel;
+import com.ett.visual.model.admin.MenuModel.SimpleQueryModel;
+import com.smartken.toyz4j.model.impl.BaseModel;
 import com.smartken.toyz4j.util.EasyUiUtil;
 import com.smartken.toyz4j.util.ObjectUtil;
 
@@ -27,6 +29,16 @@ public class DictAction extends BaseVisualAction<DictModel> {
 		return _model;
 		
 	}
+
+	@Override
+	protected BaseModel newSimpleQueryModel() {
+		// TODO Auto-generated method stub
+		return getModel().new SimpleQueryModel();
+	}
+
+	
+
+	
 
 	
 	
