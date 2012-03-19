@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2012-03-13 04:30:48
+	Create Date:2012-03-19 02:27:23
 	MapperTemplate:com.smartken.toyz4j.mybatis.OracleMapperTemplate
 	Model:com.ett.visual.model.admin.DictModel 
 
@@ -21,9 +21,9 @@ private String Id,Text,Value,TypeFk,
 				neqRemark,likeRemark,notlikeRemark,neqState,
 				likeState,notlikeState;
 
-private List<String> inId,notinId,inText,notinText,
-				inValue,notinValue,inTypeFk,notinTypeFk,
-				inRemark,notinRemark,inState,notinState;
+private List<String> isinId,isnotinId,isinText,isnotinText,
+				isinValue,isnotinValue,isinTypeFk,isnotinTypeFk,
+				isinRemark,isnotinRemark,isinState,isnotinState;
 
 private Boolean isnullId,isnotnullId,isnullText,isnotnullText,
 				isnullValue,isnotnullValue,isnullTypeFk,isnotnullTypeFk,
@@ -36,24 +36,61 @@ private Boolean isnullId,isnotnullId,isnullText,isnotnullText,
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ett.visual.mapper.admin.IDictMapper">
 
-<cache flushInterval="30000" readOnly="true"></cache>
-
-
 <sql id="table">VIS_ADMIN_DICT</sql>
 
 <sql id="pk">id</sql>
 
-<sql id="colums"></sql>
+<sql id="colums">
+	<trim prefixOverrides=","  suffixOverrides=",">
+		<choose>
+			<when test="dynamic neq null and dynamic['colums'] neq null ">
+				<foreach collection="dynamic.colums" item="col"  >
+					 main.${col.column} , 
+				</foreach>
+			</when>
+			<otherwise>
+				main.ID,main.TEXT,main.VALUE,main.TYPE_FK,main.REMARK,main.STATE
+			</otherwise>
+		</choose>
+	</trim>
+</sql>
 
-<sql id="updateCols"></sql>
 
-<sql id="insertCols"></sql>
+<sql id="insertCols">
+#{Id,jdbcType=VARCHAR},
+#{Text,jdbcType=VARCHAR},
+#{Value,jdbcType=VARCHAR},
+#{TypeFk,jdbcType=VARCHAR},
+#{Remark,jdbcType=VARCHAR},
+#{State,jdbcType=VARCHAR},
 
-<sql id="orderby"></sql>
+</sql>
 
-<sql id="joinColums"></sql>
+<sql id="updateCols">
+<if test="pk neq null">id=#{pk},</if>
+main.TEXT=#{model.Text,jdbcType=VARCHAR},
+main.VALUE=#{model.Value,jdbcType=VARCHAR},
+main.TYPE_FK=#{model.TypeFk,jdbcType=VARCHAR},
+main.REMARK=#{model.Remark,jdbcType=VARCHAR},
+main.STATE=#{model.State,jdbcType=VARCHAR},
 
-<sql id="join"></sql><!-- 别名m已被主表使用  -->
+</sql>
+
+<sql id="orderby">
+	<trim  suffixOverrides=",">
+		<choose>
+			<when test="dynamic neq null and dynamic['orderbyBounds'] neq null ">
+				<foreach collection="dynamic.orderbyBounds" item="ob" open=" order by " >
+					 main.${ob.colum} ${ob.type}, 
+				</foreach>
+			</when>
+			<otherwise>
+				order by  <include refid="pk" /> DESC
+			</otherwise>
+		</choose>
+	</trim>
+</sql>
+
 
 <resultMap type="com.ett.visual.model.admin.DictModel" id="resultMap">
  <id column="ID"  property="Id" jdbcType="VARCHAR"  javaType="String"/>
@@ -67,94 +104,103 @@ private Boolean isnullId,isnotnullId,isnullText,isnotnullText,
 
 
 <sql id="selectCondition">
-<if test="model['isnullId'] and model['isnullId'] eq true">and m.ID is null  </if> 
-<if test="model['isnotnullId'] and model['isnotnullId'] eq true">and m.ID is not null </if> 
-<if test="model['inId'] and model['inId'] neq null">and m.ID in <foreach item="model.inId" collection="list" open="(" separator="," close=")"> #{model.inId} </foreach> </if> 
-<if test="model['notinId'] and model['notinId'] neq null">and m.ID not in <foreach item="model.notinId" collection="list" open="(" separator="," close=")"> #{model.notinId} </foreach> </if> 
-<if test="model.getClass().getField('Id') neq null and model['Id'] neq null">and m.ID = #{model.Id,jdbcType=VARCHAR, javaType=String } </if> 
-<if test="model['neqId'] and model['neqId'] neq null">and m.ID != #{model.neqId,jdbcType=VARCHAR, javaType=String } </if> 
-<if test="model['likeId'] and model['likeId'] neq null">and m.ID like #{model.likeId,jdbcType=VARCHAR ,javaType=String } </if> 
-<if test="model['notlikeId'] and model['notlikeId'] neq null">and m.ID not like #{model.notlikeId,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test=" model.getClass().getFields().{?#this.getName() eq 'isnullId' }.size() eq 1 and model['isnullId'] eq true">and main.ID is null  </if> 
+<if test=" model.getClass().getFields().{?#this.getName() eq 'isnotnullId' }.size() eq 1 and model['isnotnullId'] eq true">and main.ID is not null </if> 
+<if test=" model.getClass().getFields().{?#this.getName() eq 'isinId' }.size() eq 1 and model['isinId'] neq null">and main.ID in <foreach collection="model.isinId" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" model.getClass().getFields().{?#this.getName() eq 'isnotinId' }.size() eq 1 and model['isnotinId'] neq null">and main.ID not in <foreach collection="model.isnotinId" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" model.getClass().getFields().{?#this.getName() eq 'Id' }.size() eq 1 and model['Id'] neq null">and main.ID = #{model.Id } </if> 
+<if test=" model.getClass().getFields().{?#this.getName() eq 'neqId' }.size() eq 1 and model['neqId'] neq null">and main.ID != #{model.neqId } </if> 
+<if test=" model.getClass().getFields().{?#this.getName() eq 'likeId' }.size() eq 1 and model['likeId'] neq null">and main.ID like #{model.likeId} </if> 
+<if test=" model.getClass().getFields().{?#this.getName() eq 'notlikeId' }.size() eq 1 and model['notlikeId'] neq null">and main.ID not like #{model.notlikeId  } </if> 
 
-<if test="model['isnullText'] and model['isnullText'] eq true">and m.TEXT is null  </if> 
-<if test="model['isnotnullText'] and model['isnotnullText'] eq true">and m.TEXT is not null </if> 
-<if test="model['inText'] and model['inText'] neq null">and m.TEXT in <foreach item="model.inText" collection="list" open="(" separator="," close=")"> #{model.inText} </foreach> </if> 
-<if test="model['notinText'] and model['notinText'] neq null">and m.TEXT not in <foreach item="model.notinText" collection="list" open="(" separator="," close=")"> #{model.notinText} </foreach> </if> 
-<if test="model.getClass().getField('Text') neq null and model['Text'] neq null">and m.TEXT = #{model.Text,jdbcType=VARCHAR, javaType=String } </if> 
-<if test="model['neqText'] and model['neqText'] neq null">and m.TEXT != #{model.neqText,jdbcType=VARCHAR, javaType=String } </if> 
-<if test="model['likeText'] and model['likeText'] neq null">and m.TEXT like #{model.likeText,jdbcType=VARCHAR ,javaType=String } </if> 
-<if test="model['notlikeText'] and model['notlikeText'] neq null">and m.TEXT not like #{model.notlikeText,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test=" model.getClass().getFields().{?#this.getName() eq 'isnullText' }.size() eq 1 and model['isnullText'] eq true">and main.TEXT is null  </if> 
+<if test=" model.getClass().getFields().{?#this.getName() eq 'isnotnullText' }.size() eq 1 and model['isnotnullText'] eq true">and main.TEXT is not null </if> 
+<if test=" model.getClass().getFields().{?#this.getName() eq 'isinText' }.size() eq 1 and model['isinText'] neq null">and main.TEXT in <foreach collection="model.isinText" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" model.getClass().getFields().{?#this.getName() eq 'isnotinText' }.size() eq 1 and model['isnotinText'] neq null">and main.TEXT not in <foreach collection="model.isnotinText" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" model.getClass().getFields().{?#this.getName() eq 'Text' }.size() eq 1 and model['Text'] neq null">and main.TEXT = #{model.Text } </if> 
+<if test=" model.getClass().getFields().{?#this.getName() eq 'neqText' }.size() eq 1 and model['neqText'] neq null">and main.TEXT != #{model.neqText } </if> 
+<if test=" model.getClass().getFields().{?#this.getName() eq 'likeText' }.size() eq 1 and model['likeText'] neq null">and main.TEXT like #{model.likeText} </if> 
+<if test=" model.getClass().getFields().{?#this.getName() eq 'notlikeText' }.size() eq 1 and model['notlikeText'] neq null">and main.TEXT not like #{model.notlikeText  } </if> 
 
-<if test="model['isnullValue'] and model['isnullValue'] eq true">and m.VALUE is null  </if> 
-<if test="model['isnotnullValue'] and model['isnotnullValue'] eq true">and m.VALUE is not null </if> 
-<if test="model['inValue'] and model['inValue'] neq null">and m.VALUE in <foreach item="model.inValue" collection="list" open="(" separator="," close=")"> #{model.inValue} </foreach> </if> 
-<if test="model['notinValue'] and model['notinValue'] neq null">and m.VALUE not in <foreach item="model.notinValue" collection="list" open="(" separator="," close=")"> #{model.notinValue} </foreach> </if> 
-<if test="model.getClass().getField('Value') neq null and model['Value'] neq null">and m.VALUE = #{model.Value,jdbcType=VARCHAR, javaType=String } </if> 
-<if test="model['neqValue'] and model['neqValue'] neq null">and m.VALUE != #{model.neqValue,jdbcType=VARCHAR, javaType=String } </if> 
-<if test="model['likeValue'] and model['likeValue'] neq null">and m.VALUE like #{model.likeValue,jdbcType=VARCHAR ,javaType=String } </if> 
-<if test="model['notlikeValue'] and model['notlikeValue'] neq null">and m.VALUE not like #{model.notlikeValue,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test=" model.getClass().getFields().{?#this.getName() eq 'isnullValue' }.size() eq 1 and model['isnullValue'] eq true">and main.VALUE is null  </if> 
+<if test=" model.getClass().getFields().{?#this.getName() eq 'isnotnullValue' }.size() eq 1 and model['isnotnullValue'] eq true">and main.VALUE is not null </if> 
+<if test=" model.getClass().getFields().{?#this.getName() eq 'isinValue' }.size() eq 1 and model['isinValue'] neq null">and main.VALUE in <foreach collection="model.isinValue" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" model.getClass().getFields().{?#this.getName() eq 'isnotinValue' }.size() eq 1 and model['isnotinValue'] neq null">and main.VALUE not in <foreach collection="model.isnotinValue" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" model.getClass().getFields().{?#this.getName() eq 'Value' }.size() eq 1 and model['Value'] neq null">and main.VALUE = #{model.Value } </if> 
+<if test=" model.getClass().getFields().{?#this.getName() eq 'neqValue' }.size() eq 1 and model['neqValue'] neq null">and main.VALUE != #{model.neqValue } </if> 
+<if test=" model.getClass().getFields().{?#this.getName() eq 'likeValue' }.size() eq 1 and model['likeValue'] neq null">and main.VALUE like #{model.likeValue} </if> 
+<if test=" model.getClass().getFields().{?#this.getName() eq 'notlikeValue' }.size() eq 1 and model['notlikeValue'] neq null">and main.VALUE not like #{model.notlikeValue  } </if> 
 
-<if test="model['isnullTypeFk'] and model['isnullTypeFk'] eq true">and m.TYPE_FK is null  </if> 
-<if test="model['isnotnullTypeFk'] and model['isnotnullTypeFk'] eq true">and m.TYPE_FK is not null </if> 
-<if test="model['inTypeFk'] and model['inTypeFk'] neq null">and m.TYPE_FK in <foreach item="model.inTypeFk" collection="list" open="(" separator="," close=")"> #{model.inTypeFk} </foreach> </if> 
-<if test="model['notinTypeFk'] and model['notinTypeFk'] neq null">and m.TYPE_FK not in <foreach item="model.notinTypeFk" collection="list" open="(" separator="," close=")"> #{model.notinTypeFk} </foreach> </if> 
-<if test="model.getClass().getField('TypeFk') neq null and model['TypeFk'] neq null">and m.TYPE_FK = #{model.TypeFk,jdbcType=VARCHAR, javaType=String } </if> 
-<if test="model['neqTypeFk'] and model['neqTypeFk'] neq null">and m.TYPE_FK != #{model.neqTypeFk,jdbcType=VARCHAR, javaType=String } </if> 
-<if test="model['likeTypeFk'] and model['likeTypeFk'] neq null">and m.TYPE_FK like #{model.likeTypeFk,jdbcType=VARCHAR ,javaType=String } </if> 
-<if test="model['notlikeTypeFk'] and model['notlikeTypeFk'] neq null">and m.TYPE_FK not like #{model.notlikeTypeFk,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test=" model.getClass().getFields().{?#this.getName() eq 'isnullTypeFk' }.size() eq 1 and model['isnullTypeFk'] eq true">and main.TYPE_FK is null  </if> 
+<if test=" model.getClass().getFields().{?#this.getName() eq 'isnotnullTypeFk' }.size() eq 1 and model['isnotnullTypeFk'] eq true">and main.TYPE_FK is not null </if> 
+<if test=" model.getClass().getFields().{?#this.getName() eq 'isinTypeFk' }.size() eq 1 and model['isinTypeFk'] neq null">and main.TYPE_FK in <foreach collection="model.isinTypeFk" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" model.getClass().getFields().{?#this.getName() eq 'isnotinTypeFk' }.size() eq 1 and model['isnotinTypeFk'] neq null">and main.TYPE_FK not in <foreach collection="model.isnotinTypeFk" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" model.getClass().getFields().{?#this.getName() eq 'TypeFk' }.size() eq 1 and model['TypeFk'] neq null">and main.TYPE_FK = #{model.TypeFk } </if> 
+<if test=" model.getClass().getFields().{?#this.getName() eq 'neqTypeFk' }.size() eq 1 and model['neqTypeFk'] neq null">and main.TYPE_FK != #{model.neqTypeFk } </if> 
+<if test=" model.getClass().getFields().{?#this.getName() eq 'likeTypeFk' }.size() eq 1 and model['likeTypeFk'] neq null">and main.TYPE_FK like #{model.likeTypeFk} </if> 
+<if test=" model.getClass().getFields().{?#this.getName() eq 'notlikeTypeFk' }.size() eq 1 and model['notlikeTypeFk'] neq null">and main.TYPE_FK not like #{model.notlikeTypeFk  } </if> 
 
-<if test="model['isnullRemark'] and model['isnullRemark'] eq true">and m.REMARK is null  </if> 
-<if test="model['isnotnullRemark'] and model['isnotnullRemark'] eq true">and m.REMARK is not null </if> 
-<if test="model['inRemark'] and model['inRemark'] neq null">and m.REMARK in <foreach item="model.inRemark" collection="list" open="(" separator="," close=")"> #{model.inRemark} </foreach> </if> 
-<if test="model['notinRemark'] and model['notinRemark'] neq null">and m.REMARK not in <foreach item="model.notinRemark" collection="list" open="(" separator="," close=")"> #{model.notinRemark} </foreach> </if> 
-<if test="model.getClass().getField('Remark') neq null and model['Remark'] neq null">and m.REMARK = #{model.Remark,jdbcType=VARCHAR, javaType=String } </if> 
-<if test="model['neqRemark'] and model['neqRemark'] neq null">and m.REMARK != #{model.neqRemark,jdbcType=VARCHAR, javaType=String } </if> 
-<if test="model['likeRemark'] and model['likeRemark'] neq null">and m.REMARK like #{model.likeRemark,jdbcType=VARCHAR ,javaType=String } </if> 
-<if test="model['notlikeRemark'] and model['notlikeRemark'] neq null">and m.REMARK not like #{model.notlikeRemark,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test=" model.getClass().getFields().{?#this.getName() eq 'isnullRemark' }.size() eq 1 and model['isnullRemark'] eq true">and main.REMARK is null  </if> 
+<if test=" model.getClass().getFields().{?#this.getName() eq 'isnotnullRemark' }.size() eq 1 and model['isnotnullRemark'] eq true">and main.REMARK is not null </if> 
+<if test=" model.getClass().getFields().{?#this.getName() eq 'isinRemark' }.size() eq 1 and model['isinRemark'] neq null">and main.REMARK in <foreach collection="model.isinRemark" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" model.getClass().getFields().{?#this.getName() eq 'isnotinRemark' }.size() eq 1 and model['isnotinRemark'] neq null">and main.REMARK not in <foreach collection="model.isnotinRemark" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" model.getClass().getFields().{?#this.getName() eq 'Remark' }.size() eq 1 and model['Remark'] neq null">and main.REMARK = #{model.Remark } </if> 
+<if test=" model.getClass().getFields().{?#this.getName() eq 'neqRemark' }.size() eq 1 and model['neqRemark'] neq null">and main.REMARK != #{model.neqRemark } </if> 
+<if test=" model.getClass().getFields().{?#this.getName() eq 'likeRemark' }.size() eq 1 and model['likeRemark'] neq null">and main.REMARK like #{model.likeRemark} </if> 
+<if test=" model.getClass().getFields().{?#this.getName() eq 'notlikeRemark' }.size() eq 1 and model['notlikeRemark'] neq null">and main.REMARK not like #{model.notlikeRemark  } </if> 
 
-<if test="model['isnullState'] and model['isnullState'] eq true">and m.STATE is null  </if> 
-<if test="model['isnotnullState'] and model['isnotnullState'] eq true">and m.STATE is not null </if> 
-<if test="model['inState'] and model['inState'] neq null">and m.STATE in <foreach item="model.inState" collection="list" open="(" separator="," close=")"> #{model.inState} </foreach> </if> 
-<if test="model['notinState'] and model['notinState'] neq null">and m.STATE not in <foreach item="model.notinState" collection="list" open="(" separator="," close=")"> #{model.notinState} </foreach> </if> 
-<if test="model.getClass().getField('State') neq null and model['State'] neq null">and m.STATE = #{model.State,jdbcType=VARCHAR, javaType=String } </if> 
-<if test="model['neqState'] and model['neqState'] neq null">and m.STATE != #{model.neqState,jdbcType=VARCHAR, javaType=String } </if> 
-<if test="model['likeState'] and model['likeState'] neq null">and m.STATE like #{model.likeState,jdbcType=VARCHAR ,javaType=String } </if> 
-<if test="model['notlikeState'] and model['notlikeState'] neq null">and m.STATE not like #{model.notlikeState,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test=" model.getClass().getFields().{?#this.getName() eq 'isnullState' }.size() eq 1 and model['isnullState'] eq true">and main.STATE is null  </if> 
+<if test=" model.getClass().getFields().{?#this.getName() eq 'isnotnullState' }.size() eq 1 and model['isnotnullState'] eq true">and main.STATE is not null </if> 
+<if test=" model.getClass().getFields().{?#this.getName() eq 'isinState' }.size() eq 1 and model['isinState'] neq null">and main.STATE in <foreach collection="model.isinState" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" model.getClass().getFields().{?#this.getName() eq 'isnotinState' }.size() eq 1 and model['isnotinState'] neq null">and main.STATE not in <foreach collection="model.isnotinState" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" model.getClass().getFields().{?#this.getName() eq 'State' }.size() eq 1 and model['State'] neq null">and main.STATE = #{model.State } </if> 
+<if test=" model.getClass().getFields().{?#this.getName() eq 'neqState' }.size() eq 1 and model['neqState'] neq null">and main.STATE != #{model.neqState } </if> 
+<if test=" model.getClass().getFields().{?#this.getName() eq 'likeState' }.size() eq 1 and model['likeState'] neq null">and main.STATE like #{model.likeState} </if> 
+<if test=" model.getClass().getFields().{?#this.getName() eq 'notlikeState' }.size() eq 1 and model['notlikeState'] neq null">and main.STATE not like #{model.notlikeState  } </if> 
 
 
 </sql>
 
 
+<select id="select" resultType="ArrayList" resultMap="resultMap">
+	select <include refid="colums" />  from <include refid="table" />  main   
+		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+			<include refid="selectCondition"/>
+		</trim>
+	<include refid="orderby"/>
+</select>
+
 <select id="selectUnion" resultType="ArrayList" resultMap="resultMap">
-  select m.* from (
-	<trim  prefixOverrides="union" suffixOverrides="union">
+  select  main.* from (
+	<trim  prefixOverrides="union all" suffixOverrides="union all">
 		<foreach collection="querys" item="model">
 			<if test="model neq null">
-				union select m.* from <include refid="table" /> m 
+				union all select <include refid="colums" /> from <include refid="table"  /> main 
 					<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
 						<include refid="selectCondition"/>
 					</trim>
 			</if>
 		</foreach>
 	</trim>
-   ) m <include refid="orderby"/>
+<include refid="orderby"/>
+   ) main 
 </select>
 
 <select id="selectEqPk"  resultMap="resultMap">
-	select m.* from <include refid="table" /> m  where m.<include refid="pk" /> = #{Id,jdbcType=VARCHAR,javaType=String}
+	select <include refid="colums" /> from <include refid="table"  /> main  where <include refid="pk" /> = #{Id,jdbcType=VARCHAR,javaType=String}
 </select>
 
 <select  id="selectAll"  resultType="ArrayList"  resultMap="resultMap">
-	select m.* from  <include refid="table" /> m
+	select <include refid="colums" /> from  <include refid="table" />  main  
 	<include refid="orderby"/>
 </select>
 
 <select id="countAll" resultType="int">
-	select count(<include refid="pk"/>) from <include refid="table"/>
+	select count(<include refid="pk"/>) from <include refid="table"   /> 
 </select>
 
 <select id="count" resultType="int">
-	select count(<include refid="pk"/>) from <include refid="table"/>
+	select count(<include refid="pk"/>) from <include refid="table"   />
 		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
 			<include refid="selectCondition"/>
 		</trim>
@@ -162,7 +208,7 @@ private Boolean isnullId,isnotnullId,isnullText,isnotnullText,
 </select>
 
 <insert id="insert" flushCache="true" >
-	insert into <include refid="table"/> ( <include refid="colums"/> ) values  
+	insert into <include refid="table" /> main  ( <include refid="colums"/> ) values  
 	(
 		<trim  prefixOverrides="," suffixOverrides=",">
 			<include refid="insertCols"/>
@@ -171,38 +217,57 @@ private Boolean isnullId,isnotnullId,isnullText,isnotnullText,
 </insert>
 
 <update id="update" flushCache="true" >
-	update <include refid="table"/> set 
+	update <include refid="table" /> main  set 
 		<trim  prefixOverrides="," suffixOverrides=",">
 			<include refid="updateCols"/>
 		</trim>
-	where <include refid="pk" />=#{model.Id,jdbcType=VARCHAR,javaType=String}</update>
+	where main.<include refid="pk" />=#{model.Id,jdbcType=VARCHAR,javaType=String}</update>
 
 <delete id="deleteEqPk" flushCache="true">
-	delete from <include refid="table"/> where <include refid="pk" /> =#{Id,jdbcType=VARCHAR,javaType=String}
+	delete from <include refid="table" />  where <include refid="pk" /> =#{Id,jdbcType=VARCHAR,javaType=String}
 </delete>
 
-<resultMap type="com.ett.visual.model.admin.DictModel" id="viewMap" extends="resultMap" ></resultMap>
-
+<delete id="deleteInPk" flushCache="true">
+	delete from <include refid="table"/> where <include refid="pk" /> in
+		<foreach item="pk" collection="list" open="(" separator="," close=")">#{pk}</foreach>
+</delete>
 
 <sql id="selectViewCondition">
 	 <include refid="selectCondition"/>  
-</sql><select id="selectViewUnion" resultType="ArrayList" resultMap="viewMap">
-  select m.* from (
-	<trim  prefixOverrides="union" suffixOverrides="union">
-		<foreach collection="list" item="model">
+</sql>
+
+
+<select id="selectView" resultType="ArrayList" resultMap="resultView">
+	select <include refid="colums"/>  <include refid="joinCols"/> from <include refid="table" /> main  <include refid="join"/> 
+		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+			<include refid="selectViewCondition"/>
+		</trim>	<include refid="orderby"/>
+</select>
+
+<select id="selectViewUnion" resultType="ArrayList" resultMap="resultView">
+  select main.*  <include refid="joinCols"/>from (
+	<trim  prefixOverrides="union all" suffixOverrides="union all">
+		<foreach collection="querys" item="model">
 			<if test="model neq null">
-				union select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> 
+				union all select <include refid="colums"/> <include refid="joinCols"/> from <include refid="table" /> main  <include refid="join"/> 
 					<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
 						<include refid="selectViewCondition"/>
 					</trim>
 			</if>
 		</foreach>
 	</trim>
-  ) m <include refid="orderby"/>
+  ) main 
+
+<include refid="orderby"/>
 </select>
 
-<select  id="selectViewAll"  resultType="ArrayList"  resultMap="viewMap">
-	select m.* <include refid="joinColums"/> from  <include refid="table" /> m <include refid="join"/>
+<select id="selectViewEqPk"  resultMap="resultView">
+	select <include refid="colums" /> <include refid="joinCols"/> from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> = #{Id,jdbcType=VARCHAR,javaType=String}
+<include refid="orderby"/>
+</select>
+
+<select  id="selectViewAll"  resultType="ArrayList"  resultMap="resultView">
+	select <include refid="colums"/> <include refid="joinCols"/> from  <include refid="table" /> main <include refid="join"/>
 	<include refid="orderby"/>
 </select>
 
