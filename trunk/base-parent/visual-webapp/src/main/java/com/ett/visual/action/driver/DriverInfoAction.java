@@ -20,17 +20,16 @@ private File tempFile;
 	
 	public DriverInfoModel getModel() {
 		// TODO Auto-generated method stub
-		if(_model==null){
-			_model=new DriverInfoModel();
-		}
-		return _model;
+		return null;
 	}
 
 	@Override
-	protected BaseModel newSimpleQueryModel() {
+	public Object newQueryModel() {
 		// TODO Auto-generated method stub
-		return getModel().new SimpleQueryModel();
+		return null;
 	}
+
+	
 
 
 }

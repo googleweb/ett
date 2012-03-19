@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+	Create Date:2012-03-13 04:30:48
+	MapperTemplate:com.smartken.toyz4j.mybatis.OracleMapperTemplate
+	Model:com.ett.visual.model.driver.DriverInfoModel 
+
+
+ public static enum F { 
+  Id,Name,IdcardNo,FileNo,Phone,SchoolCode  
+ } 
+
+private String Id,Name,IdcardNo,FileNo,
+				Phone,SchoolCode;
+
+ 
+
+ public  class SimpleQueryModel extends com.ett.visual.model.driver.DriverInfoModel { 
+ private String neqId,likeId,notlikeId,neqName,
+				likeName,notlikeName,neqIdcardNo,likeIdcardNo,
+				notlikeIdcardNo,neqFileNo,likeFileNo,notlikeFileNo,
+				neqPhone,likePhone,notlikePhone,neqSchoolCode,
+				likeSchoolCode,notlikeSchoolCode;
+
+private List<String> inId,notinId,inName,notinName,
+				inIdcardNo,notinIdcardNo,inFileNo,notinFileNo,
+				inPhone,notinPhone,inSchoolCode,notinSchoolCode;
+
+private Boolean isnullId,isnotnullId,isnullName,isnotnullName,
+				isnullIdcardNo,isnotnullIdcardNo,isnullFileNo,isnotnullFileNo,
+				isnullPhone,isnotnullPhone,isnullSchoolCode,isnotnullSchoolCode;
+
+ 
+ } 
+--> 
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ett.visual.mapper.driver.IDriverInfoMapper">
+
+<cache flushInterval="30000" readOnly="true"></cache>
+
+
+<sql id="table">VIS_DRIVER_INFO</sql>
+
+<sql id="pk">id</sql>
+
+<sql id="colums"></sql>
+
+<sql id="updateCols"></sql>
+
+<sql id="insertCols"></sql>
+
+<sql id="orderby"></sql>
+
+<sql id="joinColums"></sql>
+
+<sql id="join"></sql><!-- 别名m已被主表使用  -->
+
+<resultMap type="com.ett.visual.model.driver.DriverInfoModel" id="resultMap">
+ <id column="ID"  property="Id" jdbcType="VARCHAR"  javaType="String"/>
+<result column="NAME"  property="Name" jdbcType="VARCHAR"  javaType="String"/>
+<result column="IDCARD_NO"  property="IdcardNo" jdbcType="VARCHAR"  javaType="String"/>
+<result column="FILE_NO"  property="FileNo" jdbcType="VARCHAR"  javaType="String"/>
+<result column="PHONE"  property="Phone" jdbcType="VARCHAR"  javaType="String"/>
+<result column="SCHOOL_CODE"  property="SchoolCode" jdbcType="VARCHAR"  javaType="String"/>
+
+ </resultMap>
+
+
+<sql id="selectCondition">
+<if test="model['isnullId'] and model['isnullId'] eq true">and m.ID is null  </if> 
+<if test="model['isnotnullId'] and model['isnotnullId'] eq true">and m.ID is not null </if> 
+<if test="model['inId'] and model['inId'] neq null">and m.ID in <foreach item="model.inId" collection="list" open="(" separator="," close=")"> #{model.inId} </foreach> </if> 
+<if test="model['notinId'] and model['notinId'] neq null">and m.ID not in <foreach item="model.notinId" collection="list" open="(" separator="," close=")"> #{model.notinId} </foreach> </if> 
+<if test="model.getClass().getField('Id') neq null and model['Id'] neq null">and m.ID = #{model.Id,jdbcType=VARCHAR, javaType=String } </if> 
+<if test="model['neqId'] and model['neqId'] neq null">and m.ID != #{model.neqId,jdbcType=VARCHAR, javaType=String } </if> 
+<if test="model['likeId'] and model['likeId'] neq null">and m.ID like #{model.likeId,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model['notlikeId'] and model['notlikeId'] neq null">and m.ID not like #{model.notlikeId,jdbcType=VARCHAR ,javaType=String } </if> 
+
+<if test="model['isnullName'] and model['isnullName'] eq true">and m.NAME is null  </if> 
+<if test="model['isnotnullName'] and model['isnotnullName'] eq true">and m.NAME is not null </if> 
+<if test="model['inName'] and model['inName'] neq null">and m.NAME in <foreach item="model.inName" collection="list" open="(" separator="," close=")"> #{model.inName} </foreach> </if> 
+<if test="model['notinName'] and model['notinName'] neq null">and m.NAME not in <foreach item="model.notinName" collection="list" open="(" separator="," close=")"> #{model.notinName} </foreach> </if> 
+<if test="model.getClass().getField('Name') neq null and model['Name'] neq null">and m.NAME = #{model.Name,jdbcType=VARCHAR, javaType=String } </if> 
+<if test="model['neqName'] and model['neqName'] neq null">and m.NAME != #{model.neqName,jdbcType=VARCHAR, javaType=String } </if> 
+<if test="model['likeName'] and model['likeName'] neq null">and m.NAME like #{model.likeName,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model['notlikeName'] and model['notlikeName'] neq null">and m.NAME not like #{model.notlikeName,jdbcType=VARCHAR ,javaType=String } </if> 
+
+<if test="model['isnullIdcardNo'] and model['isnullIdcardNo'] eq true">and m.IDCARD_NO is null  </if> 
+<if test="model['isnotnullIdcardNo'] and model['isnotnullIdcardNo'] eq true">and m.IDCARD_NO is not null </if> 
+<if test="model['inIdcardNo'] and model['inIdcardNo'] neq null">and m.IDCARD_NO in <foreach item="model.inIdcardNo" collection="list" open="(" separator="," close=")"> #{model.inIdcardNo} </foreach> </if> 
+<if test="model['notinIdcardNo'] and model['notinIdcardNo'] neq null">and m.IDCARD_NO not in <foreach item="model.notinIdcardNo" collection="list" open="(" separator="," close=")"> #{model.notinIdcardNo} </foreach> </if> 
+<if test="model.getClass().getField('IdcardNo') neq null and model['IdcardNo'] neq null">and m.IDCARD_NO = #{model.IdcardNo,jdbcType=VARCHAR, javaType=String } </if> 
+<if test="model['neqIdcardNo'] and model['neqIdcardNo'] neq null">and m.IDCARD_NO != #{model.neqIdcardNo,jdbcType=VARCHAR, javaType=String } </if> 
+<if test="model['likeIdcardNo'] and model['likeIdcardNo'] neq null">and m.IDCARD_NO like #{model.likeIdcardNo,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model['notlikeIdcardNo'] and model['notlikeIdcardNo'] neq null">and m.IDCARD_NO not like #{model.notlikeIdcardNo,jdbcType=VARCHAR ,javaType=String } </if> 
+
+<if test="model['isnullFileNo'] and model['isnullFileNo'] eq true">and m.FILE_NO is null  </if> 
+<if test="model['isnotnullFileNo'] and model['isnotnullFileNo'] eq true">and m.FILE_NO is not null </if> 
+<if test="model['inFileNo'] and model['inFileNo'] neq null">and m.FILE_NO in <foreach item="model.inFileNo" collection="list" open="(" separator="," close=")"> #{model.inFileNo} </foreach> </if> 
+<if test="model['notinFileNo'] and model['notinFileNo'] neq null">and m.FILE_NO not in <foreach item="model.notinFileNo" collection="list" open="(" separator="," close=")"> #{model.notinFileNo} </foreach> </if> 
+<if test="model.getClass().getField('FileNo') neq null and model['FileNo'] neq null">and m.FILE_NO = #{model.FileNo,jdbcType=VARCHAR, javaType=String } </if> 
+<if test="model['neqFileNo'] and model['neqFileNo'] neq null">and m.FILE_NO != #{model.neqFileNo,jdbcType=VARCHAR, javaType=String } </if> 
+<if test="model['likeFileNo'] and model['likeFileNo'] neq null">and m.FILE_NO like #{model.likeFileNo,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model['notlikeFileNo'] and model['notlikeFileNo'] neq null">and m.FILE_NO not like #{model.notlikeFileNo,jdbcType=VARCHAR ,javaType=String } </if> 
+
+<if test="model['isnullPhone'] and model['isnullPhone'] eq true">and m.PHONE is null  </if> 
+<if test="model['isnotnullPhone'] and model['isnotnullPhone'] eq true">and m.PHONE is not null </if> 
+<if test="model['inPhone'] and model['inPhone'] neq null">and m.PHONE in <foreach item="model.inPhone" collection="list" open="(" separator="," close=")"> #{model.inPhone} </foreach> </if> 
+<if test="model['notinPhone'] and model['notinPhone'] neq null">and m.PHONE not in <foreach item="model.notinPhone" collection="list" open="(" separator="," close=")"> #{model.notinPhone} </foreach> </if> 
+<if test="model.getClass().getField('Phone') neq null and model['Phone'] neq null">and m.PHONE = #{model.Phone,jdbcType=VARCHAR, javaType=String } </if> 
+<if test="model['neqPhone'] and model['neqPhone'] neq null">and m.PHONE != #{model.neqPhone,jdbcType=VARCHAR, javaType=String } </if> 
+<if test="model['likePhone'] and model['likePhone'] neq null">and m.PHONE like #{model.likePhone,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model['notlikePhone'] and model['notlikePhone'] neq null">and m.PHONE not like #{model.notlikePhone,jdbcType=VARCHAR ,javaType=String } </if> 
+
+<if test="model['isnullSchoolCode'] and model['isnullSchoolCode'] eq true">and m.SCHOOL_CODE is null  </if> 
+<if test="model['isnotnullSchoolCode'] and model['isnotnullSchoolCode'] eq true">and m.SCHOOL_CODE is not null </if> 
+<if test="model['inSchoolCode'] and model['inSchoolCode'] neq null">and m.SCHOOL_CODE in <foreach item="model.inSchoolCode" collection="list" open="(" separator="," close=")"> #{model.inSchoolCode} </foreach> </if> 
+<if test="model['notinSchoolCode'] and model['notinSchoolCode'] neq null">and m.SCHOOL_CODE not in <foreach item="model.notinSchoolCode" collection="list" open="(" separator="," close=")"> #{model.notinSchoolCode} </foreach> </if> 
+<if test="model.getClass().getField('SchoolCode') neq null and model['SchoolCode'] neq null">and m.SCHOOL_CODE = #{model.SchoolCode,jdbcType=VARCHAR, javaType=String } </if> 
+<if test="model['neqSchoolCode'] and model['neqSchoolCode'] neq null">and m.SCHOOL_CODE != #{model.neqSchoolCode,jdbcType=VARCHAR, javaType=String } </if> 
+<if test="model['likeSchoolCode'] and model['likeSchoolCode'] neq null">and m.SCHOOL_CODE like #{model.likeSchoolCode,jdbcType=VARCHAR ,javaType=String } </if> 
+<if test="model['notlikeSchoolCode'] and model['notlikeSchoolCode'] neq null">and m.SCHOOL_CODE not like #{model.notlikeSchoolCode,jdbcType=VARCHAR ,javaType=String } </if> 
+
+
+</sql>
+
+
+<select id="selectUnion" resultType="ArrayList" resultMap="resultMap">
+  select m.* from (
+	<trim  prefixOverrides="union" suffixOverrides="union">
+		<foreach collection="querys" item="model">
+			<if test="model neq null">
+				union select m.* from <include refid="table" /> m 
+					<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+						<include refid="selectCondition"/>
+					</trim>
+			</if>
+		</foreach>
+	</trim>
+   ) m <include refid="orderby"/>
+</select>
+
+<select id="selectEqPk"  resultMap="resultMap">
+	select m.* from <include refid="table" /> m  where m.<include refid="pk" /> = #{Id,jdbcType=VARCHAR,javaType=String}
+</select>
+
+<select  id="selectAll"  resultType="ArrayList"  resultMap="resultMap">
+	select m.* from  <include refid="table" /> m
+	<include refid="orderby"/>
+</select>
+
+<select id="countAll" resultType="int">
+	select count(<include refid="pk"/>) from <include refid="table"/>
+</select>
+
+<select id="count" resultType="int">
+	select count(<include refid="pk"/>) from <include refid="table"/>
+		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+			<include refid="selectCondition"/>
+		</trim>
+	<include refid="orderby"/>
+</select>
+
+<insert id="insert" flushCache="true" >
+	insert into <include refid="table"/> ( <include refid="colums"/> ) values  
+	(
+		<trim  prefixOverrides="," suffixOverrides=",">
+			<include refid="insertCols"/>
+		</trim>
+	)
+</insert>
+
+<update id="update" flushCache="true" >
+	update <include refid="table"/> set 
+		<trim  prefixOverrides="," suffixOverrides=",">
+			<include refid="updateCols"/>
+		</trim>
+	where <include refid="pk" />=#{model.Id,jdbcType=VARCHAR,javaType=String}</update>
+
+<delete id="deleteEqPk" flushCache="true">
+	delete from <include refid="table"/> where <include refid="pk" /> =#{Id,jdbcType=VARCHAR,javaType=String}
+</delete>
+
+<resultMap type="com.ett.visual.model.driver.DriverInfoModel" id="viewMap" extends="resultMap" ></resultMap>
+
+
+<sql id="selectViewCondition">
+	 <include refid="selectCondition"/>  
+</sql><select id="selectViewUnion" resultType="ArrayList" resultMap="viewMap">
+  select m.* from (
+	<trim  prefixOverrides="union" suffixOverrides="union">
+		<foreach collection="list" item="model">
+			<if test="model neq null">
+				union select m.* <include refid="joinColums"/> from <include refid="table" /> m <include refid="join"/> 
+					<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+						<include refid="selectViewCondition"/>
+					</trim>
+			</if>
+		</foreach>
+	</trim>
+  ) m <include refid="orderby"/>
+</select>
+
+<select  id="selectViewAll"  resultType="ArrayList"  resultMap="viewMap">
+	select m.* <include refid="joinColums"/> from  <include refid="table" /> m <include refid="join"/>
+	<include refid="orderby"/>
+</select>
+
+</mapper>

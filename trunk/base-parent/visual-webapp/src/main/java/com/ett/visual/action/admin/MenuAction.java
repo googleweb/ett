@@ -13,10 +13,11 @@ public class MenuAction extends BaseVisualAction<MenuModel> {
 		return null;
 	}
 
+
 	@Override
-	protected BaseModel newSimpleQueryModel() {
+	public Object newQueryModel() {
 		// TODO Auto-generated method stub
-		return getModel().new SimpleQueryModel();
+		return null;
 	}
 
 	

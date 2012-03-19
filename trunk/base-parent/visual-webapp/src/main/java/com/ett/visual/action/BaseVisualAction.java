@@ -20,6 +20,9 @@ import com.ett.visual.model.admin.RoleModel;
 import com.ett.visual.model.driver.DriverFileModel;
 
 import com.smartken.toyz4j.model.IBaseCrudBiz;
+import com.smartken.toyz4j.model.IBaseModel;
+import com.smartken.toyz4j.model.IToyzBiz;
+import com.smartken.toyz4j.model.IToyzCrudBean;
 import com.smartken.toyz4j.model.impl.BaseAction;
 import com.smartken.toyz4j.model.impl.BaseCurdBiz;
 import com.smartken.toyz4j.model.impl.BaseModel;
@@ -112,18 +115,21 @@ public abstract class BaseVisualAction<M extends BaseModel> extends BaseAction<M
 	}
 
 
-   
+
+	public IToyzCrudBean<M> getToyzCurdBean() throws NullPointerException {
+		// TODO Auto-generated method stub
+		return ((IToyzBiz) adminBiz).newToyzCrudBean(this.getModelClass());
+	}
+
+
 
 	
 
 
+   
 
-	@Override
-	protected IBaseCrudBiz getCrudBiz() {
-		// TODO Auto-generated method stub
-		return this.adminBiz;
-
-	}
+	
+   
     
     
 	

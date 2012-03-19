@@ -68,16 +68,16 @@
  
  
    
-<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory" >
+<bean class="com.smartken.toyz4j.mybatis.ToyzSqlSessionFactory" id="sqlSessionFactory" >
        <property name="dataSource" ref="dataSource"></property>
-       <property name="mapperLocations" value="classpath:com/ett/visual/mapper/*/${db.type}/I*Mapper.xml"></property>
+       <property name="mapperLocations" value="classpath:com/ett/visual/mapper/*/${db.type}.I*Mapper.xml"></property>
        <property name="configLocation" value="classpath:com/ett/visual/mapper/mybatis3.visual.${db.type}.xml"></property>
        
 </bean>
 
-<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactoryDrv">
+<bean class="com.smartken.toyz4j.mybatis.ToyzSqlSessionFactory" id="sqlSessionFactoryDrv">
        <property name="dataSource" ref="dataSourceDrv"></property>
-       <property name="mapperLocations" value="classpath:com/ett/visual/mapper/*/${db.type}/I*Mapper.xml"></property>
+       <property name="mapperLocations" value="classpath:com/ett/visual/mapper/*/${db.type}.I*Mapper.xml"></property>
        <property name="configLocation" value="classpath:com/ett/visual/mapper/mybatis3.visual.${db.type}.xml"></property>
        
 </bean>
@@ -89,7 +89,7 @@
  
 	<bean id="txDrvManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource"/>
-		<property name="defaultTimeout" value="30000"></property>
+		
 	</bean>
 	
 
@@ -101,53 +101,15 @@
 	</tx:advice>
 
 	<aop:config>
-		<aop:pointcut expression="execution(* com.ett.drv.biz.impl.*.*(..))" id="drvMehtod"/>
+		<aop:pointcut expression="execution(* com.ett.visual.biz.impl.*.*(..))" id="drvMehtod"/>
 		<aop:advisor advice-ref="txDrvAdvice" pointcut-ref="drvMehtod" />
 		
 	</aop:config>
 
 
 
- <bean id="baseMapper" class="org.mybatis.spring.mapper.MapperFactoryBean" abstract="true" >
-     <property name="sqlSessionFactory" ref="sqlSessionFactory" />
-   </bean>
- 
- <bean id="baseDrvMapper" class="org.mybatis.spring.mapper.MapperFactoryBean" abstract="true" >
-     <property name="sqlSessionFactory" ref="sqlSessionFactoryDrv" />
-   </bean>
-   
-   
-   <bean id="menuMapper" parent="baseMapper">
-  <property name="mapperInterface" value="com.ett.visual.mapper.admin.IMenuMapper"></property>
-</bean>
-	<bean id="userMapper" parent="baseMapper">
-	<property name="mapperInterface" value="com.ett.visual.mapper.admin.IUserMapper"></property>
-	</bean>
-	<bean id="roleMapper" parent="baseMapper">
-	<property name="mapperInterface" value="com.ett.visual.mapper.admin.IRoleMapper"></property>
-	</bean>
-<bean id="dictMapper" parent="baseMapper">
-	<property name="mapperInterface" value="com.ett.visual.mapper.admin.IDictMapper"></property>
-</bean>
-<bean id="dictTypeMapper" parent="baseMapper">
-	<property name="mapperInterface" value="com.ett.visual.mapper.admin.IDictTypeMapper"></property>
-</bean>
-<bean id="driverFileMapper" parent="baseMapper">
-  <property name="mapperInterface" value="com.ett.visual.mapper.driver.IDriverFileMapper"></property>
-</bean>
-
-<bean id="driverInfoMapper" parent="baseMapper">
-  <property name="mapperInterface" value="com.ett.visual.mapper.driver.IDriverInfoMapper"></property>
-</bean>
-
   <bean id="baseVisualBiz" abstract="true" class="com.ett.visual.biz.BaseVisualBiz">
-       <property name="menuMapper" ref="menuMapper"></property>
-       <property name="userMapper" ref="userMapper"></property>
-       <property name="roleMapper" ref="roleMapper"></property>
-       <property name="dictMapper" ref="dictMapper"></property>
-       <property name="dictTypeMapper" ref="dictTypeMapper"></property>
-       <property name="driverFileMapper" ref="driverFileMapper"></property>
-       <property name="driverInfoMapper" ref="driverInfoMapper"></property>
+       <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
  </bean>
  
  <bean id="baseAdminBiz" abstract="true" class="com.ett.visual.biz.impl.AdminBiz" parent="baseVisualBiz"></bean>

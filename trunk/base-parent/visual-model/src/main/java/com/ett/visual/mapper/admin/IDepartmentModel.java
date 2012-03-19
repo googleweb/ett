@@ -3,9 +3,10 @@ package com.ett.visual.mapper.admin;
 import java.util.List;
 
 import com.smartken.toyz4j.model.IMapper;
-import com.smartken.toyz4j.pager.PageBounds;
+import com.smartken.toyz4j.mybatis.IToyzMapper;
+import com.smartken.toyz4j.pager.PageBound;
 
-public interface IDepartmentModel<T> extends IMapper<T> {
+public interface IDepartmentModel<T> extends IToyzMapper<T> {
 
 	
 

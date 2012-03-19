@@ -22,29 +22,18 @@ public class RoleAction extends BaseVisualAction<RoleModel> {
 
 	public RoleModel getModel() {
 		// TODO Auto-generated method stub
-		if(_model==null){
-			_model= new RoleModel();
-		}
-		return _model;
+       return null;
 		
 	}
 
 	
-	public void combobox_list(){
-		this.adminBiz.loadCrudMapper(RoleModel.class);
-		List list=this.adminBiz.getModel();
-		List<String> fields=new ArrayList<String>();
-		fields.add(RoleModel.F.Id.name());
-		fields.add(RoleModel.F.Name.name());
-		JSONArray jarr= ObjectUtil.toJsonArrayInclude(list,fields);
-		WritePlainText(jarr.toString());
-	}
+
 
 
 	@Override
-	protected BaseModel newSimpleQueryModel() {
+	public Object newQueryModel() {
 		// TODO Auto-generated method stub
-		return getModel().new SimpleQueryModel();
+		return null;
 	}
 	
 }
