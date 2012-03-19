@@ -16,11 +16,12 @@ import com.ett.visual.model.admin.DictTypeModel;
 import com.ett.visual.model.admin.RoleModel;
 import com.ett.visual.model.driver.DriverFileModel;
 import com.ett.visual.model.driver.DriverInfoModel;
+import com.smartken.toyz4j.ToyzApp;
 import com.smartken.toyz4j.mybatis.MapperFactory;
 import com.smartken.toyz4j.mybatis.MapperTemplate;
 import com.smartken.toyz4j.mybatis.OracleMapperTemplate;
 
-public class MapperGenTool {
+public class MapperGenApp extends ToyzApp {
 
 	
 	public static enum Table{
@@ -51,13 +52,13 @@ public class MapperGenTool {
 		try{
 			//mappers.put(Table.TABLE_MENUS,mf.createMapperTemplate(Table.TABLE_MENUS.name().toUpperCase(), "menuid".toUpperCase(),IMenuMapper.class, MenuModel.class,Seqs.seq_menu+NEXTVAL));
 			//mappers.put(Table.TABLE_DEPARTMENTS,mf.createMapperTemplate(Table.TABLE_DEPARTMENTS.name().toUpperCase(), "id".toUpperCase(),IDepartmentModel.class, DepartmentModel.class,Seqs.seq_department+NEXTVAL ));
-			//mappers.put(Table.TABLE_DICTS,mf.createMapperTemplate(Table.TABLE_DICTS.name().toUpperCase(), "id".toUpperCase(),IDictMapper.class,DictModel.class,Seqs.seq_dict+NEXTVAL ));
-			//mappers.put(Table.TABLE_DICTTYPE,mf.createMapperTemplate(Table.TABLE_DICTTYPE.name().toUpperCase(), "id".toUpperCase(),IDictTypeMapper.class, DictTypeModel.class,Seqs.seq_dicttype+NEXTVAL ));
-            //mappers.put(Table.VIS_ADMIN_ROLE,mf.createMapperTemplate(Table.VIS_ADMIN_ROLE.name(), "id", IRoleMapper.class, RoleModel.class));
+			mappers.put(Table.TABLE_DICTS,mf.createMapperTemplate(Table.TABLE_DICTS.name().toUpperCase(), "id".toUpperCase(),IDictMapper.class,DictModel.class,Seqs.seq_dict+NEXTVAL ));
+			mappers.put(Table.TABLE_DICTTYPE,mf.createMapperTemplate(Table.TABLE_DICTTYPE.name().toUpperCase(), "id".toUpperCase(),IDictTypeMapper.class, DictTypeModel.class,Seqs.seq_dicttype+NEXTVAL ));
+            mappers.put(Table.VIS_ADMIN_ROLE,mf.createMapperTemplate(Table.VIS_ADMIN_ROLE.name(), "id", IRoleMapper.class, RoleModel.class));
 			mappers.put(Table.VIS_DRIVER_FILE,mf.createMapperTemplate(Table.VIS_DRIVER_FILE.name(), "id", IDriverFileMapper.class, DriverFileModel.class));
-	    	//mappers.put(Table.VIS_DRIVER_INFO,mf.createMapperTemplate(Table.VIS_DRIVER_INFO.name(), "id", IDriverInfoMapper.class, DriverInfoModel.class));
-			//mappers.put(Table.VIS_ADMIN_DICT,mf.createMapperTemplate(Table.VIS_ADMIN_DICT.name(), "id", IDictMapper.class, DictModel.class));
-			///mappers.put(Table.VIS_ADMIN_DICT_TYPE,mf.createMapperTemplate(Table.VIS_ADMIN_DICT_TYPE.name(), "id", IDictTypeMapper.class, DictTypeModel.class));
+	    	mappers.put(Table.VIS_DRIVER_INFO,mf.createMapperTemplate(Table.VIS_DRIVER_INFO.name(), "id", IDriverInfoMapper.class, DriverInfoModel.class));
+			mappers.put(Table.VIS_ADMIN_DICT,mf.createMapperTemplate(Table.VIS_ADMIN_DICT.name(), "id", IDictMapper.class, DictModel.class));
+			mappers.put(Table.VIS_ADMIN_DICT_TYPE,mf.createMapperTemplate(Table.VIS_ADMIN_DICT_TYPE.name(), "id", IDictTypeMapper.class, DictTypeModel.class));
 			
 		}catch(Exception ex){ex.printStackTrace();}
 		
