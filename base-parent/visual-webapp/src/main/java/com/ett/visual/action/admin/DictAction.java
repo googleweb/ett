@@ -15,26 +15,20 @@ import com.smartken.toyz4j.util.EasyUiUtil;
 import com.smartken.toyz4j.util.ObjectUtil;
 
 public class DictAction extends BaseVisualAction<DictModel> {
-	
-	
 
 
-
-
-	public DictModel getModel() {
-		// TODO Auto-generated method stub
-		if(_model==null){
-			_model= new DictModel();
-		}
-		return _model;
-		
-	}
 
 	@Override
-	protected BaseModel newSimpleQueryModel() {
+	public Object newQueryModel() {
 		// TODO Auto-generated method stub
-		return getModel().new SimpleQueryModel();
+		return null;
 	}
+	
+	
+
+
+
+
 
 	
 

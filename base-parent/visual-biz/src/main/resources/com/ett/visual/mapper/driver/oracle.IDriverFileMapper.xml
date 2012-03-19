@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+	Create Date:2012-03-16 04:23:02
+	MapperTemplate:com.smartken.toyz4j.mybatis.OracleMapperTemplate
+	Model:com.ett.visual.model.driver.DriverFileModel 
+
+
+ public static enum F { 
+  Id,Title,Remark,DriverPk,CreateDate,LastModifyDate,OperPk,Rec,Type,Status,CompleteInd,
+CleanInd,IndexInd,LastCheckDate,SecretLevel  
+ } 
+
+private String Id,Title,Remark,DriverPk,
+				OperPk,Type,Status,CompleteInd,
+				CleanInd,IndexInd;
+
+private Integer SecretLevel;
+
+private byte[] Rec;
+
+private Date CreateDate,LastModifyDate,LastCheckDate;
+
+ 
+
+ public  class SimpleQueryModel extends com.ett.visual.model.driver.DriverFileModel { 
+ private List<Date> inCreateDate,notinCreateDate,inLastModifyDate,notinLastModifyDate,
+				inLastCheckDate,notinLastCheckDate;
+
+private Date neqCreateDate,minCreateDate,maxCreateDate,neqLastModifyDate,
+				minLastModifyDate,maxLastModifyDate,neqLastCheckDate,minLastCheckDate,
+				maxLastCheckDate;
+
+private String neqId,likeId,notlikeId,neqTitle,
+				likeTitle,notlikeTitle,neqRemark,likeRemark,
+				notlikeRemark,neqDriverPk,likeDriverPk,notlikeDriverPk,
+				neqOperPk,likeOperPk,notlikeOperPk,neqType,
+				likeType,notlikeType,neqStatus,likeStatus,
+				notlikeStatus,neqCompleteInd,likeCompleteInd,notlikeCompleteInd,
+				neqCleanInd,likeCleanInd,notlikeCleanInd,neqIndexInd,
+				likeIndexInd,notlikeIndexInd;
+
+private List<String> inId,notinId,inTitle,notinTitle,
+				inRemark,notinRemark,inDriverPk,notinDriverPk,
+				inOperPk,notinOperPk,inType,notinType,
+				inStatus,notinStatus,inCompleteInd,notinCompleteInd,
+				inCleanInd,notinCleanInd,inIndexInd,notinIndexInd;
+
+private Integer neqSecretLevel,minSecretLevel,maxSecretLevel;
+
+private List<Integer> inSecretLevel,notinSecretLevel;
+
+private Boolean isnullId,isnotnullId,isnullTitle,isnotnullTitle,
+				isnullRemark,isnotnullRemark,isnullDriverPk,isnotnullDriverPk,
+				isnullCreateDate,isnotnullCreateDate,isnullLastModifyDate,isnotnullLastModifyDate,
+				isnullOperPk,isnotnullOperPk,isnullType,isnotnullType,
+				isnullStatus,isnotnullStatus,isnullCompleteInd,isnotnullCompleteInd,
+				isnullCleanInd,isnotnullCleanInd,isnullIndexInd,isnotnullIndexInd,
+				isnullLastCheckDate,isnotnullLastCheckDate,isnullSecretLevel,isnotnullSecretLevel;
+
+ 
+ } 
+--> 
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ett.visual.mapper.driver.IDriverFileMapper">
+
+<sql id="table">VIS_DRIVER_FILE</sql>
+
+<sql id="pk">id</sql>
+
+<sql id="colums">
+	<trim prefixOverrides=","  suffixOverrides=",">
+		<choose>
+			<when test="dynamic neq null and dynamic[colums] neq null ">
+				<foreach collection="dynamic.colums" item="col"  >
+					 main.#{col} , 
+				</foreach>
+			</when>
+			<otherwise>
+				main.ID,main.TITLE,main.REMARK,main.DRIVER_PK,main.CREATE_DATE,main.LAST_MODIFY_DATE,main.OPER_PK,main.REC,main.TYPE,main.STATUS,main.COMPLETE_IND,
+main.CLEAN_IND,main.INDEX_IND,main.LAST_CHECK_DATE,main.SECRET_LEVEL
+			</otherwise>
+		</choose>
+	</trim>
+</sql>
+
+
+<sql id="insertCols">
+#{Id,jdbcType=VARCHAR},
+#{Title,jdbcType=VARCHAR},
+#{Remark,jdbcType=VARCHAR},
+#{DriverPk,jdbcType=VARCHAR},
+#{CreateDate,jdbcType=DATE},
+#{LastModifyDate,jdbcType=DATE},
+#{OperPk,jdbcType=VARCHAR},
+#{Rec,jdbcType=BLOB},
+#{Type,jdbcType=VARCHAR},
+#{Status,jdbcType=VARCHAR},
+#{CompleteInd,jdbcType=CHAR},
+#{CleanInd,jdbcType=CHAR},
+#{IndexInd,jdbcType=CHAR},
+#{LastCheckDate,jdbcType=DATE},
+#{SecretLevel,jdbcType=INTEGER},
+
+</sql>
+
+<sql id="updateCols">
+<if test="pk neq null">id=#{pk},</if>
+main.TITLE=#{model.Title,jdbcType=VARCHAR},
+main.REMARK=#{model.Remark,jdbcType=VARCHAR},
+main.DRIVER_PK=#{model.DriverPk,jdbcType=VARCHAR},
+main.CREATE_DATE=#{model.CreateDate,jdbcType=DATE},
+main.LAST_MODIFY_DATE=#{model.LastModifyDate,jdbcType=DATE},
+main.OPER_PK=#{model.OperPk,jdbcType=VARCHAR},
+main.REC=#{model.Rec,jdbcType=BLOB},
+main.TYPE=#{model.Type,jdbcType=VARCHAR},
+main.STATUS=#{model.Status,jdbcType=VARCHAR},
+main.COMPLETE_IND=#{model.CompleteInd,jdbcType=CHAR},
+main.CLEAN_IND=#{model.CleanInd,jdbcType=CHAR},
+main.INDEX_IND=#{model.IndexInd,jdbcType=CHAR},
+main.LAST_CHECK_DATE=#{model.LastCheckDate,jdbcType=DATE},
+main.SECRET_LEVEL=#{model.SecretLevel,jdbcType=INTEGER},
+
+</sql>
+
+<sql id="orderby">
+	<trim  suffixOverrides=",">
+		<choose>
+			<when test="dynamic neq null and dynamic[orderbyBounds] neq null ">
+				<foreach collection="dynamic.orderbyBounds" item="ob" open=" order by " >
+					 main.#{ob.name} #{ob.type}, 
+				</foreach>
+			</when>
+			<otherwise>
+				order by  <include refid="pk" /> DESC
+			</otherwise>
+		</choose>
+	</trim>
+</sql>
+
+
+<resultMap type="com.ett.visual.model.driver.DriverFileModel" id="resultMap">
+ <id column="ID"  property="Id" jdbcType="VARCHAR"  javaType="String"/>
+<result column="TITLE"  property="Title" jdbcType="VARCHAR"  javaType="String"/>
+<result column="REMARK"  property="Remark" jdbcType="VARCHAR"  javaType="String"/>
+<result column="DRIVER_PK"  property="DriverPk" jdbcType="VARCHAR"  javaType="String"/>
+<result column="CREATE_DATE"  property="CreateDate" jdbcType="DATE"  javaType="Date"/>
+<result column="LAST_MODIFY_DATE"  property="LastModifyDate" jdbcType="DATE"  javaType="Date"/>
+<result column="OPER_PK"  property="OperPk" jdbcType="VARCHAR"  javaType="String"/>
+<result column="REC"  property="Rec" jdbcType="BLOB" />
+<result column="TYPE"  property="Type" jdbcType="VARCHAR"  javaType="String"/>
+<result column="STATUS"  property="Status" jdbcType="VARCHAR"  javaType="String"/>
+<result column="COMPLETE_IND"  property="CompleteInd" jdbcType="CHAR"  javaType="String"/>
+<result column="CLEAN_IND"  property="CleanInd" jdbcType="CHAR"  javaType="String"/>
+<result column="INDEX_IND"  property="IndexInd" jdbcType="CHAR"  javaType="String"/>
+<result column="LAST_CHECK_DATE"  property="LastCheckDate" jdbcType="DATE"  javaType="Date"/>
+<result column="SECRET_LEVEL"  property="SecretLevel" jdbcType="INTEGER"  javaType="Integer"/>
+
+ </resultMap>
+
+
+<sql id="selectCondition">
+<if test=" model['isnullId'] eq true">and main.ID is null  </if> 
+<if test=" model['isnotnullId'] eq true">and main.ID is not null </if> 
+<if test=" model['inId'] neq null">and main.ID in <foreach collection="model.inId" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" model['notinId'] neq null">and main.ID not in <foreach collection="model.notinId" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" model['Id'] neq null">and main.ID = #{model.Id } </if> 
+<if test=" model['neqId'] neq null">and main.ID != #{model.neqId } </if> 
+<if test="model['likeId'] neq null">and main.ID like #{model.likeId} </if> 
+<if test="model['notlikeId'] neq null">and main.ID not like #{model.notlikeId  } </if> 
+
+<if test=" model['isnullTitle'] eq true">and main.TITLE is null  </if> 
+<if test=" model['isnotnullTitle'] eq true">and main.TITLE is not null </if> 
+<if test=" model['inTitle'] neq null">and main.TITLE in <foreach collection="model.inTitle" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" model['notinTitle'] neq null">and main.TITLE not in <foreach collection="model.notinTitle" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" model['Title'] neq null">and main.TITLE = #{model.Title } </if> 
+<if test=" model['neqTitle'] neq null">and main.TITLE != #{model.neqTitle } </if> 
+<if test="model['likeTitle'] neq null">and main.TITLE like #{model.likeTitle} </if> 
+<if test="model['notlikeTitle'] neq null">and main.TITLE not like #{model.notlikeTitle  } </if> 
+
+<if test=" model['isnullRemark'] eq true">and main.REMARK is null  </if> 
+<if test=" model['isnotnullRemark'] eq true">and main.REMARK is not null </if> 
+<if test=" model['inRemark'] neq null">and main.REMARK in <foreach collection="model.inRemark" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" model['notinRemark'] neq null">and main.REMARK not in <foreach collection="model.notinRemark" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" model['Remark'] neq null">and main.REMARK = #{model.Remark } </if> 
+<if test=" model['neqRemark'] neq null">and main.REMARK != #{model.neqRemark } </if> 
+<if test="model['likeRemark'] neq null">and main.REMARK like #{model.likeRemark} </if> 
+<if test="model['notlikeRemark'] neq null">and main.REMARK not like #{model.notlikeRemark  } </if> 
+
+<if test=" model['isnullDriverPk'] eq true">and main.DRIVER_PK is null  </if> 
+<if test=" model['isnotnullDriverPk'] eq true">and main.DRIVER_PK is not null </if> 
+<if test=" model['inDriverPk'] neq null">and main.DRIVER_PK in <foreach collection="model.inDriverPk" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" model['notinDriverPk'] neq null">and main.DRIVER_PK not in <foreach collection="model.notinDriverPk" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" model['DriverPk'] neq null">and main.DRIVER_PK = #{model.DriverPk } </if> 
+<if test=" model['neqDriverPk'] neq null">and main.DRIVER_PK != #{model.neqDriverPk } </if> 
+<if test="model['likeDriverPk'] neq null">and main.DRIVER_PK like #{model.likeDriverPk} </if> 
+<if test="model['notlikeDriverPk'] neq null">and main.DRIVER_PK not like #{model.notlikeDriverPk  } </if> 
+
+<if test=" model['isnullCreateDate'] eq true">and main.CREATE_DATE is null  </if> 
+<if test=" model['isnotnullCreateDate'] eq true">and main.CREATE_DATE is not null </if> 
+<if test=" model['inCreateDate'] neq null">and main.CREATE_DATE in <foreach collection="model.inCreateDate" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" model['notinCreateDate'] neq null">and main.CREATE_DATE not in <foreach collection="model.notinCreateDate" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" model['CreateDate'] neq null">and to_charmainm.CREATE_DATE,'YYYY-MM-DD') = to_char(#{model.CreateDate },'YYYY-MM-DD') </if> 
+<if test=" model['neqCreateDate'] neq null">and to_char(main.CREATE_DATE,'YYYY-MM-DD') != to_char(#{model.neqCreateDate },'YYYY-MM-DD') </if> 
+<if test=" model['minCreateDate'] neq null">and to_char(main.CREATE_DATE,'YYYY-MM-DD') &gt;= to_char(#{model.minCreateDate },'YYYY-MM-DD') </if> 
+<if test="model['maxCreateDate'] neq null">and to_char(main.CREATE_DATE,'YYYY-MM-DD') &lt;= to_char(#{model.maxCreateDate },'YYYY-MM-DD') </if> 
+
+<if test=" model['isnullLastModifyDate'] eq true">and main.LAST_MODIFY_DATE is null  </if> 
+<if test=" model['isnotnullLastModifyDate'] eq true">and main.LAST_MODIFY_DATE is not null </if> 
+<if test=" model['inLastModifyDate'] neq null">and main.LAST_MODIFY_DATE in <foreach collection="model.inLastModifyDate" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" model['notinLastModifyDate'] neq null">and main.LAST_MODIFY_DATE not in <foreach collection="model.notinLastModifyDate" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" model['LastModifyDate'] neq null">and to_charmainm.LAST_MODIFY_DATE,'YYYY-MM-DD') = to_char(#{model.LastModifyDate },'YYYY-MM-DD') </if> 
+<if test=" model['neqLastModifyDate'] neq null">and to_char(main.LAST_MODIFY_DATE,'YYYY-MM-DD') != to_char(#{model.neqLastModifyDate },'YYYY-MM-DD') </if> 
+<if test=" model['minLastModifyDate'] neq null">and to_char(main.LAST_MODIFY_DATE,'YYYY-MM-DD') &gt;= to_char(#{model.minLastModifyDate },'YYYY-MM-DD') </if> 
+<if test="model['maxLastModifyDate'] neq null">and to_char(main.LAST_MODIFY_DATE,'YYYY-MM-DD') &lt;= to_char(#{model.maxLastModifyDate },'YYYY-MM-DD') </if> 
+
+<if test=" model['isnullOperPk'] eq true">and main.OPER_PK is null  </if> 
+<if test=" model['isnotnullOperPk'] eq true">and main.OPER_PK is not null </if> 
+<if test=" model['inOperPk'] neq null">and main.OPER_PK in <foreach collection="model.inOperPk" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" model['notinOperPk'] neq null">and main.OPER_PK not in <foreach collection="model.notinOperPk" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" model['OperPk'] neq null">and main.OPER_PK = #{model.OperPk } </if> 
+<if test=" model['neqOperPk'] neq null">and main.OPER_PK != #{model.neqOperPk } </if> 
+<if test="model['likeOperPk'] neq null">and main.OPER_PK like #{model.likeOperPk} </if> 
+<if test="model['notlikeOperPk'] neq null">and main.OPER_PK not like #{model.notlikeOperPk  } </if> 
+
+<if test=" model['isnullType'] eq true">and main.TYPE is null  </if> 
+<if test=" model['isnotnullType'] eq true">and main.TYPE is not null </if> 
+<if test=" model['inType'] neq null">and main.TYPE in <foreach collection="model.inType" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" model['notinType'] neq null">and main.TYPE not in <foreach collection="model.notinType" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" model['Type'] neq null">and main.TYPE = #{model.Type } </if> 
+<if test=" model['neqType'] neq null">and main.TYPE != #{model.neqType } </if> 
+<if test="model['likeType'] neq null">and main.TYPE like #{model.likeType} </if> 
+<if test="model['notlikeType'] neq null">and main.TYPE not like #{model.notlikeType  } </if> 
+
+<if test=" model['isnullStatus'] eq true">and main.STATUS is null  </if> 
+<if test=" model['isnotnullStatus'] eq true">and main.STATUS is not null </if> 
+<if test=" model['inStatus'] neq null">and main.STATUS in <foreach collection="model.inStatus" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" model['notinStatus'] neq null">and main.STATUS not in <foreach collection="model.notinStatus" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" model['Status'] neq null">and main.STATUS = #{model.Status } </if> 
+<if test=" model['neqStatus'] neq null">and main.STATUS != #{model.neqStatus } </if> 
+<if test="model['likeStatus'] neq null">and main.STATUS like #{model.likeStatus} </if> 
+<if test="model['notlikeStatus'] neq null">and main.STATUS not like #{model.notlikeStatus  } </if> 
+
+<if test=" model['isnullCompleteInd'] eq true">and main.COMPLETE_IND is null  </if> 
+<if test=" model['isnotnullCompleteInd'] eq true">and main.COMPLETE_IND is not null </if> 
+<if test=" model['inCompleteInd'] neq null">and main.COMPLETE_IND in <foreach collection="model.inCompleteInd" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" model['notinCompleteInd'] neq null">and main.COMPLETE_IND not in <foreach collection="model.notinCompleteInd" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" model['CompleteInd'] neq null">and main.COMPLETE_IND = #{model.CompleteInd } </if> 
+<if test=" model['neqCompleteInd'] neq null">and main.COMPLETE_IND != #{model.neqCompleteInd } </if> 
+<if test="model['likeCompleteInd'] neq null">and main.COMPLETE_IND like #{model.likeCompleteInd} </if> 
+<if test="model['notlikeCompleteInd'] neq null">and main.COMPLETE_IND not like #{model.notlikeCompleteInd  } </if> 
+
+<if test=" model['isnullCleanInd'] eq true">and main.CLEAN_IND is null  </if> 
+<if test=" model['isnotnullCleanInd'] eq true">and main.CLEAN_IND is not null </if> 
+<if test=" model['inCleanInd'] neq null">and main.CLEAN_IND in <foreach collection="model.inCleanInd" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" model['notinCleanInd'] neq null">and main.CLEAN_IND not in <foreach collection="model.notinCleanInd" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" model['CleanInd'] neq null">and main.CLEAN_IND = #{model.CleanInd } </if> 
+<if test=" model['neqCleanInd'] neq null">and main.CLEAN_IND != #{model.neqCleanInd } </if> 
+<if test="model['likeCleanInd'] neq null">and main.CLEAN_IND like #{model.likeCleanInd} </if> 
+<if test="model['notlikeCleanInd'] neq null">and main.CLEAN_IND not like #{model.notlikeCleanInd  } </if> 
+
+<if test=" model['isnullIndexInd'] eq true">and main.INDEX_IND is null  </if> 
+<if test=" model['isnotnullIndexInd'] eq true">and main.INDEX_IND is not null </if> 
+<if test=" model['inIndexInd'] neq null">and main.INDEX_IND in <foreach collection="model.inIndexInd" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" model['notinIndexInd'] neq null">and main.INDEX_IND not in <foreach collection="model.notinIndexInd" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" model['IndexInd'] neq null">and main.INDEX_IND = #{model.IndexInd } </if> 
+<if test=" model['neqIndexInd'] neq null">and main.INDEX_IND != #{model.neqIndexInd } </if> 
+<if test="model['likeIndexInd'] neq null">and main.INDEX_IND like #{model.likeIndexInd} </if> 
+<if test="model['notlikeIndexInd'] neq null">and main.INDEX_IND not like #{model.notlikeIndexInd  } </if> 
+
+<if test=" model['isnullLastCheckDate'] eq true">and main.LAST_CHECK_DATE is null  </if> 
+<if test=" model['isnotnullLastCheckDate'] eq true">and main.LAST_CHECK_DATE is not null </if> 
+<if test=" model['inLastCheckDate'] neq null">and main.LAST_CHECK_DATE in <foreach collection="model.inLastCheckDate" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" model['notinLastCheckDate'] neq null">and main.LAST_CHECK_DATE not in <foreach collection="model.notinLastCheckDate" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" model['LastCheckDate'] neq null">and to_charmainm.LAST_CHECK_DATE,'YYYY-MM-DD') = to_char(#{model.LastCheckDate },'YYYY-MM-DD') </if> 
+<if test=" model['neqLastCheckDate'] neq null">and to_char(main.LAST_CHECK_DATE,'YYYY-MM-DD') != to_char(#{model.neqLastCheckDate },'YYYY-MM-DD') </if> 
+<if test=" model['minLastCheckDate'] neq null">and to_char(main.LAST_CHECK_DATE,'YYYY-MM-DD') &gt;= to_char(#{model.minLastCheckDate },'YYYY-MM-DD') </if> 
+<if test="model['maxLastCheckDate'] neq null">and to_char(main.LAST_CHECK_DATE,'YYYY-MM-DD') &lt;= to_char(#{model.maxLastCheckDate },'YYYY-MM-DD') </if> 
+
+<if test=" model['isnullSecretLevel'] eq true">and main.SECRET_LEVEL is null  </if> 
+<if test=" model['isnotnullSecretLevel'] eq true">and main.SECRET_LEVEL is not null </if> 
+<if test=" model['inSecretLevel'] neq null">and main.SECRET_LEVEL in <foreach collection="model.inSecretLevel" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" model['notinSecretLevel'] neq null">and main.SECRET_LEVEL not in <foreach collection="model.notinSecretLevel" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" model['SecretLevel'] neq null">and main.SECRET_LEVEL = #{model.SecretLevel } </if> 
+<if test=" model['neqSecretLevel'] neq null">and main.SECRET_LEVEL != #{model.neqSecretLevel } </if> 
+<if test=" model['minSecretLevel'] neq null">and main.SECRET_LEVEL &gt;= #{model.minSecretLevel } </if> 
+<if test=" model['maxSecretLevel'] neq null">and main.SECRET_LEVEL &lt;= #{model.maxSecretLevel} </if> 
+
+
+</sql>
+
+
+<select id="select" resultType="ArrayList" resultMap="resultMap">
+	select <include refid="colums" />  from <include refid="table" />  main   
+		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+			<include refid="selectCondition"/>
+		</trim>
+</select>
+
+<select id="selectUnion" resultType="ArrayList" resultMap="resultMap">
+  select  main.* from (
+	<trim  prefixOverrides="union all" suffixOverrides="union all">
+		<foreach collection="querys" item="model">
+			<if test="model neq null">
+				union all select <include refid="colums" /> from <include refid="table"  /> main 
+					<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+						<include refid="selectCondition"/>
+					</trim>
+			</if>
+		</foreach>
+	</trim>
+   ) main 
+</select>
+
+<select id="selectEqPk"  resultMap="resultMap">
+	select <include refid="colums" /> from <include refid="table"  /> main  where <include refid="pk" /> = #{Id,jdbcType=VARCHAR,javaType=String}
+</select>
+
+<select  id="selectAll"  resultType="ArrayList"  resultMap="resultMap">
+	select <include refid="colums" /> from  <include refid="table" />  main  
+</select>
+
+<select id="countAll" resultType="int">
+	select count(<include refid="pk"/>) from <include refid="table"   /> 
+</select>
+
+<select id="count" resultType="int">
+	select count(<include refid="pk"/>) from <include refid="table"   />
+		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+			<include refid="selectCondition"/>
+		</trim>
+</select>
+
+<insert id="insert" flushCache="true" >
+	insert into <include refid="table" /> main  ( <include refid="colums"/> ) values  
+	(
+		<trim  prefixOverrides="," suffixOverrides=",">
+			<include refid="insertCols"/>
+		</trim>
+	)
+</insert>
+
+<update id="update" flushCache="true" >
+	update <include refid="table" /> main  set 
+		<trim  prefixOverrides="," suffixOverrides=",">
+			<include refid="updateCols"/>
+		</trim>
+	where main.<include refid="pk" />=#{model.Id,jdbcType=VARCHAR,javaType=String}</update>
+
+<delete id="deleteEqPk" flushCache="true">
+	delete from <include refid="table" />  where <include refid="pk" /> =#{Id,jdbcType=VARCHAR,javaType=String}
+</delete>
+
+<sql id="selectViewCondition">
+	 <include refid="selectCondition"/>  
+</sql>
+
+
+<select id="selectView" resultType="ArrayList" resultMap="resultView">
+	select <include refid="colums"/>  <include refid="joinCols"/> from <include refid="table" /> main  <include refid="join"/> 
+		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+			<include refid="selectViewCondition"/>
+		</trim></select>
+
+<select id="selectViewUnion" resultType="ArrayList" resultMap="resultView">
+  select main.*  <include refid="joinCols"/>from (
+	<trim  prefixOverrides="union all" suffixOverrides="union all">
+		<foreach collection="querys" item="model">
+			<if test="model neq null">
+				union all select <include refid="colums"/> <include refid="joinCols"/> from <include refid="table" /> main  <include refid="join"/> 
+					<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+						<include refid="selectViewCondition"/>
+					</trim>
+			</if>
+		</foreach>
+	</trim>
+  ) main 
+
+</select>
+
+<select  id="selectViewAll"  resultType="ArrayList"  resultMap="resultView">
+	select <include refid="colums"/> <include refid="joinCols"/> from  <include refid="table" /> main <include refid="join"/>
+</select>
+
+</mapper>

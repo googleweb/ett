@@ -23,10 +23,7 @@ public class DriverFileAction extends BaseVisualAction<DriverFileModel> {
 
 	public DriverFileModel getModel() {
 		// TODO Auto-generated method stub
-		if(_model==null){
-			_model=new DriverFileModel();
-		}
-		return _model;
+		return new DriverFileModel();
 	}
 
 	public String to_scan(){
@@ -45,17 +42,19 @@ public class DriverFileAction extends BaseVisualAction<DriverFileModel> {
 			e.printStackTrace();
 		}
 		String driverId=GetParameter("DriverPk");
-		this.driverBiz.loadCrudMapper(DriverInfoModel.class);
-		DriverInfoModel drvInfo=(DriverInfoModel) this.driverBiz.getModelEqPk(driverId);
-		re=this.driverBiz.tranSaveSacnFile(rec, drvInfo);
+		//this.driverBiz.loadCrudMapper(DriverInfoModel.class);
+		//DriverInfoModel drvInfo=(DriverInfoModel) this.driverBiz.getModelEqPk(driverId);
+		//re=this.driverBiz.tranSaveSacnFile(rec, drvInfo);
 		WritePlainText(re.toJson().toString());
 	}
 
 	@Override
-	protected BaseModel newSimpleQueryModel() {
+	public Object newQueryModel() {
 		// TODO Auto-generated method stub
-		return getModel().new SimpleQueryModel();
+		return null;
 	}
+
+	
 	
 	
 }

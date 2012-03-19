@@ -124,15 +124,6 @@ public  class MenuModel extends BaseModel {
 		}
 		
 	
-		public static void main(String[] args){
-			IMenuMapper<MenuModel> mapper=null;
-			MenuModel.SimpleQueryModel s=new MenuModel().new SimpleQueryModel();
-			try {
-				mapper.select(s);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+		
 	
 }

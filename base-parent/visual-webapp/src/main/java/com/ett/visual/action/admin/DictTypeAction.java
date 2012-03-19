@@ -22,20 +22,14 @@ public class DictTypeAction extends BaseVisualAction<DictTypeModel> {
 
 
 
-	public DictTypeModel getModel() {
-		// TODO Auto-generated method stub
-		if(_model==null){
-			_model= new DictTypeModel();
-		}
-		return _model;
-		
-	}
 
 	@Override
-	protected BaseModel newSimpleQueryModel() {
+	public Object newQueryModel() {
 		// TODO Auto-generated method stub
-		return getModel().new SimpleQueryModel();
+		return null;
 	}
+
+
 
 	
 
