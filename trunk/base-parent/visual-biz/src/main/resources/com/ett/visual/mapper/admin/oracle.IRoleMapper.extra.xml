@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2012-03-19 02:27:23
+	Create Date:2012-03-23 03:08:36
 	MapperTemplate:com.smartken.toyz4j.mybatis.OracleMapperTemplate
 --> 
 
@@ -12,13 +12,20 @@
 
 <!--  ,[name],.....   -->
 
-<sql id="joinCols"></sql>
+<sql id="joinCols">
+<include refid="queryCols"/>
+</sql>
 
 <!--  join table on xx=xx.....  别名main 已被主表使用 ,  -->
 
 <sql id="join"></sql>
 
 <resultMap type="com.ett.visual.model.admin.RoleModel" id="resultView" extends="resultMap" ></resultMap>
+
+
+<sql id="selectViewCondition">
+	 <include refid="selectCondition"/>  
+</sql>
 
 
 

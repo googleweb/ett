@@ -41,7 +41,7 @@ public class DriverFileAction extends BaseVisualAction<DriverFileModel> {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		String driverId=GetParameter("DriverPk");
+		String driverId=GetParameter("DriverPk",String.class);
 		//this.driverBiz.loadCrudMapper(DriverInfoModel.class);
 		//DriverInfoModel drvInfo=(DriverInfoModel) this.driverBiz.getModelEqPk(driverId);
 		//re=this.driverBiz.tranSaveSacnFile(rec, drvInfo);
@@ -51,7 +51,7 @@ public class DriverFileAction extends BaseVisualAction<DriverFileModel> {
 	@Override
 	public Object newQueryModel() {
 		// TODO Auto-generated method stub
-		return null;
+		return new DriverFileModel().new SimpleQueryModel();
 	}
 
 	

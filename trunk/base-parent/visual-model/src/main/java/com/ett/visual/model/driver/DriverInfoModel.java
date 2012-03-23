@@ -24,13 +24,13 @@ public class DriverInfoModel extends BaseVisualModel {
 		
 		
 		
-	@Override
+
 	public Object getPk() {
 		// TODO Auto-generated method stub
 		return this.Id;
 	}
 
-	@Override
+	
 	public void setPk(Object pk) {
 		// TODO Auto-generated method stub
         this.Id=pk.toString();

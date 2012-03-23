@@ -11,6 +11,7 @@ import com.ett.visual.model.driver.DriverInfoModel;
 import com.smartken.toyz4j.model.impl.BaseCurdBiz;
 import com.smartken.toyz4j.model.impl.BaseModel;
 import com.smartken.toyz4j.model.impl.ResultModel;
+import com.smartken.toyz4j.util.ObjectUtil;
 
 public class DriverBiz  extends BaseVisualBiz implements IDriverBiz{
 
@@ -18,7 +19,7 @@ public class DriverBiz  extends BaseVisualBiz implements IDriverBiz{
 		// TODO Auto-generated method stub
 		ResultModel result=new ResultModel();
 		DriverFileModel drvFile=new DriverFileModel();
-		drvFile.setPk(BaseModel.generalPK());
+		drvFile.setPk(ObjectUtil.GeneralPK());
 		drvFile.setRec(rec);
 		drvFile.setDriverPk(driver.getId());
 		drvFile.setCreateDate(new Date());

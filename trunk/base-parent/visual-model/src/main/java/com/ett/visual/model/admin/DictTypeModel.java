@@ -36,7 +36,7 @@ public class DictTypeModel extends BaseModel{
 		}
 
 
-		@Override
+	
 		public Object getPk() {
 			// TODO Auto-generated method stub
 			return this.Id;
@@ -46,7 +46,7 @@ public class DictTypeModel extends BaseModel{
 			// TODO Auto-generated method stub
 			return DictModel.F.values();
 		}
-		@Override
+
 		public void setPk(Object pk) {
 			// TODO Auto-generated method stub
 			this.Id=pk.toString();

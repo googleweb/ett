@@ -83,12 +83,12 @@ public class DepartmentModel extends BaseModel {
 		public void setCDeptype(String cDeptype) {
 			CDeptype = cDeptype;
 		}
-		@Override
+		
 		public Object getPk() {
 			// TODO Auto-generated method stub
 			return null;
 		}
-		@Override
+		
 		public void setPk(Object pk) {
 			// TODO Auto-generated method stub
 			

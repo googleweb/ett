@@ -87,6 +87,7 @@ public class MapperGenApp extends ToyzApp {
 		for (Enum<Table> et : enTables) {
 			try{
 			MapperTemplate mapper=mappers.get(et);
+			mapper.setOverWriterExtra(true);
 		    //MapperTemplate mapper=mappers.get(Table.EXAM_TK_CN);
 			System.out.println(mapper.generalMapplerXML(srcPath));
 			}catch(Exception ex){ex.printStackTrace();}
