@@ -43,6 +43,11 @@ var colIndexInd = { title:"IndexInd" , field:"IndexInd", width:200,editor:{type:
 
 var colLastCheckDate = { title:"LastCheckDate" , field:"LastCheckDate", width:200,editor:{type:"datebox",options:{  } } } ; 
 
+var querys=[
+    {column:colType,queryTypes:["neq","like"]}
+    ,{column:colCreateDate,queryTypes:["neq","like"]}
+];
+
 var editorsDriverFileModel=[ colOperPk,colLastModifyDate,colDriverPk,colRemark,colCreateDate,colTitle,colType,colStatus,colCompleteInd,colCleanInd,colIndexInd,colLastCheckDate ] ; 
 var optsDriverFileModel = { }; 
 optsDriverFileModel["regexp"] = "#tableDriverFileModel"; 
@@ -50,7 +55,9 @@ optsDriverFileModel["id"] = "Id";
 optsDriverFileModel["urlUpdate"] ="<%=basePath %>/driver/DriverFile/do/update.action" ; 
 optsDriverFileModel["urlAdd"]="<%=basePath %>/driver/DriverFile/do/add.action" ; 
 optsDriverFileModel["urlRemove"]="<%=basePath %>/driver/DriverFile/do/remove.action"; 
+optsDriverFileModel["urlQuery"]="<%=basePath %>/driver/DriverFile/datagrid/query.action"; 
 optsDriverFileModel["editors"] = editorsDriverFileModel; 
+optsDriverFileModel["querys"]=querys;
 
 var crudDriverFileModel = new CrudDatagrid(optsDriverFileModel); 
 var toolbarDriverFileModel = crudDriverFileModel.getToolbar(); 
@@ -70,15 +77,7 @@ url:"<%=basePath %>/driver/DriverFile/datagrid/list.action"
 
 </head>
 <body class="easyui-layout">
-	<div region="north">
-	<form action="<%=basePath %>/driver/DriverFile/query/file.action" method="post">
-	档案是否齐全<input type="text" name="CompleteInd">
-	影像是否清晰<input type="text" name="CleanInd">
-	质检状态<input type="text" name="Status">
-	索引是否错误<input type="text" name="IndexInd">
-	<input type="submit" value="查询">
-	</form>
-	</div>
+
    <div region="center">
       <table id="tableDriverFileModel"></table>
    </div>

@@ -112,12 +112,12 @@ public  class MenuModel extends BaseModel {
 		public void setIconCls(String iconCls) {
 			IconCls = iconCls;
 		}
-		@Override
+	
 		public Object getPk() {
 			// TODO Auto-generated method stub
 			return this.Menuid;
 		}
-		@Override
+		
 		public void setPk(Object pk) {
 			// TODO Auto-generated method stub
 			
