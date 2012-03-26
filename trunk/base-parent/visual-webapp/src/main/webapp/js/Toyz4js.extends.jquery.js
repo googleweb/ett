@@ -414,7 +414,7 @@ jQuery.fn.extend({
 	 var aAddQuery=$("<a class='easyui-linkbutton' iconCls='icon-add'>添加</a>");
 	 var aSearch=$("<a class='easyui-linkbutton' iconCls='icon-search'>查询</a>");
 	 var aCancel=$("<a class='easyui-linkbutton' iconCls='icon-cancel'>取消</a>");
-	 var dataGridRegexp=opts["datagridRegexp"]||"";
+	 var datagridRegexp=opts["datagridRegexp"]||"";
 	 var querys=opts["querys"]||[];
 	 var queryUrl=opts["urlQuery"]||"";
 	 var selectQueryPro=$("<select></select>");
@@ -493,20 +493,20 @@ jQuery.fn.extend({
 	 var colProText={title:"属性",field:"proText",align:"right",width:80};
 	 var colTypeText={title:"类型",field:"typeText",align:"left",width:50};
 	 var colQueryValue={title:"值",field:"queryValue",align:"left",width:200};
-	 var btnRemove={iconCls:"icon-remove",handler:function(){
+	 var btnRemove={iconCls:"icon-remove",text:"删除选中条件",handler:function(){
 		 
 		 var rows=tableQueryDatagrid.datagrid("getSelections");
 		 $.each(rows,function(i,row){
 			 mapQueryData[row["queryKey"]]=null;
 		 });
 		 var listQuery=[];
-		 $.each(mapQueryData,function(item){
-			 if(item==null)return true;
-			 listQuery.push(item);
+		 $.each(mapQueryData,function(key){
+			 if(mapQueryData[key]==null)return false;
+			 listQuery.push(mapQueryData[key]);
 		 });
 		 dataQueryGrid["rows"]=listQuery;
 		 dataQueryGrid["total"]=listQuery.length;
-		 tableQueryDatagrid.datagrid("loaddata",dataQueryGrid);
+		 tableQueryDatagrid.datagrid("loadData",dataQueryGrid);
 	 }};
 	 tableQueryDatagrid.datagrid({
 		 id:"queryKey"
@@ -542,14 +542,20 @@ jQuery.fn.extend({
 	 aSearch.click(function(){
 		 var parma={};
 		 $.each(mapQueryData,function(key,item){
-			 parma[item["queryKey"]]=item["queryValue"];
+			 if(mapQueryData[key]==null) return false;
+			 parma[key]=mapQueryData[key]["queryValue"];
 		 });
 		 var data={total:0,rows:[]};
+		 $.messager.progress({msg:"数据查询中，请稍候",text:""});
 		 $.post(queryUrl,parma,function(str){
+			 $.messager.progress("close");
 			 data=str.toJson();
 			 var total=data["total"];
 			 $.messager.confirm("搜索结果","本次查询共查到"+total+"条数据，确认加载？",function(yes){
-				 $(dataGridRegexp).datagrid("loadData",data);
+				 if(yes){
+				  $(datagridRegexp).datagrid("loadData",data["rows"]);
+				  $(regexpContent).dialog("close");
+				 }
 			 });
 		 });
 		 

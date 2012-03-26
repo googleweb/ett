@@ -19,12 +19,12 @@ import com.ett.visual.model.admin.DictTypeModel;
 import com.ett.visual.model.admin.RoleModel;
 import com.ett.visual.model.driver.DriverFileModel;
 
-import com.smartken.toyz4j.model.IBaseCrudBiz;
+
 import com.smartken.toyz4j.model.IBaseModel;
 import com.smartken.toyz4j.model.IToyzBiz;
 import com.smartken.toyz4j.model.IToyzCrudBean;
 import com.smartken.toyz4j.model.impl.BaseAction;
-import com.smartken.toyz4j.model.impl.BaseCurdBiz;
+
 import com.smartken.toyz4j.model.impl.BaseModel;
 import com.smartken.toyz4j.model.impl.ResultModel;
 import com.smartken.toyz4j.pager.PageArrayList;
@@ -33,7 +33,7 @@ import com.smartken.toyz4j.util.EasyUiUtil;
 import com.smartken.toyz4j.util.ObjectUtil;
 import com.smartken.toyz4j.util.StringUtil;
 
-public abstract class BaseVisualAction<M extends BaseModel> extends BaseAction<M> {
+public abstract class BaseVisualAction<M extends IBaseModel> extends BaseAction<M> {
       
 	
 	protected IAdminBiz adminBiz;
@@ -118,7 +118,7 @@ public abstract class BaseVisualAction<M extends BaseModel> extends BaseAction<M
 
 	public IToyzCrudBean<M> getToyzCurdBean() throws NullPointerException {
 		// TODO Auto-generated method stub
-		return ((IToyzBiz) adminBiz).newToyzCrudBean(this.getModelClass());
+		return adminBiz.newToyzCrudBean(this.getModelClass());
 	}
 
 

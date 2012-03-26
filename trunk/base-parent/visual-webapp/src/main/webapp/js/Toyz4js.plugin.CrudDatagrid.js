@@ -43,6 +43,7 @@ CrudDatagrid.prototype.getToolbar = function(opts) {
         divQuery = $("<div id='divQueryDialog'></div>");
         //divQuery.addClass("query");
         formOpts["regexpContent"]=regexpContent;
+        formOpts["datagridRegexp"] = regexp;
         divQuery.toyzQueryForm(formOpts);
         divQuery.dialog({
             title: "数据查询"
@@ -110,7 +111,7 @@ CrudDatagrid.prototype.getToolbar = function(opts) {
         $.messager.confirm("操作提示", "是否删除" + deleteCount + "条记录", function(ok) {
             if (ok) {
                 //var removeRowsAction=basePath+"/common/Datagrid/do/removeRows.action?modelClass="+modelClass;
-                $.post(urlRemove, { ids: ids }, function(re) {
+                $.post(urlRemove, { pks: ids }, function(re) {
                     try {
                         //alert(re.toString());
                         
