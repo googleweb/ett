@@ -20,13 +20,13 @@ private File tempFile;
 	
 	public DriverInfoModel getModel() {
 		// TODO Auto-generated method stub
-		return null;
+		return new DriverInfoModel();
 	}
 
 	@Override
 	public Object newQueryModel() {
 		// TODO Auto-generated method stub
-		return null;
+		return new DriverInfoModel().new SimpleQueryModel();
 	}
 
 	

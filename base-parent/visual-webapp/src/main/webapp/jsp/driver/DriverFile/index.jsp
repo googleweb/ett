@@ -44,7 +44,7 @@ var colIndexInd = { title:"IndexInd" , field:"IndexInd", width:200,editor:{type:
 var colLastCheckDate = { title:"LastCheckDate" , field:"LastCheckDate", width:200,editor:{type:"datebox",options:{  } } } ; 
 
 var querys=[
-    {column:colType,queryTypes:["neq","like"]}
+    {column:colType,queryTypes:["neq","notlike","isnull"]}
     ,{column:colCreateDate,queryTypes:["neq","like"]}
 ];
 
@@ -54,7 +54,7 @@ optsDriverFileModel["regexp"] = "#tableDriverFileModel";
 optsDriverFileModel["id"] = "Id"; 
 optsDriverFileModel["urlUpdate"] ="<%=basePath %>/driver/DriverFile/do/update.action" ; 
 optsDriverFileModel["urlAdd"]="<%=basePath %>/driver/DriverFile/do/add.action" ; 
-optsDriverFileModel["urlRemove"]="<%=basePath %>/driver/DriverFile/do/remove.action"; 
+optsDriverFileModel["urlRemove"]="<%=basePath %>/driver/DriverFile/do/removePks.action"; 
 optsDriverFileModel["urlQuery"]="<%=basePath %>/driver/DriverFile/datagrid/query.action"; 
 optsDriverFileModel["editors"] = editorsDriverFileModel; 
 optsDriverFileModel["querys"]=querys;
