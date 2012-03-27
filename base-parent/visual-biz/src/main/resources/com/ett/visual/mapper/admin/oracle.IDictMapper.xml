@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2012-03-23 03:08:36
+	Create Date:2012-03-27 11:35:37
 	MapperTemplate:com.smartken.toyz4j.mybatis.OracleMapperTemplate
 	Model:com.ett.visual.model.admin.DictModel 
 
@@ -173,7 +173,7 @@ main.STATE=#{model.State,jdbcType=VARCHAR},
 
 
 <select id="select" resultType="ArrayList" resultMap="resultMap">
-	select <include refid="queryCols" />  from <include refid="table" />  main   
+	select <include refid="queryCols"/>  from <include refid="table"/>"  main   
 		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
 			<include refid="selectCondition"/>
 		</trim>
@@ -197,28 +197,65 @@ main.STATE=#{model.State,jdbcType=VARCHAR},
 </select>
 
 <select id="selectEqPk"  resultMap="resultMap">
-	select <include refid="queryCols" /> from <include refid="table"  /> main  where <include refid="pk" /> = #{pk}
+	select <include refid="queryCols"/> from <include refid="table"/> main  where <include refid="pk"/> = #{pk}
 </select>
 
 <select  id="selectAll"  resultType="ArrayList"  resultMap="resultMap">
-	select <include refid="queryCols" /> from  <include refid="table" />  main  
+	select <include refid="queryCols"/> from  <include refid="table"/> main  
 	<include refid="orderby"/>
 </select>
 
 <select id="countAll" resultType="int">
-	select count(<include refid="pk"/>) from <include refid="table"   /> 
+	select count(<include refid="pk"/>) from <include refid="table"/> 
 </select>
 
 <select id="count" resultType="int">
-	select count(<include refid="pk"/>) from <include refid="table"   />
+	select count(<include refid="pk"/>) from <include refid="table"/>
+		<if test="model neq null" >
 		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
 			<include refid="selectCondition"/>
 		</trim>
-	<include refid="orderby"/>
+		</if>
+</select>
+
+<select id="avg" resultType="int">
+	select avg(${column}) from <include refid="table"/>
+		<if test="model neq null" >
+		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+			<include refid="selectCondition"/>
+		</trim>
+		</if>
+</select>
+
+<select id="sum" resultType="int">
+	select sum(${column}) from <include refid="table"/>
+		<if test="model neq null" >
+		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+			<include refid="selectCondition"/>
+		</trim>
+		</if>
+</select>
+
+<select id="min" resultType="int">
+	select min(${column}) from <include refid="table"/>
+		<if test="model neq null" >
+		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+			<include refid="selectCondition"/>
+		</trim>
+		</if>
+</select>
+
+<select id="max" resultType="int">
+	select max(${column}) from <include refid="table"/>
+		<if test="model neq null" >
+		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+			<include refid="selectCondition"/>
+		</trim>
+		</if>
 </select>
 
 <insert id="insert" flushCache="true" >
-	insert into <include refid="table" /> main  ( <include refid="columns"/> ) values  
+	insert into <include refid="table"/> main  ( <include refid="columns"/> ) values  
 	(
 		<trim  prefixOverrides="," suffixOverrides=",">
 			<include refid="insertCols"/>
@@ -227,23 +264,24 @@ main.STATE=#{model.State,jdbcType=VARCHAR},
 </insert>
 
 <update id="update" flushCache="true" >
-	update <include refid="table" /> main  set 
+	update <include refid="table"/> main  set 
 		<trim  prefixOverrides="," suffixOverrides=",">
 			<include refid="updateCols"/>
 		</trim>
-	where main.<include refid="pk" />=#{model.Id,jdbcType=VARCHAR,javaType=String}</update>
+	where main.<include refid="pk"/>=#{model.Id,jdbcType=VARCHAR}
+</update>
 
 <delete id="deleteEqPk" flushCache="true">
-	delete from <include refid="table" />  where <include refid="pk" /> =#{Id,jdbcType=VARCHAR,javaType=String}
+	delete from <include refid="table"/>  where <include refid="pk"/> =#{pk}
 </delete>
 
 <delete id="deleteInPk" flushCache="true">
-	delete from <include refid="table"/> where <include refid="pk" /> in
-		<foreach item="pk" collection="list" open="(" separator="," close=")">#{pk}</foreach>
+	delete from <include refid="table"/> where <include refid="pk"/> in
+		<foreach item="pk" collection="pks" open="(" separator="," close=")">#{pk}</foreach>
 </delete>
 
 <select id="selectView" resultType="ArrayList" resultMap="resultView">
-	select <include refid="joinCols"/>  <include refid="joinCols"/> from <include refid="table" /> main  <include refid="join"/> 
+	select <include refid="columns"/>  <include refid="joinCols"/> from <include refid="table" /> main <include refid="join"/> 
 		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
 			<include refid="selectViewCondition"/>
 		</trim>	<include refid="orderby"/>
@@ -254,7 +292,7 @@ main.STATE=#{model.State,jdbcType=VARCHAR},
 	<trim  prefixOverrides="union" suffixOverrides="union">
 		<foreach collection="querys" item="model">
 			<if test="model neq null">
-				union select <include refid="joinCols"/> from <include refid="table" /> main  <include refid="join"/> 
+				union select <include refid="queryCols"/> <include refid="joinCols"/> from <include refid="table"/> main  <include refid="join"/> 
 					<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
 						<include refid="selectViewCondition"/>
 					</trim>
@@ -267,12 +305,12 @@ main.STATE=#{model.State,jdbcType=VARCHAR},
 </select>
 
 <select id="selectViewEqPk"  resultMap="resultView">
-	select <include refid="joinCols" />  from <include refid="table" /> m <include refid="join"/> where m.<include refid="pk" /> = #{pk}
+	select <include refid="queryCols"/> <include refid="joinCols"/>  from <include refid="table"/> main <include refid="join"/> where main.<include refid="pk"/> = #{pk}
 <include refid="orderby"/>
 </select>
 
 <select  id="selectViewAll"  resultType="ArrayList"  resultMap="resultView">
-	select <include refid="columns"/> <include refid="joinCols"/> from  <include refid="table" /> main <include refid="join"/>
+	select  <include refid="queryCols"/> <include refid="joinCols"/> from  <include refid="table"/> main <include refid="join"/>
 	<include refid="orderby"/>
 </select>
 

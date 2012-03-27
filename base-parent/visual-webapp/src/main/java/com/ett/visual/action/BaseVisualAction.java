@@ -88,6 +88,8 @@ public abstract class BaseVisualAction<M extends IBaseModel> extends BaseAction<
 		    	 .append(MessageFormat.format(jsTagPattern, pathPrefix+"/jquery-easyui-datagridview/datagrid-detailview.js"))
 		    	 .append(MessageFormat.format(jsTagPattern,pathPrefix+ "/jquery-easyui-datagridview/datagrid-groupview.js"))
 		    	 .append(MessageFormat.format(jsTagPattern,pathPrefix+ "/jquery-jqzoom_ev-2.3/js/jquery.jqzoom-core-pack.js"))
+		    	.append(MessageFormat.format(jsTagPattern,pathPrefix+ "/jquery.hotkeys-0.7.9/jquery.hotkeys.min.js"))
+		    	//.append(MessageFormat.format(jsTagPattern,pathPrefix+ "/jquery.shortkey/jquery.shortkeys.js"))
 		    	 ;
 		    	 
 		    	 pathPrefix="/js";

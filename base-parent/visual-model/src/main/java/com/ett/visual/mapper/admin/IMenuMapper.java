@@ -4,7 +4,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 
-import com.smartken.toyz4j.model.IMapper;
+
 import com.smartken.toyz4j.mybatis.IToyzMapper;
 
 

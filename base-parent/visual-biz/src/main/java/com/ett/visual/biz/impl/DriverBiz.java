@@ -8,7 +8,7 @@ import com.ett.visual.biz.IDriverBiz;
 import com.ett.visual.model.BaseVisualModel;
 import com.ett.visual.model.driver.DriverFileModel;
 import com.ett.visual.model.driver.DriverInfoModel;
-import com.smartken.toyz4j.model.impl.BaseCurdBiz;
+
 import com.smartken.toyz4j.model.impl.BaseModel;
 import com.smartken.toyz4j.model.impl.ResultModel;
 import com.smartken.toyz4j.util.ObjectUtil;

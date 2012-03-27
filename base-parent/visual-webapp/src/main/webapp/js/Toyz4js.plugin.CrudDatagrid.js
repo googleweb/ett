@@ -37,6 +37,7 @@ CrudDatagrid.prototype.getToolbar = function(opts) {
     formOpts["querys"] = this._querys|| [];
     formOpts["urlQuery"] = this._urlQuery|| [];
     var divQuery=null;
+    var divCrud=null;
     var handlerBtnQuery=function() {
     	if(divQuery!=null){divQuery.dialog("open");return false;}
     	var regexpContent="#divQueryDialog";
@@ -51,6 +52,7 @@ CrudDatagrid.prototype.getToolbar = function(opts) {
           
 
         });
+        return false;
     };
     
     var btnQuery = { iconCls: "icon-search", text: "查询"
@@ -58,9 +60,11 @@ CrudDatagrid.prototype.getToolbar = function(opts) {
 };
     
     var handlerBtnAdd=function() {
+    	
         formOpts["data"] = newRow;
         formOpts["urlSave"] = urlAdd;
         var regexpContent="#divCrudDialog";
+    
         var div = $("<div id='divCrudDialog'></div>");
         //div.addClass("crud");
         formOpts["regexpContent"]=regexpContent;
@@ -70,8 +74,9 @@ CrudDatagrid.prototype.getToolbar = function(opts) {
 	      , modal: true
           , onClose: function() { $(this).dialog("destroy", true); }
          , onDestroy: function() { $(regexp).datagrid("reload"); }
-
+         
         });
+        return false;
     };
     
     var btnAdd = { iconCls: "icon-add", text: "新建"
@@ -95,7 +100,7 @@ CrudDatagrid.prototype.getToolbar = function(opts) {
          , onClose: function() { $(this).dialog("destroy", true); }
          , onDestroy: function() { $(regexp).datagrid("reload"); }
         });
-
+        return false;
     }
     
     var btnUpdate = { iconCls: "icon-edit", text: "修改"
@@ -122,6 +127,7 @@ CrudDatagrid.prototype.getToolbar = function(opts) {
                 });
             } //if(ok){
         });
+        return false;
     };
     
     var btnRemove = { iconCls: "icon-remove"
@@ -132,6 +138,7 @@ CrudDatagrid.prototype.getToolbar = function(opts) {
     var handlerBtnRefresh=function() {
         $(regexp).datagrid("clearSelections");
         $(regexp).datagrid("reload");
+        return false;
     };
     
     var btnRefresh = { iconCls: "icon-reload"
@@ -210,6 +217,7 @@ CrudDatagrid.prototype.getToolbar = function(opts) {
 	    div.dialog({
 	        title: "导出excel"
 	    });
+	    return false;
 	};
     
     var btnExportExcel = {
@@ -219,13 +227,13 @@ CrudDatagrid.prototype.getToolbar = function(opts) {
     };
 
     var toolbar = [btnQuery,btnAdd, btnUpdate, btnRemove, btnRefresh];
-    //$(regexp).bind("keypress","Alt+1",handlerBtnQuery);
-    //$(regexp).bind("keypress","Alt + 2",handlerBtnAdd);
-    //$(regexp).bind("keypress","Alt + 3",handlerBtnUpdate);
-    //$(regexp).bind("keypress","Alt + 4",handlerBtnRefresh);
-    //$(regexp).bind("keypress","Alt + 5",handlerBtnRemove);
-    //$(this).bind("keydown","alt+6",function(e){btnQuery.click();});
-    return toolbar;
+    $(document).bind("keypress","Alt+1",handlerBtnQuery);
+    $(document).bind("keypress","Alt+2",handlerBtnAdd);
+    $(document).bind("keypress","Alt+3",handlerBtnUpdate);
+    $(document).bind("keypress","Alt+4",handlerBtnRefresh);
+    $(document).bind("keypress","Alt+5",handlerBtnRemove);
+    //$(document).bind("keydown","alt+6",function(e){btnQuery.click();});
+   return toolbar;
 };
 
 
