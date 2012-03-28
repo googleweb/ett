@@ -65,6 +65,7 @@ public abstract class BaseVisualAction<M extends IBaseModel> extends BaseAction<
 		String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path;
 		     boolean isDebug=true;
 		     String jsTagPattern="<script type=\"text/javascript\"  src=\""+basePath+"{0}\"></script> \n";
+		     String jsContextPattern="<script type=\"text/javascript\" >{0}</script> \n";
 		     String cssTagPatttern="<link rel=\"stylesheet\" type=\"text/css\" href=\""+basePath+"{0}\"> \n";
 		     StringBuffer sbr=new StringBuffer("");
 		     String pathPrefix="";
@@ -81,6 +82,7 @@ public abstract class BaseVisualAction<M extends IBaseModel> extends BaseAction<
 		    	 
 		    	 pathPrefix="/js3rd";
 		    	 sbr
+		    	 .append(MessageFormat.format(jsTagPattern,pathPrefix+"/dateJs/date.js"))
 		    	 .append(MessageFormat.format(jsTagPattern,pathPrefix+"/jquery/jquery-1.7.1.min.js"))
 		    	 .append(MessageFormat.format(jsTagPattern,pathPrefix+"/jquery-pageload/jquery.pageload.js"))
 		    	 .append(MessageFormat.format(jsTagPattern,pathPrefix+ "/jquery-easyui-1.2.5/jquery.easyui.min.js"))
@@ -94,8 +96,9 @@ public abstract class BaseVisualAction<M extends IBaseModel> extends BaseAction<
 		    	 
 		    	 pathPrefix="/js";
 		    	 sbr
+		    	 .append(MessageFormat.format(jsContextPattern,getToyz4jsCfg().toScirpt()))
 		    	 .append(MessageFormat.format(jsTagPattern,pathPrefix+"/Toyz4js.core.js"))
-		    	 .append(MessageFormat.format(jsTagPattern, pathPrefix+"/Toyz4js.setting.js"))
+		    	 //.append(MessageFormat.format(jsTagPattern, pathPrefix+"/Toyz4js.cfg.js"))
 		    	 .append(MessageFormat.format(jsTagPattern, pathPrefix+"/Toyz4js.prototype.Array.js"))
 		    	 .append(MessageFormat.format(jsTagPattern, pathPrefix+"/Toyz4js.prototype.String.js"))
 		    	 .append(MessageFormat.format(jsTagPattern, pathPrefix+"/Toyz4js.extends.jquery.js"))
@@ -110,6 +113,7 @@ public abstract class BaseVisualAction<M extends IBaseModel> extends BaseAction<
 		    	 
 		    	 pathPrefix="/js";
 		    	 sbr
+		    	 .append(MessageFormat.format(jsContextPattern,getToyz4jsCfg().toScirpt()))
 		    	 .append(MessageFormat.format(jsTagPattern,pathPrefix+"/Toyz4js.package.min.js"));
 		    	 
 		     }

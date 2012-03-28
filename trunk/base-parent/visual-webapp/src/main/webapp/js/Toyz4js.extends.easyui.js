@@ -126,9 +126,10 @@ $.extend($.fn.validatebox.defaults.rules, {
 
  function DateFormatter(value, rowData, rowIndex) {
      try {
-         var dv = value.substring(1, value.length - 1);
-         var dt = eval("new " + dv);
-         return dt.toString("yyyy-MM-dd");
+         //var dv = value.substring(1, value.length - 1);
+        // var dt = eval("new " + dv);
+    	 var dt=Date.parse(value);
+         return dt.toString(Toyz4js["cfg"]["datePattern"]);
      } catch (ex) {
 
      return "";}
@@ -138,9 +139,10 @@ $.extend($.fn.validatebox.defaults.rules, {
 
  function DateTimeFormatter(value, rowData, rowIndex) {
      try {
-         var dv = value.substring(1, value.length - 1);
-         var dt = eval("new " + dv);
-         return dt.toString("yyyy-MM-dd HH:mm:ss");
+        // var dv = value.substring(1, value.length - 1);
+        // var dt = eval("new " + dv);
+    	 var dt=Date.parse(value);
+         return dt.toString(Toyz4js["cfg"]["datetimePattern"]);
      } catch (ex) {  return ""; }
  }
 
@@ -191,11 +193,11 @@ function RoleFormatter() {
 
 function IndFormatter(value, rowData, rowIndex) {
 
-    if (value == "Y") {
-        return "是";
+    if (value == toyz4js["cfg"]["value_true"]) {
+        return toyz4js["cfg"]["text_true"];
 
     } else {
-        return "否";
+        return toyz4js["cfg"]["text_false"];;
     }
 
 }
@@ -300,7 +302,8 @@ function GetIndEditor() {
     return {
         type: "combobox"
       , options: {
-        data: [{ text: "是", value: "Y" }, { text: "否", value: "N"}]
+        data: [{ text: Toyz4js["cfg"]["text_true"], value: Toyz4js["cfg"]["value_true"] }
+             , { text: Toyz4js["cfg"]["text_false"], value: Toyz4js["cfg"]["value_false"]}]
         , textField: "text"
         , valueField:"value"
       }
@@ -310,6 +313,6 @@ function GetIndEditor() {
 
 
 function LikeFilter(proName) {
-    return function(q, rowData) {  rowData[proName].indexOf(q) != -1; }
+    return function(q, rowData) { return rowData[proName].indexOf(q) != -1; }
 }
 

@@ -5,7 +5,7 @@ Array.prototype.getUnionAttrStr=function(filed,split){
 	//if(!filed.isString())return "";
 	var unionStr=new String();
 	if(!split){
-		split=",";
+		split=Toyz4js["cfg"]["array_separator"];
 	}
 	for(var i=0;i<this.length;i++){
 		var tempVal=this[i][filed];
@@ -24,7 +24,7 @@ Array.prototype.getUnionStr = function(split) {
         //if(!filed.isString())return "";
         var unionStr = new String();
         if (!split) {
-            split = ",";
+            split = Toyz4js["cfg"]["array_separator"];
         }
         for (var i = 0; i < this.length; i++) {
             var tempVal = this[i].toString();

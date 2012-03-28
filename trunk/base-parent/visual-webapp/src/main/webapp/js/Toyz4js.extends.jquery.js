@@ -194,7 +194,7 @@ jQuery.fn.extend({
  , toyzDoublebox: function() {
      $(this).numberbox({
          increment: 10
-            , precision: Toyz4js.setting.precision
+            , precision: Toyz4js["cfg"]["precision"]
      });
  }
 
@@ -476,7 +476,7 @@ jQuery.fn.extend({
 			var queryTypes=queryOpts[ov]["queryTypes"]||[];
 			var dataQueryTypes=[];
 			$.each(queryTypes,function(index,queryType){
-				var typeName=mapQueryTypeName[queryType];
+				var typeName=Toyz4js["cfg"]["queryTypes"][queryType];
 				dataQueryTypes.push({text:typeName,value:queryType});
 			});
 			selectQueryType.combobox("clear");
