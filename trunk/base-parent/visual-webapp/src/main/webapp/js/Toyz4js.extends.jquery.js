@@ -419,8 +419,8 @@ jQuery.fn.extend({
 	 var queryUrl=opts["urlQuery"]||"";
 	 var selectQueryPro=$("<select></select>");
 	 var selectQueryType=$("<select></select>");
-	 var divQueryVaule=$("<div></div>");
-	 var inputQueryVaule=$("<input />");
+	 var spanQueryVaule=$("<span></span>");
+	 var inputQueryVaule;
 	 var dataSelectQueryPro=[];
 	 var dataQueryGrid={rows:[],total:0};
 	 var mapQueryData={};
@@ -439,7 +439,7 @@ jQuery.fn.extend({
 	 };
 	 $(this).append(divLayout);
 	 divLayout.append(divNorth).append(divCenter).append(divSouth);
-	 divNorth.append("属性:").append(selectQueryPro).append(selectQueryType).append("值:").append(inputQueryVaule).append(aAddQuery);
+	 divNorth.append("属性:").append(selectQueryPro).append(selectQueryType).append("值:").append(spanQueryVaule).append(aAddQuery);
 	 divCenter.append(tableQueryDatagrid);
 	 divSouth.append(aSearch).append(aCancel).css("text-align","right");
 	 $.parser.parse(divLayout);
@@ -462,7 +462,28 @@ jQuery.fn.extend({
 	     ,valueField:"value"
 		 ,editable:false
 		 ,onChange:function(ov,nv){
-			 inputQueryVaule.val("");		
+			 //inputQueryVaule.val("");	
+			 var proName=selectQueryPro.combobox("getValue");
+			 var column=queryOpts[proName]["column"];
+			 var editorType=column["editor"]["type"]||"validatebox";
+			 var editorOpts=column["editor"]["options"]||{};
+			 spanQueryVaule.empty();
+			 inputQueryVaule=$("<input name='queryValue' />");
+			 if(editorType=="validatebox"){
+
+				 spanQueryVaule.append(inputQueryVaule);
+				 inputQueryVaule.validatebox(editorOpts);
+			 }
+			 else if(editorType=="combobox"){
+				 spanQueryVaule.append(inputQueryVaule);
+				 inputQueryVaule.combobox(editorOpts);
+			 }else if(editorType=="datebox"){
+				 spanQueryVaule.append(inputQueryVaule);
+				 inputQueryVaule.datebox(editorOpts);
+			 }else if(editorType=="numberspinner"){
+				 spanQueryVaule.append(inputQueryVaule);
+				 inputQueryVaule.numberspinner(editorOpts);
+			 }
 		 }
 	 });
 	 selectQueryPro.combobox({
@@ -471,7 +492,7 @@ jQuery.fn.extend({
 		,data:dataSelectQueryPro
 		,editable:false
 		,onChange:function(ov,nv){
-			inputQueryVaule.val("");	
+			//inputQueryVaule.val("");	
 			//alert(ov+":"+nv);
 			var queryTypes=queryOpts[ov]["queryTypes"]||[];
 			var dataQueryTypes=[];
@@ -481,9 +502,10 @@ jQuery.fn.extend({
 			});
 			selectQueryType.combobox("clear");
 			selectQueryType.combobox("loadData",dataQueryTypes);
+			selectQueryType.combobox("setValue",dataQueryTypes[0]["value"]);
 		}
 	 });
-	 
+	 selectQueryPro.combobox("setValue",dataSelectQueryPro[0]["value"]);
 	 inputQueryVaule.validatebox({
 		 required:true,
 		 missingMessage:"查询值不能为空"
@@ -501,12 +523,13 @@ jQuery.fn.extend({
 		 });
 		 var listQuery=[];
 		 $.each(mapQueryData,function(key){
-			 if(mapQueryData[key]==null)return false;
+			 if(!mapQueryData[key])return true;
 			 listQuery.push(mapQueryData[key]);
 		 });
 		 dataQueryGrid["rows"]=listQuery;
 		 dataQueryGrid["total"]=listQuery.length;
 		 tableQueryDatagrid.datagrid("loadData",dataQueryGrid);
+		 tableQueryDatagrid.datagrid("clearSelections");
 	 }};
 	 tableQueryDatagrid.datagrid({
 		 id:"queryKey"
@@ -524,8 +547,8 @@ jQuery.fn.extend({
 		 var proName=selectQueryPro.combobox("getValue");
 		 var typeText=selectQueryType.combobox("getText");
 		 var typeName=selectQueryType.combobox("getValue");
-		 var queryValue=inputQueryVaule.val();
-		 inputQueryVaule.val("");
+		 var queryValue=$("input[name=queryValue]").val();
+		 //inputQueryVaule.val("");
 		 var queryKey=typeName+proName;
 		 mapQueryData[queryKey]={queryKey:queryKey,proText:proText,proName:proName,typeText:typeText,typeName:typeName,queryValue:queryValue};
 		 
@@ -545,18 +568,22 @@ jQuery.fn.extend({
 			 if(mapQueryData[key]==null) return false;
 			 parma[key]=mapQueryData[key]["queryValue"];
 		 });
-		 var data={total:0,rows:[]};
+		 var d={total:0,rows:[]};
 		 $.messager.progress({msg:"数据查询中，请稍候",text:""});
 		 $.post(queryUrl,parma,function(str){
 			 $.messager.progress("close");
-			 data=str.toJson();
-			 var total=data["total"];
+			 d=str.toJson();
+			 try{
+			 var total=d["total"];
 			 $.messager.confirm("搜索结果","本次查询共查到"+total+"条数据，确认加载？",function(yes){
 				 if(yes){
-				  $(datagridRegexp).datagrid("loadData",data["rows"]);
+				  $(datagridRegexp).datagrid("loadData",d["rows"]);
 				  $(regexpContent).dialog("close");
 				 }
 			 });
+			 }catch(ex){
+				 str.messager();
+			 }
 		 });
 		 
 	 });

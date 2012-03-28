@@ -31,7 +31,7 @@ var colCreateDate = { title:"CreateDate" , field:"CreateDate", width:120,editor:
 
 var colTitle = { title:"Title" , field:"Title", width:200,editor:{type:"validatebox",options:{ required:false,missingMessage:"",invalidMessage:"" } } } ; 
 
-var colType = { title:"Type" , field:"Type", width:120,editor:{type:"validatebox",options:{ required:false,missingMessage:"",invalidMessage:"" } }  } ; 
+var colType = { title:"Type" , field:"Type", width:120,editor:{type:"combobox",options:{ required:false,missingMessage:"",invalidMessage:"" } }  } ; 
 
 var colStatus = { title:"Status" , field:"Status", width:200,editor:{type:"validatebox",options:{ required:false,missingMessage:"",invalidMessage:"" } } } ; 
 
@@ -44,8 +44,9 @@ var colIndexInd = { title:"IndexInd" , field:"IndexInd", width:200,editor:{type:
 var colLastCheckDate = { title:"LastCheckDate" , field:"LastCheckDate", width:200,editor:{type:"datebox",options:{  } } } ; 
 
 var querys=[
-    {column:colType,queryTypes:["neq","notlike","isnull"]}
-    ,{column:colCreateDate,queryTypes:["neq","like"]}
+    {column:colTitle,queryTypes:["eq","notlike","isnull"]}
+    ,{column:colCreateDate,queryTypes:["isin","neq","like"]}
+    ,{column:colType,queryTypes:["isin","neq","like"]}
 ];
 
 var editorsDriverFileModel=[ colOperPk,colLastModifyDate,colDriverPk,colRemark,colCreateDate,colTitle,colType,colStatus,colCompleteInd,colCleanInd,colIndexInd,colLastCheckDate ] ; 
