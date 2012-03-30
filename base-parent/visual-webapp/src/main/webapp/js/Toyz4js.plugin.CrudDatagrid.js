@@ -226,7 +226,7 @@ CrudDatagrid.prototype.getToolbar = function(opts) {
             	, handler: handlerBtnExportExcel
     };
 
-    var toolbar = [btnQuery,btnAdd, btnUpdate, btnRemove, btnRefresh];
+    var toolbar = [btnQuery,btnAdd, btnUpdate, btnRemove, btnRefresh,btnExportExcel];
     $(document).bind("keypress","Alt+1",handlerBtnQuery);
     $(document).bind("keypress","Alt+2",handlerBtnAdd);
     $(document).bind("keypress","Alt+3",handlerBtnUpdate);

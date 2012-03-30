@@ -6,11 +6,11 @@ import java.util.List;
 
 import com.ett.visual.model.admin.UserModel;
 
-import com.smartken.toyz4j.mybatis.IToyzMapper;
+import com.smartken.toyz4j.mapper.IToyzMapper;
 
 
 
-public interface IUserMapper<T> extends IToyzMapper<T> {
+public interface IUserMapper extends IToyzMapper<UserModel> {
 
 	
 }

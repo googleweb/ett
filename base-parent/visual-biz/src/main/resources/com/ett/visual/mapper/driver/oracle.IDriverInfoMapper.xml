@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2012-03-27 11:35:37
+	Create Date:2012-03-30 12:28:06
 	MapperTemplate:com.smartken.toyz4j.mybatis.OracleMapperTemplate
 	Model:com.ett.visual.model.driver.DriverInfoModel 
 
@@ -108,72 +108,72 @@ main.SCHOOL_CODE=#{model.SchoolCode,jdbcType=VARCHAR},
 
 
 <sql id="selectCondition">
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'Id' }.size() eq 1 and model.Id neq null">and main.ID = #{model.Id } </if> 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'eqId' }.size() eq 1 and model.eqId neq null">and main.ID = #{model.eqId } </if> 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'neqId' }.size() eq 1 and model.neqId neq null">and main.ID != #{model.neqId } </if> 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'isnullId' }.size() eq 1 and model.isnullId eq true">and main.ID is null  </if> 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'isnotnullId' }.size() eq 1 and model.isnotnullId eq true">and main.ID is not null </if> 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'isinId' }.size() eq 1 and model.isinId neq null">and main.ID in <foreach collection="model.isinId" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'isnotinId' }.size() eq 1 and model.isnotinId neq null">and main.ID not in <foreach collection="model.isnotinId" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'likeId' }.size() eq 1 and model.likeId neq null">and main.ID like #{model.likeId} </if> 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'notlikeId' }.size() eq 1 and model.notlikeId neq null">and main.ID not like #{model.notlikeId  } </if> 
+<if test=" 1 eq 1 and model['Id'] neq null">and main.ID = #{model.Id } </if> 
+<if test=" 1 eq 1 and model['eqId'] neq null">and main.ID = #{model.eqId } </if> 
+<if test=" 1 eq 1 and model['neqId'] neq null">and main.ID != #{model.neqId } </if> 
+<if test=" 1 eq 1 and model['isnullId'] neq null and model['isnullId'] eq true">and main.ID is null  </if> 
+<if test=" 1 eq 1 and model['isnotnullId'] neq null and model['isnotnullId'] eq true">and main.ID is not null </if> 
+<if test=" 1 eq 1 and model['isinId'] neq null">and main.ID in <foreach collection="model.isinId" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" 1 eq 1 and model['isnotinId'] neq null">and main.ID not in <foreach collection="model.isnotinId" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" 1 eq 1 and model['likeId'] neq null">and main.ID like #{model.likeId} </if> 
+<if test=" 1 eq 1 and model['notlikeId'] neq null">and main.ID not like #{model.notlikeId  } </if> 
 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'Name' }.size() eq 1 and model.Name neq null">and main.NAME = #{model.Name } </if> 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'eqName' }.size() eq 1 and model.eqName neq null">and main.NAME = #{model.eqName } </if> 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'neqName' }.size() eq 1 and model.neqName neq null">and main.NAME != #{model.neqName } </if> 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'isnullName' }.size() eq 1 and model.isnullName eq true">and main.NAME is null  </if> 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'isnotnullName' }.size() eq 1 and model.isnotnullName eq true">and main.NAME is not null </if> 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'isinName' }.size() eq 1 and model.isinName neq null">and main.NAME in <foreach collection="model.isinName" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'isnotinName' }.size() eq 1 and model.isnotinName neq null">and main.NAME not in <foreach collection="model.isnotinName" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'likeName' }.size() eq 1 and model.likeName neq null">and main.NAME like #{model.likeName} </if> 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'notlikeName' }.size() eq 1 and model.notlikeName neq null">and main.NAME not like #{model.notlikeName  } </if> 
+<if test=" 1 eq 1 and model['Name'] neq null">and main.NAME = #{model.Name } </if> 
+<if test=" 1 eq 1 and model['eqName'] neq null">and main.NAME = #{model.eqName } </if> 
+<if test=" 1 eq 1 and model['neqName'] neq null">and main.NAME != #{model.neqName } </if> 
+<if test=" 1 eq 1 and model['isnullName'] neq null and model['isnullName'] eq true">and main.NAME is null  </if> 
+<if test=" 1 eq 1 and model['isnotnullName'] neq null and model['isnotnullName'] eq true">and main.NAME is not null </if> 
+<if test=" 1 eq 1 and model['isinName'] neq null">and main.NAME in <foreach collection="model.isinName" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" 1 eq 1 and model['isnotinName'] neq null">and main.NAME not in <foreach collection="model.isnotinName" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" 1 eq 1 and model['likeName'] neq null">and main.NAME like #{model.likeName} </if> 
+<if test=" 1 eq 1 and model['notlikeName'] neq null">and main.NAME not like #{model.notlikeName  } </if> 
 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'IdcardNo' }.size() eq 1 and model.IdcardNo neq null">and main.IDCARD_NO = #{model.IdcardNo } </if> 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'eqIdcardNo' }.size() eq 1 and model.eqIdcardNo neq null">and main.IDCARD_NO = #{model.eqIdcardNo } </if> 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'neqIdcardNo' }.size() eq 1 and model.neqIdcardNo neq null">and main.IDCARD_NO != #{model.neqIdcardNo } </if> 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'isnullIdcardNo' }.size() eq 1 and model.isnullIdcardNo eq true">and main.IDCARD_NO is null  </if> 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'isnotnullIdcardNo' }.size() eq 1 and model.isnotnullIdcardNo eq true">and main.IDCARD_NO is not null </if> 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'isinIdcardNo' }.size() eq 1 and model.isinIdcardNo neq null">and main.IDCARD_NO in <foreach collection="model.isinIdcardNo" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'isnotinIdcardNo' }.size() eq 1 and model.isnotinIdcardNo neq null">and main.IDCARD_NO not in <foreach collection="model.isnotinIdcardNo" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'likeIdcardNo' }.size() eq 1 and model.likeIdcardNo neq null">and main.IDCARD_NO like #{model.likeIdcardNo} </if> 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'notlikeIdcardNo' }.size() eq 1 and model.notlikeIdcardNo neq null">and main.IDCARD_NO not like #{model.notlikeIdcardNo  } </if> 
+<if test=" 1 eq 1 and model['IdcardNo'] neq null">and main.IDCARD_NO = #{model.IdcardNo } </if> 
+<if test=" 1 eq 1 and model['eqIdcardNo'] neq null">and main.IDCARD_NO = #{model.eqIdcardNo } </if> 
+<if test=" 1 eq 1 and model['neqIdcardNo'] neq null">and main.IDCARD_NO != #{model.neqIdcardNo } </if> 
+<if test=" 1 eq 1 and model['isnullIdcardNo'] neq null and model['isnullIdcardNo'] eq true">and main.IDCARD_NO is null  </if> 
+<if test=" 1 eq 1 and model['isnotnullIdcardNo'] neq null and model['isnotnullIdcardNo'] eq true">and main.IDCARD_NO is not null </if> 
+<if test=" 1 eq 1 and model['isinIdcardNo'] neq null">and main.IDCARD_NO in <foreach collection="model.isinIdcardNo" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" 1 eq 1 and model['isnotinIdcardNo'] neq null">and main.IDCARD_NO not in <foreach collection="model.isnotinIdcardNo" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" 1 eq 1 and model['likeIdcardNo'] neq null">and main.IDCARD_NO like #{model.likeIdcardNo} </if> 
+<if test=" 1 eq 1 and model['notlikeIdcardNo'] neq null">and main.IDCARD_NO not like #{model.notlikeIdcardNo  } </if> 
 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'FileNo' }.size() eq 1 and model.FileNo neq null">and main.FILE_NO = #{model.FileNo } </if> 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'eqFileNo' }.size() eq 1 and model.eqFileNo neq null">and main.FILE_NO = #{model.eqFileNo } </if> 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'neqFileNo' }.size() eq 1 and model.neqFileNo neq null">and main.FILE_NO != #{model.neqFileNo } </if> 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'isnullFileNo' }.size() eq 1 and model.isnullFileNo eq true">and main.FILE_NO is null  </if> 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'isnotnullFileNo' }.size() eq 1 and model.isnotnullFileNo eq true">and main.FILE_NO is not null </if> 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'isinFileNo' }.size() eq 1 and model.isinFileNo neq null">and main.FILE_NO in <foreach collection="model.isinFileNo" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'isnotinFileNo' }.size() eq 1 and model.isnotinFileNo neq null">and main.FILE_NO not in <foreach collection="model.isnotinFileNo" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'likeFileNo' }.size() eq 1 and model.likeFileNo neq null">and main.FILE_NO like #{model.likeFileNo} </if> 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'notlikeFileNo' }.size() eq 1 and model.notlikeFileNo neq null">and main.FILE_NO not like #{model.notlikeFileNo  } </if> 
+<if test=" 1 eq 1 and model['FileNo'] neq null">and main.FILE_NO = #{model.FileNo } </if> 
+<if test=" 1 eq 1 and model['eqFileNo'] neq null">and main.FILE_NO = #{model.eqFileNo } </if> 
+<if test=" 1 eq 1 and model['neqFileNo'] neq null">and main.FILE_NO != #{model.neqFileNo } </if> 
+<if test=" 1 eq 1 and model['isnullFileNo'] neq null and model['isnullFileNo'] eq true">and main.FILE_NO is null  </if> 
+<if test=" 1 eq 1 and model['isnotnullFileNo'] neq null and model['isnotnullFileNo'] eq true">and main.FILE_NO is not null </if> 
+<if test=" 1 eq 1 and model['isinFileNo'] neq null">and main.FILE_NO in <foreach collection="model.isinFileNo" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" 1 eq 1 and model['isnotinFileNo'] neq null">and main.FILE_NO not in <foreach collection="model.isnotinFileNo" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" 1 eq 1 and model['likeFileNo'] neq null">and main.FILE_NO like #{model.likeFileNo} </if> 
+<if test=" 1 eq 1 and model['notlikeFileNo'] neq null">and main.FILE_NO not like #{model.notlikeFileNo  } </if> 
 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'Phone' }.size() eq 1 and model.Phone neq null">and main.PHONE = #{model.Phone } </if> 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'eqPhone' }.size() eq 1 and model.eqPhone neq null">and main.PHONE = #{model.eqPhone } </if> 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'neqPhone' }.size() eq 1 and model.neqPhone neq null">and main.PHONE != #{model.neqPhone } </if> 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'isnullPhone' }.size() eq 1 and model.isnullPhone eq true">and main.PHONE is null  </if> 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'isnotnullPhone' }.size() eq 1 and model.isnotnullPhone eq true">and main.PHONE is not null </if> 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'isinPhone' }.size() eq 1 and model.isinPhone neq null">and main.PHONE in <foreach collection="model.isinPhone" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'isnotinPhone' }.size() eq 1 and model.isnotinPhone neq null">and main.PHONE not in <foreach collection="model.isnotinPhone" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'likePhone' }.size() eq 1 and model.likePhone neq null">and main.PHONE like #{model.likePhone} </if> 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'notlikePhone' }.size() eq 1 and model.notlikePhone neq null">and main.PHONE not like #{model.notlikePhone  } </if> 
+<if test=" 1 eq 1 and model['Phone'] neq null">and main.PHONE = #{model.Phone } </if> 
+<if test=" 1 eq 1 and model['eqPhone'] neq null">and main.PHONE = #{model.eqPhone } </if> 
+<if test=" 1 eq 1 and model['neqPhone'] neq null">and main.PHONE != #{model.neqPhone } </if> 
+<if test=" 1 eq 1 and model['isnullPhone'] neq null and model['isnullPhone'] eq true">and main.PHONE is null  </if> 
+<if test=" 1 eq 1 and model['isnotnullPhone'] neq null and model['isnotnullPhone'] eq true">and main.PHONE is not null </if> 
+<if test=" 1 eq 1 and model['isinPhone'] neq null">and main.PHONE in <foreach collection="model.isinPhone" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" 1 eq 1 and model['isnotinPhone'] neq null">and main.PHONE not in <foreach collection="model.isnotinPhone" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" 1 eq 1 and model['likePhone'] neq null">and main.PHONE like #{model.likePhone} </if> 
+<if test=" 1 eq 1 and model['notlikePhone'] neq null">and main.PHONE not like #{model.notlikePhone  } </if> 
 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'SchoolCode' }.size() eq 1 and model.SchoolCode neq null">and main.SCHOOL_CODE = #{model.SchoolCode } </if> 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'eqSchoolCode' }.size() eq 1 and model.eqSchoolCode neq null">and main.SCHOOL_CODE = #{model.eqSchoolCode } </if> 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'neqSchoolCode' }.size() eq 1 and model.neqSchoolCode neq null">and main.SCHOOL_CODE != #{model.neqSchoolCode } </if> 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'isnullSchoolCode' }.size() eq 1 and model.isnullSchoolCode eq true">and main.SCHOOL_CODE is null  </if> 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'isnotnullSchoolCode' }.size() eq 1 and model.isnotnullSchoolCode eq true">and main.SCHOOL_CODE is not null </if> 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'isinSchoolCode' }.size() eq 1 and model.isinSchoolCode neq null">and main.SCHOOL_CODE in <foreach collection="model.isinSchoolCode" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'isnotinSchoolCode' }.size() eq 1 and model.isnotinSchoolCode neq null">and main.SCHOOL_CODE not in <foreach collection="model.isnotinSchoolCode" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'likeSchoolCode' }.size() eq 1 and model.likeSchoolCode neq null">and main.SCHOOL_CODE like #{model.likeSchoolCode} </if> 
-<if test=" model.getClass().getDeclaredFields().{?#this.getName() eq 'notlikeSchoolCode' }.size() eq 1 and model.notlikeSchoolCode neq null">and main.SCHOOL_CODE not like #{model.notlikeSchoolCode  } </if> 
+<if test=" 1 eq 1 and model['SchoolCode'] neq null">and main.SCHOOL_CODE = #{model.SchoolCode } </if> 
+<if test=" 1 eq 1 and model['eqSchoolCode'] neq null">and main.SCHOOL_CODE = #{model.eqSchoolCode } </if> 
+<if test=" 1 eq 1 and model['neqSchoolCode'] neq null">and main.SCHOOL_CODE != #{model.neqSchoolCode } </if> 
+<if test=" 1 eq 1 and model['isnullSchoolCode'] neq null and model['isnullSchoolCode'] eq true">and main.SCHOOL_CODE is null  </if> 
+<if test=" 1 eq 1 and model['isnotnullSchoolCode'] neq null and model['isnotnullSchoolCode'] eq true">and main.SCHOOL_CODE is not null </if> 
+<if test=" 1 eq 1 and model['isinSchoolCode'] neq null">and main.SCHOOL_CODE in <foreach collection="model.isinSchoolCode" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" 1 eq 1 and model['isnotinSchoolCode'] neq null">and main.SCHOOL_CODE not in <foreach collection="model.isnotinSchoolCode" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
+<if test=" 1 eq 1 and model['likeSchoolCode'] neq null">and main.SCHOOL_CODE like #{model.likeSchoolCode} </if> 
+<if test=" 1 eq 1 and model['notlikeSchoolCode'] neq null">and main.SCHOOL_CODE not like #{model.notlikeSchoolCode  } </if> 
 
 
 </sql>
 
 
 <select id="select" resultType="ArrayList" resultMap="resultMap">
-	select <include refid="queryCols"/>  from <include refid="table"/>"  main   
+	select <include refid="queryCols"/>  from <include refid="table"/>  main   
 		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
 			<include refid="selectCondition"/>
 		</trim>

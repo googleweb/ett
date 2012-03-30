@@ -1,8 +1,9 @@
 package com.ett.visual.mapper.admin;
 
 
-import com.smartken.toyz4j.mybatis.IToyzMapper;
+import com.ett.visual.model.admin.DictModel;
+import com.smartken.toyz4j.mapper.IToyzMapper;
 
-public interface IDictMapper<T> extends IToyzMapper<T> {
+public interface IDictMapper extends IToyzMapper<DictModel> {
 
 }

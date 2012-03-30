@@ -15,7 +15,8 @@ import com.ett.visual.model.admin.UserModel;
 import com.ett.visual.model.driver.DriverFileModel;
 import com.ett.visual.model.driver.DriverInfoModel;
 
-import com.smartken.toyz4j.model.impl.ToyzBiz;
+
+import com.smartken.toyz4j.biz.impl.ToyzBiz;
 import com.smartken.toyz4j.model.impl.ToyzCrudBean;
 
 public abstract class BaseVisualBiz extends ToyzBiz{

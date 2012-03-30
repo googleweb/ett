@@ -1,8 +1,10 @@
 package com.ett.visual.mapper.admin;
 
 
-import com.smartken.toyz4j.mybatis.IToyzMapper;
+import com.ett.visual.model.admin.RoleModel;
+import com.smartken.toyz4j.mapper.IToyzMapper;
 
-public interface IRoleMapper<T> extends IToyzMapper<T>{
+
+public interface IRoleMapper extends IToyzMapper<RoleModel>{
 
 }
