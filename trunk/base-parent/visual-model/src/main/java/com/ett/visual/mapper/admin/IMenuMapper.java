@@ -5,7 +5,8 @@ import java.util.ArrayList;
 
 
 
-import com.smartken.toyz4j.mybatis.IToyzMapper;
+import com.smartken.toyz4j.mapper.IToyzMapper;
+
 
 
 public interface IMenuMapper<T> extends IToyzMapper<T> {

@@ -57,6 +57,8 @@ optsDriverFileModel["urlUpdate"] ="<%=basePath %>/driver/DriverFile/do/update.ac
 optsDriverFileModel["urlAdd"]="<%=basePath %>/driver/DriverFile/do/add.action" ; 
 optsDriverFileModel["urlRemove"]="<%=basePath %>/driver/DriverFile/do/removePks.action"; 
 optsDriverFileModel["urlQuery"]="<%=basePath %>/driver/DriverFile/datagrid/query.action"; 
+//urlExportExcel
+optsDriverFileModel["urlExportExcel"]="<%=basePath %>/driver/DriverFile/excel/list.action"; 
 optsDriverFileModel["editors"] = editorsDriverFileModel; 
 optsDriverFileModel["querys"]=querys;
 

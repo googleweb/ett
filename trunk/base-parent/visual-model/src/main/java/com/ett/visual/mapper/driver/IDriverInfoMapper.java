@@ -1,8 +1,9 @@
 package com.ett.visual.mapper.driver;
 
 
-import com.smartken.toyz4j.mybatis.IToyzMapper;
+import com.ett.visual.model.driver.DriverInfoModel;
+import com.smartken.toyz4j.mapper.IToyzMapper;
 
-public interface IDriverInfoMapper<T> extends IToyzMapper<T> {
+public interface IDriverInfoMapper extends IToyzMapper<DriverInfoModel> {
 
 }
