@@ -1,5 +1,6 @@
 package com.ett.visual.model.admin;
 
+
 import com.smartken.toyz4j.model.impl.BaseModel;
 
 public class RoleModel extends BaseModel {
@@ -13,6 +14,7 @@ public class RoleModel extends BaseModel {
 	 } 
 	 
 		private String Id;         //ID  VARCHAR2 50
+		
 		private String Name;         //NAME  VARCHAR2 50
 		private String Descp;         //DESCP  VARCHAR2 200
 		private String TokenArray;         //TOKEN_ARRAY  VARCHAR2 3,000

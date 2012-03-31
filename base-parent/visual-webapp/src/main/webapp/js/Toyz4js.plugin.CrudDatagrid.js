@@ -19,6 +19,7 @@ var CrudDatagrid=function(opts){
     this._initRow=opts["initRow"]||function(){return {};};
     this._editors=opts["editors"];
     this._querys=opts["querys"];
+    
     //alert("init");
 };
 
@@ -31,6 +32,7 @@ CrudDatagrid.prototype.getToolbar = function(opts) {
     var urlAdd = this._urlAdd;
     var urlUpdate = this._urlUpdate;
     var urlExportExcel = this._urlExportExcel;
+    var flag=false;
     var formOpts = {};
     formOpts["editors"] = this._editors;
     formOpts["prefix"] = opts["prefix"] || "";
@@ -39,6 +41,7 @@ CrudDatagrid.prototype.getToolbar = function(opts) {
     var divQuery=null;
     var divCrud=null;
     var handlerBtnQuery=function() {
+    	if(flag){return false;}
     	if(divQuery!=null){divQuery.dialog("open");return false;}
     	var regexpContent="#divQueryDialog";
         divQuery = $("<div id='divQueryDialog'></div>");
@@ -49,8 +52,8 @@ CrudDatagrid.prototype.getToolbar = function(opts) {
         divQuery.dialog({
             title: "数据查询"
 	      , modal: true
-          
-
+          ,onOpen:function(){flag=true;}
+          ,onClose:function(){flag=false;}
         });
         return false;
     };
@@ -60,7 +63,7 @@ CrudDatagrid.prototype.getToolbar = function(opts) {
 };
     
     var handlerBtnAdd=function() {
-    	
+    	if(flag){return false;}
         formOpts["data"] = newRow;
         formOpts["urlSave"] = urlAdd;
         var regexpContent="#divCrudDialog";
@@ -72,7 +75,8 @@ CrudDatagrid.prototype.getToolbar = function(opts) {
         div.dialog({
             title: "新建记录"
 	      , modal: true
-          , onClose: function() { $(this).dialog("destroy", true); }
+	      ,onOpen:function(){flag=true;}
+          , onClose: function() {flag=false; $(this).dialog("destroy", true); }
          , onDestroy: function() { $(regexp).datagrid("reload"); }
          
         });
@@ -84,8 +88,9 @@ CrudDatagrid.prototype.getToolbar = function(opts) {
     };
     
     var handlerBtnUpdate=function() {
+    	if(flag)return false;
         var selectRow = $(regexp).datagrid("getSelected");
-        if (!selectRow) { $.messager.alert("", "没有记录被选中", "error"); return; }
+        if (!selectRow) { $.messager.alert("", "没有记录被选中", "error"); return false; }
         var rowIndex = $(regexp).datagrid("getRowIndex", selectRow);
         formOpts["data"] = selectRow;
         formOpts["urlSave"] = urlUpdate;
@@ -97,7 +102,8 @@ CrudDatagrid.prototype.getToolbar = function(opts) {
             title: title
 	      , modal: true
             //,onBeforeOpen:function(){$(this).toyzCrudForm(formOpts);}
-         , onClose: function() { $(this).dialog("destroy", true); }
+	     ,onOpen:function() { flag=true; }
+         , onClose: function() {flag=false; $(this).dialog("destroy", true); }
          , onDestroy: function() { $(regexp).datagrid("reload"); }
         });
         return false;
@@ -108,6 +114,7 @@ CrudDatagrid.prototype.getToolbar = function(opts) {
     };
     
     var handlerBtnRemove=function() {
+    	
         var selectsRows = $(regexp).datagrid("getSelections");
         var deleteCount = selectsRows.length;
         if (deleteCount == 0) { $.messager.alert("", "没有记录被选中", "error"); return; }
@@ -147,10 +154,16 @@ CrudDatagrid.prototype.getToolbar = function(opts) {
     };
     
     var handlerBtnExportExcel=function() {
+    	if(flag)return false;
 	    if (urlExportExcel.length < 1) {
 	        $.messager.alert("操作错误", "没有配置excel路径", "error");
 	        return;
 	    }
+	    var pager=$(regexp).datagrid("getPager");
+	    var total=pager.pagination("options")["total"];
+	    var pageNumber=pager.pagination("options")["pageNumber"];
+	    var pageSize=pager.pagination("options")["pageSize"];
+	    var pageParam=$.param({rows:pageSize,page:pageNumber});
 	    var div = $("<div></div>");
 	    var table = $("<table></table>");
 	    table.css("padding", "10px");
@@ -173,7 +186,7 @@ CrudDatagrid.prototype.getToolbar = function(opts) {
 	    a.attr("href", urlExportExcel);
 	    td2.append(a);
 	    a.linkbutton({
-	        text: "导出"
+	        text: "导出excel"
 	    });
 	    tr.append(th).append(td).append(td2);
 	    table.append(tr);
@@ -184,13 +197,16 @@ CrudDatagrid.prototype.getToolbar = function(opts) {
 	    td = $("<td></td>");
 	    td2 = $("<td></td>");
 	    a = $("<a></a>");
-	    var countSelect = $(regexp).datagrid("getSelections").length || 0;
+	    var selectsRows=$(regexp).datagrid("getSelections");
+	    var countSelect = selectsRows.length || 0;
+        var pks = "";
+        pks = selectsRows.getUnionAttrStr(id, ",");
 	    th.html("已选记录数:");
 	    td.html(countSelect);
-	    a.attr("href", urlExportExcel);
+	    a.attr("href", urlExportExcel+"?pks="+pks);
 	    td2.append(a);
 	    a.linkbutton({
-	        text: "导出"
+	        text: "导出excel"
 	    });
 	    tr.append(th).append(td).append(td2);
 	    table.append(tr);
@@ -204,10 +220,10 @@ CrudDatagrid.prototype.getToolbar = function(opts) {
 	    var countPage = $(regexp).datagrid("getRows").length || 0;
 	    th.html("当前页记录数:");
 	    td.html(countPage);
-	    a.attr("href", urlExportExcel);
+	    a.attr("href", urlExportExcel+"?"+pageParam);
 	    td2.append(a);
 	    a.linkbutton({
-	        text: "导出"
+	        text: "导出excel"
 	    });
 	    tr.append(th).append(td).append(td2);
 	    table.append(tr);
@@ -215,23 +231,26 @@ CrudDatagrid.prototype.getToolbar = function(opts) {
 	    div.append(table);
 
 	    div.dialog({
-	        title: "导出excel"
+	        title: "导出"
+	        ,modal:true
+	        ,onOpen:function() { flag=true; }
+	    ,onOpen:function() { flag=false; }
 	    });
 	    return false;
 	};
     
     var btnExportExcel = {
         iconCls: "icon-help"
-            	, text: "导出excel"
+            	, text: "导出"
             	, handler: handlerBtnExportExcel
     };
 
     var toolbar = [btnQuery,btnAdd, btnUpdate, btnRemove, btnRefresh,btnExportExcel];
     $(document).bind("keypress","Alt+1",handlerBtnQuery);
     $(document).bind("keypress","Alt+2",handlerBtnAdd);
-    $(document).bind("keypress","Alt+3",handlerBtnUpdate);
-    $(document).bind("keypress","Alt+4",handlerBtnRefresh);
-    $(document).bind("keypress","Alt+5",handlerBtnRemove);
+    //$(document).bind("keypress","Alt+3",handlerBtnUpdate);
+    //$(document).bind("keypress","Alt+4",handlerBtnRefresh);
+    //$(document).bind("keypress","Alt+5",handlerBtnRemove);
     //$(document).bind("keydown","alt+6",function(e){btnQuery.click();});
    return toolbar;
 };
