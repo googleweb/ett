@@ -469,20 +469,37 @@ jQuery.fn.extend({
 			 var editorOpts=column["editor"]["options"]||{};
 			 spanQueryVaule.empty();
 			 inputQueryVaule=$("<input name='queryValue' />");
-			 if(editorType=="validatebox"){
-
-				 spanQueryVaule.append(inputQueryVaule);
-				 inputQueryVaule.validatebox(editorOpts);
+			 spanQueryVaule.append(inputQueryVaule);
+			 if(ov=="isnull"||ov=="isnotnull"){
+				 inputQueryVaule.combobox(GetIndEditor()["options"]);
+			 }else if(ov=="like"||ov=="notlike"){
+				 inputQueryVaule.val("%");
 			 }
-			 else if(editorType=="combobox"){
-				 spanQueryVaule.append(inputQueryVaule);
-				 inputQueryVaule.combobox(editorOpts);
-			 }else if(editorType=="datebox"){
-				 spanQueryVaule.append(inputQueryVaule);
-				 inputQueryVaule.datebox(editorOpts);
-			 }else if(editorType=="numberspinner"){
-				 spanQueryVaule.append(inputQueryVaule);
-				 inputQueryVaule.numberspinner(editorOpts);
+			 else{
+				 if(editorType=="validatebox"){	 
+					 inputQueryVaule.validatebox(editorOpts);
+				 }
+				 else if(editorType=="combobox"){
+					 spanQueryVaule.append(inputQueryVaule);
+					 if(ov=="eq"||ov=="neq"){
+					     inputQueryVaule.combobox(editorOpts);
+					 }else if(ov=="isin"||ov=="isnotin"){
+						 editorOpts["multiple"]=true;
+						 inputQueryVaule.combobox(editorOpts);
+					 }
+				 }else if(editorType=="datebox"){
+					 if(ov=="eq"||ov=="neq"){
+					   inputQueryVaule.datebox(editorOpts);
+					 }
+				 }else if(editorType=="numberbox"){
+					 if(ov=="eq"||ov=="neq"){
+						   inputQueryVaule.numberbox(editorOpts);
+				     }
+			     }else if(editorType=="numberspinner"){
+					 if(ov=="eq"||ov=="neq"){
+					   inputQueryVaule.numberspinner(editorOpts);
+					 }
+				 }
 			 }
 		 }
 	 });

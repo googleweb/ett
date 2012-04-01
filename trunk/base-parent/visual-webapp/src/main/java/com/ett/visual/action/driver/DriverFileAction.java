@@ -3,6 +3,8 @@ package com.ett.visual.action.driver;
 import java.io.File;
 import java.io.IOException;
 
+import org.aspectj.apache.bcel.generic.NEW;
+
 import com.ett.visual.action.BaseVisualAction;
 import com.ett.visual.model.admin.MenuModel.SimpleQueryModel;
 import com.ett.visual.model.driver.DriverFileModel;
@@ -51,10 +53,12 @@ public class DriverFileAction extends BaseVisualAction<DriverFileModel> {
 	}
 
 	@Override
-	public Object newQueryModel() {
+	public Object createBaseCondition() {
 		// TODO Auto-generated method stub
 		return new DriverFileModel().new SimpleQueryModel();
 	}
+
+	
 
 	
 	

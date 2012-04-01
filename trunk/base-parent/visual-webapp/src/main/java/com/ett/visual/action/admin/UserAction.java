@@ -8,13 +8,15 @@ import com.smartken.toyz4j.model.impl.BaseModel;
 
 public class UserAction extends BaseVisualAction<UserModel>{
 
-
-
 	@Override
-	public Object newQueryModel() {
+	public Object createBaseCondition() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+
+	
 
 	
 

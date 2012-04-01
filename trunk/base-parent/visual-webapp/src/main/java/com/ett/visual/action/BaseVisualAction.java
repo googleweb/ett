@@ -124,7 +124,7 @@ public abstract class BaseVisualAction<M extends IBaseModel> extends BaseAction<
 
 	public IToyzCrudBean<M> getToyzCurdBean() throws NullPointerException {
 		// TODO Auto-generated method stub
-		return adminBiz.newToyzCrudBean(this.getModelClass());
+		return adminBiz.createToyzCrudBean(this.getModelClass());
 	}
 
 

@@ -35,11 +35,11 @@ var colType = { title:"Type" , field:"Type", width:120,editor:{type:"combobox",o
 
 var colStatus = { title:"Status" , field:"Status", width:200,editor:{type:"validatebox",options:{ required:false,missingMessage:"",invalidMessage:"" } } } ; 
 
-var colCompleteInd = { title:"CompleteInd" , field:"CompleteInd", width:200,editor:{type:"validatebox",options:{ required:false,missingMessage:"",invalidMessage:"" } } } ; 
+var colCompleteInd = { title:"CompleteInd" ,formatter:IndFormatter, field:"CompleteInd", width:200,editor:GetIndEditor() } ; 
 
-var colCleanInd = { title:"CleanInd" , field:"CleanInd", width:200,editor:{type:"validatebox",options:{ required:false,missingMessage:"",invalidMessage:"" } } } ; 
+var colCleanInd = { title:"CleanInd" ,formatter:IndFormatter, field:"CleanInd", width:200,editor:GetIndEditor() } ; 
 
-var colIndexInd = { title:"IndexInd" , field:"IndexInd", width:200,editor:{type:"validatebox",options:{ required:false,missingMessage:"",invalidMessage:"" } } } ; 
+var colIndexInd = { title:"IndexInd" ,formatter:IndFormatter, field:"IndexInd", width:200,editor:GetIndEditor() } ; 
 
 var colLastCheckDate = { title:"LastCheckDate" , field:"LastCheckDate", width:200,editor:{type:"datebox",options:{  } } } ; 
 

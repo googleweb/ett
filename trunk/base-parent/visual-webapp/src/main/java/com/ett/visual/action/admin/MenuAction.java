@@ -13,13 +13,14 @@ public class MenuAction extends BaseVisualAction<MenuModel> {
 		return null;
 	}
 
-
 	@Override
-	public Object newQueryModel() {
+	public Object createBaseCondition() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+
+	
 	
 
 	
