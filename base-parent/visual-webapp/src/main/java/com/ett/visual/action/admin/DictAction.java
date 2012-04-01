@@ -16,13 +16,15 @@ import com.smartken.toyz4j.util.ObjectUtil;
 
 public class DictAction extends BaseVisualAction<DictModel> {
 
-
-
 	@Override
-	public Object newQueryModel() {
+	public Object createBaseCondition() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+
+	
 	
 	
 

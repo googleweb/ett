@@ -193,11 +193,11 @@ function RoleFormatter() {
 
 function IndFormatter(value, rowData, rowIndex) {
 
-    if (value == toyz4js["cfg"]["value_true"]) {
-        return toyz4js["cfg"]["text_true"];
+    if (value == Toyz4js["cfg"]["value_true"]) {
+        return Toyz4js["cfg"]["text_true"];
 
     } else {
-        return toyz4js["cfg"]["text_false"];;
+        return Toyz4js["cfg"]["text_false"];;
     }
 
 }

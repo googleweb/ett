@@ -26,14 +26,13 @@ public class RoleAction extends BaseVisualAction<RoleModel> {
 		
 	}
 
-	
-
-
-
 	@Override
-	public Object newQueryModel() {
+	public Object createBaseCondition() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	
+
 	
 }

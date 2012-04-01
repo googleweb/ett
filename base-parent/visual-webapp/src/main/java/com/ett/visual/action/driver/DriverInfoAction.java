@@ -24,11 +24,12 @@ private File tempFile;
 	}
 
 	@Override
-	public Object newQueryModel() {
+	public Object createBaseCondition() {
 		// TODO Auto-generated method stub
-		return new DriverInfoModel().new SimpleQueryModel();
+		return null;
 	}
 
+	
 	
 
 
