@@ -21,6 +21,9 @@ ul { list-style:none;}
 .active a {color:#fff;}
 .blankgray {background:#bbb; height:2px; width:100%; margin:0; padding:0; clear:both; font-size:2px;}
 
+input{
+	width: 250px;
+}
 
 
 table.simple
