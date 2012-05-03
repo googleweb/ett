@@ -17,23 +17,27 @@ import com.ett.visual.biz.IDriverBiz;
 import com.ett.visual.biz.IVehicleBiz;
 import com.ett.visual.model.admin.DictTypeModel;
 import com.ett.visual.model.admin.RoleModel;
-import com.ett.visual.model.driver.DriverFileModel;
+import com.ett.visual.model.drv.DriverFileModel;
 
 
-import com.smartken.toyz4j.model.IBaseModel;
 
-import com.smartken.toyz4j.model.IToyzCrudBean;
+import com.smartken.toyz4j.model.IDataBean;
+import com.smartken.toyz4j.model.IModel;
+
+
 import com.smartken.toyz4j.model.impl.BaseAction;
 
+import com.smartken.toyz4j.model.impl.BaseEasyuiAction;
 import com.smartken.toyz4j.model.impl.BaseModel;
 import com.smartken.toyz4j.model.impl.ResultModel;
+import com.smartken.toyz4j.mybatis.DynamicQueryBound;
 import com.smartken.toyz4j.pager.PageArrayList;
 import com.smartken.toyz4j.pager.PageList;
 import com.smartken.toyz4j.util.EasyUiUtil;
 import com.smartken.toyz4j.util.ObjectUtil;
 import com.smartken.toyz4j.util.StringUtil;
 
-public abstract class BaseVisualAction<M extends IBaseModel> extends BaseAction<M> {
+public abstract class BaseVisualAction<M extends IModel> extends BaseEasyuiAction<M> {
       
 	
 	protected IAdminBiz adminBiz;
@@ -122,10 +126,19 @@ public abstract class BaseVisualAction<M extends IBaseModel> extends BaseAction<
 
 
 
-	public IToyzCrudBean<M> getToyzCurdBean() throws NullPointerException {
+	@Override
+	public IDataBean<M> createDataBean() throws NullPointerException {
 		// TODO Auto-generated method stub
-		return adminBiz.createToyzCrudBean(this.getModelClass());
+		return this.adminBiz.createDataBean(this.modelClass());
 	}
+
+
+
+	
+
+
+
+	
 
 
 
