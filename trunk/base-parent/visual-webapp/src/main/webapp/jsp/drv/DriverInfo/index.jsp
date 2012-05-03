@@ -4,7 +4,7 @@
     pageEncoding="UTF-8"%>
  
 <%
-    String basePath=BaseVisualAction.GetRootPath();
+    String basePath=BaseVisualAction.GetBasePath();
 %>   
  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -21,17 +21,16 @@
 
 
   function doScan(rowData,rowIndex){
+	  
 	  var name=rowData["Name"];
 	  var id=rowData["Id"];
 	  var div=$("<div></div>");
 	  div.toyzIframe("drv/DriverFile/to/scan.action?driverId="+id);
-	  div.window({width:1024
+	  div.dialog({width:1024
 		  ,height:500
 		  ,title:"扫描文件:"+name
 		  ,modal:true
-		  ,onClose:function(){
-			  div.dialog("destroy",true);
-		  } 
+		  
 	  });
 	  
   }
@@ -54,8 +53,9 @@
 
 	var colSchoolCode = { title:"SchoolCode" , field:"SchoolCode", width:200,editor:{type:"combobox",options:{ url:"",textField:"",valueField:"",editable:false,multiple:false } } } ; 
 
+	var colOper={title:"操作",field:"_op",width:120,formatter:ToyzOperaFormatter({titles:["扫描文件"],handlers:["doScan"]})};
 	
- var editorsDriverInfoModel=[ colName,colPhone,colIdcard,colSchoolName,colId,colDabh,colSyn,colSynResult,colSchoolCode ] ;  
+ var editorsDriverInfoModel=[ colName,colPhone,colIdcard,colSchoolName,colDabh,colSyn,colSynResult,colSchoolCode ] ;  
 var optsDriverInfoModel = { }; 
 optsDriverInfoModel["regexp"] = "#tableDriverInfoModel"; 
 optsDriverInfoModel["id"] = "Id"; 
@@ -74,7 +74,7 @@ $(document).ready(function(){
 $("#tableDriverInfoModel").datagrid({ 
 url:"drv/DriverInfo/datagrid/list.action" 
 , idField:"Id" 
-, columns:[[colName,colPhone,colIdcard,colSchoolName,colId,colDabh,colSyn,colSynResult,colSchoolCode]] 
+, columns:[[colName,colPhone,colIdcard,colSchoolName,colId,colDabh,colSyn,colSynResult,colOper]] 
 , toolbar:toolbarDriverInfoModel 
 , onDblClickRow:editRowDriverInfoModel 
 }) ;  
