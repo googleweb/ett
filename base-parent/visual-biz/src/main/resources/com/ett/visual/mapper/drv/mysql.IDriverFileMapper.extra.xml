@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2012-04-16 05:28:10
-	MapperTemplate:com.smartken.toyz4j.mybatis.OracleMapperTemplate
+	Create Date:2012-05-03 11:52:08
+	MapperTemplate:com.smartken.toyz4j.mybatis.MySQLMapperTemplate
 --> 
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2012-05-03 12:12:59
-	MapperTemplate:com.smartken.toyz4j.mybatis.OracleMapperTemplate
+	Create Date:2012-05-03 12:05:53
+	MapperTemplate:com.smartken.toyz4j.mybatis.MySQLMapperTemplate
 	Model:com.ett.visual.model.drv.DriverInfoModel 
 
 

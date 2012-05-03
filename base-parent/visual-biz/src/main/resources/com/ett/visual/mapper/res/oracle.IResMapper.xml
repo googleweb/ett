@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2012-05-03 09:53:47
+	Create Date:2012-05-03 12:12:59
 	MapperTemplate:com.smartken.toyz4j.mybatis.OracleMapperTemplate
 	Model:com.ett.visual.model.res.ResModel 
 
@@ -10,7 +10,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ett.visual.mapper.res.IResMapper">
 
-<sql id="table">VIS_RES</sql>
+<sql id="table">vis_res</sql>
 
 <sql id="pk">id</sql>
 
@@ -257,7 +257,7 @@ main.ID,main.FILETYPE,main.TITLE,main.REMARK,main.CONTENT,main.STATUS,main.CHECK
 	insert into <include refid="table"/>  ( ID,FILETYPE,TITLE,REMARK,CONTENT,STATUS,CHECK_DATE,CHECK_USER_ID,SCAN_DATE,SCAN_USER_ID,PRIVATE_KEY ) values  
 	<foreach collection="models" separator="," item="model">	(
 		<trim  prefixOverrides="," suffixOverrides=",">
-			#{model.Id,jdbcType=VARCHAR},
+			seq_visual_res.nextval,
 #{model.Filetype,jdbcType=VARCHAR},
 #{model.Title,jdbcType=VARCHAR},
 #{model.Remark,jdbcType=VARCHAR},
