@@ -1,7 +1,7 @@
 package com.ett.visual.model;
 
-import com.ett.visual.model.driver.DriverFileModel;
-import com.ett.visual.model.driver.DriverInfoModel;
+import com.ett.visual.model.drv.DriverFileModel;
+import com.ett.visual.model.drv.DriverInfoModel;
 import com.smartken.toyz4j.util.EasyUiUtil;
 
 public class GenEasyuiContextTool {
