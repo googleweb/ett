@@ -6,7 +6,7 @@ import com.smartken.toyz4j.annotation.TableConfig;
 import com.smartken.toyz4j.mybatis.IToyzMapper;
 
 @TableConfig(
-		table="res",pk="id",oracleSeqId="seq_visual_res"
+		table="res",pk="id",oracleSeqIdRegexp="seq_visual_res.nextval"
 )
 public interface IResMapper extends IToyzMapper<ResModel> {
 

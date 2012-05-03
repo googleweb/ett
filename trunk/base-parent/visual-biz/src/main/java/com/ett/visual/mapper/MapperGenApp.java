@@ -85,19 +85,41 @@ public class MapperGenApp extends ToyzApp {
 	
 	public static void main(String[] args){
 		Connection connection=null;
+		MapperFactory mapperFactory=null;
+		Set<MapperTemplate> visMappers=new HashSet<MapperTemplate>();
+		Set<MapperTemplate> sysMappers=new HashSet<MapperTemplate>();
 		try {
+			
 	    connection=JdbcUtil.createConnection(OracleDriver.class, "aspnet", "stjj117","oradrvde");
+	    mapperFactory=new MapperFactory(connection);
+	    visMappers=mapperFactory.createMapperTemplate("vis_"
+				,IDriverFileMapper.class
+				,IResMapper.class
+			);
+	    sysMappers=mapperFactory.createMapperTemplate("sys_"
+				
+				,IDriverInfoMapper.class
+			);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return;
 		}
-		Set<MapperTemplate> mappers=getMappers(connection);
+		
 		//String srcPath="D:/tempProject/ett/dao/src/main/java/";
 		String workspacePath=FileUtil.TrimPath(FileUtil.WorkspacePath(FileUtil.TARGET_PATH_MAVEN));
 		String recPath=workspacePath+"/visual-biz/src/main/resources/";
 		String srcPath=workspacePath+"/visual-model/src/main/java/";
-		for (MapperTemplate mapper : mappers) {
+		for (MapperTemplate mapper : visMappers) {
+			try{
+
+			//mapper.setOverWriterExtra(true);
+		    //MapperTemplate mapper=mappers.get(Table.EXAM_TK_CN);
+			mapper.generalBaseModel(srcPath);
+			System.out.println(mapper.generalMapplerXML(recPath));
+			}catch(Exception ex){ex.printStackTrace();}
+		}
+		for (MapperTemplate mapper : sysMappers) {
 			try{
 
 			//mapper.setOverWriterExtra(true);
