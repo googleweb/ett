@@ -326,7 +326,33 @@ CrudDatagrid.prototype.getEditRowHandler = function(opts) {
 	
 
 
+function dateboxFormatter(value,row,index){
 
+    
+	if(value==null||value=='')return '';
+	var strFormat="";
+	if(typeof(value)=="number"){
+		var date=new Date();date.setTime(value);
+		return date.toString('yyyy-MM-dd');
+	}else{
+		return value;
+	}
+
+	//alert('value:'+value+" date:"+date.toString('yyyy-MM-dd'));
+	
+}
+
+function dateTimeboxFormatter(value,row,index){
+
+	if(value==null||value=='')return '';
+	var date=new Date();
+	date.setTime(value);
+	if(date==null){
+		return value;
+	}
+	//alert('value:'+value+" date:"+date.toString('yyyy-MM-dd'));
+	return date.toString('yyyy-MM-dd HH:mm:ss');
+}
 
 
 

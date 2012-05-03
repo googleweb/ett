@@ -4,14 +4,14 @@
     "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
 
-<package name="visual_vehicle_package"  extends="base-package" namespace="/vehicle" >
+<package name="visual_drv_package"  extends="base-package" namespace="/drv" >
 
    <action name="*/*/*" 
-     class="com.ett.visual.action.vehicle.{1}Action" method="{2}_{3}"
+     class="com.ett.visual.action.drv.{1}Action" method="{2}_{3}"
      >
-      <result name="input">/jsp/vehicle/{1}/{3}.jsp</result>
-       <result name="jsp">/jsp/vehicle/{1}/{3}.jsp</result>
-       <result name="index">/jsp/vehicle/{1}/index.jsp</result>
+      <result name="input">/jsp/drv/{1}/{3}.jsp</result>
+       <result name="jsp">/jsp/drv/{1}/{3}.jsp</result>
+       <result name="index">/jsp/drv/{1}/index.jsp</result>
        <result name="error">/jsp/common/error.jsp</result>
    </action>
 

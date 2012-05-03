@@ -455,6 +455,40 @@ jQuery.fn.extend({
 		 }
 		 var v=prefix+value;
 		 dataSelectQueryPro.push({text:text,value:v});
+		 
+		 if(query["queryTypes"]==null){
+			 var ts=[];
+			 var editorType=query["column"]["editor"]["type"];
+			 switch(editorType){
+			   case "validatebox":{
+				   ts=["eq","neq","like","notlike","isin","isnotin"];
+				   break;
+			   }
+			   case "combobox":{
+				   ts=["eq","neq","isin","isnotin"];
+				   break;
+			   }
+			   case "combo":{
+				   ts=["eq","neq","isin","isnotin"];
+				   break;
+			   }
+			   case "numberbox":{
+				   ts=["eq","neq","max","min","isin","isnotin"];
+				   break;
+			   }
+			   case "numberspinner":{
+				   ts=["eq","neq","max","min","isin","isnotin"];
+				   break;
+			   }
+			   case "datebox":{
+				   ts=["eq","neq","max","min"];
+				   break;
+			   }
+			   default:break;
+			 }
+			 query["queryTypes"]=ts;
+		 }
+		 
 		 queryOpts[v]=query;
 	 });
 	 selectQueryType.combobox({
@@ -488,15 +522,16 @@ jQuery.fn.extend({
 						 inputQueryVaule.combobox(editorOpts);
 					 }
 				 }else if(editorType=="datebox"){
-					 if(ov=="eq"||ov=="neq"){
+					 if(ov=="eq"||ov=="neq"||ov=="max"||ov=="min"){
 					   inputQueryVaule.datebox(editorOpts);
+					   
 					 }
 				 }else if(editorType=="numberbox"){
-					 if(ov=="eq"||ov=="neq"){
+					 if(ov=="eq"||ov=="neq"||ov=="max"||ov=="min"){
 						   inputQueryVaule.numberbox(editorOpts);
 				     }
 			     }else if(editorType=="numberspinner"){
-					 if(ov=="eq"||ov=="neq"){
+					 if(ov=="eq"||ov=="neq"||ov=="max"||ov=="min"){
 					   inputQueryVaule.numberspinner(editorOpts);
 					 }
 				 }
