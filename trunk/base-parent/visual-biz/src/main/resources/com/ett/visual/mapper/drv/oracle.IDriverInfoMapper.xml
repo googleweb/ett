@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+	Create Date:2012-05-03 09:53:47
+	MapperTemplate:com.smartken.toyz4j.mybatis.OracleMapperTemplate
+	Model:com.ett.visual.model.driver.DriverInfoModel 
+
+
+--> 
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ett.visual.mapper.driver.IDriverInfoMapper">
+
+<sql id="table">SYS_DRV_INFO</sql>
+
+<sql id="pk">id</sql>
+
+<sql id="columns">
+main.ID,main.NAME,main.IDCARD,main.DABH,main.PHONE,main.SCHOOL_NAME,main.SCHOOL_CODE,main.SYN,main.SYN_RESULT
+</sql>
+<sql id="queryCols">
+		<choose>
+			<when test="dynamic eq null or dynamic['colums'] eq null or dynamic['colums'].size lt 1 " >
+				<include refid="columns"/>
+			</when>
+			<otherwise>
+				<foreach collection="dynamic.colums" item="col" separator=","  >
+					 main.${col.column} 
+				</foreach>
+			</otherwise>
+		</choose>
+</sql>
+
+
+<sql id="orderby">
+		<choose>
+			<when test="dynamic eq null or  dynamic['orderbyBounds'] eq null or dynamic['orderbyBounds'].size lt 1 ">
+				order by  <include refid="pk" /> DESC
+			</when>
+			<otherwise >
+				<foreach collection="dynamic.orderbyBounds" item="ob" open=" order by " separator="," >
+					 main.${ob.column} ${ob.order} 
+				</foreach>
+			</otherwise>
+		</choose>
+</sql>
+
+
+<resultMap type="com.ett.visual.model.driver.DriverInfoModel" id="resultMap">
+ <id column="ID"  property="Id" jdbcType="VARCHAR"  />
+<result column="NAME"  property="Name" jdbcType="VARCHAR"  />
+<result column="IDCARD"  property="Idcard" jdbcType="VARCHAR"  />
+<result column="DABH"  property="Dabh" jdbcType="VARCHAR"  />
+<result column="PHONE"  property="Phone" jdbcType="VARCHAR"  />
+<result column="SCHOOL_NAME"  property="SchoolName" jdbcType="VARCHAR"  />
+<result column="SCHOOL_CODE"  property="SchoolCode" jdbcType="VARCHAR"  />
+<result column="SYN"  property="Syn" jdbcType="INTEGER"  />
+<result column="SYN_RESULT"  property="SynResult" jdbcType="VARCHAR"  />
+
+ </resultMap>
+
+
+<sql id="selectCondition">
+<if test=" 1 eq 1 and condition['Id'] neq null">and main.ID = #{condition.Id } </if> 
+<if test=" 1 eq 1 and condition['eqId'] neq null">and main.ID = #{condition.eqId } </if> 
+<if test=" 1 eq 1 and condition['neqId'] neq null">and main.ID != #{condition.neqId } </if> 
+<if test=" 1 eq 1 and condition['isnullId'] neq null and condition['isnullId'] eq true">and main.ID is null  </if> 
+<if test=" 1 eq 1 and condition['isnotnullId'] neq null and condition['isnotnullId'] eq true">and main.ID is not null </if> 
+<if test=" 1 eq 1 and condition['isinId'] neq null and  condition['isinId'] neq null and condition['isinId'].size>0">and main.ID in (<foreach collection="condition.isinId" item="sub"  separator="," > #{sub } </foreach> )</if> 
+<if test=" 1 eq 1 and condition['isnotinId'] neq null and  condition['isnotinId'] neq null and condition['isnotinId'].size>0">and main.ID not in (<foreach collection="condition.isnotinId" item="sub"  separator="," > #{sub } </foreach> )</if> 
+<if test=" 1 eq 1 and condition['likeId'] neq null">and main.ID like #{condition.likeId} </if> 
+<if test=" 1 eq 1 and condition['notlikeId'] neq null">and main.ID not like #{condition.notlikeId  } </if> 
+
+<if test=" 1 eq 1 and condition['Name'] neq null">and main.NAME = #{condition.Name } </if> 
+<if test=" 1 eq 1 and condition['eqName'] neq null">and main.NAME = #{condition.eqName } </if> 
+<if test=" 1 eq 1 and condition['neqName'] neq null">and main.NAME != #{condition.neqName } </if> 
+<if test=" 1 eq 1 and condition['isnullName'] neq null and condition['isnullName'] eq true">and main.NAME is null  </if> 
+<if test=" 1 eq 1 and condition['isnotnullName'] neq null and condition['isnotnullName'] eq true">and main.NAME is not null </if> 
+<if test=" 1 eq 1 and condition['isinName'] neq null and  condition['isinName'] neq null and condition['isinName'].size>0">and main.NAME in (<foreach collection="condition.isinName" item="sub"  separator="," > #{sub } </foreach> )</if> 
+<if test=" 1 eq 1 and condition['isnotinName'] neq null and  condition['isnotinName'] neq null and condition['isnotinName'].size>0">and main.NAME not in (<foreach collection="condition.isnotinName" item="sub"  separator="," > #{sub } </foreach> )</if> 
+<if test=" 1 eq 1 and condition['likeName'] neq null">and main.NAME like #{condition.likeName} </if> 
+<if test=" 1 eq 1 and condition['notlikeName'] neq null">and main.NAME not like #{condition.notlikeName  } </if> 
+
+<if test=" 1 eq 1 and condition['Idcard'] neq null">and main.IDCARD = #{condition.Idcard } </if> 
+<if test=" 1 eq 1 and condition['eqIdcard'] neq null">and main.IDCARD = #{condition.eqIdcard } </if> 
+<if test=" 1 eq 1 and condition['neqIdcard'] neq null">and main.IDCARD != #{condition.neqIdcard } </if> 
+<if test=" 1 eq 1 and condition['isnullIdcard'] neq null and condition['isnullIdcard'] eq true">and main.IDCARD is null  </if> 
+<if test=" 1 eq 1 and condition['isnotnullIdcard'] neq null and condition['isnotnullIdcard'] eq true">and main.IDCARD is not null </if> 
+<if test=" 1 eq 1 and condition['isinIdcard'] neq null and  condition['isinIdcard'] neq null and condition['isinIdcard'].size>0">and main.IDCARD in (<foreach collection="condition.isinIdcard" item="sub"  separator="," > #{sub } </foreach> )</if> 
+<if test=" 1 eq 1 and condition['isnotinIdcard'] neq null and  condition['isnotinIdcard'] neq null and condition['isnotinIdcard'].size>0">and main.IDCARD not in (<foreach collection="condition.isnotinIdcard" item="sub"  separator="," > #{sub } </foreach> )</if> 
+<if test=" 1 eq 1 and condition['likeIdcard'] neq null">and main.IDCARD like #{condition.likeIdcard} </if> 
+<if test=" 1 eq 1 and condition['notlikeIdcard'] neq null">and main.IDCARD not like #{condition.notlikeIdcard  } </if> 
+
+<if test=" 1 eq 1 and condition['Dabh'] neq null">and main.DABH = #{condition.Dabh } </if> 
+<if test=" 1 eq 1 and condition['eqDabh'] neq null">and main.DABH = #{condition.eqDabh } </if> 
+<if test=" 1 eq 1 and condition['neqDabh'] neq null">and main.DABH != #{condition.neqDabh } </if> 
+<if test=" 1 eq 1 and condition['isnullDabh'] neq null and condition['isnullDabh'] eq true">and main.DABH is null  </if> 
+<if test=" 1 eq 1 and condition['isnotnullDabh'] neq null and condition['isnotnullDabh'] eq true">and main.DABH is not null </if> 
+<if test=" 1 eq 1 and condition['isinDabh'] neq null and  condition['isinDabh'] neq null and condition['isinDabh'].size>0">and main.DABH in (<foreach collection="condition.isinDabh" item="sub"  separator="," > #{sub } </foreach> )</if> 
+<if test=" 1 eq 1 and condition['isnotinDabh'] neq null and  condition['isnotinDabh'] neq null and condition['isnotinDabh'].size>0">and main.DABH not in (<foreach collection="condition.isnotinDabh" item="sub"  separator="," > #{sub } </foreach> )</if> 
+<if test=" 1 eq 1 and condition['likeDabh'] neq null">and main.DABH like #{condition.likeDabh} </if> 
+<if test=" 1 eq 1 and condition['notlikeDabh'] neq null">and main.DABH not like #{condition.notlikeDabh  } </if> 
+
+<if test=" 1 eq 1 and condition['Phone'] neq null">and main.PHONE = #{condition.Phone } </if> 
+<if test=" 1 eq 1 and condition['eqPhone'] neq null">and main.PHONE = #{condition.eqPhone } </if> 
+<if test=" 1 eq 1 and condition['neqPhone'] neq null">and main.PHONE != #{condition.neqPhone } </if> 
+<if test=" 1 eq 1 and condition['isnullPhone'] neq null and condition['isnullPhone'] eq true">and main.PHONE is null  </if> 
+<if test=" 1 eq 1 and condition['isnotnullPhone'] neq null and condition['isnotnullPhone'] eq true">and main.PHONE is not null </if> 
+<if test=" 1 eq 1 and condition['isinPhone'] neq null and  condition['isinPhone'] neq null and condition['isinPhone'].size>0">and main.PHONE in (<foreach collection="condition.isinPhone" item="sub"  separator="," > #{sub } </foreach> )</if> 
+<if test=" 1 eq 1 and condition['isnotinPhone'] neq null and  condition['isnotinPhone'] neq null and condition['isnotinPhone'].size>0">and main.PHONE not in (<foreach collection="condition.isnotinPhone" item="sub"  separator="," > #{sub } </foreach> )</if> 
+<if test=" 1 eq 1 and condition['likePhone'] neq null">and main.PHONE like #{condition.likePhone} </if> 
+<if test=" 1 eq 1 and condition['notlikePhone'] neq null">and main.PHONE not like #{condition.notlikePhone  } </if> 
+
+<if test=" 1 eq 1 and condition['SchoolName'] neq null">and main.SCHOOL_NAME = #{condition.SchoolName } </if> 
+<if test=" 1 eq 1 and condition['eqSchoolName'] neq null">and main.SCHOOL_NAME = #{condition.eqSchoolName } </if> 
+<if test=" 1 eq 1 and condition['neqSchoolName'] neq null">and main.SCHOOL_NAME != #{condition.neqSchoolName } </if> 
+<if test=" 1 eq 1 and condition['isnullSchoolName'] neq null and condition['isnullSchoolName'] eq true">and main.SCHOOL_NAME is null  </if> 
+<if test=" 1 eq 1 and condition['isnotnullSchoolName'] neq null and condition['isnotnullSchoolName'] eq true">and main.SCHOOL_NAME is not null </if> 
+<if test=" 1 eq 1 and condition['isinSchoolName'] neq null and  condition['isinSchoolName'] neq null and condition['isinSchoolName'].size>0">and main.SCHOOL_NAME in (<foreach collection="condition.isinSchoolName" item="sub"  separator="," > #{sub } </foreach> )</if> 
+<if test=" 1 eq 1 and condition['isnotinSchoolName'] neq null and  condition['isnotinSchoolName'] neq null and condition['isnotinSchoolName'].size>0">and main.SCHOOL_NAME not in (<foreach collection="condition.isnotinSchoolName" item="sub"  separator="," > #{sub } </foreach> )</if> 
+<if test=" 1 eq 1 and condition['likeSchoolName'] neq null">and main.SCHOOL_NAME like #{condition.likeSchoolName} </if> 
+<if test=" 1 eq 1 and condition['notlikeSchoolName'] neq null">and main.SCHOOL_NAME not like #{condition.notlikeSchoolName  } </if> 
+
+<if test=" 1 eq 1 and condition['SchoolCode'] neq null">and main.SCHOOL_CODE = #{condition.SchoolCode } </if> 
+<if test=" 1 eq 1 and condition['eqSchoolCode'] neq null">and main.SCHOOL_CODE = #{condition.eqSchoolCode } </if> 
+<if test=" 1 eq 1 and condition['neqSchoolCode'] neq null">and main.SCHOOL_CODE != #{condition.neqSchoolCode } </if> 
+<if test=" 1 eq 1 and condition['isnullSchoolCode'] neq null and condition['isnullSchoolCode'] eq true">and main.SCHOOL_CODE is null  </if> 
+<if test=" 1 eq 1 and condition['isnotnullSchoolCode'] neq null and condition['isnotnullSchoolCode'] eq true">and main.SCHOOL_CODE is not null </if> 
+<if test=" 1 eq 1 and condition['isinSchoolCode'] neq null and  condition['isinSchoolCode'] neq null and condition['isinSchoolCode'].size>0">and main.SCHOOL_CODE in (<foreach collection="condition.isinSchoolCode" item="sub"  separator="," > #{sub } </foreach> )</if> 
+<if test=" 1 eq 1 and condition['isnotinSchoolCode'] neq null and  condition['isnotinSchoolCode'] neq null and condition['isnotinSchoolCode'].size>0">and main.SCHOOL_CODE not in (<foreach collection="condition.isnotinSchoolCode" item="sub"  separator="," > #{sub } </foreach> )</if> 
+<if test=" 1 eq 1 and condition['likeSchoolCode'] neq null">and main.SCHOOL_CODE like #{condition.likeSchoolCode} </if> 
+<if test=" 1 eq 1 and condition['notlikeSchoolCode'] neq null">and main.SCHOOL_CODE not like #{condition.notlikeSchoolCode  } </if> 
+
+<if test=" 1 eq 1 and condition['Syn'] neq null">and main.SYN = #{condition.Syn } </if> 
+<if test=" 1 eq 1 and condition['eqSyn'] neq null">and main.SYN = #{condition.eqSyn } </if> 
+<if test=" 1 eq 1 and condition['neqSyn'] neq null">and main.SYN != #{condition.neqSyn } </if> 
+<if test=" 1 eq 1 and condition['isnullSyn'] neq null and condition['isnullSyn'] eq true">and main.SYN is null  </if> 
+<if test=" 1 eq 1 and condition['isnotnullSyn'] neq null and condition['isnotnullSyn'] eq true">and main.SYN is not null </if> 
+<if test=" 1 eq 1 and condition['isinSyn'] neq null and  condition['isinSyn'] neq null and condition['isinSyn'].size>0">and main.SYN in (<foreach collection="condition.isinSyn" item="sub"  separator="," > #{sub } </foreach> )</if> 
+<if test=" 1 eq 1 and condition['isnotinSyn'] neq null and  condition['isnotinSyn'] neq null and condition['isnotinSyn'].size>0">and main.SYN not in (<foreach collection="condition.isnotinSyn" item="sub"  separator="," > #{sub } </foreach> )</if> 
+<if test=" 1 eq 1 and condition['minSyn'] neq null">and main.SYN &gt;= #{condition.minSyn } </if> 
+<if test=" 1 eq 1 and condition['maxSyn'] neq null">and main.SYN &lt;= #{condition.maxSyn} </if> 
+
+<if test=" 1 eq 1 and condition['SynResult'] neq null">and main.SYN_RESULT = #{condition.SynResult } </if> 
+<if test=" 1 eq 1 and condition['eqSynResult'] neq null">and main.SYN_RESULT = #{condition.eqSynResult } </if> 
+<if test=" 1 eq 1 and condition['neqSynResult'] neq null">and main.SYN_RESULT != #{condition.neqSynResult } </if> 
+<if test=" 1 eq 1 and condition['isnullSynResult'] neq null and condition['isnullSynResult'] eq true">and main.SYN_RESULT is null  </if> 
+<if test=" 1 eq 1 and condition['isnotnullSynResult'] neq null and condition['isnotnullSynResult'] eq true">and main.SYN_RESULT is not null </if> 
+<if test=" 1 eq 1 and condition['isinSynResult'] neq null and  condition['isinSynResult'] neq null and condition['isinSynResult'].size>0">and main.SYN_RESULT in (<foreach collection="condition.isinSynResult" item="sub"  separator="," > #{sub } </foreach> )</if> 
+<if test=" 1 eq 1 and condition['isnotinSynResult'] neq null and  condition['isnotinSynResult'] neq null and condition['isnotinSynResult'].size>0">and main.SYN_RESULT not in (<foreach collection="condition.isnotinSynResult" item="sub"  separator="," > #{sub } </foreach> )</if> 
+<if test=" 1 eq 1 and condition['likeSynResult'] neq null">and main.SYN_RESULT like #{condition.likeSynResult} </if> 
+<if test=" 1 eq 1 and condition['notlikeSynResult'] neq null">and main.SYN_RESULT not like #{condition.notlikeSynResult  } </if> 
+
+
+</sql>
+
+
+<select id="select" resultType="ArrayList" resultMap="resultMap">
+	select <include refid="queryCols"/>  from <include refid="table"/>  main   
+		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+			<include refid="selectCondition"/>
+		</trim>
+	<include refid="orderby"/>
+</select>
+
+<select id="selectUnion" resultType="ArrayList" resultMap="resultMap">
+  select  main.* from (
+		<foreach collection="conditions" item="condition" separator=" union " >
+			<if test="condition neq null" >
+				 select <include refid="queryCols"/> from <include refid="table"/>  main 
+					<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+						<include refid="selectCondition"/>
+					</trim>
+			</if>
+		</foreach>
+   ) main 
+<include refid="orderby"/>
+</select>
+
+<select id="selectEqPk"  resultMap="resultMap">
+	select <include refid="queryCols"/> from <include refid="table"/> main  where main.<include refid="pk"/> = #{pk}
+</select>
+
+<select id="selectInPk" resultType="ArrayList" resultMap="resultMap" >
+	select <include refid="queryCols"/> from <include refid="table"/> main  where main.<include refid="pk"/> in (
+		<foreach item="pk" collection="pks"  separator="," > #{pk} </foreach>
+	)
+	<include refid="orderby"/>
+</select>
+
+<select  id="selectAll"  resultType="ArrayList"  resultMap="resultMap">
+	select <include refid="queryCols"/> from  <include refid="table"/> main  
+	<include refid="orderby"/>
+</select>
+
+<select id="countAll" resultType="int">
+	select count(main.<include refid="pk"/>) from <include refid="table"/> main 
+</select>
+
+<select id="count" resultType="int">
+	select count(main.<include refid="pk"/>) from <include refid="table"/> main 
+		<if test="condition neq null" >
+		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+			<include refid="selectCondition"/>
+		</trim>
+		</if>
+</select>
+
+<select id="avg" resultType="int">
+	select avg(main.${colunm}) from <include refid="table"/> main 
+		<if test="condition neq null" >
+		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+			<include refid="selectCondition"/>
+		</trim>
+		</if>
+</select>
+
+<select id="sum" resultType="int">
+	select sum(main.${colunm}) from <include refid="table"/> main 
+		<if test="condition neq null" >
+		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+			<include refid="selectCondition"/>
+		</trim>
+		</if>
+</select>
+
+<select id="min" resultType="int">
+	select min(main.${colunm}) from <include refid="table"/> main 
+		<if test="condition neq null" >
+		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+			<include refid="selectCondition"/>
+		</trim>
+		</if>
+</select>
+
+<select id="max" resultType="int">
+	select max(main.${colunm}) from <include refid="table"/> main 
+		<if test="model neq null" >
+		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+			<include refid="selectCondition"/>
+		</trim>
+		</if>
+</select>
+
+<insert id="insert" flushCache="true" >
+	insert into <include refid="table"/>  ( ID,NAME,IDCARD,DABH,PHONE,SCHOOL_NAME,SCHOOL_CODE,SYN,SYN_RESULT ) values  
+	<foreach collection="models" separator="," item="model">	(
+		<trim  prefixOverrides="," suffixOverrides=",">
+			#{model.Id,jdbcType=VARCHAR},
+#{model.Name,jdbcType=VARCHAR},
+#{model.Idcard,jdbcType=VARCHAR},
+#{model.Dabh,jdbcType=VARCHAR},
+#{model.Phone,jdbcType=VARCHAR},
+#{model.SchoolName,jdbcType=VARCHAR},
+#{model.SchoolCode,jdbcType=VARCHAR},
+#{model.Syn,jdbcType=INTEGER},
+#{model.SynResult,jdbcType=VARCHAR},
+
+		</trim>
+	)
+	</foreach>
+</insert>
+
+<update id="update" flushCache="true" >
+	update <include refid="table"/>  set 
+		<trim  prefixOverrides="," suffixOverrides=",">
+			<if test="pk neq null">id=#{pk},</if>
+NAME=#{model.Name,jdbcType=VARCHAR},
+IDCARD=#{model.Idcard,jdbcType=VARCHAR},
+DABH=#{model.Dabh,jdbcType=VARCHAR},
+PHONE=#{model.Phone,jdbcType=VARCHAR},
+SCHOOL_NAME=#{model.SchoolName,jdbcType=VARCHAR},
+SCHOOL_CODE=#{model.SchoolCode,jdbcType=VARCHAR},
+SYN=#{model.Syn,jdbcType=INTEGER},
+SYN_RESULT=#{model.SynResult,jdbcType=VARCHAR},
+
+		</trim>
+	where <include refid="pk"/>=#{model.Id,jdbcType=VARCHAR}
+</update>
+
+<delete id="deleteEqPk" flushCache="true">
+	delete from <include refid="table"/>  where <include refid="pk"/> =#{pk}
+</delete>
+
+<delete id="deleteInPk" flushCache="true">
+	delete from <include refid="table"/> where <include refid="pk"/> in (
+		<foreach item="pk" collection="pks"  separator="," >#{pk}</foreach> 
+	)
+</delete>
+
+<select id="selectView" resultType="ArrayList" resultMap="resultView">
+	select <include refid="columns"/>  <include refid="joinCols"/> from <include refid="table" /> main <include refid="join"/> 
+		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+			<include refid="selectViewCondition"/>
+		</trim>	<include refid="orderby"/>
+</select>
+
+<select id="selectViewUnion" resultType="ArrayList" resultMap="resultView">
+  select main.* from (
+		<foreach collection="conditions" item="condition" separator=" union ">
+			<if test="condition neq null" >
+				 select <include refid="queryCols"/> <include refid="joinCols"/> from <include refid="table"/> main  <include refid="join"/> 
+					<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+						<include refid="selectViewCondition"/>
+					</trim>
+			</if>
+		</foreach>
+  ) main 
+
+<include refid="orderby"/>
+</select>
+
+<select id="selectViewEqPk"  resultMap="resultView">
+	select <include refid="queryCols"/> <include refid="joinCols"/>  from <include refid="table"/> main <include refid="join"/> where main.<include refid="pk"/> = #{pk}
+<include refid="orderby"/>
+</select>
+
+<select id="selectViewInPk" resultType="ArrayList" resultMap="resultView" >
+	select <include refid="queryCols"/> <include refid="joinCols"/> from <include refid="table"/> main <include refid="join"/> where main.<include refid="pk"/> in (
+		<foreach item="pk" collection="pks"  separator="," > #{pk} </foreach>
+	)
+	<include refid="orderby"/>
+</select>
+
+<select  id="selectViewAll"  resultType="ArrayList"  resultMap="resultView">
+	select  <include refid="queryCols"/> <include refid="joinCols"/> from  <include refid="table"/> main <include refid="join"/>
+	<include refid="orderby"/>
+</select>
+
+</mapper>

@@ -6,8 +6,8 @@ import java.util.Date;
 import com.ett.visual.biz.BaseVisualBiz;
 import com.ett.visual.biz.IDriverBiz;
 import com.ett.visual.model.BaseVisualModel;
-import com.ett.visual.model.driver.DriverFileModel;
-import com.ett.visual.model.driver.DriverInfoModel;
+import com.ett.visual.model.drv.DriverFileModel;
+import com.ett.visual.model.drv.DriverInfoModel;
 
 import com.smartken.toyz4j.model.impl.BaseModel;
 import com.smartken.toyz4j.model.impl.ResultModel;
@@ -19,11 +19,16 @@ public class DriverBiz  extends BaseVisualBiz implements IDriverBiz{
 		// TODO Auto-generated method stub
 		ResultModel result=new ResultModel();
 		DriverFileModel drvFile=new DriverFileModel();
-		drvFile.setPk(ObjectUtil.GeneralPK());
-		drvFile.setRec(rec);
-		drvFile.setDriverPk(driver.getId());
-		drvFile.setCreateDate(new Date());
-		drvFile.setLastModifyDate(new Date());
+		try {
+			drvFile.genPk();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//drvFile.setRec(rec);
+		//drvFile.setDriverPk(driver.getId());
+		//drvFile.setCreateDate(new Date());
+		//drvFile.setLastModifyDate(new Date());
 		//this.loadCrudMapper(DriverFileModel.class);
 	   // result= this.addModel(drvFile);
 		return result;

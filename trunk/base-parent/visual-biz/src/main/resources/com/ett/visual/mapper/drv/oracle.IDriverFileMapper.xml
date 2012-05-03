@@ -2,20 +2,20 @@
 <!--
 	Create Date:2012-05-03 09:53:47
 	MapperTemplate:com.smartken.toyz4j.mybatis.OracleMapperTemplate
-	Model:com.ett.visual.model.admin.RoleModel 
+	Model:com.ett.visual.model.driver.DriverFileModel 
 
 
 --> 
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ett.visual.mapper.admin.IRoleMapper">
+<mapper namespace="com.ett.visual.mapper.driver.IDriverFileMapper">
 
-<sql id="table">VIS_ADMIN_ROLE</sql>
+<sql id="table">VIS_DRV_FILE</sql>
 
 <sql id="pk">id</sql>
 
 <sql id="columns">
-main.ID,main.NAME,main.DESCP,main.TOKEN_ARRAY
+main.DRV_ID,main.RES_ID,main.ID
 </sql>
 <sql id="queryCols">
 		<choose>
@@ -45,16 +45,35 @@ main.ID,main.NAME,main.DESCP,main.TOKEN_ARRAY
 </sql>
 
 
-<resultMap type="com.ett.visual.model.admin.RoleModel" id="resultMap">
- <id column="ID"  property="Id" jdbcType="VARCHAR"  />
-<result column="NAME"  property="Name" jdbcType="VARCHAR"  />
-<result column="DESCP"  property="Descp" jdbcType="VARCHAR"  />
-<result column="TOKEN_ARRAY"  property="TokenArray" jdbcType="VARCHAR"  />
+<resultMap type="com.ett.visual.model.driver.DriverFileModel" id="resultMap">
+ <id column="ID"  property="Id" jdbcType="INTEGER"  />
+<result column="DRV_ID"  property="DrvId" jdbcType="VARCHAR"  />
+<result column="RES_ID"  property="ResId" jdbcType="VARCHAR"  />
 
  </resultMap>
 
 
 <sql id="selectCondition">
+<if test=" 1 eq 1 and condition['DrvId'] neq null">and main.DRV_ID = #{condition.DrvId } </if> 
+<if test=" 1 eq 1 and condition['eqDrvId'] neq null">and main.DRV_ID = #{condition.eqDrvId } </if> 
+<if test=" 1 eq 1 and condition['neqDrvId'] neq null">and main.DRV_ID != #{condition.neqDrvId } </if> 
+<if test=" 1 eq 1 and condition['isnullDrvId'] neq null and condition['isnullDrvId'] eq true">and main.DRV_ID is null  </if> 
+<if test=" 1 eq 1 and condition['isnotnullDrvId'] neq null and condition['isnotnullDrvId'] eq true">and main.DRV_ID is not null </if> 
+<if test=" 1 eq 1 and condition['isinDrvId'] neq null and  condition['isinDrvId'] neq null and condition['isinDrvId'].size>0">and main.DRV_ID in (<foreach collection="condition.isinDrvId" item="sub"  separator="," > #{sub } </foreach> )</if> 
+<if test=" 1 eq 1 and condition['isnotinDrvId'] neq null and  condition['isnotinDrvId'] neq null and condition['isnotinDrvId'].size>0">and main.DRV_ID not in (<foreach collection="condition.isnotinDrvId" item="sub"  separator="," > #{sub } </foreach> )</if> 
+<if test=" 1 eq 1 and condition['likeDrvId'] neq null">and main.DRV_ID like #{condition.likeDrvId} </if> 
+<if test=" 1 eq 1 and condition['notlikeDrvId'] neq null">and main.DRV_ID not like #{condition.notlikeDrvId  } </if> 
+
+<if test=" 1 eq 1 and condition['ResId'] neq null">and main.RES_ID = #{condition.ResId } </if> 
+<if test=" 1 eq 1 and condition['eqResId'] neq null">and main.RES_ID = #{condition.eqResId } </if> 
+<if test=" 1 eq 1 and condition['neqResId'] neq null">and main.RES_ID != #{condition.neqResId } </if> 
+<if test=" 1 eq 1 and condition['isnullResId'] neq null and condition['isnullResId'] eq true">and main.RES_ID is null  </if> 
+<if test=" 1 eq 1 and condition['isnotnullResId'] neq null and condition['isnotnullResId'] eq true">and main.RES_ID is not null </if> 
+<if test=" 1 eq 1 and condition['isinResId'] neq null and  condition['isinResId'] neq null and condition['isinResId'].size>0">and main.RES_ID in (<foreach collection="condition.isinResId" item="sub"  separator="," > #{sub } </foreach> )</if> 
+<if test=" 1 eq 1 and condition['isnotinResId'] neq null and  condition['isnotinResId'] neq null and condition['isnotinResId'].size>0">and main.RES_ID not in (<foreach collection="condition.isnotinResId" item="sub"  separator="," > #{sub } </foreach> )</if> 
+<if test=" 1 eq 1 and condition['likeResId'] neq null">and main.RES_ID like #{condition.likeResId} </if> 
+<if test=" 1 eq 1 and condition['notlikeResId'] neq null">and main.RES_ID not like #{condition.notlikeResId  } </if> 
+
 <if test=" 1 eq 1 and condition['Id'] neq null">and main.ID = #{condition.Id } </if> 
 <if test=" 1 eq 1 and condition['eqId'] neq null">and main.ID = #{condition.eqId } </if> 
 <if test=" 1 eq 1 and condition['neqId'] neq null">and main.ID != #{condition.neqId } </if> 
@@ -62,38 +81,8 @@ main.ID,main.NAME,main.DESCP,main.TOKEN_ARRAY
 <if test=" 1 eq 1 and condition['isnotnullId'] neq null and condition['isnotnullId'] eq true">and main.ID is not null </if> 
 <if test=" 1 eq 1 and condition['isinId'] neq null and  condition['isinId'] neq null and condition['isinId'].size>0">and main.ID in (<foreach collection="condition.isinId" item="sub"  separator="," > #{sub } </foreach> )</if> 
 <if test=" 1 eq 1 and condition['isnotinId'] neq null and  condition['isnotinId'] neq null and condition['isnotinId'].size>0">and main.ID not in (<foreach collection="condition.isnotinId" item="sub"  separator="," > #{sub } </foreach> )</if> 
-<if test=" 1 eq 1 and condition['likeId'] neq null">and main.ID like #{condition.likeId} </if> 
-<if test=" 1 eq 1 and condition['notlikeId'] neq null">and main.ID not like #{condition.notlikeId  } </if> 
-
-<if test=" 1 eq 1 and condition['Name'] neq null">and main.NAME = #{condition.Name } </if> 
-<if test=" 1 eq 1 and condition['eqName'] neq null">and main.NAME = #{condition.eqName } </if> 
-<if test=" 1 eq 1 and condition['neqName'] neq null">and main.NAME != #{condition.neqName } </if> 
-<if test=" 1 eq 1 and condition['isnullName'] neq null and condition['isnullName'] eq true">and main.NAME is null  </if> 
-<if test=" 1 eq 1 and condition['isnotnullName'] neq null and condition['isnotnullName'] eq true">and main.NAME is not null </if> 
-<if test=" 1 eq 1 and condition['isinName'] neq null and  condition['isinName'] neq null and condition['isinName'].size>0">and main.NAME in (<foreach collection="condition.isinName" item="sub"  separator="," > #{sub } </foreach> )</if> 
-<if test=" 1 eq 1 and condition['isnotinName'] neq null and  condition['isnotinName'] neq null and condition['isnotinName'].size>0">and main.NAME not in (<foreach collection="condition.isnotinName" item="sub"  separator="," > #{sub } </foreach> )</if> 
-<if test=" 1 eq 1 and condition['likeName'] neq null">and main.NAME like #{condition.likeName} </if> 
-<if test=" 1 eq 1 and condition['notlikeName'] neq null">and main.NAME not like #{condition.notlikeName  } </if> 
-
-<if test=" 1 eq 1 and condition['Descp'] neq null">and main.DESCP = #{condition.Descp } </if> 
-<if test=" 1 eq 1 and condition['eqDescp'] neq null">and main.DESCP = #{condition.eqDescp } </if> 
-<if test=" 1 eq 1 and condition['neqDescp'] neq null">and main.DESCP != #{condition.neqDescp } </if> 
-<if test=" 1 eq 1 and condition['isnullDescp'] neq null and condition['isnullDescp'] eq true">and main.DESCP is null  </if> 
-<if test=" 1 eq 1 and condition['isnotnullDescp'] neq null and condition['isnotnullDescp'] eq true">and main.DESCP is not null </if> 
-<if test=" 1 eq 1 and condition['isinDescp'] neq null and  condition['isinDescp'] neq null and condition['isinDescp'].size>0">and main.DESCP in (<foreach collection="condition.isinDescp" item="sub"  separator="," > #{sub } </foreach> )</if> 
-<if test=" 1 eq 1 and condition['isnotinDescp'] neq null and  condition['isnotinDescp'] neq null and condition['isnotinDescp'].size>0">and main.DESCP not in (<foreach collection="condition.isnotinDescp" item="sub"  separator="," > #{sub } </foreach> )</if> 
-<if test=" 1 eq 1 and condition['likeDescp'] neq null">and main.DESCP like #{condition.likeDescp} </if> 
-<if test=" 1 eq 1 and condition['notlikeDescp'] neq null">and main.DESCP not like #{condition.notlikeDescp  } </if> 
-
-<if test=" 1 eq 1 and condition['TokenArray'] neq null">and main.TOKEN_ARRAY = #{condition.TokenArray } </if> 
-<if test=" 1 eq 1 and condition['eqTokenArray'] neq null">and main.TOKEN_ARRAY = #{condition.eqTokenArray } </if> 
-<if test=" 1 eq 1 and condition['neqTokenArray'] neq null">and main.TOKEN_ARRAY != #{condition.neqTokenArray } </if> 
-<if test=" 1 eq 1 and condition['isnullTokenArray'] neq null and condition['isnullTokenArray'] eq true">and main.TOKEN_ARRAY is null  </if> 
-<if test=" 1 eq 1 and condition['isnotnullTokenArray'] neq null and condition['isnotnullTokenArray'] eq true">and main.TOKEN_ARRAY is not null </if> 
-<if test=" 1 eq 1 and condition['isinTokenArray'] neq null and  condition['isinTokenArray'] neq null and condition['isinTokenArray'].size>0">and main.TOKEN_ARRAY in (<foreach collection="condition.isinTokenArray" item="sub"  separator="," > #{sub } </foreach> )</if> 
-<if test=" 1 eq 1 and condition['isnotinTokenArray'] neq null and  condition['isnotinTokenArray'] neq null and condition['isnotinTokenArray'].size>0">and main.TOKEN_ARRAY not in (<foreach collection="condition.isnotinTokenArray" item="sub"  separator="," > #{sub } </foreach> )</if> 
-<if test=" 1 eq 1 and condition['likeTokenArray'] neq null">and main.TOKEN_ARRAY like #{condition.likeTokenArray} </if> 
-<if test=" 1 eq 1 and condition['notlikeTokenArray'] neq null">and main.TOKEN_ARRAY not like #{condition.notlikeTokenArray  } </if> 
+<if test=" 1 eq 1 and condition['minId'] neq null">and main.ID &gt;= #{condition.minId } </if> 
+<if test=" 1 eq 1 and condition['maxId'] neq null">and main.ID &lt;= #{condition.maxId} </if> 
 
 
 </sql>
@@ -187,13 +176,12 @@ main.ID,main.NAME,main.DESCP,main.TOKEN_ARRAY
 </select>
 
 <insert id="insert" flushCache="true" >
-	insert into <include refid="table"/>  ( ID,NAME,DESCP,TOKEN_ARRAY ) values  
+	insert into <include refid="table"/>  ( DRV_ID,RES_ID,ID ) values  
 	<foreach collection="models" separator="," item="model">	(
 		<trim  prefixOverrides="," suffixOverrides=",">
-			#{model.Id,jdbcType=VARCHAR},
-#{model.Name,jdbcType=VARCHAR},
-#{model.Descp,jdbcType=VARCHAR},
-#{model.TokenArray,jdbcType=VARCHAR},
+			#{model.DrvId,jdbcType=VARCHAR},
+#{model.ResId,jdbcType=VARCHAR},
+#{model.Id,jdbcType=INTEGER},
 
 		</trim>
 	)
@@ -203,13 +191,12 @@ main.ID,main.NAME,main.DESCP,main.TOKEN_ARRAY
 <update id="update" flushCache="true" >
 	update <include refid="table"/>  set 
 		<trim  prefixOverrides="," suffixOverrides=",">
-			<if test="pk neq null">id=#{pk},</if>
-NAME=#{model.Name,jdbcType=VARCHAR},
-DESCP=#{model.Descp,jdbcType=VARCHAR},
-TOKEN_ARRAY=#{model.TokenArray,jdbcType=VARCHAR},
+			DRV_ID=#{model.DrvId,jdbcType=VARCHAR},
+RES_ID=#{model.ResId,jdbcType=VARCHAR},
+<if test="pk neq null">id=#{pk},</if>
 
 		</trim>
-	where <include refid="pk"/>=#{model.Id,jdbcType=VARCHAR}
+	where <include refid="pk"/>=#{model.Id,jdbcType=INTEGER}
 </update>
 
 <delete id="deleteEqPk" flushCache="true">
