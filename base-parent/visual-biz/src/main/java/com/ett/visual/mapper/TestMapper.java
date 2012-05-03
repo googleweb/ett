@@ -9,8 +9,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import com.ett.visual.mapper.driver.IDriverFileMapper;
-import com.ett.visual.model.driver.DriverFileModel;
+import com.ett.visual.mapper.drv.IDriverFileMapper;
+import com.ett.visual.model.drv.DriverFileModel;
 
 public class TestMapper {
 
@@ -20,7 +20,7 @@ public class TestMapper {
 		Reader reader=null;
 		DriverFileModel driver=new DriverFileModel();
 		
-		driver.setId("sdf");
+		
 		
 		try {
 			reader = Resources.getResourceAsReader(resource);
@@ -32,9 +32,9 @@ public class TestMapper {
 		SqlSession se=sf.openSession();
 		IDriverFileMapper mapper=se.getMapper(IDriverFileMapper.class);
 		try {
-			List<DriverFileModel> list= mapper.selectAll(null);
+			List<DriverFileModel> list= mapper.selectAll(null,null);
 			driver=list.get(0);
-			driver.setRemark("叼你");;
+			//driver.setRemark("叼你");;
 		    mapper.update(driver);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

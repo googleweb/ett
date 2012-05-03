@@ -1,31 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-	Create Date:2012-03-30 12:28:07
+	Create Date:2012-05-03 09:53:47
 	MapperTemplate:com.smartken.toyz4j.mybatis.OracleMapperTemplate
-	Model:com.ett.visual.model.admin.DepartmentModel 
+	Model:com.ett.visual.model.admin.DictTypeModel 
 
 
- public static enum F { 
-  Id,Text,Remark  
- } 
-
-private String Id,Text,Remark;
-
- 
-
- public  class SimpleQueryModel extends com.ett.visual.model.admin.DepartmentModel { 
- private String neqId,eqId,likeId,notlikeId,
-				neqText,eqText,likeText,notlikeText,
-				neqRemark,eqRemark,likeRemark,notlikeRemark;
-
-private List<String> isinId,isnotinId,isinText,isnotinText,
-				isinRemark,isnotinRemark;
-
-private Boolean isnullId,isnotnullId,isnullText,isnotnullText,
-				isnullRemark,isnotnullRemark;
-
- 
- } 
 --> 
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
@@ -39,52 +18,34 @@ private Boolean isnullId,isnotnullId,isnullText,isnotnullText,
 main.ID,main.TEXT,main.REMARK
 </sql>
 <sql id="queryCols">
-	<trim prefixOverrides=","  suffixOverrides=",">
 		<choose>
-			<when test="dynamic eq null" >
+			<when test="dynamic eq null or dynamic['colums'] eq null or dynamic['colums'].size lt 1 " >
 				<include refid="columns"/>
 			</when>
-			<when test=" dynamic['colums'] neq null and dynamic['colums'].size() gt 0 ">
-				<foreach collection="dynamic.colums" item="col"  >
-					 main.${col.column} , 
+			<otherwise>
+				<foreach collection="dynamic.colums" item="col" separator=","  >
+					 main.${col.column} 
 				</foreach>
-			</when>
+			</otherwise>
 		</choose>
-	</trim>
 </sql>
 
-
-<sql id="insertCols">
-#{Id,jdbcType=VARCHAR},
-#{Text,jdbcType=VARCHAR},
-#{Remark,jdbcType=VARCHAR},
-
-</sql>
-
-<sql id="updateCols">
-<if test="pk neq null">id=#{pk},</if>
-main.TEXT=#{model.Text,jdbcType=VARCHAR},
-main.REMARK=#{model.Remark,jdbcType=VARCHAR},
-
-</sql>
 
 <sql id="orderby">
-	<trim  suffixOverrides=",">
 		<choose>
-			<when test="dynamic eq null">
+			<when test="dynamic eq null or  dynamic['orderbyBounds'] eq null or dynamic['orderbyBounds'].size lt 1 ">
 				order by  <include refid="pk" /> DESC
 			</when>
-			<when test="dynamic['orderbyBounds'] neq null and dynamic['orderbyBounds'].size() gt 0 ">
-				<foreach collection="dynamic.orderbyBounds" item="ob" open=" order by " >
-					 main.${ob.colum} ${ob.type}, 
+			<otherwise >
+				<foreach collection="dynamic.orderbyBounds" item="ob" open=" order by " separator="," >
+					 main.${ob.column} ${ob.order} 
 				</foreach>
-			</when>
+			</otherwise>
 		</choose>
-	</trim>
 </sql>
 
 
-<resultMap type="com.ett.visual.model.admin.DepartmentModel" id="resultMap">
+<resultMap type="com.ett.visual.model.admin.DictTypeModel" id="resultMap">
  <id column="ID"  property="Id" jdbcType="VARCHAR"  />
 <result column="TEXT"  property="Text" jdbcType="VARCHAR"  />
 <result column="REMARK"  property="Remark" jdbcType="VARCHAR"  />
@@ -93,35 +54,35 @@ main.REMARK=#{model.Remark,jdbcType=VARCHAR},
 
 
 <sql id="selectCondition">
-<if test=" 1 eq 1 and model['Id'] neq null">and main.ID = #{model.Id } </if> 
-<if test=" 1 eq 1 and model['eqId'] neq null">and main.ID = #{model.eqId } </if> 
-<if test=" 1 eq 1 and model['neqId'] neq null">and main.ID != #{model.neqId } </if> 
-<if test=" 1 eq 1 and model['isnullId'] neq null and model['isnullId'] eq true">and main.ID is null  </if> 
-<if test=" 1 eq 1 and model['isnotnullId'] neq null and model['isnotnullId'] eq true">and main.ID is not null </if> 
-<if test=" 1 eq 1 and model['isinId'] neq null">and main.ID in <foreach collection="model.isinId" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
-<if test=" 1 eq 1 and model['isnotinId'] neq null">and main.ID not in <foreach collection="model.isnotinId" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
-<if test=" 1 eq 1 and model['likeId'] neq null">and main.ID like #{model.likeId} </if> 
-<if test=" 1 eq 1 and model['notlikeId'] neq null">and main.ID not like #{model.notlikeId  } </if> 
+<if test=" 1 eq 1 and condition['Id'] neq null">and main.ID = #{condition.Id } </if> 
+<if test=" 1 eq 1 and condition['eqId'] neq null">and main.ID = #{condition.eqId } </if> 
+<if test=" 1 eq 1 and condition['neqId'] neq null">and main.ID != #{condition.neqId } </if> 
+<if test=" 1 eq 1 and condition['isnullId'] neq null and condition['isnullId'] eq true">and main.ID is null  </if> 
+<if test=" 1 eq 1 and condition['isnotnullId'] neq null and condition['isnotnullId'] eq true">and main.ID is not null </if> 
+<if test=" 1 eq 1 and condition['isinId'] neq null and  condition['isinId'] neq null and condition['isinId'].size>0">and main.ID in (<foreach collection="condition.isinId" item="sub"  separator="," > #{sub } </foreach> )</if> 
+<if test=" 1 eq 1 and condition['isnotinId'] neq null and  condition['isnotinId'] neq null and condition['isnotinId'].size>0">and main.ID not in (<foreach collection="condition.isnotinId" item="sub"  separator="," > #{sub } </foreach> )</if> 
+<if test=" 1 eq 1 and condition['likeId'] neq null">and main.ID like #{condition.likeId} </if> 
+<if test=" 1 eq 1 and condition['notlikeId'] neq null">and main.ID not like #{condition.notlikeId  } </if> 
 
-<if test=" 1 eq 1 and model['Text'] neq null">and main.TEXT = #{model.Text } </if> 
-<if test=" 1 eq 1 and model['eqText'] neq null">and main.TEXT = #{model.eqText } </if> 
-<if test=" 1 eq 1 and model['neqText'] neq null">and main.TEXT != #{model.neqText } </if> 
-<if test=" 1 eq 1 and model['isnullText'] neq null and model['isnullText'] eq true">and main.TEXT is null  </if> 
-<if test=" 1 eq 1 and model['isnotnullText'] neq null and model['isnotnullText'] eq true">and main.TEXT is not null </if> 
-<if test=" 1 eq 1 and model['isinText'] neq null">and main.TEXT in <foreach collection="model.isinText" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
-<if test=" 1 eq 1 and model['isnotinText'] neq null">and main.TEXT not in <foreach collection="model.isnotinText" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
-<if test=" 1 eq 1 and model['likeText'] neq null">and main.TEXT like #{model.likeText} </if> 
-<if test=" 1 eq 1 and model['notlikeText'] neq null">and main.TEXT not like #{model.notlikeText  } </if> 
+<if test=" 1 eq 1 and condition['Text'] neq null">and main.TEXT = #{condition.Text } </if> 
+<if test=" 1 eq 1 and condition['eqText'] neq null">and main.TEXT = #{condition.eqText } </if> 
+<if test=" 1 eq 1 and condition['neqText'] neq null">and main.TEXT != #{condition.neqText } </if> 
+<if test=" 1 eq 1 and condition['isnullText'] neq null and condition['isnullText'] eq true">and main.TEXT is null  </if> 
+<if test=" 1 eq 1 and condition['isnotnullText'] neq null and condition['isnotnullText'] eq true">and main.TEXT is not null </if> 
+<if test=" 1 eq 1 and condition['isinText'] neq null and  condition['isinText'] neq null and condition['isinText'].size>0">and main.TEXT in (<foreach collection="condition.isinText" item="sub"  separator="," > #{sub } </foreach> )</if> 
+<if test=" 1 eq 1 and condition['isnotinText'] neq null and  condition['isnotinText'] neq null and condition['isnotinText'].size>0">and main.TEXT not in (<foreach collection="condition.isnotinText" item="sub"  separator="," > #{sub } </foreach> )</if> 
+<if test=" 1 eq 1 and condition['likeText'] neq null">and main.TEXT like #{condition.likeText} </if> 
+<if test=" 1 eq 1 and condition['notlikeText'] neq null">and main.TEXT not like #{condition.notlikeText  } </if> 
 
-<if test=" 1 eq 1 and model['Remark'] neq null">and main.REMARK = #{model.Remark } </if> 
-<if test=" 1 eq 1 and model['eqRemark'] neq null">and main.REMARK = #{model.eqRemark } </if> 
-<if test=" 1 eq 1 and model['neqRemark'] neq null">and main.REMARK != #{model.neqRemark } </if> 
-<if test=" 1 eq 1 and model['isnullRemark'] neq null and model['isnullRemark'] eq true">and main.REMARK is null  </if> 
-<if test=" 1 eq 1 and model['isnotnullRemark'] neq null and model['isnotnullRemark'] eq true">and main.REMARK is not null </if> 
-<if test=" 1 eq 1 and model['isinRemark'] neq null">and main.REMARK in <foreach collection="model.isinRemark" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
-<if test=" 1 eq 1 and model['isnotinRemark'] neq null">and main.REMARK not in <foreach collection="model.isnotinRemark" item="sub" open="(" separator="," close=")"> #{sub } </foreach> </if> 
-<if test=" 1 eq 1 and model['likeRemark'] neq null">and main.REMARK like #{model.likeRemark} </if> 
-<if test=" 1 eq 1 and model['notlikeRemark'] neq null">and main.REMARK not like #{model.notlikeRemark  } </if> 
+<if test=" 1 eq 1 and condition['Remark'] neq null">and main.REMARK = #{condition.Remark } </if> 
+<if test=" 1 eq 1 and condition['eqRemark'] neq null">and main.REMARK = #{condition.eqRemark } </if> 
+<if test=" 1 eq 1 and condition['neqRemark'] neq null">and main.REMARK != #{condition.neqRemark } </if> 
+<if test=" 1 eq 1 and condition['isnullRemark'] neq null and condition['isnullRemark'] eq true">and main.REMARK is null  </if> 
+<if test=" 1 eq 1 and condition['isnotnullRemark'] neq null and condition['isnotnullRemark'] eq true">and main.REMARK is not null </if> 
+<if test=" 1 eq 1 and condition['isinRemark'] neq null and  condition['isinRemark'] neq null and condition['isinRemark'].size>0">and main.REMARK in (<foreach collection="condition.isinRemark" item="sub"  separator="," > #{sub } </foreach> )</if> 
+<if test=" 1 eq 1 and condition['isnotinRemark'] neq null and  condition['isnotinRemark'] neq null and condition['isnotinRemark'].size>0">and main.REMARK not in (<foreach collection="condition.isnotinRemark" item="sub"  separator="," > #{sub } </foreach> )</if> 
+<if test=" 1 eq 1 and condition['likeRemark'] neq null">and main.REMARK like #{condition.likeRemark} </if> 
+<if test=" 1 eq 1 and condition['notlikeRemark'] neq null">and main.REMARK not like #{condition.notlikeRemark  } </if> 
 
 
 </sql>
@@ -137,22 +98,27 @@ main.REMARK=#{model.Remark,jdbcType=VARCHAR},
 
 <select id="selectUnion" resultType="ArrayList" resultMap="resultMap">
   select  main.* from (
-	<trim  prefixOverrides="union" suffixOverrides="union">
-		<foreach collection="querys" item="model">
-			<if test="model neq null">
-				union select <include refid="queryCols" /> from <include refid="table"  /> main 
+		<foreach collection="conditions" item="condition" separator=" union " >
+			<if test="condition neq null" >
+				 select <include refid="queryCols"/> from <include refid="table"/>  main 
 					<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
 						<include refid="selectCondition"/>
 					</trim>
 			</if>
 		</foreach>
-	</trim>
    ) main 
 <include refid="orderby"/>
 </select>
 
 <select id="selectEqPk"  resultMap="resultMap">
-	select <include refid="queryCols"/> from <include refid="table"/> main  where <include refid="pk"/> = #{pk}
+	select <include refid="queryCols"/> from <include refid="table"/> main  where main.<include refid="pk"/> = #{pk}
+</select>
+
+<select id="selectInPk" resultType="ArrayList" resultMap="resultMap" >
+	select <include refid="queryCols"/> from <include refid="table"/> main  where main.<include refid="pk"/> in (
+		<foreach item="pk" collection="pks"  separator="," > #{pk} </foreach>
+	)
+	<include refid="orderby"/>
 </select>
 
 <select  id="selectAll"  resultType="ArrayList"  resultMap="resultMap">
@@ -161,12 +127,12 @@ main.REMARK=#{model.Remark,jdbcType=VARCHAR},
 </select>
 
 <select id="countAll" resultType="int">
-	select count(<include refid="pk"/>) from <include refid="table"/> 
+	select count(main.<include refid="pk"/>) from <include refid="table"/> main 
 </select>
 
 <select id="count" resultType="int">
-	select count(<include refid="pk"/>) from <include refid="table"/>
-		<if test="model neq null" >
+	select count(main.<include refid="pk"/>) from <include refid="table"/> main 
+		<if test="condition neq null" >
 		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
 			<include refid="selectCondition"/>
 		</trim>
@@ -174,8 +140,8 @@ main.REMARK=#{model.Remark,jdbcType=VARCHAR},
 </select>
 
 <select id="avg" resultType="int">
-	select avg(${column}) from <include refid="table"/>
-		<if test="model neq null" >
+	select avg(main.${colunm}) from <include refid="table"/> main 
+		<if test="condition neq null" >
 		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
 			<include refid="selectCondition"/>
 		</trim>
@@ -183,8 +149,8 @@ main.REMARK=#{model.Remark,jdbcType=VARCHAR},
 </select>
 
 <select id="sum" resultType="int">
-	select sum(${column}) from <include refid="table"/>
-		<if test="model neq null" >
+	select sum(main.${colunm}) from <include refid="table"/> main 
+		<if test="condition neq null" >
 		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
 			<include refid="selectCondition"/>
 		</trim>
@@ -192,8 +158,8 @@ main.REMARK=#{model.Remark,jdbcType=VARCHAR},
 </select>
 
 <select id="min" resultType="int">
-	select min(${column}) from <include refid="table"/>
-		<if test="model neq null" >
+	select min(main.${colunm}) from <include refid="table"/> main 
+		<if test="condition neq null" >
 		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
 			<include refid="selectCondition"/>
 		</trim>
@@ -201,7 +167,7 @@ main.REMARK=#{model.Remark,jdbcType=VARCHAR},
 </select>
 
 <select id="max" resultType="int">
-	select max(${column}) from <include refid="table"/>
+	select max(main.${colunm}) from <include refid="table"/> main 
 		<if test="model neq null" >
 		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
 			<include refid="selectCondition"/>
@@ -210,20 +176,27 @@ main.REMARK=#{model.Remark,jdbcType=VARCHAR},
 </select>
 
 <insert id="insert" flushCache="true" >
-	insert into <include refid="table"/> main  ( <include refid="columns"/> ) values  
-	(
+	insert into <include refid="table"/>  ( ID,TEXT,REMARK ) values  
+	<foreach collection="models" separator="," item="model">	(
 		<trim  prefixOverrides="," suffixOverrides=",">
-			<include refid="insertCols"/>
+			#{model.Id,jdbcType=VARCHAR},
+#{model.Text,jdbcType=VARCHAR},
+#{model.Remark,jdbcType=VARCHAR},
+
 		</trim>
 	)
+	</foreach>
 </insert>
 
 <update id="update" flushCache="true" >
-	update <include refid="table"/> main  set 
+	update <include refid="table"/>  set 
 		<trim  prefixOverrides="," suffixOverrides=",">
-			<include refid="updateCols"/>
+			<if test="pk neq null">id=#{pk},</if>
+TEXT=#{model.Text,jdbcType=VARCHAR},
+REMARK=#{model.Remark,jdbcType=VARCHAR},
+
 		</trim>
-	where main.<include refid="pk"/>=#{model.Id,jdbcType=VARCHAR}
+	where <include refid="pk"/>=#{model.Id,jdbcType=VARCHAR}
 </update>
 
 <delete id="deleteEqPk" flushCache="true">
@@ -231,8 +204,9 @@ main.REMARK=#{model.Remark,jdbcType=VARCHAR},
 </delete>
 
 <delete id="deleteInPk" flushCache="true">
-	delete from <include refid="table"/> where <include refid="pk"/> in
-		<foreach item="pk" collection="pks" open="(" separator="," close=")">#{pk}</foreach>
+	delete from <include refid="table"/> where <include refid="pk"/> in (
+		<foreach item="pk" collection="pks"  separator="," >#{pk}</foreach> 
+	)
 </delete>
 
 <select id="selectView" resultType="ArrayList" resultMap="resultView">
@@ -244,16 +218,14 @@ main.REMARK=#{model.Remark,jdbcType=VARCHAR},
 
 <select id="selectViewUnion" resultType="ArrayList" resultMap="resultView">
   select main.* from (
-	<trim  prefixOverrides="union" suffixOverrides="union">
-		<foreach collection="querys" item="model">
-			<if test="model neq null">
-				union select <include refid="queryCols"/> <include refid="joinCols"/> from <include refid="table"/> main  <include refid="join"/> 
+		<foreach collection="conditions" item="condition" separator=" union ">
+			<if test="condition neq null" >
+				 select <include refid="queryCols"/> <include refid="joinCols"/> from <include refid="table"/> main  <include refid="join"/> 
 					<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
 						<include refid="selectViewCondition"/>
 					</trim>
 			</if>
 		</foreach>
-	</trim>
   ) main 
 
 <include refid="orderby"/>
@@ -262,6 +234,13 @@ main.REMARK=#{model.Remark,jdbcType=VARCHAR},
 <select id="selectViewEqPk"  resultMap="resultView">
 	select <include refid="queryCols"/> <include refid="joinCols"/>  from <include refid="table"/> main <include refid="join"/> where main.<include refid="pk"/> = #{pk}
 <include refid="orderby"/>
+</select>
+
+<select id="selectViewInPk" resultType="ArrayList" resultMap="resultView" >
+	select <include refid="queryCols"/> <include refid="joinCols"/> from <include refid="table"/> main <include refid="join"/> where main.<include refid="pk"/> in (
+		<foreach item="pk" collection="pks"  separator="," > #{pk} </foreach>
+	)
+	<include refid="orderby"/>
 </select>
 
 <select  id="selectViewAll"  resultType="ArrayList"  resultMap="resultView">

@@ -5,7 +5,7 @@
 --> 
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ett.visual.mapper.admin.IDictMapper">
+<mapper namespace="com.ett.visual.mapper.driver.IDriverFileMapper">
 
 <cache flushInterval="30000" readOnly="true"></cache>
 
@@ -18,7 +18,7 @@
 
 <sql id="join"></sql>
 
-<resultMap type="com.ett.visual.model.admin.DictModel" id="resultView" extends="resultMap" ></resultMap>
+<resultMap type="com.ett.visual.model.driver.DriverFileModel" id="resultView" extends="resultMap" ></resultMap>
 
 
 <sql id="selectViewCondition">

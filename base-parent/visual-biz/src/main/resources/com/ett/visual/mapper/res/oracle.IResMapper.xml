@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+	Create Date:2012-05-03 09:53:47
+	MapperTemplate:com.smartken.toyz4j.mybatis.OracleMapperTemplate
+	Model:com.ett.visual.model.res.ResModel 
+
+
+--> 
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ett.visual.mapper.res.IResMapper">
+
+<sql id="table">VIS_RES</sql>
+
+<sql id="pk">id</sql>
+
+<sql id="columns">
+main.ID,main.FILETYPE,main.TITLE,main.REMARK,main.CONTENT,main.STATUS,main.CHECK_DATE,main.CHECK_USER_ID,main.SCAN_DATE,main.SCAN_USER_ID,main.PRIVATE_KEY
+</sql>
+<sql id="queryCols">
+		<choose>
+			<when test="dynamic eq null or dynamic['colums'] eq null or dynamic['colums'].size lt 1 " >
+				<include refid="columns"/>
+			</when>
+			<otherwise>
+				<foreach collection="dynamic.colums" item="col" separator=","  >
+					 main.${col.column} 
+				</foreach>
+			</otherwise>
+		</choose>
+</sql>
+
+
+<sql id="orderby">
+		<choose>
+			<when test="dynamic eq null or  dynamic['orderbyBounds'] eq null or dynamic['orderbyBounds'].size lt 1 ">
+				order by  <include refid="pk" /> DESC
+			</when>
+			<otherwise >
+				<foreach collection="dynamic.orderbyBounds" item="ob" open=" order by " separator="," >
+					 main.${ob.column} ${ob.order} 
+				</foreach>
+			</otherwise>
+		</choose>
+</sql>
+
+
+<resultMap type="com.ett.visual.model.res.ResModel" id="resultMap">
+ <id column="ID"  property="Id" jdbcType="VARCHAR"  />
+<result column="FILETYPE"  property="Filetype" jdbcType="VARCHAR"  />
+<result column="TITLE"  property="Title" jdbcType="VARCHAR"  />
+<result column="REMARK"  property="Remark" jdbcType="VARCHAR"  />
+<result column="CONTENT"  property="Content" jdbcType="BLOB" />
+<result column="STATUS"  property="Status" jdbcType="CHAR"  />
+<result column="CHECK_DATE"  property="CheckDate" jdbcType="DATE"  />
+<result column="CHECK_USER_ID"  property="CheckUserId" jdbcType="VARCHAR"  />
+<result column="SCAN_DATE"  property="ScanDate" jdbcType="DATE"  />
+<result column="SCAN_USER_ID"  property="ScanUserId" jdbcType="VARCHAR"  />
+<result column="PRIVATE_KEY"  property="PrivateKey" jdbcType="VARCHAR"  />
+
+ </resultMap>
+
+
+<sql id="selectCondition">
+<if test=" 1 eq 1 and condition['Id'] neq null">and main.ID = #{condition.Id } </if> 
+<if test=" 1 eq 1 and condition['eqId'] neq null">and main.ID = #{condition.eqId } </if> 
+<if test=" 1 eq 1 and condition['neqId'] neq null">and main.ID != #{condition.neqId } </if> 
+<if test=" 1 eq 1 and condition['isnullId'] neq null and condition['isnullId'] eq true">and main.ID is null  </if> 
+<if test=" 1 eq 1 and condition['isnotnullId'] neq null and condition['isnotnullId'] eq true">and main.ID is not null </if> 
+<if test=" 1 eq 1 and condition['isinId'] neq null and  condition['isinId'] neq null and condition['isinId'].size>0">and main.ID in (<foreach collection="condition.isinId" item="sub"  separator="," > #{sub } </foreach> )</if> 
+<if test=" 1 eq 1 and condition['isnotinId'] neq null and  condition['isnotinId'] neq null and condition['isnotinId'].size>0">and main.ID not in (<foreach collection="condition.isnotinId" item="sub"  separator="," > #{sub } </foreach> )</if> 
+<if test=" 1 eq 1 and condition['likeId'] neq null">and main.ID like #{condition.likeId} </if> 
+<if test=" 1 eq 1 and condition['notlikeId'] neq null">and main.ID not like #{condition.notlikeId  } </if> 
+
+<if test=" 1 eq 1 and condition['Filetype'] neq null">and main.FILETYPE = #{condition.Filetype } </if> 
+<if test=" 1 eq 1 and condition['eqFiletype'] neq null">and main.FILETYPE = #{condition.eqFiletype } </if> 
+<if test=" 1 eq 1 and condition['neqFiletype'] neq null">and main.FILETYPE != #{condition.neqFiletype } </if> 
+<if test=" 1 eq 1 and condition['isnullFiletype'] neq null and condition['isnullFiletype'] eq true">and main.FILETYPE is null  </if> 
+<if test=" 1 eq 1 and condition['isnotnullFiletype'] neq null and condition['isnotnullFiletype'] eq true">and main.FILETYPE is not null </if> 
+<if test=" 1 eq 1 and condition['isinFiletype'] neq null and  condition['isinFiletype'] neq null and condition['isinFiletype'].size>0">and main.FILETYPE in (<foreach collection="condition.isinFiletype" item="sub"  separator="," > #{sub } </foreach> )</if> 
+<if test=" 1 eq 1 and condition['isnotinFiletype'] neq null and  condition['isnotinFiletype'] neq null and condition['isnotinFiletype'].size>0">and main.FILETYPE not in (<foreach collection="condition.isnotinFiletype" item="sub"  separator="," > #{sub } </foreach> )</if> 
+<if test=" 1 eq 1 and condition['likeFiletype'] neq null">and main.FILETYPE like #{condition.likeFiletype} </if> 
+<if test=" 1 eq 1 and condition['notlikeFiletype'] neq null">and main.FILETYPE not like #{condition.notlikeFiletype  } </if> 
+
+<if test=" 1 eq 1 and condition['Title'] neq null">and main.TITLE = #{condition.Title } </if> 
+<if test=" 1 eq 1 and condition['eqTitle'] neq null">and main.TITLE = #{condition.eqTitle } </if> 
+<if test=" 1 eq 1 and condition['neqTitle'] neq null">and main.TITLE != #{condition.neqTitle } </if> 
+<if test=" 1 eq 1 and condition['isnullTitle'] neq null and condition['isnullTitle'] eq true">and main.TITLE is null  </if> 
+<if test=" 1 eq 1 and condition['isnotnullTitle'] neq null and condition['isnotnullTitle'] eq true">and main.TITLE is not null </if> 
+<if test=" 1 eq 1 and condition['isinTitle'] neq null and  condition['isinTitle'] neq null and condition['isinTitle'].size>0">and main.TITLE in (<foreach collection="condition.isinTitle" item="sub"  separator="," > #{sub } </foreach> )</if> 
+<if test=" 1 eq 1 and condition['isnotinTitle'] neq null and  condition['isnotinTitle'] neq null and condition['isnotinTitle'].size>0">and main.TITLE not in (<foreach collection="condition.isnotinTitle" item="sub"  separator="," > #{sub } </foreach> )</if> 
+<if test=" 1 eq 1 and condition['likeTitle'] neq null">and main.TITLE like #{condition.likeTitle} </if> 
+<if test=" 1 eq 1 and condition['notlikeTitle'] neq null">and main.TITLE not like #{condition.notlikeTitle  } </if> 
+
+<if test=" 1 eq 1 and condition['Remark'] neq null">and main.REMARK = #{condition.Remark } </if> 
+<if test=" 1 eq 1 and condition['eqRemark'] neq null">and main.REMARK = #{condition.eqRemark } </if> 
+<if test=" 1 eq 1 and condition['neqRemark'] neq null">and main.REMARK != #{condition.neqRemark } </if> 
+<if test=" 1 eq 1 and condition['isnullRemark'] neq null and condition['isnullRemark'] eq true">and main.REMARK is null  </if> 
+<if test=" 1 eq 1 and condition['isnotnullRemark'] neq null and condition['isnotnullRemark'] eq true">and main.REMARK is not null </if> 
+<if test=" 1 eq 1 and condition['isinRemark'] neq null and  condition['isinRemark'] neq null and condition['isinRemark'].size>0">and main.REMARK in (<foreach collection="condition.isinRemark" item="sub"  separator="," > #{sub } </foreach> )</if> 
+<if test=" 1 eq 1 and condition['isnotinRemark'] neq null and  condition['isnotinRemark'] neq null and condition['isnotinRemark'].size>0">and main.REMARK not in (<foreach collection="condition.isnotinRemark" item="sub"  separator="," > #{sub } </foreach> )</if> 
+<if test=" 1 eq 1 and condition['likeRemark'] neq null">and main.REMARK like #{condition.likeRemark} </if> 
+<if test=" 1 eq 1 and condition['notlikeRemark'] neq null">and main.REMARK not like #{condition.notlikeRemark  } </if> 
+
+<if test=" 1 eq 1 and condition['Status'] neq null">and main.STATUS = #{condition.Status } </if> 
+<if test=" 1 eq 1 and condition['eqStatus'] neq null">and main.STATUS = #{condition.eqStatus } </if> 
+<if test=" 1 eq 1 and condition['neqStatus'] neq null">and main.STATUS != #{condition.neqStatus } </if> 
+<if test=" 1 eq 1 and condition['isnullStatus'] neq null and condition['isnullStatus'] eq true">and main.STATUS is null  </if> 
+<if test=" 1 eq 1 and condition['isnotnullStatus'] neq null and condition['isnotnullStatus'] eq true">and main.STATUS is not null </if> 
+<if test=" 1 eq 1 and condition['isinStatus'] neq null and  condition['isinStatus'] neq null and condition['isinStatus'].size>0">and main.STATUS in (<foreach collection="condition.isinStatus" item="sub"  separator="," > #{sub } </foreach> )</if> 
+<if test=" 1 eq 1 and condition['isnotinStatus'] neq null and  condition['isnotinStatus'] neq null and condition['isnotinStatus'].size>0">and main.STATUS not in (<foreach collection="condition.isnotinStatus" item="sub"  separator="," > #{sub } </foreach> )</if> 
+<if test=" 1 eq 1 and condition['likeStatus'] neq null">and main.STATUS like #{condition.likeStatus} </if> 
+<if test=" 1 eq 1 and condition['notlikeStatus'] neq null">and main.STATUS not like #{condition.notlikeStatus  } </if> 
+
+<if test=" 1 eq 1 and condition['CheckDate'] neq null">and main.CHECK_DATE = #{condition.CheckDate } </if> 
+<if test=" 1 eq 1 and condition['eqCheckDate'] neq null">and main.CHECK_DATE = #{condition.eqCheckDate } </if> 
+<if test=" 1 eq 1 and condition['neqCheckDate'] neq null">and main.CHECK_DATE != #{condition.neqCheckDate } </if> 
+<if test=" 1 eq 1 and condition['isnullCheckDate'] neq null and condition['isnullCheckDate'] eq true">and main.CHECK_DATE is null  </if> 
+<if test=" 1 eq 1 and condition['isnotnullCheckDate'] neq null and condition['isnotnullCheckDate'] eq true">and main.CHECK_DATE is not null </if> 
+<if test=" 1 eq 1 and condition['isinCheckDate'] neq null and  condition['isinCheckDate'] neq null and condition['isinCheckDate'].size>0">and main.CHECK_DATE in (<foreach collection="condition.isinCheckDate" item="sub"  separator="," > #{sub } </foreach> )</if> 
+<if test=" 1 eq 1 and condition['isnotinCheckDate'] neq null and  condition['isnotinCheckDate'] neq null and condition['isnotinCheckDate'].size>0">and main.CHECK_DATE not in (<foreach collection="condition.isnotinCheckDate" item="sub"  separator="," > #{sub } </foreach> )</if> 
+<if test=" 1 eq 1 and condition['minCheckDate'] neq null">and to_char(main.CHECK_DATE,'YYYY-MM-DD') &gt;= to_char(#{condition.minCheckDate },'YYYY-MM-DD') </if> 
+<if test=" 1 eq 1 and condition['maxCheckDate'] neq null">and to_char(main.CHECK_DATE,'YYYY-MM-DD') &lt;= to_char(#{condition.maxCheckDate },'YYYY-MM-DD') </if> 
+
+<if test=" 1 eq 1 and condition['CheckUserId'] neq null">and main.CHECK_USER_ID = #{condition.CheckUserId } </if> 
+<if test=" 1 eq 1 and condition['eqCheckUserId'] neq null">and main.CHECK_USER_ID = #{condition.eqCheckUserId } </if> 
+<if test=" 1 eq 1 and condition['neqCheckUserId'] neq null">and main.CHECK_USER_ID != #{condition.neqCheckUserId } </if> 
+<if test=" 1 eq 1 and condition['isnullCheckUserId'] neq null and condition['isnullCheckUserId'] eq true">and main.CHECK_USER_ID is null  </if> 
+<if test=" 1 eq 1 and condition['isnotnullCheckUserId'] neq null and condition['isnotnullCheckUserId'] eq true">and main.CHECK_USER_ID is not null </if> 
+<if test=" 1 eq 1 and condition['isinCheckUserId'] neq null and  condition['isinCheckUserId'] neq null and condition['isinCheckUserId'].size>0">and main.CHECK_USER_ID in (<foreach collection="condition.isinCheckUserId" item="sub"  separator="," > #{sub } </foreach> )</if> 
+<if test=" 1 eq 1 and condition['isnotinCheckUserId'] neq null and  condition['isnotinCheckUserId'] neq null and condition['isnotinCheckUserId'].size>0">and main.CHECK_USER_ID not in (<foreach collection="condition.isnotinCheckUserId" item="sub"  separator="," > #{sub } </foreach> )</if> 
+<if test=" 1 eq 1 and condition['likeCheckUserId'] neq null">and main.CHECK_USER_ID like #{condition.likeCheckUserId} </if> 
+<if test=" 1 eq 1 and condition['notlikeCheckUserId'] neq null">and main.CHECK_USER_ID not like #{condition.notlikeCheckUserId  } </if> 
+
+<if test=" 1 eq 1 and condition['ScanDate'] neq null">and main.SCAN_DATE = #{condition.ScanDate } </if> 
+<if test=" 1 eq 1 and condition['eqScanDate'] neq null">and main.SCAN_DATE = #{condition.eqScanDate } </if> 
+<if test=" 1 eq 1 and condition['neqScanDate'] neq null">and main.SCAN_DATE != #{condition.neqScanDate } </if> 
+<if test=" 1 eq 1 and condition['isnullScanDate'] neq null and condition['isnullScanDate'] eq true">and main.SCAN_DATE is null  </if> 
+<if test=" 1 eq 1 and condition['isnotnullScanDate'] neq null and condition['isnotnullScanDate'] eq true">and main.SCAN_DATE is not null </if> 
+<if test=" 1 eq 1 and condition['isinScanDate'] neq null and  condition['isinScanDate'] neq null and condition['isinScanDate'].size>0">and main.SCAN_DATE in (<foreach collection="condition.isinScanDate" item="sub"  separator="," > #{sub } </foreach> )</if> 
+<if test=" 1 eq 1 and condition['isnotinScanDate'] neq null and  condition['isnotinScanDate'] neq null and condition['isnotinScanDate'].size>0">and main.SCAN_DATE not in (<foreach collection="condition.isnotinScanDate" item="sub"  separator="," > #{sub } </foreach> )</if> 
+<if test=" 1 eq 1 and condition['minScanDate'] neq null">and to_char(main.SCAN_DATE,'YYYY-MM-DD') &gt;= to_char(#{condition.minScanDate },'YYYY-MM-DD') </if> 
+<if test=" 1 eq 1 and condition['maxScanDate'] neq null">and to_char(main.SCAN_DATE,'YYYY-MM-DD') &lt;= to_char(#{condition.maxScanDate },'YYYY-MM-DD') </if> 
+
+<if test=" 1 eq 1 and condition['ScanUserId'] neq null">and main.SCAN_USER_ID = #{condition.ScanUserId } </if> 
+<if test=" 1 eq 1 and condition['eqScanUserId'] neq null">and main.SCAN_USER_ID = #{condition.eqScanUserId } </if> 
+<if test=" 1 eq 1 and condition['neqScanUserId'] neq null">and main.SCAN_USER_ID != #{condition.neqScanUserId } </if> 
+<if test=" 1 eq 1 and condition['isnullScanUserId'] neq null and condition['isnullScanUserId'] eq true">and main.SCAN_USER_ID is null  </if> 
+<if test=" 1 eq 1 and condition['isnotnullScanUserId'] neq null and condition['isnotnullScanUserId'] eq true">and main.SCAN_USER_ID is not null </if> 
+<if test=" 1 eq 1 and condition['isinScanUserId'] neq null and  condition['isinScanUserId'] neq null and condition['isinScanUserId'].size>0">and main.SCAN_USER_ID in (<foreach collection="condition.isinScanUserId" item="sub"  separator="," > #{sub } </foreach> )</if> 
+<if test=" 1 eq 1 and condition['isnotinScanUserId'] neq null and  condition['isnotinScanUserId'] neq null and condition['isnotinScanUserId'].size>0">and main.SCAN_USER_ID not in (<foreach collection="condition.isnotinScanUserId" item="sub"  separator="," > #{sub } </foreach> )</if> 
+<if test=" 1 eq 1 and condition['likeScanUserId'] neq null">and main.SCAN_USER_ID like #{condition.likeScanUserId} </if> 
+<if test=" 1 eq 1 and condition['notlikeScanUserId'] neq null">and main.SCAN_USER_ID not like #{condition.notlikeScanUserId  } </if> 
+
+<if test=" 1 eq 1 and condition['PrivateKey'] neq null">and main.PRIVATE_KEY = #{condition.PrivateKey } </if> 
+<if test=" 1 eq 1 and condition['eqPrivateKey'] neq null">and main.PRIVATE_KEY = #{condition.eqPrivateKey } </if> 
+<if test=" 1 eq 1 and condition['neqPrivateKey'] neq null">and main.PRIVATE_KEY != #{condition.neqPrivateKey } </if> 
+<if test=" 1 eq 1 and condition['isnullPrivateKey'] neq null and condition['isnullPrivateKey'] eq true">and main.PRIVATE_KEY is null  </if> 
+<if test=" 1 eq 1 and condition['isnotnullPrivateKey'] neq null and condition['isnotnullPrivateKey'] eq true">and main.PRIVATE_KEY is not null </if> 
+<if test=" 1 eq 1 and condition['isinPrivateKey'] neq null and  condition['isinPrivateKey'] neq null and condition['isinPrivateKey'].size>0">and main.PRIVATE_KEY in (<foreach collection="condition.isinPrivateKey" item="sub"  separator="," > #{sub } </foreach> )</if> 
+<if test=" 1 eq 1 and condition['isnotinPrivateKey'] neq null and  condition['isnotinPrivateKey'] neq null and condition['isnotinPrivateKey'].size>0">and main.PRIVATE_KEY not in (<foreach collection="condition.isnotinPrivateKey" item="sub"  separator="," > #{sub } </foreach> )</if> 
+<if test=" 1 eq 1 and condition['likePrivateKey'] neq null">and main.PRIVATE_KEY like #{condition.likePrivateKey} </if> 
+<if test=" 1 eq 1 and condition['notlikePrivateKey'] neq null">and main.PRIVATE_KEY not like #{condition.notlikePrivateKey  } </if> 
+
+
+</sql>
+
+
+<select id="select" resultType="ArrayList" resultMap="resultMap">
+	select <include refid="queryCols"/>  from <include refid="table"/>  main   
+		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+			<include refid="selectCondition"/>
+		</trim>
+	<include refid="orderby"/>
+</select>
+
+<select id="selectUnion" resultType="ArrayList" resultMap="resultMap">
+  select  main.* from (
+		<foreach collection="conditions" item="condition" separator=" union " >
+			<if test="condition neq null" >
+				 select <include refid="queryCols"/> from <include refid="table"/>  main 
+					<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+						<include refid="selectCondition"/>
+					</trim>
+			</if>
+		</foreach>
+   ) main 
+<include refid="orderby"/>
+</select>
+
+<select id="selectEqPk"  resultMap="resultMap">
+	select <include refid="queryCols"/> from <include refid="table"/> main  where main.<include refid="pk"/> = #{pk}
+</select>
+
+<select id="selectInPk" resultType="ArrayList" resultMap="resultMap" >
+	select <include refid="queryCols"/> from <include refid="table"/> main  where main.<include refid="pk"/> in (
+		<foreach item="pk" collection="pks"  separator="," > #{pk} </foreach>
+	)
+	<include refid="orderby"/>
+</select>
+
+<select  id="selectAll"  resultType="ArrayList"  resultMap="resultMap">
+	select <include refid="queryCols"/> from  <include refid="table"/> main  
+	<include refid="orderby"/>
+</select>
+
+<select id="countAll" resultType="int">
+	select count(main.<include refid="pk"/>) from <include refid="table"/> main 
+</select>
+
+<select id="count" resultType="int">
+	select count(main.<include refid="pk"/>) from <include refid="table"/> main 
+		<if test="condition neq null" >
+		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+			<include refid="selectCondition"/>
+		</trim>
+		</if>
+</select>
+
+<select id="avg" resultType="int">
+	select avg(main.${colunm}) from <include refid="table"/> main 
+		<if test="condition neq null" >
+		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+			<include refid="selectCondition"/>
+		</trim>
+		</if>
+</select>
+
+<select id="sum" resultType="int">
+	select sum(main.${colunm}) from <include refid="table"/> main 
+		<if test="condition neq null" >
+		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+			<include refid="selectCondition"/>
+		</trim>
+		</if>
+</select>
+
+<select id="min" resultType="int">
+	select min(main.${colunm}) from <include refid="table"/> main 
+		<if test="condition neq null" >
+		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+			<include refid="selectCondition"/>
+		</trim>
+		</if>
+</select>
+
+<select id="max" resultType="int">
+	select max(main.${colunm}) from <include refid="table"/> main 
+		<if test="model neq null" >
+		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+			<include refid="selectCondition"/>
+		</trim>
+		</if>
+</select>
+
+<insert id="insert" flushCache="true" >
+	insert into <include refid="table"/>  ( ID,FILETYPE,TITLE,REMARK,CONTENT,STATUS,CHECK_DATE,CHECK_USER_ID,SCAN_DATE,SCAN_USER_ID,PRIVATE_KEY ) values  
+	<foreach collection="models" separator="," item="model">	(
+		<trim  prefixOverrides="," suffixOverrides=",">
+			#{model.Id,jdbcType=VARCHAR},
+#{model.Filetype,jdbcType=VARCHAR},
+#{model.Title,jdbcType=VARCHAR},
+#{model.Remark,jdbcType=VARCHAR},
+#{model.Content,jdbcType=BLOB},
+#{model.Status,jdbcType=CHAR},
+#{model.CheckDate,jdbcType=DATE},
+#{model.CheckUserId,jdbcType=VARCHAR},
+#{model.ScanDate,jdbcType=DATE},
+#{model.ScanUserId,jdbcType=VARCHAR},
+#{model.PrivateKey,jdbcType=VARCHAR},
+
+		</trim>
+	)
+	</foreach>
+</insert>
+
+<update id="update" flushCache="true" >
+	update <include refid="table"/>  set 
+		<trim  prefixOverrides="," suffixOverrides=",">
+			<if test="pk neq null">id=#{pk},</if>
+FILETYPE=#{model.Filetype,jdbcType=VARCHAR},
+TITLE=#{model.Title,jdbcType=VARCHAR},
+REMARK=#{model.Remark,jdbcType=VARCHAR},
+CONTENT=#{model.Content,jdbcType=BLOB},
+STATUS=#{model.Status,jdbcType=CHAR},
+CHECK_DATE=#{model.CheckDate,jdbcType=DATE},
+CHECK_USER_ID=#{model.CheckUserId,jdbcType=VARCHAR},
+SCAN_DATE=#{model.ScanDate,jdbcType=DATE},
+SCAN_USER_ID=#{model.ScanUserId,jdbcType=VARCHAR},
+PRIVATE_KEY=#{model.PrivateKey,jdbcType=VARCHAR},
+
+		</trim>
+	where <include refid="pk"/>=#{model.Id,jdbcType=VARCHAR}
+</update>
+
+<delete id="deleteEqPk" flushCache="true">
+	delete from <include refid="table"/>  where <include refid="pk"/> =#{pk}
+</delete>
+
+<delete id="deleteInPk" flushCache="true">
+	delete from <include refid="table"/> where <include refid="pk"/> in (
+		<foreach item="pk" collection="pks"  separator="," >#{pk}</foreach> 
+	)
+</delete>
+
+<select id="selectView" resultType="ArrayList" resultMap="resultView">
+	select <include refid="columns"/>  <include refid="joinCols"/> from <include refid="table" /> main <include refid="join"/> 
+		<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+			<include refid="selectViewCondition"/>
+		</trim>	<include refid="orderby"/>
+</select>
+
+<select id="selectViewUnion" resultType="ArrayList" resultMap="resultView">
+  select main.* from (
+		<foreach collection="conditions" item="condition" separator=" union ">
+			<if test="condition neq null" >
+				 select <include refid="queryCols"/> <include refid="joinCols"/> from <include refid="table"/> main  <include refid="join"/> 
+					<trim prefix="where 1=2 or (" suffix=")" prefixOverrides="and|or" suffixOverrides="and|or">
+						<include refid="selectViewCondition"/>
+					</trim>
+			</if>
+		</foreach>
+  ) main 
+
+<include refid="orderby"/>
+</select>
+
+<select id="selectViewEqPk"  resultMap="resultView">
+	select <include refid="queryCols"/> <include refid="joinCols"/>  from <include refid="table"/> main <include refid="join"/> where main.<include refid="pk"/> = #{pk}
+<include refid="orderby"/>
+</select>
+
+<select id="selectViewInPk" resultType="ArrayList" resultMap="resultView" >
+	select <include refid="queryCols"/> <include refid="joinCols"/> from <include refid="table"/> main <include refid="join"/> where main.<include refid="pk"/> in (
+		<foreach item="pk" collection="pks"  separator="," > #{pk} </foreach>
+	)
+	<include refid="orderby"/>
+</select>
+
+<select  id="selectViewAll"  resultType="ArrayList"  resultMap="resultView">
+	select  <include refid="queryCols"/> <include refid="joinCols"/> from  <include refid="table"/> main <include refid="join"/>
+	<include refid="orderby"/>
+</select>
+
+</mapper>

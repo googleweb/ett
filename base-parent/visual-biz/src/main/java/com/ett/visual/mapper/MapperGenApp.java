@@ -3,23 +3,32 @@ package com.ett.visual.mapper;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
+
+import oracle.jdbc.driver.OracleDriver;
+
+
 
 
 import com.ett.visual.mapper.admin.IDictMapper;
 import com.ett.visual.mapper.admin.IDictTypeMapper;
 import com.ett.visual.mapper.admin.IRoleMapper;
-import com.ett.visual.mapper.driver.IDriverFileMapper;
-import com.ett.visual.mapper.driver.IDriverInfoMapper;
+import com.ett.visual.mapper.drv.IDriverFileMapper;
+import com.ett.visual.mapper.drv.IDriverInfoMapper;
+import com.ett.visual.mapper.res.IResMapper;
 import com.ett.visual.model.admin.DictModel;
 import com.ett.visual.model.admin.DictTypeModel;
 import com.ett.visual.model.admin.RoleModel;
-import com.ett.visual.model.driver.DriverFileModel;
-import com.ett.visual.model.driver.DriverInfoModel;
+import com.ett.visual.model.drv.DriverFileModel;
+import com.ett.visual.model.drv.DriverInfoModel;
 import com.smartken.toyz4j.ToyzApp;
 import com.smartken.toyz4j.mybatis.MapperFactory;
 import com.smartken.toyz4j.mybatis.MapperTemplate;
 import com.smartken.toyz4j.mybatis.OracleMapperTemplate;
+import com.smartken.toyz4j.util.FileUtil;
+import com.smartken.toyz4j.util.JdbcUtil;
 
 public class MapperGenApp extends ToyzApp {
 
@@ -34,7 +43,7 @@ public class MapperGenApp extends ToyzApp {
 	    
 	    ,TABLE_SELF_DEVICE,TABLE_SELF_DEVICE_SN,TABLE_SELF_HARD,TABLE_MENUS,TABLE_STUDENT_APPLY_INFO
 	    
-	    ,EXAM_TK_CN ,VIS_ADMIN_ROLE,VIS_DRIVER_INFO,VIS_DRIVER_FILE,VIS_ADMIN_DICT,VIS_ADMIN_DICT_TYPE
+	    ,EXAM_TK_CN ,VIS_ADMIN_ROLE,SYS_DRV_INFO,VIS_DRV_FILE,VIS_ADMIN_DICT,VIS_ADMIN_DICT_TYPE,VIS_RES
 	}
 	
 	public static enum Seqs{
@@ -45,51 +54,56 @@ public class MapperGenApp extends ToyzApp {
 	
 	public static String NEXTVAL=".nextval";
 	
-	public static Map<Table,MapperTemplate> getMappers(Connection con,Class<? extends MapperTemplate> cls){
-		MapperFactory mf=new MapperFactory(con,cls);
-		Map<Table,MapperTemplate> mappers=new HashMap<Table, MapperTemplate>();
+	public static Set<MapperTemplate> getMappers(Connection con){
+		MapperFactory mf=null;
+		try {
+			mf = new MapperFactory(con);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Set<MapperTemplate> mappers=new HashSet<MapperTemplate>();
 		
 		try{
 			//mappers.put(Table.TABLE_MENUS,mf.createMapperTemplate(Table.TABLE_MENUS.name().toUpperCase(), "menuid".toUpperCase(),IMenuMapper.class, MenuModel.class,Seqs.seq_menu+NEXTVAL));
 			//mappers.put(Table.TABLE_DEPARTMENTS,mf.createMapperTemplate(Table.TABLE_DEPARTMENTS.name().toUpperCase(), "id".toUpperCase(),IDepartmentModel.class, DepartmentModel.class,Seqs.seq_department+NEXTVAL ));
-			mappers.put(Table.TABLE_DICTS,mf.createMapperTemplate(Table.TABLE_DICTS.name().toUpperCase(), "id".toUpperCase(),IDictMapper.class,Seqs.seq_dict+NEXTVAL ));
-			mappers.put(Table.TABLE_DICTTYPE,mf.createMapperTemplate(Table.TABLE_DICTTYPE.name().toUpperCase(), "id".toUpperCase(),IDictTypeMapper.class,Seqs.seq_dicttype+NEXTVAL ));
-            mappers.put(Table.VIS_ADMIN_ROLE,mf.createMapperTemplate(Table.VIS_ADMIN_ROLE.name(), "id", IRoleMapper.class));
-			mappers.put(Table.VIS_DRIVER_FILE,mf.createMapperTemplate(Table.VIS_DRIVER_FILE.name(), "id", IDriverFileMapper.class));
-	    	mappers.put(Table.VIS_DRIVER_INFO,mf.createMapperTemplate(Table.VIS_DRIVER_INFO.name(), "id", IDriverInfoMapper.class));
-			mappers.put(Table.VIS_ADMIN_DICT,mf.createMapperTemplate(Table.VIS_ADMIN_DICT.name(), "id", IDictMapper.class));
-			mappers.put(Table.VIS_ADMIN_DICT_TYPE,mf.createMapperTemplate(Table.VIS_ADMIN_DICT_TYPE.name(), "id", IDictTypeMapper.class));
+			mappers.add(mf.createMapperTemplate(IDictMapper.class,Table.TABLE_DICTS.name().toUpperCase(), "id".toUpperCase(),null,Seqs.seq_dict+NEXTVAL ));
+			mappers.add(mf.createMapperTemplate(IDictTypeMapper.class,Table.TABLE_DICTTYPE.name().toUpperCase(), "id".toUpperCase(),null,Seqs.seq_dicttype+NEXTVAL ));
+            mappers.add(mf.createMapperTemplate(IRoleMapper.class,Table.VIS_ADMIN_ROLE.name(), "id",null));
+			mappers.add(mf.createMapperTemplate(IDriverFileMapper.class,Table.VIS_DRV_FILE.name(), "id",null));
+	    	mappers.add(mf.createMapperTemplate(IDriverInfoMapper.class,Table.SYS_DRV_INFO.name(), "id",null));
+	    	mappers.add(mf.createMapperTemplate(IResMapper.class,Table.VIS_RES.name(), "id",null));
+			mappers.add(mf.createMapperTemplate(IDictMapper.class,Table.VIS_ADMIN_DICT.name(), "id" ,null));
+			mappers.add(mf.createMapperTemplate(IDictTypeMapper.class,Table.VIS_ADMIN_DICT_TYPE.name(), "id",null ));
 			
 		}catch(Exception ex){ex.printStackTrace();}
 		
 		return mappers;
 	}
 	
-	public static Connection getConnection(){
-		Connection c=null;
+
+	
+	public static void main(String[] args){
+		Connection connection=null;
 		try {
-			Class.forName("oracle.jdbc.OracleDriver");
-			//c=  DriverManager.getConnection("jdbc:oracle:thin:@192.168.1.10:1521:oradrvde", "drv_admin", "stjj117");
-			c=  DriverManager.getConnection("jdbc:oracle:thin:@192.168.1.10:1521:oradrvde", "aspnet", "stjj117");
-			//c=  DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "hrsystem", "ken147");
+	    connection=JdbcUtil.createConnection(OracleDriver.class, "aspnet", "stjj117","oradrvde");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally{return c;}
-
-	}
-	
-	public static void main(String[] args){
-		Map<Table, MapperTemplate> mappers=getMappers(getConnection(), OracleMapperTemplate.class);
+			return;
+		}
+		Set<MapperTemplate> mappers=getMappers(connection);
 		//String srcPath="D:/tempProject/ett/dao/src/main/java/";
-		String srcPath="e:/sts/base-parent/visual-biz/src/main/resources/";
-		Table[] enTables=Table.values();
-		for (Enum<Table> et : enTables) {
+		String workspacePath=FileUtil.TrimPath(FileUtil.WorkspacePath(FileUtil.TARGET_PATH_MAVEN));
+		String recPath=workspacePath+"/visual-biz/src/main/resources/";
+		String srcPath=workspacePath+"/visual-model/src/main/java/";
+		for (MapperTemplate mapper : mappers) {
 			try{
-			MapperTemplate mapper=mappers.get(et);
-			mapper.setOverWriterExtra(true);
+
+			//mapper.setOverWriterExtra(true);
 		    //MapperTemplate mapper=mappers.get(Table.EXAM_TK_CN);
-			System.out.println(mapper.generalMapplerXML(srcPath));
+			mapper.generalBaseModel(srcPath);
+			System.out.println(mapper.generalMapplerXML(recPath));
 			}catch(Exception ex){ex.printStackTrace();}
 		}
 
