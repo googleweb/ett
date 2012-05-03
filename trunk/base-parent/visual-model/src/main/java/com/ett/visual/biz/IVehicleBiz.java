@@ -1,10 +1,12 @@
 package com.ett.visual.biz;
 
-import com.smartken.toyz4j.biz.IToyzBiz;
+import com.smartken.toyz4j.biz.IDataBiz;
 
 
 
 
-public interface IVehicleBiz extends IToyzBiz{
+
+
+public interface IVehicleBiz extends IDataBiz{
 
 }
